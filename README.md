@@ -31,7 +31,7 @@ The analyzer runs automatically on x86 16-bit Real Mode programs during auto-ana
 
 ## Data
 
-Interrupt definitions live in `data/interrupts/` (256 YAML files, one per vector). Generated from Ralf Brown's Interrupt List Release 61 by [rbil-parser](https://github.com/playday3008/rbil-parser). Pre-generated YAML files are also available at [rbil-yaml](https://github.com/playday3008/rbil-yaml).
+Interrupt definitions are provided via the [rbil-yaml](https://github.com/playday3008/rbil-yaml) git submodule at `data/rbil-yaml/`. The 256 YAML files (one per interrupt vector) are generated from Ralf Brown's Interrupt List Release 61 by [rbil-parser](https://github.com/playday3008/rbil-parser).
 
 ## License
 

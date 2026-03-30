@@ -22,7 +22,7 @@ import ghidradosinterruptresolver.model.InterruptFile;
 
 /**
  * Database of x86 real-mode interrupt definitions loaded from YAML files
- * in the extension's {@code data/interrupts/} directory. The YAML data
+ * in the extension's {@code data/rbil-yaml/interrupts/} directory. The YAML data
  * originates from Ralf Brown's Interrupt List.
  *
  * <p>Files are lazily loaded on first access for a given interrupt number
@@ -31,7 +31,7 @@ import ghidradosinterruptresolver.model.InterruptFile;
  */
 public final class InterruptDatabase {
 
-    private static final String INTERRUPTS_DIR = "interrupts";
+    private static final String INTERRUPTS_DIR = "rbil-yaml/interrupts";
     private static final String NO_FUNCTION_KEY = "";
 
     /**
