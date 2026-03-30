@@ -1,0 +1,21 @@
+file_type: interrupt
+key: B2
+entries:
+- entry_type: INT
+  id: r-B2
+  category: r
+  title: IBM ROM BASIC - used while in interpreter
+  source: INTERRUP.R:773
+  interrupt: B2
+  flags: []
+  input_registers: []
+  returns: []
+  notes:
+  - 'called by ROM BASIC
+
+    BASIC.COM/BASICA.COM do not restore vector on termination'
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []

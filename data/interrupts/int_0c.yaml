@@ -1,0 +1,112 @@
+file_type: interrupt
+key: 0C
+entries:
+- entry_type: INT
+  id: H-0C
+  category: H
+  title: IRQ4 - SERIAL COMMUNICATIONS (COM1)
+  source: INTERRUP.A:842
+  interrupt: 0C
+  flags:
+  - C
+  input_registers: []
+  returns: []
+  description: 'automatically asserted by the UART when COM1 needs attention, if the
+
+    UART has been programmed to generate interrupts'
+  notes:
+  - 'on many PC''s, COM3 shares this interrupt
+
+    may be masked by setting bit 4 on I/O port 21h
+
+    DOS 3.3+ revectors IRQ4 to a stack-switching routine unless STACKS=0
+
+    has been set in CONFIG.SYS.  MS/PC-DOS use the IBM Interrupt Sharing
+
+    Protocol (see #02568) when hooking this IRQ'
+  bugs:
+  - 'this vector is modified but not restored by Direct Access v4.0, and
+
+    may be left dangling by other programs written with the same version
+
+    of compiled BASIC'
+  see_also:
+  - type: interrupt
+    interrupt: 0B
+    params: {}
+    name: COM2
+  - type: interrupt
+    interrupt: '54'
+    params: {}
+    name: DESQview
+  - type: interrupt
+    interrupt: 5C
+    params: {}
+    name: DoubleDOS
+  - type: interrupt
+    interrupt: 7C
+    params: {}
+    name: GO32
+  index: []
+  tables: []
+  table_refs:
+  - 02568
+- entry_type: INT
+  id: C-0C
+  category: C
+  title: CPU-generated (80286+) - STACK FAULT
+  source: INTERRUP.A:855
+  interrupt: 0C
+  flags:
+  - C
+  input_registers: []
+  returns: []
+  description: 'this interrupt is generated in protected mode on a stack overflow or
+
+    underflow, or if an inter-level transition or task switch references
+
+    a stack segment marked "not present"; it is generated in real mode
+
+    on accessing a word operand at SS:FFFFh'
+  notes:
+  - 'the 80286 will shut down in real mode if SP=1 before a push.  On the
+
+    PC AT and compatibles, external circuitry generates a reset on
+
+    shutdown.'
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: 0B
+    params: {}
+    name: CPU
+  - type: interrupt
+    interrupt: 0D
+    params: {}
+    name: CPU
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: I-0C
+  category: I
+  title: IBM SYSTEM 36/38 WORKSTATION EMULATION - API POINTER
+  source: INTERRUP.A:865
+  interrupt: 0C
+  flags: []
+  input_registers: []
+  returns: []
+  description: 'the IBM System 36/38 emulator may be invoked through a private API,
+
+    whose entry point address (see #00007) is offset 100h in the segment
+
+    pointed at by this vector'
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables:
+  - '00007'
+  - 00008
+  table_refs:
+  - '00007'

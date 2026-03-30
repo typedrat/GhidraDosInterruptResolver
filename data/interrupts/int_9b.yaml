@@ -1,0 +1,32 @@
+file_type: interrupt
+key: 9B
+entries:
+- entry_type: INT
+  id: r-9B
+  category: r
+  title: IBM ROM BASIC - used while in interpreter
+  source: INTERRUP.R:640
+  interrupt: 9B
+  flags: []
+  input_registers: []
+  returns: []
+  notes:
+  - 'called by ROM BASIC, but pointed at IRET by BASIC.COM/BASICA.COM
+
+    BASIC.COM/BASICA.COM do not restore vector on termination'
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: '80'
+    params: {}
+    name: BASIC
+  - type: interrupt
+    interrupt: 9A
+    params: {}
+  - type: interrupt
+    interrupt: 9C
+    params: {}
+    name: BASIC
+  index: []
+  tables: []
+  table_refs: []

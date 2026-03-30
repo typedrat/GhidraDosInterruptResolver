@@ -1,0 +1,67 @@
+file_type: interrupt
+key: EC
+entries:
+- entry_type: INT
+  id: r-EC
+  category: r
+  title: IBM ROM BASIC - used while in interpreter
+  source: INTERRUP.R:4184
+  interrupt: EC
+  flags: []
+  input_registers: []
+  returns: []
+  notes:
+  - 'called by ROM BASIC
+
+    BASIC.COM/BASICA.COM do not restore vector on termination'
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: N-EC
+  category: N
+  title: used by Alloy NTNX
+  source: INTERRUP.R:4188
+  interrupt: EC
+  flags: []
+  input_registers: []
+  returns: []
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: r-EC
+  category: r
+  title: Exact - RUNTIME INTERFACE MULTIPLEXOR
+  source: INTERRUP.R:4190
+  interrupt: EC
+  flags: []
+  input_registers:
+  - reg: AX
+    operator: '='
+    description: function number (0000h to 0140h)
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - "STACK:\treturn address popped, but otherwise unchanged"
+  description: 'this is the interface from applications to the runtime system by Exact
+
+    Automatisering B.V. of the Netherlands.  By using this interrupt,
+
+    it can provide DLL-style capabilities under MS-DOS.'
+  notes:
+  - 'the interrupt handler removes the return address and flags placed on
+
+    the stack by the INT EC, then jumps to the appropriate function'
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []

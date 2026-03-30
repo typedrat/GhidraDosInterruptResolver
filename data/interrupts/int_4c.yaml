@@ -1,0 +1,141 @@
+file_type: interrupt
+key: 4C
+entries:
+- entry_type: INT
+  id: h-4C
+  category: h
+  title: Z100 - Slave 8259 - S100 vectored line 4
+  source: INTERRUP.N:8592
+  interrupt: 4C
+  flags: []
+  input_registers: []
+  returns: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: 4B
+    params: {}
+    name: Z100
+  - type: interrupt
+    interrupt: 4D
+    params: {}
+    name: Z100
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-4C
+  category: b
+  title: TI Professional PC - CLOCK/ANALOG INTERFACE
+  source: INTERRUP.N:8595
+  interrupt: 4C
+  flags: []
+  input_registers: []
+  returns: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: '40'
+    params: {}
+    name: TI Professional
+  - type: interrupt
+    interrupt: '49'
+    params:
+      AH: 01h
+    name: TI
+  - type: interrupt
+    interrupt: 4A
+    params:
+      AH: 00h
+    name: TI
+  - type: interrupt
+    interrupt: 4B
+    params: {}
+    name: TI Professional
+  - type: interrupt
+    interrupt: 4D
+    params:
+      AH: 00h
+  - type: interrupt
+    interrupt: '58'
+    params: {}
+    name: TI Professional
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-4C
+  category: b
+  title: Tandy 2000 - GET MEMORY SIZE
+  source: INTERRUP.N:8601
+  interrupt: 4C
+  flags: []
+  input_registers: []
+  returns:
+  - registers:
+    - reg: AX
+      operator: '='
+      description: kilobytes of contiguous memory starting at 0
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes:
+  - this interrupt is identical to INT 12 on the Tandy 2000
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: '12'
+    params: {}
+    name: BIOS
+  - type: interrupt
+    interrupt: 4A
+    params: {}
+    name: Tandy 2000
+  - type: interrupt
+    interrupt: 4B
+    params: {}
+    name: Tandy 2000
+  - type: interrupt
+    interrupt: '51'
+    params: {}
+    name: Tandy 2000
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: O-4C
+  category: O
+  title: Acorn BBC Master 512 - "OSCLI" - INTERPRET COMMAND LINE
+  source: INTERRUP.N:8606
+  interrupt: 4C
+  flags: []
+  input_registers:
+  - reg: DS:BX
+    operator: ->
+    description: CR-terminated command string
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - FLAGS destroyed
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: '40'
+    params: {}
+    name: Acorn
+  - type: interrupt
+    interrupt: 4A
+    params: {}
+    name: Acorn
+  - type: interrupt
+    interrupt: 4B
+    params: {}
+    name: Acorn
+  index: []
+  tables: []
+  table_refs: []

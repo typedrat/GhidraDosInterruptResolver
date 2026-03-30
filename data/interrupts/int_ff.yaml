@@ -1,0 +1,225 @@
+file_type: interrupt
+key: FF
+entries:
+- entry_type: INT
+  id: B-FF
+  category: B
+  title: AT/XT286/PS50+ - destroyed by return from protected mode
+  source: INTERRUP.R:5094
+  interrupt: FF
+  flags: []
+  input_registers: []
+  returns: []
+  notes:
+  - (see INT FE"XT286")
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: FE
+    params: {}
+    name: XT286
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-FF
+  category: b
+  title: Z100 - WARM BOOT
+  source: INTERRUP.R:5098
+  interrupt: FF
+  flags: []
+  input_registers: []
+  returns: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: '40'
+    params: {}
+    name: Z100
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: h-FF
+  category: h
+  title: Sanyo MBC-550/555 - IRQ7 - USER INTERRUPT FOR EXTERNAL INTERRUPT
+  source: INTERRUP.R:5101
+  interrupt: FF
+  flags: []
+  input_registers: []
+  returns: []
+  notes:
+  - normally masked off at the 8259 interrupt controller
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: 0F
+    params: {}
+    name: IRQ7
+  - type: interrupt
+    interrupt: FE
+    params: {}
+    name: Sanyo
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: Q-FF
+  category: Q
+  title: QEMM-386.SYS v6.0+ - internal
+  source: INTERRUP.R:5105
+  interrupt: FF
+  flags:
+  - U
+  input_registers: []
+  returns: []
+  notes:
+  - 'requires that a byte in the conventional-memory stub be set to the
+
+    desired function number (00h through 0Ch)'
+  bugs: []
+  see_also:
+  - type: table
+    id: 04081
+  index: []
+  tables:
+  - 04081
+  table_refs:
+  - 04081
+- entry_type: INT
+  id: v-FF
+  category: v
+  title: VIRUS - "Violetta" - ???
+  source: INTERRUP.R:5126
+  interrupt: FF
+  flags: []
+  input_registers: []
+  returns: []
+  notes:
+  - used but not chained by virus
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: E0
+    params: {}
+    name: VIRUS
+  - type: interrupt
+    interrupt: F1
+    params: {}
+    name: VIRUS
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: V-FFBX0000
+  category: V
+  title: PC/FORTH - GRAPHICS API - VIDEO STATUS CHANGE
+  source: INTERRUP.R:5130
+  interrupt: FF
+  flags: []
+  function: BX0000
+  input_registers:
+  - reg: BX
+    operator: '='
+    value: 0000h
+    table_refs: []
+    sub_values: []
+  - reg: DS:SI
+    operator: ->
+    description: FORTH program counter
+    table_refs: []
+    sub_values: []
+  - reg: SS:BP
+    operator: ->
+    description: FORTH parameter stack
+    table_refs: []
+    sub_values: []
+  - reg: SS:SP
+    operator: ->
+    description: FORTH return stack
+    table_refs: []
+    sub_values: []
+  - reg: DS:DX
+    operator: ->
+    description: FORTH video parameter area
+    table_refs: []
+    sub_values: []
+  returns: []
+  description: 'called to inform graphics driver of any status changes such as video
+
+    mode changes, character color changes, graphics XOR mode turned on
+
+    or off, etc.; also used as an installation check'
+  notes: []
+  bugs: []
+  see_also: []
+  index:
+  - installation check;PC/FORTH
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: V-FF
+  category: V
+  title: PC/FORTH - GRAPHICS API
+  source: INTERRUP.R:5141
+  interrupt: FF
+  flags: []
+  input_registers:
+  - reg: BX
+    operator: '='
+    description: function number
+    table_refs: []
+    sub_values:
+    - value: 0001h
+      description: function REDRAW
+      sub_values: []
+    - value: 0002h
+      description: function !PEL
+      sub_values: []
+    - value: 0003h
+      description: function @PEL
+      sub_values: []
+    - value: 0004h
+      description: function LINE
+      sub_values: []
+    - value: 0005h
+      description: function ARC
+      sub_values: []
+    - value: 0006h
+      description: function @BLOCK
+      sub_values: []
+    - value: 0007h
+      description: function !BLOCK
+      sub_values: []
+    - value: 0008h
+      description: function FLOOD
+      sub_values: []
+  - reg: DS:SI
+    operator: ->
+    description: FORTH program counter
+    table_refs: []
+    sub_values: []
+  - reg: SS:BP
+    operator: ->
+    description: FORTH parameter stack
+    table_refs: []
+    sub_values: []
+  - reg: SS:SP
+    operator: ->
+    description: FORTH return stack
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - AX,BX,CX,DX,ES,DI may be destroyed
+  notes:
+  - 'these functions all display an error message if the graphics routines
+
+    are not resident'
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []

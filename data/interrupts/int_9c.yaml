@@ -1,0 +1,63 @@
+file_type: interrupt
+key: 9C
+entries:
+- entry_type: INT
+  id: r-9C
+  category: r
+  title: IBM ROM BASIC - used while in interpreter
+  source: INTERRUP.R:645
+  interrupt: 9C
+  flags: []
+  input_registers: []
+  returns: []
+  notes:
+  - 'called by ROM BASIC, but pointed at IRET by BASIC.COM/BASICA.COM
+
+    BASIC.COM/BASICA.COM do not restore vector on termination'
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: '80'
+    params: {}
+    name: BASIC
+  - type: interrupt
+    interrupt: 9B
+    params: {}
+  - type: interrupt
+    interrupt: 9D
+    params: {}
+    name: BASIC
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: v-9C
+  category: v
+  title: VIRUS - "INT13" - ORIGINAL INT 13h VECTOR
+  source: INTERRUP.R:650
+  interrupt: 9C
+  flags: []
+  input_registers: []
+  returns: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: 8B
+    params: {}
+    name: VIRUS
+  - type: interrupt
+    interrupt: 9D
+    params: {}
+    name: VIRUS
+  - type: interrupt
+    interrupt: 9E
+    params: {}
+    name: VIRUS
+  - type: interrupt
+    interrupt: 9F
+    params: {}
+    name: VIRUS
+  index: []
+  tables: []
+  table_refs: []

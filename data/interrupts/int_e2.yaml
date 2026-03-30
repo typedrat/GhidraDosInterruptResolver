@@ -1,0 +1,39 @@
+file_type: interrupt
+key: E2
+entries:
+- entry_type: INT
+  id: r-E2
+  category: r
+  title: IBM ROM BASIC - used while in interpreter
+  source: INTERRUP.R:4020
+  interrupt: E2
+  flags: []
+  input_registers: []
+  returns: []
+  notes:
+  - 'called by ROM BASIC
+
+    BASIC.COM/BASICA.COM do not restore vector on termination'
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: N-E2
+  category: N
+  title: PC Cluster Program - RELOCATED INT 1C
+  source: INTERRUP.R:4024
+  interrupt: E2
+  flags: []
+  input_registers: []
+  returns: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: 1C
+    params: {}
+  index: []
+  tables: []
+  table_refs: []

@@ -1,0 +1,81 @@
+file_type: interrupt
+key: '19'
+entries:
+- entry_type: INT
+  id: B-19
+  category: B
+  title: SYSTEM - BOOTSTRAP LOADER
+  source: INTERRUP.D:5525
+  interrupt: '19'
+  flags: []
+  input_registers: []
+  returns: []
+  description: 'This interrupt reboots the system without clearing memory or restoring
+
+    interrupt vectors.  Because interrupt vectors are preserved, this
+
+    interrupt usually causes a system hang if any TSRs have hooked
+
+    vectors from 00h through 1Ch, particularly INT 08.'
+  notes:
+  - "Usually, the BIOS will try to read sector 1, head 0, track 0 from drive\nA: to 0000h:7C00h.  If this fails, and a hard\
+    \ disk is installed, the\nBIOS will read sector 1, head 0, track 0 of the first hard disk.\nThis sector should contain\
+    \ a master bootstrap loader and a partition\ntable (see #00650).  After loading the master boot sector at\n0000h:7C00h,\
+    \ the master bootstrap loader is given control\n(see #00653).\tIt will scan the partition table for an active\npartition,\
+    \ and will then load the operating system's bootstrap\nloader (contained in the first sector of the active partition)\
+    \ and\ngive it control.\ntrue IBM PCs and most clones issue an INT 18 if neither floppy nor hard\ndisk have a valid boot\
+    \ sector\nto accomplish a warm boot equivalent to Ctrl-Alt-Del, store 1234h in\n0040h:0072h and jump to FFFFh:0000h.\t\
+    For a cold boot equivalent to\na reset, store 0000h at 0040h:0072h before jumping.\nVDISK.SYS hooks this interrupt to\
+    \ allow applications to find out how\nmuch extended memory has been used by VDISKs (see #00649).  DOS 3.3+\nPRINT hooks\
+    \ INT 19 but does not set up a correct VDISK header block\nat the beginning of its INT 19 handler segment, thus causing\
+    \ some\nprograms to overwrite extended memory which is already in use.\nthe default handler is at F000h:E6F2h for 100%\
+    \ compatible BIOSes\nMS-DOS 3.2+ hangs on booting (even from floppy) if the hard disk\ncontains extended partitions which\
+    \ point at each other in a loop,\nsince it will never find the end of the linked list of extended\npartitions\nunder Windows\
+    \ Real and Enhanced modes, calling INT 19 will hang the\nsystem in the same was as under bare DOS; under Windows Standard\n\
+    mode, INT 19 will successfully perform a cold reboot as it appears\nto have been redirected to a MOV AL,0FEh/OUT 64h,AL\
+    \ sequence"
+  bugs:
+  - 'when loading the remainder of the DOS system files fails, various
+
+    versions of IBMBIO.COM/IO.SYS incorrectly restore INT 1E before
+
+    calling INT 19, assuming that the boot sector had stored the
+
+    contents of INT 1E at DS:SI instead of on the stack as it actually
+
+    does'
+  see_also:
+  - type: interrupt
+    interrupt: '14'
+    params:
+      AH: 17h
+  - type: interrupt
+    interrupt: '18'
+    params: {}
+    name: BOOT HOOK
+  - type: interrupt
+    interrupt: '49'
+    params: {}
+    name: Tandy 2000
+  - type: interrupt
+    interrupt: 5B
+    params: {}
+    name: PC Cluster
+  - type: memory
+    address: 0040h:0067h
+  - type: memory
+    address: F000h:FFF0h
+  - type: interrupt
+    params: {}
+    name: CMOS 0Fh
+  index: []
+  tables:
+  - 00649
+  - '00650'
+  - '00651'
+  - '00652'
+  - '00653'
+  table_refs:
+  - 00649
+  - '00650'
+  - '00653'

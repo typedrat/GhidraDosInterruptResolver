@@ -1,0 +1,26 @@
+file_type: interrupt
+key: '84'
+entries:
+- entry_type: INT
+  id: r-84
+  category: r
+  title: reserved for BASIC
+  source: INTERRUP.Q:9599
+  interrupt: '84'
+  flags: []
+  input_registers: []
+  returns: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: '83'
+    params: {}
+    name: BASIC
+  - type: interrupt
+    interrupt: '85'
+    params: {}
+    name: BASIC
+  index: []
+  tables: []
+  table_refs: []

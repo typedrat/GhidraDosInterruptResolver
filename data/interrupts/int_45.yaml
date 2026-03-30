@@ -1,0 +1,132 @@
+file_type: interrupt
+key: '45'
+entries:
+- entry_type: INT
+  id: h-45
+  category: h
+  title: Z100 - Master 8259 - Serial B
+  source: INTERRUP.N:7320
+  interrupt: '45'
+  flags: []
+  input_registers: []
+  returns: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: '44'
+    params: {}
+    name: Z100
+  - type: interrupt
+    interrupt: '46'
+    params: {}
+    name: Z100
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: h-45
+  category: h
+  title: TI Professional PC - IRQ5
+  source: INTERRUP.N:7323
+  interrupt: '45'
+  flags: []
+  input_registers: []
+  returns: []
+  notes:
+  - 'on the TI Pro, IRQ5 is connected to the same pin on the expansion bus
+
+    that IBM connects to IRQ6'
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: 0E
+    params: {}
+    name: IRQ6
+  - type: interrupt
+    interrupt: '44'
+    params: {}
+    name: TI Professional
+  - type: interrupt
+    interrupt: '46'
+    params: {}
+    name: TI Professional
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: O-45
+  category: O
+  title: Acorn BBC Master 512 - "OSFILE" - READ/WRITE FILE OR DIRECTORY INFO
+  source: INTERRUP.N:7328
+  interrupt: '45'
+  flags: []
+  input_registers:
+  - reg: AL
+    operator: '='
+    description: function
+    table_refs: []
+    sub_values:
+    - value: 00h
+      description: save block of memory as file
+      sub_values: []
+    - value: 01h
+      description: update directory entry for existing file
+      sub_values: []
+    - value: 02h
+      description: set load address for existing file
+      sub_values: []
+    - value: 03h
+      description: set execution address for existing file
+      sub_values: []
+    - value: 04h
+      description: set attributes for existing file
+      sub_values: []
+    - value: 05h
+      description: read directory
+      sub_values: []
+    - value: 06h
+      description: delete file
+      sub_values: []
+    - value: FFh
+      description: load file
+      sub_values: []
+  - reg: DS:BX
+    operator: ->
+    description: 'control block (see #03201)'
+    table_refs:
+    - '03201'
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AL
+      operator: '='
+      description: file type
+      table_refs: []
+      sub_values: []
+    raw_lines:
+    - FLAGS destroyed
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: '40'
+    params: {}
+    name: Acorn
+  - type: interrupt
+    interrupt: '41'
+    params: {}
+    name: Acorn
+  - type: interrupt
+    interrupt: '44'
+    params: {}
+    name: Acorn
+  - type: interrupt
+    interrupt: '46'
+    params: {}
+    name: Acorn
+  index: []
+  tables:
+  - '03201'
+  - '03202'
+  table_refs: []

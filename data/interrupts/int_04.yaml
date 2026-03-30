@@ -1,0 +1,33 @@
+file_type: interrupt
+key: '04'
+entries:
+- entry_type: INT
+  id: C-04
+  category: C
+  title: CPU-generated - INTO DETECTED OVERFLOW
+  source: INTERRUP.A:502
+  interrupt: '04'
+  flags:
+  - C
+  input_registers: []
+  returns: []
+  description: 'the INTO instruction will generate this interrupt if OF (Overflow Flag)
+
+    is set; otherwise, INTO is effectively a NOP'
+  notes:
+  - 'may be used for convenient overflow testing (to prevent errors from
+
+    propagating) instead of JO or a JNO/JMP combination'
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: '00'
+    params: {}
+    name: CPU
+  - type: opcode
+    mnemonic: AAD
+  - type: opcode
+    mnemonic: AAM
+  index: []
+  tables: []
+  table_refs: []

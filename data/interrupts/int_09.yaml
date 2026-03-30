@@ -1,0 +1,148 @@
+file_type: interrupt
+key: 09
+entries:
+- entry_type: INT
+  id: H-09
+  category: H
+  title: IRQ1 - KEYBOARD DATA READY
+  source: INTERRUP.A:610
+  interrupt: 09
+  flags:
+  - C
+  input_registers: []
+  returns: []
+  description: 'this interrupt is generated when data is received from the keyboard.
+
+    This is normally a scan code (from either a keypress *or* a key
+
+    release), but may also be an ACK or NAK of a command on AT-class
+
+    keyboards.'
+  notes:
+  - "this IRQ may be masked by setting bit 1 on I/O port 21h\nif the BIOS supports an enhanced (101/102-key) keyboard, it\
+    \ calls\nINT 15/AH=4Fh after reading the scan code (see #00006) from the\nkeyboard and before further processing; all\
+    \ further processing uses\nthe scan code returned from INT 15/AH=4Fh\nthe default interrupt handler is at F000h:E987h\
+    \ in 100%-compatible\nBIOSes\nthe interrupt handler performs the following actions for certain\nspecial keystrokes:\n\
+    Ctrl-Break\t clear keyboard buffer, place word 0000h in buffer,\ninvoke INT 1B, and set flag at 0040h:0071h\nSysReq\t\
+    \ invoke INT 15/AH=85h (SysReq is often labeled SysRq)\nCtrl-Numlock place system in a tight wait loop until next INT\
+    \ 09\nCtrl-Alt-Del jump to BIOS startup code (either F000h:FFF0h or the\ndestination of the jump at that address)\nShift-PrtSc\t\
+    \ invoke INT 05\nCtrl-Alt-Plus (HP Vectra) enable keyclick\nCtrl-Alt-Plus (many clones) set clock speed to high\nCtrl-Alt-Minus\
+    \ (HP Vectra) reduce keyclick volume\nCtrl-Alt-Minus (many clones) set clock speed to low\nCtrl-Alt-SysReq (HP Vectra)\
+    \ generate hard reset\nCtrl-Alt-S\t(many clones) run BIOS setup program\nCtrl-Alt-Esc (many clones) run BIOS setup program\n\
+    Ctrl-Alt-Ins (many clones) run BIOS setup program\nCtrl-Alt-LeftShift-GrayMinus (some clones) turn off system cache\n\
+    Ctrl-Alt-LeftShift-GrayPlus (some clones) turn on system cache\nDR DOS hooks this interrupt to control the cursor shape\
+    \ (underscore/\nhalf block) for overwrite/insert mode\nDR Multiuser DOS hooks this interrupt for cursor shape control\
+    \ and to\ncontrol whether Ctrl-Alt-Del reboots the current session or the\nentire system"
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: '05'
+    params: {}
+    name: PRINT SCREEN
+  - type: interrupt
+    interrupt: 0B
+    params: {}
+    name: HP 95LX
+  - type: interrupt
+    interrupt: '15'
+    params:
+      AH: 4Fh
+  - type: interrupt
+    interrupt: '15'
+    params:
+      AH: 85h
+  - type: interrupt
+    interrupt: '16'
+    params:
+      AH: 00h
+  - type: interrupt
+    interrupt: '16'
+    params:
+      AH: 10h
+  - type: interrupt
+    interrupt: 1B
+    params: {}
+  - type: interrupt
+    interrupt: 2F
+    params:
+      AX: A901h
+  - type: interrupt
+    interrupt: 4A
+    params:
+      AH: 00h
+    name: TI
+  - type: interrupt
+    interrupt: '51'
+    params: {}
+    name: DESQview
+  - type: interrupt
+    interrupt: '59'
+    params: {}
+    name: DoubleDOS
+  - type: interrupt
+    interrupt: '79'
+    params: {}
+    name: GO32
+  index: []
+  tables:
+  - '00006'
+  table_refs:
+  - '00006'
+- entry_type: INT
+  id: C-09
+  category: C
+  title: CPU-generated (80286,80386) - PROCESSOR EXTENSION PROTECTION ERROR
+  source: INTERRUP.A:751
+  interrupt: 09
+  flags:
+  - C
+  input_registers: []
+  returns: []
+  description: 'called if the coprocessor attempts to access memory outside a segment
+
+    boundary; it may occur at an arbitrary time after the coprocessor
+
+    instruction was issued'
+  notes:
+  - 'until the condition is cleared or the coprocessor is reset, the only
+
+    coprocessor instruction which may be used is FNINIT; WAIT or other
+
+    coprocessor instructions will cause a deadlock because the
+
+    coprocessor is still busy waiting for data
+
+    for the 486+, a coprocessor protection error generates an INT 0D'
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: '07'
+    params: {}
+    name: CPU
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: '*-09'
+  category: '*'
+  title: internal hardware - RESERVED BY Intel (80486)
+  source: INTERRUP.A:762
+  interrupt: 09
+  flags:
+  - P
+  input_registers: []
+  returns: []
+  notes:
+  - this exception has been moved to INT 0D
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: 09
+    params: {}
+    name: CPU
+  - type: interrupt
+    interrupt: 0D
+    params: {}
+  index: []
+  tables: []
+  table_refs: []

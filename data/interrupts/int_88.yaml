@@ -1,0 +1,710 @@
+file_type: interrupt
+key: '88'
+entries:
+- entry_type: INT
+  id: r-88
+  category: r
+  title: IBM ROM BASIC - used while in interpreter
+  source: INTERRUP.Q:9633
+  interrupt: '88'
+  flags: []
+  input_registers: []
+  returns: []
+  notes:
+  - 'called by ROM BASIC, but pointed at IRET by BASIC.COM/BASICA.COM
+
+    BASIC.COM/BASICA.COM do not restore vector on termination'
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: '87'
+    params: {}
+    name: BASIC
+  - type: interrupt
+    interrupt: '89'
+    params: {}
+    name: BASIC
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: --88
+  title: WANG PC - GET CONFIGURATION
+  source: INTERRUP.Q:9638
+  interrupt: '88'
+  flags: []
+  input_registers:
+  - reg: AL
+    operator: '='
+    description: get info type
+    table_refs: []
+    sub_values:
+    - value: 01h
+      description: 'Get System Console Return: ES:BX -> Configuration structure (see #04089) else: ???'
+      sub_values: []
+  returns: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: port
+    port: 1010h
+    name: Wang
+  - type: memory
+    address: F000h:0000h
+  - type: memory
+    address: FC00h:3FC2h
+  - type: interrupt
+    interrupt: '21'
+    params:
+      AX: 4402h
+  index: []
+  tables:
+  - 04089
+  - 04090
+  table_refs: []
+- entry_type: INT
+  id: r-8800
+  category: r
+  title: APL*PLUS/PC - CREATE OBJECT OF ARBITRARY RANK OR SHAPE
+  source: INTERRUP.Q:9672
+  interrupt: '88'
+  flags: []
+  function: '00'
+  input_registers:
+  - reg: AL
+    operator: '='
+    value: 00h
+    table_refs: []
+    sub_values: []
+  - reg: BX
+    operator: '='
+    description: STPTR of the variable to be assigned
+    table_refs: []
+    sub_values: []
+  - reg: ES:SI
+    operator: ->
+    description: 'model of type, rank, and shape (see #03978)'
+    table_refs:
+    - 03978
+    sub_values: []
+  returns:
+  - registers:
+    - reg: ES:DI
+      operator: ->
+      description: first data byte of object
+      table_refs: []
+      sub_values: []
+    - reg: DX:CX
+      operator: '='
+      description: number of elements in the object
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: '88'
+    params:
+      AL: 01h
+  - type: interrupt
+    interrupt: '88'
+    params:
+      AL: 08h
+  - type: interrupt
+    interrupt: C8
+    params: {}
+    name: APL
+  index: []
+  tables:
+  - 03978
+  table_refs: []
+- entry_type: INT
+  id: r-8801
+  category: r
+  title: APL*PLUS/PC - CREATE CHARACTER SCALAR/VECTOR/MATRIX <64K IN SIZE
+  source: INTERRUP.Q:9694
+  interrupt: '88'
+  flags: []
+  function: '01'
+  input_registers:
+  - reg: AL
+    operator: '='
+    value: 01h
+    table_refs: []
+    sub_values: []
+  - reg: AH
+    operator: '='
+    description: rank
+    table_refs: []
+    sub_values: []
+  - reg: BX
+    operator: '='
+    description: STPTR of the variable to be assigned
+    table_refs: []
+    sub_values: []
+  - reg: CX
+    operator: '='
+    description: first dimension (if any)
+    table_refs: []
+    sub_values: []
+  - reg: DX
+    operator: '='
+    description: second dimension (if any)
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: ES:DI
+      operator: ->
+      description: object
+      table_refs: []
+      sub_values: []
+    - reg: CX
+      operator: '='
+      description: number of elements in the object
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes:
+  - each dimension must be 32767 or smaller
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AL: 00h
+  - type: interrupt
+    params:
+      AL: 02h
+  - type: interrupt
+    params:
+      AL: 08h
+  - type: interrupt
+    interrupt: C8
+    params: {}
+    name: APL
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: r-8802
+  category: r
+  title: APL*PLUS/PC - CREATE INTEGER SCALAR/VECTOR/MATRIX <64K IN SIZE
+  source: INTERRUP.Q:9705
+  interrupt: '88'
+  flags: []
+  function: '02'
+  input_registers:
+  - reg: AL
+    operator: '='
+    value: 02h
+    table_refs: []
+    sub_values: []
+  - reg: AH
+    operator: '='
+    description: rank
+    table_refs: []
+    sub_values: []
+  - reg: BX
+    operator: '='
+    description: STPTR of the variable to be assigned
+    table_refs: []
+    sub_values: []
+  - reg: CX
+    operator: '='
+    description: first dimension (if any)
+    table_refs: []
+    sub_values: []
+  - reg: DX
+    operator: '='
+    description: second dimension (if any)
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: ES:DI
+      operator: ->
+      description: object
+      table_refs: []
+      sub_values: []
+    - reg: CX
+      operator: '='
+      description: number of elements in the object
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes:
+  - each dimension must be 32767 or smaller
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AL: 01h
+  - type: interrupt
+    params:
+      AL: 08h
+  - type: interrupt
+    interrupt: C8
+    params: {}
+    name: APL
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: r-8808
+  category: r
+  title: APL*PLUS/PC - CREATE FLOATING POINT SCALAR/VECTOR/MATRIX <64K IN SIZE
+  source: INTERRUP.Q:9716
+  interrupt: '88'
+  flags: []
+  function: 08
+  input_registers:
+  - reg: AL
+    operator: '='
+    value: 08h
+    table_refs: []
+    sub_values: []
+  - reg: AH
+    operator: '='
+    description: rank
+    table_refs: []
+    sub_values: []
+  - reg: BX
+    operator: '='
+    description: STPTR of the variable to be assigned
+    table_refs: []
+    sub_values: []
+  - reg: CX
+    operator: '='
+    description: first dimension (if any)
+    table_refs: []
+    sub_values: []
+  - reg: DX
+    operator: '='
+    description: second dimension (if any)
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: ES:DI
+      operator: ->
+      description: object
+      table_refs: []
+      sub_values: []
+    - reg: CX
+      operator: '='
+      description: number of elements in the object
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes:
+  - each dimension must be 32767 or smaller
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AL: 01h
+  - type: interrupt
+    params:
+      AL: 02h
+  - type: interrupt
+    interrupt: C8
+    params: {}
+    name: APL
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: r-88F5
+  category: r
+  title: APL*PLUS/PC - FORCE OBJECT INTO REAL WORKSPACE FROM VIRTUAL
+  source: INTERRUP.Q:9727
+  interrupt: '88'
+  flags: []
+  function: F5
+  input_registers:
+  - reg: AL
+    operator: '='
+    value: F5h
+    table_refs: []
+    sub_values: []
+  - reg: BX
+    operator: '='
+    description: STPTR of object
+    table_refs: []
+    sub_values: []
+  returns: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: C8
+    params: {}
+    name: APL
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: r-88F6
+  category: r
+  title: APL*PLUS/PC - MAKE NAME IMMUNE FROM OUTSWAPPING
+  source: INTERRUP.Q:9732
+  interrupt: '88'
+  flags: []
+  function: F6
+  input_registers:
+  - reg: AL
+    operator: '='
+    value: F6h
+    table_refs: []
+    sub_values: []
+  - reg: BX
+    operator: '='
+    description: STPTR of object
+    table_refs: []
+    sub_values: []
+  returns: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AL: F7h
+  - type: interrupt
+    params:
+      AL: F8h
+  - type: interrupt
+    interrupt: C8
+    params: {}
+    name: APL
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: r-88F7
+  category: r
+  title: APL*PLUS/PC - MAKE NAME ELIGIBLE FOR OUTSWAPPING
+  source: INTERRUP.Q:9737
+  interrupt: '88'
+  flags: []
+  function: F7
+  input_registers:
+  - reg: AL
+    operator: '='
+    value: F7h
+    table_refs: []
+    sub_values: []
+  - reg: BX
+    operator: '='
+    description: STPTR of object
+    table_refs: []
+    sub_values: []
+  returns: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AL: F6h
+  - type: interrupt
+    params:
+      AL: F8h
+  - type: interrupt
+    interrupt: C8
+    params: {}
+    name: APL
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: r-88F8
+  category: r
+  title: APL*PLUS/PC - REPORT WHETHER NAME IS ELIGIBLE FOR OUTSWAPPING
+  source: INTERRUP.Q:9742
+  interrupt: '88'
+  flags: []
+  function: F8
+  input_registers:
+  - reg: AL
+    operator: '='
+    value: F8h
+    table_refs: []
+    sub_values: []
+  - reg: BX
+    operator: '='
+    description: STPTR of object
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: BX
+      operator: '='
+      description: name's outswapping status
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AL: F6h
+  - type: interrupt
+    params:
+      AL: F7h
+  - type: interrupt
+    interrupt: C8
+    params: {}
+    name: APL
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: r-88F9
+  category: r
+  title: APL*PLUS/PC - DETERMINE NAME STATUS
+  source: INTERRUP.Q:9750
+  interrupt: '88'
+  flags: []
+  function: F9
+  input_registers:
+  - reg: AL
+    operator: '='
+    value: F9h
+    table_refs: []
+    sub_values: []
+  - reg: ES:SI
+    operator: ->
+    description: name
+    table_refs: []
+    sub_values: []
+  - reg: CX
+    operator: '='
+    description: length of name
+    table_refs: []
+    sub_values: []
+  returns:
+  - condition: CF set
+    condition_description: if name ill-formed or already in use
+    registers:
+    - reg: BX
+      operator: '='
+      description: STPTR if already in symbol table
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  - condition: CF clear
+    condition_description: if name is available for use
+    registers:
+    - reg: BX
+      operator: '='
+      value: 0000h
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes:
+  - does not force the name into the workspace
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AL: FEh
+  - type: interrupt
+    params:
+      AL: FFh
+  - type: interrupt
+    interrupt: C8
+    params: {}
+    name: APL
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: r-88FC
+  category: r
+  title: APL*PLUS/PC - DETERMINE IF MEMORY AVAIL WITHOUT GARBAGE COLLECTION
+  source: INTERRUP.Q:9761
+  interrupt: '88'
+  flags: []
+  function: FC
+  input_registers:
+  - reg: AL
+    operator: '='
+    value: FCh
+    table_refs: []
+    sub_values: []
+  - reg: BX
+    operator: '='
+    description: amount of memory needed (paragraphs)
+    table_refs: []
+    sub_values: []
+  returns:
+  - condition: CF clear
+    condition_description: if memory available
+    registers: []
+    raw_lines: []
+  - condition: CF set
+    condition_description: if a workspace compaction is required
+    registers: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AL: FDh
+  - type: interrupt
+    interrupt: C8
+    params: {}
+    name: APL
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: r-88FD
+  category: r
+  title: APL*PLUS/PC - PERFORM GARBAGE COLLECTION AND RETURN AVAILABLE MEMORY
+  source: INTERRUP.Q:9768
+  interrupt: '88'
+  flags: []
+  function: FD
+  input_registers:
+  - reg: AL
+    operator: '='
+    value: FDh
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: BX
+      operator: '='
+      description: number of paragraphs available in workspace
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AL: FCh
+  - type: interrupt
+    interrupt: C8
+    params: {}
+    name: APL
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: r-88FE
+  category: r
+  title: APL*PLUS/PC - CREATE NAME
+  source: INTERRUP.Q:9773
+  interrupt: '88'
+  flags: []
+  function: FE
+  input_registers:
+  - reg: AL
+    operator: '='
+    value: FEh
+    table_refs: []
+    sub_values: []
+  - reg: ES:SI
+    operator: ->
+    description: name
+    table_refs: []
+    sub_values: []
+  - reg: CX
+    operator: '='
+    description: length of name
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: BX
+      operator: '='
+      description: STPTR of name
+      table_refs: []
+      sub_values: []
+    - reg: DX
+      operator: '='
+      description: interpreter's data segment
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AL: F9h
+  - type: interrupt
+    params:
+      AL: FFh
+  - type: interrupt
+    interrupt: C8
+    params: {}
+    name: APL
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: r-88FF
+  category: r
+  title: APL*PLUS/PC - DETERMINE NAME STATUS
+  source: INTERRUP.Q:9781
+  interrupt: '88'
+  flags: []
+  function: FF
+  input_registers:
+  - reg: AL
+    operator: '='
+    value: FFh
+    table_refs: []
+    sub_values: []
+  - reg: ES:SI
+    operator: ->
+    description: name
+    table_refs: []
+    sub_values: []
+  - reg: CX
+    operator: '='
+    description: length of name
+    table_refs: []
+    sub_values: []
+  returns:
+  - condition: CF set
+    condition_description: if name ill-formed or already in use
+    registers:
+    - reg: BX
+      operator: '='
+      description: STPTR if already in symbol table
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  - condition: CF clear
+    condition_description: if name is available for use
+    registers:
+    - reg: BX
+      operator: '='
+      value: 0000h
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes:
+  - forces the name into the workspace and makes it immune from outswapping
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AL: F9h
+  - type: interrupt
+    params:
+      AL: FEh
+  - type: interrupt
+    interrupt: C8
+    params: {}
+    name: APL
+  index: []
+  tables: []
+  table_refs: []

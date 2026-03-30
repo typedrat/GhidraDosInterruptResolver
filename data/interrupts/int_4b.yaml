@@ -1,0 +1,1040 @@
+file_type: interrupt
+key: 4B
+entries:
+- entry_type: INT
+  id: h-4B
+  category: h
+  title: Z100 - Slave 8259 - S100 vectored line 3
+  source: INTERRUP.N:8240
+  interrupt: 4B
+  flags: []
+  input_registers: []
+  returns: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: 4A
+    params: {}
+    name: Z100
+  - type: interrupt
+    interrupt: 4C
+    params: {}
+    name: Z100
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: d-4B
+  category: d
+  title: Common Access Method SCSI interface (draft revision 1.9)
+  source: INTERRUP.N:8243
+  interrupt: 4B
+  flags: []
+  input_registers:
+  - reg: ES:DI
+    operator: ->
+    description: 'CAM Control Block (see #03229 at INT 4F/AX=8100h)'
+    table_refs:
+    - 03229
+    sub_values: []
+  returns: []
+  notes:
+  - 'the CAM committee moved the interface to INT 4F after revision 1.9
+
+    to avoid conflicting with the IBM SCSI interface and the Virtual
+
+    DMA specification
+
+    the only driver to date reported to use the CAM interface on INT 4B
+
+    instead of INT 4F is from Future Domain (which has drivers for CAM
+
+    on either interrupt)'
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: 4F
+    params:
+      AX: 8100h
+  install_check: 'test for the string "SCSI_CAM" eight bytes past the INT 4Bh
+
+    handler'
+  index:
+  - installation check;Common Access Method SCSI interface
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-4B
+  category: b
+  title: Tandy 2000 - EQUIPMENT DETERMINATION
+  source: INTERRUP.N:8256
+  interrupt: 4B
+  flags: []
+  input_registers: []
+  returns:
+  - registers:
+    - reg: AX
+      operator: '='
+      description: 'BIOS equipment list word (see #03215)'
+      table_refs:
+      - '03215'
+      sub_values: []
+    raw_lines: []
+  notes:
+  - this interrupt is identical to INT 11 on the Tandy 2000
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: '11'
+    params: {}
+    name: EQUIPMENT
+  - type: interrupt
+    interrupt: 4A
+    params: {}
+    name: Tandy 2000
+  - type: interrupt
+    interrupt: 4C
+    params: {}
+    name: Tandy 2000
+  index: []
+  tables:
+  - '03215'
+  table_refs: []
+- entry_type: INT
+  id: O-4B
+  category: O
+  title: Acorn BBC Master 512 - "OSBYTE" - MISC FUNCTIONS USING REGISTER PARAMS
+  source: INTERRUP.N:8279
+  interrupt: 4B
+  flags: []
+  input_registers:
+  - reg: AL
+    operator: '='
+    description: function code
+    table_refs: []
+    sub_values: []
+  - reg: BL
+    operator: '='
+    description: first parameter
+    table_refs: []
+    sub_values: []
+  - reg: BH
+    operator: '='
+    description: second parameter (if needed)
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: BL
+      operator: '='
+      description: first return parameter
+      table_refs: []
+      sub_values: []
+    - reg: BH
+      operator: '='
+      description: second return parameter
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: '40'
+    params: {}
+    name: Acorn
+  - type: interrupt
+    interrupt: 4A
+    params: {}
+    name: Acorn
+  - type: interrupt
+    interrupt: 4C
+    params: {}
+    name: Acorn
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-4B00
+  category: b
+  title: TI Professional PC - PARALLEL PORT - OUTPUT CHARACTER
+  source: INTERRUP.N:8288
+  interrupt: 4B
+  flags: []
+  function: '00'
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 00h
+    table_refs: []
+    sub_values: []
+  - reg: DL
+    operator: '='
+    description: printer number (00h)
+    table_refs: []
+    sub_values: []
+  - reg: AL
+    operator: '='
+    description: character to print
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AH
+      operator: '='
+      description: 'printer status (see #03216)'
+      table_refs:
+      - '03216'
+      sub_values: []
+    raw_lines: []
+  notes:
+  - 'on the TI Pro, the BIOS only supports DL=00h; MS-DOS versions for the
+
+    TI hook INT 4B and handle requests for DL<>00h'
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 01h
+  - type: interrupt
+    params:
+      AH: 02h
+  - type: interrupt
+    interrupt: '17'
+    params:
+      AH: 00h
+  - type: interrupt
+    interrupt: '40'
+    params: {}
+    name: TI Professional
+  - type: interrupt
+    interrupt: '48'
+    params:
+      AH: 00h
+    name: TI Professional
+  - type: interrupt
+    interrupt: '49'
+    params:
+      AH: 01h
+    name: TI
+  - type: interrupt
+    interrupt: 4C
+    params: {}
+    name: TI Professional
+  - type: interrupt
+    interrupt: 4D
+    params:
+      AH: 00h
+  index: []
+  tables:
+  - '03216'
+  table_refs: []
+- entry_type: INT
+  id: b-4B01
+  category: b
+  title: TI Professional PC - PARALLEL PORT - INITIALIZE PRINTER
+  source: INTERRUP.N:8308
+  interrupt: 4B
+  flags: []
+  function: '01'
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 01h
+    table_refs: []
+    sub_values: []
+  - reg: DL
+    operator: '='
+    description: printer number (00h)
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AH
+      operator: '='
+      description: 'printer status (see #03216)'
+      table_refs:
+      - '03216'
+      sub_values: []
+    raw_lines: []
+  notes:
+  - 'on the TI Pro, the BIOS only supports DL=00h; MS-DOS versions for the
+
+    TI hook INT 4B and handle requests for DL<>00h'
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 00h
+  - type: interrupt
+    params:
+      AH: 02h
+  - type: interrupt
+    interrupt: '17'
+    params:
+      AH: 01h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-4B02
+  category: b
+  title: TI Professional PC - PARALLEL PORT - GET PRINTER STATUS
+  source: INTERRUP.N:8316
+  interrupt: 4B
+  flags: []
+  function: '02'
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 02h
+    table_refs: []
+    sub_values: []
+  - reg: DL
+    operator: '='
+    description: printer number (00h)
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AH
+      operator: '='
+      description: 'printer status (see #03216)'
+      table_refs:
+      - '03216'
+      sub_values: []
+    raw_lines: []
+  notes:
+  - 'on the TI Pro, the BIOS only supports DL=00h; MS-DOS versions for the
+
+    TI hook INT 4B and handle requests for DL<>00h'
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 00h
+  - type: interrupt
+    params:
+      AH: 01h
+  - type: interrupt
+    interrupt: '17'
+    params:
+      AH: 02h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: d-4B80
+  category: d
+  title: IBM SCSI interface
+  source: INTERRUP.N:8324
+  interrupt: 4B
+  flags: []
+  function: '80'
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 80h
+    table_refs: []
+    sub_values: []
+  - reg: AL
+    operator: '='
+    value: 00h
+    description: -10h (Corel PowerSCSI INT4BCAM.SYS)
+    table_refs: []
+    sub_values: []
+  returns: []
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: d-4B8102DX0000
+  category: d
+  title: Virtual DMA Specification (VDS) - GET VERSION
+  source: INTERRUP.N:8329
+  interrupt: 4B
+  flags: []
+  function: 8102DX0000
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 8102h
+    table_refs: []
+    sub_values: []
+  - reg: DX
+    operator: '='
+    value: 0000h
+    table_refs: []
+    sub_values: []
+  returns:
+  - condition: CF clear
+    condition_description: if successful
+    registers:
+    - reg: AH
+      operator: '='
+      description: major version number
+      table_refs: []
+      sub_values: []
+    - reg: AL
+      operator: '='
+      description: minor version number
+      table_refs: []
+      sub_values: []
+    - reg: BX
+      operator: '='
+      description: 'product number (see #03217)'
+      table_refs:
+      - '03217'
+      sub_values: []
+    - reg: CX
+      operator: '='
+      description: product revision number
+      table_refs: []
+      sub_values: []
+    - reg: DX
+      operator: '='
+      description: 'flags (see #03219)'
+      table_refs:
+      - 03219
+      sub_values: []
+    - reg: SI:DI
+      operator: '='
+      description: maximum DMA buffer size
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  - condition: CF set
+    condition_description: on error
+    registers:
+    - reg: AL
+      operator: '='
+      description: 'error code (see #03218)'
+      table_refs:
+      - 03218
+      sub_values: []
+    raw_lines: []
+  notes:
+  - 'bit 5 of 0040h:007Bh is supposed to be set if VDS is supported; this is
+
+    apparently not always the case'
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: 2C
+    params:
+      AX: 002Bh
+  - type: interrupt
+    interrupt: '31'
+    params:
+      AX: 0400h
+  - type: interrupt
+    params: {}
+    name: 4Bh
+  index:
+  - installation check;Virtual DMA Specification
+  tables:
+  - '03217'
+  - 03218
+  - 03219
+  table_refs: []
+- entry_type: INT
+  id: d-4B8103
+  category: d
+  title: Virtual DMA Specification - LOCK DMA REGION
+  source: INTERRUP.N:8387
+  interrupt: 4B
+  flags: []
+  function: '8103'
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 8103h
+    table_refs: []
+    sub_values: []
+  - reg: DX
+    operator: '='
+    description: 'flags (see #03220)'
+    table_refs:
+    - '03220'
+    sub_values: []
+  - reg: ES:DI
+    operator: ->
+    description: 'DMA descriptor structure (see #03221,#03222,#03223)'
+    table_refs:
+    - '03221'
+    - '03222'
+    - '03223'
+    sub_values: []
+  returns:
+  - condition: CF clear
+    condition_description: if successful
+    registers: []
+    raw_lines:
+    - DDS physical address field filled in
+    - DDS buffer ID field filled (0000h if no buffer allocated)
+  - condition: CF set
+    condition_description: on error
+    registers:
+    - reg: AL
+      operator: '='
+      description: 'error code (see #03218)'
+      table_refs:
+      - 03218
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs:
+  - 'Windows 3.0 does not correctly support automatic remapping or copying
+
+    in enhanced mode
+
+    Windows 3.0 in enhanced mode does not return a correct code on error'
+  see_also:
+  - type: interrupt
+    params:
+      AX: 8104h
+  - type: interrupt
+    params:
+      AX: 8105h
+  index: []
+  tables:
+  - '03220'
+  - '03221'
+  - '03222'
+  - '03223'
+  table_refs: []
+- entry_type: INT
+  id: d-4B8104
+  category: d
+  title: Virtual DMA Specification - UNLOCK DMA REGION
+  source: INTERRUP.N:8449
+  interrupt: 4B
+  flags: []
+  function: '8104'
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 8104h
+    table_refs: []
+    sub_values: []
+  - reg: DX
+    operator: '='
+    description: flags
+    table_refs: []
+    sub_values:
+    - value: bits 2-15
+      description: reserved (zero)
+      sub_values: []
+  - reg: ES:DI
+    operator: ->
+    description: 'DMA descriptor structure (see #03221,#03222) with region size,'
+    table_refs:
+    - '03221'
+    - '03222'
+    sub_values: []
+  returns:
+  - condition: CF clear
+    condition_description: if successful
+    registers: []
+    raw_lines:
+    - DDS physical address field set
+    - DDS buffer ID field set (0000h if no buffer allocated)
+  - condition: CF set
+    condition_description: on error
+    registers:
+    - reg: AL
+      operator: '='
+      description: 'error code (see #03218)'
+      table_refs:
+      - 03218
+      sub_values: []
+    raw_lines: []
+  notes:
+  - 'Windows 3.0 does not check whether the region extends beyond the end of
+
+    a segment'
+  bugs:
+  - Windows 3.0 in enhanced mode does not return a correct code on error
+  see_also:
+  - type: interrupt
+    params:
+      AX: 8103h
+  - type: interrupt
+    params:
+      AX: 8106h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: d-4B8105
+  category: d
+  title: Virtual DMA Specification - SCATTER/GATHER LOCK REGION
+  source: INTERRUP.N:8468
+  interrupt: 4B
+  flags: []
+  function: '8105'
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 8105h
+    table_refs: []
+    sub_values: []
+  - reg: DX
+    operator: '='
+    description: 'flags (see #03224)'
+    table_refs:
+    - '03224'
+    sub_values: []
+  - reg: ES:DI
+    operator: ->
+    description: 'Extended DMA descriptor structure (see #03222,#03223)'
+    table_refs:
+    - '03222'
+    - '03223'
+    sub_values: []
+  returns:
+  - condition: CF clear
+    condition_description: if successful
+    registers: []
+    raw_lines:
+    - EDDS number used field set
+    - if DX bit 6 set, lower 12 bits of BX = offset in first page
+  - condition: CF set
+    condition_description: on error
+    registers:
+    - reg: AL
+      operator: '='
+      description: 'error code (see #03218)'
+      table_refs:
+      - 03218
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs:
+  - 'Windows 3.0 in enhanced mode may return zero instead of the physical
+
+    page address for pages which were originally not present'
+  see_also:
+  - type: interrupt
+    params:
+      AX: 8103h
+  - type: interrupt
+    params:
+      AX: 8106h
+  index: []
+  tables:
+  - '03224'
+  table_refs: []
+- entry_type: INT
+  id: d-4B8106
+  category: d
+  title: Virtual DMA Specification - SCATTER/GATHER UNLOCK REGION
+  source: INTERRUP.N:8493
+  interrupt: 4B
+  flags: []
+  function: '8106'
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 8106h
+    table_refs: []
+    sub_values: []
+  - reg: DX
+    operator: '='
+    description: 'flags (see #03225)'
+    table_refs:
+    - '03225'
+    sub_values: []
+  - reg: ES:DI
+    operator: ->
+    description: 'Extended DMA descriptor structure (see #03222,#03223) returned'
+    table_refs:
+    - '03222'
+    - '03223'
+    sub_values: []
+  returns:
+  - condition: CF clear
+    condition_description: if successful
+    registers: []
+    raw_lines: []
+  - condition: CF set
+    condition_description: on error
+    registers:
+    - reg: AL
+      operator: '='
+      description: 'error code (see #03218)'
+      table_refs:
+      - 03218
+      sub_values: []
+    raw_lines: []
+  notes:
+  - 'according to the Microsoft version of the VDS specification, the
+
+    actual scatter/gather list is ignored, while according to the IBM
+
+    version of the specification, "the result of a LOCK operation"
+
+    must be provided to this function'
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 8104h
+  - type: interrupt
+    params:
+      AX: 8105h
+  index: []
+  tables:
+  - '03225'
+  table_refs: []
+- entry_type: INT
+  id: d-4B8107
+  category: d
+  title: Virtual DMA Specification - REQUEST DMA BUFFER
+  source: INTERRUP.N:8514
+  interrupt: 4B
+  flags: []
+  function: '8107'
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 8107h
+    table_refs: []
+    sub_values: []
+  - reg: DX
+    operator: '='
+    description: flags
+    table_refs: []
+    sub_values:
+    - value: bits  2-15
+      description: reserved (zero)
+      sub_values: []
+  - reg: ES:DI
+    operator: ->
+    description: 'DMA descriptor structure (see #03221) with region size set'
+    table_refs:
+    - '03221'
+    sub_values: []
+  returns:
+  - condition: CF clear
+    condition_description: if successful
+    registers: []
+    raw_lines:
+    - DDS physical address and buffer ID set
+    - DDS region size filled with length of buffer
+  - condition: CF set
+    condition_description: on error
+    registers:
+    - reg: AL
+      operator: '='
+      description: 'error code (see #03218)'
+      table_refs:
+      - 03218
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 8108h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: d-4B8108
+  category: d
+  title: Virtual DMA Specification - RELEASE DMA BUFFFER
+  source: INTERRUP.N:8529
+  interrupt: 4B
+  flags: []
+  function: '8108'
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 8108h
+    table_refs: []
+    sub_values: []
+  - reg: DX
+    operator: '='
+    description: flags
+    table_refs: []
+    sub_values:
+    - value: bits 2-15
+      description: reserved (zero)
+      sub_values: []
+  - reg: ES:DI
+    operator: ->
+    description: 'DMA descriptor structure (see #03221,#03222) with buffer ID set'
+    table_refs:
+    - '03221'
+    - '03222'
+    sub_values: []
+  returns:
+  - condition: CF clear
+    condition_description: if successful
+    registers: []
+    raw_lines: []
+  - condition: CF set
+    condition_description: on error
+    registers:
+    - reg: AL
+      operator: '='
+      description: 'error code (see #03218)'
+      table_refs:
+      - 03218
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs:
+  - 'under Windows 3.0 Enhanced mode, you must specify that data be copied
+
+    for this function to work correctly'
+  see_also:
+  - type: interrupt
+    params:
+      AX: 8107h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: d-4B8109DX0000
+  category: d
+  title: Virtual DMA Specification - COPY INTO DMA BUFFER
+  source: INTERRUP.N:8544
+  interrupt: 4B
+  flags: []
+  function: 8109DX0000
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 8109h
+    table_refs: []
+    sub_values: []
+  - reg: DX
+    operator: '='
+    value: 0000h
+    table_refs: []
+    sub_values: []
+  - reg: ES:DI
+    operator: ->
+    description: 'DMA descriptor structure (see #03221,#03222) with buffer ID,'
+    table_refs:
+    - '03221'
+    - '03222'
+    sub_values: []
+  - reg: BX:CX
+    operator: '='
+    description: starting offset into DMA buffer
+    table_refs: []
+    sub_values: []
+  returns:
+  - condition: CF clear
+    condition_description: if successful
+    registers: []
+    raw_lines: []
+  - condition: CF set
+    condition_description: on error
+    registers:
+    - reg: AL
+      operator: '='
+      description: 'error code (see #03218)'
+      table_refs:
+      - 03218
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs:
+  - Windows 3.0 Enhanced mode does not correctly interpret the copy count
+  see_also:
+  - type: interrupt
+    params:
+      AX: 810Ah
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: d-4B810ADX0000
+  category: d
+  title: Virtual DMA Specification - COPY OUT OF DMA BUFFER
+  source: INTERRUP.N:8556
+  interrupt: 4B
+  flags: []
+  function: 810ADX0000
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 810Ah
+    table_refs: []
+    sub_values: []
+  - reg: DX
+    operator: '='
+    value: 0000h
+    table_refs: []
+    sub_values: []
+  - reg: ES:DI
+    operator: ->
+    description: 'DMA descriptor structure (see #03221,#03223) with buffer ID,'
+    table_refs:
+    - '03221'
+    - '03223'
+    sub_values: []
+  - reg: BX:CX
+    operator: '='
+    description: starting offset into DMA buffer
+    table_refs: []
+    sub_values: []
+  returns:
+  - condition: CF clear
+    condition_description: if successful
+    registers: []
+    raw_lines: []
+  - condition: CF set
+    condition_description: on error
+    registers:
+    - reg: AL
+      operator: '='
+      description: 'error code (see #03218)'
+      table_refs:
+      - 03218
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs:
+  - Windows 3.0 Enhanced mode does not correctly interpret the copy count
+  see_also:
+  - type: interrupt
+    params:
+      AX: 8109h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: d-4B810B
+  category: d
+  title: Virtual DMA Specification - DISABLE DMA TRANSLATION
+  source: INTERRUP.N:8568
+  interrupt: 4B
+  flags: []
+  function: 810B
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 810Bh
+    table_refs: []
+    sub_values: []
+  - reg: BX
+    operator: '='
+    description: DMA channel number
+    table_refs: []
+    sub_values: []
+  - reg: DX
+    operator: '='
+    value: 0000h
+    table_refs: []
+    sub_values: []
+  returns:
+  - condition: CF clear
+    condition_description: if successful
+    registers: []
+    raw_lines: []
+  - condition: CF set
+    condition_description: on error
+    registers:
+    - reg: AL
+      operator: '='
+      description: 'error code (see #03218)'
+      table_refs:
+      - 03218
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 810Ch
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: d-4B810C
+  category: d
+  title: Virtual DMA Specification - ENABLE DMA TRANSLATION
+  source: INTERRUP.N:8577
+  interrupt: 4B
+  flags: []
+  function: 810C
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 810Ch
+    table_refs: []
+    sub_values: []
+  - reg: BX
+    operator: '='
+    description: DMA channel number
+    table_refs: []
+    sub_values: []
+  - reg: DX
+    operator: '='
+    value: 0000h
+    table_refs: []
+    sub_values: []
+  returns:
+  - condition: CF clear
+    condition_description: if successful
+    registers:
+    - reg: ZF
+      operator: set
+      description: if disable count decremented to zero
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  - condition: CF set
+    condition_description: on error
+    registers:
+    - reg: AL
+      operator: '='
+      description: 'error code (see #03218)'
+      table_refs:
+      - 03218
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 810Bh
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: Q-4B810D
+  category: Q
+  title: QEMM-386 - BUG
+  source: INTERRUP.N:8587
+  interrupt: 4B
+  flags: []
+  function: 810D
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 810Dh
+    table_refs: []
+    sub_values: []
+  returns: []
+  notes:
+  - 'the code in QEMM v5.11 and 6.00 jumps to an invalid location on this
+
+    call'
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []

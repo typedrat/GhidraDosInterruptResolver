@@ -1,0 +1,172 @@
+file_type: interrupt
+key: '47'
+entries:
+- entry_type: INT
+  id: h-47
+  category: h
+  title: Z100 - Master 8259 - Printer
+  source: INTERRUP.N:7387
+  interrupt: '47'
+  flags: []
+  input_registers: []
+  returns: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: '46'
+    params: {}
+    name: Z100
+  - type: interrupt
+    interrupt: '48'
+    params: {}
+    name: Z100
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: h-47
+  category: h
+  title: TI Professional PC - IRQ7 - KEYBOARD USART
+  source: INTERRUP.N:7390
+  interrupt: '47'
+  flags: []
+  input_registers: []
+  returns: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: 09
+    params: {}
+    name: IRQ1
+  - type: interrupt
+    interrupt: '46'
+    params: {}
+    name: TI Professional
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: O-47
+  category: O
+  title: Acorn BBC Master 512 - "OSWRCH" - WRITE CHARACTER TO CUR OUTPUT STREAM
+  source: INTERRUP.N:7393
+  interrupt: '47'
+  flags: []
+  input_registers:
+  - reg: AL
+    operator: '='
+    description: character to be written
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - FLAGS destroyed
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: '40'
+    params: {}
+    name: Acorn
+  - type: interrupt
+    interrupt: '46'
+    params: {}
+    name: Acorn
+  - type: interrupt
+    interrupt: '49'
+    params: {}
+    name: Acorn
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-47
+  category: b
+  title: Western Digital WD1002-27X SuperBIOS - INT 40 CASCADE
+  source: INTERRUP.N:7398
+  interrupt: '47'
+  flags: []
+  input_registers: []
+  returns: []
+  description: 'used by the second WD1002-27X controller to cascade to the first
+
+    controller''s INT 40'
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: '40'
+    params: {}
+    name: DISKETTE
+  - type: interrupt
+    interrupt: '42'
+    params: {}
+    name: SuperBIOS
+  - type: interrupt
+    interrupt: '48'
+    params: {}
+    name: SuperBIOS
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: --478000
+  title: SQL Base - DATABASE ENGINE API
+  source: INTERRUP.N:7403
+  interrupt: '47'
+  flags: []
+  function: '8000'
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 8000h
+    table_refs: []
+    sub_values: []
+  - reg: DS:BX
+    operator: ->
+    description: 'parameter block, first word is function number (see #03203)'
+    table_refs:
+    - '03203'
+    sub_values: []
+  returns: []
+  program: SQL Base is a network-oriented database engine by Gupta Technologies
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 8001h
+  index: []
+  tables:
+  - '03203'
+  table_refs: []
+- entry_type: INT
+  id: --478001
+  title: SQL Base - GET VERSION NUMBER
+  source: INTERRUP.N:7503
+  interrupt: '47'
+  flags: []
+  function: '8001'
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 8001h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+  program: SQL Base is a network-oriented database engine by Gupta Technologies
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 8000h
+  index: []
+  tables: []
+  table_refs: []

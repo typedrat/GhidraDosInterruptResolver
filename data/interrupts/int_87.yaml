@@ -1,0 +1,74 @@
+file_type: interrupt
+key: '87'
+entries:
+- entry_type: INT
+  id: r-87
+  category: r
+  title: IBM ROM BASIC - used while in interpreter
+  source: INTERRUP.Q:9620
+  interrupt: '87'
+  flags: []
+  input_registers: []
+  returns: []
+  notes:
+  - 'called by ROM BASIC
+
+    BASIC.COM/BASICA.COM do not restore vector on termination'
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: '86'
+    params: {}
+    name: BASIC
+  - type: interrupt
+    interrupt: '88'
+    params: {}
+    name: BASIC
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: r-87
+  category: r
+  title: APL*PLUS/PC - ???
+  source: INTERRUP.Q:9625
+  interrupt: '87'
+  flags: []
+  input_registers: []
+  returns: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: '86'
+    params: {}
+    name: APL
+  - type: interrupt
+    interrupt: '88'
+    params:
+      AL: 00h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: v-87
+  category: v
+  title: VIRUS - "ZeroHunt" - VIRAL CODE (NOT A VECTOR!)
+  source: INTERRUP.Q:9628
+  interrupt: '87'
+  flags: []
+  input_registers: []
+  returns: []
+  notes:
+  - 'the ZeroHunt virus copies its resident code down to 0000h:021Ch and
+
+    following'
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: 8B
+    params: {}
+    name: VIRUS
+  index: []
+  tables: []
+  table_refs: []

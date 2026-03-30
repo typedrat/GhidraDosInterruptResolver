@@ -1,0 +1,95 @@
+file_type: interrupt
+key: F3
+entries:
+- entry_type: INT
+  id: '*-F3'
+  category: '*'
+  title: reserved for user interrupt
+  source: INTERRUP.R:4832
+  interrupt: F3
+  flags: []
+  input_registers: []
+  returns: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: F2
+    params: {}
+    name: user
+  - type: interrupt
+    interrupt: F4
+    params: {}
+    name: user
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: s-F3
+  category: s
+  title: SoundBlaster - POINTER TO ECHO VALUE
+  source: INTERRUP.R:4835
+  interrupt: F3
+  flags: []
+  input_registers: []
+  returns: []
+  notes:
+  - 'this is not a vector, but a pointer to a DWORD containing the echo
+
+    value selected with SET-ECHO.EXE'
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: 2F
+    params:
+      AX: FBFBh
+      ES: 0000h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: --F3
+  title: ICCTSR 1.0 - HANDSHAKE ID VECTOR
+  source: INTERRUP.R:4840
+  interrupt: F3
+  flags: []
+  input_registers: []
+  returns: []
+  program: ImageCapture is a product of International Computers
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: F2
+    params: {}
+    name: ICCTSR
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: N-F3
+  category: N
+  title: NetWare Remote Boot - BOOT ROM'S INT 13 HANDLER
+  source: INTERRUP.R:4844
+  interrupt: F3
+  flags: []
+  input_registers: []
+  returns: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: F1
+    params: {}
+    name: NetWare
+  - type: interrupt
+    interrupt: F2
+    params: {}
+    name: NetWare
+  - type: interrupt
+    interrupt: F4
+    params: {}
+    name: NetWare
+  index: []
+  tables: []
+  table_refs: []

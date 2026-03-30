@@ -1,0 +1,446 @@
+file_type: interrupt
+key: '81'
+entries:
+- entry_type: INT
+  id: r-81
+  category: r
+  title: reserved for BASIC
+  source: INTERRUP.Q:9251
+  interrupt: '81'
+  flags: []
+  input_registers: []
+  returns: []
+  notes:
+  - 'this vector is modified but not restored by Direct Access v4.0, and
+
+    may be left dangling by other programs written with the same version
+
+    of compiled BASIC'
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: '80'
+    params: {}
+    name: BASIC
+  - type: interrupt
+    interrupt: '82'
+    params: {}
+    name: BASIC
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: N-81
+  category: N
+  title: IBM TOKEN RING ADAPTER - ???
+  source: INTERRUP.Q:9257
+  interrupt: '81'
+  flags: []
+  input_registers: []
+  returns: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: '82'
+    params: {}
+    name: TOKEN RING
+  - type: interrupt
+    interrupt: '91'
+    params: {}
+    name: TOKEN RING
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: d-81
+  category: d
+  title: BusLogic BT-946C PCI SCSI Adapter - SCRATCHPAD RAM (NOT A VECTOR!)
+  source: INTERRUP.Q:9260
+  interrupt: '81'
+  flags: []
+  input_registers: []
+  returns: []
+  notes:
+  - 'the factory-default location for the eight bytes of scratchpad RAM
+
+    needed by the SCSI adapter is 0000h:0200h, which is interrupt
+
+    vectors 80h and 81h'
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: '80'
+    params: {}
+    name: BusLogic
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-81
+  category: b
+  title: AMI WinBIOS - SECOND HARD DRIVE AUTODETECTION
+  source: INTERRUP.Q:9266
+  interrupt: '81'
+  flags: []
+  input_registers: []
+  returns: []
+  notes:
+  - "used by WinBIOS with core version of July 1994 or later\nQEMM 7.5 began using this interrupt internally after the QPAT3\n\
+    maintenance release when searching for \"ROM holes\", causing a\nlengthy delay during bootup.\tAdding the QEMM parameter\
+    \ RH:N will\navoid the QEMM call to INT 81 and speed up the boot process"
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: O-81
+  category: O
+  title: Paragon Technology PTS/DOS 6.5x, S/DOS 1.0 - API
+  source: INTERRUP.Q:9273
+  interrupt: '81'
+  flags: []
+  input_registers: []
+  returns: []
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: s-810200
+  category: s
+  title: Gravis UltraSound - MegaEm - PROCESS COMMAND LINE
+  source: INTERRUP.Q:9275
+  interrupt: '81'
+  flags: []
+  function: '0200'
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 0200h
+    table_refs: []
+    sub_values: []
+  - reg: BX
+    operator: '='
+    description: PSP segment
+    table_refs: []
+    sub_values: []
+  - reg: SI
+    operator: '='
+    description: ??? (data area)
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AX
+      operator: '='
+      description: 'status (see #03975)'
+      table_refs:
+      - 03975
+      sub_values: []
+    - reg: BL
+      operator: '='
+      description: emulation state
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  program: 'MegaEm is a protected-mode SoundBlaster, SoundCanvas, and MT-32
+
+    emulator for the Gravis UltraSound'
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 0202h
+  - type: interrupt
+    params:
+      AX: 0300h
+  - type: interrupt
+    params:
+      AX: 0400h
+  - type: interrupt
+    interrupt: '21'
+    params:
+      AX: FD12h
+      BX: 3457h
+  range: 'INT 81 to INT FF (see INT 21/AX=FD12h), selected by scanning for an
+
+    interrupt with vector 0000h:0000h'
+  index: []
+  tables:
+  - 03975
+  table_refs: []
+- entry_type: INT
+  id: s-810202
+  category: s
+  title: Gravis UltraSound - MegaEm - ???
+  source: INTERRUP.Q:9305
+  interrupt: '81'
+  flags: []
+  function: '0202'
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 0202h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AX
+      operator: '='
+      description: ???
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 0200h
+  - type: interrupt
+    params:
+      AX: 0300h
+  - type: interrupt
+    params:
+      AX: 0400h
+  - type: interrupt
+    interrupt: '21'
+    params:
+      AX: FD12h
+      BX: 3457h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: s-810300
+  category: s
+  title: Gravis UltraSound - MegaEm - LOAD SAMPLE ???
+  source: INTERRUP.Q:9310
+  interrupt: '81'
+  flags: []
+  function: '0300'
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 0300h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AX
+      operator: '='
+      description: ???
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 0200h
+  - type: interrupt
+    params:
+      AX: 0202h
+  - type: interrupt
+    params:
+      AX: 0400h
+  - type: interrupt
+    interrupt: '21'
+    params:
+      AX: FD12h
+      BX: 3457h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: s-810400
+  category: s
+  title: Gravis UltraSound - MegaEm - ???
+  source: INTERRUP.Q:9315
+  interrupt: '81'
+  flags: []
+  function: '0400'
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 0400h
+    table_refs: []
+    sub_values: []
+  - reg: BX
+    operator: '='
+    description: ??? (segment)
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AX
+      operator: '='
+      description: ???
+      table_refs: []
+      sub_values: []
+    - reg: BX
+      operator: '='
+      description: ???
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  program: 'MegaEm is a protected-mode SoundBlaster, SoundCanvas, and MT-32
+
+    emulator for the Gravis UltraSound'
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 0200h
+  - type: interrupt
+    params:
+      AX: 0202h
+  - type: interrupt
+    params:
+      AX: 0300h
+  - type: interrupt
+    interrupt: '21'
+    params:
+      AX: FD12h
+      BX: 3457h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: s-812010
+  category: s
+  title: Gravis UltraSound - MEGA_EM v3.0+ - INT 78 REDIRECT
+  source: INTERRUP.Q:9324
+  interrupt: '81'
+  flags: []
+  function: '2010'
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 2010h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+  notes:
+  - 'MegaEm calls this function from its INT 78 handler, and then
+
+    immediately returns (via RETF in v3.10, thus leaving the flags on
+
+    the stack); this permits it to operate while hooking only one
+
+    interrupt through the memory manager in protected mode'
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 2011h
+  - type: interrupt
+    params:
+      AX: 2012h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: s-812011
+  category: s
+  title: Gravis UltraSound - MEGA_EM v3.0+ - NMI REDIRECT
+  source: INTERRUP.Q:9334
+  interrupt: '81'
+  flags: []
+  function: '2011'
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 2011h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+  notes:
+  - 'MegaEm calls this function from its NMI (INT 02) handler, and then
+
+    immediately returns; this permits it to operate while hooking only
+
+    one interrupt through the memory manager in protected mode'
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 2010h
+  - type: interrupt
+    params:
+      AX: 2012h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: s-812012
+  category: s
+  title: Gravis UltraSound - MEGA_EM v3.0+ - SOUNDCARD IRQ REDIRECT
+  source: INTERRUP.Q:9343
+  interrupt: '81'
+  flags: []
+  function: '2012'
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 2012h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+  notes:
+  - 'MegaEm calls this function from its GUS IRQ handler, and then
+
+    immediately returns; this permits it to operate while hooking only
+
+    one interrupt through the memory manager in protected mode'
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 2010h
+  - type: interrupt
+    params:
+      AX: 2011h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: s-812015
+  category: s
+  title: Gravis UltraSound - MEGA_EM v3.0+ - ???
+  source: INTERRUP.Q:9352
+  interrupt: '81'
+  flags: []
+  function: '2015'
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 2015h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []

@@ -1,0 +1,27 @@
+file_type: interrupt
+key: '07'
+entries:
+- entry_type: INT
+  id: C-07
+  category: C
+  title: CPU-generated (80286+) - PROCESSOR EXTENSION NOT AVAILABLE
+  source: INTERRUP.A:580
+  interrupt: '07'
+  flags:
+  - C
+  input_registers: []
+  returns: []
+  description: 'this interrupt is automatically called if a coprocessor instruction is
+
+    encountered when no coprocessor is installed'
+  notes:
+  - can be used to emulate a numeric coprocessor in software
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: 09
+    params: {}
+    name: CPU
+  index: []
+  tables: []
+  table_refs: []

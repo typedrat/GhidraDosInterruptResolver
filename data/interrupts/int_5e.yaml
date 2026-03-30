@@ -1,0 +1,136 @@
+file_type: interrupt
+key: 5E
+entries:
+- entry_type: INT
+  id: H-5E
+  category: H
+  title: IRQ14 relocated by DESQview 2.26+
+  source: INTERRUP.O:857
+  interrupt: 5E
+  flags: []
+  input_registers: []
+  returns: []
+  notes:
+  - this is the default, but other INTs may be used (see INT 50"DESQview")
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: '50'
+    params: {}
+    name: DESQview
+  - type: interrupt
+    interrupt: 5D
+    params: {}
+    name: DESQview
+  - type: interrupt
+    interrupt: 5F
+    params: {}
+    name: DESQview
+  - type: interrupt
+    interrupt: '76'
+    params: {}
+  range: INT 5E to INT FE, selected automatically
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: H-5E
+  category: H
+  title: IRQ6 relocated by DoubleDOS
+  source: INTERRUP.O:862
+  interrupt: 5E
+  flags: []
+  input_registers: []
+  returns: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: 0E
+    params: {}
+  - type: interrupt
+    interrupt: 5D
+    params: {}
+    name: DoubleDOS
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-5E
+  category: b
+  title: TI Professional PC - KEYBOARD PRINT-SCREEN VECTOR
+  source: INTERRUP.O:865
+  interrupt: 5E
+  flags:
+  - C
+  input_registers:
+  - reg: CF
+    operator: set
+    table_refs: []
+    sub_values: []
+  returns:
+  - condition: CF clear
+    registers:
+    - reg: AX
+      operator: '='
+      description: keystroke to be placed into keyboard buffer
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  - condition: CF set
+    registers: []
+    raw_lines:
+    - AX ignored
+  description: hook to dump the screen to the printer
+  notes:
+  - 'hooked by TI MS-DOS, which provides a PRTSCRN character device which
+
+    can invoke screen prints when a decimal digit (indicating the type
+
+    of screen dump) is written to it
+
+    the TI MS-DOS print-screen routine allows selective dumps of text
+
+    only, graphics only, or text and graphics superimposed, in either
+
+    normal or reverse, by pressing the appropriate keystroke combination:
+
+    Shift-Print, Ctrl-Print, Alt-Print, Shift-Alt-Print, Ctrl-Alt-Print,
+
+    or Shift-Ctrl-Print.
+
+    the BIOS default routine for this vector is an IRET'
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: '05'
+    params: {}
+    name: PRINT SCREEN
+  - type: interrupt
+    interrupt: 4A
+    params:
+      AH: 00h
+    name: TI
+  - type: interrupt
+    interrupt: '59'
+    params: {}
+    name: TI Professional
+  - type: interrupt
+    interrupt: 5B
+    params: {}
+    name: TI Professional
+  - type: interrupt
+    interrupt: 5C
+    params: {}
+    name: TI Professional
+  - type: interrupt
+    interrupt: 5D
+    params: {}
+    name: TI Professional
+  - type: interrupt
+    interrupt: 5F
+    params: {}
+    name: TI Professional
+  index: []
+  tables: []
+  table_refs: []

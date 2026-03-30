@@ -1,0 +1,285 @@
+file_type: interrupt
+key: '79'
+entries:
+- entry_type: INT
+  id: V-79
+  category: V
+  title: AVATAR.SYS - FAST GET KEYSTROKE
+  source: INTERRUP.Q:3587
+  interrupt: '79'
+  flags: []
+  input_registers: []
+  returns:
+  - condition: CF set
+    condition_description: if no keystroke available
+    registers:
+    - reg: AX
+      operator: '='
+      value: FFFFh
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  - condition: CF clear
+    condition_description: if key pressed
+    registers:
+    - reg: AX
+      operator: '='
+      description: keystroke
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  program: 'AVATAR.SYS is a CON driver by George Adam Stanislav which interprets
+
+    AVATAR command codes just as ANSI.SYS interprets ANSI commands'
+  notes:
+  - 'if a keystroke is available, it is removed from the keyboard buffer
+
+    before being returned'
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: '29'
+    params: {}
+  - type: interrupt
+    interrupt: 2F
+    params:
+      AX: 1A00h
+      BX: 4156h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: E-79
+  category: E
+  title: DJGPP GO32.EXE DOS EXTENDER - RELOCATED IRQ1
+  source: INTERRUP.Q:3598
+  interrupt: '79'
+  flags: []
+  input_registers: []
+  returns: []
+  notes:
+  - 'this vector is overwritten when GO32 starts but is not restored by
+
+    early versions of the extender
+
+    the newest versions of GO32 dynamically allocate the vectors used
+
+    for the relocated IRQs, much as DESQview does (see INT 50"DESQview")'
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: 09
+    params: {}
+  - type: interrupt
+    interrupt: '78'
+    params: {}
+    name: GO32
+  - type: interrupt
+    interrupt: 7A
+    params: {}
+    name: GO32
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: d-79
+  category: d
+  title: ADP-60 IDE adapter - ???
+  source: INTERRUP.Q:3605
+  interrupt: '79'
+  flags:
+  - U
+  input_registers: []
+  returns: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: '78'
+    params: {}
+    name: ADP-60
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: E-79
+  category: E
+  title: DBOS DOS Extender
+  source: INTERRUP.Q:3608
+  interrupt: '79'
+  flags: []
+  input_registers: []
+  returns: []
+  description: 'this interrupt is used by an MS Windows virtual device driver with
+
+    which the DBOS extender communicates when run inside a Windows
+
+    Enhanced Mode DOS box'
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: '78'
+    params: {}
+    name: DBOS
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: A-790001
+  category: A
+  title: AutoCAD Device Interface - DIGITIZER - INITIALIZE
+  source: INTERRUP.Q:3615
+  interrupt: '79'
+  flags:
+  - R
+  function: '0001'
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 0001h
+    table_refs: []
+    sub_values: []
+  - reg: BX
+    operator: '='
+    description: interface level (0001h)
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AX
+      operator: '='
+      description: status (0000h initialization failed, 0001h init successful)
+      table_refs: []
+      sub_values: []
+    - reg: BX
+      operator: '='
+      description: digitizer type
+      table_refs: []
+      sub_values: []
+    - reg: CX
+      operator: '='
+      description: digitizer dataflow type
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 0002h
+  - type: interrupt
+    params:
+      AX: 0003h
+  - type: interrupt
+    interrupt: 7A
+    params:
+      AX: 0001h
+    name: AutoCAD
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: A-790002
+  category: A
+  title: AutoCAD Device Interface - DIGITIZER - TERMINATE
+  source: INTERRUP.Q:3627
+  interrupt: '79'
+  flags:
+  - R
+  function: '0002'
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 0002h
+    table_refs: []
+    sub_values: []
+  returns: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 0001h
+  - type: interrupt
+    params:
+      AX: 0003h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: A-790003
+  category: A
+  title: AutoCAD Device Interface - DIGITIZER - GET DIGITIZER STATUS
+  source: INTERRUP.Q:3631
+  interrupt: '79'
+  flags:
+  - R
+  function: '0003'
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 0003h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AX
+      operator: '='
+      description: status
+      table_refs: []
+      sub_values: []
+    - reg: BX
+      operator: '='
+      description: X coordinate
+      table_refs: []
+      sub_values: []
+    - reg: CX
+      operator: '='
+      description: Y coordinate
+      table_refs: []
+      sub_values: []
+    - reg: BX
+      operator: '='
+      description: X coordinate
+      table_refs: []
+      sub_values: []
+    - reg: CX
+      operator: '='
+      description: Y coordinate
+      table_refs: []
+      sub_values: []
+    - reg: BX
+      operator: '='
+      description: button number
+      table_refs: []
+      sub_values: []
+    - reg: BX
+      operator: '='
+      description: button number
+      table_refs: []
+      sub_values: []
+    - reg: CX
+      operator: '='
+      description: X coordinate
+      table_refs: []
+      sub_values: []
+    - reg: DX
+      operator: '='
+      description: Y coordinate
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 0001h
+  - type: interrupt
+    params:
+      AX: 0002h
+  index: []
+  tables: []
+  table_refs: []

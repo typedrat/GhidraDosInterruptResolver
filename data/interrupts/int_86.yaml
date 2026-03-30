@@ -1,0 +1,72 @@
+file_type: interrupt
+key: '86'
+entries:
+- entry_type: INT
+  id: N-86
+  category: N
+  title: NetBIOS - ORIGINAL INT 18
+  source: INTERRUP.Q:9608
+  interrupt: '86'
+  flags: []
+  input_registers: []
+  returns: []
+  notes:
+  - some implementations of NetBIOS reportedly relocate INT 18 here
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: '18'
+    params: {}
+    name: BOOT HOOK
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: r-86
+  category: r
+  title: IBM ROM BASIC - used while in interpreter
+  source: INTERRUP.Q:9612
+  interrupt: '86'
+  flags: []
+  input_registers: []
+  returns: []
+  notes:
+  - 'called by ROM BASIC, but pointed at IRET by BASIC.COM/BASICA.COM
+
+    BASIC.COM/BASICA.COM do not restore vector on termination'
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: '85'
+    params: {}
+    name: BASIC
+  - type: interrupt
+    interrupt: '87'
+    params: {}
+    name: BASIC
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: r-86
+  category: r
+  title: APL*PLUS/PC - Terminate APL session and return to DOS
+  source: INTERRUP.Q:9617
+  interrupt: '86'
+  flags: []
+  input_registers: []
+  returns: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: '21'
+    params:
+      AH: 4Ch
+  - type: interrupt
+    interrupt: '87'
+    params: {}
+    name: APL
+  index: []
+  tables: []
+  table_refs: []

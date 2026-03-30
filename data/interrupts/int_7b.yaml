@@ -1,0 +1,323 @@
+file_type: interrupt
+key: 7B
+entries:
+- entry_type: INT
+  id: f-7B
+  category: f
+  title: Btrieve API (single user)
+  source: INTERRUP.Q:4653
+  interrupt: 7B
+  flags: []
+  input_registers:
+  - reg: DS:DX
+    operator: ->
+    description: '38-byte parameter record (see #03840)'
+    table_refs:
+    - 03840
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - return code field set
+  notes:
+  - 'Btrieve sets low byte of vector to 33h; this serves as the installation
+
+    check'
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: 2F
+    params:
+      AX: AB01h
+  - type: interrupt
+    interrupt: 7F
+    params:
+      AX: 0200h
+  index: []
+  tables:
+  - 03840
+  - 03841
+  - 03842
+  table_refs: []
+- entry_type: INT
+  id: I-7B
+  category: I
+  title: Eicon Access API (3270/5250 gateways)
+  source: INTERRUP.Q:4819
+  interrupt: 7B
+  flags: []
+  input_registers: []
+  returns: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: 5C
+    params: {}
+    name: NetBIOS
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: E-7B
+  category: E
+  title: DJGPP GO32.EXE DOS EXTENDER - RELOCATED IRQ3
+  source: INTERRUP.Q:4822
+  interrupt: 7B
+  flags: []
+  input_registers: []
+  returns: []
+  notes:
+  - 'this vector is overwritten when GO32 starts but is not restored by
+
+    early versions of the extender
+
+    the newest versions of GO32 dynamically allocate the vectors used
+
+    for the relocated IRQs, much as DESQview does (see INT 50"DESQview")'
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: 0B
+    params: {}
+  - type: interrupt
+    interrupt: '10'
+    params:
+      AH: FFh
+    name: GO32
+  - type: interrupt
+    interrupt: 7A
+    params: {}
+    name: GO32
+  - type: interrupt
+    interrupt: 7C
+    params: {}
+    name: GO32
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: A-7B
+  category: A
+  title: AutoCAD Device Interface - PRINTER/PLOTTER - SEND PLOTTING DATA
+  source: INTERRUP.Q:4829
+  interrupt: 7B
+  flags:
+  - C
+  - R
+  input_registers:
+  - reg: AX
+    operator: '='
+    description: data length (0000h-7FFFh)
+    table_refs: []
+    sub_values: []
+  - reg: CX:BX
+    operator: ->
+    description: data to be plotted
+    table_refs: []
+    sub_values: []
+  - reg: DX
+    operator: '='
+    description: vertical position of line on page
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - nothing
+  notes:
+  - 'This interrupt is called by AutoCAD to perform its output
+
+    A data length of 0000h indicates that a blank line is to be output'
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 8001h
+  - type: interrupt
+    params:
+      AX: 8002h
+  - type: interrupt
+    interrupt: '78'
+    params: {}
+    name: AutoCAD
+  - type: interrupt
+    interrupt: 7A
+    params:
+      AX: 0001h
+    name: AutoCAD
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: e-7B
+  category: e
+  title: MCI Express v2.11+ - DRIVER.EXE - ???
+  source: INTERRUP.Q:4838
+  interrupt: 7B
+  flags:
+  - U
+  input_registers: []
+  returns: []
+  program: 'MCI Express is a front end to MCI Mail; DRIVER.EXE is its
+
+    communication driver'
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: --7B
+  title: Novell XQL - XQL PRIMITIVES MANAGER API
+  source: INTERRUP.Q:4842
+  interrupt: 7B
+  flags: []
+  input_registers:
+  - reg: DS:DX
+    operator: ->
+    description: 'parameter block (see #03844)'
+    table_refs:
+    - 03844
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - parameter block updated
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables:
+  - 03843
+  - 03844
+  table_refs: []
+- entry_type: INT
+  id: A-7B8001
+  category: A
+  title: AutoCAD Device Interface - PRINTER/PLOTTER - BEGIN PLOT
+  source: INTERRUP.Q:5108
+  interrupt: 7B
+  flags:
+  - R
+  function: '8001'
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 8001h
+    table_refs: []
+    sub_values: []
+  - reg: BX
+    operator: '='
+    description: file level
+    table_refs: []
+    sub_values:
+    - value: 0000h
+      description: binary file
+      sub_values: []
+    - value: 0001h
+      description: CAD/camera image file
+      sub_values: []
+    - value: 0002h
+      description: installed ADI driver
+      sub_values: []
+  - reg: CX
+    operator: '='
+    description: horizontal size in pixels
+    table_refs: []
+    sub_values: []
+  - reg: DX
+    operator: '='
+    description: vertical size in pixels
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AX
+      operator: '='
+      description: status (0000h initialization failed, 0001h init successful)
+      table_refs: []
+      sub_values: []
+    - reg: BX
+      operator: '='
+      description: allowed output format
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 8002h
+  - type: interrupt
+    params:
+      AX: 8003h
+  - type: interrupt
+    interrupt: 7B
+    params: {}
+    name: AutoCAD
+  - type: interrupt
+    interrupt: 7C
+    params: {}
+    name: AutoShade
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: A-7B8002
+  category: A
+  title: AutoCAD Device Interface - PRINTER/PLOTTER - END PLOT
+  source: INTERRUP.Q:5122
+  interrupt: 7B
+  flags:
+  - R
+  function: '8002'
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 8002h
+    table_refs: []
+    sub_values: []
+  returns: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 8001h
+  - type: interrupt
+    params:
+      AX: 8003h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: A-7B8003
+  category: A
+  title: AutoCAD Device Interface - PRINTER/PLOTTER - ABORT PLOT
+  source: INTERRUP.Q:5126
+  interrupt: 7B
+  flags:
+  - R
+  function: '8003'
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 8003h
+    table_refs: []
+    sub_values: []
+  returns: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 8001h
+  - type: interrupt
+    params:
+      AX: 8002h
+  index: []
+  tables: []
+  table_refs: []

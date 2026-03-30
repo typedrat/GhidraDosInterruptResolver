@@ -1,0 +1,130 @@
+file_type: interrupt
+key: '28'
+entries:
+- entry_type: INT
+  id: D-28
+  category: D
+  title: DOS 2+ - DOS IDLE INTERRUPT
+  source: INTERRUP.K:95
+  interrupt: '28'
+  flags:
+  - C
+  input_registers:
+  - reg: SS:SP
+    operator: '='
+    description: top of MS-DOS stack for I/O functions
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - all registers preserved
+  description: "This interrupt is invoked each time one of the DOS character input\nfunctions loops while waiting for input.\
+    \  Since a DOS call is in\nprogress even though DOS is actually idle during such input waits,\nhooking this function is\
+    \ necessary to allow a TSR to perform DOS\ncalls while the foreground program is waiting for user input.\t The\nINT 28h\
+    \ handler may invoke any INT 21h function except functions\n00h through 0Ch."
+  notes:
+  - 'under DOS 2.x, the critical error flag (the byte immediately after the
+
+    InDOS flag) must be set in order to call DOS functions 50h/51h from
+
+    the INT 28h handler without destroying the DOS stacks.
+
+    calls to INT 21/AH=3Fh,40h from within an INT 28 handler may not use a
+
+    handle which refers to CON
+
+    at the time of the call, the InDOS flag (see INT 21/AH=34h) is normally
+
+    set to 01h; if larger, DOS is truly busy and should not be reentered
+
+    the default handler is an IRET instruction
+
+    supported in OS/2 compatibility box
+
+    the _MS-DOS_Programmer''s_Reference_ for DOS 5.0 incorrectly documents
+
+    this interrupt as superseded
+
+    the performance of NetWare Lite servers (and probably other peer-to-
+
+    peer networks) can be dramatically improved by calling INT 28
+
+    frequently from an application''s idle loop'
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: '21'
+    params:
+      AH: 34h
+  - type: interrupt
+    interrupt: 2A
+    params:
+      AH: 84h
+  - type: interrupt
+    interrupt: 2F
+    params:
+      AX: 1680h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: U-289999
+  category: U
+  title: PCXDUMP v9.00+ - INSTALLATION CHECK
+  source: INTERRUP.K:121
+  interrupt: '28'
+  flags:
+  - u
+  function: '9999'
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 9999h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AX
+      operator: '='
+      value: AAAAh
+      description: if installed
+      table_refs: []
+      sub_values: []
+    - reg: CX
+      operator: '='
+      description: 'version number * 100 (example: 03A2h = 930 = v9.30)'
+      table_refs: []
+      sub_values: []
+    - reg: DL
+      operator: '='
+      description: 'interrupt used by the dump function (see #02553)'
+      table_refs:
+      - '02553'
+      sub_values: []
+    - reg: BX
+      operator: '='
+      description: CS of PCXDUMP's INT 28 handler (undocumented)
+      table_refs: []
+      sub_values: []
+    - reg: ES
+      operator: '='
+      description: segment of PCXDUMP's memory block (v9.30, undocumented)
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  program: PCXDUMP is a shareware screen grabber saving in PCX format
+  notes:
+  - 'if DL<>00h a dump can be requested by calling INT DL as shown
+
+    below (the user can choose the interrupt number at installation
+
+    time); if DL=00h the dump function can be called only by hotkeys
+
+    (this is the default)'
+  bugs: []
+  see_also: []
+  index: []
+  tables:
+  - '02553'
+  table_refs: []

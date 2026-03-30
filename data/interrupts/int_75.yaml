@@ -1,0 +1,43 @@
+file_type: interrupt
+key: '75'
+entries:
+- entry_type: INT
+  id: H-75
+  category: H
+  title: IRQ13 - MATH COPROCESSOR EXCEPTION (AT and up)
+  source: INTERRUP.Q:3034
+  interrupt: '75'
+  flags:
+  - C
+  input_registers: []
+  returns: []
+  description: redirected to INT 02 by the BIOS, for compatibility with the PC
+  notes:
+  - 'may be masked by setting bit 5 on I/O port A1h
+
+    not all clones wire the coprocessor to generate this IRQ; some systems
+
+    generate an NMI (see INT 02) or assert the -ERROR pin on the CPU
+
+    (see INT 10"COPROCESSOR")
+
+    under DESQview, only the INT 15h vector and BASIC segment address (the
+
+    word at 0000h:0510h) may be assumed to be valid for the handler''s
+
+    process'
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: '10'
+    params: {}
+    name: COPROCESSOR
+  - type: interrupt
+    interrupt: 5D
+    params: {}
+    name: IRQ13
+  - type: memory
+    address: 0040h:006Bh
+  index: []
+  tables: []
+  table_refs: []

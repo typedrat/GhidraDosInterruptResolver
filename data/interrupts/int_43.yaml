@@ -1,0 +1,140 @@
+file_type: interrupt
+key: '43'
+entries:
+- entry_type: INT
+  id: V-43
+  category: V
+  title: VIDEO DATA - CHARACTER TABLE (EGA,MCGA,VGA)
+  source: INTERRUP.N:7243
+  interrupt: '43'
+  flags: []
+  input_registers: []
+  returns: []
+  description: 'points at graphics data for characters 00h-7Fh of the current font
+
+    in 8x8 dot modes, graphics data for all characters in 8x14 and 8x16
+
+    modes'
+  notes:
+  - this is not a callable vector!
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: '06'
+    params: {}
+    name: no-name
+  - type: interrupt
+    interrupt: 1F
+    params: {}
+    name: SYSTEM DATA
+  - type: interrupt
+    interrupt: '44'
+    params: {}
+    name: VIDEO
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: h-43
+  category: h
+  title: Z100 - Master 8259 - Slave 8259 input
+  source: INTERRUP.N:7250
+  interrupt: '43'
+  flags: []
+  input_registers: []
+  returns: []
+  notes:
+  - slave runs in special fully nested mode
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: '42'
+    params: {}
+    name: Z100
+  - type: interrupt
+    interrupt: '44'
+    params: {}
+    name: Z100
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: h-43
+  category: h
+  title: TI Professional PC - IRQ3 - TIMER1 25ms INTERVAL INTERRUPT
+  source: INTERRUP.N:7254
+  interrupt: '43'
+  flags: []
+  input_registers: []
+  returns: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: 0B
+    params: {}
+    name: IRQ3
+  - type: interrupt
+    interrupt: '42'
+    params: {}
+    name: TI Professional
+  - type: interrupt
+    interrupt: '44'
+    params: {}
+    name: TI Professional
+  - type: interrupt
+    interrupt: '58'
+    params: {}
+    name: TI Professional
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: O-43
+  category: O
+  title: Acorn BBC Master 512 - "OSBGET" - READ SINGLE BYTE FROM FILE
+  source: INTERRUP.N:7258
+  interrupt: '43'
+  flags: []
+  input_registers:
+  - reg: BH
+    operator: '='
+    description: file handle
+    table_refs: []
+    sub_values: []
+  returns:
+  - condition: CF clear
+    condition_description: if successful
+    registers:
+    - reg: AL
+      operator: '='
+      description: byte read from file
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  - condition: CF set
+    condition_description: on error
+    registers: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: '40'
+    params: {}
+    name: Acorn
+  - type: interrupt
+    interrupt: '41'
+    params: {}
+    name: Acorn
+  - type: interrupt
+    interrupt: '42'
+    params: {}
+    name: Acorn
+  - type: interrupt
+    interrupt: '46'
+    params: {}
+    name: Acorn
+  index: []
+  tables: []
+  table_refs: []

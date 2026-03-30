@@ -1,0 +1,61 @@
+file_type: interrupt
+key: F9
+entries:
+- entry_type: INT
+  id: '*-F9'
+  category: '*'
+  title: reserved for user interrupt
+  source: INTERRUP.R:4973
+  interrupt: F9
+  flags: []
+  input_registers: []
+  returns: []
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: T-F9
+  category: T
+  title: DoubleDOS - ???
+  source: INTERRUP.R:4975
+  interrupt: F9
+  flags: []
+  input_registers: []
+  returns: []
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: h-F9
+  category: h
+  title: Sanyo MBC-550/555 - IRQ1 - ???
+  source: INTERRUP.R:4977
+  interrupt: F9
+  flags: []
+  input_registers: []
+  returns: []
+  notes:
+  - documented as "for system use only"; normally enabled at the 8259
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: 09
+    params: {}
+    name: IRQ1
+  - type: interrupt
+    interrupt: F8
+    params: {}
+    name: Sanyo
+  - type: interrupt
+    interrupt: FA
+    params: {}
+    name: Sanyo
+  index: []
+  tables: []
+  table_refs: []

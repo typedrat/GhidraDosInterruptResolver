@@ -1,0 +1,248 @@
+file_type: interrupt
+key: FD
+entries:
+- entry_type: INT
+  id: '*-FD'
+  category: '*'
+  title: reserved for user interrupt
+  source: INTERRUP.R:5022
+  interrupt: FD
+  flags: []
+  input_registers: []
+  returns: []
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: T-FD
+  category: T
+  title: DoubleDOS - ???
+  source: INTERRUP.R:5024
+  interrupt: FD
+  flags: []
+  input_registers: []
+  returns: []
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: h-FD
+  category: h
+  title: Sanyo MBC-550/555 - IRQ5 - FLOPPY DISK CONTROLLER
+  source: INTERRUP.R:5026
+  interrupt: FD
+  flags: []
+  input_registers: []
+  returns: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: 0D
+    params: {}
+    name: IRQ5
+  - type: interrupt
+    interrupt: FC
+    params: {}
+    name: Sanyo
+  - type: interrupt
+    interrupt: FE
+    params: {}
+    name: Sanyo
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: S-FD
+  category: S
+  title: TFPCX - INSTALLATION CHECK
+  source: INTERRUP.R:5029
+  interrupt: FD
+  flags: []
+  input_registers:
+  - reg: AH
+    operator: '='
+    description: function (also see separate entries below)
+    table_refs: []
+    sub_values: []
+  returns: []
+  program: 'TFPCX is an interface between modem and terminal program for packet-
+
+    radio communications'
+  notes:
+  - TFPCX returns AX=FFFFh on any unsupported function call
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 01h
+  - type: interrupt
+    params:
+      AH: 03h
+  - type: interrupt
+    params:
+      AH: FEh
+  install_check: 'test for the string "N5NX" three bytes beyond the interrupt
+
+    handler'
+  range: 'INT FD is the default, but may be changed, so the full installation
+
+    check consists of scanning for the signature'
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: S-FD01
+  category: S
+  title: TFPCX - TEST FOR CHARACTER WAITING
+  source: INTERRUP.R:5040
+  interrupt: FD
+  flags: []
+  function: '01'
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 01h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AX
+      operator: '='
+      description: status
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  program: 'TFPCX is an interface between modem and terminal program for packet-
+
+    radio communications'
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 02h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: S-FD02
+  category: S
+  title: TFPCX - GET CHARACTER
+  source: INTERRUP.R:5049
+  interrupt: FD
+  flags: []
+  function: '02'
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 02h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AL
+      operator: '='
+      description: character
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes:
+  - 'this call is only allowed if AH=01h indicated that a character is
+
+    available
+
+    all available characters should be read before sending any additional
+
+    characters'
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 01h
+  - type: interrupt
+    params:
+      AH: 03h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: S-FD03
+  category: S
+  title: TFPCX - OUTPUT CHARACTER
+  source: INTERRUP.R:5058
+  interrupt: FD
+  flags: []
+  function: '03'
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 03h
+    table_refs: []
+    sub_values: []
+  - reg: AL
+    operator: '='
+    description: character to send
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - nothing
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 02h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: S-FDFE
+  category: S
+  title: TFPCX - GET VERSION
+  source: INTERRUP.R:5064
+  interrupt: FD
+  flags: []
+  function: FE
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: FEh
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AH
+      operator: '='
+      description: major version
+      table_refs: []
+      sub_values: []
+    - reg: AL
+      operator: '='
+      description: minor version
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  program: 'TFPCX is an interface between modem and terminal program for packet-
+
+    radio communications'
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 01h
+  - type: interrupt
+    params:
+      AH: 03h
+  index: []
+  tables: []
+  table_refs: []

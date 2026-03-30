@@ -1,0 +1,114 @@
+file_type: interrupt
+key: DD
+entries:
+- entry_type: INT
+  id: r-DD
+  category: r
+  title: IBM ROM BASIC - used while in interpreter
+  source: INTERRUP.R:1976
+  interrupt: DD
+  flags: []
+  input_registers: []
+  returns: []
+  notes:
+  - 'called by ROM BASIC
+
+    BASIC.COM/BASICA.COM do not restore vector on termination'
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: '80'
+    params: {}
+    name: BASIC
+  - type: interrupt
+    interrupt: DC
+    params: {}
+    name: BASIC
+  - type: interrupt
+    interrupt: DE
+    params: {}
+    name: BASIC
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: r-DD
+  category: r
+  title: STSC APL*PLUS/PC v9.0 - PLACE KEYSTROKE EVENTS IN INPUT BUFFER
+  source: INTERRUP.R:1981
+  interrupt: DD
+  flags: []
+  input_registers:
+  - reg: BX
+    operator: '='
+    description: where to place keystrokes
+    table_refs: []
+    sub_values:
+    - value: FFFFh
+      description: insert before current buffer contents
+      sub_values: []
+    - value: 0000h
+      description: replace current contents
+      sub_values: []
+    - value: 0001h
+      description: insert after current contents
+      sub_values: []
+  - reg: CX
+    operator: '='
+    description: number of keystroke events to insert
+    table_refs: []
+    sub_values: []
+  - reg: ES:SI
+    operator: ->
+    description: data to be placed into buffer (list of WORD key codes)
+    table_refs: []
+    sub_values:
+    - value: 4000h
+      description: + N = normal ASCII keystroke N (N = 00h to FFh)
+      sub_values: []
+    - value: 4100h
+      description: + N = extended ASCII keystroke N (N = 03h to 84h)
+      sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - nothing
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: '16'
+    params:
+      AH: 05h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: H-DD
+  category: H
+  title: Screen Thief v1.00 - RELOCATED IRQ5
+  source: INTERRUP.R:1993
+  interrupt: DD
+  flags: []
+  input_registers: []
+  returns: []
+  notes:
+  - (see INT D8"Screen Thief")
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: 0D
+    params: {}
+    name: IRQ5
+  - type: interrupt
+    interrupt: DC
+    params: {}
+    name: Screen Thief
+  - type: interrupt
+    interrupt: DE
+    params: {}
+    name: Screen Thief
+  range: INT 7Dh to INT E5h, selected by commandline switch
+  index: []
+  tables: []
+  table_refs: []

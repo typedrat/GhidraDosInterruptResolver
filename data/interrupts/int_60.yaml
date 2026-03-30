@@ -1,0 +1,8855 @@
+file_type: interrupt
+key: '60'
+entries:
+- entry_type: INT
+  id: '*-60'
+  category: '*'
+  title: reserved for user interrupt
+  source: INTERRUP.O:1077
+  interrupt: '60'
+  flags: []
+  input_registers: []
+  returns: []
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: v-60
+  category: v
+  title: VIRUS - "Zero Bug" - INSTALLATION CHECK
+  source: INTERRUP.O:1079
+  interrupt: '60'
+  flags: []
+  input_registers: []
+  returns: []
+  description: "The \"Zero Bug\" virus hooks this vector.\t It considers itself installed\nif offset 103h of the handler's\
+    \ segment contains the bytes \"ZE\""
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: '32'
+    params: {}
+    name: VIRUS
+  - type: interrupt
+    interrupt: '44'
+    params: {}
+    name: VIRUS
+  - type: interrupt
+    interrupt: '61'
+    params: {}
+    name: SEMTEX
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: d-60
+  category: d
+  title: Adaptec and OMTI controllers - DRIVE 0 DATA
+  source: INTERRUP.O:1084
+  interrupt: '60'
+  flags: []
+  input_registers: []
+  returns: []
+  notes:
+  - 'this vector stores the first four bytes of the parameter table for
+
+    hard disk 0
+
+    these vectors are used by the following Adaptec controllers:
+
+    ACB 2370 A/B/C, ACB 2372 A/B/C, ACB 2333 A/B, 2322B-8, 2322B-16
+
+    these vectors are NOT used by the following Adaptec controllers:
+
+    ACB 2310, ACB 2312, ACB 2320D, ACB 2322D'
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: '41'
+    params: {}
+    name: HARD DISK 0
+  - type: interrupt
+    interrupt: '61'
+    params: {}
+    name: Adaptec
+  - type: interrupt
+    interrupt: '62'
+    params: {}
+    name: Adaptec
+  - type: interrupt
+    interrupt: '63'
+    params: {}
+    name: Adaptec
+  - type: interrupt
+    interrupt: '64'
+    params: {}
+    name: Adaptec
+  - type: interrupt
+    interrupt: C0
+    params: {}
+    name: AMI
+  - type: interrupt
+    params:
+      AX: B102h
+  index: []
+  tables: []
+  table_refs:
+  - '00732'
+- entry_type: INT
+  id: b-60
+  category: b
+  title: TI Professional PC - SYSTEM ROM DATA AREA POINTER (NOT A VECTOR!)
+  source: INTERRUP.O:1094
+  interrupt: '60'
+  flags: []
+  input_registers: []
+  returns: []
+  description: 'the low word of this vector contains the segment of the RAM data area
+
+    to be used by the system ROM at F400h:A000h, and the high word
+
+    contains the length of the data area (see #03263)'
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: '61'
+    params: {}
+    name: TI Professional PC
+  - type: interrupt
+    interrupt: '66'
+    params: {}
+    name: TI Professional PC
+  index: []
+  tables:
+  - '03263'
+  - '03264'
+  - '03265'
+  - '03266'
+  table_refs:
+  - '03263'
+- entry_type: INT
+  id: b-60
+  category: b
+  title: Atari Portfolio - USER INTERFACE FUNCTIONS
+  source: INTERRUP.O:1221
+  interrupt: '60'
+  flags: []
+  input_registers: []
+  returns: []
+  description: 'supplies a number of subfunctions which perform such functions as
+
+    drawing boxes and menus, and provide input line editing'
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: '61'
+    params:
+      AH: 00h
+    name: Atari
+  - type: interrupt
+    interrupt: '61'
+    params: {}
+    name: EXTENDED BIOS
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: V-60
+  category: V
+  title: Nabbit v2.0 - (NOT A VECTOR!) - INSTALLATION CHECK
+  source: INTERRUP.O:1226
+  interrupt: '60'
+  flags: []
+  input_registers: []
+  returns: []
+  program: Nabbit is a shareware resident screen data grabber by RSE Inc.
+  notes:
+  - 'the Nabbit installation check consists of testing whether the
+
+    interrupt vector points at the ASCIZ signature string "iG"
+
+    (69h 47h 00h)'
+  bugs: []
+  see_also: []
+  range: INT 60 to INT 66, selected by searching for first free vector
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: V-60
+  category: V
+  title: ATI M64VBE.COM - INSTALLATION SIGNATURE
+  source: INTERRUP.O:1233
+  interrupt: '60'
+  flags: []
+  input_registers: []
+  returns: []
+  program: M64VBE is a VESA VBE 2.0 driver TSR for ATI's Mach64 video chip
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: '10'
+    params:
+      AX: 4FDDh
+    name: M64VBE
+  - type: interrupt
+    interrupt: '10'
+    params:
+      AX: 4FFFh
+      BX: 364Dh
+    name: M64VBE
+  install_check: 'scan for an interrupt with the ASCIZ signature "M64VBE" three
+
+    bytes past the interrupt handler'
+  range: INT 60 to INT 66, selected by searching for first free vector
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: V-60
+  category: V
+  title: Buffit v3.0 - (NOT A VECTOR!) - INSTALLATION CHECK
+  source: INTERRUP.O:1240
+  interrupt: '60'
+  flags:
+  - U
+  input_registers: []
+  returns: []
+  program: Buffit is a shareware scrollback utility by D.T. Hamilton
+  notes:
+  - 'the Buffit installation check consists of testing whether the
+
+    interrupt vector points at the ASCII signature "Buffit  "
+
+    there is a private entry point (see #03267) immediately following the
+
+    signature string, i.e. eight bytes beyond the address pointed at
+
+    by the interrupt vector'
+  bugs: []
+  see_also: []
+  range: INT 60 to INT 6F, selected by searching for first free vector
+  index: []
+  tables:
+  - '03267'
+  table_refs:
+  - '03267'
+- entry_type: INT
+  id: r-60
+  category: r
+  title: PC-IPC API
+  source: INTERRUP.O:1265
+  interrupt: '60'
+  flags: []
+  input_registers: []
+  returns:
+  - registers: []
+    raw_lines:
+    - "STACK:\tunchanged"
+  program: 'PC-IPC is a shareware TSR by Donnelly Software Engineering which
+
+    allows communication between independent programs'
+  notes: []
+  bugs: []
+  see_also: []
+  range: INT 00 to INT FF, selected by commandline switch
+  index: []
+  tables:
+  - 03268
+  - 03269
+  - '03270'
+  - '03271'
+  table_refs: []
+- entry_type: INT
+  id: R-60
+  category: R
+  title: Tangram Arbiter - API
+  source: INTERRUP.O:1331
+  interrupt: '60'
+  flags: []
+  input_registers: []
+  returns: []
+  description: 'Arbiter makes a PC disk look like a slow disk over an SNA link to an
+
+    IBM mainframe'
+  notes:
+  - 'identified by string "@ARB_API" immediately following a short jump at
+
+    the interrupt handler address'
+  bugs: []
+  see_also: []
+  range: INT 60h to INT 66h, selected by configuration parameter
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: N-60
+  category: N
+  title: Excelan LAN Workplace for DOS 3.5 - API
+  source: INTERRUP.O:1338
+  interrupt: '60'
+  flags: []
+  input_registers:
+  - reg: ES:BX
+    operator: ->
+    description: 'request packet (see #03272)'
+    table_refs:
+    - '03272'
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - request packet updated
+  notes:
+  - 'this interrupt is also supported by Beame&Whiteside''s BWLWP35 shim,
+
+    which was used in creating this description'
+  bugs:
+  - 'because BWLWP35 range-checks only the low byte of the function number,
+
+    and has a fencepost error even in that test, functions 000Bh and
+
+    XX01h-XX0Bh (XX nonzero) branch to random locations'
+  see_also:
+  - type: interrupt
+    interrupt: 2F
+    params:
+      AX: 7A40h
+  install_check: 'test for the WORD 4142h (''AB'') immediately preceding the
+
+    interrupt handler'
+  index: []
+  tables:
+  - '03272'
+  - '03273'
+  - '03274'
+  table_refs: []
+- entry_type: INT
+  id: N-60
+  category: N
+  title: TCPDRV 2.01 - TCP/IP Application Binary Interface (ABI)
+  source: INTERRUP.O:1436
+  interrupt: '60'
+  flags: []
+  input_registers: []
+  returns: []
+  notes:
+  - 'The handler for the interrupt will start with a 2-byte NEAR jump
+
+    instruction, followed by the ASCIZ signature string "TCP DRVR".
+
+    To find the interrupt being used by the driver, an application
+
+    should scan through interrupt vectors 60h to 7Fh until it finds
+
+    one with the "TCP DRVR" string.
+
+    This specification is being proposed by Peter R. Tattam from the
+
+    University of Tasmania.'
+  bugs: []
+  see_also: []
+  index:
+  - installation check;TCPDRV
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: G-60
+  category: G
+  title: INTRSPY/CMDSPY v1.0 only - API
+  source: INTERRUP.O:1446
+  interrupt: '60'
+  flags:
+  - U
+  input_registers: []
+  returns: []
+  program: 'INTRSPY is a script-driven debugger included with the book
+
+    _Undocumented_DOS_.'
+  notes:
+  - 'INTRSPY will hook the first available interrupt in the range 60h-67h.
+
+    If INTRSPY is installed, the DWORD immediately after the IRET stores
+
+    its entry point (see #03275)
+
+    INTRSPY v2.0 (included with the second edition of the book) no longer
+
+    supports this API'
+  bugs: []
+  see_also: []
+  install_check: 'determine that a) the handler is an IRET instruction, and
+
+    b) the signature 0Dh "INTRSPY vN.NN" immediately precedes the handler'
+  index:
+  - installation check;INTRSPY
+  tables:
+  - '03275'
+  table_refs:
+  - '03275'
+- entry_type: INT
+  id: u-60
+  category: u
+  title: PC/370 v4.2 - ???
+  source: INTERRUP.O:1507
+  interrupt: '60'
+  flags:
+  - U
+  input_registers: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+  program: PC/370 is an IBM 370 emulator by Donald S. Higgins
+  notes:
+  - 'the documentation includes instructions for patching the system for
+
+    another interrupt'
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: 2F
+    params:
+      AX: 7F24h
+  - type: interrupt
+    interrupt: DC
+    params: {}
+    name: PC/370
+  range: INT 00 to INT FF, selected by patching the executable
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: r-60
+  category: r
+  title: JPI TopSPEED Modula-2 v1 - PROCEDURE ENTRY TRAP
+  source: INTERRUP.O:1516
+  interrupt: '60'
+  flags: []
+  input_registers: []
+  returns: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: '61'
+    params: {}
+    name: JPI
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: N-60
+  category: N
+  title: FTP Packet Driver - PC/TCP Packet Driver Specification
+  source: INTERRUP.O:1519
+  interrupt: '60'
+  flags: []
+  input_registers: []
+  returns: []
+  notes:
+  - 'The handler for the interrupt will start with a 3-byte jump
+
+    instruction, followed by the ASCIZ string "PKT DRVR" (the
+
+    terminating NUL is significant).
+
+    To find the interrupt being used by the driver, an application should
+
+    scan through interrupt vectors 20h to FFh (60h through 80h for
+
+    v1.09- of the specification) until it finds one with the "PKT DRVR"
+
+    string.
+
+    AH values of 80h to FFh have been reserved for user-defined additions.'
+  bugs: []
+  see_also: []
+  range: INT 20 to INT FF
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: I-60
+  category: I
+  title: 3270-PC CONTROL PROGRAM - ???
+  source: INTERRUP.O:1530
+  interrupt: '60'
+  flags:
+  - u
+  input_registers: []
+  returns: []
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-60DI0100
+  category: b
+  title: HP 95LX System Manager - WAIT FOR EVENT
+  source: INTERRUP.O:1532
+  interrupt: '60'
+  flags:
+  - u
+  function: DI0100
+  input_registers:
+  - reg: DI
+    operator: '='
+    value: 0100h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - event record filled
+    - STACK unchanged
+  notes:
+  - this call will timeout after about 500ms
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: '15'
+    params:
+      AX: 4DD4h
+  - type: interrupt
+    interrupt: '60'
+    params:
+      DI: 0101h
+  - type: interrupt
+    interrupt: '61'
+    params: {}
+    name: HP 95LX
+  - type: interrupt
+    interrupt: '62'
+    params: {}
+    name: HP 95LX
+  index: []
+  tables:
+  - '03276'
+  - '03277'
+  - 03278
+  table_refs: []
+- entry_type: INT
+  id: b-60DI0101
+  category: b
+  title: HP 95LX System Manager - CHECK FOR EVENT
+  source: INTERRUP.O:1585
+  interrupt: '60'
+  flags:
+  - u
+  function: DI0101
+  input_registers:
+  - reg: DI
+    operator: '='
+    value: 0101h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - event record filled
+    - STACK unchanged
+  notes:
+  - this call returns immediately if no event is available
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: '60'
+    params:
+      DI: 0100h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-60DI0102
+  category: b
+  title: HP 95LX System Manager - "SH_STATUS"
+  source: INTERRUP.O:1594
+  interrupt: '60'
+  flags:
+  - u
+  function: DI0102
+  input_registers:
+  - reg: DI
+    operator: '='
+    value: 0102h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+    - STACK unchanged
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-60DI0104
+  category: b
+  title: HP 95LX System Manager - LOTUS 1-2-3 BRIDGE SERVICES
+  source: INTERRUP.O:1600
+  interrupt: '60'
+  flags:
+  - u
+  function: DI0104
+  input_registers:
+  - reg: DI
+    operator: '='
+    value: 0104h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+    - STACK unchanged
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables:
+  - 03279
+  - 03280
+  table_refs: []
+- entry_type: INT
+  id: b-60DI0105
+  category: b
+  title: HP 95LX System Manager - FLUSH KEYBOARD BUFFER
+  source: INTERRUP.O:1635
+  interrupt: '60'
+  flags:
+  - u
+  function: DI0105
+  input_registers:
+  - reg: DI
+    operator: '='
+    value: 0105h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+    - STACK unchanged
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-60DI0106
+  category: b
+  title: HP 95LX System Manager - YIELD CPU
+  source: INTERRUP.O:1641
+  interrupt: '60'
+  flags:
+  - u
+  function: DI0106
+  input_registers:
+  - reg: DI
+    operator: '='
+    value: 0106h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+    - STACK unchanged
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: '15'
+    params:
+      AX: 1000h
+  - type: interrupt
+    interrupt: 2F
+    params:
+      AX: 1680h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-60DI0107
+  category: b
+  title: HP 95LX System Manager - "NO_FINI" - REFUSE TERMINATION REQUEST
+  source: INTERRUP.O:1649
+  interrupt: '60'
+  flags:
+  - u
+  function: DI0107
+  input_registers:
+  - reg: DI
+    operator: '='
+    value: 0107h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+    - STACK unchanged
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: '15'
+    params:
+      AX: 4DD4h
+  - type: interrupt
+    interrupt: '61'
+    params: {}
+    name: HP 95LX
+  - type: interrupt
+    interrupt: '62'
+    params: {}
+    name: HP 95LX
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-60DI0200
+  category: b
+  title: HP 95LX System Manager - SETUP MENU
+  source: INTERRUP.O:1657
+  interrupt: '60'
+  flags:
+  - u
+  function: DI0200
+  input_registers:
+  - reg: DI
+    operator: '='
+    value: 0200h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+    - STACK unchanged
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: '15'
+    params:
+      AX: 4DD4h
+  - type: interrupt
+    interrupt: '60'
+    params:
+      DI: 0201h
+  - type: interrupt
+    interrupt: '60'
+    params:
+      DI: 0203h
+  - type: interrupt
+    interrupt: '60'
+    params:
+      DI: 0205h
+  index: []
+  tables:
+  - 03281
+  table_refs: []
+- entry_type: INT
+  id: b-60DI0201
+  category: b
+  title: HP 95LX System Manager - DISPLAY OR REDISPLAY MENU
+  source: INTERRUP.O:1685
+  interrupt: '60'
+  flags:
+  - u
+  function: DI0201
+  input_registers:
+  - reg: DI
+    operator: '='
+    value: 0201h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+    - STACK unchanged
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: '60'
+    params:
+      DI: 0200h
+  - type: interrupt
+    interrupt: '60'
+    params:
+      DI: 0202h
+  - type: interrupt
+    interrupt: '60'
+    params:
+      DI: 0206h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-60DI0202
+  category: b
+  title: HP 95LX System Manager - "MENU_ON" - ENABLE PROCESSING OF MENU
+  source: INTERRUP.O:1693
+  interrupt: '60'
+  flags:
+  - u
+  function: DI0202
+  input_registers:
+  - reg: DI
+    operator: '='
+    value: 0202h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+    - STACK unchanged
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: '60'
+    params:
+      DI: 0200h
+  - type: interrupt
+    interrupt: '60'
+    params:
+      DI: 0201h
+  - type: interrupt
+    interrupt: '60'
+    params:
+      DI: 0203h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-60DI0203
+  category: b
+  title: HP 95LX System Manager - REMOVE MENU
+  source: INTERRUP.O:1701
+  interrupt: '60'
+  flags:
+  - u
+  function: DI0203
+  input_registers:
+  - reg: DI
+    operator: '='
+    value: 0203h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+    - STACK unchanged
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: '60'
+    params:
+      DI: 0201h
+  - type: interrupt
+    interrupt: '60'
+    params:
+      DI: 0202h
+  - type: interrupt
+    interrupt: '60'
+    params:
+      DI: 0204h
+  - type: interrupt
+    interrupt: '60'
+    params:
+      DI: 0208h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-60DI0204
+  category: b
+  title: HP 95LX System Manager - LET SYSTEM MANAGER HANDLE MENU KEYSTROKE
+  source: INTERRUP.O:1709
+  interrupt: '60'
+  flags:
+  - u
+  function: DI0204
+  input_registers:
+  - reg: DI
+    operator: '='
+    value: 0204h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - buffer for selection number filled with index of selected menu item or
+    - FFFFh if no final selection yet
+    - STACK unchanged
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: '60'
+    params:
+      DI: 0200h
+  - type: interrupt
+    interrupt: '60'
+    params:
+      DI: 0202h
+  - type: interrupt
+    interrupt: '60'
+    params:
+      DI: 0207h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-60DI0205
+  category: b
+  title: HP 95LX System Manager - INITIALIZE FILE SELECTION MENU
+  source: INTERRUP.O:1720
+  interrupt: '60'
+  flags:
+  - u
+  function: DI0205
+  input_registers:
+  - reg: DI
+    operator: '='
+    value: 0205h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+    - STACK unchanged
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: '60'
+    params:
+      DI: 0200h
+  - type: interrupt
+    interrupt: '60'
+    params:
+      DI: 0206h
+  - type: interrupt
+    interrupt: '60'
+    params:
+      DI: 0208h
+  index: []
+  tables:
+  - 03282
+  - 03283
+  table_refs: []
+- entry_type: INT
+  id: b-60DI0206
+  category: b
+  title: HP 95LX System Manager - DISPLAY/REDISPLAY FILE SELECTION MENU
+  source: INTERRUP.O:1760
+  interrupt: '60'
+  flags:
+  - u
+  function: DI0206
+  input_registers:
+  - reg: DI
+    operator: '='
+    value: 0206h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+    - STACK unchanged
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: '60'
+    params:
+      DI: 0205h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-60DI0207
+  category: b
+  title: HP 95LX System Manager - LET SYSMGR PROCESS FILE SEL MENU KEYSTROKE
+  source: INTERRUP.O:1769
+  interrupt: '60'
+  flags:
+  - u
+  function: DI0207
+  input_registers:
+  - reg: DI
+    operator: '='
+    value: 0207h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AX
+      operator: '='
+      description: 'status (see #03284)'
+      table_refs:
+      - 03284
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: '60'
+    params:
+      DI: 0205h
+  - type: interrupt
+    interrupt: '60'
+    params:
+      DI: 0208h
+  index: []
+  tables:
+  - 03284
+  table_refs: []
+- entry_type: INT
+  id: b-60DI0208
+  category: b
+  title: HP 95LX System Manager - REMOVE FILE SELECTION MENU
+  source: INTERRUP.O:1791
+  interrupt: '60'
+  flags:
+  - u
+  function: DI0208
+  input_registers:
+  - reg: DI
+    operator: '='
+    value: 0208h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+    - STACK unchanged
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: '15'
+    params:
+      AX: 4DD4h
+  - type: interrupt
+    interrupt: '60'
+    params:
+      DI: 0205h
+  - type: interrupt
+    interrupt: '60'
+    params:
+      DI: 0206h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-60DI0300
+  category: b
+  title: HP 95LX System Manager - DISPLAY STRING
+  source: INTERRUP.O:1800
+  interrupt: '60'
+  flags:
+  - u
+  function: DI0300
+  input_registers:
+  - reg: DI
+    operator: '='
+    value: 0300h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+    - STACK unchanged
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: '60'
+    params:
+      DI: 0F03h
+  - type: interrupt
+    interrupt: '60'
+    params:
+      DI: 1005h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-60DI0301
+  category: b
+  title: HP 95LX System Manager - CLEAR PORTION OF SCREEN
+  source: INTERRUP.O:1813
+  interrupt: '60'
+  flags:
+  - u
+  function: DI0301
+  input_registers:
+  - reg: DI
+    operator: '='
+    value: 0301h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+    - STACK unchanged
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: '60'
+    params:
+      DI: 0302h
+  - type: interrupt
+    interrupt: '60'
+    params:
+      DI: 1005h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-60DI0302
+  category: b
+  title: HP 95LX System Manager - SCROLL PORTION OF SCREEN
+  source: INTERRUP.O:1824
+  interrupt: '60'
+  flags:
+  - u
+  function: DI0302
+  input_registers:
+  - reg: DI
+    operator: '='
+    value: 0302h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+    - STACK unchanged
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: '60'
+    params:
+      DI: 0301h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-60DI0303
+  category: b
+  title: HP 95LX System Manager - SCREEN SERVICE "M_XCHG"
+  source: INTERRUP.O:1836
+  interrupt: '60'
+  flags:
+  - u
+  function: DI0303
+  input_registers:
+  - reg: DI
+    operator: '='
+    value: 0303h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+    - STACK unchanged
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-60DI0304
+  category: b
+  title: HP 95LX System Manager - SCREEN SERVICE "M_CHRATTR"
+  source: INTERRUP.O:1847
+  interrupt: '60'
+  flags:
+  - u
+  function: DI0304
+  input_registers:
+  - reg: DI
+    operator: '='
+    value: 0304h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+    - STACK unchanged
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-60DI0305
+  category: b
+  title: HP 95LX System Manager - SCREEN SERVICE "M_CHRRVRT"
+  source: INTERRUP.O:1855
+  interrupt: '60'
+  flags:
+  - u
+  function: DI0305
+  input_registers:
+  - reg: DI
+    operator: '='
+    value: 0305h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+    - STACK unchanged
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-60DI0307
+  category: b
+  title: HP 95LX System Manager - SCREEN SERVICE "M_CHRINV"
+  source: INTERRUP.O:1865
+  interrupt: '60'
+  flags:
+  - u
+  function: DI0307
+  input_registers:
+  - reg: DI
+    operator: '='
+    value: 0307h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+    - STACK unchanged
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-60DI0308
+  category: b
+  title: HP 95LX System Manager - SCREEN SERVICE "M_ROWS_COLS"
+  source: INTERRUP.O:1874
+  interrupt: '60'
+  flags:
+  - u
+  function: DI0308
+  input_registers:
+  - reg: DI
+    operator: '='
+    value: 0308h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+    - STACK unchanged
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-60DI0309
+  category: b
+  title: HP 95LX System Manager - SET SCREEN (VIDEO???) MODE
+  source: INTERRUP.O:1880
+  interrupt: '60'
+  flags:
+  - u
+  function: DI0309
+  input_registers:
+  - reg: DI
+    operator: '='
+    value: 0309h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+    - STACK unchanged
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-60DI030A
+  category: b
+  title: HP 95LX System Manager - GET SCREEN (VIDEO???) MODE
+  source: INTERRUP.O:1887
+  interrupt: '60'
+  flags:
+  - u
+  function: DI030A
+  input_registers:
+  - reg: DI
+    operator: '='
+    value: 030Ah
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+    - STACK unchanged
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-60DI030B
+  category: b
+  title: HP 95LX System Manager - SET CURSOR POSITION
+  source: INTERRUP.O:1893
+  interrupt: '60'
+  flags:
+  - u
+  function: DI030B
+  input_registers:
+  - reg: DI
+    operator: '='
+    value: 030Bh
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+    - STACK unchanged
+  notes:
+  - 'cursor is hidden if the specified position is not on the physical
+
+    display'
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: '10'
+    params:
+      AH: 02h
+  - type: interrupt
+    interrupt: '15'
+    params:
+      AX: 4DD4h
+  - type: interrupt
+    interrupt: '61'
+    params: {}
+    name: HP 95LX
+  - type: interrupt
+    interrupt: '62'
+    params: {}
+    name: HP 95LX
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-60DI0400
+  category: b
+  title: HP 95LX System Manager - "EDIT_INIT"
+  source: INTERRUP.O:1904
+  interrupt: '60'
+  flags:
+  - u
+  function: DI0400
+  input_registers:
+  - reg: DI
+    operator: '='
+    value: 0400h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+    - STACK unchanged
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables:
+  - 03285
+  - 03286
+  table_refs: []
+- entry_type: INT
+  id: b-60DI0401
+  category: b
+  title: HP 95LX System Manager - EDIT ON TOP LINE
+  source: INTERRUP.O:1955
+  interrupt: '60'
+  flags:
+  - u
+  function: DI0401
+  input_registers:
+  - reg: DI
+    operator: '='
+    value: 0401h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+    - STACK unchanged
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-60DI0402
+  category: b
+  title: HP 95LX System Manager - DISPLAY OR REDISPLAY EDIT FIELD
+  source: INTERRUP.O:1969
+  interrupt: '60'
+  flags:
+  - u
+  function: DI0402
+  input_registers:
+  - reg: DI
+    operator: '='
+    value: 0402h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+    - STACK unchanged
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-60DI0403
+  category: b
+  title: HP 95LX System Manager - LET SYSTEM MANAGER PROCESS EDITING KEYSTROK
+  source: INTERRUP.O:1976
+  interrupt: '60'
+  flags:
+  - u
+  function: DI0403
+  input_registers:
+  - reg: DI
+    operator: '='
+    value: 0403h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - result code buffer filled with 0001h if editing complete
+    - STACK unchanged
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-60DI0404
+  category: b
+  title: HP 95LX System Manager - "MDIT_INI"
+  source: INTERRUP.O:1985
+  interrupt: '60'
+  flags:
+  - u
+  function: DI0404
+  input_registers:
+  - reg: DI
+    operator: '='
+    value: 0404h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+    - STACK unchanged
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-60DI0405
+  category: b
+  title: HP 95LX System Manager - "MDIT_DIS"
+  source: INTERRUP.O:2001
+  interrupt: '60'
+  flags:
+  - u
+  function: DI0405
+  input_registers:
+  - reg: DI
+    operator: '='
+    value: 0405h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+    - STACK unchanged
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-60DI0406
+  category: b
+  title: HP 95LX System Manager - "MDIT_KEY"
+  source: INTERRUP.O:2008
+  interrupt: '60'
+  flags:
+  - u
+  function: DI0406
+  input_registers:
+  - reg: DI
+    operator: '='
+    value: 0406h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+    - STACK unchanged
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-60DI0407
+  category: b
+  title: HP 95LX System Manager - "MDIT_FIL"
+  source: INTERRUP.O:2016
+  interrupt: '60'
+  flags:
+  - u
+  function: DI0407
+  input_registers:
+  - reg: DI
+    operator: '='
+    value: 0407h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+    - STACK unchanged
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-60DI0408
+  category: b
+  title: HP 95LX System Manager - "MDIT_MARK"
+  source: INTERRUP.O:2024
+  interrupt: '60'
+  flags:
+  - u
+  function: DI0408
+  input_registers:
+  - reg: DI
+    operator: '='
+    value: 0408h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+    - STACK unchanged
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-60DI0409
+  category: b
+  title: HP 95LX System Manager - "MDIT_UNMARK"
+  source: INTERRUP.O:2031
+  interrupt: '60'
+  flags:
+  - u
+  function: DI0409
+  input_registers:
+  - reg: DI
+    operator: '='
+    value: 0409h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+    - STACK unchanged
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-60DI040A
+  category: b
+  title: HP 95LX System Manager - "MDIT_CUTMARK"
+  source: INTERRUP.O:2038
+  interrupt: '60'
+  flags:
+  - u
+  function: DI040A
+  input_registers:
+  - reg: DI
+    operator: '='
+    value: 040Ah
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+    - STACK unchanged
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-60DI040B
+  category: b
+  title: HP 95LX System Manager - "MDIT_INS_STR"
+  source: INTERRUP.O:2045
+  interrupt: '60'
+  flags:
+  - u
+  function: DI040B
+  input_registers:
+  - reg: DI
+    operator: '='
+    value: 040Bh
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+    - STACK unchanged
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: '15'
+    params:
+      AX: 4DD4h
+  - type: interrupt
+    interrupt: '61'
+    params: {}
+    name: HP 95LX
+  - type: interrupt
+    interrupt: '62'
+    params: {}
+    name: HP 95LX
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-60DI0500
+  category: b
+  title: HP 95LX System Manager - OPEN FILE
+  source: INTERRUP.O:2055
+  interrupt: '60'
+  flags:
+  - u
+  function: DI0500
+  input_registers:
+  - reg: DI
+    operator: '='
+    value: 0500h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AX
+      operator: '='
+      description: status
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: '60'
+    params:
+      DI: 0501h
+  - type: interrupt
+    interrupt: '60'
+    params:
+      DI: 0502h
+  - type: interrupt
+    interrupt: '60'
+    params:
+      DI: 0508h
+  index: []
+  tables:
+  - 03287
+  - 03288
+  table_refs: []
+- entry_type: INT
+  id: b-60DI0501
+  category: b
+  title: HP 95LX System Manager - OPEN FILE IN READ-ONLY MODE
+  source: INTERRUP.O:2086
+  interrupt: '60'
+  flags:
+  - u
+  function: DI0501
+  input_registers:
+  - reg: DI
+    operator: '='
+    value: 0501h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AX
+      operator: '='
+      description: status
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: '60'
+    params:
+      DI: 0500h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-60DI0502
+  category: b
+  title: HP 95LX System Manager - CREATE NEW FILE
+  source: INTERRUP.O:2098
+  interrupt: '60'
+  flags:
+  - u
+  function: DI0502
+  input_registers:
+  - reg: DI
+    operator: '='
+    value: 0502h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AX
+      operator: '='
+      description: status
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: '60'
+    params:
+      DI: 0500h
+  - type: interrupt
+    interrupt: '60'
+    params:
+      DI: 0503h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-60DI0503
+  category: b
+  title: HP 95LX System Manager - CREATE OR TRUNCATE FILE
+  source: INTERRUP.O:2110
+  interrupt: '60'
+  flags:
+  - u
+  function: DI0503
+  input_registers:
+  - reg: DI
+    operator: '='
+    value: 0503h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AX
+      operator: '='
+      description: status
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: '60'
+    params:
+      DI: 0502h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-60DI0504
+  category: b
+  title: HP 95LX System Manager - READ FROM FILE
+  source: INTERRUP.O:2122
+  interrupt: '60'
+  flags:
+  - u
+  function: DI0504
+  input_registers:
+  - reg: DI
+    operator: '='
+    value: 0504h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+    - STACK unchanged
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: '60'
+    params:
+      DI: 0505h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-60DI0505
+  category: b
+  title: HP 95LX System Manager - WRITE TO FILE
+  source: INTERRUP.O:2133
+  interrupt: '60'
+  flags: []
+  function: DI0505
+  input_registers:
+  - reg: DI
+    operator: '='
+    value: 0505h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AX
+      operator: '='
+      description: status
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: '60'
+    params:
+      DI: 0504h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-60DI0506
+  category: b
+  title: HP 95LX System Manager - SET FILE POSITION
+  source: INTERRUP.O:2143
+  interrupt: '60'
+  flags:
+  - u
+  function: DI0506
+  input_registers:
+  - reg: DI
+    operator: '='
+    value: 0506h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+    - STACK unchanged
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: '60'
+    params:
+      DI: 0507h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-60DI0507
+  category: b
+  title: HP 95LX System Manager - GET FILE POSITION
+  source: INTERRUP.O:2152
+  interrupt: '60'
+  flags:
+  - u
+  function: DI0507
+  input_registers:
+  - reg: DI
+    operator: '='
+    value: 0507h
+    description: '"M_TELL"'
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+    - STACK unchanged
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: '60'
+    params:
+      DI: 0506h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-60DI0508
+  category: b
+  title: HP 95LX System Manager - CLOSE FILE
+  source: INTERRUP.O:2161
+  interrupt: '60'
+  flags:
+  - u
+  function: DI0508
+  input_registers:
+  - reg: DI
+    operator: '='
+    value: 0508h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+    - STACK unchanged
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: '60'
+    params:
+      DI: 0500h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-60DI0509
+  category: b
+  title: HP 95LX System Manager - FILE SERVICE "M_SETPAT"
+  source: INTERRUP.O:2169
+  interrupt: '60'
+  flags:
+  - u
+  function: DI0509
+  input_registers:
+  - reg: DI
+    operator: '='
+    value: 0509h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+    - STACK unchanged
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-60DI050A
+  category: b
+  title: HP 95LX System Manager - FILE SERVICE "M_MATCH"
+  source: INTERRUP.O:2179
+  interrupt: '60'
+  flags:
+  - u
+  function: DI050A
+  input_registers:
+  - reg: DI
+    operator: '='
+    value: 050Ah
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+    - STACK unchanged
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables:
+  - 03289
+  table_refs: []
+- entry_type: INT
+  id: b-60DI050B
+  category: b
+  title: HP 95LX System Manager - IDENTIFY FILENAME REFERENT
+  source: INTERRUP.O:2194
+  interrupt: '60'
+  flags:
+  - u
+  function: DI050B
+  input_registers:
+  - reg: DI
+    operator: '='
+    value: 050Bh
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - '??? = result (see #03290)'
+    - ???
+    - STACK unchanged
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables:
+  - 03290
+  table_refs: []
+- entry_type: INT
+  id: b-60DI050C
+  category: b
+  title: HP 95LX System Manager - DELETE FILE
+  source: INTERRUP.O:2212
+  interrupt: '60'
+  flags:
+  - u
+  function: DI050C
+  input_registers:
+  - reg: DI
+    operator: '='
+    value: 050Ch
+    description: '"M_DELETE"'
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+    - STACK unchanged
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-60DI050D
+  category: b
+  title: HP 95LX System Manager - RENAME FILE
+  source: INTERRUP.O:2221
+  interrupt: '60'
+  flags:
+  - u
+  function: DI050D
+  input_registers:
+  - reg: DI
+    operator: '='
+    value: 050Dh
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+    - STACK unchanged
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-60DI050E
+  category: b
+  title: HP 95LX System Manager - FILE SERVICE "M_GETDIR"
+  source: INTERRUP.O:2233
+  interrupt: '60'
+  flags:
+  - u
+  function: DI050E
+  input_registers:
+  - reg: DI
+    operator: '='
+    value: 050Eh
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+    - STACK unchanged
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-60DI050F
+  category: b
+  title: HP 95LX System Manager - FILE SERVICE "M_SETDIR"
+  source: INTERRUP.O:2242
+  interrupt: '60'
+  flags:
+  - u
+  function: DI050F
+  input_registers:
+  - reg: DI
+    operator: '='
+    value: 050Fh
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+    - STACK unchanged
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-60DI0510
+  category: b
+  title: HP 95LX System Manager - FILE SERVICE "M_VOLUME"
+  source: INTERRUP.O:2250
+  interrupt: '60'
+  flags:
+  - u
+  function: DI0510
+  input_registers:
+  - reg: DI
+    operator: '='
+    value: 0510h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+    - STACK unchanged
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-60DI0511
+  category: b
+  title: HP 95LX System Manager - MAKE A SUBDIRECTORY
+  source: INTERRUP.O:2258
+  interrupt: '60'
+  flags:
+  - u
+  function: DI0511
+  input_registers:
+  - reg: DI
+    operator: '='
+    value: 0511h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+    - STACK unchanged
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: '21'
+    params:
+      AH: 39h
+  - type: interrupt
+    interrupt: '60'
+    params:
+      DI: 0512h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-60DI0512
+  category: b
+  title: HP 95LX System Manager - REMOVE A SUBDIRECTORY
+  source: INTERRUP.O:2268
+  interrupt: '60'
+  flags:
+  - u
+  function: DI0512
+  input_registers:
+  - reg: DI
+    operator: '='
+    value: 0512h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+    - STACK unchanged
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: '21'
+    params:
+      AH: 3Ah
+  - type: interrupt
+    interrupt: '60'
+    params:
+      DI: 0511h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-60DI0513
+  category: b
+  title: HP 95LX System Manager - GET DEFAULT DRIVE
+  source: INTERRUP.O:2278
+  interrupt: '60'
+  flags:
+  - u
+  function: DI0513
+  input_registers:
+  - reg: DI
+    operator: '='
+    value: 0513h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+    - STACK unchanged
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: '21'
+    params:
+      AH: 19h
+  - type: interrupt
+    interrupt: '60'
+    params:
+      DI: 0514h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-60DI0514
+  category: b
+  title: HP 95LX System Manager - SET DEFAULT DRIVE
+  source: INTERRUP.O:2286
+  interrupt: '60'
+  flags:
+  - u
+  function: DI0514
+  input_registers:
+  - reg: DI
+    operator: '='
+    value: 0514h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+    - STACK unchanged
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: '21'
+    params:
+      AH: 0Eh
+    name: DOS 1+
+  - type: interrupt
+    interrupt: '60'
+    params:
+      DI: 0513h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-60DI0515
+  category: b
+  title: HP 95LX System Manager - FILE SERVICE "M_FDATE"
+  source: INTERRUP.O:2294
+  interrupt: '60'
+  flags:
+  - u
+  function: DI0515
+  input_registers:
+  - reg: DI
+    operator: '='
+    value: 0515h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+    - STACK unchanged
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-60DI0516
+  category: b
+  title: HP 95LX System Manager - FILE SERVICE "M_GET_SYSDIR"
+  source: INTERRUP.O:2302
+  interrupt: '60'
+  flags:
+  - u
+  function: DI0516
+  input_registers:
+  - reg: DI
+    operator: '='
+    value: 0516h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+    - STACK unchanged
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-60DI0517
+  category: b
+  title: HP 95LX System Manager - GET FILE ATTRIBUTES
+  source: INTERRUP.O:2309
+  interrupt: '60'
+  flags:
+  - u
+  function: DI0517
+  input_registers:
+  - reg: DI
+    operator: '='
+    value: 0517h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+    - STACK unchanged
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: '21'
+    params:
+      AX: 4300h
+  - type: interrupt
+    interrupt: '60'
+    params:
+      DI: 0518h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-60DI0518
+  category: b
+  title: HP 95LX System Manager - SET FILE ATTRIBUTES
+  source: INTERRUP.O:2320
+  interrupt: '60'
+  flags:
+  - u
+  function: DI0518
+  input_registers:
+  - reg: DI
+    operator: '='
+    value: 0518h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+    - STACK unchanged
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: '21'
+    params:
+      AX: 4301h
+  - type: interrupt
+    interrupt: '60'
+    params:
+      DI: 0517h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-60DI0519
+  category: b
+  title: HP 95LX System Manager - FILE SERVICE "M_COMMON_OPEN"
+  source: INTERRUP.O:2331
+  interrupt: '60'
+  flags:
+  - u
+  function: DI0519
+  input_registers:
+  - reg: DI
+    operator: '='
+    value: 0519h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+    - STACK unchanged
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-60DI051A
+  category: b
+  title: HP 95LX System Manager - FILE SERVICE "M_COPYDT"
+  source: INTERRUP.O:2344
+  interrupt: '60'
+  flags:
+  - u
+  function: DI051A
+  input_registers:
+  - reg: DI
+    operator: '='
+    value: 051Ah
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+    - STACK unchanged
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-60DI051B
+  category: b
+  title: HP 95LX System Manager - FILE SERVICE "M_GETFDT"
+  source: INTERRUP.O:2352
+  interrupt: '60'
+  flags:
+  - u
+  function: DI051B
+  input_registers:
+  - reg: DI
+    operator: '='
+    value: 051Bh
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+    - STACK unchanged
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-60DI051C
+  category: b
+  title: HP 95LX System Manager - FILE SERVICE "M_PUTFDT"
+  source: INTERRUP.O:2360
+  interrupt: '60'
+  flags:
+  - u
+  function: DI051C
+  input_registers:
+  - reg: DI
+    operator: '='
+    value: 051Ch
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+    - STACK unchanged
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-60DI0600
+  category: b
+  title: HP 95LX System Manager - PROCESS INITIALIZING
+  source: INTERRUP.O:2368
+  interrupt: '60'
+  flags:
+  - u
+  function: DI0600
+  input_registers:
+  - reg: DI
+    operator: '='
+    value: 0600h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+    - STACK unchanged
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: '15'
+    params:
+      AX: 4DD4h
+  - type: interrupt
+    interrupt: '60'
+    params:
+      DI: 0601h
+  - type: interrupt
+    interrupt: '61'
+    params: {}
+    name: HP 95LX
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-60DI0601
+  category: b
+  title: HP 95LX System Manager - PROCESS TERMINATION
+  source: INTERRUP.O:2375
+  interrupt: '60'
+  flags:
+  - u
+  function: DI0601
+  input_registers:
+  - reg: DI
+    operator: '='
+    value: 0601h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - never
+    - STACK unchanged
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: '21'
+    params:
+      AH: 4Ch
+  - type: interrupt
+    interrupt: 2F
+    params:
+      AX: 1122h
+  - type: interrupt
+    interrupt: '60'
+    params:
+      DI: 0600h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-60DI0602
+  category: b
+  title: HP 95LX System Manager - "M_LOCK" - PREVENT TASK SWITCHES
+  source: INTERRUP.O:2382
+  interrupt: '60'
+  flags:
+  - u
+  function: DI0602
+  input_registers:
+  - reg: DI
+    operator: '='
+    value: 0602h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+    - STACK unchanged
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: '15'
+    params:
+      AX: 101Bh
+  - type: interrupt
+    interrupt: 2F
+    params:
+      AX: 1681h
+  - type: interrupt
+    interrupt: '60'
+    params:
+      DI: 0603h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-60DI0603
+  category: b
+  title: HP 95LX System Manager - "M_UNLOCK" - ALLOW TASK SWITCHES
+  source: INTERRUP.O:2389
+  interrupt: '60'
+  flags:
+  - u
+  function: DI0603
+  input_registers:
+  - reg: DI
+    operator: '='
+    value: 0603h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+    - STACK unchanged
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: '15'
+    params:
+      AX: 101Ch
+  - type: interrupt
+    interrupt: 2F
+    params:
+      AX: 1682h
+  - type: interrupt
+    interrupt: '60'
+    params:
+      DI: 0602h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-60DI0604
+  category: b
+  title: HP 95LX System Manager - "M_SPAWN"
+  source: INTERRUP.O:2396
+  interrupt: '60'
+  flags:
+  - u
+  function: DI0604
+  input_registers:
+  - reg: DI
+    operator: '='
+    value: 0604h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+    - STACK unchanged
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: '21'
+    params:
+      AH: 4Bh
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-60DI0605
+  category: b
+  title: HP 95LX System Manager - "M_APPCOUNT"
+  source: INTERRUP.O:2407
+  interrupt: '60'
+  flags:
+  - u
+  function: DI0605
+  input_registers:
+  - reg: DI
+    operator: '='
+    value: 0605h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+    - STACK unchanged
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-60DI0606
+  category: b
+  title: HP 95LX System Manager - "M_REBOOT"
+  source: INTERRUP.O:2413
+  interrupt: '60'
+  flags:
+  - u
+  function: DI0606
+  input_registers:
+  - reg: DI
+    operator: '='
+    value: 0606h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+    - STACK unchanged
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: '14'
+    params:
+      AH: 17h
+    name: FOSSIL
+  - type: interrupt
+    interrupt: '19'
+    params: {}
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-60DI0607
+  category: b
+  title: HP 95LX System Manager - "M_SPAWNARG"
+  source: INTERRUP.O:2420
+  interrupt: '60'
+  flags:
+  - u
+  function: DI0607
+  input_registers:
+  - reg: DI
+    operator: '='
+    value: 0607h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+    - STACK unchanged
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-60DI0608
+  category: b
+  title: HP 95LX System Manager - "M_REG_APP_NAME"
+  source: INTERRUP.O:2430
+  interrupt: '60'
+  flags:
+  - u
+  function: DI0608
+  input_registers:
+  - reg: DI
+    operator: '='
+    value: 0608h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+    - STACK unchanged
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-60DI0609
+  category: b
+  title: HP 95LX System Manager - "M_APP_NAME"
+  source: INTERRUP.O:2437
+  interrupt: '60'
+  flags:
+  - u
+  function: DI0609
+  input_registers:
+  - reg: DI
+    operator: '='
+    value: 0609h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: DX:AX
+      operator: ->
+      description: ???
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: '15'
+    params:
+      AX: 4DD4h
+  - type: interrupt
+    interrupt: '61'
+    params: {}
+    name: HP 95LX
+  - type: interrupt
+    interrupt: '62'
+    params: {}
+    name: HP 95LX
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-60DI0700
+  category: b
+  title: HP 95LX System Manager - OPEN CLIPBOARD
+  source: INTERRUP.O:2445
+  interrupt: '60'
+  flags:
+  - u
+  function: DI0700
+  input_registers:
+  - reg: DI
+    operator: '='
+    value: 0700h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - '??? = error code (see #03291)'
+    - ???
+    - STACK unchanged
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: '60'
+    params:
+      DI: 0701h
+  - type: interrupt
+    interrupt: '60'
+    params:
+      DI: 0702h
+  index: []
+  tables:
+  - 03291
+  table_refs: []
+- entry_type: INT
+  id: b-60DI0701
+  category: b
+  title: HP 95LX System Manager - CLOSE CLIPBOARD
+  source: INTERRUP.O:2465
+  interrupt: '60'
+  flags:
+  - u
+  function: DI0701
+  input_registers:
+  - reg: DI
+    operator: '='
+    value: 0701h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+    - STACK unchanged
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: '60'
+    params:
+      DI: 0700h
+  - type: interrupt
+    interrupt: '60'
+    params:
+      DI: 0702h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-60DI0702
+  category: b
+  title: HP 95LX System Manager - RESET CLIPBOARD
+  source: INTERRUP.O:2472
+  interrupt: '60'
+  flags:
+  - u
+  function: DI0702
+  input_registers:
+  - reg: DI
+    operator: '='
+    value: 0702h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+    - STACK unchanged
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: '60'
+    params:
+      DI: 0700h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-60DI0704
+  category: b
+  title: HP 95LX System Manager - "M_NEW_REP" - START A NEW REPRESENTATION???
+  source: INTERRUP.O:2480
+  interrupt: '60'
+  flags:
+  - u
+  function: DI0704
+  input_registers:
+  - reg: DI
+    operator: '='
+    value: 0704h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+    - STACK unchanged
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: '60'
+    params:
+      DI: 0705h
+  - type: interrupt
+    interrupt: '60'
+    params:
+      DI: 0706h
+  - type: interrupt
+    interrupt: '60'
+    params:
+      DI: 0707h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-60DI0705
+  category: b
+  title: HP 95LX System Manager - CLIPBOARD SERVICE "M_FINI_REP"
+  source: INTERRUP.O:2488
+  interrupt: '60'
+  flags:
+  - u
+  function: DI0705
+  input_registers:
+  - reg: DI
+    operator: '='
+    value: 0705h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+    - STACK unchanged
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: '60'
+    params:
+      DI: 0704h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-60DI0706
+  category: b
+  title: HP 95LX System Manager - CLIPBOARD SERVICE "M_REP_NAME"
+  source: INTERRUP.O:2495
+  interrupt: '60'
+  flags:
+  - u
+  function: DI0706
+  input_registers:
+  - reg: DI
+    operator: '='
+    value: 0706h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+    - STACK unchanged
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: '60'
+    params:
+      DI: 0704h
+  - type: interrupt
+    interrupt: '60'
+    params:
+      DI: 0707h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-60DI0707
+  category: b
+  title: HP 95LX System Manager - CLIPBOARD SERVICE "M_REP_INDEX"
+  source: INTERRUP.O:2505
+  interrupt: '60'
+  flags:
+  - u
+  function: DI0707
+  input_registers:
+  - reg: DI
+    operator: '='
+    value: 0707h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+    - STACK unchanged
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: '60'
+    params:
+      DI: 0704h
+  - type: interrupt
+    interrupt: '60'
+    params:
+      DI: 0706h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-60DI0708
+  category: b
+  title: HP 95LX System Manager - WRITE TO CLIPBOARD
+  source: INTERRUP.O:2515
+  interrupt: '60'
+  flags:
+  - u
+  function: DI0708
+  input_registers:
+  - reg: DI
+    operator: '='
+    value: 0708h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+    - STACK unchanged
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: '60'
+    params:
+      DI: 0709h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-60DI0709
+  category: b
+  title: HP 95LX System Manager - READ FROM CLIPBOARD
+  source: INTERRUP.O:2524
+  interrupt: '60'
+  flags:
+  - u
+  function: DI0709
+  input_registers:
+  - reg: DI
+    operator: '='
+    value: 0709h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+    - STACK unchanged
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: '60'
+    params:
+      DI: 0708h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-60DI0800
+  category: b
+  title: HP 95LX System Manager - BEEP
+  source: INTERRUP.O:2535
+  interrupt: '60'
+  flags:
+  - u
+  function: DI0800
+  input_registers:
+  - reg: DI
+    operator: '='
+    value: 0800h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+    - STACK unchanged
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: '60'
+    params:
+      DI: 0801h
+  - type: interrupt
+    interrupt: '60'
+    params:
+      DI: 0802h
+  - type: interrupt
+    interrupt: '60'
+    params:
+      DI: 0803h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-60DI0801
+  category: b
+  title: HP 95LX System Manager - SOUND SERVICE "M_THUD"
+  source: INTERRUP.O:2542
+  interrupt: '60'
+  flags:
+  - u
+  function: DI0801
+  input_registers:
+  - reg: DI
+    operator: '='
+    value: 0801h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+    - STACK unchanged
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: '60'
+    params:
+      DI: 0800h
+  - type: interrupt
+    interrupt: '60'
+    params:
+      DI: 0802h
+  - type: interrupt
+    interrupt: '60'
+    params:
+      DI: 0803h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-60DI0802
+  category: b
+  title: HP 95LX System Manager - MAKE A SOUND PATTERN
+  source: INTERRUP.O:2549
+  interrupt: '60'
+  flags:
+  - u
+  function: DI0802
+  input_registers:
+  - reg: DI
+    operator: '='
+    value: 0802h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+    - STACK unchanged
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: '60'
+    params:
+      DI: 0800h
+  - type: interrupt
+    interrupt: '60'
+    params:
+      DI: 0801h
+  - type: interrupt
+    interrupt: '60'
+    params:
+      DI: 0803h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-60DI0803
+  category: b
+  title: HP 95LX System Manager - TURN OFF SOUND
+  source: INTERRUP.O:2557
+  interrupt: '60'
+  flags:
+  - u
+  function: DI0803
+  input_registers:
+  - reg: DI
+    operator: '='
+    value: 0803h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+    - STACK unchanged
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: '60'
+    params:
+      DI: 0800h
+  - type: interrupt
+    interrupt: '60'
+    params:
+      DI: 0801h
+  - type: interrupt
+    interrupt: '60'
+    params:
+      DI: 0802h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-60DI0900
+  category: b
+  title: HP 95LX System Manager - ALLOCATE REGULAR MEMORY BLOCK
+  source: INTERRUP.O:2564
+  interrupt: '60'
+  flags: []
+  function: DI0900
+  input_registers:
+  - reg: DI
+    operator: '='
+    value: 0900h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AX
+      operator: ->
+      description: memory block
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes:
+  - 'System Manager-compliant applications are always small-model (64K code,
+
+    64K data)'
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: '15'
+    params:
+      AX: 4DD4h
+  - type: interrupt
+    interrupt: '60'
+    params:
+      DI: 0902h
+  - type: interrupt
+    interrupt: '60'
+    params:
+      DI: 0903h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-60DI0902
+  category: b
+  title: HP 95LX System Manager - FREE REGULAR MEMORY BLOCK
+  source: INTERRUP.O:2574
+  interrupt: '60'
+  flags:
+  - u
+  function: DI0902
+  input_registers:
+  - reg: DI
+    operator: '='
+    value: 0902h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+    - STACK unchanged
+  notes:
+  - 'System Manager-compliant applications are always small-model (64K code,
+
+    64K data)'
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: '60'
+    params:
+      DI: 0900h
+  - type: interrupt
+    interrupt: '60'
+    params:
+      DI: 0904h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-60DI0903
+  category: b
+  title: HP 95LX System Manager - ALLOCATE LARGE MEMORY BLOCK
+  source: INTERRUP.O:2584
+  interrupt: '60'
+  flags:
+  - u
+  function: DI0903
+  input_registers:
+  - reg: DI
+    operator: '='
+    value: 0903h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AX
+      operator: ->
+      description: memory block???
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: '60'
+    params:
+      DI: 0900h
+  - type: interrupt
+    interrupt: '60'
+    params:
+      DI: 0904h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-60DI0904
+  category: b
+  title: HP 95LX System Manager - FREE LARGE MEMORY BLOCK
+  source: INTERRUP.O:2592
+  interrupt: '60'
+  flags:
+  - u
+  function: DI0904
+  input_registers:
+  - reg: DI
+    operator: '='
+    value: 0904h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AX
+      operator: ->
+      description: ???
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: '60'
+    params:
+      DI: 0902h
+  - type: interrupt
+    interrupt: '60'
+    params:
+      DI: 0903h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-60DI0B00
+  category: b
+  title: HP 95LX System Manager - CLOCK/CALENDAR SERVICE "M_DTINFO"
+  source: INTERRUP.O:2600
+  interrupt: '60'
+  flags:
+  - u
+  function: DI0B00
+  input_registers:
+  - reg: DI
+    operator: '='
+    value: 0B00h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+    - STACK unchanged
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-60DI0B01
+  category: b
+  title: HP 95LX System Manager - CLOCK/CALENDAR SERVICE "M_GETDTM"
+  source: INTERRUP.O:2607
+  interrupt: '60'
+  flags:
+  - u
+  function: DI0B01
+  input_registers:
+  - reg: DI
+    operator: '='
+    value: 0B01h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+    - STACK unchanged
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-60DI0B02
+  category: b
+  title: HP 95LX System Manager - CLOCK/CALENDAR SERVICE "M_SETDTM"
+  source: INTERRUP.O:2614
+  interrupt: '60'
+  flags:
+  - u
+  function: DI0B02
+  input_registers:
+  - reg: DI
+    operator: '='
+    value: 0B02h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+    - STACK unchanged
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-60DI0B03
+  category: b
+  title: HP 95LX System Manager - CLOCK/CALENDAR SERVICE "M_XALARM"
+  source: INTERRUP.O:2621
+  interrupt: '60'
+  flags:
+  - u
+  function: DI0B03
+  input_registers:
+  - reg: DI
+    operator: '='
+    value: 0B03h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+    - STACK unchanged
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-60DI0B04
+  category: b
+  title: HP 95LX System Manager - CLOCK/CALENDAR SERVICE "M_ALARM"
+  source: INTERRUP.O:2628
+  interrupt: '60'
+  flags:
+  - u
+  function: DI0B04
+  input_registers:
+  - reg: DI
+    operator: '='
+    value: 0B04h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+    - STACK unchanged
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables:
+  - 03292
+  table_refs: []
+- entry_type: INT
+  id: b-60DI0B05
+  category: b
+  title: HP 95LX System Manager - CLOCK/CALENDAR SERVICE "M_START_SW"
+  source: INTERRUP.O:2650
+  interrupt: '60'
+  flags:
+  - u
+  function: DI0B05
+  input_registers:
+  - reg: DI
+    operator: '='
+    value: 0B05h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+    - STACK unchanged
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-60DI0B06
+  category: b
+  title: HP 95LX System Manager - CLOCK/CALENDAR SERVICE "M_GET_SW"
+  source: INTERRUP.O:2657
+  interrupt: '60'
+  flags:
+  - u
+  function: DI0B06
+  input_registers:
+  - reg: DI
+    operator: '='
+    value: 0B06h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+    - STACK unchanged
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-60DI0B07
+  category: b
+  title: HP 95LX System Manager - CLOCK/CALENDAR SERVICE "M_STOP_SW"
+  source: INTERRUP.O:2666
+  interrupt: '60'
+  flags:
+  - u
+  function: DI0B07
+  input_registers:
+  - reg: DI
+    operator: '='
+    value: 0B07h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+    - STACK unchanged
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-60DI0B08
+  category: b
+  title: HP 95LX System Manager - "M_TELLTIME" - DISPLAY TIMESTAMP
+  source: INTERRUP.O:2673
+  interrupt: '60'
+  flags:
+  - u
+  function: DI0B08
+  input_registers:
+  - reg: DI
+    operator: '='
+    value: 0B08h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+    - STACK unchanged
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables:
+  - 03293
+  table_refs: []
+- entry_type: INT
+  id: b-60DI0B09
+  category: b
+  title: HP 95LX System Manager - CLOCK/CALENDAR SERVICE "M_GET_SETTINGS"
+  source: INTERRUP.O:2694
+  interrupt: '60'
+  flags:
+  - u
+  function: DI0B09
+  input_registers:
+  - reg: DI
+    operator: '='
+    value: 0B09h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+    - STACK unchanged
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: '60'
+    params:
+      DI: 0B0Ah
+  - type: interrupt
+    interrupt: '60'
+    params:
+      DI: 0B0Fh
+  index: []
+  tables:
+  - 03294
+  - 03295
+  - 03296
+  - 03297
+  - 03298
+  table_refs: []
+- entry_type: INT
+  id: b-60DI0B0A
+  category: b
+  title: HP 95LX System Manager - CLOCK/CALENDAR SERVICE "M_SET_SETTINGS"
+  source: INTERRUP.O:2799
+  interrupt: '60'
+  flags:
+  - u
+  function: DI0B0A
+  input_registers:
+  - reg: DI
+    operator: '='
+    value: 0B0Ah
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+    - STACK unchanged
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: '60'
+    params:
+      DI: 0B09h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-60DI0B0B
+  category: b
+  title: HP 95LX System Manager - CLOCK/CALENDAR SERVICE "M_START_TIMER"
+  source: INTERRUP.O:2808
+  interrupt: '60'
+  flags:
+  - u
+  function: DI0B0B
+  input_registers:
+  - reg: DI
+    operator: '='
+    value: 0B0Bh
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+    - STACK unchanged
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: '60'
+    params:
+      DI: 0B0Ch
+  - type: interrupt
+    interrupt: '60'
+    params:
+      DI: 0B0Dh
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-60DI0B0C
+  category: b
+  title: HP 95LX System Manager - CLOCK/CALENDAR SERVICE "M_STOP_TIMER"
+  source: INTERRUP.O:2816
+  interrupt: '60'
+  flags:
+  - u
+  function: DI0B0C
+  input_registers:
+  - reg: DI
+    operator: '='
+    value: 0B0Ch
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+    - STACK unchanged
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: '60'
+    params:
+      DI: 0B0Bh
+  - type: interrupt
+    interrupt: '60'
+    params:
+      DI: 0B0Dh
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-60DI0B0D
+  category: b
+  title: HP 95LX System Manager - CLOCK/CALENDAR SERVICE "M_GET_TIMER"
+  source: INTERRUP.O:2824
+  interrupt: '60'
+  flags:
+  - u
+  function: DI0B0D
+  input_registers:
+  - reg: DI
+    operator: '='
+    value: 0B0Dh
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+    - STACK unchanged
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: '60'
+    params:
+      DI: 0B0Bh
+  - type: interrupt
+    interrupt: '60'
+    params:
+      DI: 0B0Ch
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-60DI0B0E
+  category: b
+  title: HP 95LX System Manager - CLOCK/CALENDAR SERVICE "M_TELL_ANYTIME"
+  source: INTERRUP.O:2834
+  interrupt: '60'
+  flags:
+  - u
+  function: DI0B0E
+  input_registers:
+  - reg: DI
+    operator: '='
+    value: 0B0Eh
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: DX:AX
+      operator: ->
+      description: ???
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-60DI0B0F
+  category: b
+  title: HP 95LX System Manager - CLOCK/CALENDAR SERVCE "M_GET_SETTINGS_ADDR"
+  source: INTERRUP.O:2845
+  interrupt: '60'
+  flags:
+  - u
+  function: DI0B0F
+  input_registers:
+  - reg: DI
+    operator: '='
+    value: 0B0Fh
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: DX:AX
+      operator: ->
+      description: 'system settings record (see #03294)'
+      table_refs:
+      - 03294
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: '60'
+    params:
+      DI: 0B09h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-60DI0B10
+  category: b
+  title: HP 95LX System Manager - PARSE DATE SPECIFICATION
+  source: INTERRUP.O:2852
+  interrupt: '60'
+  flags:
+  - u
+  function: DI0B10
+  input_registers:
+  - reg: DI
+    operator: '='
+    value: 0B10h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+    - STACK unchanged
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-60DI0B11
+  category: b
+  title: HP 95LX System Manager - PARSE TIME SPECIFICATION
+  source: INTERRUP.O:2861
+  interrupt: '60'
+  flags:
+  - u
+  function: DI0B11
+  input_registers:
+  - reg: DI
+    operator: '='
+    value: 0B11h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+    - STACK unchanged
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-60DI0B12
+  category: b
+  title: HP 95LX System Manager - SET DATE PARSING RULE
+  source: INTERRUP.O:2870
+  interrupt: '60'
+  flags:
+  - u
+  function: DI0B12
+  input_registers:
+  - reg: DI
+    operator: '='
+    value: 0B12h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+    - STACK unchanged
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: '60'
+    params:
+      DI: 0B13h
+  index: []
+  tables:
+  - 03299
+  table_refs: []
+- entry_type: INT
+  id: b-60DI0B13
+  category: b
+  title: HP 95LX System Manager - SET TIME PARSING RULE
+  source: INTERRUP.O:2887
+  interrupt: '60'
+  flags:
+  - u
+  function: DI0B13
+  input_registers:
+  - reg: DI
+    operator: '='
+    value: 0B13h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+    - STACK unchanged
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: '60'
+    params:
+      DI: 0B12h
+  index: []
+  tables:
+  - '03300'
+  table_refs: []
+- entry_type: INT
+  id: b-60DI0B14
+  category: b
+  title: HP 95LX System Manager - CLOCK/CALENDAR SERVICE "M_POST_TIME"
+  source: INTERRUP.O:2905
+  interrupt: '60'
+  flags:
+  - u
+  function: DI0B14
+  input_registers:
+  - reg: DI
+    operator: '='
+    value: 0B14h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+    - STACK unchanged
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-60DI0B15
+  category: b
+  title: HP 95LX System Manager - CLOCK/CALENDAR SERVICE "M_DAY_TRIGGER"
+  source: INTERRUP.O:2911
+  interrupt: '60'
+  flags:
+  - u
+  function: DI0B15
+  input_registers:
+  - reg: DI
+    operator: '='
+    value: 0B15h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+    - STACK unchanged
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: '15'
+    params:
+      AX: 4DD4h
+  - type: interrupt
+    interrupt: '61'
+    params: {}
+    name: HP 95LX
+  - type: interrupt
+    interrupt: '62'
+    params: {}
+    name: HP 95LX
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-60DI0C00
+  category: b
+  title: HP 95LX System Manager - OPEN PRINTER
+  source: INTERRUP.O:2919
+  interrupt: '60'
+  flags:
+  - u
+  function: DI0C00
+  input_registers:
+  - reg: DI
+    operator: '='
+    value: 0C00h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+    - STACK unchanged
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: '60'
+    params:
+      DI: 0C01h
+  - type: interrupt
+    interrupt: '60'
+    params:
+      DI: 0C02h
+  - type: interrupt
+    interrupt: '60'
+    params:
+      DI: 0C03h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-60DI0C01
+  category: b
+  title: HP 95LX System Manager - CLOSE PRINTER
+  source: INTERRUP.O:2926
+  interrupt: '60'
+  flags:
+  - u
+  function: DI0C01
+  input_registers:
+  - reg: DI
+    operator: '='
+    value: 0C01h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+    - STACK unchanged
+  notes:
+  - relinquishes control of printer
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: '60'
+    params:
+      DI: 0C00h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-60DI0C02
+  category: b
+  title: HP 95LX System Manager - WRITE TO PRINTER
+  source: INTERRUP.O:2934
+  interrupt: '60'
+  flags:
+  - u
+  function: DI0C02
+  input_registers:
+  - reg: DI
+    operator: '='
+    value: 0C02h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+    - STACK unchanged
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: '60'
+    params:
+      DI: 0C00h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-60DI0C03
+  category: b
+  title: HP 95LX System Manager - INITIALIZE PRINTER
+  source: INTERRUP.O:2943
+  interrupt: '60'
+  flags:
+  - u
+  function: DI0C03
+  input_registers:
+  - reg: DI
+    operator: '='
+    value: 0C03h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+    - STACK unchanged
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: '60'
+    params:
+      DI: 0C00h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-60DI0C04
+  category: b
+  title: HP 95LX System Manager - "M_TRANS_PRINTER"
+  source: INTERRUP.O:2950
+  interrupt: '60'
+  flags:
+  - u
+  function: DI0C04
+  input_registers:
+  - reg: DI
+    operator: '='
+    value: 0C04h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+    - STACK unchanged
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-60DI0C05
+  category: b
+  title: HP 95LX System Manager - "M_FALL_PRINTER"
+  source: INTERRUP.O:2958
+  interrupt: '60'
+  flags:
+  - u
+  function: DI0C05
+  input_registers:
+  - reg: DI
+    operator: '='
+    value: 0C05h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+    - STACK unchanged
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: '15'
+    params:
+      AX: 4DD4h
+  - type: interrupt
+    interrupt: '61'
+    params: {}
+    name: HP 95LX
+  - type: interrupt
+    interrupt: '62'
+    params: {}
+    name: HP 95LX
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-60DI0E00
+  category: b
+  title: HP 95LX System Manager - COMMUNICATIONS SERVICE "M_COMM_INIT"
+  source: INTERRUP.O:2967
+  interrupt: '60'
+  flags:
+  - u
+  function: DI0E00
+  input_registers:
+  - reg: DI
+    operator: '='
+    value: 0E00h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+    - STACK unchanged
+  notes: []
+  bugs: []
+  see_also:
+  - type: table
+    id: '03301'
+  - type: interrupt
+    interrupt: '60'
+    params:
+      DI: 0E01h
+  - type: interrupt
+    interrupt: '60'
+    params:
+      DI: 0E02h
+  index: []
+  tables:
+  - '03301'
+  table_refs:
+  - '03301'
+- entry_type: INT
+  id: b-60DI0E01
+  category: b
+  title: HP 95LX System Manager - OPEN COMMUNICATIONS CHANNEL
+  source: INTERRUP.O:2994
+  interrupt: '60'
+  flags:
+  - u
+  function: DI0E01
+  input_registers:
+  - reg: DI
+    operator: '='
+    value: 0E01h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+    - STACK unchanged
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: '60'
+    params:
+      DI: 0E00h
+  - type: interrupt
+    interrupt: '60'
+    params:
+      DI: 0E02h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-60DI0E02
+  category: b
+  title: HP 95LX System Manager - CLOSE COMMUNICATIONS CHANNEL
+  source: INTERRUP.O:3003
+  interrupt: '60'
+  flags:
+  - u
+  function: DI0E02
+  input_registers:
+  - reg: DI
+    operator: '='
+    value: 0E02h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+    - STACK unchanged
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: '60'
+    params:
+      DI: 0E00h
+  - type: interrupt
+    interrupt: '60'
+    params:
+      DI: 0E01h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-60DI0E03
+  category: b
+  title: HP 95LX System Manager - "M_COMM_GETMDM"
+  source: INTERRUP.O:3011
+  interrupt: '60'
+  flags:
+  - u
+  function: DI0E03
+  input_registers:
+  - reg: DI
+    operator: '='
+    value: 0E03h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+    - STACK unchanged
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-60DI0E04
+  category: b
+  title: HP 95LX System Manager - "M_COMM_ANSWER"
+  source: INTERRUP.O:3018
+  interrupt: '60'
+  flags:
+  - u
+  function: DI0E04
+  input_registers:
+  - reg: DI
+    operator: '='
+    value: 0E04h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+    - STACK unchanged
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-60DI0E05
+  category: b
+  title: HP 95LX System Manager - "M_COMM_DIAL"
+  source: INTERRUP.O:3026
+  interrupt: '60'
+  flags:
+  - u
+  function: DI0E05
+  input_registers:
+  - reg: DI
+    operator: '='
+    value: 0E05h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+    - STACK unchanged
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-60DI0E06
+  category: b
+  title: HP 95LX System Manager - RESET COMMUNICATIONS CHANNEL
+  source: INTERRUP.O:3034
+  interrupt: '60'
+  flags:
+  - u
+  function: DI0E06
+  input_registers:
+  - reg: DI
+    operator: '='
+    value: 0E06h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+    - STACK unchanged
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables:
+  - '03302'
+  table_refs: []
+- entry_type: INT
+  id: b-60DI0E07
+  category: b
+  title: HP 95LX System Manager - "M_COMM_HANGUP"
+  source: INTERRUP.O:3051
+  interrupt: '60'
+  flags:
+  - u
+  function: DI0E07
+  input_registers:
+  - reg: DI
+    operator: '='
+    value: 0E07h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+    - STACK unchanged
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-60DI0E08
+  category: b
+  title: HP 95LX System Manager - SEND DATA OVER COMM CHANNEL
+  source: INTERRUP.O:3058
+  interrupt: '60'
+  flags:
+  - u
+  function: DI0E08
+  input_registers:
+  - reg: DI
+    operator: '='
+    value: 0E08h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - length WORD updated to contain number of bytes actually sent???
+    - STACK unchanged
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: '60'
+    params:
+      DI: 0E09h
+  - type: interrupt
+    interrupt: '60'
+    params:
+      DI: 0E0Bh
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-60DI0E09
+  category: b
+  title: HP 95LX System Manager - QUERY COMM CHANNEL TRANSMIT QUEUE
+  source: INTERRUP.O:3071
+  interrupt: '60'
+  flags:
+  - u
+  function: DI0E09
+  input_registers:
+  - reg: DI
+    operator: '='
+    value: 0E09h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+    - STACK unchanged
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: '60'
+    params:
+      DI: 0E0Ah
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-60DI0E0A
+  category: b
+  title: HP 95LX System Manager - QUERY COMM CHANNEL RECEIVE QUEUE
+  source: INTERRUP.O:3081
+  interrupt: '60'
+  flags:
+  - u
+  function: DI0E0A
+  input_registers:
+  - reg: DI
+    operator: '='
+    value: 0E0Ah
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+    - STACK unchanged
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: '60'
+    params:
+      DI: 0E09h
+  - type: interrupt
+    interrupt: '60'
+    params:
+      DI: 0E0Bh
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-60DI0E0B
+  category: b
+  title: HP 95LX System Manager - RECEIVE DATA FROM COMM CHANNEL
+  source: INTERRUP.O:3091
+  interrupt: '60'
+  flags:
+  - u
+  function: DI0E0B
+  input_registers:
+  - reg: DI
+    operator: '='
+    value: 0E0Bh
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+    - STACK unchanged
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: '60'
+    params:
+      DI: 0E08h
+  - type: interrupt
+    interrupt: '60'
+    params:
+      DI: 0E0Ah
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-60DI0E0C
+  category: b
+  title: HP 95LX System Manager - "M_COMM_HAZCMD"
+  source: INTERRUP.O:3102
+  interrupt: '60'
+  flags:
+  - u
+  function: DI0E0C
+  input_registers:
+  - reg: DI
+    operator: '='
+    value: 0E0Ch
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+    - STACK unchanged
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-60DI0E0D
+  category: b
+  title: HP 95LX System Manager - "M_COMM_COMAND"
+  source: INTERRUP.O:3111
+  interrupt: '60'
+  flags:
+  - u
+  function: DI0E0D
+  input_registers:
+  - reg: DI
+    operator: '='
+    value: 0E0Dh
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+    - STACK unchanged
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-60DI0E0E
+  category: b
+  title: HP 95LX System Manager - "M_COMM_BREAK"
+  source: INTERRUP.O:3120
+  interrupt: '60'
+  flags:
+  - u
+  function: DI0E0E
+  input_registers:
+  - reg: DI
+    operator: '='
+    value: 0E0Eh
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+    - STACK unchanged
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-60DI0E0F
+  category: b
+  title: HP 95LX System Manager - "M_COMM_FRCXON"
+  source: INTERRUP.O:3128
+  interrupt: '60'
+  flags:
+  - u
+  function: DI0E0F
+  input_registers:
+  - reg: DI
+    operator: '='
+    value: 0E0Fh
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+    - STACK unchanged
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-60DI0E10
+  category: b
+  title: HP 95LX System Manager - "M_COMM_FRCXOF"
+  source: INTERRUP.O:3135
+  interrupt: '60'
+  flags:
+  - u
+  function: DI0E10
+  input_registers:
+  - reg: DI
+    operator: '='
+    value: 0E10h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+    - STACK unchanged
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-60DI0E11
+  category: b
+  title: HP 95LX System Manager - "M_COMM_SETDTR"
+  source: INTERRUP.O:3142
+  interrupt: '60'
+  flags:
+  - u
+  function: DI0E11
+  input_registers:
+  - reg: DI
+    operator: '='
+    value: 0E11h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+    - STACK unchanged
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-60DI0E12
+  category: b
+  title: HP 95LX System Manager - "M_COMM_XMITNG"
+  source: INTERRUP.O:3150
+  interrupt: '60'
+  flags:
+  - u
+  function: DI0E12
+  input_registers:
+  - reg: DI
+    operator: '='
+    value: 0E12h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+    - STACK unchanged
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-60DI0E13
+  category: b
+  title: HP 95LX System Manager - "M_COMM_STATUS"
+  source: INTERRUP.O:3157
+  interrupt: '60'
+  flags:
+  - u
+  function: DI0E13
+  input_registers:
+  - reg: DI
+    operator: '='
+    value: 0E13h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+    - STACK unchanged
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-60DI0E14
+  category: b
+  title: HP 95LX System Manager - SET COMMUNICATIONS SETTINGS
+  source: INTERRUP.O:3164
+  interrupt: '60'
+  flags:
+  - u
+  function: DI0E14
+  input_registers:
+  - reg: DI
+    operator: '='
+    value: 0E14h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+    - STACK unchanged
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: '60'
+    params:
+      DI: 0E15h
+  index: []
+  tables:
+  - '03303'
+  table_refs: []
+- entry_type: INT
+  id: b-60DI0E15
+  category: b
+  title: HP 95LX System Manager - GET COMMUNICATIONS SETTINGS
+  source: INTERRUP.O:3186
+  interrupt: '60'
+  flags:
+  - u
+  function: DI0E15
+  input_registers:
+  - reg: DI
+    operator: '='
+    value: 0E15h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+    - STACK unchanged
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: '60'
+    params:
+      DI: 0E14h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-60DI0E16
+  category: b
+  title: HP 95LX System Manager - "M_COMM_CNFGUR"
+  source: INTERRUP.O:3195
+  interrupt: '60'
+  flags:
+  - u
+  function: DI0E16
+  input_registers:
+  - reg: DI
+    operator: '='
+    value: 0E16h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+    - STACK unchanged
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-60DI0E17
+  category: b
+  title: HP 95LX System Manager - "M_COMM_QRYERR"
+  source: INTERRUP.O:3206
+  interrupt: '60'
+  flags:
+  - u
+  function: DI0E17
+  input_registers:
+  - reg: DI
+    operator: '='
+    value: 0E17h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+    - STACK unchanged
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: '15'
+    params:
+      AX: 4DD4h
+  - type: interrupt
+    interrupt: '61'
+    params: {}
+    name: HP 95LX
+  - type: interrupt
+    interrupt: '62'
+    params: {}
+    name: HP 95LX
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-60DI0F00
+  category: b
+  title: HP 95LX System Manager - "M_ERRMSG"
+  source: INTERRUP.O:3214
+  interrupt: '60'
+  flags:
+  - u
+  function: DI0F00
+  input_registers:
+  - reg: DI
+    operator: '='
+    value: 0F00h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+    - STACK unchanged
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-60DI0F01
+  category: b
+  title: HP 95LX System Manager - DRAW STANDARD TITLE BOX
+  source: INTERRUP.O:3224
+  interrupt: '60'
+  flags:
+  - u
+  function: DI0F01
+  input_registers:
+  - reg: DI
+    operator: '='
+    value: 0F01h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+    - STACK unchanged
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-60DI0F02
+  category: b
+  title: HP 95LX System Manager - "SHOWNAME"
+  source: INTERRUP.O:3231
+  interrupt: '60'
+  flags:
+  - u
+  function: DI0F02
+  input_registers:
+  - reg: DI
+    operator: '='
+    value: 0F02h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+    - STACK unchanged
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-60DI0F03
+  category: b
+  title: HP 95LX System Manager - DISPLAY TWO-LINE MESSAGE BOX
+  source: INTERRUP.O:3238
+  interrupt: '60'
+  flags:
+  - u
+  function: DI0F03
+  input_registers:
+  - reg: DI
+    operator: '='
+    value: 0F03h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+    - STACK unchanged
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: '60'
+    params:
+      DI: 0300h
+  - type: interrupt
+    interrupt: '60'
+    params:
+      DI: 0F04h
+  - type: interrupt
+    interrupt: '60'
+    params:
+      DI: 0F09h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-60DI0F04
+  category: b
+  title: HP 95LX System Manager - REMOVE MESSAGE BOX
+  source: INTERRUP.O:3249
+  interrupt: '60'
+  flags:
+  - u
+  function: DI0F04
+  input_registers:
+  - reg: DI
+    operator: '='
+    value: 0F04h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+    - STACK unchanged
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: '60'
+    params:
+      DI: 0F03h
+  - type: interrupt
+    interrupt: '60'
+    params:
+      DI: 0F09h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-60DI0F05
+  category: b
+  title: HP 95LX System Manager - "M_COM_TIMER_ADDR"
+  source: INTERRUP.O:3256
+  interrupt: '60'
+  flags:
+  - u
+  function: DI0F05
+  input_registers:
+  - reg: DI
+    operator: '='
+    value: 0F05h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: DX:AX
+      operator: ->
+      description: ???
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-60DI0F06
+  category: b
+  title: HP 95LX System Manager - "M_COM_TIMER_COUNT_ADDR"
+  source: INTERRUP.O:3262
+  interrupt: '60'
+  flags:
+  - u
+  function: DI0F06
+  input_registers:
+  - reg: DI
+    operator: '='
+    value: 0F06h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: DX:AX
+      operator: ->
+      description: ???
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-60DI0F07
+  category: b
+  title: HP 95LX System Manager - "M_SYS_RSRC_ADDR"
+  source: INTERRUP.O:3268
+  interrupt: '60'
+  flags:
+  - u
+  function: DI0F07
+  input_registers:
+  - reg: DI
+    operator: '='
+    value: 0F07h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: DX:AX
+      operator: ->
+      description: ???
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-60DI0F08
+  category: b
+  title: HP 95LX System Manager - "M_BIOS_OUTSTR"
+  source: INTERRUP.O:3274
+  interrupt: '60'
+  flags:
+  - u
+  function: DI0F08
+  input_registers:
+  - reg: DI
+    operator: '='
+    value: 0F08h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+    - STACK unchanged
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-60DI0F09
+  category: b
+  title: HP 95LX System Manager - DISPLAY THREE-LINE MESSAGE BOX
+  source: INTERRUP.O:3281
+  interrupt: '60'
+  flags:
+  - u
+  function: DI0F09
+  input_registers:
+  - reg: DI
+    operator: '='
+    value: 0F09h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+    - STACK unchanged
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: '60'
+    params:
+      DI: 0F03h
+  - type: interrupt
+    interrupt: '60'
+    params:
+      DI: 0F04h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-60DI0F0A
+  category: b
+  title: HP 95LX System Manager - DISABLE MACROS
+  source: INTERRUP.O:3294
+  interrupt: '60'
+  flags:
+  - u
+  function: DI0F0A
+  input_registers:
+  - reg: DI
+    operator: '='
+    value: 0F0Ah
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+    - STACK unchanged
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: '60'
+    params:
+      DI: 0F0Bh
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-60DI0F0B
+  category: b
+  title: HP 95LX System Manager - ENABLE MACROS
+  source: INTERRUP.O:3301
+  interrupt: '60'
+  flags:
+  - u
+  function: DI0F0B
+  input_registers:
+  - reg: DI
+    operator: '='
+    value: 0F0Bh
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+    - STACK unchanged
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: '60'
+    params:
+      DI: 0F0Ah
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-60DI0F0C
+  category: b
+  title: HP 95LX System Manager - "M_DATE_TIME_SEPS"
+  source: INTERRUP.O:3308
+  interrupt: '60'
+  flags:
+  - u
+  function: DI0F0C
+  input_registers:
+  - reg: DI
+    operator: '='
+    value: 0F0Ch
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+    - STACK unchanged
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-60DI0F0D
+  category: b
+  title: HP 95LX System Manager - "M_FORM_FT"
+  source: INTERRUP.O:3315
+  interrupt: '60'
+  flags:
+  - u
+  function: DI0F0D
+  input_registers:
+  - reg: DI
+    operator: '='
+    value: 0F0Dh
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: DX:AX
+      operator: ->
+      description: ???
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-60DI0F0E
+  category: b
+  title: HP 95LX System Manager - "M_RAM_IV_INFO"
+  source: INTERRUP.O:3322
+  interrupt: '60'
+  flags:
+  - u
+  function: DI0F0E
+  input_registers:
+  - reg: DI
+    operator: '='
+    value: 0F0Eh
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: DX:AX
+      operator: ->
+      description: ???
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: '15'
+    params:
+      AX: 4DD4h
+  - type: interrupt
+    interrupt: '61'
+    params: {}
+    name: HP 95LX
+  - type: interrupt
+    interrupt: '62'
+    params: {}
+    name: HP 95LX
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-60DI1005
+  category: b
+  title: HP 95LX System Manager - "M_DIRTY_SYNC" - FORCE SCREEN UPDATE
+  source: INTERRUP.O:3330
+  interrupt: '60'
+  flags:
+  - u
+  function: DI1005
+  input_registers:
+  - reg: DI
+    operator: '='
+    value: 1005h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+    - STACK unchanged
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: '10'
+    params:
+      AH: FFh
+  - type: interrupt
+    interrupt: '60'
+    params:
+      DI: 0300h
+  - type: interrupt
+    interrupt: '60'
+    params:
+      DI: 0301h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-60DI1200
+  category: b
+  title: HP 95LX System Manager - RESOURCE SERVICE "MAP_RESOURCE_FILE"
+  source: INTERRUP.O:3337
+  interrupt: '60'
+  flags:
+  - u
+  function: DI1200
+  input_registers:
+  - reg: DI
+    operator: '='
+    value: 1200h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+    - STACK unchanged
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-60DI1201
+  category: b
+  title: HP 95LX System Manager - "GET_RESOURCE_PTR"
+  source: INTERRUP.O:3344
+  interrupt: '60'
+  flags:
+  - u
+  function: DI1201
+  input_registers:
+  - reg: DI
+    operator: '='
+    value: 1201h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: DX:AX
+      operator: ->
+      description: ???
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: '15'
+    params:
+      AX: 4DD4h
+  - type: interrupt
+    interrupt: '61'
+    params: {}
+    name: HP 95LX
+  - type: interrupt
+    interrupt: '62'
+    params: {}
+    name: HP 95LX
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-60DI1202
+  category: b
+  title: HP 95LX System Manager - "GET_RSRC_TAB_PTR"
+  source: INTERRUP.O:3352
+  interrupt: '60'
+  flags:
+  - u
+  function: DI1202
+  input_registers:
+  - reg: DI
+    operator: '='
+    value: 1202h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: DX:AX
+      operator: ->
+      description: ???
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-60DI1203
+  category: b
+  title: HP 95LX System Manager - "INIT_SYSMGR_RSRCS"
+  source: INTERRUP.O:3358
+  interrupt: '60'
+  flags:
+  - u
+  function: DI1203
+  input_registers:
+  - reg: DI
+    operator: '='
+    value: 1203h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+    - STACK unchanged
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-60DI1300
+  category: b
+  title: HP 95LX System Manager - INITIALIZE HELP SYSTEM
+  source: INTERRUP.O:3364
+  interrupt: '60'
+  flags:
+  - u
+  function: DI1300
+  input_registers:
+  - reg: DI
+    operator: '='
+    value: 1300h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+    - STACK unchanged
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-60DI1301
+  category: b
+  title: HP 95LX System Manager - DISPLAY HELP
+  source: INTERRUP.O:3373
+  interrupt: '60'
+  flags:
+  - u
+  function: DI1301
+  input_registers:
+  - reg: DI
+    operator: '='
+    value: 1301h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+    - STACK unchanged
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-60DI1302
+  category: b
+  title: HP 95LX System Manager - "M_HELP_KEY"
+  source: INTERRUP.O:3380
+  interrupt: '60'
+  flags:
+  - u
+  function: DI1302
+  input_registers:
+  - reg: DI
+    operator: '='
+    value: 1302h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+    - STACK unchanged
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-60DI1303
+  category: b
+  title: HP 95LX System Manager - "M_HELP_TERM"
+  source: INTERRUP.O:3388
+  interrupt: '60'
+  flags:
+  - u
+  function: DI1303
+  input_registers:
+  - reg: DI
+    operator: '='
+    value: 1303h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+    - STACK unchanged
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: '15'
+    params:
+      AX: 4DD4h
+  - type: interrupt
+    interrupt: '61'
+    params: {}
+    name: HP 95LX
+  - type: interrupt
+    interrupt: '62'
+    params: {}
+    name: HP 95LX
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-60DI1400
+  category: b
+  title: HP 95LX System Manager - "M_ColInit"
+  source: INTERRUP.O:3396
+  interrupt: '60'
+  flags:
+  - u
+  function: DI1400
+  input_registers:
+  - reg: DI
+    operator: '='
+    value: 1400h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AX
+      operator: '='
+      description: ???
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-60DI1401
+  category: b
+  title: HP 95LX System Manager - "M_ColCpStr"
+  source: INTERRUP.O:3402
+  interrupt: '60'
+  flags:
+  - u
+  function: DI1401
+  input_registers:
+  - reg: DI
+    operator: '='
+    value: 1401h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+    - STACK unchanged
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-60DI1402
+  category: b
+  title: HP 95LX System Manager - "M_ColLicsStr"
+  source: INTERRUP.O:3412
+  interrupt: '60'
+  flags:
+  - u
+  function: DI1402
+  input_registers:
+  - reg: DI
+    operator: '='
+    value: 1402h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+    - STACK unchanged
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-60DI1403
+  category: b
+  title: HP 95LX System Manager - "M_ColLicsChar"
+  source: INTERRUP.O:3419
+  interrupt: '60'
+  flags:
+  - u
+  function: DI1403
+  input_registers:
+  - reg: DI
+    operator: '='
+    value: 1403h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+    - STACK unchanged
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-60DI1404
+  category: b
+  title: HP 95LX System Manager - "M_ColToLower"
+  source: INTERRUP.O:3426
+  interrupt: '60'
+  flags:
+  - u
+  function: DI1404
+  input_registers:
+  - reg: DI
+    operator: '='
+    value: 1404h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+    - STACK unchanged
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-60DI1405
+  category: b
+  title: HP 95LX System Manager - "M_ColCpSearch"
+  source: INTERRUP.O:3434
+  interrupt: '60'
+  flags:
+  - u
+  function: DI1405
+  input_registers:
+  - reg: DI
+    operator: '='
+    value: 1405h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+    - STACK unchanged
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-60DI1406
+  category: b
+  title: HP 95LX System Manager - "M_ColToUpper"
+  source: INTERRUP.O:3445
+  interrupt: '60'
+  flags:
+  - u
+  function: DI1406
+  input_registers:
+  - reg: DI
+    operator: '='
+    value: 1406h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+    - STACK unchanged
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: '15'
+    params:
+      AX: 4DD4h
+  - type: interrupt
+    interrupt: '61'
+    params: {}
+    name: HP 95LX
+  - type: interrupt
+    interrupt: '62'
+    params: {}
+    name: HP 95LX
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-60DI1500
+  category: b
+  title: HP 95LX System Manager - "GrDispInit"
+  source: INTERRUP.O:3454
+  interrupt: '60'
+  flags:
+  - u
+  function: DI1500
+  input_registers:
+  - reg: DI
+    operator: '='
+    value: 1500h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+    - STACK unchanged
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-60DI1501
+  category: b
+  title: HP 95LX System Manager - "GrDispClear"
+  source: INTERRUP.O:3461
+  interrupt: '60'
+  flags:
+  - u
+  function: DI1501
+  input_registers:
+  - reg: DI
+    operator: '='
+    value: 1501h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+    - STACK unchanged
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-60DI1502
+  category: b
+  title: HP 95LX System Manager - "GrDispDot"
+  source: INTERRUP.O:3468
+  interrupt: '60'
+  flags:
+  - u
+  function: DI1502
+  input_registers:
+  - reg: DI
+    operator: '='
+    value: 1502h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+    - STACK unchanged
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-60DI1503
+  category: b
+  title: HP 95LX System Manager - "GrDispDraw"
+  source: INTERRUP.O:3475
+  interrupt: '60'
+  flags:
+  - u
+  function: DI1503
+  input_registers:
+  - reg: DI
+    operator: '='
+    value: 1503h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+    - STACK unchanged
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-60DI1504
+  category: b
+  title: HP 95LX System Manager - "GrDispFill"
+  source: INTERRUP.O:3482
+  interrupt: '60'
+  flags:
+  - u
+  function: DI1504
+  input_registers:
+  - reg: DI
+    operator: '='
+    value: 1504h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+    - STACK unchanged
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-60DI1505
+  category: b
+  title: HP 95LX System Manager - "GrDispRead"
+  source: INTERRUP.O:3489
+  interrupt: '60'
+  flags:
+  - u
+  function: DI1505
+  input_registers:
+  - reg: DI
+    operator: '='
+    value: 1505h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+    - STACK unchanged
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-60DI1506
+  category: b
+  title: HP 95LX System Manager - "GrDispString"
+  source: INTERRUP.O:3496
+  interrupt: '60'
+  flags:
+  - u
+  function: DI1506
+  input_registers:
+  - reg: DI
+    operator: '='
+    value: 1506h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+    - STACK unchanged
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-60DI1507
+  category: b
+  title: HP 95LX System Manager - "GrDispPan"
+  source: INTERRUP.O:3503
+  interrupt: '60'
+  flags:
+  - u
+  function: DI1507
+  input_registers:
+  - reg: DI
+    operator: '='
+    value: 1507h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+    - STACK unchanged
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-60DI1508
+  category: b
+  title: HP 95LX System Manager - "GrDispZoom"
+  source: INTERRUP.O:3510
+  interrupt: '60'
+  flags:
+  - u
+  function: DI1508
+  input_registers:
+  - reg: DI
+    operator: '='
+    value: 1508h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+    - STACK unchanged
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-60DI1509
+  category: b
+  title: HP 95LX System Manager - "GrDispSave"
+  source: INTERRUP.O:3517
+  interrupt: '60'
+  flags:
+  - u
+  function: DI1509
+  input_registers:
+  - reg: DI
+    operator: '='
+    value: 1509h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+    - STACK unchanged
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-60DI150A
+  category: b
+  title: HP 95LX System Manager - "GrDispRestore"
+  source: INTERRUP.O:3524
+  interrupt: '60'
+  flags:
+  - u
+  function: DI150A
+  input_registers:
+  - reg: DI
+    operator: '='
+    value: 150Ah
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+    - STACK unchanged
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-60DI150B
+  category: b
+  title: HP 95LX System Manager - "GrDispCorner"
+  source: INTERRUP.O:3531
+  interrupt: '60'
+  flags:
+  - u
+  function: DI150B
+  input_registers:
+  - reg: DI
+    operator: '='
+    value: 150Bh
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+    - STACK unchanged
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: '15'
+    params:
+      AX: 4DD4h
+  - type: interrupt
+    interrupt: '61'
+    params: {}
+    name: HP 95LX
+  - type: interrupt
+    interrupt: '62'
+    params: {}
+    name: HP 95LX
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-60DI1604
+  category: b
+  title: HP 95LX System Manager - "CP_TO_LICS"
+  source: INTERRUP.O:3539
+  interrupt: '60'
+  flags:
+  - u
+  function: DI1604
+  input_registers:
+  - reg: DI
+    operator: '='
+    value: 1604h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+    - STACK unchanged
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: '15'
+    params:
+      AX: 4DD4h
+  - type: interrupt
+    interrupt: '61'
+    params: {}
+    name: HP 95LX
+  - type: interrupt
+    interrupt: '62'
+    params: {}
+    name: HP 95LX
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: G-6000
+  category: G
+  title: SYS_PROF.EXE - PROFILER STATUS
+  source: INTERRUP.O:3547
+  interrupt: '60'
+  flags: []
+  function: '00'
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 00h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AX
+      operator: '='
+      value: 0000h
+      description: profiling is off
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes:
+  - 'SYS_PROF.EXE is the TSR portion of a profiler from Micro Cornucopia
+
+    Issue 47'
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 01h
+    name: SYS_PROF
+  - type: interrupt
+    params:
+      AH: 02h
+    name: SYS_PROF
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: G-6000
+  category: G
+  title: MDEBUG - GET STATUS
+  source: INTERRUP.O:3555
+  interrupt: '60'
+  flags: []
+  function: '00'
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 00h
+    table_refs: []
+    sub_values: []
+  - reg: DS:SI
+    operator: ->
+    description: password or a null byte
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AX
+      operator: '='
+      description: return code
+      table_refs: []
+      sub_values: []
+    - reg: ES
+      operator: '='
+      description: value of the monitor register SE
+      table_refs: []
+      sub_values: []
+    - reg: DI
+      operator: '='
+      description: value of the monitor register OF
+      table_refs: []
+      sub_values: []
+    - reg: CH
+      operator: '='
+      description: monitor color
+      table_refs: []
+      sub_values: []
+    - reg: CL
+      operator: '='
+      description: interpreter color
+      table_refs: []
+      sub_values: []
+    - reg: BH
+      operator: '='
+      description: monitor start line
+      table_refs: []
+      sub_values: []
+    - reg: BL
+      operator: '='
+      description: interpreter start line
+      table_refs: []
+      sub_values: []
+    - reg: AH
+      operator: '='
+      description: makecode of the hotkey
+      table_refs: []
+      sub_values: []
+    - reg: AL
+      operator: '='
+      description: ASCII code of the hotkey
+      table_refs: []
+      sub_values: []
+    - reg: DL
+      operator: '='
+      description: status of special keys (only SHIFT, ALT, CTRL) for the
+      table_refs: []
+      sub_values: []
+    - reg: DH
+      operator: '='
+      description: basic process number for the communication with drivers
+      table_refs: []
+      sub_values: []
+    - reg: DS:SI
+      operator: ->
+      description: 'MDEBUG identification table (see #03304)'
+      table_refs:
+      - '03304'
+      sub_values: []
+    raw_lines: []
+  program: 'MDEBUG is a shareware memory-resident debugging tool by Bernd
+
+    Schemmer, including a memory monitor, an interpreter, and a
+
+    disassembler'
+  notes:
+  - 'MDEBUG uses INT 60 by default, but may be directed to any of INT 60
+
+    through INT 67; the interrupt handler is preceded by the signature
+
+    "USERINT" and is not chained
+
+    if DS:SI points at a null byte, MDEBUG will prompt for a password if
+
+    passwords are active; enough stack space must be provided for an
+
+    INT 10h call (which MDEBUG uses while prompting for the password)'
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 02h
+    name: MDEBUG
+  index:
+  - hotkeys;MDEBUG
+  tables:
+  - '03304'
+  table_refs: []
+- entry_type: INT
+  id: N-600000
+  category: N
+  title: RIFS - CLIENT - INSTALLATION CHECK
+  source: INTERRUP.O:3598
+  interrupt: '60'
+  flags: []
+  function: '0000'
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 0000h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AX
+      operator: '='
+      value: 1234h
+      description: if installed
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  - condition: CF clear
+    registers: []
+    raw_lines: []
+  program: RIFS is the Remote Installable File System by "kyle"
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 0001h
+  - type: interrupt
+    params:
+      AX: 0005h
+  - type: interrupt
+    params:
+      AX: 0007h
+  - type: interrupt
+    params:
+      AX: 0008h
+  - type: interrupt
+    interrupt: 2F
+    params:
+      AX: 5600h
+  install_check: 'test for the signature "RIFS" immediately preceding the
+
+    interrupt handler'
+  range: INT 60 to INT 66 and INT 18,selected by scanning for 0000h:0000h vector
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: N-600001
+  category: N
+  title: RIFS - CLIENT - UNINSTALL
+  source: INTERRUP.O:3608
+  interrupt: '60'
+  flags: []
+  function: '0001'
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 0001h
+    table_refs: []
+    sub_values: []
+  returns:
+  - condition: CF clear
+    condition_description: if successful
+    registers: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 0000h
+  - type: interrupt
+    params:
+      AX: 0009h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: N-600002
+  category: N
+  title: RIFS - CLIENT - REMAP DRIVE
+  source: INTERRUP.O:3613
+  interrupt: '60'
+  flags: []
+  function: '0002'
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 0002h
+    table_refs: []
+    sub_values: []
+  - reg: BH
+    operator: '='
+    description: local drive number
+    table_refs: []
+    sub_values: []
+  - reg: BL
+    operator: '='
+    description: remote drive number
+    table_refs: []
+    sub_values: []
+  returns:
+  - condition: CF clear
+    condition_description: if successful
+    registers: []
+    raw_lines: []
+  - condition: CF set
+    condition_description: on error
+    registers: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 0000h
+  - type: interrupt
+    params:
+      AX: 0003h
+  - type: interrupt
+    params:
+      AX: 0004h
+  - type: interrupt
+    interrupt: '21'
+    params:
+      AX: 5F03h
+  - type: interrupt
+    interrupt: '21'
+    params:
+      AX: 5F05h
+    name: STARLITE
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: N-600003
+  category: N
+  title: RIFS - CLIENT - UNMAP DRIVE
+  source: INTERRUP.O:3621
+  interrupt: '60'
+  flags: []
+  function: '0003'
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 0003h
+    table_refs: []
+    sub_values: []
+  - reg: BL
+    operator: '='
+    description: drive to unmap
+    table_refs: []
+    sub_values: []
+  returns:
+  - condition: CF clear
+    condition_description: if successful
+    registers: []
+    raw_lines: []
+  - condition: CF set
+    condition_description: on error
+    registers: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 0000h
+  - type: interrupt
+    params:
+      AX: 0002h
+  - type: interrupt
+    params:
+      AX: 0004h
+  - type: interrupt
+    interrupt: '21'
+    params:
+      AX: 5F04h
+  - type: interrupt
+    interrupt: '21'
+    params:
+      AX: 5F06h
+    name: STARLITE
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: N-600004
+  category: N
+  title: RIFS - CLIENT - UNMAP ALL DRIVES
+  source: INTERRUP.O:3628
+  interrupt: '60'
+  flags: []
+  function: '0004'
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 0004h
+    table_refs: []
+    sub_values: []
+  returns:
+  - condition: CF clear
+    condition_description: if successful
+    registers: []
+    raw_lines: []
+  - condition: CF set
+    condition_description: on error
+    registers: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 0000h
+  - type: interrupt
+    params:
+      AX: 0002h
+  - type: interrupt
+    params:
+      AX: 0003h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: N-600005
+  category: N
+  title: RIFS - CLIENT - GET TRANSLATION TABLE
+  source: INTERRUP.O:3634
+  interrupt: '60'
+  flags: []
+  function: '0005'
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 0005h
+    table_refs: []
+    sub_values: []
+  returns:
+  - condition: CF clear
+    condition_description: if successful
+    registers:
+    - reg: ES:BX
+      operator: ->
+      description: translation table
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  - condition: CF set
+    condition_description: on error
+    registers: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 0000h
+  - type: interrupt
+    params:
+      AX: 0006h
+  - type: interrupt
+    params:
+      AX: 0007h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: N-600006
+  category: N
+  title: RIFS - CLIENT - GET STATISTICS TABLE
+  source: INTERRUP.O:3641
+  interrupt: '60'
+  flags: []
+  function: '0006'
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 0006h
+    table_refs: []
+    sub_values: []
+  returns:
+  - condition: CF clear
+    condition_description: if successful
+    registers:
+    - reg: ES:BX
+      operator: ->
+      description: statistics table
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  - condition: CF set
+    condition_description: on error
+    registers: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 0000h
+  - type: interrupt
+    params:
+      AX: 0005h
+  - type: interrupt
+    params:
+      AX: 0007h
+  - type: interrupt
+    params:
+      AX: 000Ah
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: N-600007
+  category: N
+  title: RIFS - CLIENT - GET PORT TRANSLATION TABLE
+  source: INTERRUP.O:3648
+  interrupt: '60'
+  flags: []
+  function: '0007'
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 0007h
+    table_refs: []
+    sub_values: []
+  returns:
+  - condition: CF clear
+    condition_description: if successful
+    registers:
+    - reg: CX
+      operator: '='
+      description: number of entries
+      table_refs: []
+      sub_values: []
+    - reg: ES:BX
+      operator: ->
+      description: port mapping table
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  - condition: CF set
+    condition_description: on error
+    registers: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 0000h
+  - type: interrupt
+    params:
+      AX: 0005h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: N-600008
+  category: N
+  title: RIFS - SERVER - INSTALLATION CHECK
+  source: INTERRUP.O:3656
+  interrupt: '60'
+  flags: []
+  function: 0008
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 0008h
+    table_refs: []
+    sub_values: []
+  returns:
+  - condition: CF clear
+    condition_description: if successful
+    registers: []
+    raw_lines: []
+  - condition: CF set
+    condition_description: on error
+    registers: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 0000h
+  - type: interrupt
+    params:
+      AX: 0009h
+  - type: interrupt
+    params:
+      AX: 000Ah
+  - type: interrupt
+    params:
+      AX: 000Bh
+  install_check: 'test for the signature "RIFS" immediately preceding the
+
+    interrupt handler'
+  range: INT 60 to INT 66 and INT 18,selected by scanning for 0000h:0000h vector
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: N-600009
+  category: N
+  title: RIFS - SERVER - UNINSTALL
+  source: INTERRUP.O:3665
+  interrupt: '60'
+  flags: []
+  function: 0009
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 0009h
+    table_refs: []
+    sub_values: []
+  returns:
+  - condition: CF clear
+    condition_description: if successful
+    registers: []
+    raw_lines: []
+  - condition: CF set
+    condition_description: on error
+    registers: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 0001h
+  - type: interrupt
+    params:
+      AX: 0008h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: N-60000A
+  category: N
+  title: RIFS - SERVER - GET STATISTICS TABLE
+  source: INTERRUP.O:3671
+  interrupt: '60'
+  flags: []
+  function: 000A
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 000Ah
+    table_refs: []
+    sub_values: []
+  returns:
+  - condition: CF clear
+    condition_description: if successful
+    registers:
+    - reg: ES:BX
+      operator: ->
+      description: statistics table
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  - condition: CF set
+    condition_description: on error
+    registers: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 0006h
+  - type: interrupt
+    params:
+      AX: 0008h
+  - type: interrupt
+    params:
+      AX: 0009h
+  - type: interrupt
+    params:
+      AX: 000Bh
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: N-60000B
+  category: N
+  title: RIFS - SERVER - RESET
+  source: INTERRUP.O:3678
+  interrupt: '60'
+  flags: []
+  function: 000B
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 000Bh
+    table_refs: []
+    sub_values: []
+  returns:
+  - condition: CF clear
+    condition_description: if successful
+    registers: []
+    raw_lines: []
+  - condition: CF set
+    condition_description: on error
+    registers: []
+    raw_lines: []
+  notes:
+  - closes all open files
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 0008h
+  - type: interrupt
+    params:
+      AX: 0009h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: G-6001
+  category: G
+  title: MDEBUG - GET ADDRESS OF THE HELP REGISTERS
+  source: INTERRUP.O:3685
+  interrupt: '60'
+  flags: []
+  function: '01'
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 01h
+    table_refs: []
+    sub_values: []
+  - reg: DS:SI
+    operator: ->
+    description: password or a null byte
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AX
+      operator: '='
+      description: return code
+      table_refs: []
+      sub_values: []
+    - reg: ES:DI
+      operator: ->
+      description: R1 (WORD)
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: G-6001
+  category: G
+  title: SYS_PROF.EXE - TURN PROFILING OFF
+  source: INTERRUP.O:3700
+  interrupt: '60'
+  flags: []
+  function: '01'
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 01h
+    table_refs: []
+    sub_values: []
+  returns: []
+  notes:
+  - 'SYS_PROF.EXE is the TSR portion of a profiler from Micro Cornucopia
+
+    Issue 47'
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 00h
+    name: SYS_PROF
+  - type: interrupt
+    params:
+      AH: 02h
+    name: SYS_PROF
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: N-6001FF
+  category: N
+  title: FTP Packet Driver - BASIC FUNC - GET DRIVER INFO
+  source: INTERRUP.O:3706
+  interrupt: '60'
+  flags: []
+  function: 01FF
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 01FFh
+    table_refs: []
+    sub_values: []
+  - reg: BX
+    operator: '='
+    description: handle returned by function 02h
+    table_refs: []
+    sub_values: []
+  returns:
+  - condition: CF set
+    condition_description: on error
+    registers:
+    - reg: DH
+      operator: '='
+      description: 'error code (see #03305)'
+      table_refs:
+      - '03305'
+      sub_values: []
+    raw_lines: []
+  - condition: CF clear
+    condition_description: if successful
+    registers:
+    - reg: BX
+      operator: '='
+      description: version
+      table_refs: []
+      sub_values: []
+    - reg: CH
+      operator: '='
+      description: 'network interface class (see #03306)'
+      table_refs:
+      - '03306'
+      sub_values: []
+    - reg: DX
+      operator: '='
+      description: 'interface type (see #03306)'
+      table_refs:
+      - '03306'
+      sub_values: []
+    - reg: CL
+      operator: '='
+      description: number
+      table_refs: []
+      sub_values: []
+    - reg: DS:SI
+      operator: ->
+      description: name
+      table_refs: []
+      sub_values: []
+    - reg: AL
+      operator: '='
+      description: driver functions supported
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes:
+  - 'the handle in BX is optional for drivers written to v1.07 or later of
+
+    the packet driver specification'
+  bugs: []
+  see_also: []
+  index: []
+  tables:
+  - '03305'
+  - '03306'
+  table_refs: []
+- entry_type: INT
+  id: G-6002
+  category: G
+  title: MDEBUG - SET STATUS
+  source: INTERRUP.O:3899
+  interrupt: '60'
+  flags: []
+  function: '02'
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 02h
+    table_refs: []
+    sub_values: []
+  - reg: DS:SI
+    operator: ->
+    description: password or a null byte
+    table_refs: []
+    sub_values: []
+  - reg: ES
+    operator: '='
+    description: new value for the register SE
+    table_refs: []
+    sub_values: []
+  - reg: DI
+    operator: '='
+    description: new value for the register OF
+    table_refs: []
+    sub_values: []
+  - reg: CH
+    operator: '='
+    description: new monitor color if nonzero
+    table_refs: []
+    sub_values: []
+  - reg: CL
+    operator: '='
+    description: new interpreter color if nonzero
+    table_refs: []
+    sub_values: []
+  - reg: BH
+    operator: '='
+    description: new monitor start line if nonzero
+    table_refs: []
+    sub_values: []
+  - reg: BL
+    operator: '='
+    description: new interpreter start line if nonzero
+    table_refs: []
+    sub_values: []
+  - reg: AL
+    operator: '='
+    description: new ASCII code for the hotkey ('A'..'Z', 'a'..'z') if nonzero
+    table_refs: []
+    sub_values: []
+  - reg: DL
+    operator: '='
+    description: new status of the special keys (SHIFT, ALT, CTRL) for the hotkey
+    table_refs: []
+    sub_values: []
+  - reg: DH
+    operator: '='
+    description: if nonzero, new basic process number for communication with the
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AX
+      operator: '='
+      description: return code
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes:
+  - 'the values of the registers SE and OF are always changed, the other
+
+    values are only changed if they are valid'
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 00h
+    name: MDEBUG
+  index:
+  - hotkeys;MDEBUG
+  tables:
+  - '03307'
+  table_refs: []
+- entry_type: INT
+  id: N-6002
+  category: N
+  title: FTP Packet Driver - BASIC FUNC - ACCESS TYPE
+  source: INTERRUP.O:3933
+  interrupt: '60'
+  flags: []
+  function: '02'
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 02h
+    table_refs: []
+    sub_values: []
+  - reg: AL
+    operator: '='
+    description: interface class
+    table_refs: []
+    sub_values: []
+  - reg: BX
+    operator: '='
+    description: interface type
+    table_refs: []
+    sub_values: []
+  - reg: DL
+    operator: '='
+    description: interface number
+    table_refs: []
+    sub_values: []
+  - reg: DS:SI
+    operator: ->
+    description: type
+    table_refs: []
+    sub_values: []
+  - reg: CX
+    operator: '='
+    description: length of type (0000h for all packets)
+    table_refs: []
+    sub_values: []
+  - reg: ES:DI
+    operator: ->
+    description: 'receiver function (see #03308)'
+    table_refs:
+    - 03308
+    sub_values: []
+  returns:
+  - condition: CF set
+    condition_description: on error
+    registers:
+    - reg: DH
+      operator: '='
+      description: 'error code (see #03305)'
+      table_refs:
+      - '03305'
+      sub_values: []
+    raw_lines: []
+  - condition: CF clear
+    condition_description: if successful
+    registers:
+    - reg: AX
+      operator: '='
+      description: handle
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 03h
+    name: FTP
+  index: []
+  tables:
+  - 03308
+  table_refs: []
+- entry_type: INT
+  id: G-6002
+  category: G
+  title: SYS_PROF.EXE - TURN PROFILING ON
+  source: INTERRUP.O:3964
+  interrupt: '60'
+  flags: []
+  function: '02'
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 02h
+    table_refs: []
+    sub_values: []
+  returns: []
+  notes:
+  - 'SYS_PROF.EXE is the TSR portion of a profiler from Micro Cornucopia
+
+    Issue 47'
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 00h
+    name: SYS_PROF
+  - type: interrupt
+    params:
+      AH: 01h
+    name: SYS_PROF
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: G-6003
+  category: G
+  title: MDEBUG - POP UP
+  source: INTERRUP.O:3970
+  interrupt: '60'
+  flags: []
+  function: '03'
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 03h
+    table_refs: []
+    sub_values: []
+  - reg: DS:SI
+    operator: ->
+    description: password or a null byte
+    table_refs: []
+    sub_values: []
+  - reg: ES
+    operator: ->
+    description: new value for the register SE
+    table_refs: []
+    sub_values: []
+  - reg: DI
+    operator: ->
+    description: new value for the register OF
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AX
+      operator: '='
+      description: 'return code (see #03309)'
+      table_refs:
+      - 03309
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 04h
+    name: MDEBUG
+  index: []
+  tables:
+  - 03309
+  table_refs: []
+- entry_type: INT
+  id: N-6003
+  category: N
+  title: FTP Packet Driver - BASIC FUNC - RELEASE TYPE
+  source: INTERRUP.O:3985
+  interrupt: '60'
+  flags: []
+  function: '03'
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 03h
+    table_refs: []
+    sub_values: []
+  - reg: BX
+    operator: '='
+    description: handle
+    table_refs: []
+    sub_values: []
+  returns:
+  - condition: CF set
+    condition_description: on error
+    registers:
+    - reg: DH
+      operator: '='
+      description: 'error code (see #03305)'
+      table_refs:
+      - '03305'
+      sub_values: []
+    raw_lines: []
+  - condition: CF clear
+    condition_description: if successful
+    registers: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 02h
+    name: FTP
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: G-6003
+  category: G
+  title: SYS_PROF.EXE - GET ADDRESS OF PROFILING TABLE
+  source: INTERRUP.O:3993
+  interrupt: '60'
+  flags: []
+  function: '03'
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 03h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: ES:BX
+      operator: ->
+      description: profiling table
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes:
+  - 'SYS_PROF.EXE is the TSR portion of a profiler from Micro Cornucopia
+
+    Issue 47'
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 04h
+    name: SYS_PROF
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: N-6004
+  category: N
+  title: FTP Packet Driver - BASIC FUNC - SEND PACKET
+  source: INTERRUP.O:4000
+  interrupt: '60'
+  flags: []
+  function: '04'
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 04h
+    table_refs: []
+    sub_values: []
+  - reg: DS:SI
+    operator: ->
+    description: buffer
+    table_refs: []
+    sub_values: []
+  - reg: CX
+    operator: '='
+    description: length
+    table_refs: []
+    sub_values: []
+  returns:
+  - condition: CF set
+    condition_description: on error
+    registers:
+    - reg: DH
+      operator: '='
+      description: 'error code (see #03305)'
+      table_refs:
+      - '03305'
+      sub_values: []
+    raw_lines: []
+  - condition: CF clear
+    condition_description: if successful
+    registers: []
+    raw_lines: []
+  notes:
+  - the buffer may be modified immediately upon return from this call
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 0Bh
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: G-6004
+  category: G
+  title: MDEBUG - POP UP
+  source: INTERRUP.O:4010
+  interrupt: '60'
+  flags: []
+  function: '04'
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 04h
+    table_refs: []
+    sub_values: []
+  - reg: DS:SI
+    operator: ->
+    description: password or a null byte
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AX
+      operator: '='
+      description: 'return code (see #03309)'
+      table_refs:
+      - 03309
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 03h
+    name: MDEBUG
+  - type: interrupt
+    params:
+      AH: 07h
+    name: MDEBUG
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: G-6004
+  category: G
+  title: SYS_PROF.EXE - CLEAR PROFILING TABLE
+  source: INTERRUP.O:4016
+  interrupt: '60'
+  flags: []
+  function: '04'
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 04h
+    table_refs: []
+    sub_values: []
+  returns: []
+  notes:
+  - 'SYS_PROF.EXE is the TSR portion of a profiler from Micro Cornucopia
+
+    Issue 47'
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 03h
+    name: SYS_PROF
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: N-6005
+  category: N
+  title: FTP Packet Driver - BASIC FUNC - TERMINATE DRIVER FOR HANDLE
+  source: INTERRUP.O:4022
+  interrupt: '60'
+  flags: []
+  function: '05'
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 05h
+    table_refs: []
+    sub_values: []
+  - reg: BX
+    operator: '='
+    description: handle (optional for v1.10+)
+    table_refs: []
+    sub_values: []
+  returns:
+  - condition: CF set
+    condition_description: on error
+    registers:
+    - reg: DH
+      operator: '='
+      description: 'error code (see #03305)'
+      table_refs:
+      - '03305'
+      sub_values: []
+    raw_lines: []
+  - condition: CF clear
+    condition_description: if successful
+    registers: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: G-6005
+  category: G
+  title: MDEBUG - GET AND SET MDEBUG FLAGS
+  source: INTERRUP.O:4029
+  interrupt: '60'
+  flags: []
+  function: '05'
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 05h
+    table_refs: []
+    sub_values: []
+  - reg: DS:SI
+    operator: ->
+    description: password or a null byte
+    table_refs: []
+    sub_values: []
+  - reg: BL
+    operator: '='
+    description: new value for the semaphor of MDEBUG
+    table_refs: []
+    sub_values:
+    - value: 00h
+      description: enable popup of MDEBUG else disable popup of MDEBUG
+      sub_values: []
+  returns:
+  - registers:
+    - reg: AX
+      operator: '='
+      description: return code
+      table_refs: []
+      sub_values: []
+    - reg: BL
+      operator: '='
+      description: old value of the semaphor of MDEBUG
+      table_refs: []
+      sub_values: []
+    - reg: BH
+      operator: '='
+      description: old value of the INT 08h semaphor
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: N-6006
+  category: N
+  title: FTP Packet Driver - BASIC FUNC - GET ADDRESS
+  source: INTERRUP.O:4043
+  interrupt: '60'
+  flags: []
+  function: '06'
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 06h
+    table_refs: []
+    sub_values: []
+  - reg: BX
+    operator: '='
+    description: handle (optional for v1.10+)
+    table_refs: []
+    sub_values: []
+  - reg: ES:DI
+    operator: ->
+    description: buffer
+    table_refs: []
+    sub_values: []
+  - reg: CX
+    operator: '='
+    description: length
+    table_refs: []
+    sub_values: []
+  returns:
+  - condition: CF set
+    condition_description: on error
+    registers:
+    - reg: DH
+      operator: '='
+      description: 'error code (see #03305)'
+      table_refs:
+      - '03305'
+      sub_values: []
+    raw_lines: []
+  - condition: CF clear
+    condition_description: if successful
+    registers:
+    - reg: CX
+      operator: '='
+      description: length
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes:
+  - copies the local net address associated with the handle into the buffer
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: G-6006
+  category: G
+  title: MDEBUG - GET PASSWORD STATUS
+  source: INTERRUP.O:4054
+  interrupt: '60'
+  flags: []
+  function: '06'
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 06h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AL
+      operator: '='
+      description: status
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: N-6007
+  category: N
+  title: FTP Packet Driver - BASIC FUNC - RESET INTERFACE
+  source: INTERRUP.O:4060
+  interrupt: '60'
+  flags: []
+  function: '07'
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 07h
+    table_refs: []
+    sub_values: []
+  - reg: BX
+    operator: '='
+    description: handle (optional for v1.10+)
+    table_refs: []
+    sub_values: []
+  returns:
+  - condition: CF set
+    condition_description: on error
+    registers:
+    - reg: DH
+      operator: '='
+      description: 'error code (see #03305)'
+      table_refs:
+      - '03305'
+      sub_values: []
+    raw_lines: []
+  - condition: CF clear
+    condition_description: if successful
+    registers: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: G-6007
+  category: G
+  title: MDEBUG v1.70+ - GET ACTIVE PART OF MDEBUG
+  source: INTERRUP.O:4067
+  interrupt: '60'
+  flags: []
+  function: '07'
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 07h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AL
+      operator: '='
+      description: 'active part for the next popup session of MDEBUG:'
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 03h
+    name: MDEBUG
+  - type: interrupt
+    params:
+      AH: 04h
+    name: MDEBUG
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: G-6008
+  category: G
+  title: MDEBUG - UNUSED
+  source: INTERRUP.O:4075
+  interrupt: '60'
+  flags: []
+  function: 08
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 08h
+    description: -FFh
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AX
+      operator: '='
+      value: FFFCh
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: N-600A
+  category: N
+  title: FTP Packet Driver 1.09+ - HIGH-PERF FUNC - GET PARAMETERS
+  source: INTERRUP.O:4079
+  interrupt: '60'
+  flags: []
+  function: 0A
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 0Ah
+    table_refs: []
+    sub_values: []
+  returns:
+  - condition: CF set
+    condition_description: on error
+    registers:
+    - reg: DH
+      operator: '='
+      description: 'error code (0Bh) (see #03305)'
+      table_refs:
+      - '03305'
+      sub_values: []
+    raw_lines: []
+  - condition: CF clear
+    condition_description: if successful
+    registers:
+    - reg: ES:DI
+      operator: ->
+      description: 'parameter table (see #03310)'
+      table_refs:
+      - '03310'
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables:
+  - '03310'
+  table_refs: []
+- entry_type: INT
+  id: N-600B
+  category: N
+  title: FTP Packet Driver 1.09 - HIGH-PERF FUNC - ASYNCHRONOUS SEND PACKET
+  source: INTERRUP.O:4098
+  interrupt: '60'
+  flags: []
+  function: 0B
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 0Bh
+    table_refs: []
+    sub_values: []
+  - reg: DS:SI
+    operator: ->
+    description: buffer
+    table_refs: []
+    sub_values: []
+  - reg: CX
+    operator: '='
+    description: length of buffer
+    table_refs: []
+    sub_values: []
+  - reg: ES:DI
+    operator: ->
+    description: 'FAR function to call when buffer becomes available (see #03311)'
+    table_refs:
+    - '03311'
+    sub_values: []
+  returns:
+  - condition: CF set
+    condition_description: on error
+    registers:
+    - reg: DH
+      operator: '='
+      description: 'error code (0Bh,0Ch) (see #03305)'
+      table_refs:
+      - '03305'
+      sub_values: []
+    raw_lines: []
+  - condition: CF clear
+    condition_description: if successful
+    registers: []
+    raw_lines: []
+  notes:
+  - 'unlike function 04h, the buffer is not available for modification as
+
+    soon as the call returns; the buffer may be queued by the driver and
+
+    not processed until later
+
+    this function has been dropped from v1.10+ of the specification and
+
+    replaced by function 0Ch'
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 04h
+    name: Packet Driver
+  - type: interrupt
+    params:
+      AH: 0Ch
+    name: Packet Driver
+  index: []
+  tables:
+  - '03311'
+  table_refs: []
+- entry_type: INT
+  id: N-600C
+  category: N
+  title: FTP Packet Driver 1.10+ - HIGH-PERF FUNC - ASYNCHRONOUS SEND PACKET
+  source: INTERRUP.O:4120
+  interrupt: '60'
+  flags: []
+  function: 0C
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 0Ch
+    table_refs: []
+    sub_values: []
+  - reg: ES:DI
+    operator: ->
+    description: 'pointer to IOCB (see #03312)'
+    table_refs:
+    - '03312'
+    sub_values: []
+  returns:
+  - condition: CF set
+    condition_description: on error
+    registers:
+    - reg: DH
+      operator: '='
+      description: 'error code (see #03305)'
+      table_refs:
+      - '03305'
+      sub_values: []
+    raw_lines: []
+  - condition: CF clear
+    condition_description: if successful
+    registers: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 04h
+    name: Packet Driver
+  - type: interrupt
+    params:
+      AH: 0Bh
+    name: Packet Driver
+  index: []
+  tables:
+  - '03312'
+  - '03313'
+  table_refs: []
+- entry_type: INT
+  id: N-600C
+  category: N
+  title: Banyan VINES, 3com - GET STATION ADDRESS
+  source: INTERRUP.O:4144
+  interrupt: '60'
+  flags: []
+  function: 0C
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 0Ch
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AL
+      operator: '='
+      description: status
+      table_refs: []
+      sub_values: []
+    - reg: ES:SI
+      operator: ->
+      description: 6-byte station address
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: N-600D
+  category: N
+  title: FTP Packet Driver 1.10+ - HIGH-PERF FUNC - DROP PACKET FROM QUEUE
+  source: INTERRUP.O:4151
+  interrupt: '60'
+  flags: []
+  function: 0D
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 0Dh
+    table_refs: []
+    sub_values: []
+  - reg: ES:DI
+    operator: ->
+    description: IOCB
+    table_refs: []
+    sub_values: []
+  returns:
+  - condition: CF set
+    condition_description: on error
+    registers:
+    - reg: DH
+      operator: '='
+      description: 'error code (see #03305)'
+      table_refs:
+      - '03305'
+      sub_values: []
+    raw_lines: []
+  - condition: CF clear
+    condition_description: if successful
+    registers: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 0Ch
+    name: Packet Driver
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: N-6011
+  category: N
+  title: 3com, 10NET, Banyan VINES - LOCK AND WAIT
+  source: INTERRUP.O:4159
+  interrupt: '60'
+  flags: []
+  function: '11'
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 11h
+    table_refs: []
+    sub_values: []
+  - reg: AL
+    operator: '='
+    description: drive number or 0
+    table_refs: []
+    sub_values: []
+  - reg: DX
+    operator: '='
+    description: number of seconds to wait
+    table_refs: []
+    sub_values: []
+  - reg: ES:SI
+    operator: '='
+    description: Ethernet address or 0
+    table_refs: []
+    sub_values: []
+  - reg: DS:BX
+    operator: ->
+    description: 31-byte ASCIZ semaphore name
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AL
+      operator: '='
+      description: 'status (see #03314)'
+      table_refs:
+      - '03314'
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 12h
+  - type: interrupt
+    params:
+      AH: 13h
+  index: []
+  tables:
+  - '03314'
+  table_refs: []
+- entry_type: INT
+  id: N-6012
+  category: N
+  title: 3com, 10NET, Banyan VINES - LOCK
+  source: INTERRUP.O:4181
+  interrupt: '60'
+  flags: []
+  function: '12'
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 12h
+    table_refs: []
+    sub_values: []
+  - reg: AL
+    operator: '='
+    description: drive number or 00h
+    table_refs: []
+    sub_values: []
+  - reg: ES:SI
+    operator: '='
+    description: Ethernet address or 0000h:0000h
+    table_refs: []
+    sub_values: []
+  - reg: DS:BX
+    operator: ->
+    description: 31-byte ASCIZ semaphore name
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AL
+      operator: '='
+      description: 'status (see also #03314)'
+      table_refs:
+      - '03314'
+      sub_values: []
+    raw_lines: []
+  notes:
+  - unlike function 11h, this function returns immediately
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 11h
+  - type: interrupt
+    params:
+      AH: 13h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: N-6013
+  category: N
+  title: 3com, 10NET, Banyan VINES - UNLOCK
+  source: INTERRUP.O:4191
+  interrupt: '60'
+  flags: []
+  function: '13'
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 13h
+    table_refs: []
+    sub_values: []
+  - reg: AL
+    operator: '='
+    description: drive number or 00h
+    table_refs: []
+    sub_values: []
+  - reg: ES:SI
+    operator: '='
+    description: Ethernet address or 0000h:0000h
+    table_refs: []
+    sub_values: []
+  - reg: DS:BX
+    operator: ->
+    description: 31-byte ASCIZ semaphore name
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AL
+      operator: '='
+      description: 'status (see also #03314)'
+      table_refs:
+      - '03314'
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 11h
+  - type: interrupt
+    params:
+      AH: 12h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: N-6014
+  category: N
+  title: FTP Packet Driver - EXTENDED FUNC - SET RECEIVE MODE
+  source: INTERRUP.O:4200
+  interrupt: '60'
+  flags: []
+  function: '14'
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 14h
+    table_refs: []
+    sub_values: []
+  - reg: BX
+    operator: '='
+    description: handle (optional for v1.10+)
+    table_refs: []
+    sub_values: []
+  - reg: CX
+    operator: '='
+    description: 'mode (see #03315)'
+    table_refs:
+    - '03315'
+    sub_values: []
+  returns:
+  - condition: CF set
+    condition_description: on error
+    registers:
+    - reg: DH
+      operator: '='
+      description: 'error code (01h,08h) (see #03305)'
+      table_refs:
+      - '03305'
+      sub_values: []
+    raw_lines: []
+  - condition: CF clear
+    condition_description: if successful
+    registers: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 15h
+  index: []
+  tables:
+  - '03315'
+  table_refs: []
+- entry_type: INT
+  id: N-6015
+  category: N
+  title: FTP Packet Driver - EXTENDED FUNC - GET RECEIVE MODE
+  source: INTERRUP.O:4219
+  interrupt: '60'
+  flags: []
+  function: '15'
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 15h
+    table_refs: []
+    sub_values: []
+  - reg: BX
+    operator: '='
+    description: handle (optional for v1.10+)
+    table_refs: []
+    sub_values: []
+  returns:
+  - condition: CF set
+    condition_description: on error
+    registers:
+    - reg: DH
+      operator: '='
+      description: 'error code (01h) (see #03305)'
+      table_refs:
+      - '03305'
+      sub_values: []
+    raw_lines: []
+  - condition: CF clear
+    condition_description: if successful
+    registers:
+    - reg: AX
+      operator: '='
+      description: 'receive mode (see #03315)'
+      table_refs:
+      - '03315'
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 14h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: N-6016
+  category: N
+  title: FTP Packet Driver - EXTENDED FUNC - SET MULTICAST LIST
+  source: INTERRUP.O:4228
+  interrupt: '60'
+  flags: []
+  function: '16'
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 16h
+    table_refs: []
+    sub_values: []
+  - reg: ES:DI
+    operator: ->
+    description: multicast list
+    table_refs: []
+    sub_values: []
+  - reg: CX
+    operator: '='
+    description: length of list in bytes
+    table_refs: []
+    sub_values: []
+  returns:
+  - condition: CF set
+    condition_description: on error
+    registers:
+    - reg: DH
+      operator: '='
+      description: 'error code (06h,09h,0Eh) (see #03305)'
+      table_refs:
+      - '03305'
+      sub_values: []
+    raw_lines: []
+  - condition: CF clear
+    condition_description: if successful
+    registers: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 17h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: N-6017
+  category: N
+  title: FTP Packet Driver - EXTENDED FUNC - GET MULTICAST LIST
+  source: INTERRUP.O:4237
+  interrupt: '60'
+  flags: []
+  function: '17'
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 17h
+    table_refs: []
+    sub_values: []
+  returns:
+  - condition: CF set
+    condition_description: on error
+    registers:
+    - reg: DH
+      operator: '='
+      description: 'error code (06h,09h) (see #03305 at AX=01FFh)'
+      table_refs:
+      - '03305'
+      sub_values: []
+    raw_lines: []
+  - condition: CF clear
+    condition_description: if successful
+    registers:
+    - reg: ES:DI
+      operator: ->
+      description: multicast addresses (do not modify)
+      table_refs: []
+      sub_values: []
+    - reg: CX
+      operator: '='
+      description: bytes of multicast addresses currently in use
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 16h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: N-6018
+  category: N
+  title: FTP Packet Driver - EXTENDED FUNC - GET STATISTICS
+  source: INTERRUP.O:4246
+  interrupt: '60'
+  flags: []
+  function: '18'
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 18h
+    table_refs: []
+    sub_values: []
+  - reg: BX
+    operator: '='
+    description: handle (optional for v1.10+)
+    table_refs: []
+    sub_values: []
+  returns:
+  - condition: CF set
+    condition_description: on error
+    registers:
+    - reg: DH
+      operator: '='
+      description: 'error code (01h) (see #03305)'
+      table_refs:
+      - '03305'
+      sub_values: []
+    raw_lines: []
+  - condition: CF clear
+    condition_description: if successful
+    registers:
+    - reg: DS:SI
+      operator: ->
+      description: 'statistics (see #03316)'
+      table_refs:
+      - '03316'
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables:
+  - '03316'
+  table_refs: []
+- entry_type: INT
+  id: N-6019
+  category: N
+  title: FTP Packet Driver - EXTENDED FUNC - SET NETWORK ADDRESS
+  source: INTERRUP.O:4264
+  interrupt: '60'
+  flags: []
+  function: '19'
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 19h
+    table_refs: []
+    sub_values: []
+  - reg: ES:DI
+    operator: ->
+    description: address
+    table_refs: []
+    sub_values: []
+  - reg: CX
+    operator: '='
+    description: length of address
+    table_refs: []
+    sub_values: []
+  returns:
+  - condition: CF set
+    condition_description: on error
+    registers:
+    - reg: DH
+      operator: '='
+      description: 'error code (0Dh,0Eh) (see #03305)'
+      table_refs:
+      - '03305'
+      sub_values: []
+    raw_lines: []
+  - condition: CF clear
+    condition_description: if successful
+    registers:
+    - reg: CX
+      operator: '='
+      description: length
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: N-601A
+  category: N
+  title: FTP Packet Driver v1.10+ - EXTENDED FUNC - SEND RAW BYTES
+  source: INTERRUP.O:4273
+  interrupt: '60'
+  flags: []
+  function: 1A
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 1Ah
+    table_refs: []
+    sub_values: []
+  - reg: DS:SI
+    operator: ->
+    description: buffer
+    table_refs: []
+    sub_values: []
+  - reg: CX
+    operator: '='
+    description: length of buffer
+    table_refs: []
+    sub_values: []
+  returns:
+  - condition: CF set
+    condition_description: on error
+    registers:
+    - reg: DH
+      operator: '='
+      description: 'error code (see #03305 at AX=01FFh)'
+      table_refs:
+      - '03305'
+      sub_values: []
+    raw_lines: []
+  - condition: CF clear
+    condition_description: if successful
+    registers: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 1Ch
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: N-601B
+  category: N
+  title: FTP Packet Driver v1.10+ - EXTENDED FUNC - FLUSH RAW BYTES RECEIVED
+  source: INTERRUP.O:4282
+  interrupt: '60'
+  flags: []
+  function: 1B
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 1Bh
+    table_refs: []
+    sub_values: []
+  returns:
+  - condition: CF set
+    condition_description: on error
+    registers:
+    - reg: DH
+      operator: '='
+      description: 'error code (see #03305)'
+      table_refs:
+      - '03305'
+      sub_values: []
+    raw_lines: []
+  - condition: CF clear
+    condition_description: if successful
+    registers: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 1Ch
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: N-601C
+  category: N
+  title: FTP Packet Driver v1.10+ - EXTENDED FUNC - FETCH RAW BYTES RECEIVED
+  source: INTERRUP.O:4289
+  interrupt: '60'
+  flags: []
+  function: 1C
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 1Ch
+    table_refs: []
+    sub_values: []
+  - reg: DS:SI
+    operator: ->
+    description: buffer
+    table_refs: []
+    sub_values: []
+  - reg: CX
+    operator: '='
+    description: length of buffer
+    table_refs: []
+    sub_values: []
+  - reg: DX
+    operator: '='
+    description: timeout in clock ticks
+    table_refs: []
+    sub_values: []
+  returns:
+  - condition: CF set
+    condition_description: on error
+    registers:
+    - reg: DH
+      operator: '='
+      description: 'error code (see #03305 at AX=01FFh)'
+      table_refs:
+      - '03305'
+      sub_values: []
+    raw_lines: []
+  - condition: CF clear
+    condition_description: if successful
+    registers:
+    - reg: CX
+      operator: '='
+      description: number of bytes transferred to buffer
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 1Ah
+  - type: interrupt
+    params:
+      AH: 1Bh
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: --60899B
+  title: Agfa TTSR.EXE - API
+  source: INTERRUP.O:4300
+  interrupt: '60'
+  flags:
+  - U
+  function: 899B
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 899Bh
+    table_refs: []
+    sub_values: []
+  - reg: BX
+    operator: '='
+    description: function
+    table_refs: []
+    sub_values:
+    - value: 0001h
+      description: 'installation check Return: BX = 899Bh if installed'
+      sub_values: []
+    - value: 0002h
+      description: ???
+      sub_values: []
+    - value: 0003h
+      description: ???
+      sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+  notes:
+  - 'TTSR.EXE is found in FotoLook 2.09 (16-bit), which is available from
+
+    agfa.com; it appears to provide DOS ASPI support
+
+    !!!'
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: a-60AD
+  category: a
+  title: AccessDOS - API
+  source: INTERRUP.O:4313
+  interrupt: '60'
+  flags: []
+  function: AD
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: ADh
+    table_refs: []
+    sub_values: []
+  - reg: AL
+    operator: '='
+    description: function
+    table_refs: []
+    sub_values:
+    - value: E1h
+      description: '??? Return: AX = ???'
+      sub_values: []
+    - value: E2h
+      description: 'get configuration Return: BX:AX -> configuration data'
+      sub_values: []
+  returns: []
+  program: 'AccessDOS is a public domain TSR developed at The Trace Research and
+
+    Development Center which provides extensions for keyboard, mouse,
+
+    and sound access by the visually, hearing, or motor-control
+
+    impaired.'
+  notes: []
+  bugs: []
+  see_also: []
+  install_check: 'test for the signature "ACCESSv1.00" beginning three bytes
+
+    past the start of the interrupt handler (this same signature is also
+
+    present in v1.10)'
+  range: INT 60 to INT 66, selected by scanning for 0000h:0000h vector
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: N-60E9
+  category: N
+  title: FTP Packet Driver - Crynwr Software - AUTOSELECT TRANSCEIVER
+  source: INTERRUP.O:4329
+  interrupt: '60'
+  flags: []
+  function: E9
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: E9h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []

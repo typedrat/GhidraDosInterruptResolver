@@ -1,0 +1,105 @@
+file_type: interrupt
+key: E1
+entries:
+- entry_type: INT
+  id: r-E1
+  category: r
+  title: IBM ROM BASIC - used while in interpreter
+  source: INTERRUP.R:3989
+  interrupt: E1
+  flags: []
+  input_registers: []
+  returns: []
+  notes:
+  - 'called by ROM BASIC
+
+    BASIC.COM/BASICA.COM do not restore vector on termination'
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: N-E1
+  category: N
+  title: PC Cluster Disk Server Information (NOT A VECTOR!)
+  source: INTERRUP.R:3993
+  interrupt: E1
+  flags: []
+  input_registers: []
+  returns: []
+  description: points at a data table
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: E2
+    params: {}
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: O-E1
+  category: O
+  title: MP/M-86, - ALTERNATE CP/M-86 FUNCTION CALLS
+  source: INTERRUP.R:3997
+  interrupt: E1
+  flags: []
+  input_registers:
+  - reg: CL
+    operator: '='
+    description: 'function number (see #04019,#04020)'
+    table_refs:
+    - 04019
+    - '04020'
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - as appropriate for function
+    - 'CX is often the error code (see #04021)'
+  description: 'used by some applications which alter CP/M functions while running a
+
+    child program, to store the original INT E0 vector before
+
+    intercepting INT E0'
+  notes:
+  - 'This is the debugger entry to the operating system.
+
+    This function is also supported by IMS Multiuser DOS and IMS REAL/32.'
+  bugs: []
+  see_also:
+  - type: interrupt
+    params: {}
+    name: CP/M
+  index: []
+  tables: []
+  table_refs:
+  - 04019
+- entry_type: INT
+  id: --E1
+  title: DeskMate (Tandy) - TASK DATA SEGMENTS (NOT A VECTOR!)
+  source: INTERRUP.R:4009
+  interrupt: E1
+  flags: []
+  input_registers: []
+  returns: []
+  description: "used to store data; the\tlow word of the vector is the data segment for\nthe first task; the high word is\
+    \ the data segment of the second task\n(DeskMate supports 2-way task switching between small- or\nmedium-model applications)"
+  program: 'DeskMate is a proprietary GUI from Tandy distributed with several
+
+    models of the Tandy 1000''s, 2500''s, 3000''s, and laptops.  Retail
+
+    and runtime versions also exist.  Some Tandy''s are designed to
+
+    boot directly into DeskMate.'
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: E0
+    params: {}
+    name: DeskMate
+  index: []
+  tables: []
+  table_refs: []

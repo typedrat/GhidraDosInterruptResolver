@@ -1,0 +1,838 @@
+file_type: interrupt
+key: '69'
+entries:
+- entry_type: INT
+  id: b-69
+  category: b
+  title: Zenith AT BIOS - ???
+  source: INTERRUP.P:8597
+  interrupt: '69'
+  flags: []
+  input_registers: []
+  returns: []
+  notes:
+  - called by INT 09 handler
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: h-69
+  category: h
+  title: HP Vectra AT - IRQ17 - KEYBOARD OUTPUT-BUFFER-FULL SERVICE ROUTINE
+  source: INTERRUP.P:8600
+  interrupt: '69'
+  flags:
+  - C
+  input_registers: []
+  returns: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: 09
+    params: {}
+    name: IRQ1
+  - type: interrupt
+    interrupt: '68'
+    params: {}
+    name: HP Vectra
+  - type: interrupt
+    interrupt: 6A
+    params: {}
+    name: HP Vectra
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: N-690100
+  category: N
+  title: DECnet DOS CTERM - INSTALLATION CHECK
+  source: INTERRUP.P:8603
+  interrupt: '69'
+  flags: []
+  function: '0100'
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 0100h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AL
+      operator: '='
+      value: FFh
+      description: if present
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 010Fh
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: N-690101
+  category: N
+  title: DECnet DOS CTERM - SEND BYTE
+  source: INTERRUP.P:8608
+  interrupt: '69'
+  flags: []
+  function: '0101'
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 0101h
+    table_refs: []
+    sub_values: []
+  - reg: BL
+    operator: '='
+    description: character
+    table_refs: []
+    sub_values: []
+  - reg: DX
+    operator: '='
+    description: session handle
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - AH >= 80h on error
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 0102h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: N-690102
+  category: N
+  title: DECnet DOS CTERM - READ BYTE
+  source: INTERRUP.P:8615
+  interrupt: '69'
+  flags: []
+  function: '0102'
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 0102h
+    table_refs: []
+    sub_values: []
+  - reg: DX
+    operator: '='
+    description: session handle
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AL
+      operator: '='
+      description: character
+      table_refs: []
+      sub_values: []
+    raw_lines:
+    - AH >= 80h on error
+    - AH < 80h if successful
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 0101h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: N-690103
+  category: N
+  title: DECnet DOS CTERM - STATUS
+  source: INTERRUP.P:8623
+  interrupt: '69'
+  flags: []
+  function: '0103'
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 0103h
+    table_refs: []
+    sub_values: []
+  - reg: DX
+    operator: '='
+    description: session handle
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AL
+      operator: '='
+      description: 'reason code if DECnet error (see #03711)'
+      table_refs:
+      - '03711'
+      sub_values: []
+    raw_lines:
+    - 'AH status flags (see #03710)'
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 0104h
+  index: []
+  tables:
+  - '03710'
+  - '03711'
+  table_refs: []
+- entry_type: INT
+  id: N-690104
+  category: N
+  title: DECnet DOS CTERM - DECnet STATUS
+  source: INTERRUP.P:8656
+  interrupt: '69'
+  flags: []
+  function: '0104'
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 0104h
+    table_refs: []
+    sub_values: []
+  - reg: DX
+    operator: '='
+    description: session handle
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AX
+      operator: '='
+      description: 'reason code (see #03711)'
+      table_refs:
+      - '03711'
+      sub_values: []
+    raw_lines: []
+  notes:
+  - use this call when AX=0103h returns a DECnet error
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 0103h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: N-690105
+  category: N
+  title: DECnet DOS CTERM - OPEN SESSION
+  source: INTERRUP.P:8663
+  interrupt: '69'
+  flags: []
+  function: '0105'
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 0105h
+    table_refs: []
+    sub_values: []
+  - reg: DS:BX
+    operator: ->
+    description: ASCIZ node name
+    table_refs: []
+    sub_values: []
+  - reg: ES:DX
+    operator: ->
+    description: 'buffer for session control block (see #03727 at INT 6A/AH=D0h)'
+    table_refs:
+    - '03727'
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - AX <= 0 on error
+    - AX > 0 session handle
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 0103h
+  - type: interrupt
+    params:
+      AX: 0106h
+  - type: interrupt
+    params:
+      AX: 010Ah
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: N-690106
+  category: N
+  title: DECnet DOS CTERM - CLOSE SESSION
+  source: INTERRUP.P:8671
+  interrupt: '69'
+  flags: []
+  function: '0106'
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 0106h
+    table_refs: []
+    sub_values: []
+  - reg: DX
+    operator: '='
+    description: session handle
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AH
+      operator: '='
+      description: status
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 0103h
+  - type: interrupt
+    params:
+      AX: 0105h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: N-69010A
+  category: N
+  title: DECnet DOS CTERM - GET SESSION CONTROL BLOCK SIZE
+  source: INTERRUP.P:8679
+  interrupt: '69'
+  flags: []
+  function: 010A
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 010Ah
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AX
+      operator: '='
+      description: length of session control block in bytes
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 0105h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: N-69010B
+  category: N
+  title: DECnet DOS CTERM - GET DECnet SOCKET
+  source: INTERRUP.P:8684
+  interrupt: '69'
+  flags: []
+  function: 010B
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 010Bh
+    table_refs: []
+    sub_values: []
+  - reg: DX
+    operator: '='
+    description: session handle
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AX
+      operator: '='
+      description: "0\tno match for handle"
+      table_refs: []
+      sub_values: []
+    raw_lines:
+    - "AX > 0\tDECnet socket for the session"
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: N-69010F
+  category: N
+  title: DECnet DOS CTERM - DEINSTALL CTERM
+  source: INTERRUP.P:8690
+  interrupt: '69'
+  flags: []
+  function: 010F
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 010Fh
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AH
+      operator: '='
+      description: status
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes:
+  - CTERM must have been the last TSR loaded in order to deinstall it
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 0100h
+  index:
+  - uninstall;DECnet DOS CTERM
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: N-690A
+  category: N
+  title: DECnet DOS 2.1+ - DATA LINK LAYER
+  source: INTERRUP.P:8699
+  interrupt: '69'
+  flags: []
+  function: 0A
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 0Ah
+    table_refs: []
+    sub_values: []
+  - reg: AL
+    operator: '='
+    description: 'function number (see #03712)'
+    table_refs:
+    - '03712'
+    sub_values: []
+  - reg: ES:BX
+    operator: ->
+    description: 'Datalink Communication Block (see #03714)'
+    table_refs:
+    - '03714'
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AX
+      operator: '='
+      description: 'status (see #03713)'
+      table_refs:
+      - '03713'
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: 6D
+    params: {}
+    name: DECnet
+  index: []
+  tables:
+  - '03712'
+  - '03713'
+  - '03714'
+  table_refs: []
+- entry_type: INT
+  id: N-694001
+  category: N
+  title: 10NET v5.0 - SYSSVC.COM - ???
+  source: INTERRUP.P:8777
+  interrupt: '69'
+  flags: []
+  function: '4001'
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 4001h
+    table_refs: []
+    sub_values: []
+  returns:
+  - condition: CF clear
+    registers:
+    - reg: AX
+      operator: '='
+      value: 0000h
+      table_refs: []
+      sub_values: []
+    - reg: ES:SI
+      operator: ->
+      description: ???
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 4002h
+  install_check: 'test for the signature "SYSV" immediately before the interrupt
+
+    handler'
+  range: INT 60 to INT 7F, selected by configuration
+  index:
+  - installation check;10NET SYSSVC
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: N-694002
+  category: N
+  title: 10NET v5.0 - SYSSVC.COM - ???
+  source: INTERRUP.P:8788
+  interrupt: '69'
+  flags: []
+  function: '4002'
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 4002h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+  notes: []
+  bugs: []
+  see_also: []
+  install_check: 'test for the signature "SYSV" immediately before the interrupt
+
+    handler'
+  range: INT 60 to INT 7F, selected by configuration
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: N-694101
+  category: N
+  title: 10NET v5.0 - SYSSVC.COM - ???
+  source: INTERRUP.P:8796
+  interrupt: '69'
+  flags: []
+  function: '4101'
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 4101h
+    table_refs: []
+    sub_values: []
+  returns:
+  - condition: CF clear
+    registers:
+    - reg: ES:SI
+      operator: ->
+      description: ???
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 4102h
+  - type: interrupt
+    params:
+      AX: 4103h
+  - type: interrupt
+    params:
+      AX: 4104h
+  range: INT 60 to INT 7F, selected by configuration
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: N-694102
+  category: N
+  title: 10NET v5.0 - SYSSVC.COM - ???
+  source: INTERRUP.P:8803
+  interrupt: '69'
+  flags: []
+  function: '4102'
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 4102h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: N-694103
+  category: N
+  title: 10NET v5.0 - SYSSVC.COM - ???
+  source: INTERRUP.P:8808
+  interrupt: '69'
+  flags: []
+  function: '4103'
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 4103h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: N-694104
+  category: N
+  title: 10NET v5.0 - SYSSVC.COM - ???
+  source: INTERRUP.P:8813
+  interrupt: '69'
+  flags: []
+  function: '4104'
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 4104h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: N-6942
+  category: N
+  title: 10NET v5.0 - SYSSVC.COM - ???
+  source: INTERRUP.P:8818
+  interrupt: '69'
+  flags: []
+  function: '42'
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 42h
+    table_refs: []
+    sub_values: []
+  - reg: AL
+    operator: '='
+    description: function (01h-14h)
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+  notes: []
+  bugs: []
+  see_also: []
+  range: INT 60 to INT 7F, selected by configuration
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: N-6943
+  category: N
+  title: 10NET v5.0 - SYSSVC.COM - ???
+  source: INTERRUP.P:8825
+  interrupt: '69'
+  flags: []
+  function: '43'
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 43h
+    table_refs: []
+    sub_values: []
+  - reg: AL
+    operator: '='
+    description: function (01h-05h)
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: N-6944
+  category: N
+  title: 10NET v5.0 - SYSSVC.COM - ???
+  source: INTERRUP.P:8831
+  interrupt: '69'
+  flags: []
+  function: '44'
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 44h
+    table_refs: []
+    sub_values: []
+  - reg: AL
+    operator: '='
+    description: function (01h-03h)
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+  notes: []
+  bugs: []
+  see_also: []
+  range: INT 60 to INT 7F, selected by configuration
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: N-6949
+  category: N
+  title: 10NET v5.0 - SYSSVC.COM - BUG
+  source: INTERRUP.P:8838
+  interrupt: '69'
+  flags: []
+  function: '49'
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 49h
+    table_refs: []
+    sub_values: []
+  returns: []
+  notes:
+  - due to a fencepost error, this function branches to hyperspace
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 4001h
+  - type: interrupt
+    params:
+      AH: FFh
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: G-696996
+  category: G
+  title: ISR.COM v1.00 - SPECIFY INTERRUPT HANDLER
+  source: INTERRUP.P:8843
+  interrupt: '69'
+  flags: []
+  function: '6996'
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 6996h
+    table_refs: []
+    sub_values: []
+  - reg: DS:DX
+    operator: ->
+    description: interrupt handler or 0000h:0000h to disable
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AX
+      operator: '='
+      value: 9669h
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  program: 'ISR (Interrupt Service Reflector) is a TSR by Rich Bono which permits
+
+    a program to provide hardware interrupt handlers even while being
+
+    debugged with a debugger that swaps interrupt vectors during
+
+    debugging.'
+  notes:
+  - 'the interrupt vector which is to be reflected is set at installation
+
+    time and cannot be changed'
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: N-69FF
+  category: N
+  title: 10NET v5.0 - SYSSVC.COM - SIGNAL SYSTEM ERROR
+  source: INTERRUP.P:8854
+  interrupt: '69'
+  flags: []
+  function: FF
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: FFh
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - never???
+  description: displays "System Error" message and register dump, then halts system
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 4001h
+  - type: interrupt
+    params:
+      AH: 49h
+  install_check: 'test for the signature "SYSV" immediately before the interrupt
+
+    handler'
+  range: INT 60 to INT 7F, selected by configuration
+  index: []
+  tables: []
+  table_refs: []

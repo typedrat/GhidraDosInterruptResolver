@@ -1,0 +1,49 @@
+file_type: interrupt
+key: F5
+entries:
+- entry_type: INT
+  id: '*-F5'
+  category: '*'
+  title: reserved for user interrupt
+  source: INTERRUP.R:4856
+  interrupt: F5
+  flags: []
+  input_registers: []
+  returns: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: F4
+    params: {}
+    name: user
+  - type: interrupt
+    interrupt: F6
+    params: {}
+    name: user
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: T-F5
+  category: T
+  title: DoubleDOS - ???
+  source: INTERRUP.R:4859
+  interrupt: F5
+  flags: []
+  input_registers: []
+  returns: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: F4
+    params: {}
+    name: DoubleDOS
+  - type: interrupt
+    interrupt: F6
+    params: {}
+    name: DoubleDOS
+  index: []
+  tables: []
+  table_refs: []

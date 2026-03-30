@@ -1,0 +1,34 @@
+file_type: interrupt
+key: 3E
+entries:
+- entry_type: INT
+  id: r-3E
+  category: r
+  title: FLOATING POINT EMULATION - Borland LANGUAGES "SHORTCUT" CALL
+  source: INTERRUP.N:6886
+  interrupt: 3E
+  flags: []
+  input_registers: []
+  returns: []
+  notes:
+  - 'the two bytes following the INT 3E instruction are the subcode
+
+    (see #03195) and a NOP (90h), except for subcodes DCh and DEh, where
+
+    the second byte is a register count (01h-08h)
+
+    this vector is modified but not restored by Direct Access v4.0, and
+
+    may be left dangling by other programs written with the same version
+
+    of compiled BASIC'
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: 3D
+    params: {}
+  index: []
+  tables:
+  - 03195
+  table_refs:
+  - 03195

@@ -1,0 +1,524 @@
+file_type: interrupt
+key: 7D
+entries:
+- entry_type: INT
+  id: t-7D
+  category: t
+  title: '[obsoleted proposal] - ALTERNATE MULTIPLEX INTERRUPT'
+  source: INTERRUP.Q:5708
+  interrupt: 7D
+  flags:
+  - O
+  input_registers: []
+  returns: []
+  notes:
+  - 'this interface has been moved to INT 2D; there are no known
+
+    implementations on INT 7D'
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: 2D
+    params: {}
+    name: AMIS
+  - type: interrupt
+    interrupt: 2F
+    params: {}
+    name: NOTES
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: S-7D
+  category: S
+  title: YTERM 1.4 - CLOCK SUPPORT
+  source: INTERRUP.Q:5713
+  interrupt: 7D
+  flags:
+  - U
+  input_registers: []
+  returns: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: 7E
+    params: {}
+    name: YTERM
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: E-7D
+  category: E
+  title: DJGPP GO32.EXE DOS EXTENDER - RELOCATED IRQ5
+  source: INTERRUP.Q:5716
+  interrupt: 7D
+  flags: []
+  input_registers: []
+  returns: []
+  notes:
+  - 'this vector is overwritten when GO32 starts but is not restored by
+
+    early versions of the extender
+
+    the newest versions of GO32 dynamically allocate the vectors used
+
+    for the relocated IRQs, much as DESQview does (see INT 50"DESQview")'
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: 0D
+    params: {}
+    name: IRQ5
+  - type: interrupt
+    interrupt: 7C
+    params: {}
+    name: GO32
+  - type: interrupt
+    interrupt: 7E
+    params: {}
+    name: GO32
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: U-7D
+  category: U
+  title: HyperPAD v2.2 - API ACCESS
+  source: INTERRUP.Q:5723
+  interrupt: 7D
+  flags: []
+  input_registers: []
+  returns: []
+  notes:
+  - 'this vector is hooked but immediately passed on (without checking
+
+    whether the previous handler was 0000h:0000h).  The sole purpose of
+
+    this vector is to provide the address of the data area described
+
+    below (see #03862).'
+  bugs: []
+  see_also: []
+  index: []
+  tables:
+  - 03862
+  table_refs:
+  - 03862
+- entry_type: INT
+  id: --7D
+  title: IBM DOS 6.1 E.EXE - ???
+  source: INTERRUP.Q:5739
+  interrupt: 7D
+  flags: []
+  input_registers: []
+  returns: []
+  notes:
+  - "E.EXE checks whether this interrupt is in use (not 0000h:0000h),\nand if it is used, attempts to load E55VGA.EX instead\
+    \ of the\ndefault E.EX overlay.\t However, E55VGA.EX is not included in\nIBM DOS 6.1."
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: G-7D00
+  category: G
+  title: SCSILink - RESET SCSI BUS
+  source: INTERRUP.Q:5745
+  interrupt: 7D
+  flags: []
+  function: '00'
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 00h
+    table_refs: []
+    sub_values: []
+  returns: []
+  description: reset all devices on the SCSI bus
+  program: 'SCSILink is a TSR by Cross Products Ltd which allows its PC-hosted
+
+    cross assemblers and similar products to communicate with Cross
+
+    Products hardware debuggers'
+  notes: []
+  bugs: []
+  see_also: []
+  install_check: 'test for the signature "SCSILINK" immediately prior to the
+
+    interrupt handler'
+  index:
+  - installation check;SCSILink
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: G-7D01
+  category: G
+  title: SCSILink - CONNECT TO TARGET
+  source: INTERRUP.Q:5755
+  interrupt: 7D
+  flags: []
+  function: '01'
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 01h
+    table_refs: []
+    sub_values: []
+  - reg: AL
+    operator: '='
+    description: target ID
+    table_refs: []
+    sub_values: []
+  returns:
+  - condition: CF clear
+    condition_description: if successful
+    registers: []
+    raw_lines: []
+  - condition: CF set
+    condition_description: on error
+    registers:
+    - reg: AL
+      operator: '='
+      description: initiator error
+      table_refs: []
+      sub_values: []
+    - reg: AH
+      operator: '='
+      description: target error
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  description: arbitrate the use of the bus and select the specified target device
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: G-7D02
+  category: G
+  title: SCSILink - SEND COMMAND
+  source: INTERRUP.Q:5764
+  interrupt: 7D
+  flags: []
+  function: '02'
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 02h
+    table_refs: []
+    sub_values: []
+  - reg: ES:BX
+    operator: ->
+    description: 'parameter block (see #03863)'
+    table_refs:
+    - 03863
+    sub_values: []
+  returns:
+  - condition: CF clear
+    condition_description: if successful
+    registers: []
+    raw_lines: []
+  - condition: CF set
+    condition_description: on error
+    registers:
+    - reg: AL
+      operator: '='
+      description: initiator error
+      table_refs: []
+      sub_values: []
+    - reg: AH
+      operator: '='
+      description: target error
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  description: 'send the specified command block to the target device and perform any
+
+    related I/O'
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables:
+  - 03863
+  - 03864
+  table_refs: []
+- entry_type: INT
+  id: G-7D03
+  category: G
+  title: SCSILink - SET TIMEOUT
+  source: INTERRUP.Q:5785
+  interrupt: 7D
+  flags: []
+  function: '03'
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 03h
+    table_refs: []
+    sub_values: []
+  - reg: AL
+    operator: '='
+    description: 'timeout selector (see #03865)'
+    table_refs:
+    - 03865
+    sub_values: []
+  - reg: BX
+    operator: '='
+    description: new value in 55ms ticks
+    table_refs: []
+    sub_values: []
+  returns: []
+  description: 'change an internal timeout value to allow communication with very
+
+    slow targets'
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables:
+  - 03865
+  table_refs: []
+- entry_type: INT
+  id: G-7D04
+  category: G
+  title: SCSILink - GET ERROR STRING
+  source: INTERRUP.Q:5799
+  interrupt: 7D
+  flags: []
+  function: '04'
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 04h
+    table_refs: []
+    sub_values: []
+  - reg: AL
+    operator: '='
+    description: error number
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: ES:BX
+      operator: ->
+      description: ASCIZ error string for error number
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: G-7D05
+  category: G
+  title: SCSILink - GET ADDRESS
+  source: INTERRUP.Q:5804
+  interrupt: 7D
+  flags: []
+  function: '05'
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 05h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AL
+      operator: '='
+      description: DMA channel
+      table_refs: []
+      sub_values: []
+    - reg: AH
+      operator: '='
+      description: initiator ID
+      table_refs: []
+      sub_values: []
+    - reg: BX
+      operator: '='
+      description: card address
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  description: determine the current hardware configuration
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: G-7D06
+  category: G
+  title: SCSILink - PUT DATA
+  source: INTERRUP.Q:5811
+  interrupt: 7D
+  flags: []
+  function: '06'
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 06h
+    table_refs: []
+    sub_values: []
+  - reg: CX
+    operator: '='
+    description: number of bytes to store (0001h-0100h)
+    table_refs: []
+    sub_values: []
+  - reg: ES:BX
+    operator: ->
+    description: data to be saved
+    table_refs: []
+    sub_values: []
+  returns:
+  - condition: CF clear
+    condition_description: if successful
+    registers: []
+    raw_lines: []
+  - condition: CF set
+    condition_description: on error
+    registers:
+    - reg: AL
+      operator: '='
+      description: error code (01h = too much data)
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes:
+  - the specified data is stored in SCSILink's PSP
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 07h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: G-7D07
+  category: G
+  title: SCSILink - GET DATA
+  source: INTERRUP.Q:5821
+  interrupt: 7D
+  flags: []
+  function: '07'
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 07h
+    table_refs: []
+    sub_values: []
+  - reg: CX
+    operator: '='
+    description: number of bytes to retrieve (0001h-0100h)
+    table_refs: []
+    sub_values: []
+  - reg: ES:BX
+    operator: ->
+    description: buffer for data
+    table_refs: []
+    sub_values: []
+  returns:
+  - condition: CF clear
+    condition_description: if successful
+    registers: []
+    raw_lines: []
+  - condition: CF set
+    condition_description: on error
+    registers:
+    - reg: AL
+      operator: '='
+      description: error code (01h = too much data)
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes:
+  - retrieve data previously stored with AH=06h
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 06h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: G-7D08
+  category: G
+  title: SCSILink - TERMINATE SESSION
+  source: INTERRUP.Q:5831
+  interrupt: 7D
+  flags: []
+  function: 08
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 08h
+    table_refs: []
+    sub_values: []
+  returns: []
+  description: 'indicate to any other programs that intercept INT 7D that the program
+
+    has finished with the link'
+  notes:
+  - 'the program should call this function even if a SCSI error caused its
+
+    termination'
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: G-7D09
+  category: G
+  title: SCSILink - POLL REQUEST
+  source: INTERRUP.Q:5838
+  interrupt: 7D
+  flags: []
+  function: 09
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 09h
+    table_refs: []
+    sub_values: []
+  - reg: AL
+    operator: '='
+    description: target ID
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AL
+      operator: '='
+      description: status
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  description: 'give any drivers chained onto INT 7D a chance to handle an exception
+
+    not specifically handled by the calling program'
+  notes:
+  - 'this service exists so that resident disk servers, etc. can continue
+
+    running even while debuggers and profilers are active
+
+    the resident driver assumes that a connection has been established and
+
+    attempts to leave the target connected'
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []

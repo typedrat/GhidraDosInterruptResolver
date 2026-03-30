@@ -1,0 +1,327 @@
+file_type: interrupt
+key: 6D
+entries:
+- entry_type: INT
+  id: V-6D
+  category: V
+  title: VIDEO - many VGA - VIDEO BIOS ENTRY POINT
+  source: INTERRUP.Q:329
+  interrupt: 6D
+  flags: []
+  input_registers: []
+  returns: []
+  description: points at the original INT 10 entry point set up by the VGA BIOS
+  notes:
+  - 'used by IBM, ATI VGA Wonder, Paradise, Video7, and NCR, and many others
+
+    the Diamond Stealth64 BIOS uses this vector to store the INT 42 vector
+
+    of the inactive video (see INT 10/AH=12h/BL=35h)'
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: '10'
+    params:
+      AH: 00h
+  - type: interrupt
+    interrupt: '10'
+    params:
+      AH: 0Eh
+  - type: interrupt
+    interrupt: '10'
+    params:
+      AH: 12h
+      BL: 10h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: V-6D
+  category: V
+  title: Trident SVGA - VIDEO BIOS HANDLER
+  source: INTERRUP.Q:336
+  interrupt: 6D
+  flags: []
+  input_registers: []
+  returns: []
+  notes:
+  - 'the BIOS INT 10 handler on various Trident VGA cards consists merely
+
+    of a call to INT 6D followed by an IRET.'
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: N-6D
+  category: N
+  title: DECnet DOS (before 2.1) - DATA LINK LAYER PROGRAM
+  source: INTERRUP.Q:340
+  interrupt: 6D
+  flags: []
+  input_registers:
+  - reg: AH
+    operator: '='
+    description: function
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: '69'
+    params:
+      AH: 0Ah
+  - type: interrupt
+    interrupt: 6C
+    params: {}
+    name: DECnet
+  - type: interrupt
+    interrupt: 6E
+    params: {}
+    name: DECnet
+  install_check: 'test for a signature area immediately preceding the interrupt
+
+    handler (see #03734)'
+  index:
+  - installation check;DECnet DOS Data Link Layer
+  tables:
+  - '03734'
+  table_refs:
+  - '03734'
+- entry_type: INT
+  id: h-6D
+  category: h
+  title: HP Vectra AT - IRQ21 - RESERVED HARDWARE INTERRUPT
+  source: INTERRUP.Q:355
+  interrupt: 6D
+  flags:
+  - C
+  input_registers: []
+  returns: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: 0D
+    params: {}
+    name: IRQ5
+  - type: interrupt
+    interrupt: 6C
+    params: {}
+    name: HP Vectra
+  - type: interrupt
+    interrupt: 6E
+    params: {}
+    name: HP Vectra
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: V-6DBD60
+  category: V
+  title: Matrox Multiple Monitor Support v1.0 - ???
+  source: INTERRUP.Q:358
+  interrupt: 6D
+  flags:
+  - U
+  function: BD60
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: BD60h
+    table_refs: []
+    sub_values: []
+  - reg: DS:SI
+    operator: ->
+    description: 'buffer containing ??? (see #03735)'
+    table_refs:
+    - '03735'
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AX
+      operator: '='
+      value: 00BDh
+      description: if function executed
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes:
+  - this function is a NOP if AX=BD6Fh/BL=01h was called
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: BD61h
+  - type: interrupt
+    params:
+      AX: BD6Fh
+  - type: interrupt
+    params:
+      AX: BDFFh
+  index: []
+  tables:
+  - '03735'
+  table_refs: []
+- entry_type: INT
+  id: V-6DBD61
+  category: V
+  title: Matrox Multiple Monitor Support v1.0 - GET VIDEO MODE INFORMATION
+  source: INTERRUP.Q:387
+  interrupt: 6D
+  flags:
+  - U
+  function: BD61
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: BD61h
+    table_refs: []
+    sub_values: []
+  - reg: BX
+    operator: '='
+    description: width in pixels (bits 13-0)
+    table_refs: []
+    sub_values: []
+  - reg: CX
+    operator: '='
+    description: height in pixels
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AL
+      operator: '='
+      value: BDh
+      description: if function supported
+      table_refs: []
+      sub_values: []
+    - reg: AH
+      operator: '='
+      description: status
+      table_refs: []
+      sub_values: []
+    - reg: CX:BX
+      operator: ->
+      description: 'video mode data structure (see #03736)'
+      table_refs:
+      - '03736'
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: BD60h
+  - type: interrupt
+    params:
+      AX: BD6Fh
+  - type: interrupt
+    params:
+      AX: BDFFh
+  index: []
+  tables:
+  - '03736'
+  table_refs: []
+- entry_type: INT
+  id: V-6DBD6F
+  category: V
+  title: Matrox Multiple Monitor Support v1.0 - INSTALLATION CHECK
+  source: INTERRUP.Q:411
+  interrupt: 6D
+  flags:
+  - U
+  function: BD6F
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: BD6Fh
+    table_refs: []
+    sub_values: []
+  - reg: BL
+    operator: '='
+    description: subfunction
+    table_refs: []
+    sub_values:
+    - value: 00h
+      description: installation check
+      sub_values: []
+    - value: 01h
+      description: disable TSR
+      sub_values: []
+    - value: 02h
+      description: enable TSR (see AX=BD60h)
+      sub_values: []
+  returns:
+  - registers:
+    - reg: AX
+      operator: '='
+      value: 00BDh
+      description: if installed
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: BD60h
+  - type: interrupt
+    params:
+      AX: BD61h
+  - type: interrupt
+    params:
+      AX: BDFFh
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: V-6DBDFF
+  category: V
+  title: Matrox Multiple Monitor Support v1.0 - UNHOOK INTERRUPT (UNINSTALL)
+  source: INTERRUP.Q:420
+  interrupt: 6D
+  flags:
+  - U
+  function: BDFF
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: BDFFh
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AX
+      operator: '='
+      value: 00BDh
+      description: if supported
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes:
+  - 'this function revectors INT 6D without checking that it points at the
+
+    TSR, and does not release the memory occupied by the TSR'
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: BD60h
+  - type: interrupt
+    params:
+      AX: BD61h
+  - type: interrupt
+    params:
+      AX: BD6Fh
+  index: []
+  tables: []
+  table_refs: []

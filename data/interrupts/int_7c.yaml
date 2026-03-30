@@ -1,0 +1,1430 @@
+file_type: interrupt
+key: 7C
+entries:
+- entry_type: INT
+  id: r-7C
+  category: r
+  title: IBM REXX88PC command language
+  source: INTERRUP.Q:5130
+  interrupt: 7C
+  flags:
+  - U
+  input_registers: []
+  returns: []
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: E-7C
+  category: E
+  title: DJGPP GO32.EXE DOS EXTENDER - RELOCATED IRQ4
+  source: INTERRUP.Q:5133
+  interrupt: 7C
+  flags: []
+  input_registers: []
+  returns: []
+  program: 'GO32.EXE is a DOS extender included as part of the 80386 port of the
+
+    GNU C/C++ compiler by DJ Delorie and distributed as DJGPP'
+  notes:
+  - 'this vector is overwritten when GO32 starts but is not restored by
+
+    early versions of the extender
+
+    the newest versions of GO32 dynamically allocate the vectors used
+
+    for the relocated IRQs, much as DESQview does (see INT 50"DESQview")'
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: 0C
+    params: {}
+  - type: interrupt
+    interrupt: 7B
+    params: {}
+    name: GO32
+  - type: interrupt
+    interrupt: 7D
+    params: {}
+    name: GO32
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: P-7C
+  category: P
+  title: PRINDIR v8.02-8.xx - API
+  source: INTERRUP.Q:5142
+  interrupt: 7C
+  flags: []
+  input_registers:
+  - reg: AH
+    operator: '='
+    description: function
+    table_refs: []
+    sub_values:
+    - value: 00h
+      description: set output to Invisible mode
+      sub_values: []
+    - value: 01h
+      description: set output to LPT1
+      sub_values: []
+    - value: 02h
+      description: set output to LPT2
+      sub_values: []
+    - value: 03h
+      description: set output to LPT3
+      sub_values: []
+    - value: 04h
+      description: set output to COM1
+      sub_values: []
+    - value: 05h
+      description: set output to COM2
+      sub_values: []
+    - value: 06h
+      description: set output to COM3
+      sub_values: []
+    - value: 07h
+      description: set output to COM4
+      sub_values: []
+    - value: 08h
+      description: set output to screen
+      sub_values: []
+    - value: 09h
+      description: set output to file
+      sub_values: []
+    - value: 0Ah
+      description: change file path
+      sub_values: []
+  - reg: ES:DI
+    operator: ->
+    description: new path
+    table_refs: []
+    sub_values: []
+  - reg: CX
+    operator: '='
+    description: length of path (max 41, but not range-checked)
+    table_refs: []
+    sub_values: []
+  - reg: ES:DI
+    operator: ->
+    description: new filename
+    table_refs: []
+    sub_values: []
+  - reg: CX
+    operator: '='
+    description: length of new name (max 41, but not range-checked)
+    table_refs: []
+    sub_values: []
+  - reg: AL
+    operator: '='
+    description: 'new color attribute (see #00014 at INT 10/AH=08h)'
+    table_refs:
+    - '00014'
+    sub_values: []
+  - reg: AL
+    operator: '='
+    description: hotkey scancode
+    table_refs: []
+    sub_values: []
+  - reg: AL
+    operator: '='
+    description: new state (00h off, 01h on)
+    table_refs: []
+    sub_values: []
+  - reg: AL
+    operator: '='
+    description: timer ticks before flush
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AX
+      operator: '='
+      description: status
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  program: 'PRINDIR is a shareware printer-redirection program by J.M. Allen
+
+    Creations'
+  notes:
+  - prior versions of PRINDIR used INT 7A instead of INT 7C
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: 7A
+    params: {}
+    name: PRINDIR
+  - type: interrupt
+    interrupt: 2F
+    params:
+      AX: 7F00h
+    name: PRINDIR
+  install_check: 'test for the ASCIZ signature "PRINDIR N.NN" (where N.NN is the
+
+    version number) two bytes beyond the start of the interrupt handler'
+  index:
+  - hotkeys;PRINDIR
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: A-7C
+  category: A
+  title: AutoShade v2 - RENDERING HARDCOPY DRIVER
+  source: INTERRUP.Q:5183
+  interrupt: 7C
+  flags: []
+  input_registers: []
+  returns: []
+  notes:
+  - 'this is the default interrupt vector for rendering hardcopy drivers
+
+    instead of INT 7A used by AutoCAD drivers'
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: 7A
+    params:
+      AX: 0001h
+    name: AutoCAD
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: N-7C
+  category: N
+  title: SK-UPPS/SK-PASSPORT Data Link Interface (DLI) API
+  source: INTERRUP.Q:5188
+  interrupt: 7C
+  flags: []
+  input_registers: []
+  returns: []
+  program: 'SK-UPPS is the Schneider & Koch Universal Portable Protocol Stack,
+
+    which provides an API on top of it Data Link Interface, allowing the
+
+    use of any of several network transport layers; this product is
+
+    called SK-PASSPORT in the USA.'
+  notes:
+  - 'To find the service interrupt being used by the driver, an application
+
+    should scan through the interrupt table until it finds an interrupt
+
+    vector with the "UPPS_DLI" string.
+
+    There may be more than one DLI loaded, each having its own service
+
+    interrupt.'
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 0000h
+  - type: interrupt
+    params:
+      AX: 0002h
+  - type: interrupt
+    params:
+      AX: 000Fh
+  install_check: 'test for the ASCII signature string "UPPS_DLI" immediately
+
+    preceding the interrupt handler'
+  index:
+  - installation check;SK-UPPS
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: N-7C0000
+  category: N
+  title: SK-UPPS Data Link Interface API - GET DRIVER VERSION
+  source: INTERRUP.Q:5203
+  interrupt: 7C
+  flags: []
+  function: '0000'
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 0000h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AH
+      operator: '='
+      description: major DLI version
+      table_refs: []
+      sub_values: []
+    - reg: AL
+      operator: '='
+      description: minor DLI version
+      table_refs: []
+      sub_values: []
+    - reg: DX
+      operator: '='
+      description: 'OEM signature (see #03845)'
+      table_refs:
+      - 03845
+      sub_values: []
+    - reg: CL
+      operator: '='
+      description: 'DLI 2.8+ topology: 1=Ethernet, 2=FDDI, 3=Token-Ring'
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 0002h
+  - type: interrupt
+    params:
+      AX: 000Bh
+  - type: interrupt
+    params:
+      AX: 000Dh
+  - type: interrupt
+    params:
+      AX: 000Eh
+  index: []
+  tables:
+  - 03845
+  table_refs: []
+- entry_type: INT
+  id: N-7C0001
+  category: N
+  title: SK-UPPS Data Link Interface API - DOWN DRIVER
+  source: INTERRUP.Q:5226
+  interrupt: 7C
+  flags: []
+  function: '0001'
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 0001h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AX
+      operator: '='
+      description: 'completion code (see #03846)'
+      table_refs:
+      - 03846
+      sub_values: []
+    raw_lines: []
+  notes:
+  - 'the DLI will refuse to unload if there are any protocols
+
+    (see AX=0007h) or clients (see AX=0010h) active.'
+  bugs: []
+  see_also: []
+  index:
+  - uninstall;SK-UPPS Data Link Interface
+  tables:
+  - 03846
+  table_refs: []
+- entry_type: INT
+  id: N-7C0002
+  category: N
+  title: SK-UPPS Data Link Interface API - GET DRIVER STATUS
+  source: INTERRUP.Q:5249
+  interrupt: 7C
+  flags: []
+  function: '0002'
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 0002h
+    table_refs: []
+    sub_values: []
+  - reg: ES:DI
+    operator: ->
+    description: 'Status Information Block (SIB) (see #03858)'
+    table_refs:
+    - 03858
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AX
+      operator: '='
+      description: 'completion code (see #03846)'
+      table_refs:
+      - 03846
+      sub_values: []
+    raw_lines: []
+  notes:
+  - GET DRIVER INFO (AX=000Eh) should be used instead.
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 0000h
+  - type: interrupt
+    params:
+      AX: 000Bh
+  - type: interrupt
+    params:
+      AX: 000Dh
+  - type: interrupt
+    params:
+      AX: 000Eh
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: N-7C0003
+  category: N
+  title: SK-UPPS Data Link Interface API - CHANGE DRIVER ADDRESS
+  source: INTERRUP.Q:5256
+  interrupt: 7C
+  flags: []
+  function: '0003'
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 0003h
+    table_refs: []
+    sub_values: []
+  - reg: ES:DI
+    operator: ->
+    description: new node address (6 bytes)
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AX
+      operator: '='
+      description: 'completion code (see #03846)'
+      table_refs:
+      - 03846
+      sub_values: []
+    raw_lines: []
+  notes:
+  - 'the DLI will refuse to change the address if any protocols
+
+    (see AX=0007h) are active'
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 0001h
+  - type: interrupt
+    params:
+      AX: 000Eh
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: N-7C0004
+  category: N
+  title: SK-UPPS Data Link Interface API - REQUEST BUFFER
+  source: INTERRUP.Q:5264
+  interrupt: 7C
+  flags: []
+  function: '0004'
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 0004h
+    table_refs: []
+    sub_values: []
+  - reg: DX
+    operator: '='
+    description: protocol ID (see AX=0007h,#03849)
+    table_refs:
+    - 03849
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AX
+      operator: '='
+      description: 'completion code (see also #03846)'
+      table_refs:
+      - 03846
+      sub_values: []
+    - reg: ES:BX
+      operator: ->
+      description: 'Memory Buffer (Mbuf) (see #03847)'
+      table_refs:
+      - 03847
+      sub_values: []
+    raw_lines: []
+  notes:
+  - 'if the DLI has no free Mbufs, it will set an internal flag for the
+
+    protocol and later call the protocol''s Event Upcall with
+
+    EV_BUFFER_AVAILABLE (see #03853,#03854) as soon as an Mbuf becomes
+
+    available.  There will only be one "buffer available" Upcall, even
+
+    if this function has been called several times before.'
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 0005h
+  - type: interrupt
+    params:
+      AX: 0006h
+  - type: interrupt
+    params:
+      AX: 0012h
+  - type: interrupt
+    params:
+      AX: 0013h
+  index: []
+  tables:
+  - 03847
+  table_refs:
+  - 03853
+  - 03854
+- entry_type: INT
+  id: N-7C0005
+  category: N
+  title: SK-UPPS Data Link Interface API - RELEASE BUFFER
+  source: INTERRUP.Q:5289
+  interrupt: 7C
+  flags: []
+  function: '0005'
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 0005h
+    table_refs: []
+    sub_values: []
+  - reg: ES:BX
+    operator: ->
+    description: 'Mbuf (see #03847)'
+    table_refs:
+    - 03847
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - nothing
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 0004h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: N-7C0006
+  category: N
+  title: SK-UPPS Data Link Interface API - TRANSMIT FRAME
+  source: INTERRUP.Q:5295
+  interrupt: 7C
+  flags: []
+  function: '0006'
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 0006h
+    table_refs: []
+    sub_values: []
+  - reg: ES:BX
+    operator: ->
+    description: 'Mbuf (see #03847)'
+    table_refs:
+    - 03847
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - nothing
+  notes:
+  - 'The DLI will send LENGTH bytes found in the Mbuf''s DATA area starting
+
+    at OFFSET. A complete and valid frame must be stored there. The DLI
+
+    will only copy the current node address (see AX=0003h) to the
+
+    source node field of the frame''s MAC header.
+
+    On Ethernet, the DLI will always send a minimum of 60 bytes, regardless
+
+    of the value found in the LENGTH field.
+
+    This function returns immediately; the DLI will call the protocol''s
+
+    Transmit Upcall (see #03848) when the frame has been sent.
+
+    The Mbuf''s IN USE field will be non-zero until the DLI calls the
+
+    Transmit Upcall.'
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 0002h
+  - type: interrupt
+    params:
+      AX: 0004h
+  - type: interrupt
+    params:
+      AX: 0013h
+  index: []
+  tables:
+  - 03848
+  table_refs:
+  - 03848
+- entry_type: INT
+  id: N-7C0007
+  category: N
+  title: SK-UPPS Data Link Interface API - REGISTER PROTOCOL
+  source: INTERRUP.Q:5318
+  interrupt: 7C
+  flags: []
+  function: '0007'
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 0007h
+    table_refs: []
+    sub_values: []
+  - reg: ES:BX
+    operator: ->
+    description: 'Protocol Control Block (see #03849)'
+    table_refs:
+    - 03849
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AX
+      operator: '='
+      description: 'completion code (see #03846)'
+      table_refs:
+      - 03846
+      sub_values: []
+    raw_lines: []
+  program: 'SK-UPPS is the Schneider & Koch Universal Portable Protocol Stack,
+
+    which provides an API on top of its Data Link Interface, allowing the
+
+    use of any of several network transport layers'
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 0008h
+  - type: interrupt
+    params:
+      AX: 000Bh
+  index: []
+  tables:
+  - 03849
+  - 03850
+  - 03851
+  - 03852
+  - 03853
+  - 03854
+  - 03855
+  table_refs: []
+- entry_type: INT
+  id: N-7C0008
+  category: N
+  title: SK-UPPS Data Link Interface API - DISABLE PROTOCOL
+  source: INTERRUP.Q:5439
+  interrupt: 7C
+  flags: []
+  function: 0008
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 0008h
+    table_refs: []
+    sub_values: []
+  - reg: BX
+    operator: '='
+    description: 'protocol ID (see #03849)'
+    table_refs:
+    - 03849
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AX
+      operator: '='
+      description: 'completion code (see #03846)'
+      table_refs:
+      - 03846
+      sub_values: []
+    raw_lines: []
+  notes:
+  - 'the DLI will handle any Mbufs given to TRANSMIT FRAME (AX=0006h) as if
+
+    they had been given to TRANSMIT FRAME RELEASE (AX=0013h).
+
+    all multicast addresses registered for this protocol will be disabled.
+
+    after this function returns, the protocol''s Upcall routines will no
+
+    longer be called.'
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 0007h
+  - type: interrupt
+    params:
+      AX: 000Bh
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: N-7C0009
+  category: N
+  title: SK-UPPS Data Link Interface API - REGISTER MULTICAST
+  source: INTERRUP.Q:5450
+  interrupt: 7C
+  flags: []
+  function: 0009
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 0009h
+    table_refs: []
+    sub_values: []
+  - reg: BX
+    operator: '='
+    description: 'protocol ID (see #03849)'
+    table_refs:
+    - 03849
+    sub_values: []
+  - reg: ES:DI
+    operator: ->
+    description: multicast address (6 bytes)
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AX
+      operator: '='
+      description: 'completion code (see #03846)'
+      table_refs:
+      - 03846
+      sub_values: []
+    raw_lines: []
+  notes:
+  - 'The broadcast address is always enabled.
+
+    Set bit 9 of PCB''s protocol mode field in REGISTER PROTOCOL call
+
+    (AX=0007h) to receive all multicast frames.'
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 000Ah
+  - type: interrupt
+    params:
+      AX: 0014h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: N-7C000A
+  category: N
+  title: SK-UPPS Data Link Interface API - DISABLE MULTICAST
+  source: INTERRUP.Q:5460
+  interrupt: 7C
+  flags: []
+  function: 000A
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 000Ah
+    table_refs: []
+    sub_values: []
+  - reg: BX
+    operator: '='
+    description: 'protocol ID (see #03849)'
+    table_refs:
+    - 03849
+    sub_values: []
+  - reg: ES:DI
+    operator: ->
+    description: multicast address (6 bytes)
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AX
+      operator: '='
+      description: 'completion code (see #03846)'
+      table_refs:
+      - 03846
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 0009h
+  - type: interrupt
+    params:
+      AX: 0014h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: N-7C000B
+  category: N
+  title: SK-UPPS Data Link Interface API - GET PROTOCOL LIST
+  source: INTERRUP.Q:5467
+  interrupt: 7C
+  flags: []
+  function: 000B
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 000Bh
+    table_refs: []
+    sub_values: []
+  - reg: ES:DI
+    operator: ->
+    description: protocol ID buffer
+    table_refs: []
+    sub_values: []
+  - reg: CX
+    operator: '='
+    description: number of 2-byte protocol IDs that may be stored in buffer
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AX
+      operator: '='
+      description: 'completion code (see #03846)'
+      table_refs:
+      - 03846
+      sub_values: []
+    - reg: CX
+      operator: '='
+      description: number of active protocols (regardless of value returned in AX)
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  program: 'SK-UPPS is the Schneider & Koch Universal Portable Protocol Stack,
+
+    which provides an API on top of its Data Link Interface, allowing the
+
+    use of any of several network transport layers'
+  notes:
+  - 'If the buffer supplied is too small, CX still contains the total number
+
+    of active protocols and the buffer has been filled until full.'
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 000Ch
+  - type: interrupt
+    params:
+      AX: 0014h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: N-7C000C
+  category: N
+  title: SK-UPPS Data Link Interface API - GET PROTOCOL STATUS
+  source: INTERRUP.Q:5481
+  interrupt: 7C
+  flags: []
+  function: 000C
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 000Ch
+    table_refs: []
+    sub_values: []
+  - reg: BX
+    operator: '='
+    description: 'protocol ID (see #03849,AX=000Bh)'
+    table_refs:
+    - 03849
+    sub_values: []
+  - reg: ES:DI
+    operator: ->
+    description: 'Protocol Status Block (see #03856)'
+    table_refs:
+    - 03856
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AX
+      operator: '='
+      description: 'completion code (see #03846)'
+      table_refs:
+      - 03846
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 000Bh
+  - type: interrupt
+    params:
+      AX: 0014h
+  index: []
+  tables:
+  - 03856
+  table_refs: []
+- entry_type: INT
+  id: N-7C000D
+  category: N
+  title: SK-UPPS Data Link Interface API - GET DRIVER STATISTICS
+  source: INTERRUP.Q:5495
+  interrupt: 7C
+  flags: []
+  function: 000D
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 000Dh
+    table_refs: []
+    sub_values: []
+  - reg: BX
+    operator: '='
+    description: 'flag: 0=don''t clear statistics, 1=clear statistics'
+    table_refs: []
+    sub_values: []
+  - reg: ES:DI
+    operator: ->
+    description: 'Statistics Data Block (see #03857)'
+    table_refs:
+    - 03857
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AX
+      operator: '='
+      description: 'completion code (see #03846)'
+      table_refs:
+      - 03846
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 0002h
+  - type: interrupt
+    params:
+      AX: 0015h
+  index: []
+  tables:
+  - 03857
+  table_refs: []
+- entry_type: INT
+  id: N-7C000E
+  category: N
+  title: SK-UPPS Data Link Interface API - DLI 2.5+ - GET DRIVER INFO
+  source: INTERRUP.Q:5524
+  interrupt: 7C
+  flags: []
+  function: 000E
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 000Eh
+    table_refs: []
+    sub_values: []
+  - reg: ES:DI
+    operator: ->
+    description: 'Driver Information Block (see #03858)'
+    table_refs:
+    - 03858
+    sub_values: []
+  - reg: BX
+    operator: '='
+    description: offset of 1st field within DIB to be returned
+    table_refs: []
+    sub_values: []
+  - reg: CX
+    operator: '='
+    description: number of bytes to be returned
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AX
+      operator: '='
+      description: 'completion code (see #03846)'
+      table_refs:
+      - 03846
+      sub_values: []
+    - reg: CX
+      operator: '='
+      description: number of bytes copied (regardless of value returned in AX)
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  program: 'SK-UPPS is the Schneider & Koch Universal Portable Protocol Stack,
+
+    which provides an API on top of its Data Link Interface, allowing the
+
+    use of any of several network transport layers'
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 0000h
+  - type: interrupt
+    params:
+      AX: 0002h
+  - type: interrupt
+    params:
+      AX: 000Bh
+  - type: interrupt
+    params:
+      AX: 000Dh
+  - type: interrupt
+    params:
+      AX: 0015h
+  index: []
+  tables:
+  - 03858
+  table_refs: []
+- entry_type: INT
+  id: N-7C000F
+  category: N
+  title: SK-UPPS Data Link Interface API - FEED BACK BUFFER
+  source: INTERRUP.Q:5557
+  interrupt: 7C
+  flags: []
+  function: 000F
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 000Fh
+    table_refs: []
+    sub_values: []
+  - reg: ES:BX
+    operator: ->
+    description: 'Mbuf (see #03847)'
+    table_refs:
+    - 03847
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - nothing
+  notes:
+  - 'A protocol may call this function instead of returning the Mbuf
+
+    directly from the Receive Upcall if it is running in "promiscuous",
+
+    "hook" or "chain" mode.'
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 0007h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: N-7C0010
+  category: N
+  title: SK-UPPS Data Link Interface API - CLIENT HOOK
+  source: INTERRUP.Q:5566
+  interrupt: 7C
+  flags: []
+  function: '0010'
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 0010h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - nothing
+  notes:
+  - 'An application having no active protocols may call this function to
+
+    prevent the DLI from unloading.'
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 0001h
+  - type: interrupt
+    params:
+      AX: 0011h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: N-7C0011
+  category: N
+  title: SK-UPPS Data Link Interface API - CLIENT UNHOOK
+  source: INTERRUP.Q:5573
+  interrupt: 7C
+  flags: []
+  function: '0011'
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 0011h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - nothing
+  program: 'SK-UPPS is the Schneider & Koch Universal Portable Protocol Stack,
+
+    which provides an API on top of its Data Link Interface, allowing the
+
+    use of any of several network transport layers'
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 0010h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: N-7C0012
+  category: N
+  title: SK-UPPS Data Link Interface API - SYNC REQUEST BUFFER
+  source: INTERRUP.Q:5581
+  interrupt: 7C
+  flags: []
+  function: '0012'
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 0012h
+    table_refs: []
+    sub_values: []
+  - reg: DX
+    operator: '='
+    description: 'protocol ID (see #03849)'
+    table_refs:
+    - 03849
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AX
+      operator: '='
+      description: 'completion code (see #03846)'
+      table_refs:
+      - 03846
+      sub_values: []
+    raw_lines: []
+  notes:
+  - 'If the protocol wants to be informed when an Mbuf becomes available,
+
+    REQUEST BUFFER (AX=0004h) should be used instead.'
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 0004h
+  - type: interrupt
+    params:
+      AX: 0005h
+  - type: interrupt
+    params:
+      AX: 0006h
+  - type: interrupt
+    params:
+      AX: 0013h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: N-7C0013
+  category: N
+  title: SK-UPPS Data Link Interface API - TRANSMIT FRAME RELEASE
+  source: INTERRUP.Q:5590
+  interrupt: 7C
+  flags: []
+  function: '0013'
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 0013h
+    table_refs: []
+    sub_values: []
+  - reg: ES:BX
+    operator: ->
+    description: 'Mbuf (see #03847)'
+    table_refs:
+    - 03847
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - nothing
+  notes:
+  - 'Returns immediately; The protocol''s Transmit Upcall will NOT be called.
+
+    The Mbuf may no more be used by the protocol in any way (i.e. the
+
+    Mbuf''s IN USE field may not be polled).'
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 0004h
+  - type: interrupt
+    params:
+      AX: 0013h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: N-7C0014
+  category: N
+  title: SK-UPPS Data Link Interface API - GET MULTICAST LIST
+  source: INTERRUP.Q:5599
+  interrupt: 7C
+  flags: []
+  function: '0014'
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 0014h
+    table_refs: []
+    sub_values: []
+  - reg: BX
+    operator: '='
+    description: 'protocol ID (see #03849,AX=000Bh)'
+    table_refs:
+    - 03849
+    sub_values: []
+  - reg: ES:DI
+    operator: ->
+    description: multicast address buffer
+    table_refs: []
+    sub_values: []
+  - reg: CX
+    operator: '='
+    description: number of 6-byte multicast addresses that may be stored in buffer
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AX
+      operator: '='
+      description: 'completion code (see #03846)'
+      table_refs:
+      - 03846
+      sub_values: []
+    - reg: CX
+      operator: '='
+      description: number of registered multicast addresses for this protocol
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes:
+  - 'If the buffer supplied is too small, CX still contains the total number
+
+    of registered multicast addresses for this protocol and the buffer
+
+    has been completely filled'
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 000Bh
+  - type: interrupt
+    params:
+      AX: 0009h
+  - type: interrupt
+    params:
+      AX: 000Ch
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: N-7C0015
+  category: N
+  title: SK-UPPS Data Link Interface API - DLI 2.6+ - GET MEDIA STATISTICS
+  source: INTERRUP.Q:5614
+  interrupt: 7C
+  flags: []
+  function: '0015'
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 0015h
+    table_refs: []
+    sub_values: []
+  - reg: ES:DI
+    operator: ->
+    description: 'media-specific statistics buffer (see #03859,#03860,#03861)'
+    table_refs:
+    - 03859
+    - 03860
+    - 03861
+    sub_values: []
+  - reg: BX
+    operator: '='
+    description: offset of 1st field within MSS to be returned
+    table_refs: []
+    sub_values: []
+  - reg: CX
+    operator: '='
+    description: number of bytes to be returned
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AX
+      operator: '='
+      description: 'completion code (see #03846)'
+      table_refs:
+      - 03846
+      sub_values: []
+    - reg: CX
+      operator: '='
+      description: number of bytes copied (regardless of value returned in AX)
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes:
+  - not supported by all DLIs (will return AX=FFFFh if not supported).
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 0000h
+  - type: interrupt
+    params:
+      AX: 000Dh
+  index: []
+  tables:
+  - 03859
+  - 03860
+  - 03861
+  table_refs: []
+- entry_type: INT
+  id: N-7C0016
+  category: N
+  title: SK-UPPS Data Link Interface API - DLI 2.8+ - DRIVER I/O CONTROL
+  source: INTERRUP.Q:5682
+  interrupt: 7C
+  flags: []
+  function: '0016'
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 0016h
+    table_refs: []
+    sub_values: []
+  - reg: DX
+    operator: '='
+    description: 'subfunction; bits 14-15 specify direction of I/O:'
+    table_refs: []
+    sub_values:
+    - value: '00'
+      description: no data at all (ES:BX undefined)
+      sub_values: []
+    - value: '01'
+      description: driver -> application (GET)
+      sub_values: []
+    - value: '10'
+      description: application -> driver (SET)
+      sub_values: []
+    - value: '11'
+      description: both directions (GET/SET)
+      sub_values: []
+  - reg: ES:BX
+    operator: ->
+    description: I/O buffer (optional)
+    table_refs: []
+    sub_values: []
+  - reg: CX
+    operator: '='
+    description: size of buffer (if ES:BX valid)
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AX
+      operator: '='
+      description: completion code; defined by OEM
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  program: 'SK-UPPS is the Schneider & Koch Universal Portable Protocol Stack,
+
+    which provides an API on top of its Data Link Interface, allowing the
+
+    use of any of several network transport layers'
+  notes:
+  - 'not supported by all DLIs (will return AX=FFFFh if not supported)
+
+    subfunction codes are defined by OEMs'
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 0001h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: N-7C0017
+  category: N
+  title: SK-UPPS Data Link Interface API - DLI 2.8+ - INTERRUPT REQUEST
+  source: INTERRUP.Q:5699
+  interrupt: 7C
+  flags: []
+  function: '0017'
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 0017h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AX
+      operator: '='
+      description: 'completion code (see #03846)'
+      table_refs:
+      - 03846
+      sub_values: []
+    raw_lines: []
+  notes:
+  - 'not supported by all DLIs (will return AX=FFFFh, if not supported).
+
+    must be called with interrupts disabled; when the client re-enables
+
+    interrupts, an interrupt will be generated and reported to the client
+
+    through an Event Upcall (see #03853 [EV_ISR_START/EV_ISR_END])'
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 0007h
+  index: []
+  tables: []
+  table_refs:
+  - 03853

@@ -1,0 +1,790 @@
+file_type: interrupt
+key: 5F
+entries:
+- entry_type: INT
+  id: H-5F
+  category: H
+  title: IRQ15 relocated by DESQview 2.26+
+  source: INTERRUP.O:885
+  interrupt: 5F
+  flags: []
+  input_registers: []
+  returns: []
+  notes:
+  - this is the default, but other INTs may be used (see INT 50"DESQview")
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: '50'
+    params: {}
+    name: DESQview
+  - type: interrupt
+    interrupt: 5E
+    params: {}
+    name: DESQview
+  - type: interrupt
+    interrupt: '77'
+    params: {}
+  range: INT 5F to INT FF, selected automatically
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: H-5F
+  category: H
+  title: IRQ7 relocated by DoubleDOS
+  source: INTERRUP.O:890
+  interrupt: 5F
+  flags: []
+  input_registers: []
+  returns: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: 0F
+    params: {}
+  - type: interrupt
+    interrupt: 5E
+    params: {}
+    name: DoubleDOS
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-5F
+  category: b
+  title: TI Professional PC - KEYBOARD QUEUEING VECTOR
+  source: INTERRUP.O:893
+  interrupt: 5F
+  flags:
+  - C
+  input_registers: []
+  returns:
+  - registers: []
+    raw_lines:
+    - all registers preserved
+  description: 'hook for multitaskers to be informed when a keypress is placed in the
+
+    keyboard buffer'
+  notes:
+  - the default handler is a simple IRET instruction
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: 09
+    params: {}
+  - type: interrupt
+    interrupt: 4A
+    params:
+      AH: 00h
+    name: TI
+  - type: interrupt
+    interrupt: '59'
+    params: {}
+    name: TI Professional
+  - type: interrupt
+    interrupt: 5B
+    params: {}
+    name: TI Professional
+  - type: interrupt
+    interrupt: 5C
+    params: {}
+    name: TI Professional
+  - type: interrupt
+    interrupt: 5D
+    params: {}
+    name: TI Professional
+  - type: interrupt
+    interrupt: 5E
+    params: {}
+    name: TI Professional
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-5F00
+  category: b
+  title: HP 95LX/100LX/200LX GRAPHICS PRIMITIVES - SET VIDEO MODE
+  source: INTERRUP.O:902
+  interrupt: 5F
+  flags: []
+  function: '00'
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 00h
+    table_refs: []
+    sub_values: []
+  - reg: AL
+    operator: '='
+    description: video mode
+    table_refs: []
+    sub_values:
+    - value: 03h
+      description: text,CGA color (100LX/200LX)
+      sub_values: []
+    - value: 06h
+      description: 640x200 CGA graphics (100LX/200LX)
+      sub_values: []
+    - value: 07h
+      description: text, system manager compliant
+      sub_values: []
+    - value: 20h
+      description: 240x128 mono graphics, system manager compliant
+      sub_values: []
+    - value: 87h
+      description: text, not system manager compliant
+      sub_values: []
+    - value: A0h
+      description: 240x128 mono graphics, not system manager compliant
+      sub_values: []
+  returns: []
+  notes:
+  - 'the defaults after setting the mode to graphics are (0,0) logical
+
+    origin, full-screen clip region, (0,0) pen location, pen color 1,
+
+    pixel replacement FORCE, line type and fill mask all bits set
+
+    modes 03h and 06h can also be set with the standard INT 10/AH=00h'
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: 0F
+    params: {}
+    name: HP 95LX
+  - type: interrupt
+    interrupt: '10'
+    params:
+      AH: 00h
+  - type: interrupt
+    interrupt: '15'
+    params:
+      AX: 4DD4h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-5F01
+  category: b
+  title: HP 95LX/100LX/200LX GRAPHICS PRIMITIVES - SET FILL MASK
+  source: INTERRUP.O:917
+  interrupt: 5F
+  flags: []
+  function: '01'
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 01h
+    table_refs: []
+    sub_values: []
+  - reg: ES:DI
+    operator: ->
+    description: 8-byte fill mask
+    table_refs: []
+    sub_values: []
+  returns: []
+  notes:
+  - 'the fill mask represents an 8x8 pixel box and is repeated as necessary
+
+    when drawing filled rectangles; it is always aligned with the byte
+
+    boundaries of video memory, regardless of the actual boundaries of
+
+    the rectangle'
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 02h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-5F02
+  category: b
+  title: HP 95LX/100LX/200LX GRAPHICS PRIMITIVES - GET CURRENT GRAPHICS INFO
+  source: INTERRUP.O:926
+  interrupt: 5F
+  flags: []
+  function: '02'
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 02h
+    table_refs: []
+    sub_values: []
+  - reg: ES:DI
+    operator: ->
+    description: 'graphics info record (see #03260)'
+    table_refs:
+    - '03260'
+    sub_values: []
+  returns:
+  - registers:
+    - reg: DX:AX
+      operator: ->
+      description: filled graphics info record (for return to high-level langs)
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables:
+  - '03260'
+  table_refs: []
+- entry_type: INT
+  id: b-5F03
+  category: b
+  title: HP 95LX/100LX/200LX GRAPHICS PRIMITIVES - SET LOGICAL ORIGIN
+  source: INTERRUP.O:950
+  interrupt: 5F
+  flags: []
+  function: '03'
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 03h
+    table_refs: []
+    sub_values: []
+  - reg: CX
+    operator: '='
+    description: column
+    table_refs: []
+    sub_values: []
+  - reg: DX
+    operator: '='
+    description: row
+    table_refs: []
+    sub_values: []
+  returns: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 04h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-5F04
+  category: b
+  title: HP 95LX/100LX/200LX GRAPHICS PRIMITIVES - SET CLIP REGION
+  source: INTERRUP.O:956
+  interrupt: 5F
+  flags: []
+  function: '04'
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 04h
+    table_refs: []
+    sub_values: []
+  - reg: CX
+    operator: '='
+    description: left-most column
+    table_refs: []
+    sub_values: []
+  - reg: DX
+    operator: '='
+    description: top-most row
+    table_refs: []
+    sub_values: []
+  - reg: SI
+    operator: '='
+    description: right-most column
+    table_refs: []
+    sub_values: []
+  - reg: DI
+    operator: '='
+    description: bottom-most row
+    table_refs: []
+    sub_values: []
+  returns: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 03h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-5F05
+  category: b
+  title: HP 95LX/100LX/200LX GRAPHICS PRIMITIVES - DRAW RECTANGLE
+  source: INTERRUP.O:964
+  interrupt: 5F
+  flags: []
+  function: '05'
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 05h
+    table_refs: []
+    sub_values: []
+  - reg: AL
+    operator: '='
+    description: fill type
+    table_refs: []
+    sub_values:
+    - value: 00h
+      description: outline, using current line type and color
+      sub_values: []
+    - value: 01h
+      description: solid, using current color
+      sub_values: []
+    - value: 02h
+      description: pattern, using current fill mask and color
+      sub_values: []
+  returns: []
+  notes:
+  - the rectangle is drawn starting at the current pen position
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 01h
+  - type: interrupt
+    params:
+      AH: 06h
+  - type: interrupt
+    params:
+      AH: 07h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-5F06
+  category: b
+  title: HP 95LX/100LX/200LX GRAPHICS PRIMITIVES - DRAW LINE
+  source: INTERRUP.O:974
+  interrupt: 5F
+  flags: []
+  function: '06'
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 06h
+    table_refs: []
+    sub_values: []
+  returns: []
+  notes:
+  - the line is drawn starting at the current pen position
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 05h
+  - type: interrupt
+    params:
+      AH: 07h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-5F07
+  category: b
+  title: HP 95LX/100LX/200LX GRAPHICS PRIMITIVES - PLOT POINT
+  source: INTERRUP.O:980
+  interrupt: 5F
+  flags: []
+  function: '07'
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 07h
+    table_refs: []
+    sub_values: []
+  returns: []
+  notes:
+  - also sets pen position to the specified point
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 06h
+  - type: interrupt
+    params:
+      AH: 08h
+  - type: interrupt
+    params:
+      AH: 0Ch
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-5F08
+  category: b
+  title: HP 95LX/100LX/200LX GRAPHICS PRIMITIVES - MOVE PEN
+  source: INTERRUP.O:986
+  interrupt: 5F
+  flags: []
+  function: 08
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 08h
+    table_refs: []
+    sub_values: []
+  returns: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 07h
+  - type: interrupt
+    params:
+      AH: 09h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-5F09
+  category: b
+  title: HP 95LX/100LX/200LX GRAPHICS PRIMITIVES - SET PEN COLOR
+  source: INTERRUP.O:991
+  interrupt: 5F
+  flags: []
+  function: 09
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 09h
+    table_refs: []
+    sub_values: []
+  - reg: AL
+    operator: '='
+    description: new color (00h = white, 01h = black)
+    table_refs: []
+    sub_values: []
+  returns: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 08h
+  - type: interrupt
+    params:
+      AH: 0Ah
+  - type: interrupt
+    params:
+      AH: 0Bh
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-5F0A
+  category: b
+  title: HP 95LX/100LX/200LX GRAPHICS PRIMITIVES - SET REPLACEMENT RULE
+  source: INTERRUP.O:996
+  interrupt: 5F
+  flags: []
+  function: 0A
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 0Ah
+    table_refs: []
+    sub_values: []
+  - reg: AL
+    operator: '='
+    description: new replacement rule
+    table_refs: []
+    sub_values:
+    - value: 00h
+      description: force
+      sub_values: []
+    - value: 01h
+      description: AND
+      sub_values: []
+    - value: 02h
+      description: OR
+      sub_values: []
+    - value: 03h
+      description: XOR ---100LX/200LX---
+      sub_values: []
+    - value: 04h
+      description: InvForce
+      sub_values: []
+    - value: 05h
+      description: InvAND
+      sub_values: []
+    - value: 06h
+      description: InvOR
+      sub_values: []
+    - value: 07h
+      description: InvXOR
+      sub_values: []
+    - value: 08h
+      description: Txt
+      sub_values: []
+  returns: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 01h
+  - type: interrupt
+    params:
+      AH: 09h
+  - type: interrupt
+    params:
+      AH: 0Bh
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-5F0B
+  category: b
+  title: HP 95LX/100LX/200LX GRAPHICS PRIMITIVES - SET LINE TYPE
+  source: INTERRUP.O:1011
+  interrupt: 5F
+  flags: []
+  function: 0B
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 0Bh
+    table_refs: []
+    sub_values: []
+  - reg: CX
+    operator: '='
+    description: new line type
+    table_refs: []
+    sub_values: []
+  returns: []
+  notes:
+  - 'the line type specifies 16 bits which are repeated over and over while
+
+    drawing the pixels of a line'
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 09h
+  - type: interrupt
+    params:
+      AH: 0Ah
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-5F0C
+  category: b
+  title: HP 95LX/100LX/200LX GRAPHICS PRIMITIVES - GET PIXEL
+  source: INTERRUP.O:1018
+  interrupt: 5F
+  flags: []
+  function: 0C
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 0Ch
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AX
+      operator: '='
+      description: pixel color
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 07h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-5F0D
+  category: b
+  title: HP 95LX/100LX/200LX GRAPHICS PRIMITIVES - GET IMAGE
+  source: INTERRUP.O:1024
+  interrupt: 5F
+  flags: []
+  function: 0D
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 0Dh
+    table_refs: []
+    sub_values: []
+  - reg: ES:DI
+    operator: ->
+    description: 'image buffer (see #03261)'
+    table_refs:
+    - '03261'
+    sub_values: []
+  returns: []
+  notes:
+  - the specified corners are included in the saved image
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 0Eh
+  index: []
+  tables:
+  - '03261'
+  table_refs: []
+- entry_type: INT
+  id: b-5F0E
+  category: b
+  title: HP 95LX/100LX/200LX GRAPHICS PRIMITIVES - PUT IMAGE
+  source: INTERRUP.O:1041
+  interrupt: 5F
+  flags: []
+  function: 0E
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 0Eh
+    table_refs: []
+    sub_values: []
+  - reg: AL
+    operator: '='
+    description: 'replacement rule (see #03262)'
+    table_refs:
+    - '03262'
+    sub_values: []
+  - reg: ES:DI
+    operator: ->
+    description: 'image buffer (see #03261)'
+    table_refs:
+    - '03261'
+    sub_values: []
+  returns: []
+  notes:
+  - 'if the specified image does not fit completely on the screen, this call
+
+    does nothing'
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 0Dh
+  index: []
+  tables:
+  - '03262'
+  table_refs: []
+- entry_type: INT
+  id: b-5F0F
+  category: b
+  title: HP 95LX/100LX/200LX GRAPHICS PRIMITIVES - WRITE TEXT
+  source: INTERRUP.O:1055
+  interrupt: 5F
+  flags: []
+  function: 0F
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 0Fh
+    table_refs: []
+    sub_values: []
+  - reg: AL
+    operator: '='
+    description: rotate flag (if nonzero, rotate 90 degrees counter-clockwise)
+    table_refs: []
+    sub_values: []
+  - reg: ES:DI
+    operator: ->
+    description: ASCIZ text
+    table_refs: []
+    sub_values: []
+  returns: []
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-5F10
+  category: b
+  title: HP 100LX/200LX GRAPHICS PRIMITIVES - GET FONT POINTER
+  source: INTERRUP.O:1061
+  interrupt: 5F
+  flags: []
+  function: '10'
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 10h
+    table_refs: []
+    sub_values: []
+  - reg: CX
+    operator: '='
+    description: font size of desired font
+    table_refs: []
+    sub_values:
+    - value: 0808h
+      description: "8x8\tsmall  (80x25 text)"
+      sub_values: []
+    - value: 0A0Bh
+      description: 11x10 medium (64x18 text)
+      sub_values: []
+    - value: 100Ch
+      description: 12x16 large  (40x16 text)
+      sub_values: []
+  returns:
+  - registers:
+    - reg: DX:AX
+      operator: ->
+      description: ptr to font or 0000h:fontID# if built-in font
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 11h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-5F11
+  category: b
+  title: HP 100LX/200LX GRAPHICS PRIMITIVES - SET CURRENT FONT
+  source: INTERRUP.O:1070
+  interrupt: 5F
+  flags: []
+  function: '11'
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 11h
+    table_refs: []
+    sub_values: []
+  - reg: ES:DI
+    operator: ->
+    description: ptr to font or 0000h:fontID# for built-in font
+    table_refs: []
+    sub_values: []
+  returns: []
+  notes:
+  - 'this function should be called immediately after AH=10h with the
+
+    pointer supplied by that call'
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 10h
+  index: []
+  tables: []
+  table_refs: []

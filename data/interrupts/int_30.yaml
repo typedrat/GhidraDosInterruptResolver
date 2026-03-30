@@ -1,0 +1,69 @@
+file_type: interrupt
+key: '30'
+entries:
+- entry_type: INT
+  id: D-30
+  category: D
+  title: (NOT A VECTOR!) - DOS 1+ - FAR JMP instruction for CP/M-style calls
+  source: INTERRUP.N:3265
+  interrupt: '30'
+  flags: []
+  input_registers: []
+  returns: []
+  notes:
+  - 'under DOS 2+, the instruction at PSP:0005 points two bytes too low in
+
+    memory'
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: '21'
+    params:
+      AH: 26h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: V-30
+  category: V
+  title: QRIP/TSR - USED BY GRAPHICS LIBRARY
+  source: INTERRUP.N:3271
+  interrupt: '30'
+  flags: []
+  input_registers: []
+  returns: []
+  program: 'QRIP/TSR is a shareware TSR by Shane Hathaway implementing the Remote
+
+    Imaging Protocol (RIP, RIPscrip) used by several BBS systems to
+
+    provide a graphical user interface'
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: 2F
+    params:
+      AX: ACF0h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: W-30
+  category: W
+  title: MS Windows 3.1+ - PROTECTED-MODE CALLBACK
+  source: INTERRUP.N:3277
+  interrupt: '30'
+  flags:
+  - P
+  input_registers: []
+  returns: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: '20'
+    params: {}
+    name: Windows
+  index: []
+  tables: []
+  table_refs: []

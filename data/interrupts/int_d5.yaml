@@ -1,0 +1,48 @@
+file_type: interrupt
+key: D5
+entries:
+- entry_type: INT
+  id: r-D5
+  category: r
+  title: IBM ROM BASIC - used while in interpreter
+  source: INTERRUP.R:1889
+  interrupt: D5
+  flags: []
+  input_registers: []
+  returns: []
+  notes:
+  - 'called by ROM BASIC, but pointed at IRET by BASIC.COM/BASICA.COM
+
+    BASIC.COM/BASICA.COM do not restore vector on termination'
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: '80'
+    params: {}
+    name: BASIC
+  - type: interrupt
+    interrupt: D4
+    params: {}
+    name: BASIC
+  - type: interrupt
+    interrupt: D6
+    params: {}
+    name: BASIC
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: r-D5
+  category: r
+  title: STSC APL*PLUS/PC - MAY BE USED IN FUTURE RELEASES
+  source: INTERRUP.R:1894
+  interrupt: D5
+  flags: []
+  input_registers: []
+  returns: []
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []

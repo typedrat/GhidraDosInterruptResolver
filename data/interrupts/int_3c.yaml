@@ -1,0 +1,28 @@
+file_type: interrupt
+key: 3C
+entries:
+- entry_type: INT
+  id: r-3C
+  category: r
+  title: FLOATING POINT EMULATION - INSTRUCTIONS WITH SEGMENT OVERRIDE
+  source: INTERRUP.N:6864
+  interrupt: 3C
+  flags: []
+  input_registers: []
+  returns: []
+  notes:
+  - "the floating-point emulators in Borland and Microsoft languages and\nLahey FORTRAN use this interrupt\nthe generated\
+    \ code is  CD 3C xy mm ....\nwhere xy is a modified ESC instruction and mm is the modR/M byte.\nThe xy byte appears to\
+    \ be encoded as\ns s 0 1 1 x x x\t  or\ts s 0 0 0 x x x\nwhere \"ss\" specifies the segment override:\n00 -> DS:\n01 ->\
+    \ SS:\n10 -> CS:\n11 -> ES:"
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: 3B
+    params: {}
+  - type: interrupt
+    interrupt: 3D
+    params: {}
+  index: []
+  tables: []
+  table_refs: []

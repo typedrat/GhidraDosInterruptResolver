@@ -1,0 +1,2057 @@
+file_type: interrupt
+key: 2C
+entries:
+- entry_type: INT
+  id: D-2C
+  category: D
+  title: DOS 2+ - RESERVED
+  source: INTERRUP.K:658
+  interrupt: 2C
+  flags: []
+  input_registers: []
+  returns: []
+  notes:
+  - this vector is not used in DOS versions <= 6.00, and points at an IRET
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: O-2C
+  category: O
+  title: STARLITE architecture - KERNEL API
+  source: INTERRUP.K:661
+  interrupt: 2C
+  flags: []
+  input_registers: []
+  returns: []
+  notes:
+  - "STARLITE is an architecture by General Software for a series of MS-DOS\ncompatible operating systems (OEM DOS, NETWORK\
+    \ DOS, and SMP DOS) to\nbe released in 1991.\tThe interrupt number is subject to change\nbefore the actual release."
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: m-2C
+  category: m
+  title: Cloaking - CALL PROTECTED-MODE PASSALONG CHAIN
+  source: INTERRUP.K:667
+  interrupt: 2C
+  flags:
+  - R
+  input_registers: []
+  returns: []
+  notes:
+  - 'when this interrupt is invoked in V86 mode, RM386 will invoke the first
+
+    in a chain of protected-mode handlers, and will only pass execution
+
+    to the V86-mode INT 2C handler if none of the handlers in the
+
+    passalong chain handle the call instead.  This is the method by which
+
+    the real-mode stub of a cloaked application communicates with the
+
+    protected-mode portion.
+
+    the cloaking host calls the passalong chain with EAX=58494E33h (''WIN3'')
+
+    when MS Windows starts up and with EAX=334E4958h (''3NIW'') when
+
+    Windows shuts down; between these two broadcasts, the additional
+
+    Windows-only Cloaking services are available
+
+    this function was first introduced with RM386 (RAM-MAN/386) v6.00, the
+
+    memory manager included in Helix Software''s Netroom'
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: 2C
+    params:
+      AX: 0009h
+  - type: interrupt
+    interrupt: 2F
+    params:
+      AX: 4310h
+    name: Cloaking
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: m-2C0000
+  category: m
+  title: Cloaking - ALLOCATE GDT SELECTOR
+  source: INTERRUP.K:682
+  interrupt: 2C
+  flags:
+  - P
+  function: '0000'
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 0000h
+    table_refs: []
+    sub_values: []
+  - reg: EBX
+    operator: '='
+    description: base address
+    table_refs: []
+    sub_values: []
+  - reg: CL
+    operator: '='
+    description: access mode byte
+    table_refs: []
+    sub_values: []
+  - reg: CH
+    operator: '='
+    description: extended access mode byte (omit limit field)
+    table_refs: []
+    sub_values: []
+  - reg: EDX
+    operator: '='
+    description: segment limit
+    table_refs: []
+    sub_values: []
+  returns:
+  - condition: CF clear
+    condition_description: if successful
+    registers:
+    - reg: AX
+      operator: '='
+      description: selector
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  - condition: CF set
+    condition_description: on error
+    registers:
+    - reg: AX
+      operator: '='
+      description: 'error code (see #02556)'
+      table_refs:
+      - '02556'
+      sub_values: []
+    raw_lines: []
+  notes:
+  - 'this INT 2C interface is used by Netroom''s DPMI.EXE v3.00
+
+    to access extended memory, set the base address to the desired
+
+    physical address plus 400000h (4M)
+
+    this function was first introduced with RM386 (RAM-MAN/386) v6.00, the
+
+    memory manager included in Helix Software''s Netroom'
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 0001h
+  - type: interrupt
+    params:
+      AX: 0002h
+  - type: interrupt
+    params:
+      AX: 0003h
+  - type: interrupt
+    params:
+      AX: 0004h
+  - type: interrupt
+    params:
+      AX: 0005h
+  - type: interrupt
+    interrupt: '31'
+    params:
+      AH: 57h
+  - type: table
+    id: '00501'
+  index: []
+  tables:
+  - '02556'
+  table_refs:
+  - '00501'
+- entry_type: INT
+  id: m-2C0001
+  category: m
+  title: Cloaking - FREE GDT SELECTOR
+  source: INTERRUP.K:706
+  interrupt: 2C
+  flags:
+  - P
+  function: '0001'
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 0001h
+    table_refs: []
+    sub_values: []
+  - reg: SI
+    operator: '='
+    description: selector
+    table_refs: []
+    sub_values: []
+  returns:
+  - condition: CF clear
+    condition_description: if successful
+    registers: []
+    raw_lines: []
+  - condition: CF set
+    condition_description: on error
+    registers:
+    - reg: AX
+      operator: '='
+      description: 'error code (see #02556)'
+      table_refs:
+      - '02556'
+      sub_values: []
+    raw_lines: []
+  notes:
+  - this function was first introduced with RM386 (RAM-MAN/386) v6.00
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 0000h
+  - type: interrupt
+    interrupt: 2F
+    params:
+      AX: 4310h
+    name: Cloaking
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: m-2C0002
+  category: m
+  title: Cloaking - SET SEGMENT BASE ADDRESS
+  source: INTERRUP.K:715
+  interrupt: 2C
+  flags:
+  - P
+  function: '0002'
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 0002h
+    table_refs: []
+    sub_values: []
+  - reg: SI
+    operator: '='
+    description: selector
+    table_refs: []
+    sub_values: []
+  - reg: EBX
+    operator: '='
+    description: new physical base addres
+    table_refs: []
+    sub_values: []
+  returns:
+  - condition: CF clear
+    condition_description: if successful
+    registers: []
+    raw_lines: []
+  - condition: CF set
+    condition_description: on error
+    registers:
+    - reg: AX
+      operator: '='
+      description: 'error code (see #02556)'
+      table_refs:
+      - '02556'
+      sub_values: []
+    raw_lines: []
+  notes:
+  - this function was first introduced with RM386 (RAM-MAN/386) v6.00
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 0000h
+  - type: interrupt
+    params:
+      AX: 0003h
+  - type: interrupt
+    params:
+      AX: 0004h
+  - type: interrupt
+    interrupt: '31'
+    params:
+      AX: 0007h
+  - type: table
+    id: '00501'
+  index: []
+  tables: []
+  table_refs:
+  - '00501'
+- entry_type: INT
+  id: m-2C0003
+  category: m
+  title: Cloaking - SET SEGMENT LIMIT
+  source: INTERRUP.K:725
+  interrupt: 2C
+  flags:
+  - P
+  function: '0003'
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 0003h
+    table_refs: []
+    sub_values: []
+  - reg: SI
+    operator: '='
+    description: selector
+    table_refs: []
+    sub_values: []
+  - reg: EBX
+    operator: '='
+    description: new limit
+    table_refs: []
+    sub_values: []
+  returns:
+  - condition: CF clear
+    condition_description: if successful
+    registers: []
+    raw_lines: []
+  - condition: CF set
+    condition_description: on error
+    registers:
+    - reg: AX
+      operator: '='
+      description: 'error code (see #02556)'
+      table_refs:
+      - '02556'
+      sub_values: []
+    raw_lines: []
+  notes:
+  - this function was first introduced with RM386 (RAM-MAN/386) v6.00
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 0000h
+  - type: interrupt
+    params:
+      AX: 0002h
+  - type: interrupt
+    params:
+      AX: 0004h
+  - type: interrupt
+    interrupt: '31'
+    params:
+      AX: 0008h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: m-2C0004
+  category: m
+  title: Cloaking - SET SEGMENT ACCESS MODE
+  source: INTERRUP.K:735
+  interrupt: 2C
+  flags:
+  - P
+  function: '0004'
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 0004h
+    table_refs: []
+    sub_values: []
+  - reg: SI
+    operator: '='
+    description: selector
+    table_refs: []
+    sub_values: []
+  - reg: CL
+    operator: '='
+    description: 'new access mode byte (see #00502)'
+    table_refs:
+    - '00502'
+    sub_values: []
+  returns:
+  - condition: CF clear
+    condition_description: if successful
+    registers: []
+    raw_lines: []
+  - condition: CF set
+    condition_description: on error
+    registers:
+    - reg: AX
+      operator: '='
+      description: 'error code (see #02556)'
+      table_refs:
+      - '02556'
+      sub_values: []
+    raw_lines: []
+  notes:
+  - this function was first introduced with RM386 (RAM-MAN/386) v6.00
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 0000h
+  - type: interrupt
+    params:
+      AX: 0002h
+  - type: interrupt
+    params:
+      AX: 0003h
+  - type: interrupt
+    params:
+      AX: 0005h
+  - type: interrupt
+    interrupt: '31'
+    params:
+      AX: 0009h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: m-2C0005
+  category: m
+  title: Cloaking - SET SEGMENT EXTENDED ACCESS MODE
+  source: INTERRUP.K:745
+  interrupt: 2C
+  flags:
+  - P
+  function: '0005'
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 0005h
+    table_refs: []
+    sub_values: []
+  - reg: SI
+    operator: '='
+    description: selector
+    table_refs: []
+    sub_values: []
+  - reg: CL
+    operator: '='
+    description: 'new extended access mode byte (limit field ignored) (see #02557)'
+    table_refs:
+    - '02557'
+    sub_values: []
+  returns:
+  - condition: CF clear
+    condition_description: if successful
+    registers: []
+    raw_lines: []
+  - condition: CF set
+    condition_description: on error
+    registers:
+    - reg: AX
+      operator: '='
+      description: 'error code (see #02556)'
+      table_refs:
+      - '02556'
+      sub_values: []
+    raw_lines: []
+  notes:
+  - this function was first introduced with RM386 (RAM-MAN/386) v6.00
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 0000h
+  - type: interrupt
+    params:
+      AX: 0002h
+  - type: interrupt
+    params:
+      AX: 0003h
+  - type: interrupt
+    params:
+      AX: 0004h
+  - type: interrupt
+    interrupt: '31'
+    params:
+      AX: 0009h
+  index: []
+  tables:
+  - '02557'
+  table_refs: []
+- entry_type: INT
+  id: m-2C0006
+  category: m
+  title: Cloaking - GET PROTECTED-MODE INTERRUPT VECTOR
+  source: INTERRUP.K:763
+  interrupt: 2C
+  flags:
+  - P
+  function: '0006'
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 0006h
+    table_refs: []
+    sub_values: []
+  - reg: CL
+    operator: '='
+    description: vector (00h-7Fh)
+    table_refs: []
+    sub_values: []
+  returns:
+  - condition: CF clear
+    registers:
+    - reg: DX:EBX
+      operator: ->
+      description: current interrupt handler
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes:
+  - this function was first introduced with RM386 (RAM-MAN/386) v6.00
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 0007h
+  - type: interrupt
+    interrupt: '31'
+    params:
+      AX: 0204h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: m-2C0007
+  category: m
+  title: Cloaking - SET PROTECTED-MODE INTERRUPT VECTOR
+  source: INTERRUP.K:771
+  interrupt: 2C
+  flags:
+  - P
+  function: '0007'
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 0007h
+    table_refs: []
+    sub_values: []
+  - reg: CL
+    operator: '='
+    description: vector (00h-7Fh)
+    table_refs: []
+    sub_values: []
+  - reg: DX:EBX
+    operator: ->
+    description: interrupt handler
+    table_refs: []
+    sub_values: []
+  returns:
+  - condition: CF clear
+    registers: []
+    raw_lines: []
+  notes:
+  - 'this function was first introduced with RM386 (RAM-MAN/386) v6.00
+
+    the IDT entry''s type remains unchanged'
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 0006h
+  - type: interrupt
+    interrupt: '31'
+    params:
+      AX: 0205h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: m-2C0008
+  category: m
+  title: Cloaking - GET PASSALONG ADDRESS
+  source: INTERRUP.K:780
+  interrupt: 2C
+  flags:
+  - P
+  function: 0008
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 0008h
+    table_refs: []
+    sub_values: []
+  returns:
+  - condition: CF clear
+    registers:
+    - reg: DX:EBX
+      operator: '='
+      description: current passalong address
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes:
+  - this function was first introduced with RM386 (RAM-MAN/386) v6.00
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 0009h
+  - type: interrupt
+    params:
+      AX: 002Ch
+  - type: interrupt
+    interrupt: 2F
+    params:
+      AX: 4310h
+    name: Cloaking
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: m-2C0009
+  category: m
+  title: Cloaking - SET PASSALONG ADDRESS
+  source: INTERRUP.K:787
+  interrupt: 2C
+  flags:
+  - P
+  function: 0009
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 0009h
+    table_refs: []
+    sub_values: []
+  - reg: DX:EBX
+    operator: '='
+    description: 'new value for passalong address (see #02558)'
+    table_refs:
+    - 02558
+    sub_values: []
+  returns:
+  - condition: CF clear
+    registers: []
+    raw_lines: []
+  notes:
+  - "when an INT 2C instruction is executed in V86 mode, the Cloaking host\ncalls the passalong address.\tThe handler should\
+    \ check whether the\nupcall is of interest to it, and if not it should jump to the old\npassalong address (retrieved with\
+    \ AX=0008h before the handler was\ninstalled).  The final handler should return with CF clear to cause\nthe interrupt\
+    \ to be reflected back to V86 mode if none of the\npassalong handlers is triggered\nthis function was first introduced\
+    \ with RM386 (RAM-MAN/386) v6.00"
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 0008h
+  - type: interrupt
+    params:
+      AX: 002Dh
+  - type: interrupt
+    interrupt: 2C
+    params: {}
+    name: PASSALONG CHAIN
+  index: []
+  tables:
+  - 02558
+  - 02559
+  table_refs: []
+- entry_type: INT
+  id: m-2C000A
+  category: m
+  title: Cloaking - GET BASE ADDRESS OF GDT SELECTOR
+  source: INTERRUP.K:838
+  interrupt: 2C
+  flags:
+  - P
+  function: 000A
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 000Ah
+    table_refs: []
+    sub_values: []
+  - reg: SI
+    operator: '='
+    description: selector
+    table_refs: []
+    sub_values: []
+  returns:
+  - condition: CF clear
+    condition_description: if successful
+    registers:
+    - reg: EBX
+      operator: '='
+      description: segment base address
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  - condition: CF set
+    condition_description: on error
+    registers:
+    - reg: AX
+      operator: '='
+      description: 'error code (see #02556)'
+      table_refs:
+      - '02556'
+      sub_values: []
+    raw_lines: []
+  notes:
+  - 'this function was first introduced with RM386 (RAM-MAN/386) v6.00, the
+
+    memory manager included in Helix Software''s Netroom'
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 0000h
+  - type: interrupt
+    params:
+      AX: 0002h
+  - type: interrupt
+    params:
+      AX: 000Bh
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: m-2C000B
+  category: m
+  title: Cloaking - GET SELECTOR LIMIT
+  source: INTERRUP.K:849
+  interrupt: 2C
+  flags:
+  - P
+  function: 000B
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 000Bh
+    table_refs: []
+    sub_values: []
+  - reg: SI
+    operator: '='
+    description: selector
+    table_refs: []
+    sub_values: []
+  returns:
+  - condition: CF clear
+    condition_description: if successful
+    registers:
+    - reg: EBX
+      operator: '='
+      description: segment base address
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  - condition: CF set
+    condition_description: on error
+    registers:
+    - reg: AX
+      operator: '='
+      description: 'error code (see #02556)'
+      table_refs:
+      - '02556'
+      sub_values: []
+    raw_lines: []
+  notes:
+  - this function was first introduced with RM386 (RAM-MAN/386) v6.00
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 000Ah
+  - type: interrupt
+    interrupt: 2F
+    params:
+      AX: 4310h
+    name: Cloaking
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: m-2C
+  category: m
+  title: RM386 v6.00 - CLOAKING - RESERVED FOR CLOAKED BIOS USE UNDER WINDOWS
+  source: INTERRUP.K:859
+  interrupt: 2C
+  flags:
+  - P
+  input_registers:
+  - reg: AX
+    operator: '='
+    description: function (000Ch-001Fh)
+    table_refs: []
+    sub_values: []
+  returns: []
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: m-2C000F
+  category: m
+  title: Cloaking v1.01 - "Simulate_Shell_Event"
+  source: INTERRUP.K:862
+  interrupt: 2C
+  flags:
+  - P
+  function: 000F
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 000Fh
+    table_refs: []
+    sub_values: []
+  - reg: ECX
+    operator: '='
+    description: 'event code (see #02560)'
+    table_refs:
+    - '02560'
+    sub_values: []
+  - reg: DX
+    operator: '='
+    description: subfunction for event
+    table_refs: []
+    sub_values: []
+  - reg: SI:EDI
+    operator: ->
+    description: completion procedure
+    table_refs: []
+    sub_values: []
+  returns:
+  - condition: CF clear
+    condition_description: if successful (event scheduled)
+    registers: []
+    raw_lines: []
+  - condition: CF set
+    condition_description: on error
+    registers: []
+    raw_lines: []
+  notes:
+  - this function is only available while MS Windows is running
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 0011h
+  - type: interrupt
+    params:
+      AX: 0012h
+  - type: interrupt
+    interrupt: 2F
+    params:
+      AX: 1605h
+  - type: interrupt
+    interrupt: 2F
+    params:
+      AX: 4310h
+    name: Cloaking
+  index: []
+  tables:
+  - '02560'
+  - '02561'
+  table_refs: []
+- entry_type: INT
+  id: m-2C0011
+  category: m
+  title: Cloaking v1.01 - "Switch_VMs_and_Call_back"
+  source: INTERRUP.K:908
+  interrupt: 2C
+  flags:
+  - P
+  function: '0011'
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 0011h
+    table_refs: []
+    sub_values: []
+  - reg: EBX
+    operator: '='
+    description: handle of VM to be made active
+    table_refs: []
+    sub_values: []
+  - reg: SI:EDI
+    operator: ->
+    description: 32-bit FAR completion procedure
+    table_refs: []
+    sub_values: []
+  returns:
+  - condition: CF clear
+    condition_description: if successful (scheduled)
+    registers: []
+    raw_lines: []
+  - condition: CF set
+    condition_description: on error
+    registers: []
+    raw_lines: []
+  notes:
+  - 'this function is only available while MS Windows is running
+
+    the completion procedure is called with CF clear if the specified
+
+    VM has been made active, or with CF set on error'
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 000Fh
+  - type: interrupt
+    params:
+      AX: 0012h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: m-2C0012
+  category: m
+  title: Cloaking v1.01 - "Query_Current_VM"
+  source: INTERRUP.K:919
+  interrupt: 2C
+  flags:
+  - P
+  function: '0012'
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 0012h
+    table_refs: []
+    sub_values: []
+  returns:
+  - condition: CF clear
+    registers:
+    - reg: EBX
+      operator: '='
+      description: handle of active VM
+      table_refs: []
+      sub_values: []
+    - reg: ESI
+      operator: '='
+      description: handle of system VM
+      table_refs: []
+      sub_values: []
+    - reg: ECX
+      operator: '='
+      description: 'VM status flags (see #02562)'
+      table_refs:
+      - '02562'
+      sub_values: []
+    - reg: EDX
+      operator: '='
+      description: 'shell flags (see #02563)'
+      table_refs:
+      - '02563'
+      sub_values: []
+    raw_lines: []
+  notes:
+  - 'this function is only available while MS Windows is running in enhanced
+
+    mode'
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 000Fh
+  - type: interrupt
+    params:
+      AX: 0011h
+  - type: interrupt
+    params:
+      AX: 0013h
+  index: []
+  tables:
+  - '02562'
+  - '02563'
+  table_refs: []
+- entry_type: INT
+  id: m-2C0013
+  category: m
+  title: Cloaking v1.01 - "Issue_System_Modal_Message"
+  source: INTERRUP.K:969
+  interrupt: 2C
+  flags:
+  - P
+  function: '0013'
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 0013h
+    table_refs: []
+    sub_values: []
+  - reg: EDX
+    operator: '='
+    description: 'message box flags (see #02564)'
+    table_refs:
+    - '02564'
+    sub_values: []
+  - reg: DS:ECX
+    operator: ->
+    description: ASCIZ message text
+    table_refs: []
+    sub_values: []
+  - reg: DS:EDI
+    operator: ->
+    description: ASCIZ caption
+    table_refs: []
+    sub_values: []
+  returns:
+  - condition: CF clear
+    registers:
+    - reg: EAX
+      operator: '='
+      description: response code
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes:
+  - 'this function is only available while MS Windows is running in enhanced
+
+    mode'
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 000Fh
+  - type: interrupt
+    params:
+      AX: 0012h
+  index: []
+  tables:
+  - '02564'
+  - '02565'
+  table_refs: []
+- entry_type: INT
+  id: m-2C001D
+  category: m
+  title: Cloaking v1.01 - GET INT 2C API HANDLER ENTRY POINT
+  source: INTERRUP.K:1003
+  interrupt: 2C
+  flags:
+  - P
+  function: 001D
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 001Dh
+    table_refs: []
+    sub_values: []
+  returns:
+  - condition: CF clear
+    registers:
+    - reg: DX:EBX
+      operator: '='
+      description: selector:offset of Cloaking host INT 2C handler
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  description: 'get the Cloaking host''s entry point to bypass any other programs
+
+    which may have hooked INT 2C in protected mode'
+  notes:
+  - 'the returned entry point must be called with a simulated INT, i.e.
+
+    a PUSHD must precede the far call to the handler'
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: 2F
+    params:
+      AX: 4310h
+    name: Cloaking
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: m-2C001E
+  category: m
+  title: Cloaking v1.01 - CLEAR CRITICAL SECTION
+  source: INTERRUP.K:1013
+  interrupt: 2C
+  flags:
+  - P
+  function: 001E
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 001Eh
+    table_refs: []
+    sub_values: []
+  returns:
+  - condition: CF clear
+    registers: []
+    raw_lines: []
+  description: 'allow MS Windows to switch to another VM after having prevented it
+
+    by invoking a critical section'
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 001Fh
+  - type: interrupt
+    interrupt: '15'
+    params:
+      AX: 101Ch
+  - type: interrupt
+    interrupt: 2F
+    params:
+      AX: 1682h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: m-2C001F
+  category: m
+  title: Cloaking v1.01 - SET CRITICAL SECTION
+  source: INTERRUP.K:1020
+  interrupt: 2C
+  flags:
+  - P
+  function: 001F
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 001Fh
+    table_refs: []
+    sub_values: []
+  returns:
+  - condition: CF clear
+    registers: []
+    raw_lines: []
+  description: prevent MS Windows from switching to another VM
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 001Eh
+  - type: interrupt
+    interrupt: '15'
+    params:
+      AX: 101Bh
+  - type: interrupt
+    interrupt: 2F
+    params:
+      AX: 1681h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: m-2C0020
+  category: m
+  title: Cloaking - GET SIZE OF PROTECTED-MODE STATE
+  source: INTERRUP.K:1026
+  interrupt: 2C
+  flags:
+  - P
+  function: '0020'
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 0020h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: EAX
+      operator: '='
+      description: number of bytes required for storing state
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes:
+  - this function was first introduced with RM386 (RAM-MAN/386) v6.00
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 0021h
+  - type: interrupt
+    params:
+      AX: 0022h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: m-2C0021
+  category: m
+  title: Cloaking - SAVE PROTECTED-MODE STATE
+  source: INTERRUP.K:1032
+  interrupt: 2C
+  flags:
+  - P
+  function: '0021'
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 0021h
+    table_refs: []
+    sub_values: []
+  - reg: ES:EDI
+    operator: ->
+    description: buffer for protected-mode state
+    table_refs: []
+    sub_values: []
+  returns:
+  - condition: CF clear
+    registers: []
+    raw_lines:
+    - buffer filled
+  notes:
+  - this function was first introduced with RM386 (RAM-MAN/386) v6.00
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 0020h
+  - type: interrupt
+    params:
+      AX: 0022h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: m-2C0022
+  category: m
+  title: Cloaking - RESTORE PROTECTED-MODE STATE
+  source: INTERRUP.K:1040
+  interrupt: 2C
+  flags:
+  - P
+  function: '0022'
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 0022h
+    table_refs: []
+    sub_values: []
+  - reg: DS:ESI
+    operator: ->
+    description: buffer containing previously-saved protected-mode state
+    table_refs: []
+    sub_values: []
+  returns:
+  - condition: CF clear
+    condition_description: if successful
+    registers: []
+    raw_lines:
+    - state restored
+  - condition: CF set
+    condition_description: on error (invalid buffer contents)
+    registers: []
+    raw_lines: []
+  notes:
+  - this function was first introduced with RM386 (RAM-MAN/386) v6.00
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 0020h
+  - type: interrupt
+    params:
+      AX: 0021h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: m-2C0023
+  category: m
+  title: Cloaking - ISSUE PROTECTED-MODE XMS CALL
+  source: INTERRUP.K:1049
+  interrupt: 2C
+  flags:
+  - P
+  function: '0023'
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 0023h
+    table_refs: []
+    sub_values: []
+  returns: []
+  notes:
+  - 'not currently implemented--NOP in RM386 v6.00
+
+    this function was first introduced with RM386 (RAM-MAN/386) v6.00'
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: m-2C0024
+  category: m
+  title: Cloaking - SET V86-MODE STACK
+  source: INTERRUP.K:1054
+  interrupt: 2C
+  flags:
+  - P
+  function: '0024'
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 0024h
+    table_refs: []
+    sub_values: []
+  - reg: DX:EBX
+    operator: '='
+    description: new value for V86-mode SS:ESP
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - nothing
+  notes:
+  - this function was first introduced with RM386 (RAM-MAN/386) v6.00
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: m-2C0025
+  category: m
+  title: Cloaking - CALL V86-MODE PROCEDURE
+  source: INTERRUP.K:1060
+  interrupt: 2C
+  flags:
+  - P
+  function: '0025'
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 0025h
+    table_refs: []
+    sub_values: []
+  - reg: DS:EBX
+    operator: ->
+    description: 'client register structure (see #02559)'
+    table_refs:
+    - 02559
+    sub_values: []
+  returns:
+  - condition: CF clear
+    condition_description: if successful
+    registers: []
+    raw_lines:
+    - client register structure updated
+  - condition: CF set
+    condition_description: if no more nested procedure call space available
+    registers: []
+    raw_lines: []
+  notes:
+  - 'this call uses the V86-mode stack supplied in the client structure, and
+
+    calls the routine specified by CS:IP in the client structure
+
+    this function was first introduced with RM386 (RAM-MAN/386) v6.00'
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 0026h
+  - type: interrupt
+    params:
+      AX: 0027h
+  - type: interrupt
+    interrupt: '31'
+    params:
+      AX: 0301h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: m-2C0026
+  category: m
+  title: Cloaking - CALL V86-MODE INTERRUPT HANDLER
+  source: INTERRUP.K:1071
+  interrupt: 2C
+  flags:
+  - P
+  function: '0026'
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 0026h
+    table_refs: []
+    sub_values: []
+  - reg: DS:EBX
+    operator: ->
+    description: 'client register structure (see #02559)'
+    table_refs:
+    - 02559
+    sub_values: []
+  - reg: CX
+    operator: '='
+    description: interrupt number
+    table_refs: []
+    sub_values: []
+  returns:
+  - condition: CF clear
+    condition_description: if successful
+    registers: []
+    raw_lines:
+    - client register structure updated
+  - condition: CF set
+    condition_description: if no more nested procedure call space available
+    registers: []
+    raw_lines: []
+  notes:
+  - 'this call uses the V86-mode stack supplied in the client structure
+
+    this function was first introduced with RM386 (RAM-MAN/386) v6.00'
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 0025h
+  - type: interrupt
+    params:
+      AX: 0027h
+  - type: interrupt
+    interrupt: '31'
+    params:
+      AX: 0300h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: m-2C0027
+  category: m
+  title: Cloaking - CHAIN TO V86-MODE INTERRUPT HANDLER
+  source: INTERRUP.K:1082
+  interrupt: 2C
+  flags:
+  - P
+  function: '0027'
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 0027h
+    table_refs: []
+    sub_values: []
+  - reg: DS:EBX
+    operator: ->
+    description: 'client register structure (see #02559)'
+    table_refs:
+    - 02559
+    sub_values: []
+  returns:
+  - condition: CF clear
+    condition_description: if successful
+    registers: []
+    raw_lines:
+    - client register structure updated
+  - condition: CF set
+    condition_description: if no more nested procedure call space available
+    registers: []
+    raw_lines: []
+  notes:
+  - 'this call uses the V86-mode stack supplied in the client structure,
+
+    and jumps to the address specified by CS:IP in the client structure
+
+    this function was first introduced with RM386 (RAM-MAN/386) v6.00'
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 0025h
+  - type: interrupt
+    params:
+      AX: 0026h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: m-2C0028
+  category: m
+  title: Cloaking - GET ESP0 FROM TSS
+  source: INTERRUP.K:1093
+  interrupt: 2C
+  flags:
+  - P
+  function: 0028
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 0028h
+    table_refs: []
+    sub_values: []
+  returns:
+  - condition: CF clear
+    registers:
+    - reg: EAX
+      operator: '='
+      description: TSS's ESP0
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes:
+  - 'this function was first introduced with RM386 (RAM-MAN/386) v6.00, the
+
+    memory manager included in Helix Software''s Netroom'
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: m-2C0029
+  category: m
+  title: Cloaking - SET SECONDARY STACK
+  source: INTERRUP.K:1100
+  interrupt: 2C
+  flags:
+  - P
+  function: 0029
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 0029h
+    table_refs: []
+    sub_values: []
+  - reg: DX:EBX
+    operator: '='
+    description: new value for SS:ESP of ring 3 secondary stack
+    table_refs: []
+    sub_values: []
+  returns:
+  - condition: CF clear
+    registers: []
+    raw_lines: []
+  description: inform RM386 of the ring 3 interrupt stack location
+  notes:
+  - this function was first introduced with RM386 (RAM-MAN/386) v6.00
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: m-2C002A
+  category: m
+  title: Cloaking - SET 8259 IRQ BASE VECTORS
+  source: INTERRUP.K:1107
+  interrupt: 2C
+  flags:
+  - P
+  function: 002A
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 002Ah
+    table_refs: []
+    sub_values: []
+  - reg: BL
+    operator: '='
+    description: base vector of master interrupt controller
+    table_refs: []
+    sub_values: []
+  - reg: CL
+    operator: '='
+    description: base vector of slave interrupt controller
+    table_refs: []
+    sub_values: []
+  returns: []
+  notes:
+  - 'this call merely informs RM386 that the caller has changed the
+
+    interrupt mappings
+
+    this function was first introduced with RM386 (RAM-MAN/386) v6.00'
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: '67'
+    params:
+      AX: DE0Bh
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: m-2C002BCH81
+  category: m
+  title: Cloaking - PROTECTED-MODE VIRTUAL DMA SERVICES
+  source: INTERRUP.K:1116
+  interrupt: 2C
+  flags:
+  - P
+  function: 002BCH81
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 002Bh
+    table_refs: []
+    sub_values: []
+  - reg: CH
+    operator: '='
+    value: 81h
+    table_refs: []
+    sub_values: []
+  - reg: CL
+    operator: '='
+    description: subfunction (02h-0Ch)
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - varies by function
+  - condition: CF set
+    condition_description: on error
+    registers: []
+    raw_lines: []
+  notes:
+  - 'these functions are equivalent to the INT 4B/AX=81xxh subfunctions
+
+    with the same numbers
+
+    this function was first introduced with RM386 (RAM-MAN/386) v6.00'
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: 4B
+    params:
+      AX: 8102h
+  - type: interrupt
+    interrupt: 4B
+    params:
+      AX: 810Ch
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: m-2C002C
+  category: m
+  title: Cloaking - GET PORT-TRAPPING PASSALONG
+  source: INTERRUP.K:1128
+  interrupt: 2C
+  flags:
+  - P
+  function: 002C
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 002Ch
+    table_refs: []
+    sub_values: []
+  returns:
+  - condition: CF clear
+    registers:
+    - reg: DX:EBX
+      operator: '='
+      description: current I/O trapping passalong address
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes:
+  - this function was first introduced with RM386 (RAM-MAN/386) v6.00
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 0008h
+  - type: interrupt
+    params:
+      AX: 002Dh
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: m-2C002D
+  category: m
+  title: Cloaking - SET PORT-TRAPPING PASSALONG
+  source: INTERRUP.K:1135
+  interrupt: 2C
+  flags:
+  - P
+  function: 002D
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 002Dh
+    table_refs: []
+    sub_values: []
+  - reg: DX:EBX
+    operator: '='
+    description: 'new I/O trapping passalong address (see #02566)'
+    table_refs:
+    - '02566'
+    sub_values: []
+  returns:
+  - condition: CF clear
+    registers: []
+    raw_lines: []
+  notes:
+  - 'RM386 calls the passalong address whenever an access to a monitored
+
+    I/O port is attempted; the handler should check whether it is a port
+
+    that it is interested in, and if not call the previous passalong
+
+    address (which was retrieved with AX=002Ch before installing the
+
+    new handler)
+
+    this function was first introduced with RM386 (RAM-MAN/386) v6.00'
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 0009h
+  - type: interrupt
+    params:
+      AX: 002Ch
+  - type: interrupt
+    interrupt: '67'
+    params:
+      AX: 5DEAh
+  index: []
+  tables:
+  - '02566'
+  table_refs: []
+- entry_type: INT
+  id: m-2C002E
+  category: m
+  title: Cloaking - TRAP I/O PORT
+  source: INTERRUP.K:1161
+  interrupt: 2C
+  flags:
+  - P
+  function: 002E
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 002Eh
+    table_refs: []
+    sub_values: []
+  - reg: DX
+    operator: '='
+    description: port number to trap
+    table_refs: []
+    sub_values: []
+  returns:
+  - condition: CF clear
+    condition_description: if successful
+    registers: []
+    raw_lines: []
+  - condition: CF set
+    condition_description: on error (port out of range or reserved)
+    registers: []
+    raw_lines: []
+  notes:
+  - this function was first introduced with RM386 (RAM-MAN/386) v6.00
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 002Fh
+  - type: interrupt
+    params:
+      AX: 0030h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: m-2C002F
+  category: m
+  title: Cloaking - UNTRAP I/O PORT
+  source: INTERRUP.K:1169
+  interrupt: 2C
+  flags:
+  - P
+  - U
+  function: 002F
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 002Fh
+    table_refs: []
+    sub_values: []
+  - reg: DX
+    operator: '='
+    description: port number for which to cancel trapping
+    table_refs: []
+    sub_values: []
+  returns:
+  - condition: CF clear
+    condition_description: if successful
+    registers: []
+    raw_lines: []
+  - condition: CF set
+    condition_description: on error (port out of range or reserved)
+    registers: []
+    raw_lines: []
+  notes:
+  - this function was first introduced with RM386 (RAM-MAN/386) v6.00
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 002Eh
+  - type: interrupt
+    params:
+      AX: 0030h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: m-2C0030
+  category: m
+  title: Cloaking - GET TRAPPING STATE OF SPECIFIED PORT
+  source: INTERRUP.K:1177
+  interrupt: 2C
+  flags:
+  - P
+  - U
+  function: '0030'
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 0030h
+    table_refs: []
+    sub_values: []
+  - reg: DX
+    operator: '='
+    description: port number
+    table_refs: []
+    sub_values: []
+  returns:
+  - condition: CF clear
+    condition_description: if successful
+    registers:
+    - reg: BX
+      operator: '='
+      description: current state (0000h not trapped, 0001h trapped)
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  - condition: CF set
+    condition_description: on error (port out of range or reserved)
+    registers: []
+    raw_lines: []
+  notes:
+  - this function was first introduced with RM386 (RAM-MAN/386) v6.00
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 002Eh
+  - type: interrupt
+    params:
+      AX: 002Fh
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: m-2C0031
+  category: m
+  title: RM386 v6.00 - BUG
+  source: INTERRUP.K:1186
+  interrupt: 2C
+  flags:
+  - P
+  - U
+  function: '0031'
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 0031h
+    table_refs: []
+    sub_values: []
+  returns: []
+  program: 'RM386 (RAM-MAN/386) is the memory manager included in Helix
+
+    Software''s Netroom'
+  notes:
+  - 'due to a fencepost error, RM386 v6.00 will branch unpredictably if
+
+    invoked with this function'
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: m-2C0031
+  category: m
+  title: Cloaking v1.01 - ALLOCATE V86 CALLBACK
+  source: INTERRUP.K:1193
+  interrupt: 2C
+  flags:
+  - P
+  function: '0031'
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 0031h
+    table_refs: []
+    sub_values: []
+  - reg: DX:EBX
+    operator: '='
+    description: CS:EIP of protected-mode routine to be invoked by callback
+    table_refs: []
+    sub_values: []
+  returns:
+  - condition: CF clear
+    condition_description: if successful
+    registers:
+    - reg: EBX
+      operator: '='
+      description: CS:IP of V86-mode callback handler
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  - condition: CF set
+    condition_description: on error
+    registers: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 0032h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: m-2C0032
+  category: m
+  title: Cloaking v1.01 - FREE V86 CALLBACK
+  source: INTERRUP.K:1201
+  interrupt: 2C
+  flags:
+  - P
+  function: '0032'
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 0032h
+    table_refs: []
+    sub_values: []
+  - reg: EBX
+    operator: '='
+    description: CS:IP of V86-mode callback handler
+    table_refs: []
+    sub_values: []
+  returns:
+  - condition: CF clear
+    condition_description: if successful
+    registers: []
+    raw_lines: []
+  - condition: CF set
+    condition_description: on error
+    registers:
+    - reg: AX
+      operator: '='
+      description: error code
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 0032h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: m-2C0033
+  category: m
+  title: Cloaking v1.01 - REGISTER CLOAKING CLIENT
+  source: INTERRUP.K:1211
+  interrupt: 2C
+  flags:
+  - P
+  function: '0033'
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 0033h
+    table_refs: []
+    sub_values: []
+  - reg: DS:EDX
+    operator: ->
+    description: 'client registration structure (see #02567)'
+    table_refs:
+    - '02567'
+    sub_values: []
+  returns:
+  - condition: CF clear
+    condition_description: if successful
+    registers: []
+    raw_lines: []
+  - condition: CF set
+    condition_description: on error (linked list corrupt)
+    registers: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 0034h
+  - type: interrupt
+    params:
+      AX: 4310h
+    name: Cloaking
+  index: []
+  tables:
+  - '02567'
+  table_refs:
+  - 02778
+- entry_type: INT
+  id: m-2C0034
+  category: m
+  title: Cloaking v1.01 - UNREGISTER CLOAKING CLIENT
+  source: INTERRUP.K:1229
+  interrupt: 2C
+  flags:
+  - P
+  function: '0034'
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 0034h
+    table_refs: []
+    sub_values: []
+  - reg: DS:EDX
+    operator: ->
+    description: 'client registration structure (see #02567)'
+    table_refs:
+    - '02567'
+    sub_values: []
+  returns:
+  - condition: CF clear
+    condition_description: if successful
+    registers: []
+    raw_lines: []
+  - condition: CF set
+    condition_description: on error (linked list corrupt)
+    registers: []
+    raw_lines: []
+  notes:
+  - 'the client must unregister before freeing the XMS block containing
+
+    its registration structure(s)'
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 0033h
+  - type: interrupt
+    params:
+      AX: 4310h
+    name: Cloaking
+  index: []
+  tables: []
+  table_refs:
+  - 02778

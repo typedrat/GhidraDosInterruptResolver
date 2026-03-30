@@ -1,0 +1,1570 @@
+file_type: interrupt
+key: '80'
+entries:
+- entry_type: INT
+  id: --80
+  title: Q-PRO4 - ???
+  source: INTERRUP.Q:8734
+  interrupt: '80'
+  flags: []
+  input_registers: []
+  returns: []
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: r-80
+  category: r
+  title: reserved for BASIC
+  source: INTERRUP.Q:8736
+  interrupt: '80'
+  flags: []
+  input_registers: []
+  returns: []
+  notes:
+  - 'this vector and INT 81 through INT ED are modified but not restored by
+
+    Direct Access v4.0, and may be left dangling by other programs
+
+    written with the same version of compiled BASIC'
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: '81'
+    params: {}
+    name: BASIC
+  - type: interrupt
+    interrupt: '86'
+    params: {}
+    name: BASIC
+  - type: interrupt
+    interrupt: EF
+    params: {}
+    name: BASIC
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: E-80
+  category: E
+  title: Phar Lap 386|DOS-Extender - RELOCATED PRINT-SCREEN
+  source: INTERRUP.Q:8742
+  interrupt: '80'
+  flags: []
+  input_registers: []
+  returns: []
+  notes:
+  - 'the extender relocates INT 05 to here by default, but can be told to
+
+    leave INT 05 alone with the commandline (or DOSX= environment
+
+    variable) flag -PRIVEC 5'
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: '05'
+    params: {}
+    name: PRINT SCREEN
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: d-80
+  category: d
+  title: BusLogic BT-946C PCI SCSI Adapter - SCRATCHPAD RAM (NOT A VECTOR!)
+  source: INTERRUP.Q:8748
+  interrupt: '80'
+  flags: []
+  input_registers: []
+  returns: []
+  notes:
+  - 'the factory-default location for the eight bytes of scratchpad RAM
+
+    needed by the SCSI adapter is 0000h:0200h, which is interrupt
+
+    vectors 80h and 81h'
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: '81'
+    params: {}
+    name: BusLogic
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: O-80
+  category: O
+  title: Linux - SYSTEM CALLS
+  source: INTERRUP.Q:8754
+  interrupt: '80'
+  flags: []
+  input_registers: []
+  returns: []
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables:
+  - 04086
+  table_refs: []
+- entry_type: INT
+  id: O-80
+  category: O
+  title: FreeBSD - SYSTEM CALLS
+  source: INTERRUP.Q:8915
+  interrupt: '80'
+  flags: []
+  input_registers: []
+  returns: []
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-80
+  category: b
+  title: AMI BIOS v1.00.12.AX1T - internal - BIOS SUBSYSTEM SELECTION
+  source: INTERRUP.Q:8918
+  interrupt: '80'
+  flags:
+  - U
+  input_registers:
+  - reg: AH
+    operator: '='
+    description: function
+    table_refs: []
+    sub_values:
+    - value: 00h
+      description: install and initialize BIOS subsystem
+      sub_values: []
+  - reg: AL
+    operator: '='
+    description: ??? (00h,01h,03h)
+    table_refs: []
+    sub_values: []
+  - reg: CX:BX
+    operator: '='
+    description: 'subsystem ID (see #03971)'
+    table_refs:
+    - 03971
+    sub_values: []
+  - reg: ESI
+    operator: '='
+    description: address from which to load, or 00000000h for default for
+    table_refs: []
+    sub_values: []
+  - reg: EDI
+    operator: '='
+    description: physical address at which to install, or 0 for default
+    table_refs: []
+    sub_values: []
+  - reg: CX:BX
+    operator: '='
+    description: 'subsystem ID (see #03971)'
+    table_refs:
+    - 03971
+    sub_values: []
+  - reg: AH
+    operator: '='
+    description: ???
+    table_refs: []
+    sub_values: []
+  - reg: EDX
+    operator: '='
+    description: uncompressed size of subsystem in bytes
+    table_refs: []
+    sub_values: []
+  - reg: SI
+    operator: '='
+    description: offset within subsystem of initialization
+    table_refs: []
+    sub_values: []
+  - reg: EDI
+    operator: '='
+    description: physical address of default location or 0
+    table_refs: []
+    sub_values: []
+  - reg: AL
+    operator: '='
+    description: index into subsystem list (return ALth occurrence
+    table_refs: []
+    sub_values: []
+  - reg: BX
+    operator: '='
+    description: low word of subsystem identifier
+    table_refs: []
+    sub_values: []
+  - reg: CX
+    operator: '='
+    description: high word of ALth matching subsystem
+    table_refs: []
+    sub_values: []
+  - reg: CF
+    operator: set
+    description: on error
+    table_refs: []
+    sub_values: []
+  - reg: CX:BX
+    operator: '='
+    description: subsystem ID to leave out
+    table_refs: []
+    sub_values: []
+  - reg: CX:BX
+    operator: '='
+    description: 'subsystem ID (see #03971)'
+    table_refs:
+    - 03971
+    sub_values: []
+  - reg: EDX
+    operator: '='
+    description: length of ???
+    table_refs: []
+    sub_values: []
+  - reg: EDI
+    operator: '='
+    description: linear address of start of ???
+    table_refs: []
+    sub_values: []
+  returns:
+  - condition: CF clear
+    condition_description: if successful
+    registers: []
+    raw_lines: []
+  - condition: CF set
+    condition_description: on non-fatal error
+    registers: []
+    raw_lines: []
+  notes:
+  - 'this interrupt vector is cleared to 0000h:0000h near the end of the
+
+    BIOS startup sequence'
+  bugs: []
+  see_also: []
+  index: []
+  tables:
+  - 03971
+  table_refs: []
+- entry_type: INT
+  id: s-80BL00
+  category: s
+  title: SBSIM - "STARTSND" - START SOUND ON SPECIFIED DRIVER
+  source: INTERRUP.Q:8985
+  interrupt: '80'
+  flags: []
+  function: BL00
+  input_registers:
+  - reg: BL
+    operator: '='
+    value: 00h
+    table_refs: []
+    sub_values: []
+  - reg: BH
+    operator: '='
+    description: driver number (01h = FM, 02h=DDBV, 03h=memvoice, 05h=MIDI)
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AX
+      operator: '='
+      description: 'initialization result (see #03972)'
+      table_refs:
+      - 03972
+      sub_values: []
+    raw_lines: []
+  program: 'SBSIM is Creative Labs'' SoundBlaster Simplified Interface Module,
+
+    which provides access to multiple drivers for the SoundBlaster
+
+    board through a single interface'
+  notes:
+  - 'the SBSIM installation check consists of testing for the signature
+
+    "SBSIM" at offset 103h in the interrupt handler''s segment.'
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: '80'
+    params:
+      BL: 01h
+    name: SBSIM
+  - type: interrupt
+    interrupt: '80'
+    params:
+      BL: 02h
+    name: SBSIM
+  - type: interrupt
+    interrupt: '80'
+    params:
+      BL: 03h
+    name: SBSIM
+  - type: interrupt
+    interrupt: '80'
+    params:
+      BX: 0000h
+    name: SBSIM
+  range: INT 80h to INT BFh, selected automatically
+  index: []
+  tables:
+  - 03972
+  table_refs: []
+- entry_type: INT
+  id: s-80BL01
+  category: s
+  title: SBSIM - "PLAYSND" - PLAY MUSIC/VOICE ON SELECTED DRIVER
+  source: INTERRUP.Q:9029
+  interrupt: '80'
+  flags: []
+  function: BL01
+  input_registers:
+  - reg: BL
+    operator: '='
+    value: 01h
+    table_refs: []
+    sub_values: []
+  - reg: BH
+    operator: '='
+    description: driver number (01h = FM, 02h=DDBV, 03h=memvoice, 05h=MIDI)
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AX
+      operator: '='
+      description: 'result (see #03972)'
+      table_refs:
+      - 03972
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: '80'
+    params:
+      BL: 00h
+    name: SBSIM
+  - type: interrupt
+    interrupt: '80'
+    params:
+      BL: 02h
+    name: SBSIM
+  - type: interrupt
+    interrupt: '80'
+    params:
+      BL: 04h
+    name: SBSIM
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: s-80BL02
+  category: s
+  title: SBSIM - "STOPSND" - STOP MUSIC/VOICE ON SELECTED DRIVER
+  source: INTERRUP.Q:9035
+  interrupt: '80'
+  flags: []
+  function: BL02
+  input_registers:
+  - reg: BL
+    operator: '='
+    value: 02h
+    table_refs: []
+    sub_values: []
+  - reg: BH
+    operator: '='
+    description: driver number (01h = FM, 02h=DDBV, 03h=memvoice, 05h=MIDI)
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - nothing
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: '80'
+    params:
+      BL: 00h
+    name: SBSIM
+  - type: interrupt
+    interrupt: '80'
+    params:
+      BL: 01h
+    name: SBSIM
+  - type: interrupt
+    interrupt: '80'
+    params:
+      BL: 03h
+    name: SBSIM
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: s-80BL03
+  category: s
+  title: SBSIM - "PAUSESND" - TEMPORARILY PAUSE PLAYBACK ON SELECTED DRIVER
+  source: INTERRUP.Q:9041
+  interrupt: '80'
+  flags: []
+  function: BL03
+  input_registers:
+  - reg: BL
+    operator: '='
+    value: 03h
+    table_refs: []
+    sub_values: []
+  - reg: BH
+    operator: '='
+    description: driver number (01h = FM, 02h=DDBV, 03h=memvoice, 05h=MIDI)
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - nothing
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: '80'
+    params:
+      BL: 00h
+    name: SBSIM
+  - type: interrupt
+    interrupt: '80'
+    params:
+      BL: 02h
+    name: SBSIM
+  - type: interrupt
+    interrupt: '80'
+    params:
+      BL: 04h
+    name: SBSIM
+  - type: interrupt
+    interrupt: '80'
+    params:
+      BL: 05h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: s-80BL04
+  category: s
+  title: SBSIM - "RESUMESND" - RESTART PLAYBACK ON SELECTED DRIVER
+  source: INTERRUP.Q:9048
+  interrupt: '80'
+  flags: []
+  function: BL04
+  input_registers:
+  - reg: BL
+    operator: '='
+    value: 04h
+    table_refs: []
+    sub_values: []
+  - reg: BH
+    operator: '='
+    description: driver number (01h = FM, 02h=DDBV, 03h=memvoice, 05h=MIDI)
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - nothing
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: '80'
+    params:
+      BL: 00h
+    name: SBSIM
+  - type: interrupt
+    interrupt: '80'
+    params:
+      BL: 03h
+    name: SBSIM
+  - type: interrupt
+    interrupt: '80'
+    params:
+      BL: 05h
+    name: SBSIM
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: s-80BL05
+  category: s
+  title: SBSIM - "GETSNDSTAT" - GET DRIVER'S STATUS
+  source: INTERRUP.Q:9054
+  interrupt: '80'
+  flags: []
+  function: BL05
+  input_registers:
+  - reg: BL
+    operator: '='
+    value: 05h
+    table_refs: []
+    sub_values: []
+  - reg: BH
+    operator: '='
+    description: driver number (01h = FM, 02h=DDBV, 03h=memvoice, 05h=MIDI)
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AX
+      operator: '='
+      description: status
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: '80'
+    params:
+      BL: 00h
+    name: SBSIM
+  - type: interrupt
+    interrupt: '80'
+    params:
+      BL: 01h
+    name: SBSIM
+  - type: interrupt
+    interrupt: '80'
+    params:
+      BL: 03h
+    name: SBSIM
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: s-80BX0000
+  category: s
+  title: SoundBlaster SBFM driver - GET VERSION
+  source: INTERRUP.Q:9060
+  interrupt: '80'
+  flags: []
+  function: BX0000
+  input_registers:
+  - reg: BX
+    operator: '='
+    value: 0000h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+  notes:
+  - SBFM installs at a free interrupt in the range 80h through BFh
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      BX: 0008h
+    name: SBFM
+  - type: interrupt
+    interrupt: 2F
+    params:
+      AX: FBFBh
+      ES: 0000h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: s-80BX0000
+  category: s
+  title: SBSIM - "QUERYVERSION" - GET VERSION
+  source: INTERRUP.Q:9066
+  interrupt: '80'
+  flags: []
+  function: BX0000
+  input_registers:
+  - reg: BX
+    operator: '='
+    value: 0000h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AX
+      operator: '='
+      description: version (AH = major, AL = minor)
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  program: 'SBSIM is Creative Labs'' SoundBlaster Simplified Interface Module,
+
+    which provides access to multiple drivers for the SoundBlaster
+
+    board through a single interface'
+  notes:
+  - 'the SBSIM installation check consists of testing for the signature
+
+    "SBSIM" at offset 103h in the interrupt handler''s segment.'
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      BX: 0001h
+    name: SBSIM
+  - type: interrupt
+    params:
+      BX: 0005h
+    name: SBSIM
+  - type: interrupt
+    interrupt: '21'
+    params:
+      AX: 4402h
+    name: CTMMSYS
+  - type: interrupt
+    interrupt: '80'
+    params:
+      BL: 00h
+    name: SBSIM
+  range: INT 80h to INT BFh, selected automatically
+  index:
+  - installation check;SBSIM|installation check;SoundBlaster
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: s-80BX0001
+  category: s
+  title: SoundBlaster SBFM driver - SET MUSIC STATUS BYTE ADDRESS
+  source: INTERRUP.Q:9079
+  interrupt: '80'
+  flags: []
+  function: BX0001
+  input_registers:
+  - reg: BX
+    operator: '='
+    value: 0001h
+    table_refs: []
+    sub_values: []
+  - reg: DX:AX
+    operator: ->
+    description: music status byte
+    table_refs: []
+    sub_values: []
+  returns: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      BX: 0000h
+    name: SBFM
+  - type: interrupt
+    params:
+      BX: 0002h
+    name: SBFM
+  - type: interrupt
+    params:
+      BX: 0003h
+    name: SBFM
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: s-80BX0001
+  category: s
+  title: SBSIM - "QUERYDRIVERS" - CHECK DRIVERS INSTALLED
+  source: INTERRUP.Q:9084
+  interrupt: '80'
+  flags: []
+  function: BX0001
+  input_registers:
+  - reg: BX
+    operator: '='
+    value: 0001h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AX
+      operator: '='
+      description: 'bit flags for loaded drivers (see #03973)'
+      table_refs:
+      - 03973
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      BX: 0000h
+    name: SBSIM
+  - type: interrupt
+    params:
+      BX: 0002h
+    name: SBSIM
+  - type: interrupt
+    params:
+      BX: 0005h
+    name: SBSIM
+  - type: interrupt
+    interrupt: '80'
+    params:
+      BL: 00h
+    name: SBSIM
+  index: []
+  tables:
+  - 03973
+  table_refs: []
+- entry_type: INT
+  id: s-80BX0002
+  category: s
+  title: SoundBlaster SBFM driver - SET INSTRUMENT TABLE
+  source: INTERRUP.Q:9097
+  interrupt: '80'
+  flags: []
+  function: BX0002
+  input_registers:
+  - reg: BX
+    operator: '='
+    value: 0002h
+    table_refs: []
+    sub_values: []
+  - reg: CX
+    operator: '='
+    description: number of instruments
+    table_refs: []
+    sub_values: []
+  - reg: DX:AX
+    operator: ->
+    description: instrument table
+    table_refs: []
+    sub_values: []
+  returns: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      BX: 0000h
+    name: SBFM
+  - type: interrupt
+    params:
+      BX: 0001h
+    name: SBFM
+  - type: interrupt
+    params:
+      BX: 0005h
+    name: SBFM
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: s-80BX0002
+  category: s
+  title: SBSIM - GETADDRESS" - GET SELECTED DRIVER'S ENTRY POINT
+  source: INTERRUP.Q:9103
+  interrupt: '80'
+  flags: []
+  function: BX0002
+  input_registers:
+  - reg: BX
+    operator: '='
+    value: 0002h
+    table_refs: []
+    sub_values: []
+  - reg: AX
+    operator: '='
+    description: driver (00h = FM,01h = DDBV,02h = memvoice,03h = mixer,04h = MIDI)
+    table_refs: []
+    sub_values: []
+  returns:
+  - condition: CF clear
+    condition_description: if successful
+    registers:
+    - reg: DX:AX
+      operator: ->
+      description: entry point
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  - condition: CF set
+    condition_description: on error
+    registers: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      BX: 0000h
+    name: SBSIM
+  - type: interrupt
+    params:
+      BX: 0001h
+    name: SBSIM
+  - type: interrupt
+    params:
+      BX: 0005h
+    name: SBSIM
+  - type: interrupt
+    interrupt: '80'
+    params:
+      BL: 00h
+    name: SBSIM
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: s-80BX0003
+  category: s
+  title: SoundBlaster SBFM driver - SET SYSTEM CLOCK RATE
+  source: INTERRUP.Q:9111
+  interrupt: '80'
+  flags: []
+  function: BX0003
+  input_registers:
+  - reg: BX
+    operator: '='
+    value: 0003h
+    table_refs: []
+    sub_values: []
+  - reg: AX
+    operator: '='
+    description: clock rate divisor (1193180 / desired frequency in Hertz)
+    table_refs: []
+    sub_values:
+    - value: FFFFh
+      description: to restore to 18.2 Hz
+      sub_values: []
+  returns: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      BX: 0000h
+    name: SBFM
+  - type: interrupt
+    params:
+      BX: 0001h
+    name: SBFM
+  - type: interrupt
+    params:
+      BX: 0004h
+    name: SBFM
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: s-80BX0004
+  category: s
+  title: SoundBlaster SBFM driver - SET DRIVER CLOCK RATE
+  source: INTERRUP.Q:9117
+  interrupt: '80'
+  flags: []
+  function: BX0004
+  input_registers:
+  - reg: BX
+    operator: '='
+    value: 0004h
+    table_refs: []
+    sub_values: []
+  - reg: AX
+    operator: '='
+    description: driver clock rate divisor (1193180 / frequency in Hertz)
+    table_refs: []
+    sub_values: []
+  returns: []
+  notes:
+  - default frequency is 96 Hz
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      BX: 0000h
+    name: SBFM
+  - type: interrupt
+    params:
+      BX: 0003h
+    name: SBFM
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: s-80BX0005
+  category: s
+  title: SoundBlaster SBFM driver - TRANSPOSE MUSIC
+  source: INTERRUP.Q:9123
+  interrupt: '80'
+  flags: []
+  function: BX0005
+  input_registers:
+  - reg: BX
+    operator: '='
+    value: 0005h
+    table_refs: []
+    sub_values: []
+  - reg: AX
+    operator: '='
+    description: semi-tone offset
+    table_refs: []
+    sub_values: []
+  returns: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      BX: 0000h
+    name: SBFM
+  - type: interrupt
+    params:
+      BX: 0002h
+    name: SBFM
+  - type: interrupt
+    params:
+      BX: 0006h
+    name: SBFM
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: s-80BX0005
+  category: s
+  title: SBSIM - "GETBUFFERINFO" - GET DRIVER'S BUFFER ADDRESS
+  source: INTERRUP.Q:9128
+  interrupt: '80'
+  flags: []
+  function: BX0005
+  input_registers:
+  - reg: BX
+    operator: '='
+    value: 0005h
+    table_refs: []
+    sub_values: []
+  - reg: AX
+    operator: '='
+    description: driver (00h = FM, 01h = DDB Voice, 04h = MIDI)
+    table_refs: []
+    sub_values: []
+  returns:
+  - condition: CF clear
+    condition_description: if successful
+    registers:
+    - reg: DX:AX
+      operator: ->
+      description: buffer
+      table_refs: []
+      sub_values: []
+    - reg: CX
+      operator: '='
+      description: buffer size in K
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  - condition: CF set
+    condition_description: on error
+    registers: []
+    raw_lines: []
+  program: 'SBSIM is Creative Labs'' SoundBlaster Simplified Interface Module,
+
+    which provides access to multiple drivers for the SoundBlaster
+
+    board through a single interface'
+  notes:
+  - 'the SBSIM installation check consists of testing for the signature
+
+    "SBSIM" at offset 103h in the interrupt handler''s segment.'
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      BX: 0000h
+    name: SBSIM
+  - type: interrupt
+    params:
+      BX: 0001h
+    name: SBSIM
+  - type: interrupt
+    params:
+      BX: 0002h
+    name: SBSIM
+  - type: interrupt
+    interrupt: '80'
+    params:
+      BL: 00h
+    name: SBSIM
+  range: INT 80h to INT BFh, selected automatically
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: s-80BX0006
+  category: s
+  title: SoundBlaster SBFM driver - PLAY MUSIC
+  source: INTERRUP.Q:9143
+  interrupt: '80'
+  flags: []
+  function: BX0006
+  input_registers:
+  - reg: BX
+    operator: '='
+    value: 0006h
+    table_refs: []
+    sub_values: []
+  - reg: DX:AX
+    operator: ->
+    description: music block
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AX
+      operator: '='
+      description: status
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      BX: 0000h
+    name: SBFM
+  - type: interrupt
+    params:
+      BX: 0007h
+    name: SBFM
+  - type: interrupt
+    params:
+      BX: 000Ah
+    name: SBFM
+  - type: interrupt
+    interrupt: 1A
+    params:
+      AX: FF04h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: s-80BX0007
+  category: s
+  title: SoundBlaster SBFM driver - STOP MUSIC
+  source: INTERRUP.Q:9151
+  interrupt: '80'
+  flags: []
+  function: BX0007
+  input_registers:
+  - reg: BX
+    operator: '='
+    value: 0007h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AX
+      operator: '='
+      description: status
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      BX: 0000h
+    name: SBFM
+  - type: interrupt
+    params:
+      BX: 0006h
+    name: SBFM
+  - type: interrupt
+    params:
+      BX: 0009h
+    name: SBFM
+  - type: interrupt
+    interrupt: 1A
+    params:
+      AX: FF05h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: s-80BX0008
+  category: s
+  title: SoundBlaster SBFM driver - RESET DRIVER
+  source: INTERRUP.Q:9158
+  interrupt: '80'
+  flags: []
+  function: BX0008
+  input_registers:
+  - reg: BX
+    operator: '='
+    value: 0008h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AX
+      operator: '='
+      description: status
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      BX: 0000h
+    name: SBFM
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: s-80BX0009
+  category: s
+  title: SoundBlaster SBFM driver - PAUSE MUSIC
+  source: INTERRUP.Q:9165
+  interrupt: '80'
+  flags: []
+  function: BX0009
+  input_registers:
+  - reg: BX
+    operator: '='
+    value: 0009h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AX
+      operator: '='
+      description: status
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      BX: 0000h
+    name: SBFM
+  - type: interrupt
+    params:
+      BX: 0007h
+    name: SBFM
+  - type: interrupt
+    params:
+      BX: 000Ah
+    name: SBFM
+  - type: interrupt
+    interrupt: 1A
+    params:
+      AX: FF01h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: s-80BX000A
+  category: s
+  title: SoundBlaster SBFM driver - RESUME MUSIC
+  source: INTERRUP.Q:9172
+  interrupt: '80'
+  flags: []
+  function: BX000A
+  input_registers:
+  - reg: BX
+    operator: '='
+    value: 000Ah
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AX
+      operator: '='
+      description: status
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      BX: 0000h
+    name: SBFM
+  - type: interrupt
+    params:
+      BX: 0006h
+    name: SBFM
+  - type: interrupt
+    params:
+      BX: 0009h
+    name: SBFM
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: s-80BX000B
+  category: s
+  title: SoundBlaster SBFM driver - SET USER-DEF TRAP FOR SYSTEM-EXCLUSIVE CMDS
+  source: INTERRUP.Q:9179
+  interrupt: '80'
+  flags: []
+  function: BX000B
+  input_registers:
+  - reg: BX
+    operator: '='
+    value: 000Bh
+    table_refs: []
+    sub_values: []
+  - reg: DX:AX
+    operator: ->
+    description: trap routine
+    table_refs: []
+    sub_values: []
+  returns: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      BX: 0000h
+    name: SBFM
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: s-80BX0400
+  category: s
+  title: SBSIM - "GETVOLUME" - GET SOURCE'S VOLUME
+  source: INTERRUP.Q:9184
+  interrupt: '80'
+  flags: []
+  function: BX0400
+  input_registers:
+  - reg: BX
+    operator: '='
+    value: 0400h
+    table_refs: []
+    sub_values: []
+  - reg: AX
+    operator: '='
+    description: 'sound source (see #03974)'
+    table_refs:
+    - 03974
+    sub_values: []
+  returns:
+  - condition: CF clear
+    condition_description: if successful
+    registers:
+    - reg: AX
+      operator: '='
+      description: volume
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  - condition: CF set
+    condition_description: on error
+    registers:
+    - reg: AX
+      operator: '='
+      description: 'error code (see #03972 at INT 80/BL=00h)'
+      table_refs:
+      - 03972
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      BX: 0401h
+    name: SBSIM
+  index: []
+  tables:
+  - 03974
+  table_refs: []
+- entry_type: INT
+  id: s-80BX0401
+  category: s
+  title: SBSIM - "SETVOLUME" - SET SOURCE'S VOLUME
+  source: INTERRUP.Q:9202
+  interrupt: '80'
+  flags: []
+  function: BX0401
+  input_registers:
+  - reg: BX
+    operator: '='
+    value: 0401h
+    table_refs: []
+    sub_values: []
+  - reg: AX
+    operator: '='
+    description: 'sound source (see #03974)'
+    table_refs:
+    - 03974
+    sub_values: []
+  - reg: DX
+    operator: '='
+    description: new volume
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AX
+      operator: '='
+      description: result (0000h = success) (see also INT 80/BL=00h)
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      BX: 0400h
+    name: SBSIM
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: N-8001
+  category: N
+  title: QPC Software PKTINT.COM - INITIALIZE
+  source: INTERRUP.Q:9209
+  interrupt: '80'
+  flags: []
+  function: '01'
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 01h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AX
+      operator: '='
+      value: 0000h
+      table_refs: []
+      sub_values: []
+    - reg: CX
+      operator: '='
+      value: FFFFh
+      table_refs: []
+      sub_values: []
+    - reg: DX
+      operator: '='
+      value: FFFFh
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes:
+  - 'this interrupt is the WinQVTNet protected mode interface to Windows 3.0
+
+    all buffer pointers are reset back to 0'
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: N-8002
+  category: N
+  title: QPC Software PKTINT.COM - GET BUFFER ADDRESSES
+  source: INTERRUP.Q:9217
+  interrupt: '80'
+  flags: []
+  function: '02'
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 02h
+    table_refs: []
+    sub_values: []
+  - reg: BX
+    operator: '='
+    description: extra bytes to allocate per packet
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AX
+      operator: '='
+      description: segment address of 10K buffer (for receives???)
+      table_refs: []
+      sub_values: []
+    - reg: BX
+      operator: '='
+      description: segment address of 2K buffer (for sends???)
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 05h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: N-8003
+  category: N
+  title: QPC Software PKTINT.COM - GET ENTRY POINT
+  source: INTERRUP.Q:9224
+  interrupt: '80'
+  flags: []
+  function: '03'
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 03h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: CX:DX
+      operator: ->
+      description: receive call address
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes:
+  - 'the returned address can be used in the packet driver calls since it
+
+    will be a valid address in all DOS boxes'
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 06h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: N-8004
+  category: N
+  title: QPC Software PKTINT.COM - ENABLE???
+  source: INTERRUP.Q:9231
+  interrupt: '80'
+  flags: []
+  function: '04'
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 04h
+    table_refs: []
+    sub_values: []
+  - reg: BX
+    operator: '='
+    description: ???
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 01h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: N-8005
+  category: N
+  title: QPC Software PKTINT.COM - GET RECEIVE STATISTICS
+  source: INTERRUP.Q:9237
+  interrupt: '80'
+  flags: []
+  function: '05'
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 05h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AX
+      operator: '='
+      description: amount of buffer currently in use
+      table_refs: []
+      sub_values: []
+    - reg: BX
+      operator: '='
+      description: current offset in buffer
+      table_refs: []
+      sub_values: []
+    - reg: CX
+      operator: '='
+      description: number of times receive has been called
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 02h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: N-8006
+  category: N
+  title: QPC Software PKTINT.COM - REMOVE RECEIVED PACKET
+  source: INTERRUP.Q:9244
+  interrupt: '80'
+  flags: []
+  function: '06'
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 06h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: BX
+      operator: '='
+      description: next packet offset
+      table_refs: []
+      sub_values: []
+    - reg: CX
+      operator: '='
+      description: number of bytes still buffered
+      table_refs: []
+      sub_values: []
+    - reg: DX
+      operator: '='
+      description: size of packet released back into buffer pool
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 03h
+  index: []
+  tables: []
+  table_refs: []

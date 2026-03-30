@@ -1,0 +1,1747 @@
+file_type: interrupt
+key: D4
+entries:
+- entry_type: INT
+  id: r-D4
+  category: r
+  title: IBM ROM BASIC - used while in interpreter
+  source: INTERRUP.R:1267
+  interrupt: D4
+  flags: []
+  input_registers: []
+  returns: []
+  notes:
+  - 'called by ROM BASIC
+
+    BASIC.COM/BASICA.COM do not restore vector on termination'
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: '80'
+    params: {}
+    name: BASIC
+  - type: interrupt
+    interrupt: D3
+    params: {}
+    name: BASIC
+  - type: interrupt
+    interrupt: D5
+    params: {}
+    name: BASIC
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: r-D4
+  category: r
+  title: STSC APL*PLUS/PC - MAY BE USED IN FUTURE RELEASES
+  source: INTERRUP.R:1272
+  interrupt: D4
+  flags: []
+  input_registers: []
+  returns: []
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: O-D400
+  category: O
+  title: PC-MOS/386 v5.01 - OBSOLETE FUNCTIONS
+  source: INTERRUP.R:1274
+  interrupt: D4
+  flags:
+  - O
+  function: '00'
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 00h
+    description: and 01h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - nothing
+  description: 'PC-MOS/386 v5.01 reports that these functions are no longer supported
+
+    and enters an endless loop'
+  program: 'PC-MOS/386 is a multitasking/multiuser MS-DOS-compatible operating
+
+    system by The Software Link, Inc.'
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: O-D402
+  category: O
+  title: PC-MOS/386 v3.0+ - GET SYSTEM CONTROL BLOCK POINTER
+  source: INTERRUP.R:1282
+  interrupt: D4
+  flags: []
+  function: '02'
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 02h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AX
+      operator: '='
+      value: 0000h
+      table_refs: []
+      sub_values: []
+    - reg: ES:BX
+      operator: ->
+      description: 'System Control Block in V86 mode (see #04004)'
+      table_refs:
+      - '04004'
+      sub_values: []
+    - reg: ES:EBX
+      operator: ->
+      description: 'System Control Block in native mode (see #04004)'
+      table_refs:
+      - '04004'
+      sub_values: []
+    raw_lines: []
+  notes:
+  - superseded by AH=26h
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 04h
+  - type: interrupt
+    params:
+      AH: 10h
+  - type: interrupt
+    params:
+      AH: 26h
+  - type: interrupt
+    params:
+      AH: 28h
+  - type: interrupt
+    params:
+      AH: 29h
+  - type: interrupt
+    params:
+      AH: 2Ah
+  - type: interrupt
+    interrupt: '21'
+    params:
+      AX: 3000h
+  - type: interrupt
+    interrupt: '38'
+    params: {}
+  index: []
+  tables:
+  - '04004'
+  table_refs: []
+- entry_type: INT
+  id: O-D403
+  category: O
+  title: PC-MOS/386 v5.01 - GET/SET EXTENDED DIRECTORY INFORMATION
+  source: INTERRUP.R:1297
+  interrupt: D4
+  flags: []
+  function: '03'
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 03h
+    table_refs: []
+    sub_values: []
+  - reg: AL
+    operator: '='
+    description: subfunction (00h get, 01h set)
+    table_refs: []
+    sub_values: []
+  returns:
+  - condition: CF clear
+    condition_description: if successful
+    registers:
+    - reg: AL
+      operator: '='
+      description: permitted access level for file (00h-03h)
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  - condition: CF set
+    condition_description: on error
+    registers:
+    - reg: AX
+      operator: '='
+      description: 'error code (see #01680 at INT 21/AH=59h/BX=0000h)'
+      table_refs:
+      - 01680
+      sub_values: []
+    raw_lines: []
+  notes:
+  - 'BX/DX are used in V86 mode, EBX/EDX in native mode
+
+    the file class cannot be changed for files because it affects the
+
+    encryption method, but directories can have their classes changed'
+  bugs: []
+  see_also: []
+  index: []
+  tables:
+  - '04005'
+  table_refs: []
+- entry_type: INT
+  id: O-D404
+  category: O
+  title: PC-MOS/386 v3.0+ - GET TASK CONTROL BLOCK
+  source: INTERRUP.R:1319
+  interrupt: D4
+  flags: []
+  function: '04'
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 04h
+    table_refs: []
+    sub_values: []
+  - reg: BX
+    operator: '='
+    description: task ID or FFFFh for calling task
+    table_refs: []
+    sub_values: []
+  returns:
+  - condition: CF clear
+    condition_description: if successful
+    registers:
+    - reg: ES
+      operator: '='
+      description: 'segment of Task Control Block (TCB) (see #04006)'
+      table_refs:
+      - '04006'
+      sub_values: []
+    raw_lines: []
+  - condition: CF set
+    condition_description: on error
+    registers:
+    - reg: AX
+      operator: '='
+      description: 'error code (see #01680 at INT 21/AH=59h/BX=0000h)'
+      table_refs:
+      - 01680
+      sub_values: []
+    raw_lines: []
+  notes:
+  - superseded by AH=27h
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 02h
+  - type: interrupt
+    params:
+      AH: 27h
+  - type: interrupt
+    params:
+      AH: 28h
+  - type: interrupt
+    params:
+      AH: 29h
+  - type: interrupt
+    params:
+      AH: 2Ah
+  - type: interrupt
+    interrupt: '38'
+    params: {}
+  index: []
+  tables:
+  - '04006'
+  - '04007'
+  - 04008
+  - 04009
+  - '04010'
+  - '04011'
+  - '04012'
+  - '04013'
+  - '04014'
+  table_refs: []
+- entry_type: INT
+  id: O-D407
+  category: O
+  title: PC-MOS/386 v3.0+ - WAIT FOR EVENT
+  source: INTERRUP.R:1566
+  interrupt: D4
+  flags: []
+  function: '07'
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 07h
+    table_refs: []
+    sub_values: []
+  - reg: AL
+    operator: '='
+    description: 'events to monitor (see #04015)'
+    table_refs:
+    - '04015'
+    sub_values: []
+  - reg: BX
+    operator: '='
+    description: number of timer ticks until timeout if AL bit 1 set
+    table_refs: []
+    sub_values: []
+  - reg: CX
+    operator: '='
+    description: bitmap of IRQs to monitor if AL bit 2 set
+    table_refs: []
+    sub_values: []
+  - reg: DX
+    operator: '='
+    description: port to monitor if AL bit 3 set
+    table_refs: []
+    sub_values: []
+  returns:
+  - condition: CF clear
+    condition_description: if successful
+    registers:
+    - reg: AL
+      operator: '='
+      description: 'type of event which woke up task (see #04015)'
+      table_refs:
+      - '04015'
+      sub_values: []
+    - reg: CX
+      operator: '='
+      description: IRQ (if any) which awakened task
+      table_refs: []
+      sub_values: []
+    - reg: DX
+      operator: '='
+      description: port (if any) which awakened task
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  - condition: CF set
+    condition_description: on error
+    registers:
+    - reg: AX
+      operator: '='
+      description: 'error code (see #01680 at INT 21/AH=59h/BX=0000h)'
+      table_refs:
+      - 01680
+      sub_values: []
+    raw_lines: []
+  notes:
+  - 'a device driver may make this call with AL=00h, which indicates that
+
+    the driver is responsible for setting and clearing the TCBWAIT field
+
+    in the TCB.  To put task to sleep, set TCBWAIT bits 2-0 to 001; to
+
+    reawaken it, set bit 1 (leaving other bits unchanged)'
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 04h
+  - type: interrupt
+    interrupt: '16'
+    params:
+      AH: 00h
+  - type: interrupt
+    interrupt: '38'
+    params: {}
+  index: []
+  tables:
+  - '04015'
+  table_refs: []
+- entry_type: INT
+  id: O-D410
+  category: O
+  title: PC-MOS/386 v3.0+ - ENTER/LEAVE NATIVE 386 EXECUTION MODE
+  source: INTERRUP.R:1593
+  interrupt: D4
+  flags: []
+  function: '10'
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 10h
+    table_refs: []
+    sub_values: []
+  - reg: AL
+    operator: '='
+    description: direction (00h return to V86 mode, 01h enter native mode)
+    table_refs: []
+    sub_values: []
+  - reg: CX
+    operator: '='
+    description: length in bytes of Native Context Area ( >=1024 )
+    table_refs: []
+    sub_values: []
+  - reg: DX
+    operator: '='
+    description: segment of Native Context Area
+    table_refs: []
+    sub_values: []
+  returns:
+  - condition: CF clear
+    condition_description: if successful
+    registers: []
+    raw_lines:
+    - running in desired mode at instruction following INT D4 call
+    - all segment registers converted to appropriate selectors/segments
+  - condition: CF set
+    condition_description: on error
+    registers:
+    - reg: AX
+      operator: '='
+      description: 'error code (see #01680 at INT 21/AH=59h/BX=0000h)'
+      table_refs:
+      - 01680
+      sub_values: []
+    raw_lines: []
+  notes:
+  - MS-DOS calls are available in protected mode
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 11h
+  - type: interrupt
+    params:
+      AH: 12h
+  - type: interrupt
+    params:
+      AH: 13h
+  - type: interrupt
+    interrupt: 2F
+    params:
+      AX: 1687h
+  - type: interrupt
+    interrupt: '67'
+    params:
+      AX: DE0Ch
+  - type: interrupt
+    interrupt: '38'
+    params: {}
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: O-D411
+  category: O
+  title: PC-MOS/386 v3.0+ - ALLOCATE NATIVE MODE MEMORY BLOCK
+  source: INTERRUP.R:1606
+  interrupt: D4
+  flags: []
+  function: '11'
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 11h
+    table_refs: []
+    sub_values: []
+  - reg: EBX
+    operator: '='
+    description: block length in bytes
+    table_refs: []
+    sub_values: []
+  returns:
+  - condition: CF clear
+    condition_description: if successful
+    registers:
+    - reg: EBX
+      operator: '='
+      description: number of bytes actually allocated
+      table_refs: []
+      sub_values: []
+    - reg: ES
+      operator: '='
+      description: selector for allocated block
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  - condition: CF set
+    condition_description: on error
+    registers:
+    - reg: AX
+      operator: '='
+      description: 'error code (see #01680 at INT 21/AH=59h/BX=0000h)'
+      table_refs:
+      - 01680
+      sub_values: []
+    raw_lines: []
+  program: 'PC-MOS/386 is a multitasking/multiuser MS-DOS-compatible operating
+
+    system by The Software Link, Inc.'
+  notes:
+  - the memory must be released before the program terminates
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 10h
+  - type: interrupt
+    params:
+      AH: 12h
+  - type: interrupt
+    interrupt: '38'
+    params: {}
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: O-D412
+  category: O
+  title: PC-MOS/386 v3.0+ - FREE NATIVE MODE MEMORY BLOCK
+  source: INTERRUP.R:1619
+  interrupt: D4
+  flags: []
+  function: '12'
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 12h
+    table_refs: []
+    sub_values: []
+  - reg: ES
+    operator: '='
+    description: selector for block to free
+    table_refs: []
+    sub_values: []
+  returns:
+  - condition: CF clear
+    condition_description: if successful
+    registers: []
+    raw_lines: []
+  - condition: CF set
+    condition_description: on error
+    registers:
+    - reg: AX
+      operator: '='
+      description: 'error code (see #01680 at INT 21/AH=59h/BX=0000h)'
+      table_refs:
+      - 01680
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 10h
+  - type: interrupt
+    params:
+      AH: 11h
+  - type: interrupt
+    params:
+      AH: 13h
+  - type: interrupt
+    interrupt: '38'
+    params: {}
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: O-D413
+  category: O
+  title: PC-MOS/386 v5.01 - GET ALIAS FOR SELECTOR (NATIVE MODE ONLY)
+  source: INTERRUP.R:1627
+  interrupt: D4
+  flags: []
+  function: '13'
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 13h
+    table_refs: []
+    sub_values: []
+  - reg: AL
+    operator: '='
+    description: type of alias selector (00h data, 01h stack, 02h code)
+    table_refs: []
+    sub_values: []
+  - reg: BX
+    operator: '='
+    description: selector
+    table_refs: []
+    sub_values: []
+  returns:
+  - condition: CF clear
+    condition_description: if successful
+    registers:
+    - reg: AX
+      operator: '='
+      description: new selector or 0000h if BX selector not found
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  - condition: CF set
+    condition_description: on error
+    registers:
+    - reg: AX
+      operator: '='
+      description: 'error code (see #01680 at INT 21/AH=59h/BX=0000h)'
+      table_refs:
+      - 01680
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 11h
+  - type: interrupt
+    params:
+      AH: 12h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: O-D416
+  category: O
+  title: PC-MOS/386 v5.01 - SET/CLEAR IRQ RESERVATION
+  source: INTERRUP.R:1637
+  interrupt: D4
+  flags: []
+  function: '16'
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 16h
+    table_refs: []
+    sub_values: []
+  - reg: AL
+    operator: '='
+    description: function (00h clear, 01h set reservation)
+    table_refs: []
+    sub_values: []
+  - reg: CX
+    operator: '='
+    description: IRQ number
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AX
+      operator: '='
+      description: status
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 07h
+  - type: interrupt
+    interrupt: '14'
+    params:
+      AH: 11h
+    name: PC-MOS
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: O-D419
+  category: O
+  title: PC-MOS/386 v5.01 - GET TASK ID
+  source: INTERRUP.R:1645
+  interrupt: D4
+  flags: []
+  function: '19'
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 19h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: BX
+      operator: '='
+      description: caller's task ID
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  program: 'PC-MOS/386 is a multitasking/multiuser MS-DOS-compatible operating
+
+    system by The Software Link, Inc.'
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 1Dh
+  - type: interrupt
+    params:
+      AH: 1Eh
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: O-D41A
+  category: O
+  title: PC-MOS/386 v5.01 - GET/SET TASK PRIORITY
+  source: INTERRUP.R:1652
+  interrupt: D4
+  flags: []
+  function: 1A
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 1Ah
+    table_refs: []
+    sub_values: []
+  - reg: AL
+    operator: '='
+    description: subfunction (00h read, 01h set, 02h get and set)
+    table_refs: []
+    sub_values: []
+  - reg: BX
+    operator: '='
+    description: task ID (FFFFh for current task)
+    table_refs: []
+    sub_values: []
+  - reg: CL
+    operator: '='
+    description: new priority value
+    table_refs: []
+    sub_values: []
+  returns:
+  - condition: CF clear
+    condition_description: if successful
+    registers:
+    - reg: CL
+      operator: '='
+      description: current priority value
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  - condition: CF set
+    condition_description: on error
+    registers:
+    - reg: AX
+      operator: '='
+      description: 'error code (see #01680 at INT 21/AH=59h/BX=0000h)'
+      table_refs:
+      - 01680
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 1Bh
+  - type: interrupt
+    params:
+      AH: 1Ch
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: O-D41B
+  category: O
+  title: PC-MOS/386 v5.01 - GET/SET TIME SLICE
+  source: INTERRUP.R:1663
+  interrupt: D4
+  flags: []
+  function: 1B
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 1Bh
+    table_refs: []
+    sub_values: []
+  - reg: AL
+    operator: '='
+    description: subfunction (00h read, 01h set, 02h get and set)
+    table_refs: []
+    sub_values: []
+  - reg: BX
+    operator: '='
+    description: task ID (FFFFh for current task) (see AH=19h)
+    table_refs: []
+    sub_values: []
+  - reg: CL
+    operator: '='
+    description: new time slice value
+    table_refs: []
+    sub_values: []
+  returns:
+  - condition: CF clear
+    condition_description: if successful
+    registers:
+    - reg: CL
+      operator: '='
+      description: current time slice value
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  - condition: CF set
+    condition_description: on error
+    registers:
+    - reg: AX
+      operator: '='
+      description: 'error code (see #01680 at INT 21/AH=59h/BX=0000h)'
+      table_refs:
+      - 01680
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 1Ah
+  - type: interrupt
+    params:
+      AH: 1Ch
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: O-D41C
+  category: O
+  title: PC-MOS/386 v5.01 - GET/SET KEYBOARD MODE
+  source: INTERRUP.R:1674
+  interrupt: D4
+  flags: []
+  function: 1C
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 1Ch
+    table_refs: []
+    sub_values: []
+  - reg: AL
+    operator: '='
+    description: subfunction (00h enable, 01h disable, 02h get mode)
+    table_refs: []
+    sub_values: []
+  - reg: BX
+    operator: '='
+    description: task ID (FFFFh for current task)
+    table_refs: []
+    sub_values: []
+  returns:
+  - condition: CF clear
+    condition_description: if successful
+    registers:
+    - reg: CL
+      operator: '='
+      description: current keyboard state
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  - condition: CF set
+    condition_description: on error
+    registers:
+    - reg: AX
+      operator: '='
+      description: 'error code (see #01680 at INT 21/AH=59h/BX=0000h)'
+      table_refs:
+      - 01680
+      sub_values: []
+    raw_lines: []
+  program: 'PC-MOS/386 is a multitasking/multiuser MS-DOS-compatible operating
+
+    system by The Software Link, Inc.'
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 1Ah
+  - type: interrupt
+    params:
+      AH: 1Bh
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: O-D41D
+  category: O
+  title: PC-MOS/386 v5.01 - GET CURRENT PROGRAM NAME
+  source: INTERRUP.R:1686
+  interrupt: D4
+  flags: []
+  function: 1D
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 1Dh
+    table_refs: []
+    sub_values: []
+  - reg: BX
+    operator: '='
+    description: task ID (FFFFh for current task) (see AH=19h)
+    table_refs: []
+    sub_values: []
+  - reg: ES:DI
+    operator: ->
+    description: 'buffer for program name (see #04016)'
+    table_refs:
+    - '04016'
+    sub_values: []
+  returns:
+  - condition: CF clear
+    condition_description: if successful
+    registers: []
+    raw_lines:
+    - ES:DI buffer filled
+  - condition: CF set
+    condition_description: on error
+    registers:
+    - reg: AX
+      operator: '='
+      description: 'error code (see #01680 at INT 21/AH=59h/BX=0000h)'
+      table_refs:
+      - 01680
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 19h
+  - type: interrupt
+    params:
+      AH: 1Eh
+  index: []
+  tables:
+  - '04016'
+  table_refs: []
+- entry_type: INT
+  id: O-D41E
+  category: O
+  title: PC-MOS/386 v5.01 - GET CURRENT USERNAME AND SECURITY CLASS
+  source: INTERRUP.R:1701
+  interrupt: D4
+  flags: []
+  function: 1E
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 1Eh
+    table_refs: []
+    sub_values: []
+  - reg: BX
+    operator: '='
+    description: task ID (FFFFh for current task)
+    table_refs: []
+    sub_values: []
+  - reg: ES:DI
+    operator: ->
+    description: 4-byte buffer for username
+    table_refs: []
+    sub_values: []
+  returns:
+  - condition: CF clear
+    condition_description: if successful
+    registers:
+    - reg: CL
+      operator: '='
+      description: security class
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  - condition: CF set
+    condition_description: on error
+    registers:
+    - reg: AX
+      operator: '='
+      description: 'error code (see #01680 at INT 21/AH=59h/BX=0000h)'
+      table_refs:
+      - 01680
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 19h
+  - type: interrupt
+    params:
+      AH: 1Dh
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: O-D41F
+  category: O
+  title: PC-MOS/386 v5.01 - GET TASK PARTITION INFORMATION
+  source: INTERRUP.R:1714
+  interrupt: D4
+  flags: []
+  function: 1F
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 1Fh
+    table_refs: []
+    sub_values: []
+  - reg: BX
+    operator: '='
+    description: task ID (FFFFh for current task) (see AH=19h)
+    table_refs: []
+    sub_values: []
+  returns:
+  - condition: CF clear
+    condition_description: if successful
+    registers:
+    - reg: CX
+      operator: '='
+      description: start segment of task
+      table_refs: []
+      sub_values: []
+    - reg: DX
+      operator: '='
+      description: ending segment of task
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  - condition: CF set
+    condition_description: on error
+    registers:
+    - reg: AX
+      operator: '='
+      description: 'error code (see #01680 at INT 21/AH=59h/BX=0000h)'
+      table_refs:
+      - 01680
+      sub_values: []
+    raw_lines: []
+  program: 'PC-MOS/386 is a multitasking/multiuser MS-DOS-compatible operating
+
+    system by The Software Link, Inc.'
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 2Dh
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: O-D420
+  category: O
+  title: PC-MOS/386 v5.01 - GET PORT AND BAUDRATE INFORMATION
+  source: INTERRUP.R:1726
+  interrupt: D4
+  flags: []
+  function: '20'
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 20h
+    table_refs: []
+    sub_values: []
+  - reg: BX
+    operator: '='
+    description: task ID (FFFFh for current task) (see AH=19h)
+    table_refs: []
+    sub_values: []
+  returns:
+  - condition: CF clear
+    condition_description: if successful
+    registers:
+    - reg: CX
+      operator: '='
+      description: port number (0000h if none)
+      table_refs: []
+      sub_values: []
+    - reg: DI:SI
+      operator: '='
+      description: baudrate (if CX nonzero)
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  - condition: CF set
+    condition_description: on error
+    registers:
+    - reg: AX
+      operator: '='
+      description: 'error code (see #01680 at INT 21/AH=59h/BX=0000h)'
+      table_refs:
+      - 01680
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: '14'
+    params:
+      AH: 0Ch
+    name: FOSSIL
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: O-D421
+  category: O
+  title: PC-MOS/386 v5.01 - REMOVE A TASK
+  source: INTERRUP.R:1736
+  interrupt: D4
+  flags: []
+  function: '21'
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 21h
+    table_refs: []
+    sub_values: []
+  - reg: BX
+    operator: '='
+    description: task ID (FFFFh for current task) (see AH=19h)
+    table_refs: []
+    sub_values: []
+  returns:
+  - condition: CF clear
+    condition_description: if successful
+    registers:
+    - reg: AX
+      operator: '='
+      description: ASCII percentage of System Memory Pool used
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  - condition: CF set
+    condition_description: on error
+    registers:
+    - reg: AX
+      operator: '='
+      description: 'error code (see #01680 at INT 21/AH=59h/BX=0000h)'
+      table_refs:
+      - 01680
+      sub_values: []
+    raw_lines: []
+  program: 'PC-MOS/386 is a multitasking/multiuser MS-DOS-compatible operating
+
+    system by The Software Link, Inc.'
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 22h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: O-D422
+  category: O
+  title: PC-MOS/386 v5.01 - ADD A TASK TO THE SYSTEM
+  source: INTERRUP.R:1749
+  interrupt: D4
+  flags: []
+  function: '22'
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 22h
+    table_refs: []
+    sub_values: []
+  - reg: DS:SI
+    operator: ->
+    description: 'addtask data structure (see #04018)'
+    table_refs:
+    - 04018
+    sub_values: []
+  returns:
+  - condition: CF clear
+    condition_description: if successful
+    registers:
+    - reg: ES
+      operator: '='
+      description: segment address of the new task's TCB data structure
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  - condition: CF set
+    condition_description: on error
+    registers:
+    - reg: AX
+      operator: '='
+      description: 'error code (see #04017)'
+      table_refs:
+      - '04017'
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 21h
+  index: []
+  tables:
+  - '04017'
+  - 04018
+  table_refs: []
+- entry_type: INT
+  id: O-D423
+  category: O
+  title: PC-MOS/386 v5.01 - CHANGE TERMINAL DRIVER
+  source: INTERRUP.R:1783
+  interrupt: D4
+  flags: []
+  function: '23'
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 23h
+    table_refs: []
+    sub_values: []
+  - reg: BX
+    operator: '='
+    description: task ID (FFFFh for current task)
+    table_refs: []
+    sub_values: []
+  - reg: DS:SI
+    operator: ->
+    description: entry point of the new Device Driver Terminal
+    table_refs: []
+    sub_values: []
+  returns:
+  - condition: CF clear
+    condition_description: if successful
+    registers: []
+    raw_lines: []
+  - condition: CF set
+    condition_description: on error
+    registers:
+    - reg: AX
+      operator: '='
+      description: 'error code (see #01680 at INT 21/AH=59h/BX=0000h)'
+      table_refs:
+      - 01680
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: O-D424
+  category: O
+  title: PC-MOS/386 v5.01 - GET OPERATING SYSTEM SERIAL NUMBER
+  source: INTERRUP.R:1791
+  interrupt: D4
+  flags:
+  - U
+  function: '24'
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 24h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: DS:DX
+      operator: ->
+      description: '''$''-terminated string containing the serial number'
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: O-D425
+  category: O
+  title: PC-MOS/386 v5.01 - IDENTIFY LOAD ADDRESS OF DEVICE DRIVER LOCATION
+  source: INTERRUP.R:1795
+  interrupt: D4
+  flags: []
+  function: '25'
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 25h
+    table_refs: []
+    sub_values: []
+  - reg: DX
+    operator: '='
+    description: driver's CS value
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AX
+      operator: '='
+      description: segment address of driver in system memory pool
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  program: 'PC-MOS/386 is a multitasking/multiuser MS-DOS-compatible operating
+
+    system by The Software Link, Inc.'
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: O-D426
+  category: O
+  title: PC-MOS/386 v5.01 - GET SYSTEM CONTROL BLOCK SEGMENT/SELECTOR
+  source: INTERRUP.R:1803
+  interrupt: D4
+  flags: []
+  function: '26'
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 26h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: DX
+      operator: '='
+      description: 'segment/selector of the System Control Block (see #04004)'
+      table_refs:
+      - '04004'
+      sub_values: []
+    raw_lines: []
+  notes:
+  - this function supersedes AH=02h
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 02h
+  - type: interrupt
+    params:
+      AH: 27h
+  - type: interrupt
+    params:
+      AH: 28h
+  - type: interrupt
+    params:
+      AH: 29h
+  - type: interrupt
+    params:
+      AH: 2Ah
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: O-D427
+  category: O
+  title: PC-MOS/386 v5.01 - GET TASK CONTROL BLOCK SEGMENT/SELECTOR
+  source: INTERRUP.R:1809
+  interrupt: D4
+  flags: []
+  function: '27'
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 27h
+    table_refs: []
+    sub_values: []
+  - reg: BX
+    operator: '='
+    description: task ID (FFFFh if current task) (see AH=19h)
+    table_refs: []
+    sub_values: []
+  returns:
+  - condition: CF clear
+    condition_description: if successful
+    registers:
+    - reg: DX
+      operator: '='
+      description: 'segment/selector for the Task Control Block (see #04006)'
+      table_refs:
+      - '04006'
+      sub_values: []
+    raw_lines: []
+  - condition: CF set
+    condition_description: on error
+    registers:
+    - reg: AX
+      operator: '='
+      description: 'error code (see #01680 at INT 21/AH=59h/BX=0000h)'
+      table_refs:
+      - 01680
+      sub_values: []
+    raw_lines: []
+  notes:
+  - this function supersedes AH=04h
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 26h
+  - type: interrupt
+    params:
+      AH: 28h
+  - type: interrupt
+    params:
+      AH: 29h
+  - type: interrupt
+    params:
+      AH: 2Ah
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: O-D428
+  category: O
+  title: PC-MOS/386 v5.01 - GET CONTROL BLOCK DATA FROM SCB OR TCB
+  source: INTERRUP.R:1819
+  interrupt: D4
+  flags: []
+  function: '28'
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 28h
+    table_refs: []
+    sub_values: []
+  - reg: BX
+    operator: '='
+    description: offset into control block at which to start reading
+    table_refs: []
+    sub_values: []
+  - reg: CX
+    operator: '='
+    description: number of bytes to read
+    table_refs: []
+    sub_values: []
+  - reg: DX
+    operator: '='
+    description: segment/selector of control block obtained via AH=26h or AH=27h
+    table_refs: []
+    sub_values: []
+  - reg: ES:DI
+    operator: ->
+    description: buffer for data
+    table_refs: []
+    sub_values: []
+  returns:
+  - condition: CF clear
+    condition_description: if successful
+    registers: []
+    raw_lines: []
+  - condition: CF set
+    condition_description: on error
+    registers:
+    - reg: AX
+      operator: '='
+      description: 'error code (see also #01680 at INT 21/AH=59h/BX=0000h)'
+      table_refs:
+      - 01680
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 26h
+  - type: interrupt
+    params:
+      AH: 27h
+  - type: interrupt
+    params:
+      AH: 29h
+  - type: interrupt
+    params:
+      AH: 2Ah
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: O-D429
+  category: O
+  title: PC-MOS/386 v5.01 - WRITE CONTROL BLOCK DATA INTO SCB OR TCB
+  source: INTERRUP.R:1831
+  interrupt: D4
+  flags: []
+  function: '29'
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 29h
+    table_refs: []
+    sub_values: []
+  - reg: BX
+    operator: '='
+    description: offset into control block at which to start writing
+    table_refs: []
+    sub_values: []
+  - reg: CX
+    operator: '='
+    description: number of bytes to write
+    table_refs: []
+    sub_values: []
+  - reg: DX
+    operator: '='
+    description: segment/selector of control block obtained via AH=26h or AH=27h
+    table_refs: []
+    sub_values: []
+  - reg: DS:SI
+    operator: ->
+    description: buffer containing data to be written
+    table_refs: []
+    sub_values: []
+  returns:
+  - condition: CF clear
+    condition_description: if successful
+    registers: []
+    raw_lines: []
+  - condition: CF set
+    condition_description: on errro
+    registers:
+    - reg: AX
+      operator: '='
+      description: 'error code (see also #01680 at INT 21/AH=59h/BX=0000h)'
+      table_refs:
+      - 01680
+      sub_values: []
+    raw_lines: []
+  program: 'PC-MOS/386 is a multitasking/multiuser MS-DOS-compatible operating
+
+    system by The Software Link, Inc.'
+  notes:
+  - this function performs no bounds checking
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 26h
+  - type: interrupt
+    params:
+      AH: 27h
+  - type: interrupt
+    params:
+      AH: 28h
+  - type: interrupt
+    params:
+      AH: 2Ah
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: O-D42A
+  category: O
+  title: PC-MOS/386 v5.01 - SWAP CONTROL BLOCK DATA OF SCB OR TCB
+  source: INTERRUP.R:1846
+  interrupt: D4
+  flags: []
+  function: 2A
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 2Ah
+    table_refs: []
+    sub_values: []
+  - reg: BX
+    operator: '='
+    description: offset into control block at which to start swap
+    table_refs: []
+    sub_values: []
+  - reg: CX
+    operator: '='
+    description: number of bytes to swap
+    table_refs: []
+    sub_values: []
+  - reg: DX
+    operator: '='
+    description: segment/selector of control block obtained via AH=26h or AH=27h
+    table_refs: []
+    sub_values: []
+  - reg: DS:SI
+    operator: ->
+    description: buffer containing new data and to receive current data
+    table_refs: []
+    sub_values: []
+  returns:
+  - condition: CF clear
+    condition_description: if successful
+    registers: []
+    raw_lines: []
+  - condition: CF set
+    condition_description: on error
+    registers:
+    - reg: AX
+      operator: '='
+      description: 'error code (see also #01680 at INT 21/AH=59h/BX=0000h)'
+      table_refs:
+      - 01680
+      sub_values: []
+    raw_lines: []
+  notes:
+  - the interrupts are disabled during the swap to prevent corruption
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 26h
+  - type: interrupt
+    params:
+      AH: 27h
+  - type: interrupt
+    params:
+      AH: 28h
+  - type: interrupt
+    params:
+      AH: 29h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: O-D42C
+  category: O
+  title: PC-MOS/386 v5.01 - GET/SET SPOOLER PARAMETERS
+  source: INTERRUP.R:1859
+  interrupt: D4
+  flags: []
+  function: 2C
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 2Ch
+    table_refs: []
+    sub_values: []
+  - reg: AL
+    operator: '='
+    description: function
+    table_refs: []
+    sub_values:
+    - value: 00h
+      description: set spooler timeout
+      sub_values: []
+  - reg: CX
+    operator: '='
+    description: timout value in seconds
+    table_refs: []
+    sub_values: []
+  - reg: CL
+    operator: '='
+    description: disposition (d, h, i, n, s)
+    table_refs: []
+    sub_values: []
+  - reg: SI
+    operator: '='
+    description: class (a - z)
+    table_refs: []
+    sub_values: []
+  - reg: CH
+    operator: '='
+    description: priority (00h-09h)
+    table_refs: []
+    sub_values: []
+  - reg: CL
+    operator: '='
+    description: disposition (d, h, i, n, s)
+    table_refs: []
+    sub_values: []
+  - reg: SI
+    operator: '='
+    description: class (a - z)
+    table_refs: []
+    sub_values: []
+  - reg: BX
+    operator: '='
+    description: task ID (FFFFh for current task)
+    table_refs: []
+    sub_values: []
+  - reg: DX
+    operator: '='
+    description: LPT number
+    table_refs: []
+    sub_values: []
+  returns:
+  - condition: CF clear
+    condition_description: if successful
+    registers: []
+    raw_lines: []
+  - condition: CF set
+    condition_description: on error
+    registers:
+    - reg: AX
+      operator: '='
+      description: 'error code (see #01680 at INT 21/AH=59h/BX=0000h)'
+      table_refs:
+      - 01680
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 00h
+  - type: interrupt
+    params:
+      AH: 02h
+  - type: interrupt
+    params:
+      AH: 03h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: O-D42D
+  category: O
+  title: PC-MOS/386 v5.01 - GET MAXIMUM TASK SIZE
+  source: INTERRUP.R:1881
+  interrupt: D4
+  flags: []
+  function: 2D
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 2Dh
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: DX
+      operator: '='
+      description: maximum task size in paragraphs
+      table_refs: []
+      sub_values: []
+    - reg: BX
+      operator: '='
+      description: start address of task space
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  program: 'PC-MOS/386 is a multitasking/multiuser MS-DOS-compatible operating
+
+    system by The Software Link, Inc.'
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 1Fh
+  - type: interrupt
+    params:
+      AH: 22h
+  index: []
+  tables: []
+  table_refs: []

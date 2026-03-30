@@ -1,0 +1,5369 @@
+file_type: interrupt
+key: E0
+entries:
+- entry_type: INT
+  id: r-E0
+  category: r
+  title: IBM ROM BASIC - used while in interpreter
+  source: INTERRUP.R:2027
+  interrupt: E0
+  flags: []
+  input_registers: []
+  returns: []
+  notes:
+  - 'called by ROM BASIC
+
+    BASIC.COM/BASICA.COM do not restore vector on termination'
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: '80'
+    params: {}
+    name: BASIC
+  - type: interrupt
+    interrupt: DF
+    params: {}
+    name: BASIC
+  - type: interrupt
+    interrupt: E1
+    params: {}
+    name: BASIC
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: r-E0
+  category: r
+  title: APL*PLUS/PC - RESTIME HIGH-RESOLUTION TIMER FOR QUAD MF FUNCTION
+  source: INTERRUP.R:2032
+  interrupt: E0
+  flags: []
+  input_registers: []
+  returns: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: CF
+    params: {}
+    name: APL
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: v-E0
+  category: v
+  title: VIRUS - "Micro-128" - ???
+  source: INTERRUP.R:2035
+  interrupt: E0
+  flags: []
+  input_registers: []
+  returns: []
+  notes:
+  - Micro-128 also overwrites the upper half of the interrupt table
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: 9E
+    params: {}
+    name: VIRUS
+  - type: interrupt
+    interrupt: F1
+    params: {}
+    name: VIRUS
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: --E0
+  title: DeskMate (Tandy) - DESK EXECUTIVE API
+  source: INTERRUP.R:2039
+  interrupt: E0
+  flags: []
+  input_registers:
+  - reg: AX
+    operator: '='
+    description: function code (numerous)
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AX
+      operator: '='
+      description: return from function
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  program: 'DeskMate is a proprietary GUI from Tandy distributed with several
+
+    models of the Tandy 1000''s, 2500''s, 3000''s, and laptops.  Retail
+
+    and runtime versions also exist.  Some Tandy''s are designed to
+
+    boot directly into DeskMate.'
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: '15'
+    params:
+      AX: 7002h
+  - type: interrupt
+    interrupt: E1
+    params: {}
+    name: DeskMate
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: O-E0
+  category: O
+  title: CP/M-86, Concurrent CP/M, DR Multiuser DOS - FUNCTION CALLS
+  source: INTERRUP.R:2049
+  interrupt: E0
+  flags: []
+  input_registers:
+  - reg: CL
+    operator: '='
+    description: 'function number (see #04019,#04020)'
+    table_refs:
+    - 04019
+    - '04020'
+    sub_values: []
+  - reg: DL
+    operator: '='
+    description: byte parameter
+    table_refs: []
+    sub_values: []
+  - reg: DX
+    operator: '='
+    description: word parameter
+    table_refs: []
+    sub_values: []
+  - reg: DS:DX
+    operator: ->
+    description: structure
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AL
+      operator: '='
+      description: byte result
+      table_refs: []
+      sub_values: []
+    - reg: AX
+      operator: '='
+      description: word
+      table_refs: []
+      sub_values: []
+    - reg: ES:AX
+      operator: ->
+      description: structure (and BX=ES)
+      table_refs: []
+      sub_values: []
+    raw_lines:
+    - 'as appropriate for function:'
+  notes:
+  - 'several functions are covered in more detail in following entries
+
+    most of these calls are also supported by Digital Research''s DOS Plus
+
+    v2.1; the unsupported functions are 26h,29h-2Bh,3Ah,3Dh-62h,71h-8Ch,
+
+    90h-92h,94h-97h,9Bh-ABh, and AEh-FFh'
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: '21'
+    params:
+      AX: 4459h
+  - type: interrupt
+    interrupt: '21'
+    params:
+      AH: E0h
+    name: DOS Plus
+  - type: interrupt
+    interrupt: E6
+    params: {}
+    name: CP/M-86
+  index: []
+  tables:
+  - 04019
+  - '04020'
+  - '04021'
+  table_refs: []
+- entry_type: INT
+  id: O-E0CL00
+  category: O
+  title: REAL/32 - "P_TERMCPM" - TERMINATE CALLING PROCESS
+  source: INTERRUP.R:2309
+  interrupt: E0
+  flags: []
+  function: CL00
+  input_registers:
+  - reg: CL
+    operator: '='
+    value: 00h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AX
+      operator: '='
+      description: error code
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  program: 'REAL/32 is the descendant of IMS Multiuser DOS, which in turn is
+
+    derived from DR Multiuser DOS and its predecessors (Concurrent DOS,
+
+    etc.)'
+  notes:
+  - 'sets the exit code (ERRORLEVEL) to 00h
+
+    INT E0h is officially reserved for Digital Research by Intel.
+
+    Apparently some Borland products also used this interrupt, which forced
+
+    Digital Research to indirect calls through other interrupt entry
+
+    points.
+
+    This is also supported by IMS Multiuser DOS and IMS REAL/32.'
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: '21'
+    params:
+      AH: 00h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: O-E0CL01
+  category: O
+  title: REAL/32 - "C_READ" - FETCH CHARACTER FROM THE DEFAULT CONSOLE
+  source: INTERRUP.R:2325
+  interrupt: E0
+  flags: []
+  function: CL01
+  input_registers:
+  - reg: CL
+    operator: '='
+    value: 01h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AX
+      operator: '='
+      description: character
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes:
+  - 'this function echos the character to the screen, expanding Tab
+
+    characters to the next multiple of eight columns; Ctrl-C is
+
+    ignored if the calling process can not terminate
+
+    the calling process is suspended until a character is available; if
+
+    the caller does not own the console, it is suspended until it
+
+    can attach to the console'
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: E0
+    params:
+      CL: 02h
+  - type: interrupt
+    interrupt: E0
+    params:
+      CL: 06h
+  - type: interrupt
+    interrupt: '21'
+    params:
+      AH: 01h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: O-E0CL02
+  category: O
+  title: REAL/32 - "C_WRITE" - WRITE CHARACTER TO DEFAULT CONSOLE
+  source: INTERRUP.R:2337
+  interrupt: E0
+  flags: []
+  function: CL02
+  input_registers:
+  - reg: CL
+    operator: '='
+    value: 02h
+    table_refs: []
+    sub_values: []
+  - reg: DX
+    operator: '='
+    description: character
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - nothing
+    - may destroy SI,DI???
+  notes:
+  - 'Tab characters are expanded to blanks up to the next multiple of
+
+    eight columns'
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: E0
+    params:
+      CL: 01h
+  - type: interrupt
+    interrupt: E0
+    params:
+      CL: 06h
+  - type: interrupt
+    interrupt: '21'
+    params:
+      AH: 02h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: O-E0CL03
+  category: O
+  title: DR Multiuser DOS - "A_READ" - READ CHARACTER FROM DEFAULT AUX DEVICE
+  source: INTERRUP.R:2346
+  interrupt: E0
+  flags: []
+  function: CL03
+  input_registers:
+  - reg: CL
+    operator: '='
+    value: 03h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AL
+      operator: '='
+      description: ASCII character
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes:
+  - 'A_READ reads the next 8-bit character from the logical auxilliary
+
+    input device (AUXn:); control is not returned to the calling
+
+    process until a character has been read.
+
+    if another process owns AUX, this call blocks until the device becomes
+
+    available
+
+    this function is also supported by REAL/32'
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: '21'
+    params:
+      AH: 03h
+  - type: interrupt
+    interrupt: E0
+    params:
+      CL: 04h
+  - type: interrupt
+    interrupt: E0
+    params:
+      CL: 07h
+  - type: interrupt
+    interrupt: E0
+    params:
+      CL: A5h
+  - type: interrupt
+    interrupt: E0
+    params:
+      CL: ACh
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: O-E0CL04
+  category: O
+  title: DR Multiuser DOS - "A_WRITE" - WRITE CHARACTER TO DEFAULT AUX DEVICE
+  source: INTERRUP.R:2358
+  interrupt: E0
+  flags: []
+  function: CL04
+  input_registers:
+  - reg: CL
+    operator: '='
+    value: 04h
+    table_refs: []
+    sub_values: []
+  - reg: DL
+    operator: '='
+    description: BYTE to write
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - nothing
+    - may destroy SI,DI,DH???
+  notes:
+  - 'if another process owns AUX, this call blocks until the device becomes
+
+    available'
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: '21'
+    params:
+      AH: 04h
+  - type: interrupt
+    interrupt: E0
+    params:
+      CL: 03h
+  - type: interrupt
+    interrupt: E0
+    params:
+      CL: 08h
+  - type: interrupt
+    interrupt: E0
+    params:
+      CL: A5h
+  - type: interrupt
+    interrupt: E0
+    params:
+      CL: ADh
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: O-E0CL05
+  category: O
+  title: REAL/32 - "L_WRITE" - WRITE CHARACTER TO DEFAULT LIST DEVICE
+  source: INTERRUP.R:2367
+  interrupt: E0
+  flags: []
+  function: CL05
+  input_registers:
+  - reg: CL
+    operator: '='
+    value: 05h
+    table_refs: []
+    sub_values: []
+  - reg: DL
+    operator: '='
+    description: char to write
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - nothing
+    - may destroy SI,DI???
+  notes:
+  - 'if another process owns the list device, this call blocks until the
+
+    device becomes available'
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: '21'
+    params:
+      AH: 05h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: O-E0CL06
+  category: O
+  title: REAL/32 - "C_RAWIO" - PERFORM RAW I/O WITH DEFAULT CONSOLE
+  source: INTERRUP.R:2376
+  interrupt: E0
+  flags: []
+  function: CL06
+  input_registers:
+  - reg: CL
+    operator: '='
+    value: 06h
+    table_refs: []
+    sub_values: []
+  - reg: DL
+    operator: '='
+    description: mode describing the operation to be performed
+    table_refs: []
+    sub_values:
+    - value: FFh
+      description: get console input/status
+      sub_values: []
+    - value: FEh
+      description: get console status
+      sub_values: []
+    - value: FDh
+      description: get console input (blocking) else output DL to the console as a character
+      sub_values: []
+  returns:
+  - registers:
+    - reg: AX
+      operator: '='
+      description: returned value
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes:
+  - 'during raw I/O, the special characters ^C, ^O, ^P, and ^S are not
+
+    interpreted, but are passed through
+
+    if the virtual console is in ^S mode and the owning process calls
+
+    this function, the ^S state is cleared'
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: E0
+    params:
+      CL: 01h
+  - type: interrupt
+    interrupt: E0
+    params:
+      CL: 02h
+  - type: interrupt
+    interrupt: '21'
+    params:
+      AH: 06h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: O-E0CL07
+  category: O
+  title: DR Multiuser DOS - "A_STATIN" - GET INPUT STATUS OF AUX DEVICE
+  source: INTERRUP.R:2395
+  interrupt: E0
+  flags: []
+  function: CL07
+  input_registers:
+  - reg: CL
+    operator: '='
+    value: 07h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AL
+      operator: '='
+      description: status
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  description: determine whether the current AUX device has input available
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: E0
+    params:
+      CL: 03h
+  - type: interrupt
+    interrupt: E0
+    params:
+      CL: 08h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: O-E0CL08
+  category: O
+  title: DR Multiuser DOS - "A_STATOUT" - GET OUTPUT STATUS OF AUX DEVICE
+  source: INTERRUP.R:2403
+  interrupt: E0
+  flags: []
+  function: CL08
+  input_registers:
+  - reg: CL
+    operator: '='
+    value: 08h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AL
+      operator: '='
+      description: status
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  description: determine whether the current AUX device is able to accept more output
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: E0
+    params:
+      CL: 04h
+  - type: interrupt
+    interrupt: E0
+    params:
+      CL: 07h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: O-E0CL09
+  category: O
+  title: REAL/32 - "C_WRITESTR" - WRITE STRING TO DEFAULT CONSOLE
+  source: INTERRUP.R:2411
+  interrupt: E0
+  flags: []
+  function: CL09
+  input_registers:
+  - reg: CL
+    operator: '='
+    value: 09h
+    table_refs: []
+    sub_values: []
+  - reg: DS:DX
+    operator: ->
+    description: string
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - nothing
+    - may destroy SI,DI,DS???
+  notes:
+  - 'the string terminated with a ''$'' character (24h) by default; the
+
+    terminator may be changed with C_DELIMIT
+
+    tabs are expanded to the next multiple of eight columns'
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: E0
+    params:
+      CL: 6Eh
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: O-E0CL0A
+  category: O
+  title: REAL/32 - "C_READSTR" - READ STRING FROM DEFAULT CONSOLE
+  source: INTERRUP.R:2421
+  interrupt: E0
+  flags: []
+  function: CL0A
+  input_registers:
+  - reg: CL
+    operator: '='
+    value: 0Ah
+    table_refs: []
+    sub_values: []
+  - reg: DS:DX
+    operator: ->
+    description: 'buffer for string (see #04022)'
+    table_refs:
+    - '04022'
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - nothing
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables:
+  - '04022'
+  table_refs: []
+- entry_type: INT
+  id: O-E0CL0B
+  category: O
+  title: REAL/32 - "C_STAT" - RETURN DEFAULT CONSOLE INPUT STATUS
+  source: INTERRUP.R:2432
+  interrupt: E0
+  flags: []
+  function: CL0B
+  input_registers:
+  - reg: CL
+    operator: '='
+    value: 0Bh
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AX
+      operator: '='
+      description: status
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes:
+  - 'after setting bit 0 of the console mode word with C_MODE, this function
+
+    will only return AX=0001h when the user presses Ctrl-C.'
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: O-E0CL0C
+  category: O
+  title: REAL/32 - "S_BDOSVER" - GET BDOS VERSION
+  source: INTERRUP.R:2441
+  interrupt: E0
+  flags: []
+  function: CL0C
+  input_registers:
+  - reg: CL
+    operator: '='
+    value: 0Ch
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AX
+      operator: '='
+      description: 'version (see #04023)'
+      table_refs:
+      - '04023'
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: E0
+    params:
+      CL: A3h
+  - type: interrupt
+    interrupt: '21'
+    params:
+      AX: 4451h
+  index: []
+  tables:
+  - '04023'
+  table_refs: []
+- entry_type: INT
+  id: O-E0CL2F
+  category: O
+  title: REAL/32 - "P_CHAIN" - CHAIN PROCESS
+  source: INTERRUP.R:2461
+  interrupt: E0
+  flags: []
+  function: CL2F
+  input_registers:
+  - reg: CL
+    operator: '='
+    value: 2Fh
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AX
+      operator: '='
+      description: return code
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: O-E0CL35
+  category: O
+  title: REAL/32 - "MC_MAX" - CP-M/86 ALLOCATE MAXIMUM MEMORY
+  source: INTERRUP.R:2469
+  interrupt: E0
+  flags:
+  - R
+  function: CL35
+  input_registers:
+  - reg: CL
+    operator: '='
+    value: 35h
+    table_refs: []
+    sub_values: []
+  - reg: DS:DX
+    operator: ->
+    description: 'MCB (see #04024)'
+    table_refs:
+    - '04024'
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AX
+      operator: '='
+      description: status
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: E0
+    params:
+      CL: 39h
+  index: []
+  tables:
+  - '04024'
+  table_refs: []
+- entry_type: INT
+  id: O-E0CL36
+  category: O
+  title: REAL/32 - "MC_ABSMAX" - ALLOCATE MAXIMUM MEMORY SEGMENT ABSOLUTE
+  source: INTERRUP.R:2482
+  interrupt: E0
+  flags:
+  - R
+  function: CL36
+  input_registers:
+  - reg: CL
+    operator: '='
+    value: 36h
+    table_refs: []
+    sub_values: []
+  - reg: DS:DX
+    operator: ->
+    description: 'MCB (see #04024)'
+    table_refs:
+    - '04024'
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AX
+      operator: '='
+      description: status
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: E0
+    params:
+      CL: 39h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: O-E0CL37
+  category: O
+  title: REAL/32 - "MC_ALLOC" - CP-M/86 ALLOCATE MEMORY SEGMENT
+  source: INTERRUP.R:2489
+  interrupt: E0
+  flags:
+  - R
+  function: CL37
+  input_registers:
+  - reg: CL
+    operator: '='
+    value: 37h
+    table_refs: []
+    sub_values: []
+  - reg: DS:DX
+    operator: ->
+    description: 'MCB (see #04024)'
+    table_refs:
+    - '04024'
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AX
+      operator: '='
+      description: status
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: E0
+    params:
+      CL: 39h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: O-E0CL38
+  category: O
+  title: REAL/32 - "MC_ABSALLOC" - ALLOCATE MEMORY SEGMENT ABSOLUTE
+  source: INTERRUP.R:2496
+  interrupt: E0
+  flags:
+  - R
+  function: CL38
+  input_registers:
+  - reg: CL
+    operator: '='
+    value: 38h
+    table_refs: []
+    sub_values: []
+  - reg: DS:DX
+    operator: ->
+    description: 'MCB (see #04024)'
+    table_refs:
+    - '04024'
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AX
+      operator: '='
+      description: status
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: E0
+    params:
+      CL: 39h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: O-E0CL39
+  category: O
+  title: REAL/32 - "MC_FREE" - CP-M/86 FREE SPECIFIED MEMORY SEGMENT
+  source: INTERRUP.R:2503
+  interrupt: E0
+  flags:
+  - R
+  function: CL39
+  input_registers:
+  - reg: CL
+    operator: '='
+    value: 39h
+    table_refs: []
+    sub_values: []
+  - reg: DS:DX
+    operator: ->
+    description: 'MCB (see #04024)'
+    table_refs:
+    - '04024'
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AX
+      operator: '='
+      description: status
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: E0
+    params:
+      CL: 3Ah
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: O-E0CL3A
+  category: O
+  title: REAL/32 - "MC_ALLFREE" - CP-M/86 FREE ALL MEMORY
+  source: INTERRUP.R:2510
+  interrupt: E0
+  flags:
+  - R
+  function: CL3A
+  input_registers:
+  - reg: CL
+    operator: '='
+    value: 3Ah
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - nothing???
+  description: release all of the calling process's memory except the User Data Area
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: E0
+    params:
+      CL: 39h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: O-E0CL3B
+  category: O
+  title: REAL/32 - "P_LOAD" - LOAD .CMD FILE INTO MEMORY
+  source: INTERRUP.R:2516
+  interrupt: E0
+  flags:
+  - u
+  function: CL3B
+  input_registers:
+  - reg: CL
+    operator: '='
+    value: 3Bh
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+  notes:
+  - 'IMS does not document the details of this call because .CMD files are
+
+    supported for backward compatibility only'
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: O-E0CL40
+  category: O
+  title: REAL/32 - "N_LOGON" - LOG ONTO A SERVER
+  source: INTERRUP.R:2523
+  interrupt: E0
+  flags: []
+  function: CL40
+  input_registers:
+  - reg: CL
+    operator: '='
+    value: 40h
+    table_refs: []
+    sub_values: []
+  - reg: DS:DX
+    operator: ->
+    description: 'LPB (see #04025)'
+    table_refs:
+    - '04025'
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AX
+      operator: '='
+      description: 'status (0000h,00FFh,07FFh,0DFFh,0EFFh,FFFFh) (see #04030)'
+      table_refs:
+      - '04030'
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: E0
+    params:
+      CL: 41h
+  index: []
+  tables:
+  - '04025'
+  - '04026'
+  - '04027'
+  - 04028
+  - 04029
+  - '04030'
+  table_refs: []
+- entry_type: INT
+  id: O-E0CL41
+  category: O
+  title: REAL/32 - "N_LOGON" - LOG OFF A SERVER
+  source: INTERRUP.R:2618
+  interrupt: E0
+  flags: []
+  function: CL41
+  input_registers:
+  - reg: CL
+    operator: '='
+    value: 41h
+    table_refs: []
+    sub_values: []
+  - reg: DS:DX
+    operator: ->
+    description: 'LPB (see #04025)'
+    table_refs:
+    - '04025'
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AX
+      operator: '='
+      description: 'status (0000h,0CFFh,0DFFh,0EFFh,FFFFh) (see #04030)'
+      table_refs:
+      - '04030'
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: E0
+    params:
+      CL: 40h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: O-E0CL44
+  category: O
+  title: REAL/32 - "N_STAT" - GET NETWORK STATUS
+  source: INTERRUP.R:2625
+  interrupt: E0
+  flags: []
+  function: CL44
+  input_registers:
+  - reg: CL
+    operator: '='
+    value: 44h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AX
+      operator: '='
+      description: network status or 0FFFh on error
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: O-E0CL45
+  category: O
+  title: REAL/32 - "N_RCT" - GET REQUESTOR CONFIGURATION TABLE
+  source: INTERRUP.R:2631
+  interrupt: E0
+  flags: []
+  function: CL45
+  input_registers:
+  - reg: CL
+    operator: '='
+    value: 45h
+    table_refs: []
+    sub_values: []
+  - reg: DS:DX
+    operator: ->
+    description: 'RCT Control Block (see #04031,#04032)'
+    table_refs:
+    - '04031'
+    - '04032'
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AX
+      operator: '='
+      description: 'status or error code (see #04033,#04030)'
+      table_refs:
+      - '04033'
+      - '04030'
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: E0
+    params:
+      CL: 47h
+  index: []
+  tables:
+  - '04031'
+  - '04032'
+  - '04033'
+  table_refs: []
+- entry_type: INT
+  id: O-E0CL47
+  category: O
+  title: REAL/32 - "N_SCT" - GET SERVER CONFIGURATION TABLE
+  source: INTERRUP.R:2669
+  interrupt: E0
+  flags: []
+  function: CL47
+  input_registers:
+  - reg: CL
+    operator: '='
+    value: 47h
+    table_refs: []
+    sub_values: []
+  - reg: DS:DX
+    operator: ->
+    description: '112-byte buffer for Server Configuration Table (see #04034)'
+    table_refs:
+    - '04034'
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AX
+      operator: '='
+      description: status (0000h successful, else error code)
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes:
+  - 'the first byte of the SCT buffer is set to the desired server number
+
+    prior to calling this function'
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: E0
+    params:
+      CL: 45h
+  index: []
+  tables:
+  - '04034'
+  table_refs: []
+- entry_type: INT
+  id: O-E0CL48
+  category: O
+  title: REAL/32 - "N_ERRMODE" - SET NETWORK ERROR MODE
+  source: INTERRUP.R:2690
+  interrupt: E0
+  flags: []
+  function: CL48
+  input_registers:
+  - reg: CL
+    operator: '='
+    value: 48h
+    table_refs: []
+    sub_values: []
+  - reg: DL
+    operator: '='
+    description: new error mode
+    table_refs: []
+    sub_values:
+    - value: FFh
+      description: return error in registers AX,BX,CX
+      sub_values: []
+    - value: FEh
+      description: display message and return error
+      sub_values: []
+    - value: FDh
+      description: display message and abort (default)
+      sub_values: []
+  returns:
+  - registers:
+    - reg: CX
+      operator: '='
+      description: error code (0000h successful, FFFFh failed)
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  description: 'specify how the REAL/32 Net Server responds to error numbers 0CFFh,
+
+    0DFFh, and 0EFFh (see #04030)'
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs:
+  - '04030'
+- entry_type: INT
+  id: O-E0CL59
+  category: O
+  title: ConcCP/M,DR Multiuser DOS - "S_MEMORY" - RESERVE MEMORY IN GLOBAL AREA
+  source: INTERRUP.R:2701
+  interrupt: E0
+  flags: []
+  function: CL59
+  input_registers:
+  - reg: CL
+    operator: '='
+    value: 59h
+    table_refs: []
+    sub_values: []
+  - reg: DX
+    operator: '='
+    description: size in bytes
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AX
+      operator: '='
+      description: status
+      table_refs: []
+      sub_values: []
+    - reg: ES:BX
+      operator: ->
+      description: reserved memory
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: O-E0CL5C
+  category: O
+  title: REAL/32 - "P_PATH" - SCAN PATH FOR EXECUTABLE FILE
+  source: INTERRUP.R:2709
+  interrupt: E0
+  flags: []
+  function: CL5C
+  input_registers:
+  - reg: CL
+    operator: '='
+    value: 5Ch
+    table_refs: []
+    sub_values: []
+  - reg: DS:DX
+    operator: ->
+    description: 'Exec Parameter Block (EPB) (see #04035)'
+    table_refs:
+    - '04035'
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AX
+      operator: '='
+      description: status
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: E0
+    params:
+      CL: 5Dh
+  - type: interrupt
+    interrupt: E0
+    params:
+      CL: 5Eh
+  - type: interrupt
+    interrupt: '21'
+    params:
+      AH: 4Bh
+  index: []
+  tables:
+  - '04035'
+  table_refs: []
+- entry_type: INT
+  id: O-E0CL5D
+  category: O
+  title: REAL/32 - "P_EXEC" - EXECUTE CHILD PROCESS
+  source: INTERRUP.R:2741
+  interrupt: E0
+  flags: []
+  function: CL5D
+  input_registers:
+  - reg: CL
+    operator: '='
+    value: 5Dh
+    table_refs: []
+    sub_values: []
+  - reg: DS:DX
+    operator: ->
+    description: 'Exec Parameter Block (EPB) (see #04035)'
+    table_refs:
+    - '04035'
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AX
+      operator: '='
+      description: status
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: E0
+    params:
+      CL: 5Ch
+  - type: interrupt
+    interrupt: E0
+    params:
+      CL: 5Eh
+  - type: interrupt
+    interrupt: '21'
+    params:
+      AH: 4Bh
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: O-E0CL5E
+  category: O
+  title: REAL/32 - "P_EXITCODE" - GET/SET PROCESS EXIT CODE
+  source: INTERRUP.R:2756
+  interrupt: E0
+  flags: []
+  function: CL5E
+  input_registers:
+  - reg: CL
+    operator: '='
+    value: 5Eh
+    table_refs: []
+    sub_values: []
+  - reg: DX
+    operator: '='
+    description: exit code or FFFFh to get
+    table_refs: []
+    sub_values: []
+  - reg: DL
+    operator: '='
+    description: process exit code
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AX
+      operator: '='
+      description: status (FFFFh on error)
+      table_refs: []
+      sub_values: []
+    - reg: AH
+      operator: '='
+      description: termination reason
+      table_refs: []
+      sub_values: []
+    - reg: AL
+      operator: '='
+      description: process exit code
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: E0
+    params:
+      CL: 5Dh
+  - type: interrupt
+    interrupt: '21'
+    params:
+      AH: 4Ch
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: O-E0CL6B
+  category: O
+  title: REAL/32 - "S_SERIAL" - GET OS SERIAL NUMBER
+  source: INTERRUP.R:2772
+  interrupt: E0
+  flags: []
+  function: CL6B
+  input_registers:
+  - reg: CL
+    operator: '='
+    value: 6Bh
+    table_refs: []
+    sub_values: []
+  - reg: DS:DX
+    operator: ->
+    description: 6-byte buffer for ASCII serial number
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - nothing???
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: O-E0CL6D
+  category: O
+  title: REAL/32 - "C_MODE" - GET/SET CONSOLE MODE
+  source: INTERRUP.R:2777
+  interrupt: E0
+  flags: []
+  function: CL6D
+  input_registers:
+  - reg: CL
+    operator: '='
+    value: 6Dh
+    table_refs: []
+    sub_values: []
+  - reg: DX
+    operator: '='
+    description: 'new console mode (see #04036), or FFFFh to get current mode'
+    table_refs:
+    - '04036'
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AX
+      operator: '='
+      description: status if setting (0000h = success)
+      table_refs: []
+      sub_values: []
+    - reg: AX
+      operator: '='
+      description: current console mode if DX=FFFFh on entry
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables:
+  - '04036'
+  table_refs: []
+- entry_type: INT
+  id: O-E0CL6E
+  category: O
+  title: REAL/32 - "C_DELIMIT" - GET/SET STRING DELIMITER
+  source: INTERRUP.R:2792
+  interrupt: E0
+  flags: []
+  function: CL6E
+  input_registers:
+  - reg: CL
+    operator: '='
+    value: 6Eh
+    table_refs: []
+    sub_values: []
+  - reg: DX
+    operator: '='
+    description: new delimiter, or FFFFh to get current string delimiter
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AX
+      operator: '='
+      description: status (0000h success) if setting
+      table_refs: []
+      sub_values: []
+    - reg: AX
+      operator: '='
+      description: current string delimiter (default is 24h '$' at process start)
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: E0
+    params:
+      CL: 09h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: O-E0CL6F
+  category: O
+  title: REAL/32 - "C_WRITEBLK" - WRITE BLOCK TO DEFAULT CONSOLE
+  source: INTERRUP.R:2799
+  interrupt: E0
+  flags: []
+  function: CL6F
+  input_registers:
+  - reg: CL
+    operator: '='
+    value: 6Fh
+    table_refs: []
+    sub_values: []
+  - reg: DS:DX
+    operator: ->
+    description: 'Character Control Block (see #04051,#04052)'
+    table_refs:
+    - '04051'
+    - '04052'
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - nothing???
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: E0
+    params:
+      CL: 70h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: O-E0CL70
+  category: O
+  title: REAL/32 - "L_WRITEBLK" - WRITE BLOCK TO DEFAULT LIST (PRINTER) DEVICE
+  source: INTERRUP.R:2805
+  interrupt: E0
+  flags: []
+  function: CL70
+  input_registers:
+  - reg: CL
+    operator: '='
+    value: 70h
+    table_refs: []
+    sub_values: []
+  - reg: DS:DX
+    operator: ->
+    description: 'Character Control Block (see #04051,#04052)'
+    table_refs:
+    - '04051'
+    - '04052'
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - nothing???
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: E0
+    params:
+      CL: 6Fh
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: O-E0CL71
+  category: O
+  title: ConcCP/M,DR Multiuser DOS - EXECUTE DOS-COMPATIBLE FUNCTIONS
+  source: INTERRUP.R:2811
+  interrupt: E0
+  flags:
+  - R
+  function: CL71
+  input_registers:
+  - reg: CL
+    operator: '='
+    value: 71h
+    table_refs: []
+    sub_values: []
+  - reg: DS:DX
+    operator: ->
+    description: 'parameter block (see #04038)'
+    table_refs:
+    - 04038
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AX
+      operator: '='
+      description: status (0000h successful, else error code)
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables:
+  - '04037'
+  - 04038
+  - 04039
+  table_refs: []
+- entry_type: INT
+  id: O-E0CL73
+  category: O
+  title: GSX-86, GEM/1, GEM/2 - API
+  source: INTERRUP.R:2989
+  interrupt: E0
+  flags: []
+  function: CL73
+  input_registers:
+  - reg: CL
+    operator: '='
+    value: 73h
+    table_refs: []
+    sub_values: []
+  - reg: CH
+    operator: '='
+    value: 04h
+    table_refs: []
+    sub_values: []
+  - reg: DS:DX
+    operator: ->
+    description: parameter block
+    table_refs: []
+    sub_values: []
+  returns: []
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: O-E0CL80
+  category: O
+  title: REAL/32 - "M_ALLOC" - ALLOCATE MEMORY
+  source: INTERRUP.R:2994
+  interrupt: E0
+  flags: []
+  function: CL80
+  input_registers:
+  - reg: CL
+    operator: '='
+    value: 80h
+    table_refs: []
+    sub_values: []
+  - reg: DS:DX
+    operator: ->
+    description: 'Memory Parameter Block (MPB) (see #04040)'
+    table_refs:
+    - '04040'
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AX
+      operator: '='
+      description: status (0000h success, else error code)
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: E0
+    params:
+      CL: 81h
+  index: []
+  tables:
+  - '04040'
+  table_refs: []
+- entry_type: INT
+  id: O-E0CL81
+  category: O
+  title: REAL/32 - "M_FREE" - DEALLOCATE MEMORY
+  source: INTERRUP.R:3013
+  interrupt: E0
+  flags: []
+  function: CL81
+  input_registers:
+  - reg: CL
+    operator: '='
+    value: 81h
+    table_refs: []
+    sub_values: []
+  - reg: DS:DX
+    operator: ->
+    description: 'Memory Free Parameter Block (MFPB) (see #04041)'
+    table_refs:
+    - '04041'
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AX
+      operator: '='
+      description: status (0000h success, else error code)
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: E0
+    params:
+      CL: 81h
+  index: []
+  tables:
+  - '04041'
+  table_refs: []
+- entry_type: INT
+  id: O-E0CL84
+  category: O
+  title: REAL/32 - "DEV_WAITFLAG" - WAIT ON SYSTEM FLAG
+  source: INTERRUP.R:3025
+  interrupt: E0
+  flags: []
+  function: CL84
+  input_registers:
+  - reg: CL
+    operator: '='
+    value: 84h
+    table_refs: []
+    sub_values: []
+  - reg: DX
+    operator: '='
+    description: system flag ID
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AX
+      operator: '='
+      description: status (0000h success, else error code)
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: E0
+    params:
+      CL: 85h
+  - type: interrupt
+    interrupt: E0
+    params:
+      CL: B7h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: O-E0CL85
+  category: O
+  title: REAL/32 - "DEV_SETFLAG" - SET SYSTEM FLAG
+  source: INTERRUP.R:3034
+  interrupt: E0
+  flags: []
+  function: CL85
+  input_registers:
+  - reg: CL
+    operator: '='
+    value: 85h
+    table_refs: []
+    sub_values: []
+  - reg: DX
+    operator: '='
+    description: system flag ID
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AX
+      operator: '='
+      description: status (0000h success, else error code)
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes:
+  - 'REAL/32 returns an error if the flag was already set, which indicates
+
+    that a previous logical interrupt has not yet been serviced'
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: E0
+    params:
+      CL: 84h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: O-E0CL86
+  category: O
+  title: ConcCP/M,DR Multiuser DOS - "Q_MAKE" - CREATE MESSAGE QUEUE
+  source: INTERRUP.R:3042
+  interrupt: E0
+  flags: []
+  function: CL86
+  input_registers:
+  - reg: CL
+    operator: '='
+    value: 86h
+    table_refs: []
+    sub_values: []
+  - reg: DS:DX
+    operator: ->
+    description: 'queue descriptor (see #04042)'
+    table_refs:
+    - '04042'
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AX
+      operator: '='
+      description: status (0000h success, FFFFh failure)
+      table_refs: []
+      sub_values: []
+    - reg: CX
+      operator: '='
+      description: 'error code (see #04021)'
+      table_refs:
+      - '04021'
+      sub_values: []
+    raw_lines: []
+  notes:
+  - also supported by REAL/32
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: E0
+    params:
+      CL: 87h
+  index: []
+  tables:
+  - '04042'
+  - '04043'
+  table_refs: []
+- entry_type: INT
+  id: O-E0CL87
+  category: O
+  title: ConcCP/M,DR Multiuser DOS - "Q_OPEN" - OPEN MESSAGE QUEUE
+  source: INTERRUP.R:3072
+  interrupt: E0
+  flags: []
+  function: CL87
+  input_registers:
+  - reg: CL
+    operator: '='
+    value: 87h
+    table_refs: []
+    sub_values: []
+  - reg: DS:DX
+    operator: ->
+    description: 'queue parameter block (QPB) (see #04044,#04045)'
+    table_refs:
+    - '04044'
+    - '04045'
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AX
+      operator: '='
+      description: status (0000h success, FFFFh failure)
+      table_refs: []
+      sub_values: []
+    - reg: CX
+      operator: '='
+      description: 'error code (see #04021)'
+      table_refs:
+      - '04021'
+      sub_values: []
+    raw_lines: []
+  notes:
+  - also supported by REAL/32
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: E0
+    params:
+      CL: 86h
+  - type: interrupt
+    interrupt: E0
+    params:
+      CL: 88h
+  - type: interrupt
+    interrupt: E0
+    params:
+      CL: 89h
+  index: []
+  tables:
+  - '04044'
+  - '04045'
+  table_refs: []
+- entry_type: INT
+  id: O-E0CL88
+  category: O
+  title: REAL/32 - "Q_DELETE" - DELETE SYSTEM QUEUE
+  source: INTERRUP.R:3103
+  interrupt: E0
+  flags: []
+  function: CL88
+  input_registers:
+  - reg: CL
+    operator: '='
+    value: 88h
+    table_refs: []
+    sub_values: []
+  - reg: DS:DX
+    operator: ->
+    description: 'queue parameter block (QPB) (see #04044,#04045)'
+    table_refs:
+    - '04044'
+    - '04045'
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AX
+      operator: '='
+      description: status (0000h success, FFFFh failure)
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: E0
+    params:
+      CL: 87h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: O-E0CL89
+  category: O
+  title: ConcCP/M,DR Multiuser DOS - "Q_READ" - READ MESSAGE QUEUE
+  source: INTERRUP.R:3109
+  interrupt: E0
+  flags: []
+  function: CL89
+  input_registers:
+  - reg: CL
+    operator: '='
+    value: 89h
+    table_refs: []
+    sub_values: []
+  - reg: DS:DX
+    operator: ->
+    description: 'queue parameter block (QPB) (see #04044,#04045)'
+    table_refs:
+    - '04044'
+    - '04045'
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AX
+      operator: '='
+      description: status (0000h success, FFFFh failure)
+      table_refs: []
+      sub_values: []
+    - reg: CX
+      operator: '='
+      description: 'error code (see #04021)'
+      table_refs:
+      - '04021'
+      sub_values: []
+    raw_lines: []
+  notes:
+  - also supported by REAL/32
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: E0
+    params:
+      CL: 87h
+  - type: interrupt
+    interrupt: E0
+    params:
+      CL: 8Ah
+  - type: interrupt
+    interrupt: E0
+    params:
+      CL: 8Bh
+  - type: interrupt
+    interrupt: E0
+    params:
+      CL: B6h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: O-E0CL8A
+  category: O
+  title: ConcCP/M,DR Multiuser DOS - "Q_CREAD" - CONDITIONALLY READ MSG QUEUE
+  source: INTERRUP.R:3117
+  interrupt: E0
+  flags: []
+  function: CL8A
+  input_registers:
+  - reg: CL
+    operator: '='
+    value: 8Ah
+    table_refs: []
+    sub_values: []
+  - reg: DS:DX
+    operator: ->
+    description: 'queue parameter block (QPB) (see #04044,#04045)'
+    table_refs:
+    - '04044'
+    - '04045'
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AX
+      operator: '='
+      description: status (0000h success, FFFFh failure)
+      table_refs: []
+      sub_values: []
+    - reg: CX
+      operator: '='
+      description: 'error code (see #04021)'
+      table_refs:
+      - '04021'
+      sub_values: []
+    raw_lines: []
+  notes:
+  - also supported by REAL/32
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: E0
+    params:
+      CL: 87h
+  - type: interrupt
+    interrupt: E0
+    params:
+      CL: 89h
+  - type: interrupt
+    interrupt: E0
+    params:
+      CL: 8Ch
+  - type: interrupt
+    interrupt: E0
+    params:
+      CL: B6h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: O-E0CL8B
+  category: O
+  title: ConcCP/M,DR Multiuser DOS - "Q_WRITE" - WRITE MESSAGE QUEUE
+  source: INTERRUP.R:3125
+  interrupt: E0
+  flags: []
+  function: CL8B
+  input_registers:
+  - reg: CL
+    operator: '='
+    value: 8Bh
+    table_refs: []
+    sub_values: []
+  - reg: DS:DX
+    operator: ->
+    description: 'queue parameter block (QPB) (see #04044,#04045)'
+    table_refs:
+    - '04044'
+    - '04045'
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AX
+      operator: '='
+      description: status (0000h success, FFFFh failure)
+      table_refs: []
+      sub_values: []
+    - reg: CX
+      operator: '='
+      description: 'error code (see #04021)'
+      table_refs:
+      - '04021'
+      sub_values: []
+    raw_lines: []
+  notes:
+  - also supported by REAL/32
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: E0
+    params:
+      CL: 89h
+  - type: interrupt
+    interrupt: E0
+    params:
+      CL: 8Ch
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: O-E0CL8C
+  category: O
+  title: ConcCP/M,DR Multiuser DOS - "Q_CWRITE" - CONDITIONALLY WRITE MSG QUEUE
+  source: INTERRUP.R:3133
+  interrupt: E0
+  flags: []
+  function: CL8C
+  input_registers:
+  - reg: CL
+    operator: '='
+    value: 8Ch
+    table_refs: []
+    sub_values: []
+  - reg: DS:DX
+    operator: ->
+    description: 'queue parameter block (QPB) (see #04044,#04045)'
+    table_refs:
+    - '04044'
+    - '04045'
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AX
+      operator: '='
+      description: status (0000h success, FFFFh failure)
+      table_refs: []
+      sub_values: []
+    - reg: CX
+      operator: '='
+      description: 'error code (see #04021)'
+      table_refs:
+      - '04021'
+      sub_values: []
+    raw_lines: []
+  notes:
+  - also supported by REAL/32
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: E0
+    params:
+      CL: 8Ah
+  - type: interrupt
+    interrupt: E0
+    params:
+      CL: 8Bh
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: O-E0CL8E
+  category: O
+  title: ConcCP/M,DR Multiuser DOS - "P_DISPATCH" - CALL DISPATCHER
+  source: INTERRUP.R:3141
+  interrupt: E0
+  flags: []
+  function: CL8E
+  input_registers:
+  - reg: CL
+    operator: '='
+    value: 8Eh
+    table_refs: []
+    sub_values: []
+  - reg: DX
+    operator: '='
+    value: FFFFh
+    description: (optional) to force dispatch
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - nothing
+  description: 'allow other processes of the same or higher priority to run if they
+
+    are ready'
+  notes:
+  - 'if DX=FFFFh, a dispatch is forced even if no other process is ready
+
+    also supported by REAL/32'
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: E0
+    params:
+      CL: 91h
+  - type: interrupt
+    interrupt: '15'
+    params:
+      AX: 1000h
+  - type: interrupt
+    interrupt: 2F
+    params:
+      AX: 1680h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: O-E0CL8F
+  category: O
+  title: REAL/32 - "P_TERM" - TERMINATE CALLING PROCESS
+  source: INTERRUP.R:3151
+  interrupt: E0
+  flags: []
+  function: CL8F
+  input_registers:
+  - reg: CL
+    operator: '='
+    value: 8Fh
+    table_refs: []
+    sub_values: []
+  - reg: DX
+    operator: '='
+    description: termination code
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AX
+      operator: '='
+      value: FFFFh
+      description: on failure
+      table_refs: []
+      sub_values: []
+    raw_lines:
+    - never if successful
+  notes:
+  - 'this function can not terminate processes whose KEEP flag is set
+
+    if the termination code is FFh, this function can terminate the process
+
+    even if its SYSTEM flag is on; otherwise, only user processes can
+
+    terminate themselves'
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: E0
+    params:
+      CL: 90h
+  - type: interrupt
+    interrupt: '21'
+    params:
+      AH: 4Ch
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: O-E0CL90
+  category: O
+  title: REAL/32 - "P_CREATE" - CREATE A PROCESS
+  source: INTERRUP.R:3162
+  interrupt: E0
+  flags: []
+  function: CL90
+  input_registers:
+  - reg: CL
+    operator: '='
+    value: 90h
+    table_refs: []
+    sub_values: []
+  - reg: DS:DX
+    operator: ->
+    description: process descriptor in calling process' system memory area
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AX
+      operator: '='
+      description: status
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes:
+  - 'this call can create more than one process if the specied process
+
+    descriptor''s link (next-process) field is nonzero
+
+    all reserved and unused fields in the process descriptor should be
+
+    filled with zeros; passing an invalid descriptor or pointer may
+
+    crash the system because the descriptor is not checked by the OS
+
+    the newly-created process(es) is always a native process, which can not
+
+    make DOS calls'
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: E0
+    params:
+      CL: 8Fh
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: O-E0CL91
+  category: O
+  title: ConcCP/M,DR Multiuser DOS - "P_PRIORITY" - SET PROCESS PRIORITY
+  source: INTERRUP.R:3176
+  interrupt: E0
+  flags: []
+  function: CL91
+  input_registers:
+  - reg: CL
+    operator: '='
+    value: 91h
+    table_refs: []
+    sub_values: []
+  - reg: DL
+    operator: '='
+    description: new priority (00h highest to FFh lowest)
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - nothing
+  notes:
+  - 'sets priority of calling process; transient processes are initialized
+
+    to priority C8h
+
+    also supported by REAL/32'
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: E0
+    params:
+      CL: 8Eh
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: O-E0CL92
+  category: O
+  title: ConcCP/M,DR Multiuser DOS - "C_ATTACH" - ATTACH TO DEFAULT CONSOLE
+  source: INTERRUP.R:3185
+  interrupt: E0
+  flags: []
+  function: CL92
+  input_registers:
+  - reg: CL
+    operator: '='
+    value: 92h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AX
+      operator: '='
+      description: status
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes:
+  - 'also supported by REAL/32
+
+    if the console is currently owned by another process, this function
+
+    waits until the console is available'
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: E0
+    params:
+      CL: 93h
+  - type: interrupt
+    interrupt: E0
+    params:
+      CL: 94h
+  - type: interrupt
+    interrupt: E0
+    params:
+      CL: 99h
+  - type: interrupt
+    interrupt: E0
+    params:
+      CL: 9Eh
+  - type: interrupt
+    interrupt: E0
+    params:
+      CL: A2h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: O-E0CL93
+  category: O
+  title: ConcCP/M,DR Multiuser DOS - "C_DETACH" - DETACH FROM DEFAULT CONSOLE
+  source: INTERRUP.R:3193
+  interrupt: E0
+  flags: []
+  function: CL93
+  input_registers:
+  - reg: CL
+    operator: '='
+    value: 93h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AX
+      operator: '='
+      description: status
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes:
+  - also supported by REAL/32
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: E0
+    params:
+      CL: 92h
+  - type: interrupt
+    interrupt: E0
+    params:
+      CL: A6h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: O-E0CL94
+  category: O
+  title: REAL/32 - "C_SET" - SET PROCESS'S DEFAULT CONSOLE
+  source: INTERRUP.R:3201
+  interrupt: E0
+  flags: []
+  function: CL94
+  input_registers:
+  - reg: CL
+    operator: '='
+    value: 94h
+    table_refs: []
+    sub_values: []
+  - reg: DX
+    operator: '='
+    description: console ID
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AX
+      operator: '='
+      description: status (0000h success, else error code)
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: E0
+    params:
+      CL: 92h
+  - type: interrupt
+    interrupt: E0
+    params:
+      CL: 95h
+  - type: interrupt
+    interrupt: E0
+    params:
+      CL: 99h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: O-E0CL95
+  category: O
+  title: REAL/32 - "C_ASSIGN" - ASSIGN DEFAULT CONSOLE TO ANOTHER PROCESS
+  source: INTERRUP.R:3207
+  interrupt: E0
+  flags: []
+  function: CL95
+  input_registers:
+  - reg: CL
+    operator: '='
+    value: 95h
+    table_refs: []
+    sub_values: []
+  - reg: DS:DX
+    operator: ->
+    description: 'Assign Control Parameter Block (ACPB) (see #04046)'
+    table_refs:
+    - '04046'
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AX
+      operator: '='
+      description: status
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: E0
+    params:
+      CL: 94h
+  - type: interrupt
+    interrupt: E0
+    params:
+      CL: 99h
+  index: []
+  tables:
+  - '04046'
+  table_refs: []
+- entry_type: INT
+  id: O-E0CL96
+  category: O
+  title: REAL/32 - "P_CLI" - RUN COMMAND LINE INTERFACE
+  source: INTERRUP.R:3221
+  interrupt: E0
+  flags: []
+  function: CL96
+  input_registers:
+  - reg: CL
+    operator: '='
+    value: 96h
+    table_refs: []
+    sub_values: []
+  - reg: DS:DX
+    operator: ->
+    description: 'Command Line Buffer (CLBUF) (see #04047)'
+    table_refs:
+    - '04047'
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AX
+      operator: '='
+      description: status
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  description: 'execute the indicated command concurrently with the calling process;
+
+    system queue commands, .BAT, .CMD, .COM, and .EXE files can be
+
+    executed'
+  notes:
+  - 'the calling process will lose its virtual console and must reattach it
+
+    before attempting any I/O'
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: E0
+    params:
+      CL: 92h
+  index: []
+  tables:
+  - '04047'
+  table_refs: []
+- entry_type: INT
+  id: O-E0CL99
+  category: O
+  title: REAL/32 - "C_GET" - GET DEFAULT CONSOLE
+  source: INTERRUP.R:3238
+  interrupt: E0
+  flags: []
+  function: CL99
+  input_registers:
+  - reg: CL
+    operator: '='
+    value: 99h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AX
+      operator: '='
+      description: default console ID
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: E0
+    params:
+      CL: 94h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: O-E0CL9A
+  category: O
+  title: REAL/32 - "S_SYSDAT" - GET SYSTEM DATA AREA
+  source: INTERRUP.R:3243
+  interrupt: E0
+  flags: []
+  function: CL9A
+  input_registers:
+  - reg: CL
+    operator: '='
+    value: 9Ah
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: ES:AX
+      operator: ->
+      description: 'system data area (see #04048)'
+      table_refs:
+      - 04048
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables:
+  - 04048
+  - 04049
+  table_refs: []
+- entry_type: INT
+  id: O-E0CL9C
+  category: O
+  title: REAL/32 - "P_PDADR" - GET ADDRESS OF PROCESS DESCRIPTOR
+  source: INTERRUP.R:3349
+  interrupt: E0
+  flags: []
+  function: CL9C
+  input_registers:
+  - reg: CL
+    operator: '='
+    value: 9Ch
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: ES:AX
+      operator: ->
+      description: 'caller''s process descriptor (see #04026)'
+      table_refs:
+      - '04026'
+      sub_values: []
+    raw_lines: []
+  notes:
+  - 'This function is also called by the DR DOS MEM utility when
+
+    INT 21/AX=4451h returns either 1463h (MDOS 5.00), 1465h (MDOS 5.01),
+
+    or 1466h (MDOS 5.10).'
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: E0
+    params:
+      CL: 8Fh
+  - type: interrupt
+    interrupt: E0
+    params:
+      CL: 90h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: O-E0CL9D
+  category: O
+  title: REAL/32 - "P_ABORT" - ABORT PROCESS BY NAME OR DESCRIPTOR
+  source: INTERRUP.R:3358
+  interrupt: E0
+  flags: []
+  function: CL9D
+  input_registers:
+  - reg: CL
+    operator: '='
+    value: 9Dh
+    table_refs: []
+    sub_values: []
+  - reg: DS:DX
+    operator: ->
+    description: 'Abort Parameter Block (see #04050)'
+    table_refs:
+    - '04050'
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AX
+      operator: '='
+      description: status
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: E0
+    params:
+      CL: 8Fh
+  - type: interrupt
+    interrupt: E0
+    params:
+      CL: 9Ch
+  index: []
+  tables:
+  - '04050'
+  table_refs: []
+- entry_type: INT
+  id: O-E0CL9E
+  category: O
+  title: REAL/32 - "L_ATTACH" - ATTACH TO DEFAULT LIST DEVICE
+  source: INTERRUP.R:3373
+  interrupt: E0
+  flags: []
+  function: CL9E
+  input_registers:
+  - reg: CL
+    operator: '='
+    value: 9Eh
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AX
+      operator: '='
+      description: status
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: E0
+    params:
+      CL: 92h
+  - type: interrupt
+    interrupt: E0
+    params:
+      CL: 9Fh
+  - type: interrupt
+    interrupt: E0
+    params:
+      CL: A0h
+  - type: interrupt
+    interrupt: E0
+    params:
+      CL: A1h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: O-E0CL9F
+  category: O
+  title: REAL/32 - "L_DETACH" - DETACH FROM DEFAULT LIST DEVICE
+  source: INTERRUP.R:3379
+  interrupt: E0
+  flags: []
+  function: CL9F
+  input_registers:
+  - reg: CL
+    operator: '='
+    value: 9Fh
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AX
+      operator: '='
+      description: status
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: E0
+    params:
+      CL: 92h
+  - type: interrupt
+    interrupt: E0
+    params:
+      CL: 9Eh
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: O-E0CLA0
+  category: O
+  title: REAL/32 - "L_SET" - SET DEFAULT LIST DEVICE
+  source: INTERRUP.R:3385
+  interrupt: E0
+  flags: []
+  function: CLA0
+  input_registers:
+  - reg: CL
+    operator: '='
+    value: A0h
+    table_refs: []
+    sub_values: []
+  - reg: DX
+    operator: '='
+    description: ID of list (printer) device
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AX
+      operator: '='
+      description: status (0000h success, FFFFh if invalid printer number)
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: E0
+    params:
+      CL: 92h
+  - type: interrupt
+    interrupt: E0
+    params:
+      CL: 9Eh
+  - type: interrupt
+    interrupt: E0
+    params:
+      CL: A4h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: O-E0CLA1
+  category: O
+  title: REAL/32 - "L_CATTACH" - CONDITIONALLY ATTACH TO DEFAULT LIST DEVICE
+  source: INTERRUP.R:3392
+  interrupt: E0
+  flags: []
+  function: CLA1
+  input_registers:
+  - reg: CL
+    operator: '='
+    value: A1h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AX
+      operator: '='
+      description: status (00h = successful, FFh = unable to attach)
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  description: 'attach the default list device to the calling process only if it is
+
+    currently available'
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: E0
+    params:
+      CL: 92h
+  - type: interrupt
+    interrupt: E0
+    params:
+      CL: 9Eh
+  - type: interrupt
+    interrupt: E0
+    params:
+      CL: A0h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: O-E0CLA2
+  category: O
+  title: REAL/32 - "C_CATTACH" - CONDITIONALLY ATTACH TO DEFAULT CONSOLE
+  source: INTERRUP.R:3400
+  interrupt: E0
+  flags: []
+  function: CLA2
+  input_registers:
+  - reg: CL
+    operator: '='
+    value: A2h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AL
+      operator: '='
+      description: status (FFh = console attached to another process)
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes:
+  - 'if the console is currently owned by another process, this function
+
+    will return an error code instead of attaching or waiting'
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: E0
+    params:
+      CL: 93h
+  - type: interrupt
+    interrupt: E0
+    params:
+      CL: 94h
+  - type: interrupt
+    interrupt: E0
+    params:
+      CL: 99h
+  - type: interrupt
+    interrupt: E0
+    params:
+      CL: 92h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: O-E0CLA3
+  category: O
+  title: ConcCP/M,DR Multiuser DOS,REAL/32 - "S_OSVER" - GET OS VERSION
+  source: INTERRUP.R:3407
+  interrupt: E0
+  flags: []
+  function: CLA3
+  input_registers:
+  - reg: CL
+    operator: '='
+    value: A3h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AX
+      operator: '='
+      description: 'operating system version (see #04023) (see also INT 21/AX=4451h)'
+      table_refs:
+      - '04023'
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: E0
+    params:
+      CL: 0Ch
+  - type: interrupt
+    interrupt: '21'
+    params:
+      AX: 4451h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: O-E0CLA4
+  category: O
+  title: REAL/32 - "L_GET" - GET DEFAULT LIST (PRINTER) DEVICE
+  source: INTERRUP.R:3412
+  interrupt: E0
+  flags: []
+  function: CLA4
+  input_registers:
+  - reg: CL
+    operator: '='
+    value: A4h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AL
+      operator: '='
+      description: number of default list device
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: E0
+    params:
+      CL: A0h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: O-E0CLA5
+  category: O
+  title: DR Multiuser DOS - "A_ATTACH" - ATTACH AUX DEVICE
+  source: INTERRUP.R:3417
+  interrupt: E0
+  flags: []
+  function: CLA5
+  input_registers:
+  - reg: CL
+    operator: '='
+    value: A5h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AX
+      operator: '='
+      description: status (REAL/32)
+      table_refs: []
+      sub_values: []
+    raw_lines:
+    - nothing (DR)
+  description: 'attaches the default auxiliary device to the calling process unless
+
+    it is already attached to another process, in which case the call
+
+    blocks until the device becomes available'
+  notes:
+  - 'this call should be used before attempting to read or write from
+
+    the AUX device; however, the I/O calls internally call this function
+
+    to ensure device ownership
+
+    also supported by REAL/32'
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: E0
+    params:
+      CL: 03h
+  - type: interrupt
+    interrupt: E0
+    params:
+      CL: 04h
+  - type: interrupt
+    interrupt: E0
+    params:
+      CL: A6h
+  - type: interrupt
+    interrupt: E0
+    params:
+      CL: A7h
+  - type: interrupt
+    interrupt: E0
+    params:
+      CL: A8h
+  - type: interrupt
+    interrupt: E0
+    params:
+      CL: ACh
+  - type: interrupt
+    interrupt: E0
+    params:
+      CL: ADh
+  - type: interrupt
+    interrupt: E0
+    params:
+      CL: B0h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: O-E0CLA6
+  category: O
+  title: DR Multiuser DOS - "A_DETACH" - DETACH FROM AUX DEVICE
+  source: INTERRUP.R:3431
+  interrupt: E0
+  flags: []
+  function: CLA6
+  input_registers:
+  - reg: CL
+    operator: '='
+    value: A6h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AX
+      operator: '='
+      description: status
+      table_refs: []
+      sub_values: []
+    - reg: CX
+      operator: '='
+      description: error code
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes:
+  - also supported by REAL/32
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: E0
+    params:
+      CL: 93h
+  - type: interrupt
+    interrupt: E0
+    params:
+      CL: A5h
+  - type: interrupt
+    interrupt: E0
+    params:
+      CL: A7h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: O-E0CLA7
+  category: O
+  title: DR Multiuser DOS - "A_CATTACH" - CONDITIONALLY ATTACH TO AUX DEVICE
+  source: INTERRUP.R:3440
+  interrupt: E0
+  flags: []
+  function: CLA7
+  input_registers:
+  - reg: CL
+    operator: '='
+    value: A7h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AX
+      operator: '='
+      description: status
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  description: 'attaches the default auxiliary device to the calling process if it is
+
+    available'
+  notes:
+  - 'does not block if the device is already in use
+
+    also supported by REAL/32'
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: E0
+    params:
+      CL: A5h
+  - type: interrupt
+    interrupt: E0
+    params:
+      CL: A6h
+  - type: interrupt
+    interrupt: E0
+    params:
+      CL: A8h
+  - type: interrupt
+    interrupt: E0
+    params:
+      CL: B0h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: O-E0CLA8
+  category: O
+  title: DR Multiuser DOS - "A_SET" - SET DEFAULT AUX DEVICE NUMBER
+  source: INTERRUP.R:3451
+  interrupt: E0
+  flags: []
+  function: CLA8
+  input_registers:
+  - reg: CL
+    operator: '='
+    value: A8h
+    table_refs: []
+    sub_values: []
+  - reg: DL
+    operator: '='
+    description: auxiliary device number
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AX
+      operator: '='
+      description: status
+      table_refs: []
+      sub_values: []
+    - reg: CX
+      operator: '='
+      description: error code
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  description: specify which physical device will become AUX
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: E0
+    params:
+      CL: A5h
+  - type: interrupt
+    interrupt: E0
+    params:
+      CL: A9h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: O-E0CLA9
+  category: O
+  title: DR Multiuser DOS - "A_GET" - GET DEFAULT AUX DEVICE NUMBER
+  source: INTERRUP.R:3461
+  interrupt: E0
+  flags: []
+  function: CLA9
+  input_registers:
+  - reg: CL
+    operator: '='
+    value: A9h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AL
+      operator: '='
+      description: current default auxiliary device number
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  description: determine which physical device is currently AUX
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: E0
+    params:
+      CL: A8h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: O-E0CLAC
+  category: O
+  title: DR Multiuser DOS - "A_READBLK" - READ STRING FROM AUX DEVICE
+  source: INTERRUP.R:3467
+  interrupt: E0
+  flags: []
+  function: CLAC
+  input_registers:
+  - reg: CL
+    operator: '='
+    value: ACh
+    table_refs: []
+    sub_values: []
+  - reg: DS:DX
+    operator: ->
+    description: 'character control block (CHCB) (see #04051,#04052)'
+    table_refs:
+    - '04051'
+    - '04052'
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AX
+      operator: '='
+      description: number of characters read
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  description: 'read characters from the default auxiliary (AUXn:) device into a buffer
+
+    until the buffer is full or the device is no longer ready'
+  notes:
+  - 'if the device is initially not ready, blocks until at least one
+
+    character has been read
+
+    if another process owns AUX, this call blocks until the device becomes
+
+    available
+
+    also supported by REAL/32'
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: E0
+    params:
+      CL: 03h
+  - type: interrupt
+    interrupt: E0
+    params:
+      CL: A5h
+  - type: interrupt
+    interrupt: E0
+    params:
+      CL: ADh
+  index: []
+  tables:
+  - '04051'
+  - '04052'
+  table_refs: []
+- entry_type: INT
+  id: O-E0CLAD
+  category: O
+  title: DR Multiuser DOS - "A_WRITEBLK" - WRITE STRING TO AUX DEVICE
+  source: INTERRUP.R:3494
+  interrupt: E0
+  flags: []
+  function: CLAD
+  input_registers:
+  - reg: CL
+    operator: '='
+    value: ADh
+    table_refs: []
+    sub_values: []
+  - reg: DS:DX
+    operator: ->
+    description: 'character control block (see #04051,#04052)'
+    table_refs:
+    - '04051'
+    - '04052'
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AX
+      operator: '='
+      description: number of characters written
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes:
+  - 'does not return until at least one character has been written
+
+    also supported by REAL/32'
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: E0
+    params:
+      CL: 04h
+  - type: interrupt
+    interrupt: E0
+    params:
+      CL: A5h
+  - type: interrupt
+    interrupt: E0
+    params:
+      CL: ACh
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: O-E0CLB0
+  category: O
+  title: DR Multiuser DOS - "A_CONFIG" - GET/SET AUX DEVICE PARAMETERS
+  source: INTERRUP.R:3502
+  interrupt: E0
+  flags: []
+  function: CLB0
+  input_registers:
+  - reg: CL
+    operator: '='
+    value: B0h
+    table_refs: []
+    sub_values: []
+  - reg: DX:DX
+    operator: ->
+    description: 'AUX device parameter block (see #04053)'
+    table_refs:
+    - '04053'
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AX
+      operator: '='
+      description: status
+      table_refs: []
+      sub_values: []
+    - reg: CX
+      operator: '='
+      description: error code
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes:
+  - also supported by REAL/32
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: E0
+    params:
+      CL: A5h
+  - type: interrupt
+    interrupt: E0
+    params:
+      CL: B1h
+  index: []
+  tables:
+  - '04053'
+  - '04054'
+  - '04055'
+  table_refs: []
+- entry_type: INT
+  id: O-E0CLB1
+  category: O
+  title: DR Multiuser DOS - "A_CONTROL" - GET/SET AUX CONTROL PARAMETERS
+  source: INTERRUP.R:3561
+  interrupt: E0
+  flags: []
+  function: CLB1
+  input_registers:
+  - reg: CL
+    operator: '='
+    value: B1h
+    table_refs: []
+    sub_values: []
+  - reg: DS:DX
+    operator: ->
+    description: 'AUX device control block (see #04056)'
+    table_refs:
+    - '04056'
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AX
+      operator: '='
+      description: status
+      table_refs: []
+      sub_values: []
+    - reg: CX
+      operator: '='
+      description: error code
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes:
+  - also supported by REAL/32
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: E0
+    params:
+      CL: B0h
+  - type: interrupt
+    interrupt: E0
+    params:
+      CL: B2h
+  index: []
+  tables:
+  - '04056'
+  table_refs: []
+- entry_type: INT
+  id: O-E0CLB2
+  category: O
+  title: DR Multiuser DOS - "A_BREAK" - SEND BREAK TO AUX DEVICE
+  source: INTERRUP.R:3582
+  interrupt: E0
+  flags: []
+  function: CLB2
+  input_registers:
+  - reg: CL
+    operator: '='
+    value: B2h
+    table_refs: []
+    sub_values: []
+  - reg: DX
+    operator: '='
+    description: duration of break in system ticks (0001h-FFFFh)
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AX
+      operator: '='
+      description: status
+      table_refs: []
+      sub_values: []
+    - reg: CX
+      operator: '='
+      description: error code
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes:
+  - 'if the AUX device is currently owned by another process, this call will
+
+    block until the device becomes available
+
+    also supported by REAL/32'
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: E0
+    params:
+      CL: A5h
+  - type: interrupt
+    interrupt: E0
+    params:
+      CL: B1h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: O-E0CLB3
+  category: O
+  title: REAL/32 - "MP_ALLOC" - ALLOCATE PHYSICAL MEMORY
+  source: INTERRUP.R:3595
+  interrupt: E0
+  flags:
+  - R
+  function: CLB3
+  input_registers:
+  - reg: CL
+    operator: '='
+    value: B3h
+    table_refs: []
+    sub_values: []
+  - reg: DX
+    operator: '='
+    description: number of 4K pages to allocate
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AX
+      operator: '='
+      description: number of first 4K page allocated, or FFFFh on error
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes:
+  - 'memory allocated with this function is not automatically freed when
+
+    the process terminates'
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: E0
+    params:
+      CL: B4h
+  - type: interrupt
+    interrupt: E0
+    params:
+      CL: B5h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: O-E0CLB4
+  category: O
+  title: REAL/32 - "MP_FREE" - DEALLOCATE PHYSICAL MEMORY
+  source: INTERRUP.R:3603
+  interrupt: E0
+  flags:
+  - R
+  function: CLB4
+  input_registers:
+  - reg: CL
+    operator: '='
+    value: B4h
+    table_refs: []
+    sub_values: []
+  - reg: DX
+    operator: '='
+    description: number of the physical page to free
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AX
+      operator: '='
+      description: status (0000h successful, FFFFh error)
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: E0
+    params:
+      CL: B3h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: O-E0CLB5
+  category: O
+  title: REAL/32 - "MP_MAP" - MAP PHYSICAL MEMORY
+  source: INTERRUP.R:3609
+  interrupt: E0
+  flags:
+  - R
+  function: CLB5
+  input_registers:
+  - reg: CL
+    operator: '='
+    value: B5h
+    table_refs: []
+    sub_values: []
+  - reg: DS:DX
+    operator: ->
+    description: 'Memory Physical Parameter Block (see #04057)'
+    table_refs:
+    - '04057'
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AX
+      operator: '='
+      description: status (0000h successful, FFFFh error)
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: E0
+    params:
+      CL: B3h
+  index: []
+  tables:
+  - '04057'
+  table_refs: []
+- entry_type: INT
+  id: O-E0CLB6
+  category: O
+  title: REAL/32 - "Q_NCREAD" - CONDITIONALLY NONDESTRUCTIVELY READ QUEUE
+  source: INTERRUP.R:3626
+  interrupt: E0
+  flags: []
+  function: CLB6
+  input_registers:
+  - reg: CL
+    operator: '='
+    value: B6h
+    table_refs: []
+    sub_values: []
+  - reg: DS:DX
+    operator: ->
+    description: 'Queue Parameter Block (QPB) (see #04045,#04044)'
+    table_refs:
+    - '04045'
+    - '04044'
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AX
+      operator: '='
+      description: status
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: E0
+    params:
+      CL: 89h
+  - type: interrupt
+    interrupt: E0
+    params:
+      CL: 8Ah
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: O-E0CLB7
+  category: O
+  title: REAL/32 - "DEV_TWAITFLAG" - TIMED WAIT ON SYSTEM FLAG
+  source: INTERRUP.R:3632
+  interrupt: E0
+  flags: []
+  function: CLB7
+  input_registers:
+  - reg: CL
+    operator: '='
+    value: B7h
+    table_refs: []
+    sub_values: []
+  - reg: DS:DX
+    operator: ->
+    description: 'Flag Parameter Block (FPB) (see #04058)'
+    table_refs:
+    - 04058
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AX
+      operator: '='
+      description: status
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes:
+  - if the flag was already set, this function returns immediately
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: E0
+    params:
+      CL: 84h
+  - type: interrupt
+    interrupt: E0
+    params:
+      CL: 85h
+  index: []
+  tables:
+  - 04058
+  table_refs: []
+- entry_type: INT
+  id: O-E0CLB8
+  category: O
+  title: REAL/32 - "DEV_MAP" - GET/SET SERIAL/PARALLEL PORT MAPPINGS
+  source: INTERRUP.R:3645
+  interrupt: E0
+  flags: []
+  function: CLB8
+  input_registers:
+  - reg: CL
+    operator: '='
+    value: B8h
+    table_refs: []
+    sub_values: []
+  - reg: DS:DX
+    operator: ->
+    description: 'Device Map Parameter Block (DEVPB) (see #04059)'
+    table_refs:
+    - 04059
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - nothing???
+    - may destroy SI,DI,DS
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables:
+  - 04059
+  table_refs: []
+- entry_type: INT
+  id: O-E0CLB9
+  category: O
+  title: REAL/32 - "L_TIMEOUT" - SET LIST DEVICE TIMEOUT
+  source: INTERRUP.R:3659
+  interrupt: E0
+  flags: []
+  function: CLB9
+  input_registers:
+  - reg: CL
+    operator: '='
+    value: B9h
+    table_refs: []
+    sub_values: []
+  - reg: DX
+    operator: '='
+    description: 'timeout value in system ticks (see #04048)'
+    table_refs:
+    - 04048
+    sub_values:
+    - value: FFFDh
+      description: = get current value without changing
+      sub_values: []
+    - value: FFFEh
+      description: = start timeout count
+      sub_values: []
+    - value: FFFFh
+      description: = never timeout
+      sub_values: []
+  returns:
+  - registers:
+    - reg: AX
+      operator: '='
+      description: status, or current timeout value if DX=FFFDh on entry
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: E0
+    params:
+      CL: BAh
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: O-E0CLBA
+  category: O
+  title: REAL/32 - "A_TIMEOUT" - SET AUX DEVICE TIMEOUT
+  source: INTERRUP.R:3670
+  interrupt: E0
+  flags: []
+  function: CLBA
+  input_registers:
+  - reg: CL
+    operator: '='
+    value: BAh
+    table_refs: []
+    sub_values: []
+  - reg: DX
+    operator: '='
+    description: 'timeout value in system ticks (see #04048)'
+    table_refs:
+    - 04048
+    sub_values:
+    - value: FFFDh
+      description: = get current value without changing
+      sub_values: []
+    - value: FFFEh
+      description: = start timeout count
+      sub_values: []
+    - value: FFFFh
+      description: = never timeout
+      sub_values: []
+  returns:
+  - registers:
+    - reg: AX
+      operator: '='
+      description: status, or current timeout value if DX=FFFDh on entry
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: E0
+    params:
+      CL: B9h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: O-E0CLBD
+  category: O
+  title: DR Multiuser DOS - "P_DELAY" - DELAY EXECUTION
+  source: INTERRUP.R:3681
+  interrupt: E0
+  flags: []
+  function: CLBD
+  input_registers:
+  - reg: CL
+    operator: '='
+    value: BDh
+    table_refs: []
+    sub_values: []
+  - reg: DX
+    operator: '='
+    description: delay in system ticks (typically 16.6 ms/tick)
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - after the delay elapses
+    - no results
+  notes:
+  - 'the length of a system tick is installation-dependent (typically
+
+    1/50 or 1/60 second); the length may be determined by reading the
+
+    TICKSPERSEC value from the system data segment
+
+    the actual delay before the process is rescheduled to run may be up to
+
+    one tick longer than requested; the delay between rescheduling and
+
+    actual execution cannot be predicted if higher-priority processes
+
+    are awaiting a turn at the CPU'
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: '15'
+    params:
+      AH: 86h
+  - type: interrupt
+    interrupt: 1A
+    params:
+      AX: FF01h
+  - type: interrupt
+    interrupt: 2F
+    params:
+      AX: 1224h
+  - type: interrupt
+    interrupt: '62'
+    params:
+      AX: 0096h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: g-E00000
+  category: g
+  title: PCROBOTS v1.41 - "SWAPTASK" - END CURRENT ROBOT'S TURN
+  source: INTERRUP.R:3695
+  interrupt: E0
+  flags: []
+  function: '0000'
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 0000h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - nothing
+  program: 'PCROBOTS is P.D. Smith''s adaptation of Tom Poindexter''s CROBOTS, in
+
+    which specially-written .COM or .EXE programs form robots battling
+
+    each other in a user-defined arena'
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: g-E00001
+  category: g
+  title: PCROBOTS v1.41 - "MOVEMENT" - START MOVING
+  source: INTERRUP.R:3702
+  interrupt: E0
+  flags: []
+  function: '0001'
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 0001h
+    table_refs: []
+    sub_values: []
+  - reg: BX
+    operator: '='
+    description: speed (0-maximum for robot)
+    table_refs: []
+    sub_values: []
+  - reg: CX
+    operator: '='
+    description: direction (0-359 degrees)
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - nothing
+  notes:
+  - 'the speed will change to the specified value at the maximum
+
+    acceleration the robot is capable of; if the robot is already moving
+
+    faster than its maximum maneuverability speed, it will not be able
+
+    to change direction
+
+    this call also terminates the current robot''s turn'
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 0000h
+  - type: interrupt
+    params:
+      AX: 0002h
+  - type: interrupt
+    params:
+      AX: 0003h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: g-E00002
+  category: g
+  title: PCROBOTS v1.41 - "SCAN" - SCAN FOR OTHER ROBOTS IN THE GIVEN DIRECTION
+  source: INTERRUP.R:3714
+  interrupt: E0
+  flags: []
+  function: '0002'
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 0002h
+    table_refs: []
+    sub_values: []
+  - reg: BX
+    operator: '='
+    description: direction (0-359 degrees)
+    table_refs: []
+    sub_values: []
+  - reg: CX
+    operator: '='
+    description: resolution (0-45 degrees)
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AX
+      operator: '='
+      description: status
+      table_refs: []
+      sub_values: []
+    - reg: BX
+      operator: '='
+      description: range to detected robot
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes:
+  - 'the scan searches within CX degrees to either side of the specified
+
+    direction
+
+    the scanner will see right through walls, but shells will not pass
+
+    through walls
+
+    this call also terminates the current robot''s turn'
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 0000h
+  - type: interrupt
+    params:
+      AX: 0001h
+  - type: interrupt
+    params:
+      AX: 0003h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: g-E00003
+  category: g
+  title: PCROBOTS v1.41 - "SHOOT" - FIRE A SHELL AT ANOTHER ROBOT
+  source: INTERRUP.R:3729
+  interrupt: E0
+  flags: []
+  function: '0003'
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 0003h
+    table_refs: []
+    sub_values: []
+  - reg: BX
+    operator: '='
+    description: direction (0-359 degrees)
+    table_refs: []
+    sub_values: []
+  - reg: CX
+    operator: '='
+    description: range (0-700)
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AX
+      operator: '='
+      description: status (0000h not fired, else ID of shell fired)
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes:
+  - 'up to seven shells may be in flight for a robot at one time; the cannon
+
+    takes 50 ticks to reload
+
+    this call also terminates the current robot''s turn'
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 0000h
+  - type: interrupt
+    params:
+      AX: 0001h
+  - type: interrupt
+    params:
+      AX: 0002h
+  - type: interrupt
+    params:
+      AX: 002Ch
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: g-E00010
+  category: g
+  title: PCROBOTS v1.41 - "GETXY" - GET ROBOT'S CURRENT POSITION
+  source: INTERRUP.R:3739
+  interrupt: E0
+  flags: []
+  function: '0010'
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 0010h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: BX
+      operator: '='
+      description: current X coordinate (0-999)
+      table_refs: []
+      sub_values: []
+    - reg: CX
+      operator: '='
+      description: current Y coordinate (0-999)
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: g-E00011
+  category: g
+  title: PCROBOTS v1.41 - "TRANSMIT" - SEND DATA TO ANOTHER ROBOT
+  source: INTERRUP.R:3744
+  interrupt: E0
+  flags: []
+  function: '0011'
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 0011h
+    table_refs: []
+    sub_values: []
+  - reg: BX
+    operator: '='
+    description: target robot ID
+    table_refs: []
+    sub_values: []
+  - reg: CX
+    operator: '='
+    description: data to be sent
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AX
+      operator: '='
+      description: status (0000h data could not be sent, 0001h data sent)
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes:
+  - this call costs one unit of battery power
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: g-E00012
+  category: g
+  title: PCROBOTS v1.41 - "RECEIVE" - GET DATA FROM OTHER ROBOTS
+  source: INTERRUP.R:3751
+  interrupt: E0
+  flags: []
+  function: '0012'
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 0012h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AX
+      operator: '='
+      description: status
+      table_refs: []
+      sub_values: []
+    - reg: BX
+      operator: '='
+      description: sender's ID
+      table_refs: []
+      sub_values: []
+    - reg: CX
+      operator: '='
+      description: data
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes:
+  - 'each robot has a 20-word receive FIFO; if the FIFO is full, other
+
+    robots will be unable to send more data until some is read'
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: g-E00013
+  category: g
+  title: PCROBOTS v1.41 - "DAMAGE" - DETERMINE HOW MUCH DAMAGE SUSTAINED
+  source: INTERRUP.R:3761
+  interrupt: E0
+  flags: []
+  function: '0013'
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 0013h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: BX
+      operator: '='
+      description: damage status
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes:
+  - 'the initial value depends on configuration, but is typically 100; as
+
+    the robot is damaged, it decreases'
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: g-E00014
+  category: g
+  title: PCROBOTS v1.41 - "SPEED" - DETERMINE HOW FAST ROBOT IS MOVING
+  source: INTERRUP.R:3767
+  interrupt: E0
+  flags: []
+  function: '0014'
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 0014h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: BX
+      operator: '='
+      description: current speed
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: g-E00015
+  category: g
+  title: PCROBOTS v1.41 - "BATTERY" - DETERMINE HOW MUCH BATTERY POWER LEFT
+  source: INTERRUP.R:3771
+  interrupt: E0
+  flags: []
+  function: '0015'
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 0015h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: BX
+      operator: '='
+      description: current battery charge
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes:
+  - 'the battery starts off with 1000 units of charge, and is constantly
+
+    being charged by solar panels and constantly discharged by motion;
+
+    the battery is charged at 4 units per turn and discharged at
+
+    0.1*speed units per turn.'
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: g-E00016
+  category: g
+  title: PCROBOTS v1.41 - "TICKS" - DETERMINE HOW LONG SINCE GAME STARTED
+  source: INTERRUP.R:3779
+  interrupt: E0
+  flags: []
+  function: '0016'
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 0016h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: BX:CX
+      operator: '='
+      description: number of game ticks elapsed (not related to real time)
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: g-E00017
+  category: g
+  title: PCROBOTS v1.41 - "L_SIN" - GET SCALED SINE OF AN ANGLE
+  source: INTERRUP.R:3783
+  interrupt: E0
+  flags: []
+  function: '0017'
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 0017h
+    table_refs: []
+    sub_values: []
+  - reg: BX
+    operator: '='
+    description: angle (0-359 degrees)
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: BX:CX
+      operator: '='
+      description: 100000*sine of angle
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 0018h
+  - type: interrupt
+    params:
+      AX: 0019h
+  - type: interrupt
+    params:
+      AX: 001Ah
+  - type: interrupt
+    params:
+      AX: 001Bh
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: g-E00018
+  category: g
+  title: PCROBOTS v1.41 - "L_COS" - GET SCALED COSINE OF AN ANGLE
+  source: INTERRUP.R:3789
+  interrupt: E0
+  flags: []
+  function: 0018
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 0018h
+    table_refs: []
+    sub_values: []
+  - reg: BX
+    operator: '='
+    description: angle (0-359 degrees)
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: BX:CX
+      operator: '='
+      description: 100000*cosine of angle
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 0017h
+  - type: interrupt
+    params:
+      AX: 0019h
+  - type: interrupt
+    params:
+      AX: 001Ah
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: g-E00019
+  category: g
+  title: PCROBOTS v1.41 - "L_TAN" - GET SCALED TANGENT OF AN ANGLE
+  source: INTERRUP.R:3795
+  interrupt: E0
+  flags: []
+  function: 0019
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 0019h
+    table_refs: []
+    sub_values: []
+  - reg: BX
+    operator: '='
+    description: angle (0-359 degrees)
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: BX:CX
+      operator: '='
+      description: 100000*tangent of angle
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 0017h
+  - type: interrupt
+    params:
+      AX: 0018h
+  - type: interrupt
+    params:
+      AX: 001Ah
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: g-E0001A
+  category: g
+  title: PCROBOTS v1.41 - "L_ATAN" - GET ANGLE GIVEN SCALED TANGENT
+  source: INTERRUP.R:3801
+  interrupt: E0
+  flags: []
+  function: 001A
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 001Ah
+    table_refs: []
+    sub_values: []
+  - reg: BX:CX
+    operator: '='
+    description: 100000*tangent of an angle
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AX
+      operator: '='
+      description: angle (-90 to +90 degrees)
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 0017h
+  - type: interrupt
+    params:
+      AX: 0018h
+  - type: interrupt
+    params:
+      AX: 0019h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: g-E0001B
+  category: g
+  title: PCROBOTS v1.41 - "SQRT" - DETERMINE SQUARE ROOT OF A NUMBER
+  source: INTERRUP.R:3807
+  interrupt: E0
+  flags: []
+  function: 001B
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 001Bh
+    table_refs: []
+    sub_values: []
+  - reg: BX:CX
+    operator: '='
+    description: value
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: BX:CX
+      operator: '='
+      description: square root
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 0017h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: g-E0001C
+  category: g
+  title: PCROBOTS v1.41 - "SET_PATTERN" - SPECIFY ROBOT'S DISPLAY IMAGE
+  source: INTERRUP.R:3813
+  interrupt: E0
+  flags: []
+  function: 001C
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 001Ch
+    table_refs: []
+    sub_values: []
+  - reg: BX:CX
+    operator: ->
+    description: pattern array
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - nothing
+  notes:
+  - 'the pattern array consists of five bytes, the low five bits of each
+
+    specifying the bit pattern for one line of the robot''s screen display'
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: g-E0001D
+  category: g
+  title: PCROBOTS v1.41 - "DEBUG_FLAG" - SET/CLEAR MARKERS NEXT TO ROBOT'S NAME
+  source: INTERRUP.R:3820
+  interrupt: E0
+  flags: []
+  function: 001D
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 001Dh
+    table_refs: []
+    sub_values: []
+  - reg: BX
+    operator: '='
+    description: flag number (0 or 1)
+    table_refs: []
+    sub_values: []
+  - reg: CX
+    operator: '='
+    description: new value (0 reset, 1 set)
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - nothing
+  program: 'PCROBOTS is P.D. Smith''s adaptation of Tom Poindexter''s CROBOTS, in
+
+    which specially-written .COM or .EXE programs form robots battling
+
+    each other in a user-defined arena'
+  notes:
+  - 'the two flag markers may be used for any purpose, typically for
+
+    debugging to provide a visual display of progress'
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: g-E0001E
+  category: g
+  title: PCROBOTS v1.41 - "BUY_ARMOUR" - BUY OR SELL ARMOR FOR ROBOT
+  source: INTERRUP.R:3831
+  interrupt: E0
+  flags: []
+  function: 001E
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 001Eh
+    table_refs: []
+    sub_values: []
+  - reg: BX
+    operator: '='
+    description: number of armor units to buy (negative to sell)
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - nothing
+  notes:
+  - 'each armor unit is worth 50 battery units; the robot''s armor rating
+
+    will not go above its initial rating, so attempts to purchase more
+
+    will waste battery units'
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 001Fh
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: g-E0001F
+  category: g
+  title: PCROBOTS v1.41 - "BUY_SHELLS" - BUY ADDITIONAL CANNON SHELLS
+  source: INTERRUP.R:3840
+  interrupt: E0
+  flags: []
+  function: 001F
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 001Fh
+    table_refs: []
+    sub_values: []
+  - reg: BX
+    operator: '='
+    description: number of shells to buy
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - nothing
+  notes:
+  - each shell costs ten battery units
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 001Eh
+  - type: interrupt
+    params:
+      AX: 0020h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: g-E00020
+  category: g
+  title: PCROBOTS v1.41 - "SHELLS LEFT" - DETERMINE HOW MANY SHELLS ROBOT HAS
+  source: INTERRUP.R:3847
+  interrupt: E0
+  flags: []
+  function: '0020'
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 0020h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: BX
+      operator: '='
+      description: number of shells remaining
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 001Fh
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: g-E00021
+  category: g
+  title: PCROBOTS v1.41 - "GET LOCAL MAP"
+  source: INTERRUP.R:3852
+  interrupt: E0
+  flags: []
+  function: '0021'
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 0021h
+    table_refs: []
+    sub_values: []
+  - reg: BX:CX
+    operator: ->
+    description: '81-byte buffer for map (see #04060)'
+    table_refs:
+    - '04060'
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - buffer filled with 9x9 area of map centered on robot's position
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables:
+  - '04060'
+  table_refs: []
+- entry_type: INT
+  id: g-E00022
+  category: g
+  title: PCROBOTS v1.41 - "INVISIBILITY" - CONTROL ROBOT'S INVISIBILITY DEVICE
+  source: INTERRUP.R:3864
+  interrupt: E0
+  flags: []
+  function: '0022'
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 0022h
+    table_refs: []
+    sub_values: []
+  - reg: BX
+    operator: '='
+    description: new state (0000h become visible, 0001h become invisible)
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - nothing
+  notes:
+  - 'this function has no effect if the robot is not capable of invisibility
+
+    the robot can only stay invisible for 100 turns, after which it will
+
+    automatically become visible; it must also be remain visible for
+
+    as many turns as it was invisible before it can turn invisible
+
+    again'
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 0024h
+  - type: interrupt
+    params:
+      AX: 0080h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: g-E00023
+  category: g
+  title: PCROBOTS v1.41 - "GET_SHELL_STATUS" - FIND OUT WHAT HAPPENED TO SHELL
+  source: INTERRUP.R:3875
+  interrupt: E0
+  flags: []
+  function: '0023'
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 0023h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: BX
+      operator: '='
+      description: status of last shell to land
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: g-E00024
+  category: g
+  title: PCROBOTS v1.41 - "IS_INVISIBLE" - DETERMINE WHETHER ROBOT IS INVISIBLE
+  source: INTERRUP.R:3884
+  interrupt: E0
+  flags: []
+  function: '0024'
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 0024h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: BX
+      operator: '='
+      description: visibility (0000h visible, 0001h invisible)
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 0022h
+  - type: interrupt
+    params:
+      AX: 0080h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: g-E00025
+  category: g
+  title: PCROBOTS v1.41 - "L_ATAN2" - GET ARCTANGENT
+  source: INTERRUP.R:3889
+  interrupt: E0
+  flags: []
+  function: '0025'
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 0025h
+    table_refs: []
+    sub_values: []
+  - reg: BX
+    operator: '='
+    description: Y
+    table_refs: []
+    sub_values: []
+  - reg: CX
+    operator: '='
+    description: X
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AX
+      operator: '='
+      description: angle (arctangent of Y/X)
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: g-E00026
+  category: g
+  title: PCROBOTS v1.41 - "GET_ROBOT_ID" - DETERMINE CURRENT ROBOT'S IDENTIFIER
+  source: INTERRUP.R:3895
+  interrupt: E0
+  flags: []
+  function: '0026'
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 0026h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AX
+      operator: '='
+      description: robot ID
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: g-E00027
+  category: g
+  title: PCROBOTS v1.41 - "REGISTER_IFF" - REGISTER FRIEND/FOE IDENT STRING
+  source: INTERRUP.R:3899
+  interrupt: E0
+  flags: []
+  function: '0027'
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 0027h
+    table_refs: []
+    sub_values: []
+  - reg: BX:CX
+    operator: '='
+    description: ASCIZ IFF string
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - nothing
+  notes:
+  - the IFF string may only be set once
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 0028h
+  - type: interrupt
+    params:
+      AX: 0029h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: g-E00028
+  category: g
+  title: PCROBOTS v1.41 - "CHECK_IFF" - QUERY FRIEND/FOE IDENTIFICATION STRING
+  source: INTERRUP.R:3906
+  interrupt: E0
+  flags: []
+  function: 0028
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 0028h
+    table_refs: []
+    sub_values: []
+  - reg: BX
+    operator: '='
+    description: robot ID to test
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AX
+      operator: '='
+      description: status
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 0027h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: g-E00029
+  category: g
+  title: PCROBOTS v1.41 - "REGISTER_NAME" - SPECIFY ROBOT'S NAME
+  source: INTERRUP.R:3914
+  interrupt: E0
+  flags: []
+  function: 0029
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 0029h
+    table_refs: []
+    sub_values: []
+  - reg: BX:CX
+    operator: ->
+    description: ASCIZ name string
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - nothing
+  notes:
+  - the name may only be set once
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 0027h
+  - type: interrupt
+    params:
+      AX: 002Ah
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: g-E0002A
+  category: g
+  title: PCROBOTS v1.41 - "FIND_NAME" - SEARCH FOR ROBOT WITH GIVEN NAME
+  source: INTERRUP.R:3921
+  interrupt: E0
+  flags: []
+  function: 002A
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 002Ah
+    table_refs: []
+    sub_values: []
+  - reg: BX:CX
+    operator: ->
+    description: ASCIZ name string
+    table_refs: []
+    sub_values: []
+  - reg: DX
+    operator: '='
+    description: first ID to check
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AX
+      operator: '='
+      description: robot ID or FFFFh if no robot with specified name
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 0028h
+  - type: interrupt
+    params:
+      AX: 0029h
+  - type: interrupt
+    params:
+      AX: 002Bh
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: g-E0002B
+  category: g
+  title: PCROBOTS v1.41 - "GET_TEAM_ID" - DETERMINE TEAM MEMBERSHIP OF ROBOT
+  source: INTERRUP.R:3928
+  interrupt: E0
+  flags: []
+  function: 002B
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 002Bh
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AX
+      operator: '='
+      description: team ID (0-2) or FFFFh if 'loner'
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 0029h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: g-E0002C
+  category: g
+  title: PCROBOTS v1.41 - "GET_ASHELL_STATUS" - FIND OUT WHAT HAPPENED TO SHELL
+  source: INTERRUP.R:3933
+  interrupt: E0
+  flags: []
+  function: 002C
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 002Ch
+    table_refs: []
+    sub_values: []
+  - reg: BX
+    operator: '='
+    description: shell ID
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AX
+      operator: '='
+      description: status
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 0003h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: g-E0002D
+  category: g
+  title: PCROBOTS v1.41 - "REGISTER_X" - SELECT AUTOMATIC X POSITION UPDATES
+  source: INTERRUP.R:3946
+  interrupt: E0
+  flags: []
+  function: 002D
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 002Dh
+    table_refs: []
+    sub_values: []
+  - reg: BX:CX
+    operator: ->
+    description: X word variable
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AX
+      operator: '='
+      description: status (0001h OK, 0000h problem with address)
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes:
+  - 'after this call, PCROBOTS will automatically update the specified
+
+    word whenever the robot moves'
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 002Eh
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: g-E0002E
+  category: g
+  title: PCROBOTS v1.41 - "REGISTER_Y" - SELECT AUTOMATIC Y POSITION UPDATES
+  source: INTERRUP.R:3954
+  interrupt: E0
+  flags: []
+  function: 002E
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 002Eh
+    table_refs: []
+    sub_values: []
+  - reg: BX:CX
+    operator: ->
+    description: Y word variable
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AX
+      operator: '='
+      description: status (0001h OK, 0000h problem with address)
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes:
+  - 'after this call, PCROBOTS will automatically update the specified
+
+    word whenever the robot moves'
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 002Dh
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: g-E00080
+  category: g
+  title: PCROBOTS v1.41 - "CONFIGURE" - CUSTOMIZE ROBOT
+  source: INTERRUP.R:3962
+  interrupt: E0
+  flags: []
+  function: 0080
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 0080h
+    table_refs: []
+    sub_values: []
+  - reg: BX
+    operator: '='
+    description: 'basic configuration (see #04061)'
+    table_refs:
+    - '04061'
+    sub_values: []
+  - reg: CX
+    operator: '='
+    description: 'advanced configuration (see #04062)'
+    table_refs:
+    - '04062'
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AX
+      operator: '='
+      description: status (0001h OK, 0000h not first call in program)
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  program: 'PCROBOTS is P.D. Smith''s adaptation of Tom Poindexter''s CROBOTS, in
+
+    which specially-written .COM or .EXE programs form robots battling
+
+    each other in a user-defined arena'
+  notes:
+  - 'a maximum of ten points may be allocated to the robot; if you attempt
+
+    to allocate more, some items will be given a value of zero.  If this
+
+    function is not called, each attribute is set to the default value
+
+    of 2.
+
+    if the invisibility option is chosen, the robot will start with only
+
+    900 cannon shells instead of the default 1000'
+  bugs: []
+  see_also: []
+  index: []
+  tables:
+  - '04061'
+  - '04062'
+  table_refs: []

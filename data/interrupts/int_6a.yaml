@@ -1,0 +1,1005 @@
+file_type: interrupt
+key: 6A
+entries:
+- entry_type: INT
+  id: U-6A
+  category: U
+  title: OPTHELP.COM
+  source: INTERRUP.P:8863
+  interrupt: 6A
+  flags: []
+  input_registers: []
+  returns: []
+  program: 'OPTHELP is an optionally-resident help system for SLR Systems''s OPTASM
+
+    assembler'
+  notes: []
+  bugs: []
+  see_also: []
+  range: INT 60h to INT 7Fh, selected by configuration
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: N-6A
+  category: N
+  title: DECnet DOS - LOCAL AREA TRANSPORT PROGRAM - INSTALLATION CHECK
+  source: INTERRUP.P:8868
+  interrupt: 6A
+  flags: []
+  input_registers: []
+  returns: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 01h
+      DH: FFh
+  - type: interrupt
+    interrupt: 6B
+    params: {}
+    name: DECnet
+  - type: interrupt
+    interrupt: 6D
+    params: {}
+    name: DECnet
+  install_check: 'test for a signature area immediately preceding the interrupt
+
+    handler (see #03715)'
+  index:
+  - installation check;DECnet DOS Local Area Transport
+  tables:
+  - '03715'
+  table_refs:
+  - '03715'
+- entry_type: INT
+  id: h-6A
+  category: h
+  title: HP Vectra AT - IRQ18 - RESERVED HARDWARE INTERRUPT
+  source: INTERRUP.P:8880
+  interrupt: 6A
+  flags:
+  - C
+  input_registers: []
+  returns: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: 0A
+    params: {}
+    name: IRQ2
+  - type: interrupt
+    interrupt: '69'
+    params: {}
+    name: HP Vectra
+  - type: interrupt
+    interrupt: 6B
+    params: {}
+    name: HP Vectra
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: N-6A0000
+  category: N
+  title: Super-TCP DOS TSR Kernel v3.57 - INSTALLATION CHECK
+  source: INTERRUP.P:8883
+  interrupt: 6A
+  flags:
+  - U
+  function: '0000'
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 0000h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AX
+      operator: '='
+      value: 4357h
+      description: ('CW')
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  program: Super-TCP is a TCP/IP protocol stack by Frontier Technologies Corp.
+  notes:
+  - 'an alternate installation check is to test for the ASCIZ signature
+
+    "FTC Super-TCP" three bytes past the interrupt handler'
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 0001h
+  - type: interrupt
+    params:
+      AX: 0002h
+  - type: interrupt
+    params:
+      AX: 000Fh
+  - type: interrupt
+    params:
+      AX: 0010h
+  - type: interrupt
+    interrupt: '21'
+    params:
+      AH: 3Fh
+    name: BW-TCP
+  - type: interrupt
+    interrupt: '61'
+    params: {}
+    name: FTP Software
+  - type: interrupt
+    interrupt: '62'
+    params:
+      AH: 00h
+    name: ETHDEV
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: N-6A0001
+  category: N
+  title: Super-TCP DOS TSR Kernel v3.57 - ???
+  source: INTERRUP.P:8892
+  interrupt: 6A
+  flags:
+  - U
+  function: '0001'
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 0001h
+    table_refs: []
+    sub_values: []
+  - reg: BH
+    operator: '='
+    description: function number
+    table_refs: []
+    sub_values:
+    - value: 01h
+      description: ???
+      sub_values: []
+  - reg: DS:SI
+    operator: ->
+    description: '??? 24-byte record1 (see #03717)'
+    table_refs:
+    - '03717'
+    sub_values: []
+  - reg: ES:DI
+    operator: ->
+    description: buffer containing ???
+    table_refs: []
+    sub_values: []
+  - reg: DS:SI
+    operator: ->
+    description: '??? 18-byte record2 (see #03718)'
+    table_refs:
+    - 03718
+    sub_values: []
+  - reg: ES:DI
+    operator: ->
+    description: buffer containing ???
+    table_refs: []
+    sub_values: []
+  - reg: BL
+    operator: '='
+    description: subfunction
+    table_refs: []
+    sub_values: []
+  - reg: DS:SI
+    operator: ->
+    description: '??? 28-byte record3 (see #03719)'
+    table_refs:
+    - 03719
+    sub_values: []
+  - reg: ES:DI
+    operator: ->
+    description: buffer containing ???
+    table_refs: []
+    sub_values: []
+  - reg: DS:SI
+    operator: ->
+    description: '??? 28-byte record3 (see #03719)'
+    table_refs:
+    - 03719
+    sub_values: []
+  - reg: ES:DI
+    operator: ->
+    description: buffer containing ???
+    table_refs: []
+    sub_values: []
+  - reg: DS:SI
+    operator: ->
+    description: '??? 28-byte record3 (see #03719)'
+    table_refs:
+    - 03719
+    sub_values: []
+  - reg: DS:SI
+    operator: ->
+    description: '??? 20-byte record4 (see #03720)'
+    table_refs:
+    - '03720'
+    sub_values: []
+  - reg: ES:DI
+    operator: ->
+    description: buffer containing ???
+    table_refs: []
+    sub_values: []
+  - reg: BL
+    operator: '='
+    description: subfunction
+    table_refs: []
+    sub_values: []
+  - reg: DS:SI
+    operator: ->
+    description: '??? 40-byte record5 (see #03721)'
+    table_refs:
+    - '03721'
+    sub_values: []
+  - reg: DS:SI
+    operator: ->
+    description: '??? 20-byte record6 (see #03722)'
+    table_refs:
+    - '03722'
+    sub_values: []
+  - reg: ES:DI
+    operator: ->
+    description: ???
+    table_refs: []
+    sub_values: []
+  - reg: DS:SI
+    operator: ->
+    description: '??? 20-byte record6 (see #03722)'
+    table_refs:
+    - '03722'
+    sub_values: []
+  - reg: DS:SI
+    operator: ->
+    description: '??? 46-byte record7 (see #03723)'
+    table_refs:
+    - '03723'
+    sub_values: []
+  - reg: DS:SI
+    operator: ->
+    description: '??? 28-byte record8 (see #03724)'
+    table_refs:
+    - '03724'
+    sub_values: []
+  - reg: ES:DI
+    operator: ->
+    description: ???
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AX
+      operator: '='
+      description: 'function status (see #03716)'
+      table_refs:
+      - '03716'
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 0000h
+  index: []
+  tables:
+  - '03716'
+  - '03717'
+  - 03718
+  - 03719
+  - '03720'
+  - '03721'
+  - '03722'
+  - '03723'
+  - '03724'
+  table_refs: []
+- entry_type: INT
+  id: N-6A0002
+  category: N
+  title: Super-TCP DOS TSR Kernel v3.57 - ???
+  source: INTERRUP.P:9002
+  interrupt: 6A
+  flags:
+  - U
+  function: '0002'
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 0002h
+    table_refs: []
+    sub_values: []
+  - reg: BX
+    operator: '='
+    description: ??? (zero/nonzero)
+    table_refs: []
+    sub_values: []
+  - reg: CX
+    operator: '='
+    description: ??? identifier (see AX=0004h)
+    table_refs: []
+    sub_values: []
+  - reg: DS:SI
+    operator: ->
+    description: 40-byte buffer for ??? or 0000h:0000h
+    table_refs: []
+    sub_values: []
+  - reg: ES:DI
+    operator: ->
+    description: buffer for ??? or 0000h:0000h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AX
+      operator: '='
+      value: 0000h
+      description: (successful) ???
+      table_refs: []
+      sub_values: []
+    - reg: BL
+      operator: '='
+      description: ???
+      table_refs: []
+      sub_values: []
+    - reg: BH
+      operator: '='
+      description: ???
+      table_refs: []
+      sub_values: []
+    - reg: CX
+      operator: '='
+      description: ???
+      table_refs: []
+      sub_values: []
+    - reg: DX
+      operator: '='
+      description: ???
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: N-6A0003
+  category: N
+  title: Super-TCP DOS TSR Kernel v3.57 - GET ??? DATA AREA
+  source: INTERRUP.P:9014
+  interrupt: 6A
+  flags:
+  - U
+  function: '0003'
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 0003h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: CX:DX
+      operator: ->
+      description: 'data area (see #03725)'
+      table_refs:
+      - '03725'
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables:
+  - '03725'
+  table_refs: []
+- entry_type: INT
+  id: N-6A0004
+  category: N
+  title: Super-TCP DOS TSR Kernel v3.57 - ALLOCATE ???
+  source: INTERRUP.P:9028
+  interrupt: 6A
+  flags:
+  - U
+  function: '0004'
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 0004h
+    table_refs: []
+    sub_values: []
+  - reg: CX
+    operator: '='
+    description: size in ???
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AX
+      operator: '='
+      value: 0000h
+      description: (successful)
+      table_refs: []
+      sub_values: []
+    - reg: CX
+      operator: '='
+      description: DX = ???
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 0005h
+  - type: interrupt
+    params:
+      AX: 000Fh
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: N-6A0005
+  category: N
+  title: Super-TCP DOS TSR Kernel v3.57 - FREE/CLOSE ???
+  source: INTERRUP.P:9035
+  interrupt: 6A
+  flags:
+  - U
+  function: '0005'
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 0005h
+    table_refs: []
+    sub_values: []
+  - reg: CX
+    operator: '='
+    description: ??? identifier (from AX=0004h)
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AX
+      operator: '='
+      description: status (0000h successful, FFFFh failed)
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 0004h
+  - type: interrupt
+    params:
+      AX: 000Fh
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: N-6A000F
+  category: N
+  title: Super-TCP DOS TSR Kernel v3.57 - FREE/CLOSE ALL ???
+  source: INTERRUP.P:9041
+  interrupt: 6A
+  flags:
+  - U
+  function: 000F
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 000Fh
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AX
+      operator: '='
+      value: 0000h
+      description: (successful)
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 0000h
+  - type: interrupt
+    params:
+      AX: 0004h
+  - type: interrupt
+    params:
+      AX: 0005h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: N-6A0010
+  category: N
+  title: Super-TCP DOS TSR Kernel v3.57 - UNINSTALL
+  source: INTERRUP.P:9046
+  interrupt: 6A
+  flags:
+  - U
+  function: '0010'
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 0010h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AX
+      operator: '='
+      description: status
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  program: Super-TCP is a TCP/IP protocol stack by Frontier Technologies Corp.
+  notes:
+  - 'if AX is not one of the values listed here on entry, Super-TCP
+
+    returns AX=FFFEh'
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 0000h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: N-6A01DHFF
+  category: N
+  title: DECnet DOS LOCAL AREA TRANSPORT - SEND BYTE
+  source: INTERRUP.P:9056
+  interrupt: 6A
+  flags: []
+  function: 01DHFF
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 01h
+    table_refs: []
+    sub_values: []
+  - reg: DH
+    operator: '='
+    value: FFh
+    table_refs: []
+    sub_values: []
+  - reg: AL
+    operator: '='
+    description: character
+    table_refs: []
+    sub_values: []
+  - reg: DL
+    operator: '='
+    description: handle
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - AH >= 80h on error
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 02h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: N-6A02DHFF
+  category: N
+  title: DECnet DOS LOCAL AREA TRANSPORT - READ BYTE
+  source: INTERRUP.P:9064
+  interrupt: 6A
+  flags: []
+  function: 02DHFF
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 02h
+    table_refs: []
+    sub_values: []
+  - reg: DH
+    operator: '='
+    value: FFh
+    table_refs: []
+    sub_values: []
+  - reg: DL
+    operator: '='
+    description: handle
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AL
+      operator: '='
+      description: character
+      table_refs: []
+      sub_values: []
+    raw_lines:
+    - AH < 80h if successful
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 01h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: N-6A03DHFF
+  category: N
+  title: DECnet DOS LOCAL AREA TRANSPORT - STATUS
+  source: INTERRUP.P:9073
+  interrupt: 6A
+  flags: []
+  function: 03DHFF
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 03h
+    table_refs: []
+    sub_values: []
+  - reg: DH
+    operator: '='
+    value: FFh
+    table_refs: []
+    sub_values: []
+  - reg: DL
+    operator: '='
+    description: handle
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AH
+      operator: '='
+      description: 'status flags (see #03726)'
+      table_refs:
+      - '03726'
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables:
+  - '03726'
+  table_refs: []
+- entry_type: INT
+  id: N-6AD0DHFF
+  category: N
+  title: DECnet DOS LOCAL AREA TRANSPORT - OPEN SESSION
+  source: INTERRUP.P:9087
+  interrupt: 6A
+  flags: []
+  function: D0DHFF
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: D0h
+    table_refs: []
+    sub_values: []
+  - reg: DH
+    operator: '='
+    value: FFh
+    table_refs: []
+    sub_values: []
+  - reg: AL
+    operator: '='
+    description: password flag
+    table_refs: []
+    sub_values:
+    - value: FFh
+      description: no password
+      sub_values: []
+    - value: 0Fh
+      description: password at ES:DI
+      sub_values: []
+  - reg: ES:BX
+    operator: ->
+    description: 'LAT session control block (see #03727)'
+    table_refs:
+    - '03727'
+    sub_values: []
+  - reg: ES:DI
+    operator: ->
+    description: 16-byte blank-padded password (optional)
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AH
+      operator: '='
+      value: 00h
+      description: success
+      table_refs: []
+      sub_values: []
+    - reg: DL
+      operator: '='
+      description: handle
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: D000h
+  index: []
+  tables:
+  - '03727'
+  table_refs: []
+- entry_type: INT
+  id: N-6AD000DHFF
+  category: N
+  title: DECnet DOS LOCAL AREA TRANSPORT - CLOSE SESSION
+  source: INTERRUP.P:9150
+  interrupt: 6A
+  flags: []
+  function: D000DHFF
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: D000h
+    table_refs: []
+    sub_values: []
+  - reg: DH
+    operator: '='
+    value: FFh
+    table_refs: []
+    sub_values: []
+  - reg: DL
+    operator: '='
+    description: handle
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AX
+      operator: '='
+      description: 'status (see #03728)'
+      table_refs:
+      - 03728
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: D0h
+  index: []
+  tables:
+  - 03728
+  table_refs: []
+- entry_type: INT
+  id: N-6AD100DHFF
+  category: N
+  title: DECnet DOS LOCAL AREA TRANSPORT - SEND BREAK
+  source: INTERRUP.P:9163
+  interrupt: 6A
+  flags: []
+  function: D100DHFF
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: D100h
+    table_refs: []
+    sub_values: []
+  - reg: DH
+    operator: '='
+    value: FFh
+    table_refs: []
+    sub_values: []
+  - reg: DL
+    operator: '='
+    description: handle
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AX
+      operator: '='
+      value: 0000h
+      description: if successful
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: N-6AD300DHFF
+  category: N
+  title: DECnet DOS LOCAL AREA TRANSPORT - RESET LAT COUNTERS
+  source: INTERRUP.P:9170
+  interrupt: 6A
+  flags: []
+  function: D300DHFF
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: D300h
+    table_refs: []
+    sub_values: []
+  - reg: DH
+    operator: '='
+    value: FFh
+    table_refs: []
+    sub_values: []
+  returns: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: D400h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: N-6AD400DHFF
+  category: N
+  title: DECnet DOS LOCAL AREA TRANSPORT - COPY LAT COUNTERS
+  source: INTERRUP.P:9175
+  interrupt: 6A
+  flags: []
+  function: D400DHFF
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: D400h
+    table_refs: []
+    sub_values: []
+  - reg: DH
+    operator: '='
+    value: FFh
+    table_refs: []
+    sub_values: []
+  - reg: CX
+    operator: '='
+    description: buffer size
+    table_refs: []
+    sub_values: []
+  - reg: ES:BX
+    operator: ->
+    description: buffer for LAT counters
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AX
+      operator: '='
+      description: status
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: D300h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: N-6AD500DHFF
+  category: N
+  title: DECnet DOS LOCAL AREA TRANSPORT - GET NEXT LAT SERVICE NAME
+  source: INTERRUP.P:9185
+  interrupt: 6A
+  flags: []
+  function: D500DHFF
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: D500h
+    table_refs: []
+    sub_values: []
+  - reg: DH
+    operator: '='
+    value: FFh
+    table_refs: []
+    sub_values: []
+  - reg: ES:BX
+    operator: ->
+    description: 17-byte buffer for name
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AH
+      operator: '='
+      value: 00h
+      description: if successful
+      table_refs: []
+      sub_values: []
+    - reg: AX
+      operator: '='
+      value: FFFFh
+      description: if end of table or no name available
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes:
+  - 'use this function to get the names of the hosts on the network
+
+    successive calls are necessary to get all names'
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: D600h
+      DH: FFh
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: N-6AD600DHFF
+  category: N
+  title: DECnet DOS LOCAL AREA TRANSPORT - LAT SERVICE TABLE RESET
+  source: INTERRUP.P:9196
+  interrupt: 6A
+  flags: []
+  function: D600DHFF
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: D600h
+    table_refs: []
+    sub_values: []
+  - reg: DH
+    operator: '='
+    value: FFh
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AX
+      operator: '='
+      description: number of service table entries
+      table_refs: []
+      sub_values: []
+    - reg: BX
+      operator: '='
+      description: status
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: D500h
+  index: []
+  tables: []
+  table_refs: []

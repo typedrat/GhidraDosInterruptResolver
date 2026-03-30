@@ -1,0 +1,48 @@
+file_type: interrupt
+key: '24'
+entries:
+- entry_type: INT
+  id: D-24
+  category: D
+  title: DOS 1+ - CRITICAL ERROR HANDLER
+  source: INTERRUP.J:8913
+  interrupt: '24'
+  flags:
+  - C
+  input_registers: []
+  returns: []
+  notes:
+  - 'invoked when a critical (usually hardware) error is encountered by DOS
+
+    (see #02543); should never be called directly
+
+    when DOS terminates a program, it copies the previous value of the
+
+    INT 24 vector out of the PSP (see #01378) and into the interrupt
+
+    vector table'
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: '21'
+    params:
+      AH: 95h
+  - type: interrupt
+    interrupt: '21'
+    params:
+      AH: 59h
+      BX: 0000h
+  - type: interrupt
+    interrupt: '21'
+    params:
+      AH: 92h
+    name: PTS-DOS
+  index: []
+  tables:
+  - '02543'
+  - '02544'
+  - '02545'
+  - '02546'
+  table_refs:
+  - 01378
+  - '02543'

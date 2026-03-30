@@ -1,0 +1,1225 @@
+file_type: interrupt
+key: '18'
+entries:
+- entry_type: INT
+  id: B-18
+  category: B
+  title: DISKLESS BOOT HOOK (START CASSETTE BASIC)
+  source: INTERRUP.D:5286
+  interrupt: '18'
+  flags: []
+  input_registers: []
+  returns: []
+  description: called when there is no bootable disk available to the system
+  notes:
+  - 'very few PCs other than those produced by IBM contain BASIC in ROM, so
+
+    the action is unpredictable on compatibles; this interrupt often
+
+    reboots the system, and often has no effect at all
+
+    some PC and XT clones had an optional IBM CASSETTE BASIC stored
+
+    in the ROM, too.
+
+    most BIOSes will display an error message similar to "NO BASIC", and
+
+    either reboot or return to the caller.
+
+    PS/2 machines usually pop up a graphical box to the effect that
+
+    the user should enter a floppy and press F1.
+
+    Some clones display the message "No boot device available,
+
+    strike F1 to retry, F2 for setup utility"
+
+    network cards with their own BIOS can hook this interrupt to allow
+
+    a diskless boot off the network (even when a hard disk is present
+
+    if none of the partitions is marked as the boot partition)'
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: 2F
+    params:
+      AX: 4A06h
+  - type: interrupt
+    interrupt: '86'
+    params: {}
+    name: NetBIOS
+  - type: interrupt
+    interrupt: 2F
+    params:
+      AX: 4A06h
+  - type: interrupt
+    interrupt: 2F
+    params:
+      AX: 4A07h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: J-1800
+  category: J
+  title: NEC PC-9800 series - KEYBOARD - GET KEYSTROKE
+  source: INTERRUP.D:5304
+  interrupt: '18'
+  flags: []
+  function: '00'
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 00h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AX
+      operator: '='
+      description: keystroke
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 01h
+  - type: interrupt
+    params:
+      AH: 02h
+  - type: interrupt
+    interrupt: '16'
+    params:
+      AH: 00h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: J-1801
+  category: J
+  title: NEC PC-9800 series - KEYBOARD - CHECK FOR KEYSTROKE
+  source: INTERRUP.D:5309
+  interrupt: '18'
+  flags: []
+  function: '01'
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 01h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: BH
+      operator: '='
+      description: status
+      table_refs: []
+      sub_values: []
+    - reg: AX
+      operator: '='
+      description: keystroke
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 00h
+  - type: interrupt
+    params:
+      AH: 02h
+  - type: interrupt
+    interrupt: '16'
+    params:
+      AH: 01h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: J-1802
+  category: J
+  title: NEC PC-9800 series - KEYBOARD - GET SHIFT STATUS
+  source: INTERRUP.D:5317
+  interrupt: '18'
+  flags: []
+  function: '02'
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 02h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AL
+      operator: '='
+      description: shift flags
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 00h
+  - type: interrupt
+    params:
+      AH: 02h
+  - type: interrupt
+    params:
+      AH: 03h
+  - type: interrupt
+    params:
+      AH: 04h
+  - type: interrupt
+    interrupt: '16'
+    params:
+      AH: 02h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: J-1803
+  category: J
+  title: NEC PC-9800 series - KEYBOARD - INITIALIZE
+  source: INTERRUP.D:5322
+  interrupt: '18'
+  flags: []
+  function: '03'
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 03h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 00h
+  - type: interrupt
+    params:
+      AH: 04h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: J-1804
+  category: J
+  title: NEC PC-9800 series - KEYBOARD - KEY PRESSED
+  source: INTERRUP.D:5328
+  interrupt: '18'
+  flags: []
+  function: '04'
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 04h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+  notes:
+  - details are not available at this time
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 00h
+  - type: interrupt
+    params:
+      AH: 02h
+  - type: interrupt
+    interrupt: '16'
+    params:
+      AH: 00h
+  - type: interrupt
+    interrupt: '16'
+    params:
+      AH: 01h
+  - type: interrupt
+    interrupt: '16'
+    params:
+      AH: 02h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: J-18
+  category: J
+  title: NEC PC-9800 series - VIDEO
+  source: INTERRUP.D:5335
+  interrupt: '18'
+  flags: []
+  input_registers:
+  - reg: AH
+    operator: '='
+    description: function
+    table_refs: []
+    sub_values:
+    - value: 0Ah
+      description: set video mode
+      sub_values: []
+    - value: 0Bh
+      description: get video mode
+      sub_values: []
+    - value: 0Ch
+      description: start text screen display
+      sub_values: []
+    - value: 0Dh
+      description: end text screen display
+      sub_values: []
+    - value: 0Eh
+      description: set single display area
+      sub_values: []
+    - value: 0Fh
+      description: set multiple display area
+      sub_values: []
+    - value: 10h
+      description: set cursor shape
+      sub_values: []
+    - value: 11h
+      description: display cursor
+      sub_values: []
+    - value: 12h
+      description: terminate cursor
+      sub_values: []
+    - value: 13h
+      description: set cursor position
+      sub_values: []
+    - value: 14h
+      description: read font patter
+      sub_values: []
+    - value: 16h
+      description: initialize text video RAM
+      sub_values: []
+    - value: 1Ah
+      description: define user character others
+      sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+  notes:
+  - 'details are not available at this time
+
+    text video RAM is located at segments A000h (characters) and A200h
+
+    (attributes), graphics video RAM at segment C000h'
+  bugs: []
+  see_also: []
+  index: []
+  tables:
+  - 00648
+  table_refs: []
+- entry_type: INT
+  id: J-180E
+  category: J
+  title: NEC PC-9800 series - SET SINGLE DISPLAY AREA
+  source: INTERRUP.D:5367
+  interrupt: '18'
+  flags: []
+  function: 0E
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 0Eh
+    table_refs: []
+    sub_values: []
+  - reg: DX
+    operator: '='
+    description: offset of first byte to display???
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 1Bh
+  - type: memory
+    address: 0050h:0001h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: J-181B
+  category: J
+  title: NEC PC-9800 series - SET DISPLAY MODE
+  source: INTERRUP.D:5373
+  interrupt: '18'
+  flags: []
+  function: 1B
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 1Bh
+    table_refs: []
+    sub_values: []
+  - reg: AL
+    operator: '='
+    description: ??? (00h for text mode)
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: r-185350BX4849
+  category: r
+  title: SPHINX C-- - WB.COM - API
+  source: INTERRUP.D:5378
+  interrupt: '18'
+  flags: []
+  function: 5350BX4849
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 5350h
+    description: ('SP')
+    table_refs: []
+    sub_values: []
+  - reg: BX
+    operator: '='
+    value: 4849h
+    description: ('HI')
+    table_refs: []
+    sub_values: []
+  - reg: CX
+    operator: '='
+    value: 4E58h
+    description: ('NX')
+    table_refs: []
+    sub_values: []
+  - reg: DH
+    operator: '='
+    description: function
+    table_refs: []
+    sub_values:
+    - value: 01h
+      description: set ???
+      sub_values: []
+  - reg: DL
+    operator: '='
+    description: ???
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AX
+      operator: '='
+      value: 7370h
+      description: ('sp') if installed
+      table_refs: []
+      sub_values: []
+    - reg: BX
+      operator: '='
+      value: 6869h
+      description: ('hi') if installed
+      table_refs: []
+      sub_values: []
+    - reg: CX
+      operator: '='
+      value: 6E78h
+      description: ('nx') if installed
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  program: 'SPHINX C-- is a shareware compiler by Peter Cellik for a language
+
+    which is a cross between C and assembler; WB.COM is the driver which
+
+    launches the WorkBench'
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: s-186900
+  category: s
+  title: Gravis Ultra Sound YEA_GUS.EXE - GET STATUS
+  source: INTERRUP.D:5397
+  interrupt: '18'
+  flags: []
+  function: '6900'
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 6900h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AX
+      operator: '='
+      description: amount of DRAM on card or 0000h if GUS not available
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  program: 'YEA_GUS is a driver for the Graphics Ultra Sound which hooks INT 18h
+
+    and then shells out the the program requiring its services'
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 6901h
+  - type: interrupt
+    params:
+      AX: 690Ah
+  - type: interrupt
+    params:
+      AX: 690Bh
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: s-186901
+  category: s
+  title: Gravis Ultra Sound YEA_GUS.EXE - RESET
+  source: INTERRUP.D:5404
+  interrupt: '18'
+  flags: []
+  function: '6901'
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 6901h
+    table_refs: []
+    sub_values: []
+  - reg: BX
+    operator: '='
+    description: number of active voices (14-32)
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - nothing
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 6900h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: s-186902
+  category: s
+  title: Gravis Ultra Sound YEA_GUS.EXE - SET VOLUME FOR SPECIFIC VOICE
+  source: INTERRUP.D:5410
+  interrupt: '18'
+  flags: []
+  function: '6902'
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 6902h
+    table_refs: []
+    sub_values: []
+  - reg: BX
+    operator: '='
+    description: voice number (00h-1Fh)
+    table_refs: []
+    sub_values: []
+  - reg: CX
+    operator: '='
+    description: linear volume (0000h-01FFh)
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - nothing
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 6900h
+  - type: interrupt
+    params:
+      AX: 6903h
+  - type: interrupt
+    params:
+      AX: 6904h
+  - type: interrupt
+    params:
+      AX: 6909h
+  - type: interrupt
+    params:
+      AX: 690Ah
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: s-186903
+  category: s
+  title: Gravis Ultra Sound YEA_GUS.EXE - SET FREQUENCY FOR VOICE
+  source: INTERRUP.D:5417
+  interrupt: '18'
+  flags: []
+  function: '6903'
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 6903h
+    table_refs: []
+    sub_values: []
+  - reg: BX
+    operator: '='
+    description: voice number (00h-1Fh)
+    table_refs: []
+    sub_values: []
+  - reg: CX
+    operator: '='
+    description: frequency in Hz (0-44100)
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - nothing
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 6902h
+  - type: interrupt
+    params:
+      AX: 6904h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: s-186904
+  category: s
+  title: Gravis Ultra Sound YEA_GUS.EXE - SET LEFT/RIGHT BALANCE
+  source: INTERRUP.D:5424
+  interrupt: '18'
+  flags: []
+  function: '6904'
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 6904h
+    table_refs: []
+    sub_values: []
+  - reg: BX
+    operator: '='
+    description: voice number (00h-1Fh)
+    table_refs: []
+    sub_values: []
+  - reg: CX
+    operator: '='
+    description: balance (0 = left, 7 = even, 15 = right)
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - nothing
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 6902h
+  - type: interrupt
+    params:
+      AX: 6903h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: s-186905
+  category: s
+  title: Gravis Ultra Sound YEA_GUS.EXE - PLAY MUSIC
+  source: INTERRUP.D:5431
+  interrupt: '18'
+  flags: []
+  function: '6905'
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 6905h
+    table_refs: []
+    sub_values: []
+  - reg: BL
+    operator: '='
+    description: voice number
+    table_refs: []
+    sub_values: []
+  - reg: BH
+    operator: '='
+    description: sample type (0 = 8-bit, 1 = 16-bit)
+    table_refs: []
+    sub_values: []
+  - reg: CL
+    operator: '='
+    description: looping type (0 = none, 1 = forward, 2 = back and forth)
+    table_refs: []
+    sub_values: []
+  - reg: CH:DI
+    operator: '='
+    description: 20-bit starting address for voice data
+    table_refs: []
+    sub_values: []
+  - reg: DL:SI
+    operator: '='
+    description: 20-bit address for loop start
+    table_refs: []
+    sub_values: []
+  - reg: DH:BP
+    operator: '='
+    description: 20-bit address for loop end
+    table_refs: []
+    sub_values: []
+  returns: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 6903h
+  - type: interrupt
+    params:
+      AX: 6906h
+  - type: interrupt
+    params:
+      AX: 690Bh
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: s-186906
+  category: s
+  title: Gravis Ultra Sound YEA_GUS.EXE - LOAD SOUND DATA
+  source: INTERRUP.D:5441
+  interrupt: '18'
+  flags: []
+  function: '6906'
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 6906h
+    table_refs: []
+    sub_values: []
+  - reg: BL
+    operator: '='
+    description: data format (1 = twos-complement, 0 = not)
+    table_refs: []
+    sub_values: []
+  - reg: BH
+    operator: '='
+    description: sample type (0 = 8-bit, 1 = 16-bit)
+    table_refs: []
+    sub_values: []
+  - reg: CX
+    operator: '='
+    description: number of bytes to send
+    table_refs: []
+    sub_values: []
+  - reg: ES:SI
+    operator: ->
+    description: buffer containing data
+    table_refs: []
+    sub_values: []
+  - reg: DL:DI
+    operator: '='
+    description: 20-bit address of GUS DRAM at which to load sound data
+    table_refs: []
+    sub_values: []
+  returns: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 6900h
+  - type: interrupt
+    params:
+      AX: 6905h
+  - type: interrupt
+    params:
+      AX: 690Ch
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: s-186907
+  category: s
+  title: Gravis Ultra Sound YEA_GUS.EXE - STOP VOICE
+  source: INTERRUP.D:5450
+  interrupt: '18'
+  flags: []
+  function: '6907'
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 6907h
+    table_refs: []
+    sub_values: []
+  - reg: BX
+    operator: '='
+    description: voice number (00h-1Fh)
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - nothing
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 6908h
+  - type: interrupt
+    params:
+      AX: 690Dh
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: s-186908
+  category: s
+  title: Gravis Ultra Sound YEA_GUS.EXE - SET VOICE END
+  source: INTERRUP.D:5456
+  interrupt: '18'
+  flags: []
+  function: '6908'
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 6908h
+    table_refs: []
+    sub_values: []
+  - reg: BX
+    operator: '='
+    description: voice number (00h-1Fh)
+    table_refs: []
+    sub_values: []
+  - reg: CL:DX
+    operator: '='
+    description: 20-bit ending address
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - nothing
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 690Bh
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: s-186909
+  category: s
+  title: Gravis Ultra Sound YEA_GUS.EXE - RAMP VOLUME
+  source: INTERRUP.D:5463
+  interrupt: '18'
+  flags: []
+  function: '6909'
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 6909h
+    table_refs: []
+    sub_values: []
+  - reg: BL
+    operator: '='
+    description: voice number (00h-1Fh)
+    table_refs: []
+    sub_values: []
+  - reg: BH
+    operator: '='
+    description: looping type (0 = none, 1 = forward, 2 = back and forth)
+    table_refs: []
+    sub_values: []
+  - reg: CX
+    operator: '='
+    description: starting volume
+    table_refs: []
+    sub_values: []
+  - reg: DX
+    operator: '='
+    description: ending volume
+    table_refs: []
+    sub_values: []
+  - reg: DI:SI
+    operator: '='
+    description: time
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - nothing
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 6902h
+  - type: interrupt
+    params:
+      AX: 690Ah
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: s-18690A
+  category: s
+  title: Gravis Ultra Sound YEA_GUS.EXE - GET VOLUME
+  source: INTERRUP.D:5473
+  interrupt: '18'
+  flags: []
+  function: 690A
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 690Ah
+    table_refs: []
+    sub_values: []
+  - reg: BX
+    operator: '='
+    description: voice number (00h-1Fh)
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AX
+      operator: '='
+      description: current non-linear volume for voice
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 6902h
+  - type: interrupt
+    params:
+      AX: 6909h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: s-18690B
+  category: s
+  title: Gravis Ultra Sound YEA_GUS.EXE - GET POSITION
+  source: INTERRUP.D:5479
+  interrupt: '18'
+  flags: []
+  function: 690B
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 690Bh
+    table_refs: []
+    sub_values: []
+  - reg: BX
+    operator: '='
+    description: voice number
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: BX:AX
+      operator: '='
+      description: 20-bit address at which voice is playing
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 6900h
+  - type: interrupt
+    params:
+      AX: 6905h
+  - type: interrupt
+    params:
+      AX: 6908h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: s-18690C
+  category: s
+  title: Gravis Ultra Sound YEA_GUS.EXE - SAVE SOUND DATA
+  source: INTERRUP.D:5485
+  interrupt: '18'
+  flags: []
+  function: 690C
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 690Ch
+    table_refs: []
+    sub_values: []
+  - reg: BL
+    operator: '='
+    description: data format (1 = twos-complement, 0 = not)
+    table_refs: []
+    sub_values: []
+  - reg: BH
+    operator: '='
+    description: sample type (0 = 8-bit, 1 = 16-bit)
+    table_refs: []
+    sub_values: []
+  - reg: CX
+    operator: '='
+    description: number of bytes to get
+    table_refs: []
+    sub_values: []
+  - reg: ES:SI
+    operator: ->
+    description: buffer for retrieved data
+    table_refs: []
+    sub_values: []
+  - reg: DL:DI
+    operator: '='
+    description: 20-bit address in GUS DRAM from which to read voice data
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - nothing
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 6906h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: s-18690D
+  category: s
+  title: Gravis Ultra Sound YEA_GUS.EXE - RESTART VOICE
+  source: INTERRUP.D:5495
+  interrupt: '18'
+  flags: []
+  function: 690D
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 690Dh
+    table_refs: []
+    sub_values: []
+  - reg: BX
+    operator: '='
+    description: voice
+    table_refs: []
+    sub_values: []
+  - reg: CX
+    operator: '='
+    description: sample type (0 = 8-bit, 1 = 16-bit)
+    table_refs: []
+    sub_values: []
+  - reg: DX
+    operator: '='
+    description: looping type (0 = none, 1 = forward, 2 = back and forth)
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: CX
+      operator: '='
+      description: balance value
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 6907h
+  - type: interrupt
+    params:
+      AX: 6908h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: s-188000
+  category: s
+  title: Gravis Ultra Sound EURO_MOD.EXE - INITIALIZE
+  source: INTERRUP.D:5503
+  interrupt: '18'
+  flags: []
+  function: '8000'
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 8000h
+    table_refs: []
+    sub_values: []
+  returns: []
+  program: 'EURO_MOD is a .MOD file player for the Gravis Ultra Sound which hooks
+
+    INT 18h and then shells out to the program requiring its services'
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 8001h
+  - type: interrupt
+    params:
+      AX: 8004h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: s-188001
+  category: s
+  title: Gravis Ultra Sound EURO_MOD.EXE - LOAD .MOD FILE
+  source: INTERRUP.D:5509
+  interrupt: '18'
+  flags: []
+  function: '8001'
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 8001h
+    table_refs: []
+    sub_values: []
+  - reg: BX:CX
+    operator: ->
+    description: ASCIZ filename
+    table_refs: []
+    sub_values: []
+  returns: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 8000h
+  - type: interrupt
+    params:
+      AX: 8002h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: s-188002
+  category: s
+  title: Gravis Ultra Sound EURO_MOD.EXE - PLAY .MOD FILE
+  source: INTERRUP.D:5514
+  interrupt: '18'
+  flags: []
+  function: '8002'
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 8002h
+    table_refs: []
+    sub_values: []
+  returns: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 8002h
+  - type: interrupt
+    params:
+      AX: 8003h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: s-188003
+  category: s
+  title: Gravis Ultra Sound EURO_MOD.EXE - STOP PLAYING
+  source: INTERRUP.D:5518
+  interrupt: '18'
+  flags: []
+  function: '8003'
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 8003h
+    table_refs: []
+    sub_values: []
+  returns: []
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: s-188004
+  category: s
+  title: Gravis Ultra Sound EURO_MOD.EXE - SHUTDOWN
+  source: INTERRUP.D:5521
+  interrupt: '18'
+  flags: []
+  function: '8004'
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 8004h
+    table_refs: []
+    sub_values: []
+  returns: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 8000h
+  - type: interrupt
+    params:
+      AX: 8003h
+  index: []
+  tables: []
+  table_refs: []

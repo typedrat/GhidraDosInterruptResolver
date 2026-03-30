@@ -1,0 +1,60 @@
+file_type: interrupt
+key: B4
+entries:
+- entry_type: INT
+  id: r-B4
+  category: r
+  title: IBM ROM BASIC - used while in interpreter
+  source: INTERRUP.R:965
+  interrupt: B4
+  flags: []
+  input_registers: []
+  returns: []
+  notes:
+  - 'called by ROM BASIC
+
+    BASIC.COM/BASICA.COM do not restore vector on termination'
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: r-B4
+  category: r
+  title: StackMan - REQUEST NEW STACK
+  source: INTERRUP.R:969
+  interrupt: B4
+  flags: []
+  input_registers: []
+  returns:
+  - registers:
+    - reg: SS:SP
+      operator: ->
+      description: new stack
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  program: 'StackMan is a freeware stack manager by Franz Veldman of ESaSS B.V.
+
+    which functions as a replacement for the DOS STACK= command as well
+
+    as permitting multiple TSRs to share a pool of stack space'
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: 2F
+    params:
+      AX: C9FFh
+  - type: interrupt
+    interrupt: B5
+    params: {}
+    name: STACKMAN
+  install_check: 'test for the string "STACKXXX" at offset 0Ah from the
+
+    interrupt handler'
+  index:
+  - installation check;STACKMAN
+  tables: []
+  table_refs: []

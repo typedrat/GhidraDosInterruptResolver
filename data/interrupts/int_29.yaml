@@ -1,0 +1,92 @@
+file_type: interrupt
+key: '29'
+entries:
+- entry_type: INT
+  id: D-29
+  category: D
+  title: DOS 2+ - FAST CONSOLE OUTPUT
+  source: INTERRUP.K:159
+  interrupt: '29'
+  flags:
+  - C
+  input_registers:
+  - reg: AL
+    operator: '='
+    description: character to display
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - nothing
+    - BX may be destroyed by some versions of DOS 3.3
+  notes:
+  - 'automatically called when writing to a device with bit 4 of its device
+
+    driver header set (see also INT 21/AH=52h)
+
+    COMMAND.COM v3.2 and v3.3 compare the INT 29 vector against the INT 20
+
+    vector and assume that ANSI.SYS is installed if the segment is larger
+
+    the default handler under DOS 2.x and 3.x simply calls INT 10/AH=0Eh
+
+    the default handler under DESQview 2.2 understands the <Esc>[2J
+
+    screen-clearing sequence, calls INT 10/AH=0Eh for all others'
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: '21'
+    params:
+      AH: 52h
+  - type: interrupt
+    interrupt: 2F
+    params:
+      AX: 0802h
+  - type: interrupt
+    interrupt: '79'
+    params: {}
+    name: AVATAR.SYS
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: U-29E60DCL0E
+  category: U
+  title: ShowGFX - INSTALLATION CHECK
+  source: INTERRUP.K:172
+  interrupt: '29'
+  flags: []
+  function: E60DCL0E
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: E60Dh
+    table_refs: []
+    sub_values: []
+  - reg: CL
+    operator: '='
+    value: 0Eh
+    table_refs: []
+    sub_values: []
+  - reg: DX
+    operator: '='
+    value: C0DEh
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: DX
+      operator: '='
+      value: DEC0h
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  program: ShowGFX is a PCBoard graphics driver by Solar Designer
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []

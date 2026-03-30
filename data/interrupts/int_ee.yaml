@@ -1,0 +1,29 @@
+file_type: interrupt
+key: EE
+entries:
+- entry_type: INT
+  id: r-EE
+  category: r
+  title: IBM ROM BASIC - used while in interpreter
+  source: INTERRUP.R:4209
+  interrupt: EE
+  flags: []
+  input_registers: []
+  returns: []
+  notes:
+  - 'called by ROM BASIC, but pointed at IRET by BASIC.COM/BASICA.COM
+
+    BASIC.COM/BASICA.COM do not restore vector on termination'
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: ED
+    params: {}
+    name: BASIC
+  - type: interrupt
+    interrupt: EE
+    params: {}
+    name: BASIC
+  index: []
+  tables: []
+  table_refs: []

@@ -1,0 +1,134 @@
+// Builds a Ghidra Extension for a given Ghidra installation.
+//
+// An absolute path to the Ghidra installation directory must be supplied either by setting the
+// GHIDRA_INSTALL_DIR environment variable or Gradle project property:
+//
+//     > export GHIDRA_INSTALL_DIR=<Absolute path to Ghidra>
+//     > gradle
+//
+//         or
+//
+//     > gradle -PGHIDRA_INSTALL_DIR=<Absolute path to Ghidra>
+
+import org.apache.tools.ant.filters.ReplaceTokens
+
+//----------------------START "DO NOT MODIFY" SECTION------------------------------
+def ghidraInstallDir
+
+if (System.env.GHIDRA_INSTALL_DIR) {
+	ghidraInstallDir = System.env.GHIDRA_INSTALL_DIR
+}
+else if (project.hasProperty("GHIDRA_INSTALL_DIR")) {
+	ghidraInstallDir = project.getProperty("GHIDRA_INSTALL_DIR")
+}
+
+if (ghidraInstallDir) {
+	apply from: new File(ghidraInstallDir).getCanonicalPath() + "/support/buildExtension.gradle"
+}
+else {
+	throw new GradleException("GHIDRA_INSTALL_DIR is not defined!")
+}
+//----------------------END "DO NOT MODIFY" SECTION-------------------------------
+
+repositories {
+	mavenCentral()
+}
+
+// Separate configuration for additional libraries to bundle in the distribution.
+// Using runtimeClasspath would include all of Ghidra's transitive dependencies.
+configurations {
+	extraLibs
+}
+
+dependencies {
+	implementation 'org.yaml:snakeyaml:2.4'
+	extraLibs 'org.yaml:snakeyaml:2.4'
+}
+
+def DISTRIBUTION_DIR = file("dist")
+def PATH_IN_ZIP = "${project.name}"
+
+def getGitHash = {
+	try {
+		def result
+		if (System.getProperty('os.name').toLowerCase(Locale.ROOT).contains('windows')) {
+			result = providers.exec {
+				commandLine 'cmd', '/c', 'git', 'rev-parse', '--short', 'HEAD'
+				ignoreExitValue = true
+			}
+		} else {
+			result = providers.exec {
+				commandLine 'git', 'rev-parse', '--short', 'HEAD'
+				ignoreExitValue = true
+			}
+		}
+		def hash = result.standardOutput.asText.get().trim()
+		return hash.isEmpty() ? "unknown" : hash
+	} catch (Exception e) {
+		return "unknown"
+	}
+}
+
+buildExtension.enabled = false
+defaultTasks 'createDistribution'
+
+task createDistribution (type: Zip) {
+	archiveBaseName = "${project.name}-${project.version}-${getGitHash()}-Ghidra_${ghidra_version}".replace(' ', '_')
+	archiveExtension = 'zip'
+	destinationDirectory = DISTRIBUTION_DIR
+	archiveVersion = ''
+	duplicatesStrategy = 'exclude'
+
+	// Filtered extension.properties with version/name tokens replaced
+	File propFile = new File(project.projectDir, "extension.properties")
+	from (propFile) {
+		String version = "${ghidra_version}"
+		String name = "${project.name}"
+		filter (ReplaceTokens, tokens: [extversion: version])
+		filter (ReplaceTokens, tokens: [extname: name])
+		into PATH_IN_ZIP
+	}
+
+	// Extension JAR
+	from (project.jar) {
+		into PATH_IN_ZIP + "/lib"
+	}
+
+	// Additional dependency JARs (SnakeYAML, etc.) — only our extras, not Ghidra's jars
+	from (configurations.extraLibs) {
+		into PATH_IN_ZIP + "/lib"
+	}
+
+	// Everything else (data/, Module.manifest, etc.)
+	from (project.projectDir) {
+		exclude 'build/**'
+		exclude '*.gradle'
+		exclude 'gradle.properties'
+		exclude 'certification.manifest'
+		exclude 'dist/**'
+		exclude 'bin/**'
+		exclude 'src/**'
+		exclude '.gradle/**'
+		exclude 'gradle/**'
+		exclude 'gradlew'
+		exclude 'gradlew.bat'
+		exclude '.classpath'
+		exclude '.project'
+		exclude '.settings/**'
+		exclude 'developer_scripts'
+		exclude '.antProperties.xml'
+		exclude 'eclipse/**'
+		exclude '.git/**'
+		exclude '.claude/**'
+		exclude '.vscode/**'
+		exclude '*.code-workspace'
+		exclude 'extension.properties'
+		exclude 'lib/**'
+
+		into PATH_IN_ZIP
+	}
+
+	doLast {
+		println "\nCreated ${archiveBaseName.get()}.${archiveExtension.get()} in ${destinationDirectory.get()}"
+	}
+}

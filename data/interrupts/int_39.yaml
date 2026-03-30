@@ -1,0 +1,30 @@
+file_type: interrupt
+key: '39'
+entries:
+- entry_type: INT
+  id: r-39
+  category: r
+  title: FLOATING POINT EMULATION - OPCODE DDh
+  source: INTERRUP.N:6843
+  interrupt: '39'
+  flags: []
+  input_registers: []
+  returns: []
+  description: 'this interrupt is used to emulate floating-point instructions with
+
+    an opcode of DDh'
+  notes:
+  - 'the floating-point emulators in Borland and Microsoft languages and
+
+    Lahey FORTRAN use this interrupt'
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: '38'
+    params: {}
+  - type: interrupt
+    interrupt: 3A
+    params: {}
+  index: []
+  tables: []
+  table_refs: []

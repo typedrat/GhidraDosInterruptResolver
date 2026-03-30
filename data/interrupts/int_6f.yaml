@@ -1,0 +1,9235 @@
+file_type: interrupt
+key: 6F
+entries:
+- entry_type: INT
+  id: N-6F
+  category: N
+  title: Novell NetWare - PCOX API (3270 PC terminal interface)
+  source: INTERRUP.Q:443
+  interrupt: 6F
+  flags: []
+  input_registers:
+  - reg: AX
+    operator: '='
+    description: function
+    table_refs: []
+    sub_values:
+    - value: 0000h
+      description: 'enter terminal mode Return: AX = status'
+      sub_values: []
+    - value: 0000h
+      description: no action requested
+      sub_values: []
+    - value: 0001h
+      description: screen save
+      sub_values: []
+    - value: 0001h
+      description: reset interface and set configuration parameters
+      sub_values: []
+  - reg: DX
+    operator: '='
+    description: bitfields
+    table_refs: []
+    sub_values: []
+  - reg: DX
+    operator: '='
+    description: bitfields
+    table_refs: []
+    sub_values: []
+  - reg: DX
+    operator: '='
+    description: cursor position
+    table_refs: []
+    sub_values: []
+  - reg: AL
+    operator: '='
+    description: data or attribute character
+    table_refs: []
+    sub_values: []
+  - reg: DH
+    operator: '='
+    description: type (00h ASCII, 01h extended code)
+    table_refs: []
+    sub_values: []
+  - reg: DL
+    operator: '='
+    description: ASCII character or extended code
+    table_refs: []
+    sub_values: []
+  - reg: DX
+    operator: '='
+    description: timeout in seconds
+    table_refs: []
+    sub_values: []
+  - reg: DX
+    operator: '='
+    description: cursor position
+    table_refs: []
+    sub_values: []
+  - reg: DS:DX
+    operator: ->
+    description: string
+    table_refs: []
+    sub_values: []
+  - reg: DX
+    operator: '='
+    description: maintenance operation code
+    table_refs: []
+    sub_values: []
+  - reg: AL
+    operator: '='
+    description: level number (minor version)
+    table_refs: []
+    sub_values: []
+  - reg: AL
+    operator: '='
+    description: level number (minor version)
+    table_refs: []
+    sub_values: []
+  - reg: BX
+    operator: '='
+    description: length of data buffer
+    table_refs: []
+    sub_values: []
+  - reg: CX
+    operator: '='
+    description: subfunction request code
+    table_refs: []
+    sub_values: []
+  - reg: DS:DX
+    operator: ->
+    description: data buffer
+    table_refs: []
+    sub_values: []
+  - reg: CX
+    operator: '='
+    description: length of PIF data
+    table_refs: []
+    sub_values: []
+  - reg: CX
+    operator: '='
+    description: request number
+    table_refs: []
+    sub_values: []
+  - reg: DS:DX
+    operator: ->
+    description: parameter list
+    table_refs: []
+    sub_values: []
+  - reg: CX
+    operator: '='
+    description: error number
+    table_refs: []
+    sub_values: []
+  - reg: DX
+    operator: '='
+    description: new cursor position
+    table_refs: []
+    sub_values: []
+  - reg: DL
+    operator: '='
+    description: character to be written
+    table_refs: []
+    sub_values: []
+  - reg: DH
+    operator: '='
+    description: translation option
+    table_refs: []
+    sub_values: []
+  - reg: DL
+    operator: '='
+    description: character to be written
+    table_refs: []
+    sub_values: []
+  - reg: DH
+    operator: '='
+    description: translation option
+    table_refs: []
+    sub_values: []
+  - reg: DX
+    operator: '='
+    description: string value
+    table_refs: []
+    sub_values: []
+  - reg: DS:DX
+    operator: ->
+    description: string
+    table_refs: []
+    sub_values: []
+  - reg: DS:DX
+    operator: ->
+    description: string
+    table_refs: []
+    sub_values: []
+  - reg: DH
+    operator: '='
+    description: display row (1-43)
+    table_refs: []
+    sub_values: []
+  - reg: DL
+    operator: '='
+    description: display column (1-132)
+    table_refs: []
+    sub_values: []
+  - reg: DX
+    operator: '='
+    description: cursor position
+    table_refs: []
+    sub_values: []
+  - reg: AL
+    operator: '='
+    description: display column
+    table_refs: []
+    sub_values: []
+  - reg: DX
+    operator: '='
+    description: initial cursor position
+    table_refs: []
+    sub_values: []
+  - reg: DX
+    operator: '='
+    description: initial cursor position
+    table_refs: []
+    sub_values: []
+  - reg: DX
+    operator: '='
+    description: initial cursor position
+    table_refs: []
+    sub_values: []
+  - reg: DX
+    operator: '='
+    description: initial cursor position
+    table_refs: []
+    sub_values: []
+  - reg: DX
+    operator: '='
+    description: initial cursor position
+    table_refs: []
+    sub_values: []
+  - reg: DX
+    operator: '='
+    description: initial cursor position
+    table_refs: []
+    sub_values: []
+  - reg: DH
+    operator: '='
+    description: mask
+    table_refs: []
+    sub_values: []
+  - reg: DL
+    operator: '='
+    description: search pattern
+    table_refs: []
+    sub_values: []
+  - reg: DH
+    operator: '='
+    description: mask
+    table_refs: []
+    sub_values: []
+  - reg: DL
+    operator: '='
+    description: search pattern
+    table_refs: []
+    sub_values: []
+  - reg: DX
+    operator: '='
+    description: cursor position
+    table_refs: []
+    sub_values: []
+  - reg: DS:DX
+    operator: ->
+    description: buffer for field contents
+    table_refs: []
+    sub_values: []
+  - reg: DS:DX
+    operator: ->
+    description: buffer for screen contents
+    table_refs: []
+    sub_values: []
+  - reg: DX
+    operator: '='
+    description: cursor position
+    table_refs: []
+    sub_values: []
+  - reg: CX:BX
+    operator: ->
+    description: 3278/79 device buffer image
+    table_refs: []
+    sub_values: []
+  - reg: DL
+    operator: '='
+    description: new state of keyboard breaks (00h enabled, 01h disabled)
+    table_refs: []
+    sub_values: []
+  - reg: DL
+    operator: '='
+    description: session short name
+    table_refs: []
+    sub_values: []
+  - reg: AX
+    operator: '='
+    description: short name (DFT) or 0000h (not available, CUT mode)
+    table_refs: []
+    sub_values: []
+  - reg: CX
+    operator: '='
+    description: segment of EAB
+    table_refs: []
+    sub_values: []
+  - reg: DX
+    operator: '='
+    description: cursor position
+    table_refs: []
+    sub_values: []
+  returns: []
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables:
+  - 03738
+  table_refs: []
+- entry_type: INT
+  id: N-6F00
+  category: N
+  title: 10NET - LOGIN
+  source: INTERRUP.Q:604
+  interrupt: 6F
+  flags: []
+  function: '00'
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 00h
+    table_refs: []
+    sub_values: []
+  - reg: DS:DX
+    operator: ->
+    description: 'login record (see #03739)'
+    table_refs:
+    - 03739
+    sub_values: []
+  returns:
+  - registers:
+    - reg: CL
+      operator: '='
+      description: security level
+      table_refs: []
+      sub_values: []
+    - reg: AX
+      operator: '='
+      description: 'status (see #03740)'
+      table_refs:
+      - '03740'
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 01h
+  - type: interrupt
+    params:
+      AH: 80h
+  - type: interrupt
+    interrupt: '21'
+    params:
+      AX: 4402h
+    name: 10MEMMGR
+  index: []
+  tables:
+  - 03739
+  - '03740'
+  table_refs: []
+- entry_type: INT
+  id: b-6F00
+  category: b
+  title: HP Vectra EX-BIOS - "F_ISR" (internal) - RESPOND TO LOGICAL ISR
+  source: INTERRUP.Q:694
+  interrupt: 6F
+  flags: []
+  function: '00'
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 00h
+    table_refs: []
+    sub_values: []
+  - reg: BP
+    operator: '='
+    description: 'ID for driver (see #03741)'
+    table_refs:
+    - '03741'
+    sub_values: []
+  - reg: DH
+    operator: '='
+    description: 'data type (see #03742)'
+    table_refs:
+    - '03742'
+    sub_values: []
+  - reg: DL
+    operator: '='
+    description: physical device driver's index (driver ID / 6)
+    table_refs: []
+    sub_values: []
+  - reg: BH
+    operator: '='
+    description: 'keyboard state (only if bit 5 of DH set) (see #03743)'
+    table_refs:
+    - '03743'
+    sub_values: []
+  - reg: BL
+    operator: '='
+    description: scancode (if bit 4 of DH clear)
+    table_refs: []
+    sub_values: []
+  - reg: CX
+    operator: '='
+    description: number of scancodes in list (if bit 4 of DH set)
+    table_refs: []
+    sub_values: []
+  - reg: ES:SI
+    operator: ->
+    description: scancode list (if bit 4 of DH set)
+    table_refs: []
+    sub_values: []
+  - reg: BX
+    operator: '='
+    description: new X position (abs device) or X increment (relative device)
+    table_refs: []
+    sub_values: []
+  - reg: CX
+    operator: '='
+    description: new Y position (abs device) or Y increment (relative device)
+    table_refs: []
+    sub_values: []
+  - reg: BL
+    operator: '='
+    description: button information
+    table_refs: []
+    sub_values: []
+  - reg: BH
+    operator: '='
+    description: reserved
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AH
+      operator: '='
+      description: 'status (see #03744)'
+      table_refs:
+      - '03744'
+      sub_values: []
+    raw_lines: []
+  - condition: device is keyboard translator---
+    registers:
+    - reg: BL
+      operator: '='
+      description: translated scancode
+      table_refs: []
+      sub_values: []
+    - reg: BH
+      operator: '='
+      description: 'new keyboard state (if DH bit 5 set) (see #03743)'
+      table_refs:
+      - '03743'
+      sub_values: []
+    - reg: DH
+      operator: '='
+      description: 'new scancode type (see #03742)'
+      table_refs:
+      - '03742'
+      sub_values: []
+    raw_lines: []
+  notes:
+  - 'INT 6F corresponds to IRQ23 on the original HP Vectra AT, which is
+
+    unavailable because of its use as a BIOS extension software interrupt
+
+    the INT 6F handler consists of an instruction to load DS with the
+
+    driver''s data segment followed by an indexed far jump using BP to
+
+    select the destination vector; since the interrupt handler is
+
+    located immediately following the dispatch table, the HP_VECTOR_TABLE
+
+    may be found by looking at offset 0000h in the INT 6F segment, and
+
+    its size is equal to the offset of the interrupt handler
+
+    each entry in the HP_VECTOR table consists of a DWORD for the driver''s
+
+    entry point address and a WORD for the driver''s data segment
+
+    this function is not user-callable, as it is a response to a physical
+
+    event, and assumes that the caller has already handled the physical
+
+    interrupt and updated the Describe Record (see #03749) to reflect
+
+    the event'
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: 6C
+    params: {}
+    name: HP Vectra
+  - type: interrupt
+    interrupt: 6F
+    params:
+      AX: 0200h
+    name: HP Vectra
+  index: []
+  tables:
+  - '03741'
+  - '03742'
+  - '03743'
+  - '03744'
+  - '03745'
+  - '03746'
+  - '03747'
+  - 03748
+  - 03749
+  - '03750'
+  - '03751'
+  table_refs:
+  - 03749
+- entry_type: INT
+  id: N-6F01
+  category: N
+  title: 10NET - LOGOFF
+  source: INTERRUP.Q:1013
+  interrupt: 6F
+  flags: []
+  function: '01'
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 01h
+    table_refs: []
+    sub_values: []
+  - reg: DS:DX
+    operator: ->
+    description: superstation ID or nulls (12 bytes)
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: CX
+      operator: '='
+      description: number of files closed
+      table_refs: []
+      sub_values: []
+    - reg: AX
+      operator: '='
+      description: 'status (see also #03740)'
+      table_refs:
+      - '03740'
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 00h
+    name: 10NET
+  - type: interrupt
+    params:
+      AH: 81h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: N-6F02
+  category: N
+  title: 10NET - STATUS OF NODE
+  source: INTERRUP.Q:1021
+  interrupt: 6F
+  flags: []
+  function: '02'
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 02h
+    table_refs: []
+    sub_values: []
+  - reg: DS:DX
+    operator: ->
+    description: '512-byte status record (see #03753)'
+    table_refs:
+    - '03753'
+    sub_values: []
+  returns:
+  - condition: CF clear
+    condition_description: if successful
+    registers: []
+    raw_lines: []
+  - condition: CF set
+    condition_description: on error
+    registers:
+    - reg: AX
+      operator: '='
+      description: 'error code (see #03740)'
+      table_refs:
+      - '03740'
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: '21'
+    params:
+      AX: 5E01h
+    name: 10NET
+  index: []
+  tables:
+  - '03752'
+  - '03753'
+  - '03754'
+  table_refs: []
+- entry_type: INT
+  id: b-6F0200
+  category: b
+  title: HP Vectra EX-BIOS - "F_SYSTEM SF_INIT" - START INITIALIZING DRIVER
+  source: INTERRUP.Q:1069
+  interrupt: 6F
+  flags: []
+  function: '0200'
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 0200h
+    table_refs: []
+    sub_values: []
+  - reg: BP
+    operator: '='
+    description: 'driver ID (see #03741)'
+    table_refs:
+    - '03741'
+    sub_values: []
+  - reg: BX
+    operator: '='
+    description: '"last-used DS" value from HP global data area (see #03748)'
+    table_refs:
+    - 03748
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AH
+      operator: '='
+      description: 'status (see #03744)'
+      table_refs:
+      - '03744'
+      sub_values: []
+    - reg: BX
+      operator: '='
+      description: new "last-used DS" value
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 00h
+    name: HP Vectra
+  - type: interrupt
+    params:
+      AX: 0202h
+  - type: interrupt
+    params:
+      AH: 0Ch
+    name: F_INS_FIXOWNDS
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-6F0202
+  category: b
+  title: HP Vectra EX-BIOS - "F_SYSTEM SF_START" - COMPLETE DRIVER INITIALIZ.
+  source: INTERRUP.Q:1078
+  interrupt: 6F
+  flags: []
+  function: '0202'
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 0202h
+    table_refs: []
+    sub_values: []
+  - reg: BP
+    operator: '='
+    description: 'driver ID (see #03741)'
+    table_refs:
+    - '03741'
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AH
+      operator: '='
+      description: 'status (see #03744)'
+      table_refs:
+      - '03744'
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 00h
+    name: HP Vectra
+  - type: interrupt
+    params:
+      AX: 0200h
+  - type: interrupt
+    params:
+      AX: 0204h
+    name: HP Vectra
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: W-6F0204
+  category: W
+  title: MS Windows 3.0 - DOS APPLICATION SWITCH HOOK
+  source: INTERRUP.Q:1085
+  interrupt: 6F
+  flags:
+  - C
+  function: '0204'
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 0204h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AX
+      operator: '='
+      description: status
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes:
+  - 'intercepting this call will allow a DOS application to ensure that
+
+    Windows will not switch away from it.'
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-6F0204
+  category: b
+  title: HP Vectra EX-BIOS - "F_SYSTEM SF_REPORT_STATE" - GET DRIVER STATE
+  source: INTERRUP.Q:1093
+  interrupt: 6F
+  flags: []
+  function: '0204'
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 0204h
+    table_refs: []
+    sub_values: []
+  - reg: BP
+    operator: '='
+    description: 'driver ID (see #03741)'
+    table_refs:
+    - '03741'
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AH
+      operator: '='
+      description: 'status (see #03744)'
+      table_refs:
+      - '03744'
+      sub_values: []
+    - reg: DX
+      operator: '='
+      description: 'device state from Logical Describe Record (see #03749,#03755)'
+      table_refs:
+      - 03749
+      - '03755'
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 00h
+    name: HP Vectra
+  - type: interrupt
+    params:
+      AX: 0200h
+  - type: interrupt
+    params:
+      AX: 0206h
+    name: HP Vectra
+  index: []
+  tables:
+  - '03755'
+  table_refs: []
+- entry_type: INT
+  id: b-6F0206
+  category: b
+  title: HP Vectra EX-BIOS - "F_SYSTEM SF_VERSION_DESC" - GET DRIVER VERSION
+  source: INTERRUP.Q:1117
+  interrupt: 6F
+  flags: []
+  function: '0206'
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 0206h
+    table_refs: []
+    sub_values: []
+  - reg: BP
+    operator: '='
+    description: 'driver ID (see #03741)'
+    table_refs:
+    - '03741'
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AH
+      operator: '='
+      description: 'status (see #03744)'
+      table_refs:
+      - '03744'
+      sub_values: []
+    - reg: BX
+      operator: '='
+      description: driver release date code
+      table_refs: []
+      sub_values: []
+    - reg: CX
+      operator: '='
+      description: length of version string
+      table_refs: []
+      sub_values: []
+    - reg: ES:DI
+      operator: ->
+      description: version string
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 00h
+    name: HP Vectra
+  - type: interrupt
+    params:
+      AX: 0200h
+  - type: interrupt
+    params:
+      AX: 0204h
+    name: HP Vectra
+  - type: interrupt
+    params:
+      AX: 0208h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-6F0208
+  category: b
+  title: HP Vectra EX-BIOS - "F_SYSTEM SF_DEF_ATTR" - RESET TO DEFAULT ATTR
+  source: INTERRUP.Q:1128
+  interrupt: 6F
+  flags: []
+  function: 0208
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 0208h
+    table_refs: []
+    sub_values: []
+  - reg: BP
+    operator: '='
+    description: 'driver ID (see #03741)'
+    table_refs:
+    - '03741'
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AH
+      operator: '='
+      description: 'status (see #03744)'
+      table_refs:
+      - '03744'
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 00h
+    name: HP Vectra
+  - type: interrupt
+    params:
+      AX: 0200h
+  - type: interrupt
+    params:
+      AX: 020Ah
+  - type: interrupt
+    params:
+      AX: 020Ch
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-6F020A
+  category: b
+  title: HP Vectra EX-BIOS - "F_SYSTEM SF_GET_ATTR" - GET CURRENT ATTRIBUTES
+  source: INTERRUP.Q:1135
+  interrupt: 6F
+  flags: []
+  function: 020A
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 020Ah
+    table_refs: []
+    sub_values: []
+  - reg: BP
+    operator: '='
+    description: 'driver ID (see #03741)'
+    table_refs:
+    - '03741'
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AH
+      operator: '='
+      description: 'status (see #03744)'
+      table_refs:
+      - '03744'
+      sub_values: []
+    - reg: BX
+      operator: '='
+      description: logical width
+      table_refs: []
+      sub_values: []
+    - reg: CX
+      operator: '='
+      description: logical height
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 00h
+    name: HP Vectra
+  - type: interrupt
+    params:
+      AX: 0200h
+  - type: interrupt
+    params:
+      AX: 0208h
+  - type: interrupt
+    params:
+      AX: 020Ch
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-6F020C
+  category: b
+  title: HP Vectra EX-BIOS - "F_SYSTEM SF_SET_ATTR" - SET DEVICE ATTRIBUTES
+  source: INTERRUP.Q:1146
+  interrupt: 6F
+  flags: []
+  function: 020C
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 020Ch
+    table_refs: []
+    sub_values: []
+  - reg: BP
+    operator: '='
+    description: 'driver ID (see #03741)'
+    table_refs:
+    - '03741'
+    sub_values: []
+  - reg: BX
+    operator: '='
+    description: new logical width
+    table_refs: []
+    sub_values: []
+  - reg: CX
+    operator: '='
+    description: new logical height
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AH
+      operator: '='
+      description: 'status (see #03744)'
+      table_refs:
+      - '03744'
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 00h
+    name: HP Vectra
+  - type: interrupt
+    params:
+      AX: 0200h
+  - type: interrupt
+    params:
+      AX: 0208h
+  - type: interrupt
+    params:
+      AX: 020Ah
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-6F020E
+  category: b
+  title: HP Vectra EX-BIOS - "F_SYSTEM SF_OPEN" - RESERVE DRIVER FOR ACCESS
+  source: INTERRUP.Q:1157
+  interrupt: 6F
+  flags: []
+  function: 020E
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 020Eh
+    table_refs: []
+    sub_values: []
+  - reg: BP
+    operator: '='
+    description: 'driver ID (see #03741) for V_HPHIL, others'
+    table_refs:
+    - '03741'
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AH
+      operator: '='
+      description: 'status (see #03744)'
+      table_refs:
+      - '03744'
+      sub_values: []
+    raw_lines: []
+  description: place device in open state, which allows output to the device
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 00h
+    name: HP Vectra
+  - type: interrupt
+    params:
+      AX: 0200h
+  - type: interrupt
+    params:
+      AX: 0208h
+  - type: interrupt
+    params:
+      AX: 0210h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-6F0210
+  category: b
+  title: HP Vectra EX-BIOS - "F_SYSTEM SF_CLOSE" - RELEASE DRIVER
+  source: INTERRUP.Q:1165
+  interrupt: 6F
+  flags: []
+  function: '0210'
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 0210h
+    table_refs: []
+    sub_values: []
+  - reg: BP
+    operator: '='
+    description: 'driver ID (see #03741) for V_HPHIL, others'
+    table_refs:
+    - '03741'
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AH
+      operator: '='
+      description: 'status (see #03744)'
+      table_refs:
+      - '03744'
+      sub_values: []
+    raw_lines: []
+  description: place device in closed state, which disallows output to the device
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 00h
+    name: HP Vectra
+  - type: interrupt
+    params:
+      AX: 0200h
+  - type: interrupt
+    params:
+      AX: 0208h
+  - type: interrupt
+    params:
+      AX: 020Eh
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-6F0212
+  category: b
+  title: HP Vectra EX-BIOS - "F_SYSTEM SF_TIMEOUT" - REPORT REQUESTED TIMEOUT
+  source: INTERRUP.Q:1173
+  interrupt: 6F
+  flags: []
+  function: '0212'
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 0212h
+    table_refs: []
+    sub_values: []
+  - reg: BP
+    operator: '='
+    description: 'driver ID (see #03741)'
+    table_refs:
+    - '03741'
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AH
+      operator: '='
+      description: 'status (see #03744)'
+      table_refs:
+      - '03744'
+      sub_values: []
+    raw_lines: []
+  description: 'report to driver that a previously-requested timeout interval has
+
+    expired'
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 00h
+    name: HP Vectra
+  - type: interrupt
+    params:
+      AX: 0200h
+  - type: interrupt
+    params:
+      AX: 0208h
+  - type: interrupt
+    params:
+      AX: 020Eh
+  - type: interrupt
+    params:
+      AX: 0214h
+  - type: interrupt
+    params:
+      AX: 0216h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-6F0214
+  category: b
+  title: HP Vectra EX-BIOS - "F_SYSTEM SF_INTERVAL" - 60 HZ INTERVAL EXPIRED
+  source: INTERRUP.Q:1182
+  interrupt: 6F
+  flags: []
+  function: '0214'
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 0214h
+    table_refs: []
+    sub_values: []
+  - reg: BP
+    operator: '='
+    description: 'driver ID (see #03741)'
+    table_refs:
+    - '03741'
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AH
+      operator: '='
+      description: 'status (see #03744)'
+      table_refs:
+      - '03744'
+      sub_values: []
+    raw_lines: []
+  description: 'report to driver that a previously-requested 60 Hz interval has
+
+    expired'
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 00h
+    name: HP Vectra
+  - type: interrupt
+    params:
+      AX: 0200h
+  - type: interrupt
+    params:
+      AX: 0208h
+  - type: interrupt
+    params:
+      AX: 020Eh
+  - type: interrupt
+    params:
+      AX: 0212h
+  - type: interrupt
+    params:
+      AX: 0216h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-6F0216
+  category: b
+  title: HP Vectra EX-BIOS - "F_SYSTEM SF_TEST" - PERFORM HARDWARE TEST
+  source: INTERRUP.Q:1191
+  interrupt: 6F
+  flags: []
+  function: '0216'
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 0216h
+    table_refs: []
+    sub_values: []
+  - reg: BP
+    operator: '='
+    description: 'driver ID (see #03741)'
+    table_refs:
+    - '03741'
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AH
+      operator: '='
+      description: 'status (see #03744)'
+      table_refs:
+      - '03744'
+      sub_values: []
+    - reg: CX
+      operator: '='
+      description: length of reason string
+      table_refs: []
+      sub_values: []
+    - reg: ES:DI
+      operator: ->
+      description: string describing error
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 00h
+    name: HP Vectra
+  - type: interrupt
+    params:
+      AX: 0200h
+  - type: interrupt
+    params:
+      AX: 0208h
+  - type: interrupt
+    params:
+      AX: 020Eh
+  - type: interrupt
+    params:
+      AX: 0212h
+  - type: interrupt
+    params:
+      AX: 0214h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: N-6F03
+  category: N
+  title: 10NET - GET ADDRESS OF CONFIGURATION TABLE
+  source: INTERRUP.Q:1201
+  interrupt: 6F
+  flags: []
+  function: '03'
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 03h
+    table_refs: []
+    sub_values: []
+  - reg: DS:DI
+    operator: ->
+    description: node ID (optional)
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: ES:BX
+      operator: ->
+      description: 'configuration table (see #03756)'
+      table_refs:
+      - '03756'
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 13h
+  - type: interrupt
+    interrupt: '21'
+    params:
+      AX: 5E01h
+    name: 10NET
+  index: []
+  tables:
+  - '03756'
+  - '03757'
+  table_refs: []
+- entry_type: INT
+  id: N-6F04
+  category: N
+  title: 10NET - SEND
+  source: INTERRUP.Q:1271
+  interrupt: 6F
+  flags: []
+  function: '04'
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 04h
+    table_refs: []
+    sub_values: []
+  - reg: DS:BX
+    operator: ->
+    description: 'send record (see #03758)'
+    table_refs:
+    - 03758
+    sub_values: []
+  - reg: DS:DX
+    operator: ->
+    description: data (max 1024 bytes)
+    table_refs: []
+    sub_values: []
+  returns:
+  - condition: CF clear
+    condition_description: if successful
+    registers: []
+    raw_lines: []
+  - condition: CF set
+    condition_description: on error
+    registers:
+    - reg: AX
+      operator: '='
+      description: 'error code (see #03740)'
+      table_refs:
+      - '03740'
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 05h
+    name: 10NET
+  - type: interrupt
+    params:
+      AH: 09h
+    name: 10NET
+  - type: interrupt
+    params:
+      AH: 0Ah
+    name: 10NET
+  index: []
+  tables:
+  - 03758
+  table_refs: []
+- entry_type: INT
+  id: b-6F04BP0012
+  category: b
+  title: HP Vectra EX-BIOS - "F_INS_BASEHPVT" - GET HP_VECTOR_TABLE ADDRESS
+  source: INTERRUP.Q:1289
+  interrupt: 6F
+  flags: []
+  function: 04BP0012
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 04h
+    table_refs: []
+    sub_values: []
+  - reg: BP
+    operator: '='
+    value: 0012h
+    description: (driver ID for V_SYSTEM)
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AH
+      operator: '='
+      description: 'status (see #03744)'
+      table_refs:
+      - '03744'
+      sub_values: []
+    - reg: ES
+      operator: '='
+      description: segment of HP_VECTOR_TABLE (see also AH=00h"HP Vectra")
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 00h
+    name: HP Vectra
+  - type: interrupt
+    params:
+      AH: 06h
+    name: F_INS_XCHGFIX
+  - type: interrupt
+    params:
+      AH: 08h
+    name: F_INS_XCHGRSVD
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-6F04BP005A
+  category: b
+  title: HP Vectra EX-BIOS - "F_TRACK_INIT" - RESET TRACKING DRIVER TO DEFAULTS
+  source: INTERRUP.Q:1297
+  interrupt: 6F
+  flags: []
+  function: 04BP005A
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 04h
+    table_refs: []
+    sub_values: []
+  - reg: BP
+    operator: '='
+    value: 005Ah
+    description: (driver ID for V_STRACK)
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AH
+      operator: '='
+      description: 'status (see #03744)'
+      table_refs:
+      - '03744'
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 00h
+    name: HP Vectra
+  - type: interrupt
+    params:
+      AH: 06h
+    name: F_TRACK_ON
+  - type: interrupt
+    params:
+      AH: 08h
+    name: F_TRACK_OFF
+  - type: interrupt
+    params:
+      AH: 0Ah
+    name: F_DEF_MASKS
+  - type: interrupt
+    params:
+      AH: 0Ch
+    name: F_SET_LIMITS_X
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-6F0400
+  category: b
+  title: HP Vectra EX-BIOS - "F_IO_CTRL SF_LOCK" - RESERVE SUB-ADDRESSES
+  source: INTERRUP.Q:1305
+  interrupt: 6F
+  flags: []
+  function: '0400'
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 0400h
+    table_refs: []
+    sub_values: []
+  - reg: BP
+    operator: '='
+    description: 'driver ID (see #03741)'
+    table_refs:
+    - '03741'
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AH
+      operator: '='
+      description: 'status (see #03744)'
+      table_refs:
+      - '03744'
+      sub_values: []
+    raw_lines: []
+  description: 'reserve specified sub-addresses on an already-allocated driver for
+
+    exclusive access'
+  notes:
+  - 'this function is documented as present but unsupported in the drivers
+
+    V_LTABLET, V_LPOINTER, and V_LTOUCH'
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 0200h
+    name: HP Vectra
+  - type: interrupt
+    params:
+      AX: 0402h
+    name: SF_UNLOCK
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-6F0400BP001E
+  category: b
+  title: HP Vectra EX-BIOS - "F_IO_CTRL SF_ENABLE_SVC" - UNMASK 8041 SVC INT
+  source: INTERRUP.Q:1317
+  interrupt: 6F
+  flags: []
+  function: 0400BP001E
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 0400h
+    table_refs: []
+    sub_values: []
+  - reg: BP
+    operator: '='
+    value: 001Eh
+    description: (driver ID for V_S8259)
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AH
+      operator: '='
+      description: 'status (see #03744)'
+      table_refs:
+      - '03744'
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 00h
+    name: HP Vectra
+  - type: interrupt
+    params:
+      AX: 0402h
+    name: SF_DISABLE_SVC
+  - type: interrupt
+    params:
+      AX: 0404h
+    name: SF_ENABLE_KBD
+  - type: interrupt
+    params:
+      AX: 0408h
+    name: SF_ENABLE_HPHIL
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-6F0400BP002A
+  category: b
+  title: HP Vectra EX-BIOS - "F_IO_CTRL SF_DEF_LINKS" - SET DEFAULT PARENTS
+  source: INTERRUP.Q:1325
+  interrupt: 6F
+  flags: []
+  function: 0400BP002A
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 0400h
+    table_refs: []
+    sub_values: []
+  - reg: BP
+    operator: '='
+    value: 002Ah
+    description: (driver ID for V_SINPUT)
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AH
+      operator: '='
+      description: 'status (see #03744)'
+      table_refs:
+      - '03744'
+      sub_values: []
+    raw_lines: []
+  description: 'set the parent vectors in the physical device driver headers to their
+
+    system defaults'
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 00h
+    name: HP Vectra
+  - type: interrupt
+    params:
+      AX: 0402h
+      BP: 002Ah
+  - type: interrupt
+    params:
+      AX: 0404h
+      BP: 002Ah
+  - type: interrupt
+    params:
+      AH: 06h
+    name: F_INQUIRE
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-6F0400BP0054
+  category: b
+  title: HP Vectra EX-BIOS - "F_IO_CTRL SF_VID_ID_HP" - INSTALLATION CHECK
+  source: INTERRUP.Q:1335
+  interrupt: 6F
+  flags: []
+  function: 0400BP0054
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 0400h
+    table_refs: []
+    sub_values: []
+  - reg: BP
+    operator: '='
+    value: 0054h
+    description: (driver ID for V_SVIDEO)
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AH
+      operator: '='
+      description: 'status (see #03744)'
+      table_refs:
+      - '03744'
+      sub_values: []
+    - reg: BX
+      operator: '='
+      value: 4850h
+      description: ('BP')
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes:
+  - only partially documented
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 0402h
+      BP: 0054h
+  - type: interrupt
+    params:
+      AX: 0404h
+      BP: 0054h
+  - type: interrupt
+    params:
+      AX: 0406h
+      BP: 0054h
+  - type: interrupt
+    params:
+      AX: 0408h
+      BP: 0054h
+  - type: interrupt
+    params:
+      AX: 040Ah
+      BP: 0054h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-6F0400BP00CC
+  category: b
+  title: HP Vectra EX-BIOS - "F_IO_CTRL SF_MOUSE_COM" - INIT INT 33 HANDLER
+  source: INTERRUP.Q:1347
+  interrupt: 6F
+  flags: []
+  function: 0400BP00CC
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 0400h
+    table_refs: []
+    sub_values: []
+  - reg: BP
+    operator: '='
+    value: 00CCh
+    description: (driver ID for V_LHPMOUSE)
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AH
+      operator: '='
+      description: 'status (see #03744)'
+      table_refs:
+      - '03744'
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 00h
+    name: HP Vectra
+  - type: interrupt
+    params:
+      AX: 0402h
+      BP: 00CCh
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-6F0402
+  category: b
+  title: HP Vectra EX-BIOS - "F_IO_CTRL SF_UNLOCK" - RELEASE SUB-ADDRESSES
+  source: INTERRUP.Q:1354
+  interrupt: 6F
+  flags: []
+  function: '0402'
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 0402h
+    table_refs: []
+    sub_values: []
+  - reg: BP
+    operator: '='
+    description: 'driver ID (see #03741)'
+    table_refs:
+    - '03741'
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AH
+      operator: '='
+      description: 'status (see #03744)'
+      table_refs:
+      - '03744'
+      sub_values: []
+    raw_lines: []
+  description: release specified sub-addresses from exclusive access
+  notes:
+  - 'this function is documented as present but unsupported in the drivers
+
+    V_LTABLET, V_LPOINTER, and VLTOUCH'
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 0200h
+    name: HP Vectra
+  - type: interrupt
+    params:
+      AX: 0400h
+    name: SF_LOCK
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-6F0402BP001E
+  category: b
+  title: HP Vectra EX-BIOS - "F_IO_CTRL SF_DISABLE_SVC" - MASK 8041 SVC INT
+  source: INTERRUP.Q:1365
+  interrupt: 6F
+  flags: []
+  function: 0402BP001E
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 0402h
+    table_refs: []
+    sub_values: []
+  - reg: BP
+    operator: '='
+    value: 001Eh
+    description: (driver ID for V_S8259)
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AH
+      operator: '='
+      description: 'status (see #03744)'
+      table_refs:
+      - '03744'
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 00h
+    name: HP Vectra
+  - type: interrupt
+    params:
+      AX: 0400h
+      BP: 001Eh
+  - type: interrupt
+    params:
+      AX: 0406h
+      BP: 001Eh
+  - type: interrupt
+    params:
+      AX: 040Ah
+      BP: 001Eh
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-6F0402BP002A
+  category: b
+  title: HP Vectra EX-BIOS - "F_IO_CTRL SF_GET_LINKS" - GET DRIVER LINK FIELDS
+  source: INTERRUP.Q:1373
+  interrupt: 6F
+  flags: []
+  function: 0402BP002A
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 0402h
+    table_refs: []
+    sub_values: []
+  - reg: BP
+    operator: '='
+    value: 002Ah
+    description: (driver ID for V_SINPUT)
+    table_refs: []
+    sub_values: []
+  - reg: ES:SI
+    operator: ->
+    description: 'buffer for link table (see #03759)'
+    table_refs:
+    - 03759
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AH
+      operator: '='
+      description: 'status (see #03744)'
+      table_refs:
+      - '03744'
+      sub_values: []
+    raw_lines: []
+  description: 'get the parent and child vectors for the seven supported physical
+
+    device drivers'
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 00h
+    name: HP Vectra
+  - type: interrupt
+    params:
+      AX: 0400h
+    name: SF_DEF_LINKS
+  - type: interrupt
+    params:
+      AX: 0404h
+    name: SF_SET_LINKS
+  - type: interrupt
+    params:
+      AH: 06h
+    name: F_INQUIRE
+  index: []
+  tables:
+  - 03759
+  table_refs: []
+- entry_type: INT
+  id: b-6F0402BP0054
+  category: b
+  title: HP Vectra EX-BIOS - "F_IO_CTRL SF_VID_GET_INFO" - GET DISPLAY INFO
+  source: INTERRUP.Q:1393
+  interrupt: 6F
+  flags: []
+  function: 0402BP0054
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 0402h
+    table_refs: []
+    sub_values: []
+  - reg: BP
+    operator: '='
+    value: 0054h
+    description: (driver ID for V_SVIDEO)
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AH
+      operator: '='
+      description: 'status (see #03744)'
+      table_refs:
+      - '03744'
+      sub_values: []
+    raw_lines: []
+  notes:
+  - only partially documented
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 0400h
+      BP: 0054h
+  - type: interrupt
+    params:
+      AX: 0404h
+      BP: 0054h
+  - type: interrupt
+    params:
+      AX: 0406h
+      BP: 0054h
+  - type: interrupt
+    params:
+      AX: 0408h
+      BP: 0054h
+  - type: interrupt
+    params:
+      AX: 040Ah
+      BP: 0054h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-6F0402BP00CC
+  category: b
+  title: HP Vectra EX-BIOS - "F_IO_CTRL SF_MOUSE_COM" - FORCE INT 33 INIT
+  source: INTERRUP.Q:1404
+  interrupt: 6F
+  flags: []
+  function: 0402BP00CC
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 0402h
+    table_refs: []
+    sub_values: []
+  - reg: BP
+    operator: '='
+    value: 00CCh
+    description: (driver ID for V_LHPMOUSE)
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AH
+      operator: '='
+      description: 'status (see #03744)'
+      table_refs:
+      - '03744'
+      sub_values: []
+    raw_lines: []
+  description: set up INT 33 even if no mouse is installed
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 00h
+    name: HP Vectra
+  - type: interrupt
+    params:
+      AX: 0400h
+      BP: 00CCh
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-6F0404
+  category: b
+  title: HP Vectra EX-BIOS - "F_IO_CTRL SF_TRACK_ON" - GRAPHICS CURSOR ON
+  source: INTERRUP.Q:1412
+  interrupt: 6F
+  flags: []
+  function: '0404'
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 0404h
+    table_refs: []
+    sub_values: []
+  - reg: BP
+    operator: '='
+    description: 'driver ID (see #03741) for V_LPOINTER, V_LTOUCH, V_LTABLET'
+    table_refs:
+    - '03741'
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AH
+      operator: '='
+      description: 'status (see #03744)'
+      table_refs:
+      - '03744'
+      sub_values: []
+    raw_lines: []
+  description: enables graphics cursor tracking of the logical device's movement
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 00h
+    name: HP Vectra
+  - type: interrupt
+    params:
+      AX: 0400h
+    name: SF_LOCK
+  - type: interrupt
+    params:
+      AX: 0406h
+    name: SF_TRACK_OFF
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-6F0404BP001E
+  category: b
+  title: HP Vectra EX-BIOS - "F_IO_CTRL SF_ENABLE_KBD" - UNMASK 8041 OBF INT
+  source: INTERRUP.Q:1420
+  interrupt: 6F
+  flags: []
+  function: 0404BP001E
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 0404h
+    table_refs: []
+    sub_values: []
+  - reg: BP
+    operator: '='
+    value: 001Eh
+    description: (driver ID for V_S8259)
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AH
+      operator: '='
+      description: 'status (see #03744)'
+      table_refs:
+      - '03744'
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 00h
+    name: HP Vectra
+  - type: interrupt
+    params:
+      AX: 0400h
+    name: SF_ENABLE_SVC
+  - type: interrupt
+    params:
+      AX: 0406h
+    name: SF_DISABLE_KBD
+  - type: interrupt
+    params:
+      AX: 0408h
+    name: SF_ENABLE_HPHIL
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-6F0404BP002A
+  category: b
+  title: HP Vectra EX-BIOS - "F_IO_CTRL SF_SET_LINKS" - SET DRIVER LINK FIELDS
+  source: INTERRUP.Q:1428
+  interrupt: 6F
+  flags: []
+  function: 0404BP002A
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 0404h
+    table_refs: []
+    sub_values: []
+  - reg: BP
+    operator: '='
+    value: 002Ah
+    description: (driver ID for V_SINPUT)
+    table_refs: []
+    sub_values: []
+  - reg: ES:SI
+    operator: ->
+    description: 'buffer containing link table (see #03759)'
+    table_refs:
+    - 03759
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AH
+      operator: '='
+      description: 'status (see #03744)'
+      table_refs:
+      - '03744'
+      sub_values: []
+    raw_lines: []
+  description: 'specify the parent and child vectors for the seven supported physical
+
+    device drivers'
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 00h
+    name: HP Vectra
+  - type: interrupt
+    params:
+      AX: 0400h
+    name: SF_DEF_LINKS
+  - type: interrupt
+    params:
+      AX: 0402h
+    name: SF_GET_LINKS
+  - type: interrupt
+    params:
+      AH: 06h
+    name: F_INQUIRE
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-6F0404BP0054
+  category: b
+  title: HP Vectra EX-BIOS - "F_IO_CTRL SF_VID_SET_INFO" - SET EXT-CTRL INFO
+  source: INTERRUP.Q:1439
+  interrupt: 6F
+  flags: []
+  function: 0404BP0054
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 0404h
+    table_refs: []
+    sub_values: []
+  - reg: BP
+    operator: '='
+    value: 0054h
+    description: (driver ID for V_SVIDEO)
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AH
+      operator: '='
+      description: 'status (see #03744)'
+      table_refs:
+      - '03744'
+      sub_values: []
+    raw_lines: []
+  notes:
+  - only partially documented
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 0400h
+      BP: 0054h
+  - type: interrupt
+    params:
+      AX: 0402h
+      BP: 0054h
+  - type: interrupt
+    params:
+      AX: 0406h
+      BP: 0054h
+  - type: interrupt
+    params:
+      AX: 0408h
+      BP: 0054h
+  - type: interrupt
+    params:
+      AX: 040Ah
+      BP: 0054h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-6F0406
+  category: b
+  title: HP Vectra EX-BIOS - "F_IO_CTRL SF_TRACK_OFF" - GRAPHICS CURSOR OFF
+  source: INTERRUP.Q:1450
+  interrupt: 6F
+  flags: []
+  function: '0406'
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 0406h
+    table_refs: []
+    sub_values: []
+  - reg: BP
+    operator: '='
+    description: 'driver ID (see #03741) for V_LPOINTER, V_LTOUCH, V_LTABLET'
+    table_refs:
+    - '03741'
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AH
+      operator: '='
+      description: 'status (see #03744)'
+      table_refs:
+      - '03744'
+      sub_values: []
+    raw_lines: []
+  description: disables graphics cursor tracking of the logical device's movement
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 00h
+    name: HP Vectra
+  - type: interrupt
+    params:
+      AX: 0400h
+    name: SF_LOCK
+  - type: interrupt
+    params:
+      AX: 0404h
+    name: SF_TRACK_ON
+  - type: interrupt
+    params:
+      AX: 0408h
+    name: SF_CREATE_EVENT
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-6F0406BP001E
+  category: b
+  title: HP Vectra EX-BIOS - "F_IO_CTRL SF_DISABLE_KBD" - MASK 8041 OBF INT
+  source: INTERRUP.Q:1459
+  interrupt: 6F
+  flags: []
+  function: 0406BP001E
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 0406h
+    table_refs: []
+    sub_values: []
+  - reg: BP
+    operator: '='
+    value: 001Eh
+    description: (driver ID for V_S8259)
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AH
+      operator: '='
+      description: 'status (see #03744)'
+      table_refs:
+      - '03744'
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 00h
+    name: HP Vectra
+  - type: interrupt
+    params:
+      AX: 0402h
+    name: SF_DISABLE_SVC
+  - type: interrupt
+    params:
+      AX: 0404h
+    name: SF_ENABLE_KBD
+  - type: interrupt
+    params:
+      AX: 040Ah
+    name: SF_DISABLE_HPHIL
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-6F0406BP0054
+  category: b
+  title: HP Vectra EX-BIOS - "F_IO_CTRL SF_VID_MOD_INFO" - SET EXT-CTRL REG
+  source: INTERRUP.Q:1467
+  interrupt: 6F
+  flags: []
+  function: 0406BP0054
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 0406h
+    table_refs: []
+    sub_values: []
+  - reg: BP
+    operator: '='
+    value: 0054h
+    description: (driver ID for V_SVIDEO)
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AH
+      operator: '='
+      description: 'status (see #03744)'
+      table_refs:
+      - '03744'
+      sub_values: []
+    raw_lines: []
+  notes:
+  - only partially documented
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 0400h
+      BP: 0054h
+  - type: interrupt
+    params:
+      AX: 0402h
+      BP: 0054h
+  - type: interrupt
+    params:
+      AX: 0404h
+      BP: 0054h
+  - type: interrupt
+    params:
+      AX: 0408h
+      BP: 0054h
+  - type: interrupt
+    params:
+      AX: 040Ah
+      BP: 0054h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-6F0406BP0114
+  category: b
+  title: HP Vectra EX-BIOS - "F_IO_CTRL SF_CRV_RECONFIGURE" - RECONFIG LINK
+  source: INTERRUP.Q:1478
+  interrupt: 6F
+  flags: []
+  function: 0406BP0114
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 0406h
+    table_refs: []
+    sub_values: []
+  - reg: BP
+    operator: '='
+    value: 0114h
+    description: (driver ID for V_HPHIL)
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AH
+      operator: '='
+      description: 'status (see #03744)'
+      table_refs:
+      - '03744'
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 00h
+    name: HP Vectra
+  - type: interrupt
+    params:
+      AX: 020Eh
+  - type: interrupt
+    params:
+      AX: 0408h
+    name: SF_CRV_WR_PROMPTS
+  - type: interrupt
+    params:
+      AX: 0410h
+    name: SF_CRV_SELF_TEST
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-6F0408
+  category: b
+  title: HP Vectra EX-BIOS - "F_IO_CTRL SF_CREATE_EVENT" - SET EVENT HANDLER
+  source: INTERRUP.Q:1486
+  interrupt: 6F
+  flags: []
+  function: 0408
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 0408h
+    table_refs: []
+    sub_values: []
+  - reg: BP
+    operator: '='
+    description: 'driver ID (see #03741) for V_LPOINTER, V_LTOUCH, V_LTABLET'
+    table_refs:
+    - '03741'
+    sub_values: []
+  - reg: ES:SI
+    operator: ->
+    description: new event handler (see AH=00h"HP Vectra")
+    table_refs: []
+    sub_values: []
+  - reg: DX
+    operator: '='
+    description: new handler's DS
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AH
+      operator: '='
+      description: 'status (see #03744)'
+      table_refs:
+      - '03744'
+      sub_values: []
+    - reg: ES:SI
+      operator: ->
+      description: old event handler
+      table_refs: []
+      sub_values: []
+    - reg: DX
+      operator: '='
+      description: old handler's DS
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  description: specify routine to be called on logical device events
+  notes:
+  - 'when events occur, the event handler is called with the same registers
+
+    as the "F_ISR" function on AH=00h"HP Vectra"'
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 00h
+    name: HP Vectra
+  - type: interrupt
+    params:
+      AX: 0400h
+    name: SF_LOCK
+  - type: interrupt
+    params:
+      AX: 0406h
+    name: SF_TRACK_OFF
+  - type: interrupt
+    params:
+      AX: 040Ah
+    name: SF_EVENT_ON
+  - type: interrupt
+    params:
+      AX: 040Ch
+    name: SF_EVENT_OFF
+  - type: interrupt
+    params:
+      AH: 06h
+    name: F_SAMPLE
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-6F0408BP001E
+  category: b
+  title: HP Vectra EX-BIOS - "F_IO_CTRL SF_ENABLE_HPHIL" - UNMASK HP-HIL INT
+  source: INTERRUP.Q:1501
+  interrupt: 6F
+  flags: []
+  function: 0408BP001E
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 0408h
+    table_refs: []
+    sub_values: []
+  - reg: BP
+    operator: '='
+    value: 001Eh
+    description: (driver ID for V_S8259)
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AH
+      operator: '='
+      description: 'status (see #03744)'
+      table_refs:
+      - '03744'
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 00h
+    name: HP Vectra
+  - type: interrupt
+    params:
+      AX: 0400h
+      BP: 001Eh
+  - type: interrupt
+    params:
+      AX: 0404h
+      BP: 001Eh
+  - type: interrupt
+    params:
+      AX: 040Ah
+      BP: 001Eh
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-6F0408BP0054
+  category: b
+  title: HP Vectra EX-BIOS - "F_IO_CTRL SF_VID_GET_RES" - GET VIDMODE RESOLUTN
+  source: INTERRUP.Q:1509
+  interrupt: 6F
+  flags: []
+  function: 0408BP0054
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 0408h
+    table_refs: []
+    sub_values: []
+  - reg: BP
+    operator: '='
+    value: 0054h
+    description: (driver ID for V_SVIDEO)
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AH
+      operator: '='
+      description: 'status (see #03744)'
+      table_refs:
+      - '03744'
+      sub_values: []
+    raw_lines: []
+  notes:
+  - only partially documented
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 0400h
+      BP: 0054h
+  - type: interrupt
+    params:
+      AX: 0402h
+      BP: 0054h
+  - type: interrupt
+    params:
+      AX: 0404h
+      BP: 0054h
+  - type: interrupt
+    params:
+      AX: 0406h
+      BP: 0054h
+  - type: interrupt
+    params:
+      AX: 040Ah
+      BP: 0054h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-6F0408BP0114
+  category: b
+  title: HP Vectra EX-BIOS - "F_IO_CTRL SF_CRV_WR_PROMPTS" - WRITE PROMPT
+  source: INTERRUP.Q:1520
+  interrupt: 6F
+  flags: []
+  function: 0408BP0114
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 0408h
+    table_refs: []
+    sub_values: []
+  - reg: BP
+    operator: '='
+    value: 0114h
+    description: (driver ID for V_HPHIL)
+    table_refs: []
+    sub_values: []
+  - reg: BX
+    operator: '='
+    description: 'device address indicator (see #03760)'
+    table_refs:
+    - '03760'
+    sub_values: []
+  - reg: DH
+    operator: '='
+    description: HP HIL device major address
+    table_refs: []
+    sub_values: []
+  - reg: DL
+    operator: '='
+    description: prompt number
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AH
+      operator: '='
+      description: 'status (see #03744)'
+      table_refs:
+      - '03744'
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 00h
+    name: HP Vectra
+  - type: interrupt
+    params:
+      AX: 020Eh
+  - type: interrupt
+    params:
+      AX: 0406h
+      BP: 0114h
+  - type: interrupt
+    params:
+      AX: 040Ah
+      BP: 0114h
+  index: []
+  tables:
+  - '03760'
+  table_refs: []
+- entry_type: INT
+  id: b-6F040A
+  category: b
+  title: HP Vectra EX-BIOS - "F_IO_CTRL SF_EVENT_ON" - ENABLE EVENT HANDLER
+  source: INTERRUP.Q:1537
+  interrupt: 6F
+  flags: []
+  function: 040A
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 040Ah
+    table_refs: []
+    sub_values: []
+  - reg: BP
+    operator: '='
+    description: 'driver ID (see #03741) for V_LPOINTER, V_LTOUCH, V_LTABLET'
+    table_refs:
+    - '03741'
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AH
+      operator: '='
+      description: 'status (see #03744)'
+      table_refs:
+      - '03744'
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 00h
+    name: HP Vectra
+  - type: interrupt
+    params:
+      AX: 0408h
+    name: SF_CREATE_EVENT
+  - type: interrupt
+    params:
+      AX: 040Ch
+    name: SF_EVENT_OFF
+  - type: interrupt
+    params:
+      AX: 040Eh
+    name: SF_CLIPPING_ON
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-6F040ABP001E
+  category: b
+  title: HP Vectra EX-BIOS - "F_IO_CTRL SF_DISABLE_HPHIL" - MASK HP-HIL INT
+  source: INTERRUP.Q:1545
+  interrupt: 6F
+  flags: []
+  function: 040ABP001E
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 040Ah
+    table_refs: []
+    sub_values: []
+  - reg: BP
+    operator: '='
+    value: 001Eh
+    description: (driver ID for V_S8259)
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AH
+      operator: '='
+      description: 'status (see #03744)'
+      table_refs:
+      - '03744'
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 00h
+    name: HP Vectra
+  - type: interrupt
+    params:
+      AX: 0402h
+      BP: 001Eh
+  - type: interrupt
+    params:
+      AX: 0406h
+      BP: 001Eh
+  - type: interrupt
+    params:
+      AX: 0408h
+      BP: 001Eh
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-6F040ABP0054
+  category: b
+  title: HP Vectra EX-BIOS - "F_IO_CTRL SF_VID_SET_MODE" - SET VIDEO MODE
+  source: INTERRUP.Q:1553
+  interrupt: 6F
+  flags: []
+  function: 040ABP0054
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 040Ah
+    table_refs: []
+    sub_values: []
+  - reg: BP
+    operator: '='
+    value: 0054h
+    description: (driver ID for V_SVIDEO)
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AH
+      operator: '='
+      description: 'status (see #03744)'
+      table_refs:
+      - '03744'
+      sub_values: []
+    raw_lines: []
+  notes:
+  - only partially documented
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 0400h
+      BP: 0054h
+  - type: interrupt
+    params:
+      AX: 0402h
+      BP: 0054h
+  - type: interrupt
+    params:
+      AX: 0404h
+      BP: 0054h
+  - type: interrupt
+    params:
+      AX: 0406h
+      BP: 0054h
+  - type: interrupt
+    params:
+      AX: 0408h
+      BP: 0054h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-6F040ABP00AE
+  category: b
+  title: HP Vectra EX-BIOS - "F_IO_CTRL SF_CREATE_INTR" - CREATE INTERVAL ENTRY
+  source: INTERRUP.Q:1564
+  interrupt: 6F
+  flags: []
+  function: 040ABP00AE
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 040Ah
+    table_refs: []
+    sub_values: []
+  - reg: BP
+    operator: '='
+    value: 00AEh
+    description: (driver ID for V_8041)
+    table_refs: []
+    sub_values: []
+  - reg: BH
+    operator: '='
+    description: vector number of driver to be called regularly (vector addr / 6)
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AH
+      operator: '='
+      description: 'status (see #03744)'
+      table_refs:
+      - '03744'
+      sub_values: []
+    raw_lines: []
+  description: 'add a driver to the list (max eight) of drivers which will be called
+
+    by the HP''s 8041 at 60 Hz'
+  notes:
+  - 'the newly added entry will not be called until enabled with
+
+    AX=040Eh/BP=00AEh'
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 00h
+    name: HP Vectra
+  - type: interrupt
+    params:
+      AX: 040Ch
+      BP: 00AEh
+  - type: interrupt
+    params:
+      AX: 040Eh
+      BP: 00AEh
+  - type: interrupt
+    params:
+      AX: 0412h
+      BP: 00AEh
+  - type: interrupt
+    params:
+      AX: 0416h
+      BP: 00AEh
+  - type: interrupt
+    params:
+      AX: 041Ah
+      BP: 00AEh
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-6F040ABP0114
+  category: b
+  title: HP Vectra EX-BIOS - "F_IO_CTRL SF_CRV_WR_ACK" - ACKNOWLEDGE DEVICE
+  source: INTERRUP.Q:1577
+  interrupt: 6F
+  flags: []
+  function: 040ABP0114
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 040Ah
+    table_refs: []
+    sub_values: []
+  - reg: BP
+    operator: '='
+    value: 0114h
+    description: (driver ID for V_HPHIL)
+    table_refs: []
+    sub_values: []
+  - reg: BX
+    operator: '='
+    description: 'device address indicator (see #03760)'
+    table_refs:
+    - '03760'
+    sub_values: []
+  - reg: DH
+    operator: '='
+    description: HP HIL device major address
+    table_refs: []
+    sub_values: []
+  - reg: DL
+    operator: '='
+    description: acknowledge number (specific if 01h-07h, generic otherwise)
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AH
+      operator: '='
+      description: 'status (see #03744)'
+      table_refs:
+      - '03744'
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 00h
+    name: HP Vectra
+  - type: interrupt
+    params:
+      AX: 0406h
+      BP: 0114h
+  - type: interrupt
+    params:
+      AX: 040Ch
+      BP: 0114h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-6F040C
+  category: b
+  title: HP Vectra EX-BIOS - "F_IO_CTRL SF_EVENT_OFF" - DISABLE EVENT HANDLER
+  source: INTERRUP.Q:1587
+  interrupt: 6F
+  flags: []
+  function: 040C
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 040Ch
+    table_refs: []
+    sub_values: []
+  - reg: BP
+    operator: '='
+    description: 'driver ID (see #03741) for V_LPOINTER, V_LTOUCH, V_LTABLET'
+    table_refs:
+    - '03741'
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AH
+      operator: '='
+      description: 'status (see #03744)'
+      table_refs:
+      - '03744'
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 00h
+    name: HP Vectra
+  - type: interrupt
+    params:
+      AX: 0408h
+    name: SF_CREATE_EVENT
+  - type: interrupt
+    params:
+      AX: 040Ah
+    name: SF_EVENT_ON
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-6F040CBP00AE
+  category: b
+  title: HP Vectra EX-BIOS - "F_IO_CTRL SF_DELET_INTR" - DELETE INTERVAL ENTRY
+  source: INTERRUP.Q:1594
+  interrupt: 6F
+  flags: []
+  function: 040CBP00AE
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 040Ch
+    table_refs: []
+    sub_values: []
+  - reg: BP
+    operator: '='
+    value: 00AEh
+    description: (driver ID for V_8041)
+    table_refs: []
+    sub_values: []
+  - reg: BH
+    operator: '='
+    description: vector number of driver to be removed (vector addr / 6)
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AH
+      operator: '='
+      description: 'status (see #03744)'
+      table_refs:
+      - '03744'
+      sub_values: []
+    raw_lines: []
+  description: 'remove a driver to the list (max eight) of drivers which will be called
+
+    by the HP''s 8041 at 60 Hz'
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 00h
+    name: HP Vectra
+  - type: interrupt
+    params:
+      AX: 040Ah
+      BP: 00AEh
+  - type: interrupt
+    params:
+      AX: 0410h
+      BP: 00AEh
+  - type: interrupt
+    params:
+      AX: 0412h
+      BP: 00AEh
+  - type: interrupt
+    params:
+      AX: 0416h
+      BP: 00AEh
+  - type: interrupt
+    params:
+      AX: 041Ah
+      BP: 00AEh
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-6F040CBP0114
+  category: b
+  title: HP Vectra EX-BIOS - "F_IO_CTRL SF_CRV_REPEAT" - SET KEY REPEAT RATE
+  source: INTERRUP.Q:1605
+  interrupt: 6F
+  flags: []
+  function: 040CBP0114
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 040Ch
+    table_refs: []
+    sub_values: []
+  - reg: BP
+    operator: '='
+    value: 0114h
+    description: (driver ID for V_HPHIL)
+    table_refs: []
+    sub_values: []
+  - reg: BX
+    operator: '='
+    description: 'device address indicator (see #03760)'
+    table_refs:
+    - '03760'
+    sub_values: []
+  - reg: DH
+    operator: '='
+    description: HP HIL device major address
+    table_refs: []
+    sub_values: []
+  - reg: DL
+    operator: '='
+    description: repeat rate (00h = 30 Hz, 01h = 60 Hz)
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AH
+      operator: '='
+      description: 'status (see #03744)'
+      table_refs:
+      - '03744'
+      sub_values: []
+    raw_lines: []
+  notes:
+  - 'this function is only available if the driver is in the open state
+
+    (see AX=020Eh"SF_OPEN")'
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 00h
+    name: HP Vectra
+  - type: interrupt
+    params:
+      AX: 040Ah
+      BP: 0114h
+  - type: interrupt
+    params:
+      AX: 040Eh
+      BP: 0114h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-6F040E
+  category: b
+  title: HP Vectra EX-BIOS - "F_IO_CTRL SF_CLIPPING_ON" - ENABLE CLIPPING
+  source: INTERRUP.Q:1617
+  interrupt: 6F
+  flags: []
+  function: 040E
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 040Eh
+    table_refs: []
+    sub_values: []
+  - reg: BP
+    operator: '='
+    description: 'driver ID (see #03741) for V_LPOINTER, V_LTOUCH, V_LTABLET'
+    table_refs:
+    - '03741'
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AH
+      operator: '='
+      description: 'status (see #03744)'
+      table_refs:
+      - '03744'
+      sub_values: []
+    raw_lines: []
+  description: 'causes the physical device''s motion to be clipped to prevent overflow
+
+    or underflow of the logical position'
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 00h
+    name: HP Vectra
+  - type: interrupt
+    params:
+      AX: 040Ah
+    name: SF_EVENT_ON
+  - type: interrupt
+    params:
+      AX: 0410h
+    name: SF_CLIPPING_OFF
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-6F040EBP00AE
+  category: b
+  title: HP Vectra EX-BIOS - "F_IO_CTRL SF_ENABL_INTR" - START INTERRUPT SRVICE
+  source: INTERRUP.Q:1626
+  interrupt: 6F
+  flags: []
+  function: 040EBP00AE
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 040Eh
+    table_refs: []
+    sub_values: []
+  - reg: BP
+    operator: '='
+    value: 00AEh
+    description: (driver ID for V_8041)
+    table_refs: []
+    sub_values: []
+  - reg: BH
+    operator: '='
+    description: vector number of driver to be called regularly (vector addr / 6)
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AH
+      operator: '='
+      description: 'status (see #03744)'
+      table_refs:
+      - '03744'
+      sub_values: []
+    raw_lines: []
+  description: 'enable 60 Hz calling of a driver previously added to the list of
+
+    drivers to be called by the HP''s 8041'
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 00h
+    name: HP Vectra
+  - type: interrupt
+    params:
+      AX: 040Ah
+      BP: 00AEh
+  - type: interrupt
+    params:
+      AX: 0410h
+      BP: 00AEh
+  - type: interrupt
+    params:
+      AX: 0412h
+      BP: 00AEh
+  - type: interrupt
+    params:
+      AX: 0416h
+      BP: 00AEh
+  - type: interrupt
+    params:
+      AX: 041Ah
+      BP: 00AEh
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-6F040EBP0114
+  category: b
+  title: HP Vectra EX-BIOS - "F_IO_CTRL SF_CRV_DISABLE_REPEAT" - KEY REPT OFF
+  source: INTERRUP.Q:1637
+  interrupt: 6F
+  flags: []
+  function: 040EBP0114
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 040Eh
+    table_refs: []
+    sub_values: []
+  - reg: BP
+    operator: '='
+    value: 0114h
+    description: (driver ID for V_HPHIL)
+    table_refs: []
+    sub_values: []
+  - reg: BX
+    operator: '='
+    description: 'device address indicator (see #03760)'
+    table_refs:
+    - '03760'
+    sub_values: []
+  - reg: DH
+    operator: '='
+    description: HP HIL device major address
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AH
+      operator: '='
+      description: 'status (see #03744)'
+      table_refs:
+      - '03744'
+      sub_values: []
+    raw_lines: []
+  notes:
+  - 'this function is only available if the driver is in the open state
+
+    (see AX=020Eh"SF_OPEN")'
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 00h
+    name: HP Vectra
+  - type: interrupt
+    params:
+      AX: 040Ch
+      BP: 0114h
+  - type: interrupt
+    params:
+      AX: 0410h
+      BP: 0114h
+  - type: interrupt
+    params:
+      AX: 0416h
+      BP: 0114h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-6F0410
+  category: b
+  title: HP Vectra EX-BIOS - "F_IO_CTRL SF_CLIPPING_OFF" - DISABLE CLIPPING
+  source: INTERRUP.Q:1649
+  interrupt: 6F
+  flags: []
+  function: '0410'
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 0410h
+    table_refs: []
+    sub_values: []
+  - reg: BP
+    operator: '='
+    description: 'driver ID (see #03741) for V_LPOINTER, V_LTOUCH, V_LTABLET'
+    table_refs:
+    - '03741'
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AH
+      operator: '='
+      description: 'status (see #03744)'
+      table_refs:
+      - '03744'
+      sub_values: []
+    raw_lines: []
+  description: 'disables clipping of the physical device''s motion, which may cause
+
+    overflow or underflow of the logical position'
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 00h
+    name: HP Vectra
+  - type: interrupt
+    params:
+      AX: 040Ah
+    name: SF_EVENT_ON
+  - type: interrupt
+    params:
+      AX: 040Eh
+    name: SF_CLIPPING_ON
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-6F0410BP00AE
+  category: b
+  title: HP Vectra EX-BIOS - "F_IO_CTRL SF_DISBL_INTR" - END INTERRUPT SERVICE
+  source: INTERRUP.Q:1658
+  interrupt: 6F
+  flags: []
+  function: 0410BP00AE
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 0410h
+    table_refs: []
+    sub_values: []
+  - reg: BP
+    operator: '='
+    value: 00AEh
+    description: (driver ID for V_8041)
+    table_refs: []
+    sub_values: []
+  - reg: BH
+    operator: '='
+    description: vector number of driver (vector addr / 6)
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AH
+      operator: '='
+      description: 'status (see #03744)'
+      table_refs:
+      - '03744'
+      sub_values: []
+    raw_lines: []
+  description: disable 60 Hz interval calls to the specified driver
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 00h
+    name: HP Vectra
+  - type: interrupt
+    params:
+      AX: 040Ch
+      BP: 00AEh
+  - type: interrupt
+    params:
+      AX: 040Eh
+      BP: 00AEh
+  - type: interrupt
+    params:
+      AX: 0412h
+      BP: 00AEh
+  - type: interrupt
+    params:
+      AX: 0416h
+      BP: 00AEh
+  - type: interrupt
+    params:
+      AX: 041Ah
+      BP: 00AEh
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-6F0410BP0114
+  category: b
+  title: HP Vectra EX-BIOS - "F_IO_CTRL SF_CRV_SELF_TEST" - PERFORM SELFTEST
+  source: INTERRUP.Q:1668
+  interrupt: 6F
+  flags: []
+  function: 0410BP0114
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 0410h
+    table_refs: []
+    sub_values: []
+  - reg: BP
+    operator: '='
+    value: 0114h
+    description: (driver ID for V_HPHIL)
+    table_refs: []
+    sub_values: []
+  - reg: BX
+    operator: '='
+    description: 'device address indicator (see #03760)'
+    table_refs:
+    - '03760'
+    sub_values: []
+  - reg: DH
+    operator: '='
+    description: HP HIL device major address
+    table_refs: []
+    sub_values: []
+  - reg: ES:SI
+    operator: ->
+    description: buffer for result
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AH
+      operator: '='
+      description: 'status (see #03744)'
+      table_refs:
+      - '03744'
+      sub_values: []
+    - reg: CX
+      operator: '='
+      description: number of bytes in buffer
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes:
+  - 'this function is only available if the driver is in the open state
+
+    (see AX=020Eh"SF_OPEN")'
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 00h
+    name: HP Vectra
+  - type: interrupt
+    params:
+      AX: 040Ch
+      BP: 0114h
+  - type: interrupt
+    params:
+      AX: 0412h
+      BP: 0114h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-6F0412BP00AE
+  category: b
+  title: HP Vectra EX-BIOS - "F_IO_CTRL SF_SET_RAMSW" - SET RAM SWITCH IN 8041
+  source: INTERRUP.Q:1681
+  interrupt: 6F
+  flags: []
+  function: 0412BP00AE
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 0412h
+    table_refs: []
+    sub_values: []
+  - reg: BP
+    operator: '='
+    value: 00AEh
+    description: (driver ID for V_8041)
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AH
+      operator: '='
+      description: 'status (see #03744)'
+      table_refs:
+      - '03744'
+      sub_values: []
+    raw_lines: []
+  description: 'sets a flag in the 8041 indicating that a second 256K bank of RAM
+
+    on the motherboard is enabled'
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 00h
+    name: HP Vectra
+  - type: interrupt
+    params:
+      AX: 040Ch
+      BP: 00AEh
+  - type: interrupt
+    params:
+      AX: 040Eh
+      BP: 00AEh
+  - type: interrupt
+    params:
+      AX: 0414h
+      BP: 00AEh
+  - type: interrupt
+    params:
+      AX: 0416h
+      BP: 00AEh
+  - type: interrupt
+    params:
+      AX: 041Ah
+      BP: 00AEh
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-6F0412BP0114
+  category: b
+  title: HP Vectra EX-BIOS - "F_IO_CTRL SF_CRV_REPORT_STATUS" - GET DEVSTATUS
+  source: INTERRUP.Q:1691
+  interrupt: 6F
+  flags: []
+  function: 0412BP0114
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 0412h
+    table_refs: []
+    sub_values: []
+  - reg: BP
+    operator: '='
+    value: 0114h
+    description: (driver ID for V_HPHIL)
+    table_refs: []
+    sub_values: []
+  - reg: BX
+    operator: '='
+    description: 'device address indicator (see #03760)'
+    table_refs:
+    - '03760'
+    sub_values: []
+  - reg: DH
+    operator: '='
+    description: HP HIL device major address
+    table_refs: []
+    sub_values: []
+  - reg: ES:SI
+    operator: ->
+    description: 15-byte buffer for status
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AH
+      operator: '='
+      description: 'status (see #03744)'
+      table_refs:
+      - '03744'
+      sub_values: []
+    - reg: CX
+      operator: '='
+      description: number of bytes returned in buffer
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes:
+  - 'this function is only available if the driver is in the open state
+
+    (see AX=020Eh"SF_OPEN")'
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 00h
+    name: HP Vectra
+  - type: interrupt
+    params:
+      AX: 0410h
+      BP: 0114h
+  - type: interrupt
+    params:
+      AX: 0414h
+      BP: 0114h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-6F0414BP00AE
+  category: b
+  title: HP Vectra EX-BIOS - "F_IO_CTRL SF_CLR_RAMSW" - CLEAR 8041 RAM SWITCH
+  source: INTERRUP.Q:1704
+  interrupt: 6F
+  flags: []
+  function: 0414BP00AE
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 0414h
+    table_refs: []
+    sub_values: []
+  - reg: BP
+    operator: '='
+    value: 00AEh
+    description: (driver ID for V_8041)
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AH
+      operator: '='
+      description: 'status (see #03744)'
+      table_refs:
+      - '03744'
+      sub_values: []
+    raw_lines: []
+  description: 'clears a flag in the 8041 indicating that a second 256K bank of RAM
+
+    on the motherboard is enabled, causing the second bank to be disabled'
+  notes:
+  - this function should normally never be called
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 00h
+    name: HP Vectra
+  - type: interrupt
+    params:
+      AX: 040Ch
+      BP: 00AEh
+  - type: interrupt
+    params:
+      AX: 040Eh
+      BP: 00AEh
+  - type: interrupt
+    params:
+      AX: 0412h
+      BP: 00AEh
+  - type: interrupt
+    params:
+      AX: 0418h
+      BP: 00AEh
+  - type: interrupt
+    params:
+      AX: 041Ah
+      BP: 00AEh
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-6F0414BP0114
+  category: b
+  title: HP Vectra EX-BIOS - "F_IO_CTRL SF_CRV_REPORT_NAME" - GET DEV NAME
+  source: INTERRUP.Q:1715
+  interrupt: 6F
+  flags: []
+  function: 0414BP0114
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 0414h
+    table_refs: []
+    sub_values: []
+  - reg: BP
+    operator: '='
+    value: 0114h
+    description: (driver ID for V_HPHIL)
+    table_refs: []
+    sub_values: []
+  - reg: BX
+    operator: '='
+    description: 'device address indicator (see #03760)'
+    table_refs:
+    - '03760'
+    sub_values: []
+  - reg: DH
+    operator: '='
+    description: HP HIL device major address
+    table_refs: []
+    sub_values: []
+  - reg: ES:SI
+    operator: ->
+    description: 15-byte buffer for name
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AH
+      operator: '='
+      description: 'status (see #03744)'
+      table_refs:
+      - '03744'
+      sub_values: []
+    - reg: CX
+      operator: '='
+      description: number of bytes returned in buffer
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes:
+  - 'this function is only available if the driver is in the open state
+
+    (see AX=020Eh"SF_OPEN")'
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 00h
+    name: HP Vectra
+  - type: interrupt
+    params:
+      AX: 0412h
+      BP: 0114h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-6F0416BP00AE
+  category: b
+  title: HP Vectra EX-BIOS - "F_IO_CTRL SF_SET_CRTSW" - SET CRT TO MULTIMODE
+  source: INTERRUP.Q:1728
+  interrupt: 6F
+  flags: []
+  function: 0416BP00AE
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 0416h
+    table_refs: []
+    sub_values: []
+  - reg: BP
+    operator: '='
+    value: 00AEh
+    description: (driver ID for V_8041)
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AH
+      operator: '='
+      description: 'status (see #03744)'
+      table_refs:
+      - '03744'
+      sub_values: []
+    raw_lines: []
+  description: 'sets a flag in the 8041 indicating that the primary display is the
+
+    Multimode graphics adapter (default)'
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 00h
+    name: HP Vectra
+  - type: interrupt
+    params:
+      AX: 040Ch
+      BP: 00AEh
+  - type: interrupt
+    params:
+      AX: 040Eh
+      BP: 00AEh
+  - type: interrupt
+    params:
+      AX: 0412h
+      BP: 00AEh
+  - type: interrupt
+    params:
+      AX: 0418h
+      BP: 00AEh
+  - type: interrupt
+    params:
+      AX: 041Ah
+      BP: 00AEh
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-6F0416BP0114
+  category: b
+  title: HP Vectra EX-BIOS - "F_IO_CTRL SF_KEYBOARD_REPEAT" - SET TYPEMATIC
+  source: INTERRUP.Q:1738
+  interrupt: 6F
+  flags: []
+  function: 0416BP0114
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 0416h
+    table_refs: []
+    sub_values: []
+  - reg: BP
+    operator: '='
+    value: 0114h
+    description: (driver ID for V_HPHIL)
+    table_refs: []
+    sub_values: []
+  - reg: BH
+    operator: '='
+    description: what to set (00h typematic rate, 01h delay, 02h both)
+    table_refs: []
+    sub_values: []
+  - reg: BL
+    operator: '='
+    description: flag (00h = non-CCP keypad, 01h = Cursor Control Pad only)
+    table_refs: []
+    sub_values: []
+  - reg: DL
+    operator: '='
+    description: rate
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AH
+      operator: '='
+      description: 'status (see #03744)'
+      table_refs:
+      - '03744'
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 00h
+    name: HP Vectra
+  - type: interrupt
+    params:
+      AX: 040Eh
+      BP: 0114h
+  - type: interrupt
+    params:
+      AX: 0418h
+      BP: 0114h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-6F0418BP00AE
+  category: b
+  title: HP Vectra EX-BIOS - "F_IO_CTRL SF_CLR_CRTSW" - SET CRT TO MONOCHROME
+  source: INTERRUP.Q:1750
+  interrupt: 6F
+  flags: []
+  function: 0418BP00AE
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 0418h
+    table_refs: []
+    sub_values: []
+  - reg: BP
+    operator: '='
+    value: 00AEh
+    description: (driver ID for V_8041)
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AH
+      operator: '='
+      description: 'status (see #03744)'
+      table_refs:
+      - '03744'
+      sub_values: []
+    raw_lines: []
+  description: 'clears a flag in the 8041, indicating that the primary display is the
+
+    monochrome adapter'
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 00h
+    name: HP Vectra
+  - type: interrupt
+    params:
+      AX: 040Ch
+      BP: 00AEh
+  - type: interrupt
+    params:
+      AX: 040Eh
+      BP: 00AEh
+  - type: interrupt
+    params:
+      AX: 0414h
+      BP: 00AEh
+  - type: interrupt
+    params:
+      AX: 0416h
+      BP: 00AEh
+  - type: interrupt
+    params:
+      AX: 041Ah
+      BP: 00AEh
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-6F0418BP0114
+  category: b
+  title: HP Vectra EX-BIOS - "F_IO_CTRL SF_KEYBOARD_LED" - SET KEYBOARD LEDS
+  source: INTERRUP.Q:1760
+  interrupt: 6F
+  flags: []
+  function: 0418BP0114
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 0418h
+    table_refs: []
+    sub_values: []
+  - reg: BP
+    operator: '='
+    value: 0114h
+    description: (driver ID for V_HPHIL)
+    table_refs: []
+    sub_values: []
+  - reg: BL
+    operator: '='
+    description: new LED states
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AH
+      operator: '='
+      description: 'status (see #03744)'
+      table_refs:
+      - '03744'
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 00h
+    name: HP Vectra
+  - type: interrupt
+    params:
+      AX: 040Eh
+      BP: 0114h
+  - type: interrupt
+    params:
+      AX: 0416h
+      BP: 0114h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-6F041ABP00AE
+  category: b
+  title: HP Vectra EX-BIOS - "F_IO_CTRL SF_PASS_THRU" - SEND DATA BYTE TO 8041
+  source: INTERRUP.Q:1771
+  interrupt: 6F
+  flags: []
+  function: 041ABP00AE
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 041Ah
+    table_refs: []
+    sub_values: []
+  - reg: BP
+    operator: '='
+    value: 00AEh
+    description: (driver ID for V_8041)
+    table_refs: []
+    sub_values: []
+  - reg: BL
+    operator: '='
+    description: byte to send to 8041
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AH
+      operator: '='
+      description: 'status (see #03744)'
+      table_refs:
+      - '03744'
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 00h
+    name: HP Vectra
+  - type: interrupt
+    params:
+      AX: 040Ah
+      BP: 00AEh
+  - type: interrupt
+    params:
+      AX: 040Eh
+      BP: 00AEh
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: N-6F05
+  category: N
+  title: 10NET - RECEIVE
+  source: INTERRUP.Q:1779
+  interrupt: 6F
+  flags: []
+  function: '05'
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 05h
+    table_refs: []
+    sub_values: []
+  - reg: CX
+    operator: '='
+    description: number of seconds before timeout
+    table_refs: []
+    sub_values: []
+  - reg: DS:DX
+    operator: ->
+    description: 'receive buffer (see #03761)'
+    table_refs:
+    - '03761'
+    sub_values: []
+  returns:
+  - condition: CF clear
+    condition_description: if successful
+    registers:
+    - reg: AH
+      operator: '='
+      value: FEh
+      description: if dequeued message is a CB message
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  - condition: CF set
+    condition_description: on error
+    registers:
+    - reg: AX
+      operator: '='
+      description: 'error code (see #03740)'
+      table_refs:
+      - '03740'
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 04h
+    name: 10NET
+  index: []
+  tables:
+  - '03761'
+  table_refs: []
+- entry_type: INT
+  id: b-6F06
+  category: b
+  title: HP Vectra EX-BIOS - "F_PUT_BYTE" - WRITE A BYTE OF DATA TO DEVICE
+  source: INTERRUP.Q:1795
+  interrupt: 6F
+  flags: []
+  function: '06'
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 06h
+    table_refs: []
+    sub_values: []
+  - reg: BP
+    operator: '='
+    description: 'driver ID (see #03741) for V_HPHIL, others'
+    table_refs:
+    - '03741'
+    sub_values: []
+  - reg: AL
+    operator: '='
+    description: value to output
+    table_refs: []
+    sub_values: []
+  - reg: BX
+    operator: '='
+    description: 'device address indicator (see #03760)'
+    table_refs:
+    - '03760'
+    sub_values: []
+  - reg: DH
+    operator: '='
+    description: HP HIL device major address
+    table_refs: []
+    sub_values: []
+  - reg: DL
+    operator: '='
+    description: HP-HIL device register (00h-7Fh)
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AH
+      operator: '='
+      description: 'status (see #03744)'
+      table_refs:
+      - '03744'
+      sub_values: []
+    raw_lines: []
+  description: output a byte to a specific HP-HIL device register
+  notes:
+  - 'this function is only available if the driver is in the open state
+
+    (see AX=020Eh"SF_OPEN")'
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 04h
+    name: HP Vectra
+  - type: interrupt
+    params:
+      AH: 08h
+    name: F_GET_BYTE
+  - type: interrupt
+    params:
+      AH: 0Ah
+    name: F_PUT_BUFFER
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-6F06
+  category: b
+  title: HP Vectra EX-BIOS - "F_SAMPLE" - POLL CURRENT ABSOLUTE POSITION
+  source: INTERRUP.Q:1810
+  interrupt: 6F
+  flags: []
+  function: '06'
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 06h
+    table_refs: []
+    sub_values: []
+  - reg: BP
+    operator: '='
+    description: 'driver ID (see #03741) for V_LTOUCH, V_LPOINTER, V_LTABLET, etc.'
+    table_refs:
+    - '03741'
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AH
+      operator: '='
+      description: 'status (see #03744)'
+      table_refs:
+      - '03744'
+      sub_values: []
+    - reg: BX
+      operator: '='
+      description: current logical X position
+      table_refs: []
+      sub_values: []
+    - reg: CX
+      operator: '='
+      description: current logical Y position
+      table_refs: []
+      sub_values: []
+    - reg: DL
+      operator: '='
+      description: button transitions (bit N = button N state has changed)
+      table_refs: []
+      sub_values: []
+    - reg: DH
+      operator: '='
+      description: current button states (bit N = current button N state)
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 00h
+    name: HP Vectra
+  - type: interrupt
+    params:
+      AX: 040Ah
+    name: SF_EVENT_ON
+  - type: interrupt
+    params:
+      AX: 040Eh
+    name: SF_CLIPPING_ON
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-6F06BP0012
+  category: b
+  title: HP Vectra EX-BIOS - "F_INS_XCHGFIX" - EXCH VALUES WITH FIXED VECTOR
+  source: INTERRUP.Q:1822
+  interrupt: 6F
+  flags: []
+  function: 06BP0012
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 06h
+    table_refs: []
+    sub_values: []
+  - reg: BP
+    operator: '='
+    value: 0012h
+    description: (driver ID for V_SYSTEM)
+    table_refs: []
+    sub_values: []
+  - reg: BX
+    operator: '='
+    description: vector address
+    table_refs: []
+    sub_values: []
+  - reg: DX
+    operator: '='
+    description: new value for DS
+    table_refs: []
+    sub_values: []
+  - reg: ES:DI
+    operator: ->
+    description: new CS:IP entry point
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AH
+      operator: '='
+      description: 'status (see #03744)'
+      table_refs:
+      - '03744'
+      sub_values: []
+    - reg: DX
+      operator: '='
+      description: old value for DS
+      table_refs: []
+      sub_values: []
+    - reg: ES:DI
+      operator: ->
+      description: old CS:IP entry point
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  description: 'replace an existing EX-BIOS driver at a fixed HPVT location without
+
+    initialization'
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 00h
+    name: HP Vectra
+  - type: interrupt
+    params:
+      AH: 04h
+    name: F_INS_BASEHPVT
+  - type: interrupt
+    params:
+      AH: 08h
+    name: F_INS_XCHGRSVD
+  - type: interrupt
+    params:
+      AH: 0Ah
+    name: F_INS_XCHGFREE
+  - type: interrupt
+    params:
+      AH: 0Ch
+    name: F_INS_FIXOWNDS
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-6F06BP002A
+  category: b
+  title: HP Vectra EX-BIOS - "F_INQUIRE" - GET DRIVER PHYSICAL DESCRIBE RECORD
+  source: INTERRUP.Q:1837
+  interrupt: 6F
+  flags: []
+  function: 06BP002A
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 06h
+    table_refs: []
+    sub_values: []
+  - reg: BP
+    operator: '='
+    value: 002Ah
+    description: (driver ID for V_SINPUT)
+    table_refs: []
+    sub_values: []
+  - reg: AL
+    operator: '='
+    description: HP-HIL physical device number (01h-07h)
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AH
+      operator: '='
+      description: 'status (see #03744)'
+      table_refs:
+      - '03744'
+      sub_values: []
+    - reg: ES:SI
+      operator: ->
+      description: physical describe record for driver
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes:
+  - the returned physical describe record must not be modified
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 00h
+    name: HP Vectra
+  - type: interrupt
+    params:
+      AX: 0400h
+      BP: 002Ah
+  - type: interrupt
+    params:
+      AH: 08h
+      BP: 002Ah
+  - type: interrupt
+    params:
+      AH: 0Ah
+      BP: 002Ah
+  - type: interrupt
+    params:
+      AH: 0Ch
+      BP: 002Ah
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-6F06BP005A
+  category: b
+  title: HP Vectra EX-BIOS - "F_TRACK_ON" - ENABLE CURSOR TRACKING
+  source: INTERRUP.Q:1848
+  interrupt: 6F
+  flags: []
+  function: 06BP005A
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 06h
+    table_refs: []
+    sub_values: []
+  - reg: BP
+    operator: '='
+    value: 005Ah
+    description: (driver ID for V_STRACK)
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AH
+      operator: '='
+      description: 'status (see #03744)'
+      table_refs:
+      - '03744'
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 00h
+    name: HP Vectra
+  - type: interrupt
+    params:
+      AH: 04h
+    name: F_TRACK_INIT
+  - type: interrupt
+    params:
+      AH: 08h
+    name: F_TRACK_OFF
+  - type: interrupt
+    params:
+      AH: 0Ah
+    name: F_DEF_MASKS
+  - type: interrupt
+    params:
+      AH: 0Ch
+    name: F_SET_LIMITS_X
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: N-6F07
+  category: N
+  title: 10NET - LOCK HANDLE
+  source: INTERRUP.Q:1856
+  interrupt: 6F
+  flags: []
+  function: '07'
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 07h
+    table_refs: []
+    sub_values: []
+  - reg: BX
+    operator: '='
+    description: file handle
+    table_refs: []
+    sub_values: []
+  - reg: CX:DX
+    operator: '='
+    description: starting offset in file
+    table_refs: []
+    sub_values: []
+  - reg: SI
+    operator: '='
+    description: record length
+    table_refs: []
+    sub_values: []
+  returns:
+  - condition: CF clear
+    condition_description: if successful
+    registers: []
+    raw_lines: []
+  - condition: CF set
+    condition_description: on error
+    registers:
+    - reg: AX
+      operator: '='
+      description: error code (see also AH=00h)
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 08h
+    name: 10NET
+  - type: interrupt
+    params:
+      AH: 0Fh
+  - type: interrupt
+    interrupt: '21'
+    params:
+      AH: 5Ch
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: N-6F08
+  category: N
+  title: 10NET - UNLOCK HANDLE
+  source: INTERRUP.Q:1867
+  interrupt: 6F
+  flags: []
+  function: 08
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 08h
+    table_refs: []
+    sub_values: []
+  - reg: BX
+    operator: '='
+    description: file handle
+    table_refs: []
+    sub_values: []
+  - reg: AL
+    operator: '='
+    description: mode
+    table_refs: []
+    sub_values:
+    - value: 00h
+      description: unlock all
+      sub_values: []
+    - value: 01h
+      description: unlock record at CX:DX
+      sub_values: []
+  returns:
+  - condition: CF clear
+    condition_description: if successful
+    registers: []
+    raw_lines: []
+  - condition: CF set
+    condition_description: on error
+    registers:
+    - reg: AX
+      operator: '='
+      description: error code (see also AH=00h)
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 07h
+  - type: interrupt
+    params:
+      AH: 0Fh
+  - type: interrupt
+    interrupt: '21'
+    params:
+      AH: 5Ch
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-6F08
+  category: b
+  title: HP Vectra EX-BIOS - "F_GET_BYTE" - READ A BYTE OF DATA FROM DEVICE
+  source: INTERRUP.Q:1879
+  interrupt: 6F
+  flags: []
+  function: 08
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 08h
+    table_refs: []
+    sub_values: []
+  - reg: BP
+    operator: '='
+    description: 'driver ID (see #03741) for V_HPHIL (0114h), others'
+    table_refs:
+    - '03741'
+    sub_values: []
+  - reg: BX
+    operator: '='
+    description: 'device address indicator (see #03760)'
+    table_refs:
+    - '03760'
+    sub_values: []
+  - reg: DH
+    operator: '='
+    description: HP HIL device major address
+    table_refs: []
+    sub_values: []
+  - reg: DL
+    operator: '='
+    description: HP-HIL device register (00h-7Fh)
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AH
+      operator: '='
+      description: 'status (see #03744)'
+      table_refs:
+      - '03744'
+      sub_values: []
+    - reg: AL
+      operator: '='
+      description: value read from device
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  description: 'generic read-byte function; for driver V_HPHIL, retrieves the value
+
+    of a specific HP-HIL device register'
+  notes:
+  - 'this function is only available if the driver is in the open state
+
+    (see AX=020Eh"SF_OPEN")'
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 06h
+    name: F_PUT_BYTE
+  - type: interrupt
+    params:
+      AH: 0Ah
+    name: F_PUT_BUFFER
+  - type: interrupt
+    params:
+      AH: 0Ch
+    name: F_GET_BUFFER
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-6F08BP0012
+  category: b
+  title: HP Vectra EX-BIOS - "F_INS_XCHGRSVD" - EXCH VALUES WITH RESRVED VECTOR
+  source: INTERRUP.Q:1895
+  interrupt: 6F
+  flags: []
+  function: 08BP0012
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 08h
+    table_refs: []
+    sub_values: []
+  - reg: BP
+    operator: '='
+    value: 0012h
+    description: (driver ID for V_SYSTEM)
+    table_refs: []
+    sub_values: []
+  - reg: DX
+    operator: '='
+    description: new value for DS
+    table_refs: []
+    sub_values: []
+  - reg: ES:DI
+    operator: ->
+    description: new CS:IP entry point
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AH
+      operator: '='
+      description: 'status (00h,F6h) (see also #03744)'
+      table_refs:
+      - '03744'
+      sub_values: []
+    - reg: BX
+      operator: '='
+      description: vector address used
+      table_refs: []
+      sub_values: []
+    - reg: DX
+      operator: '='
+      description: old value for DS
+      table_refs: []
+      sub_values: []
+    - reg: ES:DI
+      operator: ->
+      description: old CS:IP entry point
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  description: 'exchange the supplied entry point and DS with the values in the next
+
+    reserved entry in the HP_VECTOR_TABLE'
+  notes:
+  - returns AH=F6h if no more reserved vectors are available
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 00h
+    name: HP Vectra
+  - type: interrupt
+    params:
+      AH: 04h
+      BP: 0012h
+  - type: interrupt
+    params:
+      AH: 06h
+      BP: 0012h
+  - type: interrupt
+    params:
+      AH: 0Ah
+      BP: 0012h
+  - type: interrupt
+    params:
+      AH: 0Ch
+      BP: 0012h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-6F08BP002A
+  category: b
+  title: HP Vectra EX-BIOS - "F_INQUIRE_ALL" - GET DRIVER STATUS TABLE
+  source: INTERRUP.Q:1912
+  interrupt: 6F
+  flags: []
+  function: 08BP002A
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 08h
+    table_refs: []
+    sub_values: []
+  - reg: BP
+    operator: '='
+    value: 002Ah
+    description: (driver ID for V_SINPUT)
+    table_refs: []
+    sub_values: []
+  - reg: ES:SI
+    operator: ->
+    description: 'buffer for device status table (see #03762)'
+    table_refs:
+    - '03762'
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AH
+      operator: '='
+      description: 'status (see #03744)'
+      table_refs:
+      - '03744'
+      sub_values: []
+    raw_lines: []
+  notes:
+  - the returned physical describe record must not be modified
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 00h
+    name: HP Vectra
+  - type: interrupt
+    params:
+      AX: 0400h
+      BP: 002Ah
+  - type: interrupt
+    params:
+      AH: 06h
+      BP: 002Ah
+  - type: interrupt
+    params:
+      AH: 0Ah
+      BP: 002Ah
+  - type: interrupt
+    params:
+      AH: 0Ch
+      BP: 002Ah
+  index: []
+  tables:
+  - '03762'
+  table_refs: []
+- entry_type: INT
+  id: b-6F08BP005A
+  category: b
+  title: HP Vectra EX-BIOS - "F_TRACK_OFF" - DISABLE CURSOR TRACKING
+  source: INTERRUP.Q:1933
+  interrupt: 6F
+  flags: []
+  function: 08BP005A
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 08h
+    table_refs: []
+    sub_values: []
+  - reg: BP
+    operator: '='
+    value: 005Ah
+    description: (driver ID for V_STRACK)
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AH
+      operator: '='
+      description: 'status (see #03744)'
+      table_refs:
+      - '03744'
+      sub_values: []
+    raw_lines: []
+  notes:
+  - also removes the graphics cursor sprite from the screen
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 00h
+    name: HP Vectra
+  - type: interrupt
+    params:
+      AH: 04h
+    name: F_TRACK_INIT
+  - type: interrupt
+    params:
+      AH: 06h
+    name: F_TRACK_ON
+  - type: interrupt
+    params:
+      AH: 0Ah
+    name: F_DEF_MASKS
+  - type: interrupt
+    params:
+      AH: 0Ch
+    name: F_SET_LIMITS_X
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: N-6F09
+  category: N
+  title: 10NET - SUBMIT
+  source: INTERRUP.Q:1942
+  interrupt: 6F
+  flags: []
+  function: 09
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 09h
+    table_refs: []
+    sub_values: []
+  - reg: DS:BX
+    operator: ->
+    description: 'submit record (see #03763)'
+    table_refs:
+    - '03763'
+    sub_values: []
+  returns: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 04h
+    name: 10NET
+  index: []
+  tables:
+  - '03763'
+  table_refs: []
+- entry_type: INT
+  id: N-6F0A
+  category: N
+  title: 10NET - CHAT
+  source: INTERRUP.Q:1953
+  interrupt: 6F
+  flags: []
+  function: 0A
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 0Ah
+    table_refs: []
+    sub_values: []
+  - reg: DS:BX
+    operator: ->
+    description: 'control parameters (see #03764)'
+    table_refs:
+    - '03764'
+    sub_values: []
+  - reg: DS:DX
+    operator: ->
+    description: 'chat message (see #03765)'
+    table_refs:
+    - '03765'
+    sub_values: []
+  returns: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 04h
+    name: 10NET
+  - type: interrupt
+    params:
+      AH: 8Ah
+  index: []
+  tables:
+  - '03764'
+  - '03765'
+  table_refs: []
+- entry_type: INT
+  id: b-6F0A
+  category: b
+  title: HP Vectra EX-BIOS - "F_PUT_BUFFER" - WRITE A BUFFER TO DEVICE
+  source: INTERRUP.Q:1970
+  interrupt: 6F
+  flags: []
+  function: 0A
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 0Ah
+    table_refs: []
+    sub_values: []
+  - reg: BP
+    operator: '='
+    description: 'driver ID (see #03741) for V_HPHIL (0114h), others'
+    table_refs:
+    - '03741'
+    sub_values: []
+  - reg: CX
+    operator: '='
+    description: number of bytes to write
+    table_refs: []
+    sub_values: []
+  - reg: ES:DI
+    operator: ->
+    description: buffer containing data
+    table_refs: []
+    sub_values: []
+  - reg: BX
+    operator: '='
+    description: 'device address indicator (see #03760)'
+    table_refs:
+    - '03760'
+    sub_values: []
+  - reg: DH
+    operator: '='
+    description: HP HIL device major address
+    table_refs: []
+    sub_values: []
+  - reg: DL
+    operator: '='
+    description: HP-HIL device register (00h-7Fh)
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AH
+      operator: '='
+      description: 'status (see #03744)'
+      table_refs:
+      - '03744'
+      sub_values: []
+    - reg: CX
+      operator: '='
+      description: number of unwritten bytes left in buffer
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 06h
+    name: F_PUT_BYTE
+  - type: interrupt
+    params:
+      AH: 0Ah
+    name: F_PUT_BLOCK
+  - type: interrupt
+    params:
+      AH: 0Ch
+    name: F_GET_BUFFER
+  - type: interrupt
+    params:
+      AH: 0Eh
+    name: F_PUT_WORD
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-6F0A
+  category: b
+  title: HP Vectra EX-BIOS - "F_PUT_BLOCK" - WRITE BLOCKS TO DEVICE
+  source: INTERRUP.Q:1985
+  interrupt: 6F
+  flags: []
+  function: 0A
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 0Ah
+    table_refs: []
+    sub_values: []
+  - reg: BP
+    operator: '='
+    description: 'driver ID (see #03741) for block device'
+    table_refs:
+    - '03741'
+    sub_values: []
+  - reg: DH
+    operator: '='
+    description: device major number
+    table_refs: []
+    sub_values: []
+  - reg: DL
+    operator: '='
+    description: device minor number
+    table_refs: []
+    sub_values: []
+  - reg: ES:DI
+    operator: ->
+    description: 'command block (see #03766)'
+    table_refs:
+    - '03766'
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AH
+      operator: '='
+      description: 'status (see #03744)'
+      table_refs:
+      - '03744'
+      sub_values: []
+    - reg: BX
+      operator: '='
+      description: operation status
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 06h
+    name: F_PUT_BYTE
+  - type: interrupt
+    params:
+      AH: 0Ah
+    name: F_PUT_BUFFER
+  - type: interrupt
+    params:
+      AH: 0Ch
+    name: F_GET_BUFFER
+  - type: interrupt
+    params:
+      AH: 0Eh
+    name: F_PUT_WORD
+  index: []
+  tables:
+  - '03766'
+  table_refs: []
+- entry_type: INT
+  id: b-6F0ABP0012
+  category: b
+  title: HP Vectra EX-BIOS - "F_INS_XCHGFREE" - EXCH VALUES WITH FREE VECTOR
+  source: INTERRUP.Q:2003
+  interrupt: 6F
+  flags: []
+  function: 0ABP0012
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 0Ah
+    table_refs: []
+    sub_values: []
+  - reg: BP
+    operator: '='
+    value: 0012h
+    description: (driver ID for V_SYSTEM)
+    table_refs: []
+    sub_values: []
+  - reg: DX
+    operator: '='
+    description: new value for DS
+    table_refs: []
+    sub_values: []
+  - reg: ES:DI
+    operator: ->
+    description: new CS:IP entry point
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AH
+      operator: '='
+      description: 'status (00h,F6h) (see also #03744)'
+      table_refs:
+      - '03744'
+      sub_values: []
+    - reg: BX
+      operator: '='
+      description: vector address used
+      table_refs: []
+      sub_values: []
+    - reg: DX
+      operator: '='
+      description: old value for DS
+      table_refs: []
+      sub_values: []
+    - reg: ES:DI
+      operator: ->
+      description: old CS:IP entry point
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  description: 'exchange the supplied entry point and DS with the values in the next
+
+    free entry in the HP_VECTOR_TABLE'
+  notes:
+  - returns AH=F6h if no more reserved vectors are available
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 00h
+    name: HP Vectra
+  - type: interrupt
+    params:
+      AH: 04h
+      BP: 0012h
+  - type: interrupt
+    params:
+      AH: 06h
+      BP: 0012h
+  - type: interrupt
+    params:
+      AH: 08h
+      BP: 0012h
+  - type: interrupt
+    params:
+      AH: 0Ch
+      BP: 0012h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-6F0ABP002A
+  category: b
+  title: HP Vectra EX-BIOS - "F_INQUIRE_FIRST" - GET PHYSICAL DRIVER VECTOR
+  source: INTERRUP.Q:2020
+  interrupt: 6F
+  flags: []
+  function: 0ABP002A
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 0Ah
+    table_refs: []
+    sub_values: []
+  - reg: BP
+    operator: '='
+    value: 002Ah
+    description: (driver ID for V_SINPUT)
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AH
+      operator: '='
+      description: 'status (see #03744)'
+      table_refs:
+      - '03744'
+      sub_values: []
+    - reg: BX
+      operator: '='
+      description: vector address for first HP-HIL device
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes:
+  - 'all seven HP-HIL devices use consecutive vectors in the
+
+    HP_VECTOR_TABLE'
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 00h
+    name: HP Vectra
+  - type: interrupt
+    params:
+      AX: 0400h
+      BP: 002Ah
+  - type: interrupt
+    params:
+      AH: 06h
+      BP: 002Ah
+  - type: interrupt
+    params:
+      AH: 08h
+      BP: 002Ah
+  - type: interrupt
+    params:
+      AH: 0Ch
+      BP: 002Ah
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-6F0ABP005A
+  category: b
+  title: HP Vectra EX-BIOS - "F_DEF_MASKS" - DEFINE GRAPHICS CURSOR MASKS
+  source: INTERRUP.Q:2031
+  interrupt: 6F
+  flags: []
+  function: 0ABP005A
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 0Ah
+    table_refs: []
+    sub_values: []
+  - reg: BP
+    operator: '='
+    value: 005Ah
+    description: (driver ID for V_STRACK)
+    table_refs: []
+    sub_values: []
+  - reg: BH
+    operator: '='
+    description: width of save area in bytes
+    table_refs: []
+    sub_values: []
+  - reg: BL
+    operator: '='
+    description: hot-spot X coordinate
+    table_refs: []
+    sub_values: []
+  - reg: CH
+    operator: '='
+    description: height in scan lines
+    table_refs: []
+    sub_values: []
+  - reg: CL
+    operator: '='
+    description: hot-spot Y coordinate
+    table_refs: []
+    sub_values: []
+  - reg: ES:SI
+    operator: ->
+    description: sprite mask (screen mask followed by XOR sprite mask)
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AH
+      operator: '='
+      description: 'status (see #03744)'
+      table_refs:
+      - '03744'
+      sub_values: []
+    raw_lines: []
+  notes:
+  - 'the save area is one byte wider than the actual sprite mask; the total
+
+    size of the sprite is at most 144 bytes'
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 00h
+    name: HP Vectra
+  - type: interrupt
+    params:
+      AH: 04h
+    name: F_TRACK_INIT
+  - type: interrupt
+    params:
+      AH: 08h
+    name: F_TRACK_OFF
+  - type: interrupt
+    params:
+      AH: 0Ch
+    name: F_SET_LIMITS_X
+  - type: interrupt
+    params:
+      AH: 10h
+    name: F_PUT_SPRITE
+  - type: interrupt
+    params:
+      AH: 12h
+    name: F_REMOVE_SPRITE
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: N-6F0B
+  category: N
+  title: 10NET - LOCK SEMAPHORE, RETURN IMMEDIATELY
+  source: INTERRUP.Q:2046
+  interrupt: 6F
+  flags: []
+  function: 0B
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 0Bh
+    table_refs: []
+    sub_values: []
+  - reg: AL
+    operator: '='
+    description: drive number or 0
+    table_refs: []
+    sub_values: []
+  - reg: ES:SI
+    operator: '='
+    description: Ethernet address or 0
+    table_refs: []
+    sub_values: []
+  - reg: DS:BX
+    operator: ->
+    description: 31-byte ASCIZ semaphore name
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AL
+      operator: '='
+      description: 'status (see #03767)'
+      table_refs:
+      - '03767'
+      sub_values: []
+    raw_lines: []
+  notes:
+  - same as INT 60/AH=12h
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 0Ch
+    name: 10NET
+  - type: interrupt
+    interrupt: '60'
+    params:
+      AH: 12h
+  index: []
+  tables:
+  - '03767'
+  table_refs: []
+- entry_type: INT
+  id: N-6F0C
+  category: N
+  title: 10NET - UNLOCK SEMAPHORE
+  source: INTERRUP.Q:2070
+  interrupt: 6F
+  flags: []
+  function: 0C
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 0Ch
+    table_refs: []
+    sub_values: []
+  - reg: AL
+    operator: '='
+    description: drive number or 0
+    table_refs: []
+    sub_values: []
+  - reg: ES:SI
+    operator: '='
+    description: Ethernet address or 0
+    table_refs: []
+    sub_values: []
+  - reg: DS:BX
+    operator: ->
+    description: 31-byte ASCIZ semaphore name
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AL
+      operator: '='
+      description: 'status (see also #03767)'
+      table_refs:
+      - '03767'
+      sub_values: []
+    raw_lines: []
+  notes:
+  - same as INT 60/AH=13h
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 0Bh
+  - type: interrupt
+    interrupt: '60'
+    params:
+      AH: 13h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-6F0C
+  category: b
+  title: HP Vectra EX-BIOS - "F_GET_BUFFER" - READ A BUFFER OF DATA FROM DEVICE
+  source: INTERRUP.Q:2080
+  interrupt: 6F
+  flags: []
+  function: 0C
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 0Ch
+    table_refs: []
+    sub_values: []
+  - reg: BP
+    operator: '='
+    description: 'driver ID (see #03741) for V_HPHIL (0114h), others'
+    table_refs:
+    - '03741'
+    sub_values: []
+  - reg: CX
+    operator: '='
+    description: number of bytes or blocks to read
+    table_refs: []
+    sub_values: []
+  - reg: DS:SI
+    operator: ->
+    description: buffer for received data
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AH
+      operator: '='
+      description: 'status (see #03744 at AH=00h"HP Vectra")'
+      table_refs:
+      - '03744'
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 08h
+    name: F_GET_BYTE
+  - type: interrupt
+    params:
+      AH: 0Ah
+    name: F_PUT_BUFFER
+  - type: interrupt
+    params:
+      AH: 0Ch
+    name: F_GET_BLOCK
+  - type: interrupt
+    params:
+      AH: 10h
+    name: F_GET_WORD
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-6F0C
+  category: b
+  title: HP Vectra EX-BIOS - "F_GET_BLOCK" - READ BLOCKS OF DATA FROM DEVICE
+  source: INTERRUP.Q:2090
+  interrupt: 6F
+  flags: []
+  function: 0C
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 0Ch
+    table_refs: []
+    sub_values: []
+  - reg: BP
+    operator: '='
+    description: 'driver ID (see #03741)'
+    table_refs:
+    - '03741'
+    sub_values: []
+  - reg: DH
+    operator: '='
+    description: device major number
+    table_refs: []
+    sub_values: []
+  - reg: DL
+    operator: '='
+    description: device minor number
+    table_refs: []
+    sub_values: []
+  - reg: ES:DI
+    operator: ->
+    description: 'command block (see #03766)'
+    table_refs:
+    - '03766'
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AH
+      operator: '='
+      description: 'status (see #03744 at AH=00h"HP Vectra")'
+      table_refs:
+      - '03744'
+      sub_values: []
+    - reg: BX
+      operator: '='
+      description: operation status
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 08h
+    name: F_GET_BYTE
+  - type: interrupt
+    params:
+      AH: 0Ah
+    name: F_PUT_BLOCK
+  - type: interrupt
+    params:
+      AH: 0Ch
+    name: F_GET_BUFFER
+  - type: interrupt
+    params:
+      AH: 10h
+    name: F_GET_WORD
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-6F0CBP0012
+  category: b
+  title: HP Vectra EX-BIOS - "F_INS_FIXOWNDS" - INSTALL VALUES IN FIXED VECTOR
+  source: INTERRUP.Q:2102
+  interrupt: 6F
+  flags: []
+  function: 0CBP0012
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 0Ch
+    table_refs: []
+    sub_values: []
+  - reg: BP
+    operator: '='
+    value: 0012h
+    description: (driver ID for V_SYSTEM)
+    table_refs: []
+    sub_values: []
+  - reg: BX
+    operator: '='
+    description: vector address used
+    table_refs: []
+    sub_values: []
+  - reg: ES:DI
+    operator: ->
+    description: new CS:IP entry point
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AH
+      operator: '='
+      description: 'status (00h) (see #03744)'
+      table_refs:
+      - '03744'
+      sub_values: []
+    raw_lines: []
+  notes:
+  - 'on installation, the given entry point will be invoked with an SF_INIT
+
+    call (see AX=0200h"SF_INIT"), which should return the routine''s DS
+
+    in BX.  If the SF_INIT call returns with error code FEh, the power-on
+
+    self-test sequence will be called.'
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 00h
+    name: HP Vectra
+  - type: interrupt
+    params:
+      AH: 04h
+      BP: 0012h
+  - type: interrupt
+    params:
+      AH: 06h
+      BP: 0012h
+  - type: interrupt
+    params:
+      AH: 08h
+      BP: 0012h
+  - type: interrupt
+    params:
+      AH: 0Eh
+      BP: 0012h
+  - type: interrupt
+    params:
+      AH: 12h
+      BP: 0012h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-6F0CBP002A
+  category: b
+  title: HP Vectra EX-BIOS - "F_INQUIRE_ENTRY" - GET GID DRIVER ENTRY POINT
+  source: INTERRUP.Q:2116
+  interrupt: 6F
+  flags: []
+  function: 0CBP002A
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 0Ch
+    table_refs: []
+    sub_values: []
+  - reg: BP
+    operator: '='
+    value: 002Ah
+    description: (driver ID for V_SINPUT)
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AH
+      operator: '='
+      description: 'status (see #03744)'
+      table_refs:
+      - '03744'
+      sub_values: []
+    - reg: ES:BX
+      operator: ->
+      description: physical GID driver CS:IP
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 00h
+    name: HP Vectra
+  - type: interrupt
+    params:
+      AX: 0400h
+      BP: 002Ah
+  - type: interrupt
+    params:
+      AH: 06h
+      BP: 002Ah
+  - type: interrupt
+    params:
+      AH: 08h
+      BP: 002Ah
+  - type: interrupt
+    params:
+      AH: 0Ah
+      BP: 002Ah
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-6F0CBP005A
+  category: b
+  title: HP Vectra EX-BIOS - "F_SET_LIMITS_X" - SET HORIZONTAL TRACKING LIMITS
+  source: INTERRUP.Q:2125
+  interrupt: 6F
+  flags: []
+  function: 0CBP005A
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 0Ch
+    table_refs: []
+    sub_values: []
+  - reg: BP
+    operator: '='
+    value: 005Ah
+    description: (driver ID for V_STRACK)
+    table_refs: []
+    sub_values: []
+  - reg: CX
+    operator: '='
+    description: minimum X coordinate
+    table_refs: []
+    sub_values: []
+  - reg: DX
+    operator: '='
+    description: maximum X coordinate
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AH
+      operator: '='
+      description: 'status (see #03744)'
+      table_refs:
+      - '03744'
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 00h
+    name: HP Vectra
+  - type: interrupt
+    params:
+      AH: 04h
+      BP: 005Ah
+  - type: interrupt
+    params:
+      AH: 08h
+      BP: 005Ah
+  - type: interrupt
+    params:
+      AH: 0Eh
+      BP: 005Ah
+  - type: interrupt
+    params:
+      AH: 10h
+      BP: 005Ah
+  - type: interrupt
+    params:
+      AH: 12h
+      BP: 005Ah
+  - type: interrupt
+    interrupt: '33'
+    params:
+      AX: 0007h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: N-6F0D
+  category: N
+  title: 10NET - "WHO" - ENUMERATE USERS ON NETWORK
+  source: INTERRUP.Q:2135
+  interrupt: 6F
+  flags: []
+  function: 0D
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 0Dh
+    table_refs: []
+    sub_values: []
+  - reg: AL
+    operator: '='
+    description: type code
+    table_refs: []
+    sub_values:
+    - value: 01h
+      description: return superstations only
+      sub_values: []
+    - value: 02h
+      description: return non-superstations only otherwise return all
+      sub_values: []
+  - reg: CX
+    operator: '='
+    description: length of data buffer
+    table_refs: []
+    sub_values: []
+  - reg: DS:DX
+    operator: ->
+    description: 'array of records to be filled (see #03768)'
+    table_refs:
+    - 03768
+    sub_values: []
+  returns:
+  - registers:
+    - reg: CL
+      operator: '='
+      description: number of records returned (responding stations)
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 16h
+  - type: interrupt
+    params:
+      AH: 8Dh
+  index: []
+  tables:
+  - 03768
+  - 03769
+  table_refs: []
+- entry_type: INT
+  id: N-6F0E
+  category: N
+  title: 10NET - SPOOL/PRINT
+  source: INTERRUP.Q:2165
+  interrupt: 6F
+  flags: []
+  function: 0E
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 0Eh
+    table_refs: []
+    sub_values: []
+  - reg: DS:DX
+    operator: ->
+    description: 'spool/print record (see #03771)'
+    table_refs:
+    - '03771'
+    sub_values: []
+  returns:
+  - condition: CF clear
+    condition_description: if successful
+    registers: []
+    raw_lines: []
+  - condition: CF set
+    condition_description: on error
+    registers:
+    - reg: AX
+      operator: '='
+      description: 'error code (see also #03740)'
+      table_refs:
+      - '03740'
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables:
+  - '03770'
+  - '03771'
+  - '03772'
+  - '03773'
+  table_refs: []
+- entry_type: INT
+  id: b-6F0E
+  category: b
+  title: HP Vectra EX-BIOS - "F_PUT_WORD" - WRITE WORD OF DATA TO DEVICE
+  source: INTERRUP.Q:2256
+  interrupt: 6F
+  flags: []
+  function: 0E
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 0Eh
+    table_refs: []
+    sub_values: []
+  - reg: BP
+    operator: '='
+    description: 'driver ID (see #03741)'
+    table_refs:
+    - '03741'
+    sub_values: []
+  - reg: DX
+    operator: '='
+    description: data word
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AH
+      operator: '='
+      description: 'status (see #03744 at AH=00h"HP Vectra")'
+      table_refs:
+      - '03744'
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 06h
+    name: F_PUT_BYTE
+  - type: interrupt
+    params:
+      AH: 0Ah
+    name: F_PUT_BUFFER
+  - type: interrupt
+    params:
+      AH: 10h
+    name: F_GET_WORD
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-6F0E
+  category: b
+  title: HP Vectra EX-BIOS - "F_PUT_WORD" - WRITE A WORD OF DATA
+  source: INTERRUP.Q:2264
+  interrupt: 6F
+  flags: []
+  function: 0E
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 0Eh
+    table_refs: []
+    sub_values: []
+  - reg: BP
+    operator: '='
+    description: 'driver ID (see #03741)'
+    table_refs:
+    - '03741'
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 06h
+    name: HP Vectra
+  - type: interrupt
+    params:
+      AH: 0Ah
+    name: HP Vectra
+  - type: interrupt
+    params:
+      AH: 10h
+    name: HP Vectra
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-6F0EBP0012
+  category: b
+  title: HP Vectra EX-BIOS - "F_INS_FIXGETDS" - INSTALL VALUES IN FIXED VECTOR
+  source: INTERRUP.Q:2271
+  interrupt: 6F
+  flags: []
+  function: 0EBP0012
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 0Eh
+    table_refs: []
+    sub_values: []
+  - reg: BP
+    operator: '='
+    value: 0012h
+    description: (driver ID for V_SYSTEM)
+    table_refs: []
+    sub_values: []
+  - reg: BX
+    operator: '='
+    description: vector address used
+    table_refs: []
+    sub_values: []
+  - reg: ES:DI
+    operator: ->
+    description: new CS:IP entry point
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AH
+      operator: '='
+      description: 'status (00h) (see #03744)'
+      table_refs:
+      - '03744'
+      sub_values: []
+    raw_lines: []
+  notes:
+  - 'on installation, the given entry point will be invoked with an SF_INIT
+
+    call (see AX=0200h"SF_INIT"), with the "last used DS" value in BX;
+
+    the routine should adjust BX and return the new value.  If the
+
+    SF_INIT call returns with error code FEh, the power-on self-test
+
+    sequence will be called.'
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 00h
+    name: HP Vectra
+  - type: interrupt
+    params:
+      AH: 04h
+      BP: 0012h
+  - type: interrupt
+    params:
+      AH: 06h
+      BP: 0012h
+  - type: interrupt
+    params:
+      AH: 0Ch
+      BP: 0012h
+  - type: interrupt
+    params:
+      AH: 10h
+      BP: 0012h
+  - type: interrupt
+    params:
+      AH: 14h
+      BP: 0012h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-6F0EBP005A
+  category: b
+  title: HP Vectra EX-BIOS - "F_SET_LIMITS_Y" - SET VERTICAL TRACKING LIMITS
+  source: INTERRUP.Q:2286
+  interrupt: 6F
+  flags: []
+  function: 0EBP005A
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 0Eh
+    table_refs: []
+    sub_values: []
+  - reg: BP
+    operator: '='
+    value: 005Ah
+    description: (driver ID for V_STRACK)
+    table_refs: []
+    sub_values: []
+  - reg: CX
+    operator: '='
+    description: minimum Y coordinate
+    table_refs: []
+    sub_values: []
+  - reg: DX
+    operator: '='
+    description: maximum Y coordinate
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AH
+      operator: '='
+      description: 'status (see #03744)'
+      table_refs:
+      - '03744'
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 00h
+    name: HP Vectra
+  - type: interrupt
+    params:
+      AH: 04h
+      BP: 005Ah
+  - type: interrupt
+    params:
+      AH: 08h
+      BP: 005Ah
+  - type: interrupt
+    params:
+      AH: 0Ch
+      BP: 005Ah
+  - type: interrupt
+    params:
+      AH: 10h
+      BP: 005Ah
+  - type: interrupt
+    params:
+      AH: 12h
+      BP: 005Ah
+  - type: interrupt
+    interrupt: '33'
+    params:
+      AX: 0008h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: N-6F0F
+  category: N
+  title: 10NET v5.0 - "RM LOCK" - ???
+  source: INTERRUP.Q:2296
+  interrupt: 6F
+  flags: []
+  function: 0F
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 0Fh
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 07h
+  - type: interrupt
+    params:
+      AH: 08h
+    name: 10NET
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: N-6F10
+  category: N
+  title: 10NET - ATTACH/DETACH PRINTER
+  source: INTERRUP.Q:2302
+  interrupt: 6F
+  flags: []
+  function: '10'
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 10h
+    table_refs: []
+    sub_values: []
+  - reg: AL
+    operator: '='
+    description: subfunction
+    table_refs: []
+    sub_values:
+    - value: 00h
+      description: initiate spooling if LPT1 is mounted
+      sub_values: []
+    - value: 01h
+      description: terminate spooling if LPT1 is mounted
+      sub_values: []
+  returns: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: '21'
+    params:
+      AX: 5D08h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-6F10
+  category: b
+  title: HP Vectra EX-BIOS - "F_GET_WORD" - READ WORD OF DATA FROM DEVICE
+  source: INTERRUP.Q:2309
+  interrupt: 6F
+  flags: []
+  function: '10'
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 10h
+    table_refs: []
+    sub_values: []
+  - reg: BP
+    operator: '='
+    description: 'driver ID (see #03741)'
+    table_refs:
+    - '03741'
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AH
+      operator: '='
+      description: 'status (see #03744 at AH=00h"HP Vectra")'
+      table_refs:
+      - '03744'
+      sub_values: []
+    - reg: DX
+      operator: '='
+      description: data word
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 08h
+    name: F_GET_BYTE
+  - type: interrupt
+    params:
+      AH: 0Ch
+    name: F_GET_BUFFER
+  - type: interrupt
+    params:
+      AH: 0Eh
+    name: F_PUT_WORD
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-6F10BP0012
+  category: b
+  title: HP Vectra EX-BIOS - "F_INS_FIXGLBDS" - INSTALL VALUES IN FIXED VECTOR
+  source: INTERRUP.Q:2317
+  interrupt: 6F
+  flags: []
+  function: 10BP0012
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 10h
+    table_refs: []
+    sub_values: []
+  - reg: BP
+    operator: '='
+    value: 0012h
+    description: (driver ID for V_SYSTEM)
+    table_refs: []
+    sub_values: []
+  - reg: BX
+    operator: '='
+    description: vector address used
+    table_refs: []
+    sub_values: []
+  - reg: ES:DI
+    operator: ->
+    description: new CS:IP entry point
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AH
+      operator: '='
+      description: 'status (00h) (see #03744)'
+      table_refs:
+      - '03744'
+      sub_values: []
+    raw_lines: []
+  notes:
+  - 'on installation, the given entry point will be invoked with an SF_INIT
+
+    call (see AX=0200h"SF_INIT"), with BX set to the EX-BIOS global
+
+    data area. If the SF_INIT call returns with error code FEh, the
+
+    power-on self-test sequence will be called.'
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 00h
+    name: HP Vectra
+  - type: interrupt
+    params:
+      AH: 04h
+      BP: 0012h
+  - type: interrupt
+    params:
+      AH: 06h
+      BP: 0012h
+  - type: interrupt
+    params:
+      AH: 0Ch
+      BP: 0012h
+  - type: interrupt
+    params:
+      AH: 0Eh
+      BP: 0012h
+  - type: interrupt
+    params:
+      AH: 12h
+      BP: 0012h
+  - type: interrupt
+    params:
+      AH: 16h
+      BP: 0012h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-6F10BP005A
+  category: b
+  title: HP Vectra EX-BIOS - "F_PUT_SPRITE" - DISPLAY GRAPHICS CURSOR SPRITE
+  source: INTERRUP.Q:2331
+  interrupt: 6F
+  flags: []
+  function: 10BP005A
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 10h
+    table_refs: []
+    sub_values: []
+  - reg: BP
+    operator: '='
+    value: 005Ah
+    description: (driver ID for V_STRACK)
+    table_refs: []
+    sub_values: []
+  - reg: BX
+    operator: '='
+    description: X coordinate
+    table_refs: []
+    sub_values: []
+  - reg: CX
+    operator: '='
+    description: Y coordinate
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AH
+      operator: '='
+      description: 'status (see #03744)'
+      table_refs:
+      - '03744'
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 00h
+    name: HP Vectra
+  - type: interrupt
+    params:
+      AH: 04h
+    name: F_TRACK_INIT
+  - type: interrupt
+    params:
+      AH: 08h
+    name: F_TRACK_OFF
+  - type: interrupt
+    params:
+      AH: 12h
+    name: F_REMOVE_SPRITE
+  - type: interrupt
+    interrupt: '33'
+    params:
+      AX: 0004h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: N-6F11
+  category: N
+  title: 10NET - LOCK FCB
+  source: INTERRUP.Q:2341
+  interrupt: 6F
+  flags: []
+  function: '11'
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 11h
+    table_refs: []
+    sub_values: []
+  - reg: AL
+    operator: '='
+    description: mode
+    table_refs: []
+    sub_values:
+    - value: 01h
+      description: sequential
+      sub_values: []
+    - value: 02h
+      description: random
+      sub_values: []
+    - value: 03h
+      description: random block
+      sub_values: []
+  - reg: CX
+    operator: '='
+    description: number of records
+    table_refs: []
+    sub_values: []
+  - reg: DS:DX
+    operator: ->
+    description: 'FCB (see #01345 at INT 21/AH=0Fh)'
+    table_refs:
+    - '01345'
+    sub_values: []
+  returns:
+  - condition: CF clear
+    condition_description: if successful
+    registers: []
+    raw_lines: []
+  - condition: CF set
+    condition_description: on error
+    registers:
+    - reg: AX
+      operator: '='
+      description: 'error code (see also #03740)'
+      table_refs:
+      - '03740'
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 12h
+  - type: interrupt
+    interrupt: '21'
+    params:
+      AH: 0Fh
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: N-6F12
+  category: N
+  title: 10NET - UNLOCK FCB
+  source: INTERRUP.Q:2355
+  interrupt: 6F
+  flags: []
+  function: '12'
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 12h
+    table_refs: []
+    sub_values: []
+  - reg: AL
+    operator: '='
+    description: mode
+    table_refs: []
+    sub_values:
+    - value: 00h
+      description: sequential
+      sub_values: []
+    - value: 01h
+      description: random
+      sub_values: []
+    - value: 02h
+      description: random block
+      sub_values: []
+  - reg: CX
+    operator: '='
+    description: number of records
+    table_refs: []
+    sub_values: []
+  - reg: DS:DX
+    operator: ->
+    description: 'FCB (see #01345 at INT 21/AH=0Fh)'
+    table_refs:
+    - '01345'
+    sub_values: []
+  returns:
+  - condition: CF clear
+    condition_description: if successful
+    registers: []
+    raw_lines: []
+  - condition: CF set
+    condition_description: on error
+    registers:
+    - reg: AX
+      operator: '='
+      description: 'error code (see also #03740)'
+      table_refs:
+      - '03740'
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 11h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-6F12BP0012
+  category: b
+  title: HP Vectra EX-BIOS - "F_INS_FREEOWNDS" - INSTALL VALUES IN FREE VECTOR
+  source: INTERRUP.Q:2369
+  interrupt: 6F
+  flags: []
+  function: 12BP0012
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 12h
+    table_refs: []
+    sub_values: []
+  - reg: BP
+    operator: '='
+    value: 0012h
+    description: (driver ID for V_SYSTEM)
+    table_refs: []
+    sub_values: []
+  - reg: ES:DI
+    operator: ->
+    description: new CS:IP entry point
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AH
+      operator: '='
+      description: 'status (00h) (see #03744)'
+      table_refs:
+      - '03744'
+      sub_values: []
+    raw_lines: []
+  notes:
+  - 'on installation, the given entry point will be invoked with an SF_INIT
+
+    call (see AX=0200h"SF_INIT"), which should return the routine''s DS
+
+    in BX.  If the SF_INIT call returns with error code FEh, the power-on
+
+    self-test sequence will be called.'
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 00h
+    name: HP Vectra
+  - type: interrupt
+    params:
+      AH: 04h
+      BP: 0012h
+  - type: interrupt
+    params:
+      AH: 0Ch
+      BP: 0012h
+  - type: interrupt
+    params:
+      AH: 14h
+      BP: 0012h
+  - type: interrupt
+    params:
+      AH: 16h
+      BP: 0012h
+  - type: interrupt
+    params:
+      AH: 18h
+      BP: 0012h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-6F12BP005A
+  category: b
+  title: HP Vectra EX-BIOS - "F_REMOVE_SPRITE" - REMOVE GRAPHICS CURSOR SPRITE
+  source: INTERRUP.Q:2382
+  interrupt: 6F
+  flags: []
+  function: 12BP005A
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 12h
+    table_refs: []
+    sub_values: []
+  - reg: BP
+    operator: '='
+    value: 005Ah
+    description: (driver ID for V_STRACK)
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AH
+      operator: '='
+      description: 'status (see #03744)'
+      table_refs:
+      - '03744'
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 00h
+    name: HP Vectra
+  - type: interrupt
+    params:
+      AH: 06h
+    name: F_TRACK_ON
+  - type: interrupt
+    params:
+      AH: 10h
+    name: F_PUT_SPRITE
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: N-6F13
+  category: N
+  title: 10NET v3.3+ - GET REMOTE CONFIGURATION TABLE ADDRESS
+  source: INTERRUP.Q:2389
+  interrupt: 6F
+  flags: []
+  function: '13'
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 13h
+    table_refs: []
+    sub_values: []
+  - reg: DS:DX
+    operator: ->
+    description: node ID, 12 bytes blank-padded
+    table_refs: []
+    sub_values: []
+  returns:
+  - condition: CF clear
+    condition_description: if successful
+    registers:
+    - reg: ES:BX
+      operator: '='
+      description: configuration table address on given machine
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  - condition: CF set
+    condition_description: on error
+    registers:
+    - reg: AX
+      operator: '='
+      description: 'error code (see #03740)'
+      table_refs:
+      - '03740'
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 03h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: N-6F14
+  category: N
+  title: 10NET v3.3+ - GET REMOTE MEMORY
+  source: INTERRUP.Q:2398
+  interrupt: 6F
+  flags: []
+  function: '14'
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 14h
+    table_refs: []
+    sub_values: []
+  - reg: BX:SI
+    operator: '='
+    description: address of remote memory
+    table_refs: []
+    sub_values: []
+  - reg: CX
+    operator: '='
+    description: length (<=1024 bytes)
+    table_refs: []
+    sub_values: []
+  - reg: DS:DX
+    operator: ->
+    description: node ID, 12 bytes blank-padded
+    table_refs: []
+    sub_values: []
+  - reg: DS:DI
+    operator: ->
+    description: area to receive remote memory image
+    table_refs: []
+    sub_values: []
+  returns:
+  - condition: CF clear
+    condition_description: if successful
+    registers:
+    - reg: CX
+      operator: '='
+      description: amount of memory copied to DS:SI
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  - condition: CF set
+    condition_description: on error
+    registers:
+    - reg: AX
+      operator: '='
+      description: 'error code (see #03740)'
+      table_refs:
+      - '03740'
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-6F14BP0012
+  category: b
+  title: HP Vectra EX-BIOS - "F_INS_FREEGETDS" - INSTALL VALUES IN FREE VECTOR
+  source: INTERRUP.Q:2409
+  interrupt: 6F
+  flags: []
+  function: 14BP0012
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 14h
+    table_refs: []
+    sub_values: []
+  - reg: BP
+    operator: '='
+    value: 0012h
+    description: (driver ID for V_SYSTEM)
+    table_refs: []
+    sub_values: []
+  - reg: ES:DI
+    operator: ->
+    description: new CS:IP entry point
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AH
+      operator: '='
+      description: 'status (00h) (see #03744)'
+      table_refs:
+      - '03744'
+      sub_values: []
+    raw_lines: []
+  notes:
+  - 'on installation, the given entry point will be invoked with an SF_INIT
+
+    call (see AX=0200h"SF_INIT"), with the "last used DS" value in BX;
+
+    the routine should adjust BX and return the new value.  If the
+
+    SF_INIT call returns with error code FEh, the power-on self-test
+
+    sequence will be called.'
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 00h
+    name: HP Vectra
+  - type: interrupt
+    params:
+      AH: 04h
+      BP: 0012h
+  - type: interrupt
+    params:
+      AH: 0Eh
+      BP: 0012h
+  - type: interrupt
+    params:
+      AH: 12h
+      BP: 0012h
+  - type: interrupt
+    params:
+      AH: 16h
+      BP: 0012h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: N-6F1501
+  category: N
+  title: 10NET v3.3+ - GET SHARED DEVICE ENTRY
+  source: INTERRUP.Q:2423
+  interrupt: 6F
+  flags: []
+  function: '1501'
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 1501h
+    table_refs: []
+    sub_values: []
+  - reg: BX
+    operator: '='
+    description: zero-based index
+    table_refs: []
+    sub_values: []
+  - reg: DS:SI
+    operator: ->
+    description: node ID, 12 bytes blank-padded
+    table_refs: []
+    sub_values: []
+  - reg: ES:DI
+    operator: ->
+    description: '85-byte buffer for shared device table entry (see #03774)'
+    table_refs:
+    - '03774'
+    sub_values: []
+  returns:
+  - condition: CF clear
+    condition_description: if successful
+    registers: []
+    raw_lines:
+    - ES:DI buffer contains shared device table entry of BXth device
+  - condition: CF set
+    condition_description: on error
+    registers:
+    - reg: AX
+      operator: '='
+      description: 'error code (see #03740)'
+      table_refs:
+      - '03740'
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 1502h
+  - type: interrupt
+    params:
+      AX: 1503h
+  - type: interrupt
+    params:
+      AX: 9501h
+  index: []
+  tables:
+  - '03774'
+  table_refs: []
+- entry_type: INT
+  id: N-6F1502
+  category: N
+  title: 10NET v3.3+ - SET SHARED DEVICE ENTRY
+  source: INTERRUP.Q:2443
+  interrupt: 6F
+  flags: []
+  function: '1502'
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 1502h
+    table_refs: []
+    sub_values: []
+  - reg: DS:SI
+    operator: ->
+    description: node ID, 12 bytes blank-padded
+    table_refs: []
+    sub_values: []
+  - reg: ES:DI
+    operator: ->
+    description: valid shared device table entry
+    table_refs: []
+    sub_values: []
+  returns:
+  - condition: CF clear
+    condition_description: if successful
+    registers: []
+    raw_lines: []
+  - condition: CF set
+    condition_description: on error
+    registers:
+    - reg: AX
+      operator: '='
+      description: 'error code (see #03740)'
+      table_refs:
+      - '03740'
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 1501h
+  - type: interrupt
+    params:
+      AX: 1503h
+  - type: interrupt
+    params:
+      AX: 9502h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: N-6F1503
+  category: N
+  title: 10NET v3.3+ - DELETE SHARED DEVICE ENTRY
+  source: INTERRUP.Q:2452
+  interrupt: 6F
+  flags: []
+  function: '1503'
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 1503h
+    table_refs: []
+    sub_values: []
+  - reg: BX
+    operator: '='
+    description: zero-based index
+    table_refs: []
+    sub_values: []
+  - reg: DS:SI
+    operator: ->
+    description: node ID, 12 bytes blank-padded
+    table_refs: []
+    sub_values: []
+  returns:
+  - condition: CF clear
+    condition_description: if successful
+    registers: []
+    raw_lines: []
+  - condition: CF set
+    condition_description: on error
+    registers:
+    - reg: AX
+      operator: '='
+      description: 'error code (see #03740)'
+      table_refs:
+      - '03740'
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 1501h
+  - type: interrupt
+    params:
+      AX: 1502h
+  - type: interrupt
+    params:
+      AX: 9503h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: N-6F16
+  category: N
+  title: 10NET v5.0 - "GL WHO" - ???
+  source: INTERRUP.Q:2461
+  interrupt: 6F
+  flags: []
+  function: '16'
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 16h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 0Dh
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-6F16BP0012
+  category: b
+  title: HP Vectra EX-BIOS - "F_INS_FREEGLBDS" - INSTALL VALUES IN FREE VECTOR
+  source: INTERRUP.Q:2467
+  interrupt: 6F
+  flags: []
+  function: 16BP0012
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 16h
+    table_refs: []
+    sub_values: []
+  - reg: BP
+    operator: '='
+    value: 0012h
+    description: (driver ID for V_SYSTEM)
+    table_refs: []
+    sub_values: []
+  - reg: ES:DI
+    operator: ->
+    description: new CS:IP entry point
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AH
+      operator: '='
+      description: 'status (00h) (see #03744 at INT 6F/AH=00h"HP Vectra")'
+      table_refs:
+      - '03744'
+      sub_values: []
+    raw_lines: []
+  notes:
+  - 'on installation, the given entry point will be invoked with an SF_INIT
+
+    call (see AX=0200h"SF_INIT"), with BX set to the EX-BIOS global
+
+    data area.  If the SF_INIT call returns with error code FEh, the
+
+    power-on self-test sequence will be called.'
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 00h
+    name: HP Vectra
+  - type: interrupt
+    params:
+      AH: 04h
+      BP: 0012h
+  - type: interrupt
+    params:
+      AH: 10h
+      BP: 0012h
+  - type: interrupt
+    params:
+      AH: 12h
+      BP: 0012h
+  - type: interrupt
+    params:
+      AH: 14h
+      BP: 0012h
+  - type: interrupt
+    params:
+      AH: 18h
+      BP: 0012h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: N-6F17
+  category: N
+  title: 10NET v3.3+ - MOUNT
+  source: INTERRUP.Q:2480
+  interrupt: 6F
+  flags: []
+  function: '17'
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 17h
+    table_refs: []
+    sub_values: []
+  - reg: AL
+    operator: '='
+    description: local drive number (0=A:)
+    table_refs: []
+    sub_values: []
+  - reg: BL
+    operator: '='
+    description: remote drive letter or '1'..'3' for LPTn or '4' or '5' for COMx
+    table_refs: []
+    sub_values: []
+  - reg: DS:DX
+    operator: ->
+    description: node ID, 12 bytes blank-padded
+    table_refs: []
+    sub_values: []
+  returns:
+  - condition: CF clear
+    condition_description: if successful
+    registers: []
+    raw_lines: []
+  - condition: CF set
+    condition_description: on error
+    registers:
+    - reg: AX
+      operator: '='
+      description: 'error code (see #03740)'
+      table_refs:
+      - '03740'
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 18h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: N-6F18
+  category: N
+  title: 10NET v3.3+ - UNMOUNT
+  source: INTERRUP.Q:2490
+  interrupt: 6F
+  flags: []
+  function: '18'
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 18h
+    table_refs: []
+    sub_values: []
+  - reg: AL
+    operator: '='
+    description: local drive number (0=A:)
+    table_refs: []
+    sub_values: []
+  - reg: BL
+    operator: '='
+    description: type
+    table_refs: []
+    sub_values:
+    - value: 00h
+      description: disk 01h-03h LPTn 04h,05h COMx
+      sub_values: []
+  returns:
+  - condition: CF clear
+    condition_description: if successful
+    registers: []
+    raw_lines: []
+  - condition: CF set
+    condition_description: on error
+    registers:
+    - reg: AX
+      operator: '='
+      description: 'error code (see #03740)'
+      table_refs:
+      - '03740'
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 17h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-6F18BP0012
+  category: b
+  title: HP Vectra EX-BIOS - "F_INS_FIND" - FIND DRIVER BY ATTRIBUTES
+  source: INTERRUP.Q:2502
+  interrupt: 6F
+  flags: []
+  function: 18BP0012
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 18h
+    table_refs: []
+    sub_values: []
+  - reg: BP
+    operator: '='
+    value: 0012h
+    description: (driver ID for V_SYSTEM)
+    table_refs: []
+    sub_values: []
+  - reg: AL
+    operator: '='
+    description: sense of test (00h equal, 02h non-equal)
+    table_refs: []
+    sub_values: []
+  - reg: BX
+    operator: '='
+    description: AND mask
+    table_refs: []
+    sub_values: []
+  - reg: DX
+    operator: '='
+    description: pattern
+    table_refs: []
+    sub_values: []
+  - reg: SI
+    operator: '='
+    description: first vector address to search
+    table_refs: []
+    sub_values: []
+  - reg: DI
+    operator: '='
+    description: offset in HP header of field to test
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AH
+      operator: '='
+      description: 'status (00h,FEh) (see #03744 at INT 6F/AH=00h"HP Vectra")'
+      table_refs:
+      - '03744'
+      sub_values: []
+    raw_lines: []
+  - condition: AH=00h---
+    registers:
+    - reg: SI
+      operator: '='
+      description: first matching vector address
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  description: 'compare successive drivers'' header fields starting at address SI
+
+    until the header field AND BX is either equal or non-equal to DX'
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 00h
+    name: HP Vectra
+  - type: interrupt
+    params:
+      AH: 04h
+      BP: 0012h
+  - type: interrupt
+    params:
+      AH: 0Ch
+      BP: 0012h
+  - type: interrupt
+    params:
+      AH: 10h
+      BP: 0012h
+  - type: interrupt
+    params:
+      AH: 12h
+      BP: 0012h
+  - type: interrupt
+    params:
+      AH: 16h
+      BP: 0012h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: N-6F19
+  category: N
+  title: 10NET v5.0 - AUDIT
+  source: INTERRUP.Q:2519
+  interrupt: 6F
+  flags:
+  - U
+  function: '19'
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 19h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 99h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: N-6F1A
+  category: N
+  title: 10NET v5.0 - "BULL" - ???
+  source: INTERRUP.Q:2525
+  interrupt: 6F
+  flags:
+  - U
+  function: 1A
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 1Ah
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: N-6F1B
+  category: N
+  title: 10NET v5.0 - "GMOUNT" - ???
+  source: INTERRUP.Q:2530
+  interrupt: 6F
+  flags:
+  - U
+  function: 1B
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 1Bh
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: N-6F1C
+  category: N
+  title: 10NET v5.0 - "GLOGIN" - GET LOGIN LIST
+  source: INTERRUP.Q:2535
+  interrupt: 6F
+  flags:
+  - U
+  function: 1C
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 1Ch
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: N-6F1D
+  category: N
+  title: 10NET v5.0 - "TABDATA" - ???
+  source: INTERRUP.Q:2540
+  interrupt: 6F
+  flags:
+  - U
+  function: 1D
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 1Dh
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: N-6F1E
+  category: N
+  title: 10NET v5.0 - "SCHED" - ???
+  source: INTERRUP.Q:2545
+  interrupt: 6F
+  flags:
+  - U
+  function: 1E
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 1Eh
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-6F1EBP0012
+  category: b
+  title: HP Vectra EX-BIOS - "F_RAM_GET" - GET EX-BIOS FREE RAM AREA
+  source: INTERRUP.Q:2550
+  interrupt: 6F
+  flags: []
+  function: 1EBP0012
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 1Eh
+    table_refs: []
+    sub_values: []
+  - reg: BP
+    operator: '='
+    value: 0012h
+    description: (driver ID for V_SYSTEM)
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AH
+      operator: '='
+      description: 'status (00h) (see #03744 at INT 6F/AH=00h"HP Vectra")'
+      table_refs:
+      - '03744'
+      sub_values: []
+    - reg: BX
+      operator: '='
+      description: last-used DS
+      table_refs: []
+      sub_values: []
+    - reg: DX
+      operator: '='
+      description: maximum DS
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 00h
+    name: HP Vectra
+  - type: interrupt
+    params:
+      AH: 04h
+      BP: 0012h
+  - type: interrupt
+    params:
+      AH: 20h
+      BP: 0012h
+  - type: interrupt
+    params:
+      AH: 22h
+      BP: 0012h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: N-6F1F
+  category: N
+  title: 10NET v5.0 - "WHOAMI" - ???
+  source: INTERRUP.Q:2559
+  interrupt: 6F
+  flags:
+  - U
+  function: 1F
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 1Fh
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: N-6F20
+  category: N
+  title: 10NET v5.0 - ???
+  source: INTERRUP.Q:2564
+  interrupt: 6F
+  flags:
+  - U
+  function: '20'
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 20h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-6F20BP0012
+  category: b
+  title: HP Vectra EX-BIOS - "F_RAM_RET" - RESERVE EX-BIOS MEMORY
+  source: INTERRUP.Q:2569
+  interrupt: 6F
+  flags: []
+  function: 20BP0012
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 20h
+    table_refs: []
+    sub_values: []
+  - reg: BP
+    operator: '='
+    value: 0012h
+    description: (driver ID for V_SYSTEM)
+    table_refs: []
+    sub_values: []
+  - reg: BX
+    operator: '='
+    description: new value for "last-used DS"
+    table_refs: []
+    sub_values: []
+  - reg: DX
+    operator: '='
+    description: new value for "maximum DS"
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AH
+      operator: '='
+      description: 'status (00h) (see #03744 at INT 6F/AH=00h"HP Vectra")'
+      table_refs:
+      - '03744'
+      sub_values: []
+    raw_lines: []
+  notes:
+  - 'the F_INS_FIXGETDS and F_INS_FREEGETDS functions
+
+    (see AH=0Eh/BP=0012h,AH=14h/BP=0012h) also modify the values returned
+
+    by this call, requiring care if both methods are used to allocate
+
+    memory'
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 00h
+    name: HP Vectra
+  - type: interrupt
+    params:
+      AH: 0Eh
+      BP: 0012h
+  - type: interrupt
+    params:
+      AH: 14h
+      BP: 0012h
+  - type: interrupt
+    params:
+      AH: 1Eh
+      BP: 0012h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: N-6F21
+  category: N
+  title: 10NET v5.0 - ???
+  source: INTERRUP.Q:2582
+  interrupt: 6F
+  flags:
+  - U
+  function: '21'
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 21h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: N-6F22
+  category: N
+  title: 10NET v5.0 - ???
+  source: INTERRUP.Q:2587
+  interrupt: 6F
+  flags:
+  - U
+  function: '22'
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 22h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-6F22BP0012
+  category: b
+  title: HP Vectra EX-BIOS - "F_CMOS_GET" - READ CMOS MEMORY
+  source: INTERRUP.Q:2592
+  interrupt: 6F
+  flags: []
+  function: 22BP0012
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 22h
+    table_refs: []
+    sub_values: []
+  - reg: BP
+    operator: '='
+    value: 0012h
+    description: (driver ID of V_SYSTEM)
+    table_refs: []
+    sub_values: []
+  - reg: BL
+    operator: '='
+    description: address of CMOS byte to read
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AH
+      operator: '='
+      description: 'status (see #03744 at AH=00h"HP Vectra")'
+      table_refs:
+      - '03744'
+      sub_values: []
+    - reg: AL
+      operator: '='
+      description: byte read
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes:
+  - supported by ES, QS, and RS series HP Vectras
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 00h
+    name: HP Vectra
+  - type: interrupt
+    params:
+      AH: 1Eh
+      BP: 0012h
+  - type: interrupt
+    params:
+      AH: 24h
+      BP: 0012h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-6F24BP0012
+  category: b
+  title: HP Vectra EX-BIOS - "F_CMOS_RET" - WRITE CMOS MEMORY
+  source: INTERRUP.Q:2602
+  interrupt: 6F
+  flags: []
+  function: 24BP0012
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 24h
+    table_refs: []
+    sub_values: []
+  - reg: BP
+    operator: '='
+    value: 0012h
+    description: (driver ID of V_SYSTEM)
+    table_refs: []
+    sub_values: []
+  - reg: BL
+    operator: '='
+    description: address of CMOS byte to write
+    table_refs: []
+    sub_values: []
+  - reg: AL
+    operator: '='
+    description: new value
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AH
+      operator: '='
+      description: 'status (see #03744)'
+      table_refs:
+      - '03744'
+      sub_values: []
+    raw_lines: []
+  notes:
+  - updates the CMOS checksum fields (both IBM-standard and HP checksums)
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 00h
+    name: HP Vectra
+  - type: interrupt
+    params:
+      AH: 22h
+      BP: 0012h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-6F2ABP0012
+  category: b
+  title: HP Vectra EX-BIOS - "F_YIELD" - GIVE UP CPU TO OTHER TASKS
+  source: INTERRUP.Q:2612
+  interrupt: 6F
+  flags: []
+  function: 2ABP0012
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 2Ah
+    table_refs: []
+    sub_values: []
+  - reg: BP
+    operator: '='
+    value: 0012h
+    description: (driver ID of V_SYSTEM)
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AH
+      operator: '='
+      description: 'status (see #03744)'
+      table_refs:
+      - '03744'
+      sub_values: []
+    raw_lines: []
+  notes:
+  - this is a hook for multitasking systems
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 00h
+    name: HP Vectra
+  - type: interrupt
+    interrupt: '15'
+    params:
+      AX: 1000h
+  - type: interrupt
+    interrupt: 2F
+    params:
+      AX: 1680h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-6F30BP0012
+  category: b
+  title: HP Vectra EX-BIOS - "F_SND_CLICK_ENABLE" - TURN ON KEYCLICKS
+  source: INTERRUP.Q:2620
+  interrupt: 6F
+  flags: []
+  function: 30BP0012
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 30h
+    table_refs: []
+    sub_values: []
+  - reg: BP
+    operator: '='
+    value: 0012h
+    description: (driver ID of V_SYSTEM)
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AH
+      operator: '='
+      description: 'status (see #03744 at AH=00h"HP Vectra")'
+      table_refs:
+      - '03744'
+      sub_values: []
+    raw_lines: []
+  description: enables keyclicks and flushes any pending keyclicks
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 32h
+      BP: 0012h
+  - type: interrupt
+    params:
+      AH: 34h
+      BP: 0012h
+  - type: interrupt
+    params:
+      AH: 36h
+      BP: 0012h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-6F32BP0012
+  category: b
+  title: HP Vectra EX-BIOS - "F_SND_CLICK_DISABLE" - TURN OFF KEYCLICKS
+  source: INTERRUP.Q:2628
+  interrupt: 6F
+  flags: []
+  function: 32BP0012
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 32h
+    table_refs: []
+    sub_values: []
+  - reg: BP
+    operator: '='
+    value: 0012h
+    description: (driver ID of V_SYSTEM)
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AH
+      operator: '='
+      description: 'status (see #03744)'
+      table_refs:
+      - '03744'
+      sub_values: []
+    raw_lines: []
+  description: disables keyclicks and flushes any pending keyclicks
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 00h
+    name: HP Vectra
+  - type: interrupt
+    params:
+      AH: 30h
+      BP: 0012h
+  - type: interrupt
+    params:
+      AH: 38h
+      BP: 0012h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-6F34BP0012
+  category: b
+  title: HP Vectra EX-BIOS - "F_SND_CLICK" - GENERATE KEYCLICK
+  source: INTERRUP.Q:2636
+  interrupt: 6F
+  flags: []
+  function: 34BP0012
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 34h
+    table_refs: []
+    sub_values: []
+  - reg: BP
+    operator: '='
+    value: 0012h
+    description: (driver ID of V_SYSTEM)
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AH
+      operator: '='
+      description: 'status (see #03744)'
+      table_refs:
+      - '03744'
+      sub_values: []
+    raw_lines: []
+  description: generate a keyclick if fewer than four clicks are already pending
+  notes:
+  - 'if keyclicks are already pending, the remaining click count is
+
+    incremented and the function returns immediately'
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 00h
+    name: HP Vectra
+  - type: interrupt
+    params:
+      AH: 30h
+      BP: 0012h
+  - type: interrupt
+    params:
+      AH: 36h
+      BP: 0012h
+  - type: interrupt
+    params:
+      AH: 3Ah
+      BP: 0012h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-6F36BP0012
+  category: b
+  title: HP Vectra EX-BIOS - "F_SND_BEEP_ENABLE" - ENABLE BEEPS
+  source: INTERRUP.Q:2646
+  interrupt: 6F
+  flags: []
+  function: 36BP0012
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 36h
+    table_refs: []
+    sub_values: []
+  - reg: BP
+    operator: '='
+    value: 0012h
+    description: (driver ID of V_SYSTEM)
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AH
+      operator: '='
+      description: 'status (see #03744 at AH=00h"HP Vectra")'
+      table_refs:
+      - '03744'
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 00h
+    name: HP Vectra
+  - type: interrupt
+    params:
+      AH: 30h
+      BP: 0012h
+  - type: interrupt
+    params:
+      AH: 34h
+      BP: 0012h
+  - type: interrupt
+    params:
+      AH: 38h
+      BP: 0012h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-6F38BP0012
+  category: b
+  title: HP Vectra EX-BIOS - "F_SND_BEEP_DISABLE" - DISABLE BEEPS
+  source: INTERRUP.Q:2653
+  interrupt: 6F
+  flags: []
+  function: 38BP0012
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 38h
+    table_refs: []
+    sub_values: []
+  - reg: BP
+    operator: '='
+    value: 0012h
+    description: (driver ID of V_SYSTEM)
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AH
+      operator: '='
+      description: 'status (see #03744)'
+      table_refs:
+      - '03744'
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 00h
+    name: HP Vectra
+  - type: interrupt
+    params:
+      AH: 32h
+      BP: 0012h
+  - type: interrupt
+    params:
+      AH: 36h
+      BP: 0012h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-6F3ABP0012
+  category: b
+  title: HP Vectra EX-BIOS - "F_SND_BEEP" - SOUND BEEP WITH CURRENT VALUES
+  source: INTERRUP.Q:2660
+  interrupt: 6F
+  flags: []
+  function: 3ABP0012
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 3Ah
+    table_refs: []
+    sub_values: []
+  - reg: BP
+    operator: '='
+    value: 0012h
+    description: (driver ID of V_SYSTEM)
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AH
+      operator: '='
+      description: 'status (see #03744 at AH=00h"HP Vectra")'
+      table_refs:
+      - '03744'
+      sub_values: []
+    raw_lines: []
+  description: 'make a sound of the frequency and duration defined in the EX-BIOS
+
+    global data area (see #03748)'
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 00h
+    name: HP Vectra
+  - type: interrupt
+    params:
+      AH: 34h
+      BP: 0012h
+  - type: interrupt
+    params:
+      AH: 36h
+      BP: 0012h
+  - type: interrupt
+    params:
+      AH: 38h
+      BP: 0012h
+  - type: interrupt
+    params:
+      AH: 3Ch
+      BP: 0012h
+  - type: interrupt
+    params:
+      AH: 3Eh
+      BP: 0012h
+  index: []
+  tables: []
+  table_refs:
+  - 03748
+- entry_type: INT
+  id: b-6F3CBP0012
+  category: b
+  title: HP Vectra EX-BIOS - "F_SND_SET_BEEP" - SET BEEP FREQUENCY AND DURATION
+  source: INTERRUP.Q:2670
+  interrupt: 6F
+  flags: []
+  function: 3CBP0012
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 3Ch
+    table_refs: []
+    sub_values: []
+  - reg: BP
+    operator: '='
+    value: 0012h
+    description: (driver ID of V_SYSTEM)
+    table_refs: []
+    sub_values: []
+  - reg: BX
+    operator: '='
+    description: frequency in Hz (1-25000, 0 = off)
+    table_refs: []
+    sub_values: []
+  - reg: DX
+    operator: '='
+    description: duration in 10-microsecond increments
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AH
+      operator: '='
+      description: 'status (see #03744)'
+      table_refs:
+      - '03744'
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 00h
+    name: HP Vectra
+  - type: interrupt
+    params:
+      AH: 3Ah
+      BP: 0012h
+  - type: interrupt
+    params:
+      AH: 3Eh
+      BP: 0012h
+  - type: table
+    id: 03748
+  index: []
+  tables: []
+  table_refs:
+  - 03748
+- entry_type: INT
+  id: b-6F3EBP0012
+  category: b
+  title: HP Vectra EX-BIOS - "F_SND_TONE" - SOUND TONE WITH FREQ AND DURATION
+  source: INTERRUP.Q:2679
+  interrupt: 6F
+  flags: []
+  function: 3EBP0012
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 3Eh
+    table_refs: []
+    sub_values: []
+  - reg: BP
+    operator: '='
+    value: 0012h
+    description: (driver ID of V_SYSTEM)
+    table_refs: []
+    sub_values: []
+  - reg: BX
+    operator: '='
+    description: frequency in Hz (1-25000, 0 = off)
+    table_refs: []
+    sub_values: []
+  - reg: DX
+    operator: '='
+    description: duration in 10-microsecond increments
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AH
+      operator: '='
+      description: 'status (see #03744)'
+      table_refs:
+      - '03744'
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 00h
+    name: HP Vectra
+  - type: interrupt
+    params:
+      AH: 3Ah
+      BP: 0012h
+  - type: interrupt
+    params:
+      AH: 3Ch
+      BP: 0012h
+  - type: interrupt
+    params:
+      AH: 40h
+      BP: 0012h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-6F40BP0012
+  category: b
+  title: HP Vectra EX-BIOS - "F_STR_GET_FREE_INDEX" - FIND FREE STRING INDEX
+  source: INTERRUP.Q:2688
+  interrupt: 6F
+  flags: []
+  function: 40BP0012
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 40h
+    table_refs: []
+    sub_values: []
+  - reg: BP
+    operator: '='
+    value: 0012h
+    description: (driver ID of V_SYSTEM)
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AH
+      operator: '='
+      description: 'status (see #03744)'
+      table_refs:
+      - '03744'
+      sub_values: []
+    - reg: BX
+      operator: '='
+      description: next free string index
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  description: get the next string index available to user programs
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 00h
+    name: HP Vectra
+  - type: interrupt
+    params:
+      AH: 42h
+      BP: 0012h
+  - type: interrupt
+    params:
+      AH: 44h
+      BP: 0012h
+  - type: interrupt
+    params:
+      AH: 46h
+      BP: 0012h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-6F42BP0012
+  category: b
+  title: HP Vectra EX-BIOS - "F_STR_DEL_BUCKET" - DEL HEADER FROM BUCKET LIST
+  source: INTERRUP.Q:2697
+  interrupt: 6F
+  flags: []
+  function: 42BP0012
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 42h
+    table_refs: []
+    sub_values: []
+  - reg: BP
+    operator: '='
+    value: 0012h
+    description: (driver ID of V_SYSTEM)
+    table_refs: []
+    sub_values: []
+  - reg: ES:DI
+    operator: ->
+    description: 'bucket header (see #03775)'
+    table_refs:
+    - '03775'
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AH
+      operator: '='
+      description: 'status (00h,FEh) (see #03744 at AH=00h"HP Vectra")'
+      table_refs:
+      - '03744'
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 00h
+    name: HP Vectra
+  - type: interrupt
+    params:
+      AH: 40h
+      BP: 0012h
+  - type: interrupt
+    params:
+      AH: 44h
+      BP: 0012h
+  index: []
+  tables:
+  - '03775'
+  table_refs: []
+- entry_type: INT
+  id: b-6F44BP0012
+  category: b
+  title: HP Vectra EX-BIOS - "F_STR_PUT_BUCKET" - ADD HEADER TO BUCKET HDR LIST
+  source: INTERRUP.Q:2715
+  interrupt: 6F
+  flags: []
+  function: 44BP0012
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 44h
+    table_refs: []
+    sub_values: []
+  - reg: BP
+    operator: '='
+    value: 0012h
+    description: (driver ID of V_SYSTEM)
+    table_refs: []
+    sub_values: []
+  - reg: ES:DI
+    operator: ->
+    description: 'bucket header (see #03775)'
+    table_refs:
+    - '03775'
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AH
+      operator: '='
+      description: 'status (00h) (see #03744)'
+      table_refs:
+      - '03744'
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 00h
+    name: HP Vectra
+  - type: interrupt
+    params:
+      AH: 42h
+      BP: 0012h
+  - type: interrupt
+    params:
+      AH: 46h
+      BP: 0012h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-6F46BP0012
+  category: b
+  title: HP Vectra EX-BIOS - "F_STR_GET_STRING" - FIND STRING IN BUCKET LIST
+  source: INTERRUP.Q:2723
+  interrupt: 6F
+  flags: []
+  function: 46BP0012
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 46h
+    table_refs: []
+    sub_values: []
+  - reg: BP
+    operator: '='
+    value: 0012h
+    description: (driver ID of V_SYSTEM)
+    table_refs: []
+    sub_values: []
+  - reg: BX
+    operator: '='
+    description: string index
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AH
+      operator: '='
+      description: 'status (00h,other) (see #03744)'
+      table_refs:
+      - '03744'
+      sub_values: []
+    raw_lines: []
+  - condition: successful---
+    registers:
+    - reg: CX
+      operator: '='
+      description: length of string (excluding count byte and terminating NUL)
+      table_refs: []
+      sub_values: []
+    - reg: DS:SI
+      operator: ->
+      description: header for string
+      table_refs: []
+      sub_values: []
+    - reg: ES:DI
+      operator: ->
+      description: found string
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 00h
+    name: HP Vectra
+  - type: interrupt
+    params:
+      AH: 44h
+      BP: 0012h
+  - type: interrupt
+    params:
+      AH: 48h
+      BP: 0012h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-6F48BP0012
+  category: b
+  title: HP Vectra EX-BIOS - "F_STR_GET_INDEX" - GET INDEX FOR STRING
+  source: INTERRUP.Q:2735
+  interrupt: 6F
+  flags: []
+  function: 48BP0012
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 48h
+    table_refs: []
+    sub_values: []
+  - reg: BP
+    operator: '='
+    value: 0012h
+    description: (driver ID of V_SYSTEM)
+    table_refs: []
+    sub_values: []
+  - reg: ES:DI
+    operator: ->
+    description: ASCIZ string
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AH
+      operator: '='
+      description: 'status (00h,other) (see #03744 at AH=00h"HP Vectra")'
+      table_refs:
+      - '03744'
+      sub_values: []
+    raw_lines: []
+  - condition: successful---
+    registers:
+    - reg: BX
+      operator: '='
+      description: index for the given string
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 00h
+    name: HP Vectra
+  - type: interrupt
+    params:
+      AH: 40h
+      BP: 0012h
+  - type: interrupt
+    params:
+      AH: 46h
+      BP: 0012h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: A-6F636FBX6D70
+  category: A
+  title: Clara Empricost - TSR Version - INSTALLATION CHECK
+  source: INTERRUP.Q:2745
+  interrupt: 6F
+  flags: []
+  function: 636FBX6D70
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 636Fh
+    description: ('co')
+    table_refs: []
+    sub_values: []
+  - reg: BX
+    operator: '='
+    value: 6D70h
+    description: ('mp')
+    table_refs: []
+    sub_values: []
+  - reg: CX
+    operator: '='
+    value: 696Eh
+    description: ('in')
+    table_refs: []
+    sub_values: []
+  - reg: SS:DX
+    operator: ->
+    description: WORD to set if installed
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - SS:DX word set to 636Fh if installed
+  program: 'Condition List Action Rejection Algorithm for the Evaluation
+
+    of Music at Pseudo-Random Idea COnstruction STage
+
+    (CLARA EMPRICOST) is an experimental program by Silas Brown'
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 636Fh
+      BX: 6D70h
+    name: UNINSTALL
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: A-6F636FBX6D70
+  category: A
+  title: Clara Empricost - TSR Version - UNINSTALL
+  source: INTERRUP.Q:2756
+  interrupt: 6F
+  flags: []
+  function: 636FBX6D70
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 636Fh
+    description: ('co')
+    table_refs: []
+    sub_values: []
+  - reg: BX
+    operator: '='
+    value: 6D70h
+    description: ('mp')
+    table_refs: []
+    sub_values: []
+  - reg: CX
+    operator: '='
+    value: 6F73h
+    description: ('os')
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - nothing -- call installation check to determine whether successful
+  program: 'Condition List Action Rejection Algorithm for the Evaluation
+
+    of Music at Pseudo-Random Idea COnstruction STage
+
+    (CLARA EMPRICOST) is an experimental program by Silas Brown'
+  notes:
+  - 'Saves any unfinished task and prevents processing of
+
+    new tasks, even if can''t uninstall
+
+    If INT 28h or INT 6Fh have been chained since installation,
+
+    returns without changing interrupts or freeing memory
+
+    do not call while DOS is active (i.e. InDOS flag is nonzero or INT 28
+
+    is active and InDOS > 1)'
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 636Fh
+      BX: 6D70h
+    name: INSTALLATION CHECK
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: N-6F80
+  category: N
+  title: 10NET v5.0 - LOGIN
+  source: INTERRUP.Q:2772
+  interrupt: 6F
+  flags: []
+  function: '80'
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 80h
+    table_refs: []
+    sub_values: []
+  - reg: DS:DX
+    operator: ->
+    description: 'login record (see #03776)'
+    table_refs:
+    - '03776'
+    sub_values: []
+  returns:
+  - condition: CF clear
+    condition_description: if successful
+    registers:
+    - reg: BL
+      operator: '='
+      description: number of days until password expires (00h = never)
+      table_refs: []
+      sub_values: []
+    - reg: CL
+      operator: '='
+      description: security level
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  - condition: CF set
+    condition_description: on error
+    registers:
+    - reg: AX
+      operator: '='
+      description: 'status (see #03740)'
+      table_refs:
+      - '03740'
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 00h
+  - type: interrupt
+    params:
+      AH: 81h
+  index: []
+  tables:
+  - '03776'
+  table_refs: []
+- entry_type: INT
+  id: N-6F81
+  category: N
+  title: 10NET v5.0 - LOGOUT
+  source: INTERRUP.Q:2790
+  interrupt: 6F
+  flags: []
+  function: '81'
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 81h
+    table_refs: []
+    sub_values: []
+  - reg: DS:DX
+    operator: ->
+    description: server node ID (DX=0000h for universal logout)
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AX
+      operator: '='
+      description: 'status (see #03740)'
+      table_refs:
+      - '03740'
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 01h
+  - type: interrupt
+    params:
+      AH: 80h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: N-6F8A
+  category: N
+  title: 10NET v5.0 - CHAT
+  source: INTERRUP.Q:2796
+  interrupt: 6F
+  flags: []
+  function: 8A
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 8Ah
+    table_refs: []
+    sub_values: []
+  - reg: DS:BX
+    operator: ->
+    description: 'chat parameters (see #03777)'
+    table_refs:
+    - '03777'
+    sub_values: []
+  - reg: DS:DX
+    operator: ->
+    description: 'chat message (see #03778)'
+    table_refs:
+    - 03778
+    sub_values: []
+  returns:
+  - condition: CF clear
+    condition_description: if successful
+    registers: []
+    raw_lines: []
+  - condition: CF set
+    condition_description: on error
+    registers:
+    - reg: AX
+      operator: '='
+      description: 'status (see #03740)'
+      table_refs:
+      - '03740'
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 0Ah
+    name: 10NET
+  index: []
+  tables:
+  - '03777'
+  - 03778
+  table_refs: []
+- entry_type: INT
+  id: N-6F8D
+  category: N
+  title: 10NET v5.0 - "WHO" - ENUMERATE USERS ON NETWORK
+  source: INTERRUP.Q:2816
+  interrupt: 6F
+  flags: []
+  function: 8D
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 8Dh
+    table_refs: []
+    sub_values: []
+  - reg: BX
+    operator: '='
+    description: 'service mask (see #03779)'
+    table_refs:
+    - 03779
+    sub_values: []
+  - reg: CX
+    operator: '='
+    description: length of buffer
+    table_refs: []
+    sub_values: []
+  - reg: DS:DX
+    operator: ->
+    description: 'buffer for array of Who data structures (see #03780)'
+    table_refs:
+    - 03780
+    sub_values: []
+  returns:
+  - condition: CF clear
+    condition_description: if successful
+    registers:
+    - reg: CX
+      operator: '='
+      description: number of nodes matching service mask
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  - condition: CF set
+    condition_description: on error
+    registers:
+    - reg: AX
+      operator: '='
+      description: 'status (see #03740)'
+      table_refs:
+      - '03740'
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 0Dh
+  index: []
+  tables:
+  - 03779
+  - 03780
+  - 03781
+  - 03782
+  table_refs: []
+- entry_type: INT
+  id: N-6F9501
+  category: N
+  title: 10NET v5.0 - GET SHARED DEVICE ENTRY
+  source: INTERRUP.Q:2870
+  interrupt: 6F
+  flags: []
+  function: '9501'
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 9501h
+    table_refs: []
+    sub_values: []
+  - reg: BX
+    operator: '='
+    description: zero-based index
+    table_refs: []
+    sub_values: []
+  - reg: DS:SI
+    operator: ->
+    description: server's node ID
+    table_refs: []
+    sub_values: []
+  - reg: ES:DI
+    operator: ->
+    description: 'buffer for shared device structure (see #03783)'
+    table_refs:
+    - 03783
+    sub_values: []
+  returns:
+  - condition: CF clear
+    condition_description: if successful
+    registers: []
+    raw_lines: []
+  - condition: CF set
+    condition_description: on error
+    registers:
+    - reg: AX
+      operator: '='
+      description: 'status (see #03740)'
+      table_refs:
+      - '03740'
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 1501h
+  - type: interrupt
+    params:
+      AX: 9502h
+  - type: interrupt
+    params:
+      AX: 9503h
+  - type: interrupt
+    params:
+      AX: 9504h
+  index: []
+  tables:
+  - 03783
+  - 03784
+  - 03785
+  table_refs: []
+- entry_type: INT
+  id: N-6F9502
+  category: N
+  title: 10NET v5.0 - SET SHARED DEVICE ENTRY
+  source: INTERRUP.Q:2936
+  interrupt: 6F
+  flags: []
+  function: '9502'
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 9502h
+    table_refs: []
+    sub_values: []
+  - reg: DS:SI
+    operator: ->
+    description: server's node ID
+    table_refs: []
+    sub_values: []
+  - reg: ES:DI
+    operator: ->
+    description: 'shared device structure (see #03783)'
+    table_refs:
+    - 03783
+    sub_values: []
+  returns:
+  - condition: CF clear
+    condition_description: if successful
+    registers: []
+    raw_lines: []
+  - condition: CF set
+    condition_description: on error
+    registers:
+    - reg: AX
+      operator: '='
+      description: 'status (see #03740)'
+      table_refs:
+      - '03740'
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 1502h
+  - type: interrupt
+    params:
+      AX: 9501h
+  - type: interrupt
+    params:
+      AX: 9503h
+  - type: interrupt
+    params:
+      AX: 9504h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: N-6F9503
+  category: N
+  title: 10NET v5.0 - DELETE SHARED DEVICE
+  source: INTERRUP.Q:2945
+  interrupt: 6F
+  flags: []
+  function: '9503'
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 9503h
+    table_refs: []
+    sub_values: []
+  - reg: BX
+    operator: '='
+    description: zero-based index
+    table_refs: []
+    sub_values: []
+  - reg: DS:SI
+    operator: ->
+    description: server's node ID
+    table_refs: []
+    sub_values: []
+  returns:
+  - condition: CF clear
+    condition_description: if successful
+    registers: []
+    raw_lines: []
+  - condition: CF set
+    condition_description: on error
+    registers:
+    - reg: AX
+      operator: '='
+      description: 'status (see #03740)'
+      table_refs:
+      - '03740'
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 1503h
+  - type: interrupt
+    params:
+      AX: 9501h
+  - type: interrupt
+    params:
+      AX: 9502h
+  - type: interrupt
+    params:
+      AX: 9504h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: N-6F9504
+  category: N
+  title: 10NET v5.0 - ENUMERATE USERS OF SHARED DEVICE
+  source: INTERRUP.Q:2954
+  interrupt: 6F
+  flags: []
+  function: '9504'
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 9504h
+    table_refs: []
+    sub_values: []
+  - reg: BX
+    operator: '='
+    description: zero-based shared device index
+    table_refs: []
+    sub_values: []
+  - reg: CX
+    operator: '='
+    description: zero-based user index
+    table_refs: []
+    sub_values: []
+  - reg: DS:SI
+    operator: ->
+    description: server's node ID
+    table_refs: []
+    sub_values: []
+  returns:
+  - condition: CF clear
+    condition_description: if successful
+    registers:
+    - reg: ES:DI
+      operator: ->
+      description: node ID of the CX'th user of the BX'th device
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  - condition: CF set
+    condition_description: on error
+    registers:
+    - reg: AX
+      operator: '='
+      description: 'status (see #03740)'
+      table_refs:
+      - '03740'
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 9501h
+  - type: interrupt
+    params:
+      AX: 9502h
+  - type: interrupt
+    params:
+      AX: 9503h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: N-6F99
+  category: N
+  title: 10NET v5.0 - AUDIT
+  source: INTERRUP.Q:2965
+  interrupt: 6F
+  flags: []
+  function: '99'
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 99h
+    table_refs: []
+    sub_values: []
+  - reg: DS:SI
+    operator: ->
+    description: server's node ID
+    table_refs: []
+    sub_values: []
+  - reg: ES:DI
+    operator: ->
+    description: data to be appended to audit trail file (max 106 bytes)
+    table_refs: []
+    sub_values: []
+  returns:
+  - condition: CF clear
+    condition_description: if successful
+    registers: []
+    raw_lines: []
+  - condition: CF set
+    condition_description: on error
+    registers:
+    - reg: AX
+      operator: '='
+      description: 'status (see #03740)'
+      table_refs:
+      - '03740'
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 19h
+  - type: interrupt
+    params:
+      AH: 9Ch
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: N-6F9C
+  category: N
+  title: 10NET v5.0 - GET LOGIN LIST
+  source: INTERRUP.Q:2974
+  interrupt: 6F
+  flags: []
+  function: 9C
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 9Ch
+    table_refs: []
+    sub_values: []
+  - reg: BX
+    operator: '='
+    description: zero-based index
+    table_refs: []
+    sub_values: []
+  returns:
+  - condition: CF clear
+    condition_description: if successful
+    registers:
+    - reg: DS:DI
+      operator: ->
+      description: BX'th node ID that caller's machine is logged into
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  - condition: CF set
+    condition_description: on error
+    registers:
+    - reg: AX
+      operator: '='
+      description: 'status (see #03740)'
+      table_refs:
+      - '03740'
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []

@@ -1,0 +1,96 @@
+file_type: interrupt
+key: DC
+entries:
+- entry_type: INT
+  id: u-DC
+  category: u
+  title: PC/370 v4.1- - API
+  source: INTERRUP.R:1961
+  interrupt: DC
+  flags: []
+  input_registers: []
+  returns: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: '60'
+    params: {}
+    name: PC/370
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: r-DC
+  category: r
+  title: IBM ROM BASIC - used while in interpreter
+  source: INTERRUP.R:1964
+  interrupt: DC
+  flags: []
+  input_registers: []
+  returns: []
+  notes:
+  - 'called by ROM BASIC
+
+    BASIC.COM/BASICA.COM do not restore vector on termination'
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: '80'
+    params: {}
+    name: BASIC
+  - type: interrupt
+    interrupt: DB
+    params: {}
+    name: BASIC
+  - type: interrupt
+    interrupt: DD
+    params: {}
+    name: BASIC
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: r-DC
+  category: r
+  title: STSC APL*PLUS/PC - MAY BE USED IN FUTURE RELEASES
+  source: INTERRUP.R:1969
+  interrupt: DC
+  flags: []
+  input_registers: []
+  returns: []
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: H-DC
+  category: H
+  title: Screen Thief v1.00 - RELOCATED IRQ4
+  source: INTERRUP.R:1971
+  interrupt: DC
+  flags: []
+  input_registers: []
+  returns: []
+  notes:
+  - (see INT D8"Screen Thief")
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: 0C
+    params: {}
+    name: IRQ4
+  - type: interrupt
+    interrupt: DB
+    params: {}
+    name: Screen Thief
+  - type: interrupt
+    interrupt: DD
+    params: {}
+    name: Screen Thief
+  range: INT 7Ch to INT E4h, selected by commandline switch
+  index: []
+  tables: []
+  table_refs: []

@@ -1,0 +1,33 @@
+file_type: interrupt
+key: 1C
+entries:
+- entry_type: INT
+  id: B-1C
+  category: B
+  title: TIME - SYSTEM TIMER TICK
+  source: INTERRUP.E:9726
+  interrupt: 1C
+  flags: []
+  input_registers: []
+  returns: []
+  description: 'this interrupt is automatically called on each clock tick by the INT 08
+
+    handler'
+  notes:
+  - 'this is the preferred interrupt to chain when a program needs to be
+
+    invoked regularly
+
+    not available on NEC 9800-series PCs'
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: 08
+    params: {}
+  - type: interrupt
+    interrupt: E2
+    params: {}
+    name: PC Cluster
+  index: []
+  tables: []
+  table_refs: []

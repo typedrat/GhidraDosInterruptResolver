@@ -1,0 +1,773 @@
+file_type: interrupt
+key: '64'
+entries:
+- entry_type: INT
+  id: '*-64'
+  category: '*'
+  title: reserved for user interrupt
+  source: INTERRUP.P:3858
+  interrupt: '64'
+  flags: []
+  input_registers: []
+  returns: []
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: d-64
+  category: d
+  title: Adaptec controllers - DRIVE 1 DATA
+  source: INTERRUP.P:3860
+  interrupt: '64'
+  flags: []
+  input_registers: []
+  returns: []
+  description: 'this vector stores the first four bytes of the parameter table for
+
+    hard disk 1'
+  notes:
+  - 'these vectors are used by the following Adaptec controllers:
+
+    ACB 2370 A/B/C, ACB 2372 A/B/C, ACB 2333 A/B, 2322B-8, 2322B-16
+
+    these vectors are NOT used by the following Adaptec controllers:
+
+    ACB 2310, ACB 2312, ACB 2320D, ACB 2322D'
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: '60'
+    params: {}
+    name: Adaptec
+  - type: interrupt
+    interrupt: '65'
+    params: {}
+    name: Adaptec
+  - type: interrupt
+    interrupt: '66'
+    params: {}
+    name: Adaptec
+  - type: interrupt
+    interrupt: '67'
+    params: {}
+    name: Adaptec
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-64
+  category: b
+  title: TI Professional PC - OPTION ROM DATA AREA POINTER (NOT A VECTOR!)
+  source: INTERRUP.P:3869
+  interrupt: '64'
+  flags: []
+  input_registers: []
+  returns: []
+  description: 'the low word of this vector contains the segment of the RAM data area
+
+    to be used by the expansion ROM at F400h:6000h, and the high word
+
+    contains the length of the data area; this segment and size are
+
+    both set to 0000h if no ROM is installed at F400h:6000h'
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: '60'
+    params: {}
+    name: TI Professional PC
+  - type: interrupt
+    interrupt: '63'
+    params: {}
+    name: TI Professional
+  - type: interrupt
+    interrupt: '65'
+    params: {}
+    name: TI Professional PC
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: --64
+  title: Oracle SQL Protected Mode Executive - ???
+  source: INTERRUP.P:3877
+  interrupt: '64'
+  flags: []
+  input_registers: []
+  returns: []
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: N-64
+  category: N
+  title: Novell NetWare to v2.0a - LOW-LEVEL API
+  source: INTERRUP.P:3879
+  interrupt: '64'
+  flags: []
+  input_registers: []
+  returns: []
+  notes:
+  - 'equivalent to INT 7A for NetWare versions through 2.0a only; later
+
+    versions do not use this interrupt for IPX/SPX access, instead
+
+    getting an entry point from INT 2F/AX=7A00h'
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: 2F
+    params:
+      AX: 7A00h
+  - type: interrupt
+    interrupt: 7A
+    params: {}
+    name: LOW-LEVEL API
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: h-64
+  category: h
+  title: Data General DG10 - MicroECLIPSE COPROCESSOR INTERFACE
+  source: INTERRUP.P:3885
+  interrupt: '64'
+  flags: []
+  input_registers: []
+  returns: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: '65'
+    params: {}
+    name: DG10
+  - type: interrupt
+    interrupt: '66'
+    params: {}
+    name: DG10
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: r-64
+  category: r
+  title: Extended Batch Language v3.14+
+  source: INTERRUP.P:3888
+  interrupt: '64'
+  flags: []
+  input_registers:
+  - reg: AH
+    operator: '='
+    description: function
+    table_refs: []
+    sub_values:
+    - value: 00h
+      description: to 5Fh chained to previous handler
+      sub_values: []
+    - value: 60h
+      description: to 6Ch reserved, return immediately
+      sub_values: []
+    - value: 80h
+      description: to FFh chained to previous handler
+      sub_values: []
+    - value: 6Dh
+      description: (v4.01+) insert tone in queue
+      sub_values: []
+  - reg: AL
+    operator: '='
+    description: ???
+    table_refs: []
+    sub_values: []
+  - reg: CX
+    operator: '='
+    description: frequency in Hertz
+    table_refs: []
+    sub_values: []
+  - reg: DL
+    operator: '='
+    description: duration in clock ticks
+    table_refs: []
+    sub_values: []
+  - reg: AL
+    operator: '='
+    description: ???
+    table_refs: []
+    sub_values: []
+  - reg: AL
+    operator: '='
+    description: ???
+    table_refs: []
+    sub_values: []
+  - reg: AL
+    operator: '='
+    description: byte to insert
+    table_refs: []
+    sub_values: []
+  - reg: AL
+    operator: '='
+    description: byte to insert
+    table_refs: []
+    sub_values: []
+  - reg: AL
+    operator: '='
+    description: '''K'' if kbd read will read physical keyboard'
+    table_refs: []
+    sub_values: []
+  - reg: AH
+    operator: '='
+    description: ???
+    table_refs: []
+    sub_values: []
+  - reg: AL
+    operator: '='
+    description: ???
+    table_refs: []
+    sub_values: []
+  - reg: AL
+    operator: '='
+    description: ???
+    table_refs: []
+    sub_values: []
+  - reg: AL
+    operator: '='
+    description: ???
+    table_refs: []
+    sub_values: []
+  - reg: AL
+    operator: '='
+    description: ???
+    table_refs: []
+    sub_values: []
+  - reg: AL
+    operator: '='
+    description: ???
+    table_refs: []
+    sub_values: []
+  - reg: DI
+    operator: '='
+    description: segment of ???
+    table_refs: []
+    sub_values: []
+  - reg: BX
+    operator: '='
+    description: segment of next program's PSP???
+    table_refs: []
+    sub_values: []
+  returns: []
+  program: Extended Batch Language is a batch-file enhancer by Seaware
+  notes:
+  - 'the chaining does not check whether the interrupt had been hooked
+
+    before, so if you try to chain when the previous vector was
+
+    0000h:0000h, you''ll be in trouble
+
+    functions 72h and 7Ah-7Dh appear to be interfaces to the optional
+
+    floating-point and extended function packages'
+  bugs: []
+  see_also: []
+  index:
+  - installation check;EBL|installation check;Extended Batch Language
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: d-64
+  category: d
+  title: Pdisk by Scott Garfinkle - Overwritten for Hard Drive information
+  source: INTERRUP.P:3944
+  interrupt: '64'
+  flags: []
+  input_registers: []
+  returns: []
+  notes:
+  - 'This vector is overwritten by Pdisk to install custom harddrive types.
+
+    It can either destroy 4 vectors and take no memory or TSR and take
+
+    up some memory.'
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: '65'
+    params: {}
+    name: Pdisk
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: --64
+  title: PC-DRAFT - ASYNCHRONOUS DRIVER
+  source: INTERRUP.P:3950
+  interrupt: '64'
+  flags: []
+  input_registers: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+  program: PC-DRAFT is a powerful CAD environment by rhv.
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: '62'
+    params: {}
+    name: PC-DRAFT
+  - type: interrupt
+    interrupt: '65'
+    params: {}
+    name: PC-DRAFT
+  - type: interrupt
+    interrupt: '66'
+    params: {}
+    name: PC-DRAFT
+  - type: interrupt
+    interrupt: '67'
+    params: {}
+    name: PC-DRAFT
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: N-6401
+  category: N
+  title: BW-NFS - BWRPC - ???
+  source: INTERRUP.P:3956
+  interrupt: '64'
+  flags:
+  - U
+  function: '01'
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 01h
+    table_refs: []
+    sub_values: []
+  - reg: ES:BX
+    operator: ->
+    description: ??? (at least 8 bytes)
+    table_refs: []
+    sub_values: []
+  - reg: ES:BP
+    operator: ->
+    description: DWORD ???
+    table_refs: []
+    sub_values: []
+  returns:
+  - condition: CF clear
+    condition_description: if successful
+    registers: []
+    raw_lines:
+    - ???
+  - condition: CF set
+    condition_description: on error
+    registers:
+    - reg: CX
+      operator: '='
+      value: 0000h
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes:
+  - 'the Beame&Whiteside TCP/IP protocol stack uses two consecutive
+
+    interrupts (62h and 63h by default); the BW-NFS client uses a third
+
+    consecutive interrupt (64h by default) if it is loaded
+
+    the BWRPC installation check consists of determining the interrupt
+
+    vector assigned to it (two more than the value returned by reading
+
+    the ETHDEV27 device), and testing whether the word immediately
+
+    preceding the interrupt handler is 4257h (''BW'')'
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: '62'
+    params:
+      AH: 00h
+    name: ETHDEV
+  - type: interrupt
+    interrupt: '63'
+    params:
+      AH: 03h
+    name: BW-TCP
+  - type: interrupt
+    interrupt: '63'
+    params:
+      AH: 24h
+  range: INT 4E to INT FD, selected by configuration
+  index:
+  - installation checks;BWRPC
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: N-6402
+  category: N
+  title: BW-NFS - BWRPC - ???
+  source: INTERRUP.P:3976
+  interrupt: '64'
+  flags:
+  - U
+  function: '02'
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 02h
+    table_refs: []
+    sub_values: []
+  - reg: DS:DI
+    operator: ->
+    description: ???
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+  notes:
+  - this call is passed directly through to INT 62/AH=07h
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: '62'
+    params:
+      AH: 07h
+    name: ETHDEV
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: N-6403
+  category: N
+  title: BW-NFS - BWRPC - ADD ???
+  source: INTERRUP.P:3983
+  interrupt: '64'
+  flags:
+  - U
+  function: '03'
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 03h
+    table_refs: []
+    sub_values: []
+  - reg: AL
+    operator: '='
+    description: ???
+    table_refs: []
+    sub_values: []
+  - reg: BP
+    operator: '='
+    description: ???
+    table_refs: []
+    sub_values: []
+  - reg: ES:SI
+    operator: ->
+    description: ???
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+  notes:
+  - this call is passed directly through to INT 62/AH=0Bh
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 04h
+  - type: interrupt
+    interrupt: '62'
+    params:
+      AH: 0Bh
+    name: ETHDEV
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: N-6404
+  category: N
+  title: BW-NFS - BWRPC - REMOVE ???
+  source: INTERRUP.P:3992
+  interrupt: '64'
+  flags:
+  - U
+  function: '04'
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 04h
+    table_refs: []
+    sub_values: []
+  - reg: BP
+    operator: '='
+    description: ???
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+  notes:
+  - this call is passed directly through to INT 62/AH=0Ch
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 03h
+  - type: interrupt
+    interrupt: '62'
+    params:
+      AH: 0Ch
+    name: ETHDEV
+  range: INT 4E to INT FD, selected by configuration
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: N-6405
+  category: N
+  title: BW-NFS - BWRPC - ???
+  source: INTERRUP.P:4000
+  interrupt: '64'
+  flags:
+  - U
+  function: '05'
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 05h
+    table_refs: []
+    sub_values: []
+  - reg: CX
+    operator: '='
+    description: ???
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+  notes:
+  - this call is passed directly through to INT 62/AH=13h
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: '62'
+    params:
+      AH: 13h
+    name: ETHDEV
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: N-6406
+  category: N
+  title: BW-NFS - BWRPC - ???
+  source: INTERRUP.P:4007
+  interrupt: '64'
+  flags:
+  - U
+  function: '06'
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 06h
+    table_refs: []
+    sub_values: []
+  - reg: ES:SI
+    operator: ->
+    description: ???
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AL
+      operator: '='
+      value: 00h
+      description: if CF clear
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes:
+  - this call is passed directly through to INT 62/AH=14h
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: '62'
+    params:
+      AH: 14h
+    name: ETHDEV
+  range: INT 4E to INT FD, selected by configuration
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: N-6407
+  category: N
+  title: BW-NFS - BWRPC - GET IP ADDRESS
+  source: INTERRUP.P:4015
+  interrupt: '64'
+  flags:
+  - U
+  function: '07'
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 07h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: CX:DX
+      operator: '='
+      description: IP address
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: N-6410
+  category: N
+  title: BW-NFS - BWRPC - CALL ETHDEV.SYS
+  source: INTERRUP.P:4019
+  interrupt: '64'
+  flags:
+  - U
+  function: '10'
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 10h
+    table_refs: []
+    sub_values: []
+  - reg: AL
+    operator: '='
+    description: ETHDEV function number
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - as returned by ETHDEV
+  notes:
+  - this call is passed directly through to INT 62
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: '62'
+    params:
+      AH: 00h
+    name: ETHDEV
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: N-6411
+  category: N
+  title: BW-NFS - BWRPC - NOP???
+  source: INTERRUP.P:4027
+  interrupt: '64'
+  flags:
+  - U
+  function: '11'
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 11h
+    table_refs: []
+    sub_values: []
+  returns:
+  - condition: CF clear
+    registers: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also: []
+  range: INT 4E to INT FD, selected by configuration
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: N-64FE
+  category: N
+  title: BW-NFS - BWRPC - MAP EMS PAGE FRAME
+  source: INTERRUP.P:4032
+  interrupt: '64'
+  flags: []
+  function: FE
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: FEh
+    table_refs: []
+    sub_values: []
+  - reg: AL
+    operator: '='
+    description: direction
+    table_refs: []
+    sub_values:
+    - value: 00h
+      description: map in driver's memory block
+      sub_values: []
+    - value: 01h
+      description: map out driver's memory block
+      sub_values: []
+  returns:
+  - condition: CF clear
+    condition_description: if successful
+    registers: []
+    raw_lines: []
+  - condition: CF set
+    condition_description: on error
+    registers:
+    - reg: AL
+      operator: '='
+      description: error code
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes:
+  - this call is passed through directly to ETHDEV.SYS (see INT 62/AH=FEh)
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: '21'
+    params:
+      AH: 3Fh
+    name: BW-TCP
+  - type: interrupt
+    interrupt: '62'
+    params:
+      AH: FEh
+  - type: interrupt
+    interrupt: '63'
+    params:
+      AH: 03h
+    name: BW-TCP
+  - type: interrupt
+    interrupt: '63'
+    params:
+      AH: 24h
+  range: INT 4E to INT FD, selected by configuration
+  index: []
+  tables: []
+  table_refs: []

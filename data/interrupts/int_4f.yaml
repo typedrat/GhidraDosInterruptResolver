@@ -1,0 +1,320 @@
+file_type: interrupt
+key: 4F
+entries:
+- entry_type: INT
+  id: h-4F
+  category: h
+  title: Z100 - Slave 8259 - S100 vectored line 7
+  source: INTERRUP.N:8802
+  interrupt: 4F
+  flags: []
+  input_registers: []
+  returns: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: 4E
+    params: {}
+    name: Z100
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-4F
+  category: b
+  title: TI Professional PC - SYSTEM CONFIGURATION CALL
+  source: INTERRUP.N:8805
+  interrupt: 4F
+  flags: []
+  input_registers: []
+  returns:
+  - registers:
+    - reg: AX
+      operator: '='
+      description: 'system configuration word (see #03227)'
+      table_refs:
+      - '03227'
+      sub_values: []
+    - reg: BX
+      operator: '='
+      description: size of contiguous DOS memory in paragraphs
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: '11'
+    params: {}
+    name: BIOS
+  - type: interrupt
+    interrupt: '12'
+    params: {}
+    name: BIOS
+  - type: interrupt
+    interrupt: '40'
+    params: {}
+    name: TI Professional
+  - type: interrupt
+    interrupt: '48'
+    params:
+      AH: 09h
+  - type: interrupt
+    interrupt: '49'
+    params:
+      AH: 01h
+    name: TI
+  - type: interrupt
+    interrupt: 4B
+    params: {}
+    name: TI Professional
+  - type: interrupt
+    interrupt: 4D
+    params:
+      AH: 00h
+  - type: interrupt
+    interrupt: 4E
+    params: {}
+    name: TI Professional
+  index: []
+  tables:
+  - '03227'
+  table_refs: []
+- entry_type: INT
+  id: d-4F0081
+  category: d
+  title: ATA Software Programming Interface (ATASPI) - SEND ATASPI REQUEST
+  source: INTERRUP.N:8832
+  interrupt: 4F
+  flags: []
+  function: 0081
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 0081h
+    table_refs: []
+    sub_values: []
+  - reg: ES:BX
+    operator: ->
+    description: 'ATA Request Block (see #90002)'
+    table_refs:
+    - '90002'
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AH
+      operator: '='
+      value: 00h
+      description: always???
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes:
+  - 'this interface has probably appeared in some later revisions of ATASPI
+
+    than 0.72'
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: '21'
+    params:
+      AX: 4402h
+    name: ATASPI
+  - type: interrupt
+    interrupt: 4F
+    params:
+      AX: 0082h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: d-4F0082CX8765
+  category: d
+  title: ATA Software Programming Interface (ATASPI) - INSTALLATION CHECK
+  source: INTERRUP.N:8840
+  interrupt: 4F
+  flags: []
+  function: 0082CX8765
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 0082h
+    table_refs: []
+    sub_values: []
+  - reg: CX
+    operator: '='
+    value: 8765h
+    table_refs: []
+    sub_values: []
+  - reg: DX
+    operator: '='
+    value: CBA9h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AH
+      operator: '='
+      value: 00h
+      description: if installed
+      table_refs: []
+      sub_values: []
+    - reg: CX
+      operator: '='
+      value: 9ABCh
+      table_refs: []
+      sub_values: []
+    - reg: DX
+      operator: '='
+      value: 5678h
+      table_refs: []
+      sub_values: []
+    - reg: ES:DI
+      operator: ->
+      description: '"$ATAMGR$"'
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes:
+  - 'this interface has probably appeared in some later revisions of ATASPI
+
+    than 0.72'
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: '21'
+    params:
+      AX: 4402h
+    name: ATASPI
+  - type: interrupt
+    interrupt: 4F
+    params:
+      AX: 0081h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: d-4F8100
+  category: d
+  title: Common Access Method SCSI interface rev 2.3 - SEND CCB TO XPT/SIM
+  source: INTERRUP.N:8852
+  interrupt: 4F
+  flags: []
+  function: '8100'
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 8100h
+    table_refs: []
+    sub_values: []
+  - reg: ES:BX
+    operator: ->
+    description: 'CAM Control Block (CCB) (see #03229)'
+    table_refs:
+    - 03229
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AH
+      operator: '='
+      description: status
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes:
+  - 'the SCSI Interface Module (SIM) may complete the requested function
+
+    and invoke the completion callback function before this call returns'
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 8200h
+  - type: interrupt
+    interrupt: 2F
+    params:
+      AX: 7F01h
+  - type: interrupt
+    interrupt: 4B
+    params: {}
+    name: Common Access Method
+  index: []
+  tables:
+  - 03228
+  - 03229
+  - '03230'
+  - '03231'
+  - '03232'
+  - '03233'
+  - '03234'
+  - '03235'
+  - '03236'
+  - '03237'
+  - 03238
+  - 03239
+  - '03240'
+  - '03241'
+  table_refs: []
+- entry_type: INT
+  id: d-4F8200CX8765
+  category: d
+  title: Common Access Method SCSI interface rev 2.3 - INSTALLATION CHECK
+  source: INTERRUP.N:9197
+  interrupt: 4F
+  flags: []
+  function: 8200CX8765
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 8200h
+    table_refs: []
+    sub_values: []
+  - reg: CX
+    operator: '='
+    value: 8765h
+    table_refs: []
+    sub_values: []
+  - reg: DX
+    operator: '='
+    value: CBA9h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AH
+      operator: '='
+      value: 00h
+      description: if installed
+      table_refs: []
+      sub_values: []
+    - reg: CX
+      operator: '='
+      value: 9ABCh
+      table_refs: []
+      sub_values: []
+    - reg: DX
+      operator: '='
+      value: 5678h
+      table_refs: []
+      sub_values: []
+    - reg: ES:DI
+      operator: ->
+      description: '"SCSI_CAM"'
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 8100h
+  - type: interrupt
+    interrupt: 4B
+    params: {}
+    name: Common Access Method
+  index: []
+  tables: []
+  table_refs: []

@@ -1,0 +1,29 @@
+file_type: interrupt
+key: 1D
+entries:
+- entry_type: INT
+  id: B-1D
+  category: B
+  title: SYSTEM DATA - VIDEO PARAMETER TABLES
+  source: INTERRUP.E:9734
+  interrupt: 1D
+  flags: []
+  input_registers: []
+  returns: []
+  notes:
+  - 'the default parameter table (see #01263) is located at F000h:F0A4h for
+
+    100% compatible BIOSes
+
+    Under PhysTechSoft''s PTS ROM-DOS this table is fictitious.'
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: '10'
+    params:
+      AH: 00h
+  index: []
+  tables:
+  - '01263'
+  table_refs:
+  - '01263'

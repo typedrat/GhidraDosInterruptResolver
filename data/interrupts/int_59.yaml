@@ -1,0 +1,137 @@
+file_type: interrupt
+key: '59'
+entries:
+- entry_type: INT
+  id: H-59
+  category: H
+  title: IRQ9 relocated by DESQview 2.26+
+  source: INTERRUP.O:210
+  interrupt: '59'
+  flags: []
+  input_registers: []
+  returns: []
+  notes:
+  - this is the default, but other INTs may be used (see INT 50"DESQview")
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: '50'
+    params: {}
+    name: DESQview
+  - type: interrupt
+    interrupt: '58'
+    params: {}
+    name: DESQview
+  - type: interrupt
+    interrupt: 5A
+    params: {}
+    name: DESQview
+  - type: interrupt
+    interrupt: '71'
+    params: {}
+  range: INT 59 to INT F9, selected automatically
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: H-59
+  category: H
+  title: IRQ1 relocated by DoubleDOS
+  source: INTERRUP.O:215
+  interrupt: '59'
+  flags: []
+  input_registers: []
+  returns: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: 09
+    params: {}
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-59
+  category: b
+  title: TI Professional PC - COMMON ROM HARDWARE INTERRUPT EXIT VECTOR
+  source: INTERRUP.O:218
+  interrupt: '59'
+  flags: []
+  input_registers: []
+  returns: []
+  description: 'all hardware interrupts on the TI Pro jump indirectly to the handler
+
+    pointed at by this interrupt vector to finish their handling of
+
+    the hardware interrupt'
+  notes:
+  - 'the default handler decrements the interrupt count, restores registers
+
+    (including the stack pointer), sends an EOI to the interrupt
+
+    controller, and finally does an IRET
+
+    can be used by multitaskers which need to get control after every
+
+    hardware interrupt'
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: '40'
+    params: {}
+    name: TI Professional
+  - type: interrupt
+    interrupt: '47'
+    params: {}
+    name: TI Professional
+  - type: interrupt
+    interrupt: '53'
+    params: {}
+    name: TI Professional
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: V-59
+  category: V
+  title: GSS Computer Graphics Interface (GSS*CGI)
+  source: INTERRUP.O:230
+  interrupt: '59'
+  flags: []
+  input_registers:
+  - reg: DS:DX
+    operator: ->
+    description: block of 5 array pointers
+    table_refs: []
+    sub_values: []
+  returns:
+  - condition: CF set
+    condition_description: on error
+    registers:
+    - reg: AX
+      operator: '='
+      description: error code
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  - condition: CF clear
+    condition_description: if successful
+    registers:
+    - reg: AX
+      operator: '='
+      description: return code
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes:
+  - 'INT 59 is the means by which GSS*CGI language bindings communicate with
+
+    GSS*CGI device drivers and the GSS*CGI device driver controller.
+
+    also used by the IBM Graphic Development Toolkit'
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []

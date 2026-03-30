@@ -1,0 +1,6349 @@
+file_type: interrupt
+key: '17'
+entries:
+- entry_type: INT
+  id: P-17DX0ABC
+  category: P
+  title: PRINTER - LPTx v5.x INSTALLATION CHECK
+  source: INTERRUP.D:3731
+  interrupt: '17'
+  flags: []
+  function: DX0ABC
+  input_registers:
+  - reg: DX
+    operator: '='
+    value: 0ABCh
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AX
+      operator: '='
+      value: AAAAh
+      table_refs: []
+      sub_values: []
+    - reg: DX
+      operator: '='
+      value: BAAAh
+      table_refs: []
+      sub_values: []
+    - reg: ES
+      operator: '='
+      description: code segment of resident portion
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: P-17DX0B90
+  category: P
+  title: PRINTER - LPTx v6.x INSTALLATION CHECK
+  source: INTERRUP.D:3737
+  interrupt: '17'
+  flags: []
+  function: DX0B90
+  input_registers:
+  - reg: DX
+    operator: '='
+    value: 0B90h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: DX
+      operator: '='
+      value: ABBBh
+      table_refs: []
+      sub_values: []
+    - reg: ES
+      operator: '='
+      description: code segment of resident portion
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: P-17DX0B91
+  category: P
+  title: PRINTER - LPTx v7.x INSTALLATION CHECK
+  source: INTERRUP.D:3742
+  interrupt: '17'
+  flags: []
+  function: DX0B91
+  input_registers:
+  - reg: DX
+    operator: '='
+    value: 0B91h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: DX
+      operator: '='
+      value: ABCBh
+      table_refs: []
+      sub_values: []
+    - reg: ES
+      operator: '='
+      description: code segment of resident portion
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: P-17DX0F5F
+  category: P
+  title: PRINTER - LPTx v4.x INSTALLATION CHECK
+  source: INTERRUP.D:3747
+  interrupt: '17'
+  flags: []
+  function: DX0F5F
+  input_registers:
+  - reg: DX
+    operator: '='
+    value: 0F5Fh
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AX
+      operator: '='
+      value: AAAAh
+      table_refs: []
+      sub_values: []
+    - reg: DX
+      operator: '='
+      value: F555h
+      table_refs: []
+      sub_values: []
+    - reg: ES
+      operator: '='
+      description: code segment of resident portion
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: B-1700
+  category: B
+  title: PRINTER - WRITE CHARACTER
+  source: INTERRUP.D:3753
+  interrupt: '17'
+  flags: []
+  function: '00'
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 00h
+    table_refs: []
+    sub_values: []
+  - reg: AL
+    operator: '='
+    description: character to write
+    table_refs: []
+    sub_values: []
+  - reg: DX
+    operator: '='
+    description: printer number (00h-02h)
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AH
+      operator: '='
+      description: 'printer status (see #00631)'
+      table_refs:
+      - '00631'
+      sub_values: []
+    raw_lines: []
+  notes:
+  - 'Under PhysTechSoft''s PTS ROM-DOS the parallel port can also be
+
+    accessed as COM5.'
+  bugs:
+  - 'Some print spoolers trash the BX register on return.
+
+    Some original IBM BIOSes set more than one printer status bits at
+
+    a time, while only one of them is correct.'
+  see_also:
+  - type: interrupt
+    params:
+      AH: 02h
+  - type: interrupt
+    params:
+      AH: 84h
+    name: AX
+  - type: interrupt
+    params:
+      AX: 6F02h
+  - type: interrupt
+    params:
+      AH: F1h
+  - type: interrupt
+    interrupt: '16'
+    params:
+      AX: FFE3h
+  - type: interrupt
+    interrupt: 1A
+    params:
+      AH: 11h
+    name: NEC
+  - type: interrupt
+    interrupt: 4B
+    params:
+      AH: 00h
+  - type: port
+    port: 0278h
+    name: PRINTER
+  - type: memory
+    address: 0040h:0008h
+  - type: memory
+    address: 0040h:0078h
+  index: []
+  tables:
+  - '00631'
+  table_refs: []
+- entry_type: INT
+  id: B-1701
+  category: B
+  title: PRINTER - INITIALIZE PORT
+  source: INTERRUP.D:3779
+  interrupt: '17'
+  flags: []
+  function: '01'
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 01h
+    table_refs: []
+    sub_values: []
+  - reg: DX
+    operator: '='
+    description: printer number (00h-02h)
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AH
+      operator: '='
+      description: 'printer status (see #00631)'
+      table_refs:
+      - '00631'
+      sub_values: []
+    raw_lines: []
+  notes:
+  - 'some printers report that they are ready immediately after
+
+    initialization when they actually are not; a more reliable result may
+
+    be obtained by calling AH=02h after a brief delay'
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 02h
+  - type: interrupt
+    params:
+      AH: FFh
+    name: PC-MOS
+  - type: interrupt
+    interrupt: 1A
+    params:
+      AH: 10h
+    name: NEC
+  - type: interrupt
+    interrupt: 4B
+    params:
+      AH: 01h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: B-1702
+  category: B
+  title: PRINTER - GET STATUS
+  source: INTERRUP.D:3788
+  interrupt: '17'
+  flags: []
+  function: '02'
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 02h
+    table_refs: []
+    sub_values: []
+  - reg: DX
+    operator: '='
+    description: printer number (00h-02h)
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AH
+      operator: '='
+      description: 'printer status (see #00631)'
+      table_refs:
+      - '00631'
+      sub_values: []
+    raw_lines: []
+  notes:
+  - PRINTFIX from MS-DOS 5.0 hooks this function and always returns AH=90h
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 01h
+  - type: interrupt
+    params:
+      AH: F2h
+  - type: interrupt
+    interrupt: 1A
+    params:
+      AH: 12h
+    name: NEC
+  - type: interrupt
+    interrupt: 4B
+    params:
+      AH: 02h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: P-1702DX0000
+  category: P
+  title: INSET - INSTALLATION CHECK
+  source: INTERRUP.D:3795
+  interrupt: '17'
+  flags: []
+  function: 02DX0000
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 02h
+    table_refs: []
+    sub_values: []
+  - reg: DX
+    operator: '='
+    value: 0000h
+    table_refs: []
+    sub_values: []
+  - reg: CX
+    operator: '='
+    value: 07C3h
+    description: (1987d)
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: CX
+      operator: '='
+      value: 07C2h
+      description: (1986d) if installed
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  program: INSET is a text/graphics integration program
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-170200BX5050
+  category: b
+  title: Enhanced Parallel Port (EPP) BIOS - INSTALLATION CHECK
+  source: INTERRUP.D:3802
+  interrupt: '17'
+  flags: []
+  function: 0200BX5050
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 0200h
+    table_refs: []
+    sub_values: []
+  - reg: BX
+    operator: '='
+    value: 5050h
+    description: ('PP')
+    table_refs: []
+    sub_values: []
+  - reg: CH
+    operator: '='
+    value: 45h
+    description: ('E')
+    table_refs: []
+    sub_values: []
+  - reg: DX
+    operator: '='
+    description: printer port number (00h-02h)
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AH
+      operator: '='
+      description: status
+      table_refs: []
+      sub_values: []
+    - reg: CX:AL
+      operator: '='
+      description: installed BIOS type
+      table_refs: []
+      sub_values: []
+    - reg: DX:BX
+      operator: ->
+      description: 'far entry point to Advanced BIOS (see #00632)'
+      table_refs:
+      - '00632'
+      sub_values: []
+    - reg: DX
+      operator: '='
+      description: EPP I/O base address
+      table_refs: []
+      sub_values: []
+    - reg: ES:BX
+      operator: ->
+      description: 'far entry point to EPP BIOS (see #00632,#00633)'
+      table_refs:
+      - '00632'
+      - '00633'
+      sub_values: []
+    raw_lines: []
+  - condition: CF set
+    registers: []
+    raw_lines: []
+  program: 'The Enhanced Parallel Port BIOS provides support for parallel
+
+    port peripherals using the enhanced modes of the IEEE 1284.'
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: E0h
+  - type: memory
+    address: 0040h:0008h
+  - type: memory
+    address: 0040h:00DCh
+  index: []
+  tables:
+  - '00632'
+  - '00633'
+  - '00634'
+  - '00635'
+  - '00636'
+  - '00637'
+  - 00638
+  table_refs: []
+- entry_type: INT
+  id: P-1703
+  category: P
+  title: Emulaser ELTSR - INSTALL INTERRUPT HANDLERS
+  source: INTERRUP.D:4045
+  interrupt: '17'
+  flags:
+  - U
+  function: '03'
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 03h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: BX
+      operator: '='
+      description: ???
+      table_refs: []
+      sub_values: []
+    - reg: CX
+      operator: '='
+      description: ???
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  program: 'ELTSR is the resident portion of the Emulaser PostScript emulator by
+
+    Vertisoft Systems, Inc.'
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 04h
+    name: Emulaser
+  - type: interrupt
+    params:
+      AH: 0Eh
+  - type: interrupt
+    interrupt: 1A
+    params:
+      AH: E5h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: --1703
+  title: IBM SurePath BIOS - Officially "Private" Function
+  source: INTERRUP.D:4053
+  interrupt: '17'
+  flags: []
+  function: '03'
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 03h
+    table_refs: []
+    sub_values: []
+  returns: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 04h
+    name: IBM
+  - type: interrupt
+    params:
+      AH: 05h
+    name: IBM
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: c-1703
+  category: c
+  title: PC-MOS/386 v5.01 - PRINT SPOOLER - PRINT STRING
+  source: INTERRUP.D:4057
+  interrupt: '17'
+  flags: []
+  function: '03'
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 03h
+    table_refs: []
+    sub_values: []
+  - reg: DX
+    operator: '='
+    description: printer port number
+    table_refs: []
+    sub_values: []
+  - reg: CX
+    operator: '='
+    description: number of characters to print
+    table_refs: []
+    sub_values: []
+  - reg: DS:SI
+    operator: ->
+    description: string
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AH
+      operator: '='
+      description: 'printer status (see #00631)'
+      table_refs:
+      - '00631'
+      sub_values: []
+    - reg: CX
+      operator: '='
+      description: number of characters actually printed
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  description: send an entire string of chars to the print spooler with a single call
+  program: 'PC-MOS/386 v5.01 is a multitasking, multiuser MS-DOS 5.0-compatible
+
+    operating system by The Software Link, Inc.'
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 00h
+  - type: interrupt
+    params:
+      AH: 01h
+  - type: interrupt
+    params:
+      AH: 02h
+  - type: interrupt
+    params:
+      AH: FFh
+    name: PC-MOS
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: c-1703BX5A00
+  category: c
+  title: DMP Print Spooler v2.03 - INSTALLATION CHECK
+  source: INTERRUP.D:4069
+  interrupt: '17'
+  flags: []
+  function: 03BX5A00
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 03h
+    table_refs: []
+    sub_values: []
+  - reg: BX
+    operator: '='
+    value: 5A00h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AX
+      operator: '='
+      value: 5ACBh
+      table_refs: []
+      sub_values: []
+    - reg: DI
+      operator: '='
+      value: 0000h
+      table_refs: []
+      sub_values: []
+    - reg: ES
+      operator: '='
+      description: DMP code segment (also data segment)
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  program: 'DMP is a Printer driver/spooler, by DMP (USA), available on the
+
+    PCTODAY disk, volume 10, March 1991'
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: N-170300
+  category: N
+  title: DOSISODE to WATTCP TSR Interface - "socket"
+  source: INTERRUP.D:4078
+  interrupt: '17'
+  flags: []
+  function: '0300'
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 0300h
+    table_refs: []
+    sub_values: []
+  - reg: CX
+    operator: '='
+    description: type of socket from  socket( domain, type, protocol )
+    table_refs: []
+    sub_values: []
+  - reg: DX
+    operator: '='
+    description: local identifier of socket (0 - 31)
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AX
+      operator: '='
+      value: 0000h
+      description: success
+      table_refs: []
+      sub_values: []
+    - reg: CX
+      operator: '='
+      description: segment of 4500 byte transfer buffer
+      table_refs: []
+      sub_values: []
+    - reg: DX
+      operator: '='
+      description: offset of 4500 byte transfer buffer
+      table_refs: []
+      sub_values: []
+    - reg: CX
+      operator: '='
+      description: error code
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  program: 'DOSISODE is the ISO developers environment which has been ported to
+
+    DOS and will run with the Waterloo TCP turned into a resident TSR.
+
+    Currently it allows a maximum of 6 open sockets.'
+  notes:
+  - 'this function will initialize the interface the first time it is
+
+    called'
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 0400h
+    name: DOSISODE
+  - type: interrupt
+    params:
+      AX: 0600h
+    name: DOSISODE
+  - type: interrupt
+    params:
+      AX: 0800h
+    name: DOSISODE
+  - type: interrupt
+    params:
+      AX: 0A00h
+    name: DOSISODE
+  - type: interrupt
+    params:
+      AX: 0C00h
+    name: DOSISODE
+  - type: interrupt
+    params:
+      AX: 0E00h
+    name: DOSISODE
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: P-1704
+  category: P
+  title: Emulaser ELTSR - BEGIN CAPTURING OUTPUT
+  source: INTERRUP.D:4096
+  interrupt: '17'
+  flags:
+  - U
+  function: '04'
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 04h
+    table_refs: []
+    sub_values: []
+  returns: []
+  notes:
+  - has no effect unless ELTSR is deactivated (see AX=0503h)
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 03h
+    name: Emulaser
+  - type: interrupt
+    params:
+      AX: 0503h
+  - type: interrupt
+    interrupt: 1A
+    params:
+      AH: E5h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: --1704
+  title: IBM SurePath BIOS - Officially "Private" Function
+  source: INTERRUP.D:4101
+  interrupt: '17'
+  flags: []
+  function: '04'
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 04h
+    table_refs: []
+    sub_values: []
+  returns: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 03h
+    name: IBM
+  - type: interrupt
+    params:
+      AH: 05h
+    name: IBM
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: N-170400
+  category: N
+  title: DOSISODE to WATTCP TSR Interface - "bind"
+  source: INTERRUP.D:4105
+  interrupt: '17'
+  flags: []
+  function: '0400'
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 0400h
+    table_refs: []
+    sub_values: []
+  returns: []
+  notes:
+  - this function just returns
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 0300h
+    name: DOSISODE
+  - type: interrupt
+    params:
+      AX: 0500h
+    name: DOSISODE
+  - type: interrupt
+    params:
+      AX: 0C00h
+    name: DOSISODE
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: --1705
+  title: IBM SurePath BIOS - Officially "Private" Function
+  source: INTERRUP.D:4110
+  interrupt: '17'
+  flags: []
+  function: '05'
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 05h
+    table_refs: []
+    sub_values: []
+  returns: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 03h
+    name: IBM
+  - type: interrupt
+    params:
+      AH: 04h
+    name: IBM
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: P-170500
+  category: P
+  title: Emulaser ELTSR - ???
+  source: INTERRUP.D:4114
+  interrupt: '17'
+  flags:
+  - U
+  function: '0500'
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 0500h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AX
+      operator: '='
+      description: unload status (0001h safe to unload, 0002h not safe)
+      table_refs: []
+      sub_values: []
+    - reg: BX
+      operator: '='
+      description: ???
+      table_refs: []
+      sub_values: []
+    - reg: CX
+      operator: '='
+      description: PSP segment of ELTSR
+      table_refs: []
+      sub_values: []
+    - reg: DX
+      operator: '='
+      description: activity flag (0000h disabled, 0001h capturing, 0002h ???printing)
+      table_refs: []
+      sub_values: []
+    - reg: SI
+      operator: '='
+      description: ???
+      table_refs: []
+      sub_values: []
+    - reg: DI
+      operator: '='
+      description: ???
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 04h
+  - type: interrupt
+    interrupt: 1A
+    params:
+      AH: E5h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: N-170500
+  category: N
+  title: DOSISODE to WATTCP TSR Interface - "connect"
+  source: INTERRUP.D:4125
+  interrupt: '17'
+  flags: []
+  function: '0500'
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 0500h
+    table_refs: []
+    sub_values: []
+  returns: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 0400h
+    name: DOSISODE
+  - type: interrupt
+    params:
+      AX: 0700h
+    name: DOSISODE
+  - type: interrupt
+    params:
+      AX: 0C00h
+    name: DOSISODE
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: P-170501
+  category: P
+  title: Emulaser ELTSR - UNHOOK INTERRUPTS
+  source: INTERRUP.D:4129
+  interrupt: '17'
+  flags:
+  - U
+  function: '0501'
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 0501h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - (see AX=0500h)
+  notes:
+  - 'restores interrupt vectors without checking whether they have been
+
+    hooked by later programs; should only be called if ELTSR reports
+
+    that it is safe to unload'
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 04h
+  - type: interrupt
+    params:
+      AX: 0500h
+  - type: interrupt
+    params:
+      AX: 0503h
+  - type: interrupt
+    interrupt: 1A
+    params:
+      AH: E5h
+  index:
+  - uninstall;Emulaser ELTSR
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: P-170502
+  category: P
+  title: Emulaser ELTSR - SET ???
+  source: INTERRUP.D:4138
+  interrupt: '17'
+  flags:
+  - U
+  function: '0502'
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 0502h
+    table_refs: []
+    sub_values: []
+  - reg: BL
+    operator: '='
+    description: Emulaser port (31h = LPT1, 32h = LPT2, 33h = LPT3)
+    table_refs: []
+    sub_values: []
+  - reg: CL
+    operator: '='
+    description: ???
+    table_refs: []
+    sub_values: []
+  - reg: DL
+    operator: '='
+    description: ???
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - (see AX=0500h)
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 04h
+  - type: interrupt
+    params:
+      AX: 0500h
+  - type: interrupt
+    interrupt: 1A
+    params:
+      AH: E5h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: P-170503
+  category: P
+  title: Emulaser ELTSR - DEACTIVATE???
+  source: INTERRUP.D:4146
+  interrupt: '17'
+  flags:
+  - U
+  function: '0503'
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 0503h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - (see AX=0500h)
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 04h
+  - type: interrupt
+    params:
+      AX: 0500h
+  - type: interrupt
+    params:
+      AX: 0501h
+  - type: interrupt
+    interrupt: 1A
+    params:
+      AH: E5h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: P-1706
+  category: P
+  title: Emulaser ELTSR - ???
+  source: INTERRUP.D:4151
+  interrupt: '17'
+  flags:
+  - U
+  function: '06'
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 06h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 0500h
+  - type: interrupt
+    params:
+      AX: 0503h
+  - type: interrupt
+    params:
+      AH: 07h
+    name: ELTSR
+  - type: interrupt
+    interrupt: 1A
+    params:
+      AH: E5h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: N-170600
+  category: N
+  title: DOSISODE to WATTCP TSR Interface - "listen"
+  source: INTERRUP.D:4157
+  interrupt: '17'
+  flags: []
+  function: '0600'
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 0600h
+    table_refs: []
+    sub_values: []
+  returns: []
+  notes:
+  - this function just returns
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 0300h
+    name: DOSISODE
+  - type: interrupt
+    params:
+      AX: 0700h
+    name: DOSISODE
+  - type: interrupt
+    params:
+      AX: 0C00h
+    name: DOSISODE
+  - type: interrupt
+    params:
+      AX: 0E00h
+    name: DOSISODE
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: P-1707
+  category: P
+  title: Emulaser ELTSR - OPEN CAPTURE FILE
+  source: INTERRUP.D:4163
+  interrupt: '17'
+  flags:
+  - U
+  function: '07'
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 07h
+    table_refs: []
+    sub_values: []
+  - reg: ES:DX
+    operator: ->
+    description: ASCIZ filename to be opened
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+  notes:
+  - new output will be appended to the specified file
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 08h
+  - type: interrupt
+    interrupt: 1A
+    params:
+      AH: E5h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: N-170700
+  category: N
+  title: DOSISODE to WATTCP TSR Interface - "accept"
+  source: INTERRUP.D:4170
+  interrupt: '17'
+  flags: []
+  function: '0700'
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 0700h
+    table_refs: []
+    sub_values: []
+  returns: []
+  notes:
+  - this function just returns
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 0600h
+    name: DOSISODE
+  - type: interrupt
+    params:
+      AX: 0800h
+    name: DOSISODE
+  - type: interrupt
+    params:
+      AX: 0C00h
+    name: DOSISODE
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: P-1708
+  category: P
+  title: Emulaser ELTSR - CLOSE CAPTURE FILE
+  source: INTERRUP.D:4175
+  interrupt: '17'
+  flags:
+  - U
+  function: 08
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 08h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+  description: close the file previously opened by function 07h
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 07h
+  - type: interrupt
+    interrupt: 1A
+    params:
+      AH: E5h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: N-170800
+  category: N
+  title: DOSISODE to WATTCP TSR Interface - "recvfrom"
+  source: INTERRUP.D:4182
+  interrupt: '17'
+  flags: []
+  function: 0800
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 0800h
+    table_refs: []
+    sub_values: []
+  returns: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 0500h
+    name: DOSISODE
+  - type: interrupt
+    params:
+      AX: 0900h
+    name: DOSISODE
+  - type: interrupt
+    params:
+      AX: 0A00h
+    name: DOSISODE
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: P-1709
+  category: P
+  title: Emulaser ELTSR - PRINT CAPTURE FILE???
+  source: INTERRUP.D:4186
+  interrupt: '17'
+  flags:
+  - U
+  function: 09
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 09h
+    table_refs: []
+    sub_values: []
+  - reg: BX
+    operator: '='
+    description: ???
+    table_refs: []
+    sub_values: []
+  - reg: CX
+    operator: '='
+    description: ???
+    table_refs: []
+    sub_values: []
+  - reg: DX
+    operator: '='
+    description: printer port (01h COM1, 02h COM2, 05h LPT1, 06h LPT2)
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AX
+      operator: '='
+      description: status
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  program: 'ELTSR is the resident portion of the Emulaser PostScript emulator by
+
+    Vertisoft Systems, Inc.'
+  notes:
+  - 'this function calls through to INT 1A/AX=E401h, and thus requires
+
+    that either ELSPL or Disk Spool II be installed'
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 0Ah
+  - type: interrupt
+    interrupt: 1A
+    params:
+      AX: E401h
+  - type: interrupt
+    interrupt: 1A
+    params:
+      AH: E5h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: N-170900
+  category: N
+  title: DOSISODE to WATTCP TSR Interface - "sendto"
+  source: INTERRUP.D:4200
+  interrupt: '17'
+  flags: []
+  function: 0900
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 0900h
+    table_refs: []
+    sub_values: []
+  returns: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 0700h
+    name: DOSISODE
+  - type: interrupt
+    params:
+      AX: 0800h
+    name: DOSISODE
+  - type: interrupt
+    params:
+      AX: 0A00h
+    name: DOSISODE
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: P-170A
+  category: P
+  title: Emulaser ELTSR - SET ??? FILENAME
+  source: INTERRUP.D:4204
+  interrupt: '17'
+  flags:
+  - U
+  function: 0A
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 0Ah
+    table_refs: []
+    sub_values: []
+  - reg: ES:BX
+    operator: ->
+    description: ??? buffer
+    table_refs: []
+    sub_values: []
+  - reg: CX
+    operator: '='
+    description: length of ??? buffer
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+  notes:
+  - 'copies the specified name into the buffer passed to ELSPL as the
+
+    filename by AH=09h'
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 09h
+  - type: interrupt
+    interrupt: 1A
+    params:
+      AH: E5h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: N-170A00
+  category: N
+  title: DOSISODE to WATTCP TSR Interface - "select"
+  source: INTERRUP.D:4213
+  interrupt: '17'
+  flags: []
+  function: 0A00
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 0A00h
+    table_refs: []
+    sub_values: []
+  returns: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 0800h
+    name: DOSISODE
+  - type: interrupt
+    params:
+      AX: 0B00h
+    name: DOSISODE
+  - type: interrupt
+    params:
+      AX: 0E00h
+    name: DOSISODE
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: P-170B
+  category: P
+  title: Emulaser ELTSR - GET ???
+  source: INTERRUP.D:4217
+  interrupt: '17'
+  flags:
+  - U
+  function: 0B
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 0Bh
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AX:BX
+      operator: ->
+      description: ???
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 0Ah
+  - type: interrupt
+    interrupt: 1A
+    params:
+      AH: E5h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: --170B
+  title: IBM SurePath BIOS - Officially "Private" Function
+  source: INTERRUP.D:4222
+  interrupt: '17'
+  flags: []
+  function: 0B
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 0Bh
+    table_refs: []
+    sub_values: []
+  returns: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 03h
+    name: IBM
+  - type: interrupt
+    params:
+      AH: 0Ch
+    name: IBM
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: N-170B00
+  category: N
+  title: DOSISODE to WATTCP TSR Interface - "ioctl"
+  source: INTERRUP.D:4226
+  interrupt: '17'
+  flags: []
+  function: 0B00
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 0B00h
+    table_refs: []
+    sub_values: []
+  - reg: DX
+    operator: '='
+    description: local identifier of socket (0 - 31)
+    table_refs: []
+    sub_values: []
+  returns: []
+  notes:
+  - this function sets the socket into non_block mode
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 0A00h
+    name: DOSISODE
+  - type: interrupt
+    params:
+      AX: 0C00h
+    name: DOSISODE
+  - type: interrupt
+    params:
+      AX: 0E00h
+    name: DOSISODE
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: P-170C
+  category: P
+  title: Emulaser ELTSR - SET ??? FLAG
+  source: INTERRUP.D:4232
+  interrupt: '17'
+  flags:
+  - U
+  function: 0C
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 0Ch
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 0Bh
+  - type: interrupt
+    interrupt: 1A
+    params:
+      AH: E5h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: --170C
+  title: IBM SurePath BIOS - Officially "Private" Function
+  source: INTERRUP.D:4238
+  interrupt: '17'
+  flags: []
+  function: 0C
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 0Ch
+    table_refs: []
+    sub_values: []
+  returns: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 0Bh
+    name: IBM
+  - type: interrupt
+    params:
+      AH: 0Dh
+    name: IBM
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: N-170C00
+  category: N
+  title: DOSISODE to WATTCP TSR Interface - "close"
+  source: INTERRUP.D:4242
+  interrupt: '17'
+  flags: []
+  function: 0C00
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 0C00h
+    table_refs: []
+    sub_values: []
+  returns: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 0300h
+    name: DOSISODE
+  - type: interrupt
+    params:
+      AX: 0500h
+    name: DOSISODE
+  - type: interrupt
+    params:
+      AX: 0D00h
+    name: DOSISODE
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: P-170D
+  category: P
+  title: Emulaser ELTSR - GET TRUE ScrlLk STATE
+  source: INTERRUP.D:4246
+  interrupt: '17'
+  flags:
+  - U
+  function: 0D
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 0Dh
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AX
+      operator: '='
+      description: state (0000h off, 0010h on)
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  description: 'determine the actual state of ScrlLk even when Emulaser is controlling
+
+    the ScrlLk light as its activity indicator'
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 0Ch
+  - type: interrupt
+    interrupt: '16'
+    params:
+      AH: 02h
+  - type: interrupt
+    interrupt: 1A
+    params:
+      AH: E5h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: --170D
+  title: IBM SurePath BIOS - Officially "Private" Function
+  source: INTERRUP.D:4253
+  interrupt: '17'
+  flags: []
+  function: 0D
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 0Dh
+    table_refs: []
+    sub_values: []
+  returns: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 0Ch
+    name: IBM
+  - type: interrupt
+    params:
+      AH: 0Eh
+    name: IBM
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: N-170D00
+  category: N
+  title: DOSISODE to WATTCP TSR Interface - "shutdown" - SHUTDOWN INTERFACE
+  source: INTERRUP.D:4257
+  interrupt: '17'
+  flags: []
+  function: 0D00
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 0D00h
+    table_refs: []
+    sub_values: []
+  returns: []
+  notes:
+  - this function is used to shutdown the interface
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 0C00h
+    name: DOSISODE
+  - type: interrupt
+    params:
+      AX: 0E00h
+    name: DOSISODE
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: P-170E
+  category: P
+  title: Emulaser ELTSR - BACKGROUND PROCESSING
+  source: INTERRUP.D:4262
+  interrupt: '17'
+  flags:
+  - U
+  function: 0E
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 0Eh
+    table_refs: []
+    sub_values: []
+  returns: []
+  program: 'ELTSR is the resident portion of the Emulaser PostScript emulator by
+
+    Vertisoft Systems, Inc.'
+  notes:
+  - 'this function is called by ELTSR on every INT 08 to allow data to be
+
+    processed in the background, but may also be called by applications
+
+    to give Emulaser additional CPU time'
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 0Dh
+  - type: interrupt
+    interrupt: 1A
+    params:
+      AH: E5h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: --170E
+  title: IBM SurePath BIOS - Officially "Private" Function
+  source: INTERRUP.D:4271
+  interrupt: '17'
+  flags: []
+  function: 0E
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 0Eh
+    table_refs: []
+    sub_values: []
+  returns: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 03h
+    name: IBM
+  - type: interrupt
+    params:
+      AH: 0Dh
+    name: IBM
+  - type: interrupt
+    params:
+      AH: 80h
+    name: IBM
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: N-170E00
+  category: N
+  title: DOSISODE to WATTCP TSR Interface - INSTALLATION CHECK
+  source: INTERRUP.D:4275
+  interrupt: '17'
+  flags: []
+  function: 0E00
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 0E00h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: CX
+      operator: '='
+      value: 1234h
+      description: if installed
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  program: 'DOSISODE is the ISO developers environment which has been ported to
+
+    DOS and will run with the Waterloo TCP turned into a resident TSR.
+
+    Currently it allows a maximum of 6 open sockets.'
+  notes:
+  - this function is used to check if the interface is loaded
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 0300h
+    name: DOSISODE
+  - type: interrupt
+    params:
+      AX: 0A00h
+    name: DOSISODE
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: P-172000
+  category: P
+  title: PC Paint Plus 2.0 - PRINTER DRIVER - INSTALLATION CHECK
+  source: INTERRUP.D:4284
+  interrupt: '17'
+  flags: []
+  function: '2000'
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 2000h
+    table_refs: []
+    sub_values: []
+  - reg: BL
+    operator: '='
+    description: printer number???
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AX
+      operator: '='
+      description: 'status (see #00639)'
+      table_refs:
+      - 00639
+      sub_values: []
+    - reg: BX
+      operator: '='
+      description: driver version number (BH=major,BL=minor)
+      table_refs: []
+      sub_values: []
+    - reg: CH
+      operator: '='
+      description: ??? (00h)
+      table_refs: []
+      sub_values: []
+    - reg: CL
+      operator: '='
+      description: ???
+      table_refs: []
+      sub_values: []
+    - reg: DX
+      operator: '='
+      description: ??? (0100h)
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes:
+  - also enables the remaining printer driver functions (2001h-2007h)
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 2001h
+  - type: interrupt
+    params:
+      AX: 2002h
+  - type: interrupt
+    params:
+      AX: 2003h
+  - type: interrupt
+    params:
+      AX: 2004h
+  - type: interrupt
+    params:
+      AX: 2005h
+  - type: interrupt
+    params:
+      AX: 2006h
+  - type: interrupt
+    params:
+      AX: 2007h
+  index: []
+  tables:
+  - 00639
+  table_refs: []
+- entry_type: INT
+  id: P-172001
+  category: P
+  title: PC Paint Plus 2.0 - PRINTER DRIVER - SET ??? FLAG
+  source: INTERRUP.D:4310
+  interrupt: '17'
+  flags: []
+  function: '2001'
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 2001h
+    table_refs: []
+    sub_values: []
+  - reg: BL
+    operator: '='
+    description: printer number???
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AX
+      operator: '='
+      description: 'status (see #00639)'
+      table_refs:
+      - 00639
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: P-172002
+  category: P
+  title: PC Paint Plus 2.0 - PRINTER DRIVER - GET INFORMATION
+  source: INTERRUP.D:4315
+  interrupt: '17'
+  flags: []
+  function: '2002'
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 2002h
+    table_refs: []
+    sub_values: []
+  - reg: BL
+    operator: '='
+    description: printer number???
+    table_refs: []
+    sub_values: []
+  - reg: CL
+    operator: '='
+    description: desired information
+    table_refs: []
+    sub_values:
+    - value: 00h
+      description: 'printer type Return: ES:DI -> ASCIZ printer name'
+      sub_values: []
+    - value: 01h
+      description: paper size
+      sub_values: []
+  - reg: DX
+    operator: '='
+    description: size index
+    table_refs: []
+    sub_values: []
+  - reg: DX
+    operator: '='
+    description: ???
+    table_refs: []
+    sub_values: []
+  - reg: ES:BX
+    operator: ->
+    description: buffer for ??? (min 134 bytes)
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AX
+      operator: '='
+      description: 'status (see #00639)'
+      table_refs:
+      - 00639
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 2000h
+  - type: interrupt
+    params:
+      AX: 2004h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: P-172003
+  category: P
+  title: PC Paint Plus 2.0 - PRINTER DRIVER - ???
+  source: INTERRUP.D:4332
+  interrupt: '17'
+  flags: []
+  function: '2003'
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 2003h
+    table_refs: []
+    sub_values: []
+  - reg: ES:BX
+    operator: ->
+    description: ???
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AX
+      operator: '='
+      description: 'status (see #00639)'
+      table_refs:
+      - 00639
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 2000h
+  - type: interrupt
+    params:
+      AX: 2004h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: P-172004
+  category: P
+  title: PC Paint Plus 2.0 - PRINTER DRIVER - GET ???
+  source: INTERRUP.D:4338
+  interrupt: '17'
+  flags: []
+  function: '2004'
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 2004h
+    table_refs: []
+    sub_values: []
+  - reg: BL
+    operator: '='
+    description: printer number???
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AX
+      operator: '='
+      description: 'status (see #00639)'
+      table_refs:
+      - 00639
+      sub_values: []
+    - reg: ES:DI
+      operator: ->
+      description: ???
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 2000h
+  - type: interrupt
+    params:
+      AX: 2003h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: P-172005
+  category: P
+  title: PC Paint Plus 2.0 - PRINTER DRIVER - ADVANCE PRINTER TO NEXT PAGE
+  source: INTERRUP.D:4345
+  interrupt: '17'
+  flags: []
+  function: '2005'
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 2005h
+    table_refs: []
+    sub_values: []
+  - reg: BL
+    operator: '='
+    description: printer number???
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AX
+      operator: '='
+      description: 'status (see #00639)'
+      table_refs:
+      - 00639
+      sub_values: []
+    raw_lines: []
+  notes:
+  - this function also clears the flag set by AX=2001h
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 2000h
+  - type: interrupt
+    params:
+      AX: 2001h
+  - type: interrupt
+    params:
+      AX: 2006h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: P-172006
+  category: P
+  title: PC Paint Plus 2.0 - PRINTER DRIVER - ADVANCE TO NEXT PAGE & SHUT DOWN
+  source: INTERRUP.D:4352
+  interrupt: '17'
+  flags: []
+  function: '2006'
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 2006h
+    table_refs: []
+    sub_values: []
+  - reg: BL
+    operator: '='
+    description: printer number???
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AX
+      operator: '='
+      description: 'status (see #00639)'
+      table_refs:
+      - 00639
+      sub_values: []
+    raw_lines: []
+  notes:
+  - 'this function also clears the flag set by AX=2001h and disables
+
+    functions other than AX=2000h'
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 2000h
+  - type: interrupt
+    params:
+      AX: 2001h
+  - type: interrupt
+    params:
+      AX: 2005h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: P-172007
+  category: P
+  title: PC Paint Plus 2.0 - PRINTER DRIVER - UNIMPLEMENTED
+  source: INTERRUP.D:4360
+  interrupt: '17'
+  flags: []
+  function: '2007'
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 2007h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - AX unchanged
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 2000h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: N-172400
+  category: N
+  title: Shamrock Software NET.24 v3.11+ - ENABLE/DISABLE API FUNCTIONS
+  source: INTERRUP.D:4365
+  interrupt: '17'
+  flags: []
+  function: '2400'
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 2400h
+    table_refs: []
+    sub_values: []
+  - reg: DL
+    operator: '='
+    description: new state
+    table_refs: []
+    sub_values:
+    - value: 00h
+      description: disabled
+      sub_values: []
+    - value: 01h
+      description: enabled
+      sub_values: []
+  returns:
+  - registers:
+    - reg: DL
+      operator: '='
+      value: 24h
+      description: if installed
+      table_refs: []
+      sub_values: []
+    - reg: DH
+      operator: '='
+      description: minor version number
+      table_refs: []
+      sub_values: []
+    - reg: CX
+      operator: '='
+      description: network address of this machine
+      table_refs: []
+      sub_values: []
+    - reg: AL
+      operator: '='
+      description: 'status (see #00640)'
+      table_refs:
+      - '00640'
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 2403h
+  - type: interrupt
+    interrupt: '16'
+    params:
+      AX: 4500h
+  index: []
+  tables:
+  - '00640'
+  table_refs: []
+- entry_type: INT
+  id: N-172401
+  category: N
+  title: Shamrock Software NET.24 v3.11+ - RECEIVE BLOCK, NO HANDSHAKE
+  source: INTERRUP.D:4385
+  interrupt: '17'
+  flags: []
+  function: '2401'
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 2401h
+    table_refs: []
+    sub_values: []
+  - reg: BL
+    operator: '='
+    description: timeout in clock ticks
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AL
+      operator: '='
+      description: 'status (see #00640)'
+      table_refs:
+      - '00640'
+      sub_values: []
+    - reg: DX:BX
+      operator: ->
+      description: receive buffer
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 2402h
+  - type: interrupt
+    params:
+      AX: 2404h
+  - type: interrupt
+    params:
+      AX: 2408h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: N-172402
+  category: N
+  title: Shamrock Software NET.24 v3.11+ - TRANSMIT BLOCK, NO HANDSHAKE
+  source: INTERRUP.D:4392
+  interrupt: '17'
+  flags: []
+  function: '2402'
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 2402h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AL
+      operator: '='
+      description: 'status (see #00640)'
+      table_refs:
+      - '00640'
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 2401h
+  - type: interrupt
+    params:
+      AX: 2403h
+  - type: interrupt
+    params:
+      AX: 2404h
+  - type: interrupt
+    params:
+      AX: 2409h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: N-172403
+  category: N
+  title: Shamrock Software NET.24 v3.11+ - GET STATUS AND TRANSMISSION BUFFER
+  source: INTERRUP.D:4398
+  interrupt: '17'
+  flags: []
+  function: '2403'
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 2403h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AL
+      operator: '='
+      description: 'status (see #00640)'
+      table_refs:
+      - '00640'
+      sub_values: []
+    - reg: CX
+      operator: '='
+      description: number of characters in receive ring buffer
+      table_refs: []
+      sub_values: []
+    - reg: DX:BX
+      operator: ->
+      description: transmit buffer
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 2400h
+  - type: interrupt
+    params:
+      AX: 2402h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: N-172404
+  category: N
+  title: Shamrock Software NET.24 v3.11+ - SEND ACK BLOCK
+  source: INTERRUP.D:4405
+  interrupt: '17'
+  flags: []
+  function: '2404'
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 2404h
+    table_refs: []
+    sub_values: []
+  - reg: BX
+    operator: '='
+    description: target address
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AL
+      operator: '='
+      description: 'status (see #00640)'
+      table_refs:
+      - '00640'
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 2402h
+  - type: interrupt
+    params:
+      AX: 2405h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: N-172405
+  category: N
+  title: Shamrock Software NET.24 v3.11+ - SEND NAK BLOCK
+  source: INTERRUP.D:4411
+  interrupt: '17'
+  flags: []
+  function: '2405'
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 2405h
+    table_refs: []
+    sub_values: []
+  - reg: BX
+    operator: '='
+    description: target address
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AL
+      operator: '='
+      description: 'status (see #00640)'
+      table_refs:
+      - '00640'
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 2402h
+  - type: interrupt
+    params:
+      AX: 2404h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: N-172406
+  category: N
+  title: Shamrock Software NET.24 v3.11+ - PREPARE CHARACTER-ORIENTED RECEIVE
+  source: INTERRUP.D:4417
+  interrupt: '17'
+  flags: []
+  function: '2406'
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 2406h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AL
+      operator: '='
+      description: 'status (see #00640)'
+      table_refs:
+      - '00640'
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 2407h
+  - type: interrupt
+    params:
+      AX: 240Ah
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: N-172407
+  category: N
+  title: Shamrock Software NET.24 v3.11+ - RECEIVE CHARACTER FROM REMOTE
+  source: INTERRUP.D:4422
+  interrupt: '17'
+  flags: []
+  function: '2407'
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 2407h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AL
+      operator: '='
+      description: 'status (see also #00640)'
+      table_refs:
+      - '00640'
+      sub_values: []
+    - reg: DL
+      operator: '='
+      description: received character
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 2406h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: N-172408
+  category: N
+  title: Shamrock Software NET.24 v3.11+ - RECEIVE BLOCK, WITH HANDSHAKE
+  source: INTERRUP.D:4429
+  interrupt: '17'
+  flags: []
+  function: '2408'
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 2408h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AL
+      operator: '='
+      description: 'status (see also #00640)'
+      table_refs:
+      - '00640'
+      sub_values: []
+    - reg: CX
+      operator: '='
+      description: number of bytes in receive buffer
+      table_refs: []
+      sub_values: []
+    - reg: DX:SI
+      operator: ->
+      description: receive buffer
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 2401h
+  - type: interrupt
+    params:
+      AX: 2405h
+  - type: interrupt
+    params:
+      AX: 2409h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: N-172409
+  category: N
+  title: Shamrock Software NET.24 v3.11+ - TRANSMIT COMMAND, WITH HANDSHAKE
+  source: INTERRUP.D:4437
+  interrupt: '17'
+  flags: []
+  function: '2409'
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 2409h
+    table_refs: []
+    sub_values: []
+  - reg: BX
+    operator: '='
+    description: target address
+    table_refs: []
+    sub_values: []
+  - reg: CX
+    operator: '='
+    description: number of data bytes
+    table_refs: []
+    sub_values: []
+  - reg: DL
+    operator: '='
+    description: command code to send
+    table_refs: []
+    sub_values: []
+  - reg: DS:SI
+    operator: ->
+    description: data bytes for command
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AL
+      operator: '='
+      description: 'status (see also #00640)'
+      table_refs:
+      - '00640'
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 2405h
+  - type: interrupt
+    params:
+      AX: 2408h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: N-17240A
+  category: N
+  title: Shamrock Software NET.24 v3.11+ - PREPARE CHARACTER-ORIENTED TRANSMIT
+  source: INTERRUP.D:4448
+  interrupt: '17'
+  flags: []
+  function: 240A
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 240Ah
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AL
+      operator: '='
+      description: 'status (see #00640)'
+      table_refs:
+      - '00640'
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 2406h
+  - type: interrupt
+    params:
+      AX: 240Bh
+  - type: interrupt
+    params:
+      AX: 240Ch
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: N-17240B
+  category: N
+  title: Shamrock Software NET.24 v3.11+ - TRANSMIT SINGLE CHARACTER TO REMOTE
+  source: INTERRUP.D:4453
+  interrupt: '17'
+  flags: []
+  function: 240B
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 240Bh
+    table_refs: []
+    sub_values: []
+  - reg: DL
+    operator: '='
+    description: character to send
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AL
+      operator: '='
+      description: status (see also AX=2400h)
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 2407h
+  - type: interrupt
+    params:
+      AX: 240Ah
+  - type: interrupt
+    params:
+      AX: 240Ch
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: N-17240C
+  category: N
+  title: Shamrock Software NET.24 v3.11+ - END CHARACTER-ORIENTED TRANSMIT
+  source: INTERRUP.D:4461
+  interrupt: '17'
+  flags: []
+  function: 240C
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 240Ch
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AL
+      operator: '='
+      description: status (see also AX=2400h)
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 240Ah
+  - type: interrupt
+    params:
+      AX: 240Bh
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: p-174B00
+  category: p
+  title: Brother P-Touch - INSTALLATION CHECK
+  source: INTERRUP.D:4468
+  interrupt: '17'
+  flags: []
+  function: 4B00
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 4B00h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AX
+      operator: '='
+      value: 4249h
+      description: ('BI' = Brother International) if installed
+      table_refs: []
+      sub_values: []
+    - reg: BX
+      operator: '='
+      description: program ID
+      table_refs: []
+      sub_values: []
+    - reg: CX
+      operator: '='
+      description: numbero of parallel port being emulated or intercepted
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 4B01h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: p-174B01
+  category: p
+  title: Brother P-Touch - UNINSTALL
+  source: INTERRUP.D:4477
+  interrupt: '17'
+  flags: []
+  function: 4B01
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 4B01h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AX
+      operator: '='
+      description: segment of resident program or 0000h if unable to uninstall
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes:
+  - 'the calling program must manually free both the indicated segment
+
+    and the environment segment for the TSR with INT 21/AH=49h
+
+    (the environment is pointed at by the WORD at AX:002Ch)'
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 4B00h
+  - type: interrupt
+    interrupt: '21'
+    params:
+      AH: 49h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: J-175000
+  category: J
+  title: AX (Japanese AT) PRINTER - SET PRINTER COUNTRY CODE
+  source: INTERRUP.D:4485
+  interrupt: '17'
+  flags: []
+  function: '5000'
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 5000h
+    table_refs: []
+    sub_values: []
+  - reg: BX
+    operator: '='
+    description: country code
+    table_refs: []
+    sub_values:
+    - value: 0001h
+      description: USA (English), 0051h Japan
+      sub_values: []
+  returns:
+  - registers:
+    - reg: AL
+      operator: '='
+      description: status
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 5001h
+  - type: interrupt
+    params:
+      AH: 51h
+  - type: interrupt
+    interrupt: '10'
+    params:
+      AX: 5000h
+  - type: interrupt
+    interrupt: '16'
+    params:
+      AX: 5000h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: J-175001
+  category: J
+  title: AX (Japanese AT) PRINTER - GET PRINTER COUNTRY CODE
+  source: INTERRUP.D:4495
+  interrupt: '17'
+  flags: []
+  function: '5001'
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 5001h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AL
+      operator: '='
+      description: status
+      table_refs: []
+      sub_values: []
+    - reg: BX
+      operator: '='
+      description: country code
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 5000h
+  - type: interrupt
+    params:
+      AH: 51h
+  - type: interrupt
+    interrupt: '10'
+    params:
+      AX: 5001h
+  - type: interrupt
+    interrupt: '16'
+    params:
+      AX: 5001h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: J-1751
+  category: J
+  title: AX (Japanese AT) PRINTER - JIS to Shift-JIS CONVERSION
+  source: INTERRUP.D:4503
+  interrupt: '17'
+  flags: []
+  function: '51'
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 51h
+    table_refs: []
+    sub_values: []
+  - reg: DX
+    operator: '='
+    description: 2-byte JIS code
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: DX
+      operator: '='
+      description: shift-JIS value or 0000h on error
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes:
+  - 'one of AH=51h and AH=52h converts from JIS (Japanese Industry Standard)
+
+    characters to Shift-JIS characters, and the other performs the
+
+    opposite conversion'
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 5000h
+  - type: interrupt
+    params:
+      AH: 52h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: J-1752
+  category: J
+  title: AX (Japanese AT) PRINTER - Shift-JIS to JIS CONVERSION
+  source: INTERRUP.D:4512
+  interrupt: '17'
+  flags: []
+  function: '52'
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 52h
+    table_refs: []
+    sub_values: []
+  - reg: DX
+    operator: '='
+    description: 2-byte shift-JIS code
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: DX
+      operator: '='
+      description: JIS code or 0000h on error
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes:
+  - 'one of AH=51h and AH=52h converts from JIS (Japanese Industry Standard)
+
+    characters to Shift-JIS characters, and the other performs the
+
+    opposite conversion'
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 51h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: P-175555BXAAAA
+  category: P
+  title: LR - SET CONFIGURATION
+  source: INTERRUP.D:4521
+  interrupt: '17'
+  flags: []
+  function: 5555BXAAAA
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 5555h
+    table_refs: []
+    sub_values: []
+  - reg: BX
+    operator: '='
+    value: AAAAh
+    table_refs: []
+    sub_values: []
+  - reg: CL
+    operator: '='
+    description: 'configuration flags (see #04117)'
+    table_refs:
+    - '04117'
+    sub_values: []
+  - reg: DX
+    operator: '='
+    description: LPT number
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AX
+      operator: '='
+      value: A55Ah
+      table_refs: []
+      sub_values: []
+    - reg: BX
+      operator: '='
+      value: BBBBh
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  program: 'LR_xxxx.COM files are a set of printer-hardware dependent printer
+
+    drivers found in the LIR DOS/Windows 3.xx codepage support package
+
+    develoved by LABAS u.a.b.  LIR supports several different screen and
+
+    printer codepages and various keyboard layouts used in Lithuania.
+
+    Download at: ftp://ftp.labas.com/pub/drivers/language/lir422.zip'
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 5555h
+      BX: BBBBh
+  - type: interrupt
+    interrupt: '10'
+    params:
+      AX: 5555h
+      BX: AAAAh
+  index: []
+  tables:
+  - '04117'
+  table_refs: []
+- entry_type: INT
+  id: P-175555BXBBBB
+  category: P
+  title: LR - GET CONFIGURATION
+  source: INTERRUP.D:4544
+  interrupt: '17'
+  flags: []
+  function: 5555BXBBBB
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 5555h
+    table_refs: []
+    sub_values: []
+  - reg: BX
+    operator: '='
+    value: BBBBh
+    table_refs: []
+    sub_values: []
+  - reg: DX
+    operator: '='
+    description: LPT number
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AX
+      operator: '='
+      value: A55Ah
+      table_refs: []
+      sub_values: []
+    - reg: BX
+      operator: '='
+      value: CCCCh
+      table_refs: []
+      sub_values: []
+    - reg: CL
+      operator: '='
+      description: 'configuration flags (see #04117)'
+      table_refs:
+      - '04117'
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 5555h
+      BX: AAAAh
+  - type: interrupt
+    interrupt: '10'
+    params:
+      AX: 5555h
+      BX: BBBBh
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: V-1760
+  category: V
+  title: FLASHUP.COM - INSTALLATION CHECK
+  source: INTERRUP.D:4553
+  interrupt: '17'
+  flags: []
+  function: '60'
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 60h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AL
+      operator: '='
+      value: 60h
+      table_refs: []
+      sub_values: []
+    - reg: DX
+      operator: '='
+      description: CS of resident code
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes:
+  - 'FLASHUP.COM is part of Flash-Up Windows by The Software Bottling Co.
+
+    FLASHUP also hooks INT 10 and receives commands via INT 10/AH=09h,0Ah
+
+    consisting of an 80h followed by the actual command'
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: '10'
+    params:
+      AH: 09h
+  - type: interrupt
+    interrupt: '10'
+    params:
+      AH: 0Ah
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: V-1761
+  category: V
+  title: SPEEDSCR.COM - INSTALLATION CHECK
+  source: INTERRUP.D:4562
+  interrupt: '17'
+  flags: []
+  function: '61'
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 61h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AL
+      operator: '='
+      value: 61h
+      table_refs: []
+      sub_values: []
+    - reg: DX
+      operator: '='
+      description: CS of resident code
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes:
+  - SPEEDSCR.COM is by The Software Bottling Co.
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: P-1762
+  category: P
+  title: T2PS v1.0 - UNINSTALL
+  source: INTERRUP.D:4568
+  interrupt: '17'
+  flags:
+  - U
+  function: '62'
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 62h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - nothing
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 63h
+  - type: interrupt
+    params:
+      AH: 64h
+  - type: interrupt
+    interrupt: '05'
+    params:
+      AX: 554Eh
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: P-1763
+  category: P
+  title: T2PS v1.0 - SET PARAMETERS
+  source: INTERRUP.D:4573
+  interrupt: '17'
+  flags:
+  - U
+  function: '63'
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 63h
+    table_refs: []
+    sub_values: []
+  - reg: ES:SI
+    operator: ->
+    description: 'settings (see #00641)'
+    table_refs:
+    - '00641'
+    sub_values: []
+  returns: []
+  program: 'T2PS is a shareware ASCII-to-PostScript converter by A.N.D.
+
+    Technologies'
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 62h
+  - type: interrupt
+    params:
+      AH: 64h
+  - type: interrupt
+    interrupt: '05'
+    params:
+      AX: 4E57h
+  index: []
+  tables:
+  - '00641'
+  table_refs: []
+- entry_type: INT
+  id: P-1764
+  category: P
+  title: T2PS v1.0 - GET PARAMETERS
+  source: INTERRUP.D:4593
+  interrupt: '17'
+  flags:
+  - U
+  function: '64'
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 64h
+    table_refs: []
+    sub_values: []
+  - reg: ES:SI
+    operator: ->
+    description: 'buffer for settings (see #00641)'
+    table_refs:
+    - '00641'
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ES:SI buffer filled
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 62h
+  - type: interrupt
+    params:
+      AH: 63h
+  - type: interrupt
+    interrupt: '05'
+    params:
+      AX: 5053h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-176F00BX0000
+  category: b
+  title: HP Vectra - EXTENDED BIOS - "F17_INQUIRE" - INSTALLATION CHECK
+  source: INTERRUP.D:4599
+  interrupt: '17'
+  flags: []
+  function: 6F00BX0000
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 6F00h
+    table_refs: []
+    sub_values: []
+  - reg: BX
+    operator: '='
+    value: 0000h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: BX
+      operator: '='
+      value: 4850h
+      description: ("HP") if HP Extended BIOS printer extensions available
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 6F02h
+  - type: interrupt
+    interrupt: '14'
+    params:
+      AX: 6F00h
+  - type: interrupt
+    interrupt: '10'
+    params:
+      AX: 6F00h
+  - type: interrupt
+    interrupt: '14'
+    params:
+      AX: 6F00h
+  - type: interrupt
+    interrupt: '33'
+    params:
+      AX: 6F00h
+  - type: interrupt
+    interrupt: 6F
+    params:
+      AH: 00h
+    name: HP Vectra
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-176F02
+  category: b
+  title: HP Vectra - EXTENDED BIOS - "F17_PUT_BUFFER" - PRINT BUFFER
+  source: INTERRUP.D:4606
+  interrupt: '17'
+  flags: []
+  function: 6F02
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 6F02h
+    table_refs: []
+    sub_values: []
+  - reg: CX
+    operator: '='
+    description: size of buffer in bytes
+    table_refs: []
+    sub_values: []
+  - reg: DX
+    operator: '='
+    description: port number (0-3)
+    table_refs: []
+    sub_values: []
+  - reg: ES:DI
+    operator: ->
+    description: buffer containing characters to be printed
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AH
+      operator: '='
+      description: 'printer status (see #00631)'
+      table_refs:
+      - '00631'
+      sub_values: []
+    - reg: CX
+      operator: '='
+      description: number of bytes successfully printed
+      table_refs: []
+      sub_values: []
+    - reg: ES:DI
+      operator: ->
+      description: next byte to be sent
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  - condition: successful---
+    registers: []
+    raw_lines:
+    - ES:DI unchanged
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 00h
+  - type: interrupt
+    params:
+      AX: 6F00h
+  - type: interrupt
+    interrupt: '14'
+    params:
+      AX: 6F02h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: --1780
+  title: IBM SurePath BIOS - Officially "Private" Function
+  source: INTERRUP.D:4619
+  interrupt: '17'
+  flags: []
+  function: '80'
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 80h
+    table_refs: []
+    sub_values: []
+  returns: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 03h
+    name: IBM
+  - type: interrupt
+    params:
+      AH: 0Bh
+    name: IBM
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: N-1781
+  category: N
+  title: Alloy NTNX, MW386 - CANCEL JOBS FOR CURRENT USER
+  source: INTERRUP.D:4623
+  interrupt: '17'
+  flags: []
+  function: '81'
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 81h
+    table_refs: []
+    sub_values: []
+  - reg: AL
+    operator: '='
+    value: 00h
+    description: (NTNX compatibility mode)
+    table_refs: []
+    sub_values: []
+  - reg: CL
+    operator: '='
+    description: number of jobs to cancel
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AL
+      operator: '='
+      description: 'status (see #00642)'
+      table_refs:
+      - '00642'
+      sub_values: []
+    raw_lines: []
+  notes:
+  - this function cancels the last CL printouts for the current task
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 82h
+  index: []
+  tables:
+  - '00642'
+  table_refs: []
+- entry_type: INT
+  id: N-1782
+  category: N
+  title: Alloy NTNX, MW386 - CANCEL ALL JOBS FOR CURRENT USER
+  source: INTERRUP.D:4651
+  interrupt: '17'
+  flags: []
+  function: '82'
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 82h
+    table_refs: []
+    sub_values: []
+  - reg: AL
+    operator: '='
+    value: 00h
+    description: (NTNX compatibility mode)
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AL
+      operator: '='
+      description: 'status (see #00642)'
+      table_refs:
+      - '00642'
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 81h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: N-1783
+  category: N
+  title: Alloy NTNX, MW386 - SET NUMBER OF COPIES
+  source: INTERRUP.D:4657
+  interrupt: '17'
+  flags: []
+  function: '83'
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 83h
+    table_refs: []
+    sub_values: []
+  - reg: AL
+    operator: '='
+    description: mode
+    table_refs: []
+    sub_values:
+    - value: 00h
+      description: NTNX compatibility
+      sub_values: []
+  - reg: CL
+    operator: '='
+    description: number of copies (max 99, default 1)
+    table_refs: []
+    sub_values: []
+  - reg: BX
+    operator: '='
+    description: logical device number
+    table_refs: []
+    sub_values: []
+  - reg: CX
+    operator: '='
+    description: number of copies
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AL
+      operator: '='
+      description: 'status (see #00642)'
+      table_refs:
+      - '00642'
+      sub_values: []
+    raw_lines: []
+  notes:
+  - in NTNX compatibility mode, this function only affects LPT1
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: N-1784
+  category: N
+  title: Alloy NTNX, MW386 - GENERATE PRINT BREAK
+  source: INTERRUP.D:4670
+  interrupt: '17'
+  flags: []
+  function: '84'
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 84h
+    table_refs: []
+    sub_values: []
+  - reg: AL
+    operator: '='
+    description: mode
+    table_refs: []
+    sub_values:
+    - value: 00h
+      description: NTNX compatibility
+      sub_values: []
+    - value: 02h
+      description: MW386 v2+
+      sub_values: []
+  - reg: BX
+    operator: '='
+    description: logical device number
+    table_refs: []
+    sub_values: []
+  returns: []
+  notes:
+  - 'closes spool file and tells spooler to queue the print job (LPT1 only
+
+    under MW386 in NTNX compatibility mode)'
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: J-1784
+  category: J
+  title: AX (Japanese AT) PRINTER - OUTPUT CHARACTER WITHOUT CONVERSION
+  source: INTERRUP.D:4681
+  interrupt: '17'
+  flags: []
+  function: '84'
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 84h
+    table_refs: []
+    sub_values: []
+  - reg: AL
+    operator: '='
+    description: character
+    table_refs: []
+    sub_values: []
+  - reg: DX
+    operator: '='
+    description: printer number
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AH
+      operator: '='
+      description: 'printer status (see #00631)'
+      table_refs:
+      - '00631'
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 00h
+  - type: interrupt
+    params:
+      AH: 85h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: J-1785
+  category: J
+  title: AX (Japanese AT) PRINTER - ENABLE/DISABLE CHARACTER CONVERSION
+  source: INTERRUP.D:4688
+  interrupt: '17'
+  flags: []
+  function: '85'
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 85h
+    table_refs: []
+    sub_values: []
+  - reg: AL
+    operator: '='
+    description: new state (00h enabled, 01h disabled)
+    table_refs: []
+    sub_values: []
+  returns: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 84h
+    name: AX
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: N-1787
+  category: N
+  title: Alloy NTNX - SET INDOS POINTER
+  source: INTERRUP.D:4693
+  interrupt: '17'
+  flags: []
+  function: '87'
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 87h
+    table_refs: []
+    sub_values: []
+  - reg: AL
+    operator: '='
+    value: 00h
+    table_refs: []
+    sub_values: []
+  - reg: CX:BX
+    operator: ->
+    description: buffer for user-written printer drivers
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - BX,CX destroyed
+  notes:
+  - must be executed before the printer is enabled
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 8Ah
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: N-1788
+  category: N
+  title: Alloy NTNX, MW386 - REMOVE PRINTER FROM SPOOLER
+  source: INTERRUP.D:4701
+  interrupt: '17'
+  flags: []
+  function: '88'
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 88h
+    table_refs: []
+    sub_values: []
+  - reg: AL
+    operator: '='
+    description: mode
+    table_refs: []
+    sub_values:
+    - value: 00h
+      description: NTNX compatibility
+      sub_values: []
+  - reg: DX
+    operator: '='
+    description: 'NTNX printer number (see #00643)'
+    table_refs:
+    - '00643'
+    sub_values: []
+  - reg: DX
+    operator: '='
+    description: MW386 printer number
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AH
+      operator: '='
+      description: 'status (see #00642)'
+      table_refs:
+      - '00642'
+      sub_values: []
+    raw_lines: []
+  notes:
+  - removes specified printer from the spooler's list of printers
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 89h
+  - type: interrupt
+    params:
+      AH: 8Bh
+  index: []
+  tables:
+  - '00643'
+  table_refs: []
+- entry_type: INT
+  id: N-1789
+  category: N
+  title: Alloy NTNX, MW386 - ADD PRINTER TO SPOOLER
+  source: INTERRUP.D:4724
+  interrupt: '17'
+  flags: []
+  function: '89'
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 89h
+    table_refs: []
+    sub_values: []
+  - reg: AL
+    operator: '='
+    description: mode
+    table_refs: []
+    sub_values:
+    - value: 00h
+      description: NTNX compatibility
+      sub_values: []
+  - reg: DX
+    operator: '='
+    description: 'NTNX printer number (see #00643)'
+    table_refs:
+    - '00643'
+    sub_values: []
+  - reg: DX
+    operator: '='
+    description: MW386 printer number
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AL
+      operator: '='
+      description: 'status (see #00642)'
+      table_refs:
+      - '00642'
+      sub_values: []
+    raw_lines: []
+  notes:
+  - 'the specified printer is added to the spooler''s list of available
+
+    printers'
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 88h
+  - type: interrupt
+    params:
+      AH: 8Bh
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: N-178A
+  category: N
+  title: Alloy NTNX - ACTIVATE USER-WRITTEN PRINTER DRIVER
+  source: INTERRUP.D:4736
+  interrupt: '17'
+  flags: []
+  function: 8A
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 8Ah
+    table_refs: []
+    sub_values: []
+  returns: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 92h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: N-178B
+  category: N
+  title: Alloy MW386 - GET PHYSICAL DEVICE NUMBER FROM NAME
+  source: INTERRUP.D:4741
+  interrupt: '17'
+  flags: []
+  function: 8B
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 8Bh
+    table_refs: []
+    sub_values: []
+  - reg: DS:DX
+    operator: ->
+    description: ASCIZ printer name
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AL
+      operator: '='
+      description: status (see also AH=81h)
+      table_refs: []
+      sub_values: []
+    - reg: DX
+      operator: '='
+      description: physical device number
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 89h
+  - type: interrupt
+    params:
+      AH: 8Ch
+  - type: interrupt
+    interrupt: '14'
+    params:
+      AH: 20h
+    name: Alloy
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: N-178C
+  category: N
+  title: Alloy MW386 - GET DEVICE NAME FROM PHYSICAL DEVICE NUMBER
+  source: INTERRUP.D:4749
+  interrupt: '17'
+  flags: []
+  function: 8C
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 8Ch
+    table_refs: []
+    sub_values: []
+  - reg: DX
+    operator: '='
+    description: physical device number
+    table_refs: []
+    sub_values: []
+  - reg: ES:DI
+    operator: ->
+    description: 17-byte buffer for ASCIZ device name
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AL
+      operator: '='
+      description: status (see also AH=81h)
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 88h
+  - type: interrupt
+    params:
+      AH: 8Bh
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: N-178D
+  category: N
+  title: Alloy NTNX,MW386 - RESET SPOOLER
+  source: INTERRUP.D:4758
+  interrupt: '17'
+  flags: []
+  function: 8D
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 8Dh
+    table_refs: []
+    sub_values: []
+  - reg: AL
+    operator: '='
+    value: 00h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AL
+      operator: '='
+      description: 'status (see #00642)'
+      table_refs:
+      - '00642'
+      sub_values: []
+    raw_lines: []
+  notes:
+  - 'clears all buffers and resets spooler to boot-up values
+
+    MW386 supports this function for compatibility only; it is a NOP'
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: N-178E
+  category: N
+  title: Alloy NTNX - GET INT 28 ENTRY POINT
+  source: INTERRUP.D:4765
+  interrupt: '17'
+  flags: []
+  function: 8E
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 8Eh
+    table_refs: []
+    sub_values: []
+  - reg: AL
+    operator: '='
+    value: 00h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: CX:BX
+      operator: ->
+      description: INT 28 entry point
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 8Fh
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: N-178F
+  category: N
+  title: Alloy NTNX - GET DOS INTERCEPT ENTRY POINT
+  source: INTERRUP.D:4771
+  interrupt: '17'
+  flags: []
+  function: 8F
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 8Fh
+    table_refs: []
+    sub_values: []
+  - reg: AL
+    operator: '='
+    value: 00h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: CX:BX
+      operator: ->
+      description: DOS intercept routine
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 8Eh
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: N-1790
+  category: N
+  title: Alloy NTNX, MW386 - SPOOL FILE BY NAME
+  source: INTERRUP.D:4777
+  interrupt: '17'
+  flags: []
+  function: '90'
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 90h
+    table_refs: []
+    sub_values: []
+  - reg: AL
+    operator: '='
+    description: mode
+    table_refs: []
+    sub_values:
+    - value: 00h
+      description: NTNX compatibility
+      sub_values: []
+  - reg: DL
+    operator: '='
+    description: printer code (FFh=current) (NTNX, MW386 v1.x only)
+    table_refs: []
+    sub_values: []
+  - reg: DH
+    operator: '='
+    description: number of copies (FFh=current) (NTNX, MW386 v1.x only)
+    table_refs: []
+    sub_values: []
+  - reg: BX
+    operator: '='
+    description: logical device number
+    table_refs: []
+    sub_values: []
+  - reg: CX:SI
+    operator: ->
+    description: ASCIZ pathname
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AL
+      operator: '='
+      description: 'status (see #00642)'
+      table_refs:
+      - '00642'
+      sub_values: []
+    raw_lines: []
+  notes:
+  - in mode 00h, the file is always sent to logical LPT1
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: A0h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: N-1791
+  category: N
+  title: Alloy NTNX, MW386 - GET USER NUMBER AND CURRENT PRINTER
+  source: INTERRUP.D:4792
+  interrupt: '17'
+  flags: []
+  function: '91'
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 91h
+    table_refs: []
+    sub_values: []
+  - reg: AL
+    operator: '='
+    description: mode
+    table_refs: []
+    sub_values:
+    - value: 00h
+      description: 'NTNX compatibility Return: CX = user number (00h = host)'
+      sub_values: []
+  - reg: DX
+    operator: '='
+    description: currently selected printer number (00h-08h)
+    table_refs: []
+    sub_values: []
+  - reg: DX
+    operator: '='
+    description: physical dev number of currently selected printer
+    table_refs: []
+    sub_values: []
+  - reg: BX
+    operator: '='
+    description: logical device number
+    table_refs: []
+    sub_values: []
+  - reg: DX
+    operator: '='
+    description: physical device number
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AL
+      operator: '='
+      description: 'status (see #00642)'
+      table_refs:
+      - '00642'
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 8Ch
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: N-1792
+  category: N
+  title: Alloy NTNX - CHECK PRINTER DRIVER
+  source: INTERRUP.D:4810
+  interrupt: '17'
+  flags: []
+  function: '92'
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 92h
+    table_refs: []
+    sub_values: []
+  - reg: AL
+    operator: '='
+    value: 00h
+    table_refs: []
+    sub_values: []
+  - reg: CL
+    operator: '='
+    value: 00h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: CL
+      operator: '='
+      description: driver state
+      table_refs: []
+      sub_values: []
+    - reg: AX
+      operator: '='
+      description: 'status (see #00642)'
+      table_refs:
+      - '00642'
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 8Ah
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: N-1794
+  category: N
+  title: Alloy NTNX, MW386 - SELECT PRINTER
+  source: INTERRUP.D:4820
+  interrupt: '17'
+  flags: []
+  function: '94'
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 94h
+    table_refs: []
+    sub_values: []
+  - reg: AL
+    operator: '='
+    description: mode
+    table_refs: []
+    sub_values:
+    - value: 00h
+      description: NTNX compatibility
+      sub_values: []
+  - reg: DX
+    operator: '='
+    description: 'NTNX printer number (see #00643)'
+    table_refs:
+    - '00643'
+    sub_values: []
+  - reg: DX
+    operator: '='
+    description: MW386 printer number
+    table_refs: []
+    sub_values: []
+  - reg: BX
+    operator: '='
+    description: logical printer number
+    table_refs: []
+    sub_values: []
+  - reg: DX
+    operator: '='
+    description: MW386 printer number
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AL
+      operator: '='
+      description: 'status (see #00642)'
+      table_refs:
+      - '00642'
+      sub_values: []
+    raw_lines: []
+  notes:
+  - modes 00h and 01h affect only logical LPT1
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 8Bh
+  - type: interrupt
+    params:
+      AH: 95h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: N-1795
+  category: N
+  title: Alloy NTNX, MW386 - GET CURRENT PRINTER
+  source: INTERRUP.D:4834
+  interrupt: '17'
+  flags: []
+  function: '95'
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 95h
+    table_refs: []
+    sub_values: []
+  - reg: AL
+    operator: '='
+    description: mode
+    table_refs: []
+    sub_values:
+    - value: 00h
+      description: 'NTNX compatibility Return: DX = NTNX printer number (see #00643) (FFFFh if current printer not compatible
+        with NTNX)'
+      sub_values: []
+    - value: 01h
+      description: 'MW386 Return: DX = MW386 printer number'
+      sub_values: []
+    - value: 02h
+      description: MW386 v2+
+      sub_values: []
+  - reg: BX
+    operator: '='
+    description: logical device number
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AL
+      operator: '='
+      description: 'status (see #00642)'
+      table_refs:
+      - '00642'
+      sub_values: []
+    raw_lines: []
+  notes:
+  - modes 00h and 01h return the printer number of logical LPT1 only
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 94h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: N-1796
+  category: N
+  title: Alloy NTNX - SET SERIAL PORT PARAMETERS
+  source: INTERRUP.D:4851
+  interrupt: '17'
+  flags: []
+  function: '96'
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 96h
+    table_refs: []
+    sub_values: []
+  - reg: AL
+    operator: '='
+    value: 00h
+    table_refs: []
+    sub_values: []
+  returns: []
+  notes:
+  - 'documentation states that this is a NOP, doing only XOR AX,AX before
+
+    returning'
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: '14'
+    params:
+      AH: 24h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: N-1797
+  category: N
+  title: Alloy NTNX, MW386 - SET DATA DRIVEN PRINT BREAK
+  source: INTERRUP.D:4858
+  interrupt: '17'
+  flags: []
+  function: '97'
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 97h
+    table_refs: []
+    sub_values: []
+  - reg: AL
+    operator: '='
+    description: mode
+    table_refs: []
+    sub_values:
+    - value: 00h
+      description: NTNX compatibility
+      sub_values: []
+    - value: 02h
+      description: MW386 v2+
+      sub_values: []
+  - reg: BX
+    operator: '='
+    description: logical device number
+    table_refs: []
+    sub_values: []
+  - reg: DL
+    operator: '='
+    description: subfunction
+    table_refs: []
+    sub_values:
+    - value: 00h
+      description: set break string else reset break
+      sub_values: []
+  returns:
+  - registers:
+    - reg: AL
+      operator: '='
+      description: 'status (see #00642)'
+      table_refs:
+      - '00642'
+      sub_values: []
+    raw_lines: []
+  notes:
+  - 'mode 00h affects only logical LPT1
+
+    when the break string is encountered, the spool file will be closed and
+
+    queued for printing automatically
+
+    the break string is not permanently saved, and will be reset each time
+
+    MW386 or the user is rebooted'
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 9Bh
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: N-1798
+  category: N
+  title: Alloy NTNX,MW386 - RESTART PRINTER
+  source: INTERRUP.D:4878
+  interrupt: '17'
+  flags: []
+  function: '98'
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 98h
+    table_refs: []
+    sub_values: []
+  - reg: AL
+    operator: '='
+    value: 00h
+    table_refs: []
+    sub_values: []
+  - reg: DL
+    operator: '='
+    description: printer number (FFh=current)
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AL
+      operator: '='
+      description: status
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes:
+  - MW386 supports this function for compatibility only; it is a NOP
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: N-1799
+  category: N
+  title: Alloy NTNX, MW386 - GET/SET PRINTER MODE
+  source: INTERRUP.D:4888
+  interrupt: '17'
+  flags: []
+  function: '99'
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 99h
+    table_refs: []
+    sub_values: []
+  - reg: AL
+    operator: '='
+    description: mode
+    table_refs: []
+    sub_values:
+    - value: 00h
+      description: NTNX compatibility
+      sub_values: []
+  - reg: DL
+    operator: '='
+    description: 'NTNX printer number (see #00643)'
+    table_refs:
+    - '00643'
+    sub_values: []
+  - reg: DH
+    operator: '='
+    description: 'mode (see #00644)'
+    table_refs:
+    - '00644'
+    sub_values: []
+  - reg: DX
+    operator: '='
+    description: MW386 printer number
+    table_refs: []
+    sub_values: []
+  - reg: CL
+    operator: '='
+    description: mode (as for DH above)
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AL
+      operator: '='
+      description: 'status (see #00642)'
+      table_refs:
+      - '00642'
+      sub_values: []
+    - reg: DH
+      operator: '='
+      description: mode (bits 1 and 2 set as above)
+      table_refs: []
+      sub_values: []
+    - reg: DL
+      operator: '='
+      description: printer owner's user number if not spooled
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables:
+  - '00644'
+  table_refs: []
+- entry_type: INT
+  id: N-179A
+  category: N
+  title: Alloy NTNX,MW386 - SET TAB EXPANSION
+  source: INTERRUP.D:4908
+  interrupt: '17'
+  flags: []
+  function: 9A
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 9Ah
+    table_refs: []
+    sub_values: []
+  - reg: AL
+    operator: '='
+    description: mode
+    table_refs: []
+    sub_values:
+    - value: 00h
+      description: NTNX compatibility
+      sub_values: []
+  - reg: DX
+    operator: '='
+    description: 'NTNX printer number (see #00643)'
+    table_refs:
+    - '00643'
+    sub_values: []
+  - reg: DX
+    operator: '='
+    description: MW386 printer number
+    table_refs: []
+    sub_values: []
+  - reg: CL
+    operator: '='
+    description: tab length (00h = no expansion, 01h-63h = spaces per tab)
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AL
+      operator: '='
+      description: 'status (see #00642)'
+      table_refs:
+      - '00642'
+      sub_values: []
+    raw_lines: []
+  notes:
+  - 'beginning with MW386 v2.0, tab expansion is set on a per-printer basis
+
+    rather than a per-user basis; NTNX and MW386 v1.x ignore DX'
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: A4h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: N-179B
+  category: N
+  title: Alloy NTNX,MW386 - SET PRINT BREAK TIMEOUT
+  source: INTERRUP.D:4922
+  interrupt: '17'
+  flags: []
+  function: 9B
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 9Bh
+    table_refs: []
+    sub_values: []
+  - reg: AL
+    operator: '='
+    description: mode
+    table_refs: []
+    sub_values:
+    - value: 00h
+      description: NTNX compatibility
+      sub_values: []
+  - reg: CX
+    operator: '='
+    description: timeout value in clock ticks (1/18 sec) (00h = never)
+    table_refs: []
+    sub_values: []
+  - reg: CX
+    operator: '='
+    description: timeout value in seconds (00h = never)
+    table_refs: []
+    sub_values: []
+  - reg: BX
+    operator: '='
+    description: logical device number
+    table_refs: []
+    sub_values: []
+  - reg: CX
+    operator: '='
+    description: timeout value in seconds (00h = never)
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AL
+      operator: '='
+      description: 'status (see #00642)'
+      table_refs:
+      - '00642'
+      sub_values: []
+    raw_lines: []
+  notes:
+  - 'modes 00h and 01h affect only the current logical LPT1
+
+    if no data is sent to a printer for the specified amount of time, the
+
+    spool file will be closed and queued for printing automatically'
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 97h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: N-17A0
+  category: N
+  title: Alloy MW386 - SPOOL COPY OF FILE
+  source: INTERRUP.D:4940
+  interrupt: '17'
+  flags: []
+  function: A0
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: A0h
+    table_refs: []
+    sub_values: []
+  - reg: AL
+    operator: '='
+    description: mode
+    table_refs: []
+    sub_values:
+    - value: 00h
+      description: NTNX compatibility
+      sub_values: []
+  - reg: DX
+    operator: '='
+    description: ??? (NTNX, MW386 v1.x only)
+    table_refs: []
+    sub_values: []
+  - reg: BX
+    operator: '='
+    description: logical device number
+    table_refs: []
+    sub_values: []
+  - reg: CX:SI
+    operator: ->
+    description: ASCIZ pathname
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AL
+      operator: '='
+      description: 'status (see #00642)'
+      table_refs:
+      - '00642'
+      sub_values: []
+    raw_lines: []
+  notes:
+  - 'makes a copy of the specified file in the spooler''s directory, allowing
+
+    the original file to be modified or deleted while the copy is printed
+
+    in mode 00h, the file is printed on logical LPT1'
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 90h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: N-17A4
+  category: N
+  title: Alloy MW386 - ENABLE/DISABLE FORM FEED
+  source: INTERRUP.D:4956
+  interrupt: '17'
+  flags: []
+  function: A4
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: A4h
+    table_refs: []
+    sub_values: []
+  - reg: AL
+    operator: '='
+    description: new state
+    table_refs: []
+    sub_values:
+    - value: 00h
+      description: form feed after end of print job disabled
+      sub_values: []
+    - value: 01h
+      description: form feed enabled
+      sub_values: []
+  returns:
+  - registers:
+    - reg: AL
+      operator: '='
+      description: 'status (see #00642)'
+      table_refs:
+      - '00642'
+      sub_values: []
+    raw_lines: []
+  notes:
+  - only affects the current logical LPT1
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 9Ah
+  - type: interrupt
+    params:
+      AH: A6h
+  - type: interrupt
+    interrupt: 7F
+    params:
+      AH: 05h
+    name: NTNX (Host)
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: N-17A6
+  category: N
+  title: Alloy MW386 - ENABLE/DISABLE BANNER PAGE
+  source: INTERRUP.D:4965
+  interrupt: '17'
+  flags: []
+  function: A6
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: A6h
+    table_refs: []
+    sub_values: []
+  - reg: AL
+    operator: '='
+    description: new state
+    table_refs: []
+    sub_values:
+    - value: 00h
+      description: banner page before print job disabled
+      sub_values: []
+    - value: 01h
+      description: banner page enabled
+      sub_values: []
+  returns:
+  - registers:
+    - reg: AL
+      operator: '='
+      description: 'status (see #00642)'
+      table_refs:
+      - '00642'
+      sub_values: []
+    raw_lines: []
+  notes:
+  - only affects the current logical LPT1
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: A4h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: N-17A7
+  category: N
+  title: Alloy MW386 v2+ - GET/SET SPOOL FLAGS
+  source: INTERRUP.D:4974
+  interrupt: '17'
+  flags: []
+  function: A7
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: A7h
+    table_refs: []
+    sub_values: []
+  - reg: AL
+    operator: '='
+    description: 'spool flags (see #00645)'
+    table_refs:
+    - '00645'
+    sub_values: []
+  - reg: BX
+    operator: '='
+    description: logical device number
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AL
+      operator: '='
+      description: 'status (see #00642)'
+      table_refs:
+      - '00642'
+      sub_values: []
+    raw_lines: []
+  notes:
+  - 'the documentation does not state which register contains the result of
+
+    a GET'
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: A4h
+  - type: interrupt
+    params:
+      AH: A6h
+  index: []
+  tables:
+  - '00645'
+  table_refs: []
+- entry_type: INT
+  id: N-17A8
+  category: N
+  title: Alloy MW386 - DEFINE TEMPORARY FILENAME
+  source: INTERRUP.D:4992
+  interrupt: '17'
+  flags: []
+  function: A8
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: A8h
+    table_refs: []
+    sub_values: []
+  - reg: CX:SI
+    operator: ->
+    description: ASCIZ filename without extension (max 8 chars)
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AL
+      operator: '='
+      description: 'status (see #00642)'
+      table_refs:
+      - '00642'
+      sub_values: []
+    raw_lines: []
+  notes:
+  - 'allows application to specify banner page filename for spool files
+
+    collected from the application''s printer output'
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: A9h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: N-17A9
+  category: N
+  title: Alloy MW386 - CHANGE TEMPORARY SPOOL DRIVE
+  source: INTERRUP.D:5000
+  interrupt: '17'
+  flags: []
+  function: A9
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: A9h
+    table_refs: []
+    sub_values: []
+  - reg: AL
+    operator: '='
+    description: new spool drive (2=C:,3=D:,etc)
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AL
+      operator: '='
+      description: 'status (see #00642)'
+      table_refs:
+      - '00642'
+      sub_values: []
+    raw_lines: []
+  notes:
+  - does not remove previous spooling directory since jobs may be pending
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: A8h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: N-17AA
+  category: N
+  title: Alloy MW386 v2+ - GET REAL-TIME PRINTER STATUS
+  source: INTERRUP.D:5007
+  interrupt: '17'
+  flags: []
+  function: AA
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: AAh
+    table_refs: []
+    sub_values: []
+  - reg: AL
+    operator: '='
+    description: mode
+    table_refs: []
+    sub_values:
+    - value: 00h
+      description: NTNX
+      sub_values: []
+  - reg: DX
+    operator: '='
+    description: 'NTNX printer number (see #00643)'
+    table_refs:
+    - '00643'
+    sub_values: []
+  - reg: DX
+    operator: '='
+    description: MW386 printer number
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AH
+      operator: '='
+      description: instantaneous printer status
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: N-17AF
+  category: N
+  title: Alloy MW386 - CHECK SPOOLER
+  source: INTERRUP.D:5023
+  interrupt: '17'
+  flags: []
+  function: AF
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: AFh
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AX
+      operator: '='
+      value: 55AAh
+      description: if spooler available
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: c-17C0
+  category: c
+  title: PC Magazine PCSpool - GET CONTROL BLOCK ADDRESS
+  source: INTERRUP.D:5027
+  interrupt: '17'
+  flags: []
+  function: C0
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: C0h
+    table_refs: []
+    sub_values: []
+  - reg: DX
+    operator: '='
+    description: printer port (0-3)
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: ES:BX
+      operator: ->
+      description: 'control block (see #00646)'
+      table_refs:
+      - '00646'
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: C1h
+  index: []
+  tables:
+  - '00646'
+  table_refs: []
+- entry_type: INT
+  id: c-17C1
+  category: c
+  title: PC Magazine PCSpool - BUILD PAUSE CONTROL RECORD
+  source: INTERRUP.D:5063
+  interrupt: '17'
+  flags: []
+  function: C1
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: C1h
+    table_refs: []
+    sub_values: []
+  - reg: DX
+    operator: '='
+    description: printer port (0-3)
+    table_refs: []
+    sub_values: []
+  - reg: DS:SI
+    operator: ->
+    description: ASCIZ string to save for display
+    table_refs: []
+    sub_values: []
+  returns: []
+  notes:
+  - flushes pending writes
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: C0h
+  - type: interrupt
+    params:
+      AH: C2h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: c-17C2
+  category: c
+  title: PC Magazine PCSpool - FLUSH PENDING WRITES
+  source: INTERRUP.D:5070
+  interrupt: '17'
+  flags: []
+  function: C2
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: C2h
+    table_refs: []
+    sub_values: []
+  - reg: DX
+    operator: '='
+    description: printer port (0-3)
+    table_refs: []
+    sub_values: []
+  returns: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: C3h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: c-17C3
+  category: c
+  title: PC Magazine PCSpool - CANCEL PRINTER QUEUE (FLUSH ALL QUEUED OUTPUT)
+  source: INTERRUP.D:5075
+  interrupt: '17'
+  flags: []
+  function: C3
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: C3h
+    table_refs: []
+    sub_values: []
+  - reg: DX
+    operator: '='
+    description: printer port (0-3)
+    table_refs: []
+    sub_values: []
+  returns: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: C2h
+  - type: interrupt
+    params:
+      AH: C7h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: c-17C4
+  category: c
+  title: PC Magazine PCSpool - QUERY SPOOLER ACTIVE
+  source: INTERRUP.D:5080
+  interrupt: '17'
+  flags: []
+  function: C4
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: C4h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: DI
+      operator: '='
+      value: B0BFh
+      table_refs: []
+      sub_values: []
+    - reg: SI
+      operator: '='
+      description: segment
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: c-17C5
+  category: c
+  title: PC Magazine PCSpool - JOB SKIP PRINTER QUEUE
+  source: INTERRUP.D:5085
+  interrupt: '17'
+  flags: []
+  function: C5
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: C5h
+    table_refs: []
+    sub_values: []
+  - reg: DX
+    operator: '='
+    description: printer port (0-3)
+    table_refs: []
+    sub_values: []
+  returns: []
+  notes:
+  - cancels up to the pause record
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: c-17C6
+  category: c
+  title: PC Magazine PCSpool - CHECK PRINTER QUEUE STATUS
+  source: INTERRUP.D:5090
+  interrupt: '17'
+  flags: []
+  function: C6
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: C6h
+    table_refs: []
+    sub_values: []
+  - reg: DX
+    operator: '='
+    description: printer port (0-3)
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AX
+      operator: '='
+      description: queue status
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: c-17C7
+  category: c
+  title: PC Magazine PCSpool - CLOSE QUEUE
+  source: INTERRUP.D:5097
+  interrupt: '17'
+  flags: []
+  function: C7
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: C7h
+    table_refs: []
+    sub_values: []
+  - reg: DX
+    operator: '='
+    description: printer port (0-3)
+    table_refs: []
+    sub_values: []
+  returns: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: C3h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: P-17CD00
+  category: P
+  title: INSET - EXECUTE COMMAND STRING
+  source: INTERRUP.D:5102
+  interrupt: '17'
+  flags: []
+  function: CD00
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: CD00h
+    table_refs: []
+    sub_values: []
+  - reg: DS:DX
+    operator: ->
+    description: ASCIZ command string (max 80 bytes)
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: CX
+      operator: '='
+      value: 07C2h
+      description: (1986d)
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes:
+  - 'user interface menus pop up after last command, unless that command
+
+    exits INSET'
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: P-17CD01
+  category: P
+  title: INSET - GET IMAGE SIZE
+  source: INTERRUP.D:5109
+  interrupt: '17'
+  flags: []
+  function: CD01
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: CD01h
+    table_refs: []
+    sub_values: []
+  - reg: DS:DX
+    operator: ->
+    description: ASCIZ name of image file
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AX
+      operator: '='
+      description: height in 1/720th inch
+      table_refs: []
+      sub_values: []
+    - reg: BX
+      operator: '='
+      description: width in 1/720th inch
+      table_refs: []
+      sub_values: []
+    - reg: CX
+      operator: '='
+      value: 07C2h
+      description: (1986d)
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: P-17CD02
+  category: P
+  title: INSET - INITIALIZE
+  source: INTERRUP.D:5116
+  interrupt: '17'
+  flags: []
+  function: CD02
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: CD02h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: CX
+      operator: '='
+      value: 07C2h
+      description: (1986d)
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes:
+  - all open files are closed and the printer is reset
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: CD04h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: P-17CD03
+  category: P
+  title: INSET - EXECUTE INSET MENU WITHIN OVERRIDE MODE
+  source: INTERRUP.D:5122
+  interrupt: '17'
+  flags: []
+  function: CD03
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: CD03h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: CX
+      operator: '='
+      value: 07C2h
+      description: (1986d)
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: P-17CD04
+  category: P
+  title: INSET - INITIALIZE LINKED MODE
+  source: INTERRUP.D:5126
+  interrupt: '17'
+  flags: []
+  function: CD04
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: CD04h
+    table_refs: []
+    sub_values: []
+  - reg: ES:SI
+    operator: ->
+    description: 'FAR routine for linked mode (see #00647)'
+    table_refs:
+    - '00647'
+    sub_values: []
+  returns:
+  - registers:
+    - reg: CX
+      operator: '='
+      value: 07C2h
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: CD02h
+  - type: interrupt
+    params:
+      AX: CD08h
+  index: []
+  tables:
+  - '00647'
+  table_refs: []
+- entry_type: INT
+  id: P-17CD05
+  category: P
+  title: INSET - START MERGING IMAGE INTO TEXT
+  source: INTERRUP.D:5145
+  interrupt: '17'
+  flags: []
+  function: CD05
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: CD05h
+    table_refs: []
+    sub_values: []
+  - reg: DS:DX
+    operator: ->
+    description: ASCIZ name of PIX file
+    table_refs: []
+    sub_values: []
+  - reg: CX
+    operator: '='
+    description: left margin of text in 1/720th inch
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AH
+      operator: '='
+      description: printer type
+      table_refs: []
+      sub_values: []
+    - reg: CX
+      operator: '='
+      value: 07C2h
+      description: (1986d)
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: CD07h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: P-17CD06
+  category: P
+  title: INSET - GRAPHICS LINE FEED
+  source: INTERRUP.D:5155
+  interrupt: '17'
+  flags: []
+  function: CD06
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: CD06h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AH
+      operator: '='
+      description: completion status
+      table_refs: []
+      sub_values: []
+    - reg: CX
+      operator: '='
+      value: 07C2h
+      description: (1986d)
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: CD09h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: P-17CD07
+  category: P
+  title: INSET - FLUSH GRAPHICS FROM MERGE BUFFER
+  source: INTERRUP.D:5163
+  interrupt: '17'
+  flags: []
+  function: CD07
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: CD07h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: CX
+      operator: '='
+      value: 07C2h
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: CD05h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: P-17CD08
+  category: P
+  title: INSET - CANCEL LINK MODE
+  source: INTERRUP.D:5168
+  interrupt: '17'
+  flags: []
+  function: CD08
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: CD08h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: CX
+      operator: '='
+      value: 07C2h
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: CD04h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: P-17CD09
+  category: P
+  title: INSET - ALTER TEXT LINE SPACING
+  source: INTERRUP.D:5173
+  interrupt: '17'
+  flags: []
+  function: CD09
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: CD09h
+    table_refs: []
+    sub_values: []
+  - reg: CX
+    operator: '='
+    description: line spacing in 1/720th inch
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: CX
+      operator: '='
+      value: 07C2h
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes:
+  - not yet implemented, line spacing is currently fixed at 1/6 inch
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: CD06h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: P-17CD0A
+  category: P
+  title: INSET - GET SETUP
+  source: INTERRUP.D:5180
+  interrupt: '17'
+  flags: []
+  function: CD0A
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: CD0Ah
+    table_refs: []
+    sub_values: []
+  - reg: DS:DX
+    operator: ->
+    description: buffer for IN.SET data
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: CX
+      operator: '='
+      value: 07C2h
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: P-17CD0B
+  category: P
+  title: INSET - START GETTING SCALED IMAGE
+  source: INTERRUP.D:5185
+  interrupt: '17'
+  flags: []
+  function: CD0B
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: CD0Bh
+    table_refs: []
+    sub_values: []
+  - reg: DS:SI
+    operator: ->
+    description: ASCIZ pathname of .PIX file
+    table_refs: []
+    sub_values: []
+  - reg: BX
+    operator: '='
+    description: number of bitplanes
+    table_refs: []
+    sub_values: []
+  - reg: CX
+    operator: '='
+    description: number of rows in output bitmap
+    table_refs: []
+    sub_values: []
+  - reg: DX
+    operator: '='
+    description: number of columns in output bitmap
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AX
+      operator: '='
+      description: status
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes:
+  - image is returned in strips by repeated calls to AX=CD0Ch
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: P-17CD0C
+  category: P
+  title: INSET - GET NEXT IMAGE STRIP
+  source: INTERRUP.D:5196
+  interrupt: '17'
+  flags: []
+  function: CD0C
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: CD0Ch
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AX
+      operator: '='
+      description: status
+      table_refs: []
+      sub_values: []
+    - reg: DS:SI
+      operator: ->
+      description: buffer (max 4K) for bit map strip
+      table_refs: []
+      sub_values: []
+    - reg: CX
+      operator: '='
+      description: start row
+      table_refs: []
+      sub_values: []
+    - reg: DX
+      operator: '='
+      description: number of rows
+      table_refs: []
+      sub_values: []
+    - reg: BX
+      operator: '='
+      description: offset in bytes between bit planes
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes:
+  - buffer may be overwritten by subsequent calls
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: CD0Bh
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: P-17E0
+  category: P
+  title: EPP BIOS - INSTALLATION CHECK
+  source: INTERRUP.D:5209
+  interrupt: '17'
+  flags: []
+  function: E0
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: E0h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ??? (AH <> E0h if installed ???)
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 0200h
+    name: EPP
+  - type: interrupt
+    params:
+      AH: E1h
+  - type: interrupt
+    params:
+      AH: E2h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: P-17E1
+  category: P
+  title: EPP BIOS - DISABLE EPP
+  source: INTERRUP.D:5214
+  interrupt: '17'
+  flags: []
+  function: E1
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: E1h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 0200h
+    name: EPP
+  - type: interrupt
+    params:
+      AH: E0h
+  - type: interrupt
+    params:
+      AH: E2h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: P-17E2
+  category: P
+  title: EPP BIOS - ENABLE EPP
+  source: INTERRUP.D:5220
+  interrupt: '17'
+  flags: []
+  function: E2
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: E2h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 0200h
+    name: EPP
+  - type: interrupt
+    params:
+      AH: E0h
+  - type: interrupt
+    params:
+      AH: E1h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: P-17F0
+  category: P
+  title: NorthNet Jetstream API - INSTALLATION CHECK
+  source: INTERRUP.D:5226
+  interrupt: '17'
+  flags: []
+  function: F0
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: F0h
+    table_refs: []
+    sub_values: []
+  - reg: DX
+    operator: '='
+    description: printer port (0-3)
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AX
+      operator: '='
+      value: 0001h
+      description: Jetstream present
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes:
+  - 'NorthNet Jetstream is a high-performance DMA-driven parallel card able
+
+    to drive printers at up to 80000 characters per second'
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: P-17F1
+  category: P
+  title: NorthNet Jetstream API - PRINT DATA BUFFER
+  source: INTERRUP.D:5234
+  interrupt: '17'
+  flags: []
+  function: F1
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: F1h
+    table_refs: []
+    sub_values: []
+  - reg: CX
+    operator: '='
+    description: data buffer length
+    table_refs: []
+    sub_values: []
+  - reg: DX
+    operator: '='
+    description: printer port (0-3)
+    table_refs: []
+    sub_values: []
+  - reg: DS:SI
+    operator: ->
+    description: data buffer
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AX
+      operator: '='
+      description: status
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 00h
+  - type: interrupt
+    params:
+      AH: F2h
+  - type: interrupt
+    params:
+      AH: F3h
+  - type: interrupt
+    params:
+      AH: F5h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: P-17F2
+  category: P
+  title: NorthNet Jetstream API - GET PRINT PROGRESS STATUS
+  source: INTERRUP.D:5244
+  interrupt: '17'
+  flags: []
+  function: F2
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: F2h
+    table_refs: []
+    sub_values: []
+  - reg: DX
+    operator: '='
+    description: printer port (0-3)
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AX
+      operator: '='
+      description: status
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 02h
+  - type: interrupt
+    params:
+      AH: F1h
+  - type: interrupt
+    params:
+      AH: F3h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: P-17F3
+  category: P
+  title: NorthNet Jetstream API - ABORT PRINT OPERATION
+  source: INTERRUP.D:5252
+  interrupt: '17'
+  flags: []
+  function: F3
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: F3h
+    table_refs: []
+    sub_values: []
+  - reg: DX
+    operator: '='
+    description: printer port (0-3)
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AX
+      operator: '='
+      description: number of unprinted characters due to abort
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: F1h
+  - type: interrupt
+    params:
+      AH: F4h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: P-17F4
+  category: P
+  title: NorthNet Jetstream API - SET COMPLETION (POST) ADDRESS
+  source: INTERRUP.D:5258
+  interrupt: '17'
+  flags: []
+  function: F4
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: F4h
+    table_refs: []
+    sub_values: []
+  - reg: DX
+    operator: '='
+    description: printer port (0-3)
+    table_refs: []
+    sub_values: []
+  - reg: DS:DS
+    operator: ->
+    description: FAR post address (called with interrupts on)
+    table_refs: []
+    sub_values: []
+  returns: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: F1h
+  - type: interrupt
+    params:
+      AH: F3h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: P-17F5
+  category: P
+  title: NorthNet Jetstream API - PRINT DATA BUFFER FROM EXTENDED MEMORY
+  source: INTERRUP.D:5264
+  interrupt: '17'
+  flags: []
+  function: F5
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: F5h
+    table_refs: []
+    sub_values: []
+  - reg: CX
+    operator: '='
+    description: data buffer length
+    table_refs: []
+    sub_values: []
+  - reg: DX
+    operator: '='
+    description: printer port (0-3)
+    table_refs: []
+    sub_values: []
+  - reg: DS:SI
+    operator: ->
+    description: data buffer (32-bit physical address)
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AX
+      operator: '='
+      description: status
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: F1h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: c-17FFBX0000
+  category: c
+  title: PC-MOS/386 v5.01 - PRINT SPOOLER - CLOSE SPOOL FILE
+  source: INTERRUP.D:5274
+  interrupt: '17'
+  flags:
+  - U
+  function: FFBX0000
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: FFh
+    table_refs: []
+    sub_values: []
+  - reg: BX
+    operator: '='
+    value: 0000h
+    table_refs: []
+    sub_values: []
+  - reg: CX
+    operator: '='
+    value: 0000h
+    table_refs: []
+    sub_values: []
+  - reg: DX
+    operator: '='
+    description: printer port number
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AH
+      operator: '='
+      description: 'printer status (see #00631 at AH=00h)'
+      table_refs:
+      - '00631'
+      sub_values: []
+    raw_lines: []
+  description: 'close the spool file immediately instead of waiting for the close time
+
+    to elapse'
+  program: 'PC-MOS/386 v5.01 is a multitasking, multiuser MS-DOS 5.0-compatible
+
+    operating system by The Software Link, Inc.'
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 01h
+  - type: interrupt
+    params:
+      AH: 03h
+    name: PC-MOS
+  index: []
+  tables: []
+  table_refs: []

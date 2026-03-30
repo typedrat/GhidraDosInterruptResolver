@@ -1,0 +1,69 @@
+file_type: interrupt
+key: FB
+entries:
+- entry_type: INT
+  id: '*-FB'
+  category: '*'
+  title: reserved for user interrupt
+  source: INTERRUP.R:5000
+  interrupt: FB
+  flags: []
+  input_registers: []
+  returns: []
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: h-FB
+  category: h
+  title: Sanyo MBC-550/555 - IRQ3 - KEYBOARD USART RECEIVE INTERRUPT
+  source: INTERRUP.R:5002
+  interrupt: FB
+  flags: []
+  input_registers: []
+  returns: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: 0B
+    params: {}
+    name: IRQ3
+  - type: interrupt
+    interrupt: FA
+    params: {}
+    name: Sanyo
+  - type: interrupt
+    interrupt: FC
+    params: {}
+    name: Sanyo
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: T-FB
+  category: T
+  title: DoubleDOS - TURN ON TIMESHARING
+  source: INTERRUP.R:5005
+  interrupt: FB
+  flags: []
+  input_registers: []
+  returns: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: '21'
+    params:
+      AH: EBh
+    name: DoubleDOS
+  - type: interrupt
+    interrupt: FA
+    params: {}
+    name: DoubleDOS
+  index: []
+  tables: []
+  table_refs: []

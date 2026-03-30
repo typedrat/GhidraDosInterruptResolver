@@ -1,0 +1,5302 @@
+file_type: interrupt
+key: '67'
+entries:
+- entry_type: INT
+  id: d-67
+  category: d
+  title: Adaptec controllers - DRIVE 1 DATA
+  source: INTERRUP.P:5120
+  interrupt: '67'
+  flags: []
+  input_registers: []
+  returns: []
+  description: 'this vector stores the last four bytes of the parameter table for
+
+    hard disk 1'
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: '64'
+    params: {}
+    name: Adaptec
+  - type: interrupt
+    interrupt: '65'
+    params: {}
+    name: Adaptec
+  - type: interrupt
+    interrupt: '66'
+    params: {}
+    name: Adaptec
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-67
+  category: b
+  title: TI Professional PC - SYSTEM DATA (NOT A VECTOR!)
+  source: INTERRUP.P:5125
+  interrupt: '67'
+  flags: []
+  input_registers: []
+  returns: []
+  description: 'this vector contains the TI Pro''s system configuration words
+
+    (see #03521)'
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: '66'
+    params: {}
+    name: TI Professional PC
+  index: []
+  tables:
+  - '03521'
+  table_refs:
+  - '03521'
+- entry_type: INT
+  id: d-67
+  category: d
+  title: Pdisk by Scott Garfinkle - Overwritten for Hard Drive information
+  source: INTERRUP.P:5135
+  interrupt: '67'
+  flags: []
+  input_registers: []
+  returns: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: '64'
+    params: {}
+    name: Pdisk
+  - type: interrupt
+    interrupt: '66'
+    params: {}
+    name: Pdisk
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: I-67
+  category: I
+  title: Sangoma CCPOP 3270 resident module
+  source: INTERRUP.P:5138
+  interrupt: '67'
+  flags: []
+  input_registers: []
+  returns: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: '61'
+    params: {}
+    name: Sangoma
+  - type: interrupt
+    interrupt: '68'
+    params: {}
+    name: Sangoma
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: U-67
+  category: U
+  title: CUCKOO.COM - INSTALLATION CHECK
+  source: INTERRUP.P:5141
+  interrupt: '67'
+  flags: []
+  input_registers: []
+  returns: []
+  program: 'CUCKOO is a resident on-screen clock with optional hourly chime or
+
+    cuckoo by an unknown author with revisions by Thomas A. Lundin'
+  notes:
+  - 'this is not a vector; when loaded for the first time, CUCKOO.COM uses
+
+    the last unused (0000h:0000h) vector in the range 60h-67h to store
+
+    the signature value 434Ch:4F4Bh (''CLOK'')'
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: --67
+  title: PC-DRAFT - KEYBOARD DRIVER
+  source: INTERRUP.P:5148
+  interrupt: '67'
+  flags: []
+  input_registers: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+  program: PC-DRAFT is a powerful CAD environment by rhv.
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: '62'
+    params: {}
+    name: PC-DRAFT
+  - type: interrupt
+    interrupt: '64'
+    params: {}
+    name: PC-DRAFT
+  - type: interrupt
+    interrupt: '65'
+    params: {}
+    name: PC-DRAFT
+  - type: interrupt
+    interrupt: '66'
+    params: {}
+    name: PC-DRAFT
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: N-6700
+  category: N
+  title: PC-NET, Alloy NTNX - LOCK SEMAPHORE AND WAIT
+  source: INTERRUP.P:5154
+  interrupt: '67'
+  flags: []
+  function: '00'
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 00h
+    table_refs: []
+    sub_values: []
+  - reg: DS:DX
+    operator: ->
+    description: ASCIZ semaphore name (max 64 bytes)
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AL
+      operator: '='
+      description: 'status (see #03522)'
+      table_refs:
+      - '03522'
+      sub_values: []
+    - reg: AH
+      operator: '='
+      description: semaphore owner if status=02h
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 01h
+  - type: interrupt
+    params:
+      AH: 02h
+    name: PC-NET
+  - type: interrupt
+    interrupt: 7F
+    params:
+      AH: 00h
+  index: []
+  tables:
+  - '03522'
+  table_refs: []
+- entry_type: INT
+  id: N-6701
+  category: N
+  title: PC-NET, Alloy NTNX - LOCK SEMAPHORE
+  source: INTERRUP.P:5169
+  interrupt: '67'
+  flags: []
+  function: '01'
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 01h
+    table_refs: []
+    sub_values: []
+  - reg: DS:DX
+    operator: ->
+    description: ASCIZ semaphore name (max 64 bytes)
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AL
+      operator: '='
+      description: 'status (see #03522)'
+      table_refs:
+      - '03522'
+      sub_values: []
+    - reg: AH
+      operator: '='
+      description: semaphore owner if status=02h
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 00h
+  - type: interrupt
+    params:
+      AH: 02h
+    name: PC-NET
+  - type: interrupt
+    interrupt: 7F
+    params:
+      AH: 01h
+    name: Alloy
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: N-6702
+  category: N
+  title: PC-NET, Alloy NTNX - UNLOCK SEMAPHORE
+  source: INTERRUP.P:5176
+  interrupt: '67'
+  flags: []
+  function: '02'
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 02h
+    table_refs: []
+    sub_values: []
+  - reg: DS:DX
+    operator: ->
+    description: ASCIZ semaphore name (max 64 bytes)
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AL
+      operator: '='
+      description: 'status (see #03522)'
+      table_refs:
+      - '03522'
+      sub_values: []
+    - reg: AH
+      operator: '='
+      description: semaphore owner if status=02h
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 00h
+  - type: interrupt
+    params:
+      AH: 01h
+    name: PC-NET
+  - type: interrupt
+    interrupt: 7F
+    params:
+      AH: 02h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: m-671E
+  category: m
+  title: Qualitas 386MAX v7.00 - MEMLIMIT - INSTALLATION CHECK
+  source: INTERRUP.P:5183
+  interrupt: '67'
+  flags:
+  - U
+  function: 1E
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 1Eh
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AH
+      operator: '='
+      value: 00h
+      description: if installed
+      table_refs: []
+      sub_values: []
+    - reg: ES:DI
+      operator: ->
+      description: ASCII signature "MemLimit"
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 1Fh
+  - type: interrupt
+    interrupt: '21'
+    params:
+      AX: 4402h
+    name: 386MAX
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: m-671F
+  category: m
+  title: Qualitas 386MAX v7.00 - MEMLIMIT - API
+  source: INTERRUP.P:5190
+  interrupt: '67'
+  flags:
+  - U
+  function: 1F
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 1Fh
+    table_refs: []
+    sub_values: []
+  - reg: DS:SI
+    operator: ->
+    description: 'request packet (see #03523)'
+    table_refs:
+    - '03523'
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AH
+      operator: '='
+      description: status (00h successful, 84h invalid function code, etc.)
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 1Eh
+  index: []
+  tables:
+  - '03523'
+  - '03524'
+  table_refs: []
+- entry_type: INT
+  id: m-672763CL01
+  category: m
+  title: VIDEMS.SYS v1.31+ - INSTALLATION CHECK
+  source: INTERRUP.P:5217
+  interrupt: '67'
+  flags: []
+  function: 2763CL01
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 2763h
+    table_refs: []
+    sub_values: []
+  - reg: CL
+    operator: '='
+    value: 01h
+    table_refs: []
+    sub_values: []
+  - reg: BX
+    operator: '='
+    description: signature AAFFh
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AH
+      operator: '='
+      value: 00h
+      description: if VIDEMS is installed
+      table_refs: []
+      sub_values: []
+    - reg: CH
+      operator: '='
+      value: 00h
+      description: if optimization for 80286 is used, 01h otherwise
+      table_refs: []
+      sub_values: []
+    - reg: CL
+      operator: '='
+      description: internal revision number (typically 00h to 03h)
+      table_refs: []
+      sub_values: []
+    - reg: DX
+      operator: '='
+      description: driver version (DH=major, DL=minor; not a BCD!)
+      table_refs: []
+      sub_values: []
+    - reg: AH
+      operator: '='
+      value: 84h
+      description: if not installed but EMS manager is present
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  program: 'VIDEMS is an expanded memory manager from Conea Software Corp. It
+
+    converts video adapter RAM to LIM 3.2 EMS.'
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 2763h
+      CL: 02h
+  - type: interrupt
+    params:
+      AX: 2763h
+      CL: 03h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: m-672763CL02
+  category: m
+  title: VIDEMS.SYS v1.31+ - FLUSH EMS TO VIDEO RAM
+  source: INTERRUP.P:5230
+  interrupt: '67'
+  flags: []
+  function: 2763CL02
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 2763h
+    table_refs: []
+    sub_values: []
+  - reg: CL
+    operator: '='
+    value: 02h
+    table_refs: []
+    sub_values: []
+  - reg: BX
+    operator: '='
+    description: signature AAFFh
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AH
+      operator: '='
+      value: 00h
+      description: if successful
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes:
+  - This call is normally used by Conea products only.
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 2763h
+      CL: 01h
+  - type: interrupt
+    params:
+      AX: 2763h
+      CL: 03h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: m-672763CL03
+  category: m
+  title: VIDEMS.SYS v1.31+ - RELOAD EMS FROM VIDEO RAM
+  source: INTERRUP.P:5238
+  interrupt: '67'
+  flags: []
+  function: 2763CL03
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 2763h
+    table_refs: []
+    sub_values: []
+  - reg: CL
+    operator: '='
+    value: 03h
+    table_refs: []
+    sub_values: []
+  - reg: BX
+    operator: '='
+    description: signature AAFFh
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AH
+      operator: '='
+      value: 00h
+      description: if successful
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes:
+  - This call is normally used by Conea products only.
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 2763h
+      CL: 01h
+  - type: interrupt
+    params:
+      AX: 2763h
+      CL: 03h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: m-672763CL04
+  category: m
+  title: VIDEMS.SYS v1.31+ - RETURN HIDDEN BLOCK SIZE
+  source: INTERRUP.P:5246
+  interrupt: '67'
+  flags: []
+  function: 2763CL04
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 2763h
+    table_refs: []
+    sub_values: []
+  - reg: CL
+    operator: '='
+    value: 04h
+    table_refs: []
+    sub_values: []
+  - reg: BX
+    operator: '='
+    description: signature AAFFh
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AH
+      operator: '='
+      value: 00h
+      description: if successful
+      table_refs: []
+      sub_values: []
+    - reg: DX
+      operator: '='
+      description: block size in kilobytes
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  description: 'Returns the amount of EMS which can be safely used at any time, and
+
+    can''t be destroyed by writing anything to the B800:0000 buffer.'
+  notes:
+  - 'this function normally returns 184K, while the driver provides up to
+
+    240K of EMS.'
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 2763h
+      CL: 01h
+  - type: interrupt
+    params:
+      AX: 2763h
+      CL: 02h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: m-672763CL05
+  category: m
+  title: VIDEMS.SYS v1.31+ - RETURN PHYSICAL PAGE SIZE
+  source: INTERRUP.P:5258
+  interrupt: '67'
+  flags: []
+  function: 2763CL05
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 2763h
+    table_refs: []
+    sub_values: []
+  - reg: CL
+    operator: '='
+    value: 05h
+    table_refs: []
+    sub_values: []
+  - reg: BX
+    operator: '='
+    description: signature AAFFh
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AH
+      operator: '='
+      value: 00h
+      table_refs: []
+      sub_values: []
+    - reg: DX
+      operator: '='
+      description: size in bytes
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  description: 'Used by Conea products to determine if addressing mode has changed.
+
+    Normally, all VIDEMS versions beginning from 1.15 use 4K "physical"
+
+    pages.'
+  notes:
+  - "this function will probably become raw page size in future releases of\nVIDEMS, which\twill support the LIM 4.0 standard."
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 2763h
+      CL: 01h
+  - type: interrupt
+    params:
+      AX: 2763h
+      CL: 02h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: m-672763CL06
+  category: m
+  title: VIDEMS.SYS v1.50+ - RETURN VIDEO RAM SIZE
+  source: INTERRUP.P:5271
+  interrupt: '67'
+  flags: []
+  function: 2763CL06
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 2763h
+    table_refs: []
+    sub_values: []
+  - reg: CL
+    operator: '='
+    value: 06h
+    table_refs: []
+    sub_values: []
+  - reg: BX
+    operator: '='
+    description: signature AAFFh
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AH
+      operator: '='
+      value: 00h
+      table_refs: []
+      sub_values: []
+    - reg: DX
+      operator: '='
+      description: total amount of video RAM
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  description: 'beginning with version 1.50, VIDEMS can use more adapter memory on
+
+    some chipsets, and is no longer limited to the first 240K.'
+  notes:
+  - 'this call is not officially documented, and Conea programmers use it
+
+    mainly for debugging purposes.'
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: u-672833
+  category: u
+  title: Q87 v4+ - PREPARE TO UNLOAD AND GET XMS HANDLE FOR Q87 MEMORY
+  source: INTERRUP.P:5282
+  interrupt: '67'
+  flags: []
+  function: '2833'
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 2833h
+    table_refs: []
+    sub_values: []
+  - reg: EAX
+    operator: '='
+    value: 29482833h
+    description: (entire EAX value required)
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: EAX
+      operator: '='
+      description: XMS handle for memory allocated when Q87 was installed
+      table_refs: []
+      sub_values: []
+    - reg: EBX
+      operator: '='
+      description: status
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes:
+  - this call is used by UNLOAD87 to release the memory used by Q87
+  bugs:
+  - 'v4.00-v4.03 will hang on most machines when run under bare DOS with
+
+    no memory manager, because neither Q87 nor UNLOAD87 checks whether
+
+    there is a valid INT 67 handler before performing an installation
+
+    check via INT 67'
+  see_also:
+  - type: interrupt
+    params:
+      AX: 4321h
+  - type: interrupt
+    interrupt: '21'
+    params:
+      AX: 4321h
+      BX: 0000h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: m-673FCX5145
+  category: m
+  title: QEMM-386 v4.23+ - INSTALLATION CHECK
+  source: INTERRUP.P:5301
+  interrupt: '67'
+  flags:
+  - U
+  function: 3FCX5145
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 3Fh
+    table_refs: []
+    sub_values: []
+  - reg: CX
+    operator: '='
+    value: 5145h
+    description: ("QE")
+    table_refs: []
+    sub_values: []
+  - reg: DX
+    operator: '='
+    value: 4D4Dh
+    description: ("MM")
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AH
+      operator: '='
+      value: 00h
+      description: if installed
+      table_refs: []
+      sub_values: []
+    - reg: ES:DI
+      operator: ->
+      description: 'QEMM API entry point (see #03525,#03528,#03640)'
+      table_refs:
+      - '03525'
+      - 03528
+      - '03640'
+      sub_values: []
+    raw_lines: []
+  notes:
+  - 'if no other program has hooked INT 67, an alternate installation
+
+    check is to test for the string
+
+    "QUARTERDECK EXPANDED MEMORY MANAGER 386" at offset 14h in the INT 67
+
+    handler''s segment; the word at offset 12h contains the offset in
+
+    the handler''s segment of the API entry point
+
+    although this function is still undocumented, Quarterdeck has recently
+
+    documented two alternate methods for determining the QEMM API entry
+
+    point, as well as several of the API functions
+
+    MICEMM (Micronics Expanded Memory Manager) versions 2.0C and 4D support
+
+    the alternate QEMM installation check and entry point functions 00h,
+
+    02h, and 03h; version 4D only provides the signature string if the
+
+    commandline argument "DV" is provided
+
+    386MAX v6.01 responds to this call, but DESQview 2.42 does not
+
+    recognize the returned entry point as providing QEMM''s capabilities
+
+    because a) only functions 0Ch (different from QEMM 0Ch) and
+
+    1000h-1009h are supported,
+
+    b) status is returned as for EMS functions, not QEMM funcs
+
+    c) the protected-mode entry point returned by function 1000h
+
+    only supports functions 0Ch, 1004h, 1005h, and 100Ah
+
+    the string check mentioned above is not supported by 386MAX'
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 5BF0h
+  - type: interrupt
+    params:
+      AH: DDh
+  - type: interrupt
+    params:
+      AX: FFA5h
+  - type: interrupt
+    interrupt: '15'
+    params:
+      AX: 11DEh
+  - type: interrupt
+    interrupt: '21'
+    params:
+      AX: 4402h
+      SF: 01h
+  - type: interrupt
+    interrupt: '21'
+    params:
+      AX: 4402h
+    name: QEMM
+  - type: interrupt
+    interrupt: '21'
+    params:
+      AX: 4402h
+    name: 386MAX
+  - type: interrupt
+    interrupt: 2F
+    params:
+      AX: D201h
+      BX: 5145h
+  index: []
+  tables:
+  - '03525'
+  - '03526'
+  - '03527'
+  - 03528
+  - 03529
+  - '03530'
+  - '03531'
+  - '03532'
+  - '03533'
+  - '03534'
+  - '03535'
+  - '03536'
+  - '03537'
+  - 03538
+  - 03539
+  - '03540'
+  - '03541'
+  - '03542'
+  - '03543'
+  - '03544'
+  - '03545'
+  - '03546'
+  - '03547'
+  - 03548
+  - 03549
+  - '03550'
+  - '03551'
+  - '03552'
+  - '03553'
+  - '03554'
+  - '03555'
+  - '03556'
+  - '03557'
+  - 03558
+  - 03559
+  - '03560'
+  - '03561'
+  - '03562'
+  - '03563'
+  - '03564'
+  - '03565'
+  - '03566'
+  - '03567'
+  - 03568
+  - 03569
+  - '03570'
+  - '03571'
+  - '03572'
+  - '03573'
+  - '03574'
+  - '03575'
+  - '03576'
+  - '03577'
+  - 03578
+  - 03579
+  - 03580
+  - 03581
+  - 03582
+  - 03583
+  - 03584
+  - 03585
+  - 03586
+  - 03587
+  - 03588
+  - 03589
+  - 03590
+  - 03591
+  - 03592
+  - 03593
+  - 03594
+  - 03595
+  - 03596
+  - 03597
+  - 03598
+  - 03599
+  - '03600'
+  - '03601'
+  - '03602'
+  - '03603'
+  - '03604'
+  - '03605'
+  - '03606'
+  - '03607'
+  - 03608
+  - 03609
+  - '03610'
+  - '03611'
+  - '03612'
+  - '03613'
+  - '03614'
+  - '03615'
+  - '03616'
+  - '03617'
+  - 03618
+  - 03619
+  - '03620'
+  - '03621'
+  - '03622'
+  - '03623'
+  - '03624'
+  - '03625'
+  - '03626'
+  - '03627'
+  - 03628
+  - 03629
+  - '03630'
+  - '03631'
+  - '03632'
+  - '03633'
+  - '03634'
+  - '03635'
+  - '03636'
+  - '03637'
+  - 03638
+  - 03639
+  - '03640'
+  - '03641'
+  - '03642'
+  - '03643'
+  - '03644'
+  - '03645'
+  - '03646'
+  - '03647'
+  table_refs: []
+- entry_type: INT
+  id: m-6740
+  category: m
+  title: LIM EMS - GET MANAGER STATUS
+  source: INTERRUP.P:6413
+  interrupt: '67'
+  flags: []
+  function: '40'
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 40h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AH
+      operator: '='
+      description: 'status (00h,80h,81h,84h) (see #03648)'
+      table_refs:
+      - 03648
+      sub_values: []
+    raw_lines: []
+  notes:
+  - 'this call can be used only after establishing that the EMS driver is in
+
+    fact present'
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 3Fh
+  - type: interrupt
+    params:
+      AX: FFA5h
+  - type: interrupt
+    params: {}
+    name: PMM
+  index: []
+  tables:
+  - 03648
+  table_refs: []
+- entry_type: INT
+  id: m-6741
+  category: m
+  title: LIM EMS - GET PAGE FRAME SEGMENT
+  source: INTERRUP.P:6461
+  interrupt: '67'
+  flags: []
+  function: '41'
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 41h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AH
+      operator: '='
+      description: status (see also AH=40h)
+      table_refs: []
+      sub_values: []
+    - reg: BX
+      operator: '='
+      description: segment of page frame
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 58h
+  - type: interrupt
+    params:
+      AH: 68h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: m-6742
+  category: m
+  title: LIM EMS - GET NUMBER OF PAGES
+  source: INTERRUP.P:6468
+  interrupt: '67'
+  flags: []
+  function: '42'
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 42h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AH
+      operator: '='
+      description: status (see also AH=40h)
+      table_refs: []
+      sub_values: []
+    - reg: BX
+      operator: '='
+      description: number of unallocated pages
+      table_refs: []
+      sub_values: []
+    - reg: DX
+      operator: '='
+      description: total number of pages
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs:
+  - 'DOS 6.0 EMM386.EXE causes a system lock-up or reboot if in AUTO mode
+
+    when this call is made; use AH=46h to ensure that EMM386 is ON
+
+    before making this call'
+  see_also:
+  - type: interrupt
+    interrupt: 2F
+    params:
+      AX: 2702h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: m-6743
+  category: m
+  title: LIM EMS - GET HANDLE AND ALLOCATE MEMORY
+  source: INTERRUP.P:6479
+  interrupt: '67'
+  flags: []
+  function: '43'
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 43h
+    table_refs: []
+    sub_values: []
+  - reg: BX
+    operator: '='
+    description: number of logical pages to allocate
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AH
+      operator: '='
+      description: 'status (00h,80h,81h,84h,85h,87h,88h,89h) (see #03648)'
+      table_refs:
+      - 03648
+      sub_values: []
+    - reg: DX
+      operator: '='
+      description: handle if AH=00h
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 45h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: u-674321
+  category: u
+  title: Q87 v4+ - INSTALLATION CHECK
+  source: INTERRUP.P:6486
+  interrupt: '67'
+  flags: []
+  function: '4321'
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 4321h
+    table_refs: []
+    sub_values: []
+  - reg: EAX
+    operator: '='
+    value: 87654321h
+    description: (entire EAX value required)
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: EAX
+      operator: '='
+      value: 12345678h
+      description: if Q87 is installed
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes:
+  - 'this call requires that VCPI services be available; if they are not,
+
+    this call will not be recognized'
+  bugs:
+  - 'v4.00-v4.03 will hang on most machines when run under bare DOS with
+
+    no memory manager, because neither Q87 nor UNLOAD87 checks whether
+
+    there is a valid INT 67 handler before performing an installation
+
+    check via INT 67'
+  see_also:
+  - type: interrupt
+    params:
+      AX: 2833h
+  - type: interrupt
+    interrupt: '21'
+    params:
+      AX: 4321h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: m-6744
+  category: m
+  title: LIM EMS - MAP MEMORY
+  source: INTERRUP.P:6498
+  interrupt: '67'
+  flags: []
+  function: '44'
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 44h
+    table_refs: []
+    sub_values: []
+  - reg: AL
+    operator: '='
+    description: physical page number (0-3)
+    table_refs: []
+    sub_values: []
+  - reg: BX
+    operator: '='
+    description: logical page number
+    table_refs: []
+    sub_values: []
+  - reg: DX
+    operator: '='
+    description: handle
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AH
+      operator: '='
+      description: 'status (00h,80h,81h,83h,84h,8Ah,8Bh) (see #03648)'
+      table_refs:
+      - 03648
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 69h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: m-6745
+  category: m
+  title: LIM EMS - RELEASE HANDLE AND MEMORY
+  source: INTERRUP.P:6507
+  interrupt: '67'
+  flags: []
+  function: '45'
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 45h
+    table_refs: []
+    sub_values: []
+  - reg: DX
+    operator: '='
+    description: EMM handle
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AH
+      operator: '='
+      description: 'status (00h,80h,81h,83h,84h,86h) (see #03648)'
+      table_refs:
+      - 03648
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 43h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: m-6746
+  category: m
+  title: LIM EMS - GET EMM VERSION
+  source: INTERRUP.P:6513
+  interrupt: '67'
+  flags: []
+  function: '46'
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 46h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AH
+      operator: '='
+      description: 'status (00h,80h,81h,84h) (see #03648)'
+      table_refs:
+      - 03648
+      sub_values: []
+    - reg: AL
+      operator: '='
+      description: EMM version number if AH=00h
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: m-6747
+  category: m
+  title: LIM EMS - SAVE MAPPING CONTEXT
+  source: INTERRUP.P:6518
+  interrupt: '67'
+  flags: []
+  function: '47'
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 47h
+    table_refs: []
+    sub_values: []
+  - reg: DX
+    operator: '='
+    description: handle
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AH
+      operator: '='
+      description: 'status (00h,80h,81h,83h,84h,8Ch-8Eh) (see #03648)'
+      table_refs:
+      - 03648
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 48h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: m-6748
+  category: m
+  title: LIM EMS - RESTORE MAPPING CONTEXT
+  source: INTERRUP.P:6524
+  interrupt: '67'
+  flags: []
+  function: '48'
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 48h
+    table_refs: []
+    sub_values: []
+  - reg: DX
+    operator: '='
+    description: handle
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AH
+      operator: '='
+      description: 'status (00h,80h,81h,83h,84h,8Eh) (see #03648)'
+      table_refs:
+      - 03648
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 47h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: m-6749
+  category: m
+  title: LIM EMS - reserved - GET I/O PORT ADDRESSES
+  source: INTERRUP.P:6530
+  interrupt: '67'
+  flags: []
+  function: '49'
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 49h
+    table_refs: []
+    sub_values: []
+  returns: []
+  notes:
+  - defined in EMS 3.0, but undocumented in EMS 3.2
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: m-674A
+  category: m
+  title: LIM EMS - reserved - GET TRANSLATION ARRAY
+  source: INTERRUP.P:6534
+  interrupt: '67'
+  flags: []
+  function: 4A
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 4Ah
+    table_refs: []
+    sub_values: []
+  returns: []
+  notes:
+  - defined in EMS 3.0, but undocumented in EMS 3.2
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: m-674B
+  category: m
+  title: LIM EMS - GET NUMBER OF EMM HANDLES
+  source: INTERRUP.P:6538
+  interrupt: '67'
+  flags: []
+  function: 4B
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 4Bh
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AH
+      operator: '='
+      description: 'status (00h,80h,81h,83h,84h) (see #03648)'
+      table_refs:
+      - 03648
+      sub_values: []
+    - reg: BX
+      operator: '='
+      description: number of EMM handles if AH=00h
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: m-674C
+  category: m
+  title: LIM EMS - GET PAGES OWNED BY HANDLE
+  source: INTERRUP.P:6543
+  interrupt: '67'
+  flags: []
+  function: 4C
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 4Ch
+    table_refs: []
+    sub_values: []
+  - reg: DX
+    operator: '='
+    description: EMM handle
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AH
+      operator: '='
+      description: 'status (see #02785)'
+      table_refs:
+      - 02785
+      sub_values: []
+    - reg: BX
+      operator: '='
+      description: number of logical pages if AH=00h
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 4Dh
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: m-674D
+  category: m
+  title: LIM EMS - GET PAGES FOR ALL HANDLES
+  source: INTERRUP.P:6550
+  interrupt: '67'
+  flags: []
+  function: 4D
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 4Dh
+    table_refs: []
+    sub_values: []
+  - reg: ES:DI
+    operator: ->
+    description: array to receive information
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AH
+      operator: '='
+      description: 'status (00h,80h,81h,84h) (see #03648)'
+      table_refs:
+      - 03648
+      sub_values: []
+    raw_lines: []
+  - condition: AH=00h---
+    registers:
+    - reg: BX
+      operator: '='
+      description: number of active EMM handles
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 4Ch
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: m-674E
+  category: m
+  title: LIM EMS - GET OR SET PAGE MAP
+  source: INTERRUP.P:6560
+  interrupt: '67'
+  flags: []
+  function: 4E
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 4Eh
+    table_refs: []
+    sub_values: []
+  - reg: AL
+    operator: '='
+    description: subfunction
+    table_refs: []
+    sub_values:
+    - value: 00h
+      description: get mapping registers
+      sub_values: []
+    - value: 01h
+      description: set mapping registers
+      sub_values: []
+    - value: 02h
+      description: get and set mapping registers at once
+      sub_values: []
+    - value: 03h
+      description: get size of page-mapping array
+      sub_values: []
+  - reg: DS:SI
+    operator: ->
+    description: array holding information (AL=01h/02h)
+    table_refs: []
+    sub_values: []
+  - reg: ES:DI
+    operator: ->
+    description: array to receive information (AL=00h/02h)
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AH
+      operator: '='
+      description: status (00h,80h,81h,84h,8Fh,A3h) (see also AH=40h)
+      table_refs: []
+      sub_values: []
+    - reg: AL
+      operator: '='
+      description: bytes in page-mapping array (AL=03h only)
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes:
+  - 'this function was designed to be used by multitasking operating systems
+
+    and should not ordinarily be used by appplication software.
+
+    MD386 returns the size of the page-mapping array in AX instead of AL'
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 4Fh
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: m-674F
+  category: m
+  title: LIM EMS 4.0 - GET/SET PARTIAL PAGE MAP
+  source: INTERRUP.P:6578
+  interrupt: '67'
+  flags: []
+  function: 4F
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 4Fh
+    table_refs: []
+    sub_values: []
+  - reg: AL
+    operator: '='
+    description: subfunction
+    table_refs: []
+    sub_values:
+    - value: 00h
+      description: get partial page map
+      sub_values: []
+  - reg: DS:SI
+    operator: ->
+    description: structure containing list of segments whose mapping
+    table_refs: []
+    sub_values: []
+  - reg: ES:DI
+    operator: ->
+    description: array to receive page map
+    table_refs: []
+    sub_values: []
+  - reg: DS:SI
+    operator: ->
+    description: structure containing saved partial page map
+    table_refs: []
+    sub_values: []
+  - reg: BX
+    operator: '='
+    description: number of mappable segments in the partial map to be saved
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AH
+      operator: '='
+      description: status (00h,80h,81h,84h,8Bh,8Fh,A3h) (see also AH=40h)
+      table_refs: []
+      sub_values: []
+    - reg: AL
+      operator: '='
+      description: size of partial page map for subfunction 02h
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 4Eh
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: m-6750
+  category: m
+  title: LIM EMS 4.0 - MAP/UNMAP MULTIPLE HANDLE PAGES
+  source: INTERRUP.P:6596
+  interrupt: '67'
+  flags: []
+  function: '50'
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 50h
+    table_refs: []
+    sub_values: []
+  - reg: AL
+    operator: '='
+    description: subfunction
+    table_refs: []
+    sub_values:
+    - value: 00h
+      description: use physical page numbers
+      sub_values: []
+    - value: 01h
+      description: use segment addresses
+      sub_values: []
+  - reg: DX
+    operator: '='
+    description: handle
+    table_refs: []
+    sub_values: []
+  - reg: CX
+    operator: '='
+    description: number of entries in array
+    table_refs: []
+    sub_values: []
+  - reg: DS:SI
+    operator: ->
+    description: 'mapping array (see #03649)'
+    table_refs:
+    - 03649
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AH
+      operator: '='
+      description: 'status (00h,80h,81h,83h,84h,8Ah,8Bh,8Fh) (see #03648)'
+      table_refs:
+      - 03648
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 40h
+  index: []
+  tables:
+  - 03649
+  table_refs: []
+- entry_type: INT
+  id: m-6751
+  category: m
+  title: LIM EMS 4.0 - REALLOCATE PAGES
+  source: INTERRUP.P:6612
+  interrupt: '67'
+  flags: []
+  function: '51'
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 51h
+    table_refs: []
+    sub_values: []
+  - reg: DX
+    operator: '='
+    description: handle
+    table_refs: []
+    sub_values: []
+  - reg: BX
+    operator: '='
+    description: number of pages to be allocated to handle
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AH
+      operator: '='
+      description: 'status (00h,80h,81h,83h,84h,87h,88h) (see #03650)'
+      table_refs:
+      - '03650'
+      sub_values: []
+    - reg: BX
+      operator: '='
+      description: actual number of pages allocated to handle
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables:
+  - '03650'
+  table_refs: []
+- entry_type: INT
+  id: m-6752
+  category: m
+  title: LIM EMS 4.0 - GET/SET HANDLE ATTRIBUTES
+  source: INTERRUP.P:6636
+  interrupt: '67'
+  flags: []
+  function: '52'
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 52h
+    table_refs: []
+    sub_values: []
+  - reg: AL
+    operator: '='
+    description: subfunction
+    table_refs: []
+    sub_values:
+    - value: 00h
+      description: 'get handle attributes Return: AL = attribute'
+      sub_values: []
+    - value: 00h
+      description: handle is volatile
+      sub_values: []
+    - value: 01h
+      description: handle is nonvolatile
+      sub_values: []
+    - value: 01h
+      description: set handle attributes
+      sub_values: []
+  - reg: BL
+    operator: '='
+    description: new attribute
+    table_refs: []
+    sub_values:
+    - value: 00h
+      description: handle is volatile
+      sub_values: []
+    - value: 01h
+      description: handle is nonvolatile
+      sub_values: []
+  - reg: DX
+    operator: '='
+    description: handle
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AH
+      operator: '='
+      description: 'status (00h,80h,81h,83h,84h,8Fh-91h) (see #03648)'
+      table_refs:
+      - 03648
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 53h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: m-6753
+  category: m
+  title: LIM EMS 4.0 - GET/SET HANDLE NAME
+  source: INTERRUP.P:6655
+  interrupt: '67'
+  flags: []
+  function: '53'
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 53h
+    table_refs: []
+    sub_values: []
+  - reg: AL
+    operator: '='
+    description: subfunction
+    table_refs: []
+    sub_values:
+    - value: 00h
+      description: get handle name
+      sub_values: []
+  - reg: ES:DI
+    operator: ->
+    description: 8-byte buffer for handle name
+    table_refs: []
+    sub_values: []
+  - reg: DS:SI
+    operator: ->
+    description: 8-byte handle name
+    table_refs: []
+    sub_values: []
+  - reg: DX
+    operator: '='
+    description: handle
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AH
+      operator: '='
+      description: 'status (00h,80h,81h,83h,84h,8Fh,A1h) (see #03648)'
+      table_refs:
+      - 03648
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 52h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: m-6754
+  category: m
+  title: LIM EMS 4.0 - GET HANDLE DIRECTORY
+  source: INTERRUP.P:6666
+  interrupt: '67'
+  flags: []
+  function: '54'
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 54h
+    table_refs: []
+    sub_values: []
+  - reg: AL
+    operator: '='
+    description: subfunction
+    table_refs: []
+    sub_values:
+    - value: 00h
+      description: get handle directory
+      sub_values: []
+  - reg: ES:DI
+    operator: ->
+    description: 'buffer for handle directory (see #03651)'
+    table_refs:
+    - '03651'
+    sub_values: []
+  - reg: DS:SI
+    operator: ->
+    description: 8-byte name
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AL
+      operator: '='
+      description: number of entries in handle directory (subfunction 00h)
+      table_refs: []
+      sub_values: []
+    - reg: DX
+      operator: '='
+      description: value of named handle (subfunction 01h)
+      table_refs: []
+      sub_values: []
+    - reg: BX
+      operator: '='
+      description: total number of handles (subfunction 02h)
+      table_refs: []
+      sub_values: []
+    - reg: AH
+      operator: '='
+      description: 'status (00h,80h,81h,84h,8Fh,A0h,A1h) (see also #03650)'
+      table_refs:
+      - '03650'
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables:
+  - '03651'
+  table_refs: []
+- entry_type: INT
+  id: m-6755
+  category: m
+  title: LIM EMS 4.0 - ALTER PAGE MAP AND JUMP
+  source: INTERRUP.P:6685
+  interrupt: '67'
+  flags: []
+  function: '55'
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 55h
+    table_refs: []
+    sub_values: []
+  - reg: AL
+    operator: '='
+    description: subfunction
+    table_refs: []
+    sub_values:
+    - value: 00h
+      description: physical page numbers provided by caller
+      sub_values: []
+    - value: 01h
+      description: segment addresses provided by caller
+      sub_values: []
+  - reg: DX
+    operator: '='
+    description: handle
+    table_refs: []
+    sub_values: []
+  - reg: DS:SI
+    operator: ->
+    description: structure containing map and jump address
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AH
+      operator: '='
+      description: 'status (00h,80h,81h,83h,84h,8Ah,8Bh,8Fh) (see #03648)'
+      table_refs:
+      - 03648
+      sub_values: []
+    raw_lines:
+    - (at target address unless error)
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 56h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: m-6756
+  category: m
+  title: LIM EMS 4.0 - ALTER PAGE MAP AND CALL
+  source: INTERRUP.P:6696
+  interrupt: '67'
+  flags: []
+  function: '56'
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 56h
+    table_refs: []
+    sub_values: []
+  - reg: AL
+    operator: '='
+    description: subfunction
+    table_refs: []
+    sub_values:
+    - value: 00h
+      description: physical page numbers provided by caller
+      sub_values: []
+  - reg: DX
+    operator: '='
+    description: handle
+    table_refs: []
+    sub_values: []
+  - reg: DS:SI
+    operator: ->
+    description: structure containing page map and call address
+    table_refs: []
+    sub_values: []
+  - reg: DX
+    operator: '='
+    description: handle
+    table_refs: []
+    sub_values: []
+  - reg: DS:SI
+    operator: ->
+    description: structure containing page map and call address
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AH
+      operator: '='
+      description: 'status (00h,80h,81h,83h,84h,8Ah,8Bh,8Fh) (see #03648)'
+      table_refs:
+      - 03648
+      sub_values: []
+    raw_lines:
+    - (if successful, the target address is called.  Use a RETF to return
+    - and restore mapping context)
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 55h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: m-6756FF
+  category: m
+  title: RM386 v6.00 - ???
+  source: INTERRUP.P:6712
+  interrupt: '67'
+  flags: []
+  function: 56FF
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 56FFh
+    table_refs: []
+    sub_values: []
+  - reg: DS:SI
+    operator: ->
+    description: ???
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: m-6757
+  category: m
+  title: LIM EMS 4.0 - MOVE/EXCHANGE MEMORY REGION
+  source: INTERRUP.P:6718
+  interrupt: '67'
+  flags: []
+  function: '57'
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 57h
+    table_refs: []
+    sub_values: []
+  - reg: AL
+    operator: '='
+    description: subfunction
+    table_refs: []
+    sub_values:
+    - value: 00h
+      description: move memory region
+      sub_values: []
+    - value: 01h
+      description: exchange memory region
+      sub_values: []
+  - reg: DS:SI
+    operator: ->
+    description: 'structure describing source and destination (see #03653)'
+    table_refs:
+    - '03653'
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AH
+      operator: '='
+      description: 'status (see #03652)'
+      table_refs:
+      - '03652'
+      sub_values: []
+    raw_lines: []
+  notes:
+  - 'source and destination may overlap for a move, in which case the copy
+
+    direction is chosen such that the destination receives an intact copy
+
+    of the source region'
+  bugs: []
+  see_also: []
+  index: []
+  tables:
+  - '03652'
+  - '03653'
+  table_refs: []
+- entry_type: INT
+  id: m-6758
+  category: m
+  title: LIM EMS 4.0 - GET MAPPABLE PHYSICAL ADDRESS ARRAY
+  source: INTERRUP.P:6764
+  interrupt: '67'
+  flags: []
+  function: '58'
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 58h
+    table_refs: []
+    sub_values: []
+  - reg: AL
+    operator: '='
+    description: subfunction
+    table_refs: []
+    sub_values:
+    - value: 00h
+      description: get mappable physical address array
+      sub_values: []
+  - reg: ES:DI
+    operator: ->
+    description: 'buffer to be filled with array (see #03654)'
+    table_refs:
+    - '03654'
+    sub_values: []
+  returns:
+  - registers:
+    - reg: CX
+      operator: '='
+      description: number of entries in array
+      table_refs: []
+      sub_values: []
+    - reg: AH
+      operator: '='
+      description: 'status (00h,80h,81h,84h,8Fh) (see #03652)'
+      table_refs:
+      - '03652'
+      sub_values: []
+    raw_lines: []
+  notes:
+  - 'the returned array for subfunction 00h is filled in physical segment
+
+    address order'
+  bugs: []
+  see_also: []
+  index: []
+  tables:
+  - '03654'
+  table_refs: []
+- entry_type: INT
+  id: m-675857
+  category: m
+  title: NETROOM??? - ???
+  source: INTERRUP.P:6780
+  interrupt: '67'
+  flags:
+  - U
+  function: '5857'
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 5857h
+    table_refs: []
+    sub_values: []
+  - reg: BX
+    operator: '='
+    description: function??? (0057h,0059h,0159h seen)
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+  notes:
+  - 'BX=0059h appears to be analogous to AX=5800h and BX=0159h appears to
+
+    be analogous to AX=5801h; BX=0057h appears to indicate whether
+
+    AX=580xh or AX=5857h/BX=0x59h should be used'
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 5BF0h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: m-6759
+  category: m
+  title: LIM EMS 4.0 - GET EXPANDED MEMORY HARDWARE INFORMATION
+  source: INTERRUP.P:6790
+  interrupt: '67'
+  flags: []
+  function: '59'
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 59h
+    table_refs: []
+    sub_values: []
+  - reg: AL
+    operator: '='
+    description: subfunction
+    table_refs: []
+    sub_values:
+    - value: 00h
+      description: get hardware configuration array
+      sub_values: []
+  - reg: ES:DI
+    operator: ->
+    description: 'buffer to be filled with array (see #03655)'
+    table_refs:
+    - '03655'
+    sub_values: []
+  - reg: DX
+    operator: '='
+    description: total raw pages
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AH
+      operator: '='
+      description: status (see also AH=58h"EMS 4.0")
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes:
+  - 'subfunction 00h is for use by operating systems only, and can be
+
+    enabled or disabled at any time by the operating system'
+  bugs: []
+  see_also: []
+  index: []
+  tables:
+  - '03655'
+  table_refs: []
+- entry_type: INT
+  id: m-675A
+  category: m
+  title: LIM EMS 4.0 - ALLOCATE STANDARD/RAW PAGES
+  source: INTERRUP.P:6813
+  interrupt: '67'
+  flags: []
+  function: 5A
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 5Ah
+    table_refs: []
+    sub_values: []
+  - reg: AL
+    operator: '='
+    description: subfunction
+    table_refs: []
+    sub_values:
+    - value: 00h
+      description: allocate standard pages
+      sub_values: []
+    - value: 01h
+      description: allocate raw pages
+      sub_values: []
+  - reg: BX
+    operator: '='
+    description: number of pages to allocate
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: DX
+      operator: '='
+      description: handle
+      table_refs: []
+      sub_values: []
+    - reg: AH
+      operator: '='
+      description: 'status (00h,80h,81h,84h,85h,87h,88h,8Fh) (see #03648)'
+      table_refs:
+      - 03648
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: m-675B
+  category: m
+  title: LIM EMS 4.0 - ALTERNATE MAP REGISTER SET
+  source: INTERRUP.P:6822
+  interrupt: '67'
+  flags: []
+  function: 5B
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 5Bh
+    table_refs: []
+    sub_values: []
+  - reg: AL
+    operator: '='
+    description: subfunction
+    table_refs: []
+    sub_values:
+    - value: 00h
+      description: 'get alternate map register set Return: BL = current active alternate map register set number'
+      sub_values: []
+  - reg: ES:DI
+    operator: ->
+    description: map register context save area if BL=00h
+    table_refs: []
+    sub_values: []
+  - reg: BL
+    operator: '='
+    description: new alternate map register set number
+    table_refs: []
+    sub_values: []
+  - reg: ES:DI
+    operator: ->
+    description: map register context save area if BL=0
+    table_refs: []
+    sub_values: []
+  - reg: BL
+    operator: '='
+    description: number of alternate map register set
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AH
+      operator: '='
+      description: 'status (00h,80h,81h,84h,8Fh,9Ah-9Dh,A3h,A4h) (see #03656)'
+      table_refs:
+      - '03656'
+      sub_values: []
+    raw_lines: []
+  notes:
+  - 'this function is for use by operating systems only, and can be
+
+    enabled or disabled at any time by the operating system'
+  bugs: []
+  see_also: []
+  index: []
+  tables:
+  - '03656'
+  table_refs: []
+- entry_type: INT
+  id: m-675B
+  category: m
+  title: LIM EMS 4.0 - ALTERNATE MAP REGISTER SET - DMA REGISTERS
+  source: INTERRUP.P:6857
+  interrupt: '67'
+  flags: []
+  function: 5B
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 5Bh
+    table_refs: []
+    sub_values: []
+  - reg: AL
+    operator: '='
+    description: subfunction
+    table_refs: []
+    sub_values:
+    - value: 05h
+      description: 'allocate DMA register set Return: BL = DMA register set number, 00h if not supported'
+      sub_values: []
+    - value: 06h
+      description: enable DMA on alternate map register set
+      sub_values: []
+  - reg: BL
+    operator: '='
+    description: DMA register set number
+    table_refs: []
+    sub_values: []
+  - reg: DL
+    operator: '='
+    description: DMA channel number
+    table_refs: []
+    sub_values: []
+  - reg: BL
+    operator: '='
+    description: DMA register set number
+    table_refs: []
+    sub_values: []
+  - reg: BL
+    operator: '='
+    description: DMA register set number
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AH
+      operator: '='
+      description: 'status (00h,80h,81h,84h,8Fh,9Ah-9Fh,A3h,A4h) (see #03656)'
+      table_refs:
+      - '03656'
+      sub_values: []
+    raw_lines: []
+  notes:
+  - 'this function is for use by operating systems only, and can be
+
+    enabled or disabled at any time by the operating system'
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: m-675BE0
+  category: m
+  title: MICEMM v4D, RM386 - GET LINEAR ADDRESS OF MEMORY
+  source: INTERRUP.P:6873
+  interrupt: '67'
+  flags: []
+  function: 5BE0
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 5BE0h
+    table_refs: []
+    sub_values: []
+  - reg: ES:BX
+    operator: ->
+    description: memory for which to get linear address
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AH
+      operator: '='
+      value: 00h
+      table_refs: []
+      sub_values: []
+    - reg: CX:DX
+      operator: '='
+      description: linear address of physical memory corresponding to ES:BX
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  program: 'RAM-MAN/386 is the memory manager included with Helix''s Netroom;
+
+    MICEMM is a memory manager for some Micronics motherboards'
+  notes:
+  - this has been superceded by AX=DE06h, which should be used instead
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 5BF0h
+  - type: interrupt
+    params:
+      AX: 5BF1h
+  - type: interrupt
+    params:
+      AX: DE06h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: m-675BE1
+  category: m
+  title: RM386 v6.00+ - GET MEMORY MANAGER SIZE
+  source: INTERRUP.P:6883
+  interrupt: '67'
+  flags: []
+  function: 5BE1
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 5BE1h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AH
+      operator: '='
+      value: 00h
+      table_refs: []
+      sub_values: []
+    - reg: CX
+      operator: '='
+      description: code and data size in bytes
+      table_refs: []
+      sub_values: []
+    - reg: DX:BX
+      operator: '='
+      description: physical address of RM386 code
+      table_refs: []
+      sub_values: []
+    - reg: DI:SI
+      operator: '='
+      description: total size of RM386 area including handle tables
+      table_refs: []
+      sub_values: []
+    - reg: BP
+      operator: '='
+      description: number of additional pages (high DOS, etc.)
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 5BE0h
+  - type: interrupt
+    params:
+      AX: 5BE2h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: m-675BE2
+  category: m
+  title: RM386 v6.00+ - GET INTERRUPT VECTORS
+  source: INTERRUP.P:6892
+  interrupt: '67'
+  flags: []
+  function: 5BE2
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 5BE2h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: DS:SI
+      operator: ->
+      description: 'V86-mode table (see #03657)'
+      table_refs:
+      - '03657'
+      sub_values: []
+    - reg: ES:BX
+      operator: ->
+      description: ??? (undoc, middle of device driver interrupt routine!)
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 5BE0h
+  - type: interrupt
+    params:
+      AX: 5BE1h
+  index: []
+  tables:
+  - '03657'
+  table_refs: []
+- entry_type: INT
+  id: m-675BF0
+  category: m
+  title: MICEMM v4D, RM386 - INSTALLATION CHECK
+  source: INTERRUP.P:6907
+  interrupt: '67'
+  flags: []
+  function: 5BF0
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 5BF0h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AH
+      operator: '='
+      value: 00h
+      description: if MICEMM or RM386 present
+      table_refs: []
+      sub_values: []
+    - reg: BX
+      operator: '='
+      description: code segment of driver
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  program: 'MICEMM is the Micronics Expanded Memory Manager; RM386 is the memory
+
+    manager included in Helix Software''s Netroom'
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 3Fh
+  - type: interrupt
+    params:
+      AX: 5BE0h
+  - type: interrupt
+    params:
+      AX: 5BF1h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: m-675BF1
+  category: m
+  title: MICEMM v4D, RM386 - GET ADDRESS MAP
+  source: INTERRUP.P:6915
+  interrupt: '67'
+  flags: []
+  function: 5BF1
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 5BF1h
+    table_refs: []
+    sub_values: []
+  - reg: ES:BX
+    operator: ->
+    description: 256-byte (MICEMM) or 512-byte (RM386) buffer for memory types
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AH
+      operator: '='
+      value: 00h
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes:
+  - each byte in the buffer specifies the type of a 4K page of memory
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 5BE0h
+  - type: interrupt
+    params:
+      AX: 5BF0h
+  index: []
+  tables:
+  - 03658
+  table_refs: []
+- entry_type: INT
+  id: m-675BF2
+  category: m
+  title: RM386 - GET RM386 INTERNAL DATA
+  source: INTERRUP.P:6934
+  interrupt: '67'
+  flags: []
+  function: 5BF2
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 5BF2h
+    table_refs: []
+    sub_values: []
+  - reg: CX
+    operator: '='
+    description: size of buffer
+    table_refs: []
+    sub_values: []
+  - reg: DS:SI
+    operator: ->
+    description: buffer for internal data
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - buffer filled
+  notes:
+  - the data returned by this function is release-specific
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 5BF0h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: m-675BF3
+  category: m
+  title: RM386 - RETURN TO REAL MODE
+  source: INTERRUP.P:6943
+  interrupt: '67'
+  flags: []
+  function: 5BF3
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 5BF3h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - nothing
+  notes:
+  - use AX=5DE0h instead of this functin
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 5BF0h
+  - type: interrupt
+    params:
+      AX: 5DE0h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: m-675BF4
+  category: m
+  title: RM386 v6.00 - GET RM386 GLOBAL FLAGS
+  source: INTERRUP.P:6949
+  interrupt: '67'
+  flags: []
+  function: 5BF4
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 5BF4h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AH
+      operator: '='
+      value: 00h
+      table_refs: []
+      sub_values: []
+    - reg: BX
+      operator: '='
+      description: 'global flags 1 (see #03659)'
+      table_refs:
+      - 03659
+      sub_values: []
+    - reg: CX
+      operator: '='
+      description: 'global flags 2 (see #03660)'
+      table_refs:
+      - '03660'
+      sub_values: []
+    - reg: DX
+      operator: '='
+      description: 'global flags 3 (see #03661)'
+      table_refs:
+      - '03661'
+      sub_values: []
+    - reg: SI
+      operator: '='
+      description: 'global flags 4 (see #03662)'
+      table_refs:
+      - '03662'
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 5BF0h
+  index: []
+  tables:
+  - 03659
+  - '03660'
+  - '03661'
+  - '03662'
+  table_refs: []
+- entry_type: INT
+  id: m-675BF5
+  category: m
+  title: RM386 v6.00 - GET RM386 EMS HANDLE COUNT
+  source: INTERRUP.P:7022
+  interrupt: '67'
+  flags: []
+  function: 5BF5
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 5BF5h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AH
+      operator: '='
+      description: status
+      table_refs: []
+      sub_values: []
+    - reg: BX
+      operator: '='
+      description: current number of allocated EMS handles
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 5BF0h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: m-675C
+  category: m
+  title: LIM EMS 4.0 - PREPARE EXPANDED MEMORY HARDWARE FOR WARM BOOT
+  source: INTERRUP.P:7030
+  interrupt: '67'
+  flags: []
+  function: 5C
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 5Ch
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AH
+      operator: '='
+      description: 'status (see #03663)'
+      table_refs:
+      - '03663'
+      sub_values: []
+    raw_lines: []
+  notes:
+  - 'when MS-DOS v6.xx EMM386 is loaded and the keyboard driver supports
+
+    INT 15/AH=4Fh (keyboard intercept) calls, the system may hang
+
+    instead of booting if this function is called just prior to a jump
+
+    to F000h:FFF0h'
+  bugs: []
+  see_also: []
+  index: []
+  tables:
+  - '03663'
+  table_refs: []
+- entry_type: INT
+  id: m-675D
+  category: m
+  title: LIM EMS 4.0 - ENABLE/DISABLE OS FUNCTION SET FUNCTIONS
+  source: INTERRUP.P:7045
+  interrupt: '67'
+  flags: []
+  function: 5D
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 5Dh
+    table_refs: []
+    sub_values: []
+  - reg: AL
+    operator: '='
+    description: subfunction
+    table_refs: []
+    sub_values:
+    - value: 00h
+      description: enable OS Function Set
+      sub_values: []
+    - value: 01h
+      description: disable OS Function Set
+      sub_values: []
+    - value: 02h
+      description: return access key (resets memory manager, returns access key at next invocation)
+      sub_values: []
+  returns:
+  - registers:
+    - reg: AH
+      operator: '='
+      description: status (see also AH=5Ch)
+      table_refs: []
+      sub_values: []
+    raw_lines:
+    - BX,CX = access key, returned only on first invocation of function
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: m-675D03
+  category: m
+  title: Nanosoft MD386 - INTERNAL INITIALIZATION
+  source: INTERRUP.P:7058
+  interrupt: '67'
+  flags:
+  - u
+  function: 5D03
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 5D03h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+  program: 'MD386 is a subset EMS memory manager by Nanosoft specifically
+
+    designed for use with the MultiDOS Plus multitasker'
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 5D04h
+  - type: interrupt
+    params:
+      AX: 5E00h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: m-675D04
+  category: m
+  title: Nanosoft MD386 - GET ALTERNATE MAP STRUCTURE
+  source: INTERRUP.P:7066
+  interrupt: '67'
+  flags: []
+  function: 5D04
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 5D04h
+    table_refs: []
+    sub_values: []
+  - reg: BX
+    operator: '='
+    description: alternate register set number
+    table_refs: []
+    sub_values: []
+  - reg: ES:DI
+    operator: ->
+    description: 1024-byte buffer for map structure
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AH
+      operator: '='
+      description: 'status (see #03648)'
+      table_refs:
+      - 03648
+      sub_values: []
+    raw_lines: []
+  notes:
+  - used for debugging purposes
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 5D05h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: m-675D05
+  category: m
+  title: Nanosoft MD386 - GET INTERNAL HANDLE TABLE
+  source: INTERRUP.P:7075
+  interrupt: '67'
+  flags: []
+  function: 5D05
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 5D05h
+    table_refs: []
+    sub_values: []
+  - reg: BX
+    operator: '='
+    description: handle number
+    table_refs: []
+    sub_values: []
+  - reg: ES:DI
+    operator: ->
+    description: 1024-byte buffer for handle table
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AH
+      operator: '='
+      description: 'status (see #03648)'
+      table_refs:
+      - 03648
+      sub_values: []
+    raw_lines: []
+  notes:
+  - used for debugging purposes
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 5D04h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: m-675DE0
+  category: m
+  title: RM386 - DISABLE RM386
+  source: INTERRUP.P:7084
+  interrupt: '67'
+  flags: []
+  function: 5DE0
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 5DE0h
+    table_refs: []
+    sub_values: []
+  returns: []
+  notes:
+  - 'RM386 traps this function on the initial transition to protected
+
+    mode caused by the INT instruction, which means it can not be
+
+    overridden simply by hooking the interrupt'
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 5DE1h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: m-675DE1
+  category: m
+  title: RM386 - ENABLE RM386
+  source: INTERRUP.P:7091
+  interrupt: '67'
+  flags: []
+  function: 5DE1
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 5DE1h
+    table_refs: []
+    sub_values: []
+  returns: []
+  notes:
+  - 'RM386 traps this function on the initial transition to protected
+
+    mode caused by the INT instruction, which means it can not be
+
+    overridden simply by hooking the interrupt'
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 5DE0h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: m-675DE2
+  category: m
+  title: RM386 - GET PAGE TABLE
+  source: INTERRUP.P:7098
+  interrupt: '67'
+  flags: []
+  function: 5DE2
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 5DE2h
+    table_refs: []
+    sub_values: []
+  - reg: ES:DI
+    operator: ->
+    description: 1088-byte buffer for page table
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ES:DI buffer filled
+  notes:
+  - 'RM386 traps this function on the initial transition to protected
+
+    mode caused by the INT instruction, which means it can not be
+
+    overridden simply by hooking the interrupt'
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 5DE3h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: m-675DE3
+  category: m
+  title: RM386 - SET PAGE TABLE
+  source: INTERRUP.P:7107
+  interrupt: '67'
+  flags: []
+  function: 5DE3
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 5DE3h
+    table_refs: []
+    sub_values: []
+  - reg: ES:DI
+    operator: ->
+    description: 1088-byte buffer containing page table
+    table_refs: []
+    sub_values: []
+  returns: []
+  notes:
+  - 'only the access bits of the page table are used, the remainder is
+
+    ignored
+
+    RM386 traps this function on the initial transition to protected
+
+    mode caused by the INT instruction, which means it can not be
+
+    overridden simply by hooking the interrupt'
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 5DE2h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: m-675DE4
+  category: m
+  title: RM386 - SET WRITE-PROTECTION FOR PAGE IN FIRST MEGABYTE
+  source: INTERRUP.P:7117
+  interrupt: '67'
+  flags: []
+  function: 5DE4
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 5DE4h
+    table_refs: []
+    sub_values: []
+  - reg: BL
+    operator: '='
+    description: page number
+    table_refs: []
+    sub_values: []
+  - reg: BH
+    operator: '='
+    description: access (00h read-only, 01h read-write)
+    table_refs: []
+    sub_values: []
+  returns: []
+  notes:
+  - 'RM386 traps this function on the initial transition to protected
+
+    mode caused by the INT instruction, which means it can not be
+
+    overridden simply by hooking the interrupt'
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: m-675DE5
+  category: m
+  title: RM386 - MAP PHYSICAL PAGE TO PHYSICAL SEGMENT
+  source: INTERRUP.P:7125
+  interrupt: '67'
+  flags: []
+  function: 5DE5
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 5DE5h
+    table_refs: []
+    sub_values: []
+  - reg: EBX
+    operator: '='
+    description: physical page number
+    table_refs: []
+    sub_values: []
+  - reg: DX
+    operator: '='
+    description: page number in first megabyte to be remapped (linear-addr SHR 12)
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AH
+      operator: '='
+      description: status
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes:
+  - 'RM386 traps this function on the initial transition to protected
+
+    mode caused by the INT instruction, which means it can not be
+
+    overridden simply by hooking the interrupt'
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 5DE6h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: m-675DE6
+  category: m
+  title: RM386 - MAP LOGICAL 4K PAGE TO PHYSICAL SEGMENT
+  source: INTERRUP.P:7137
+  interrupt: '67'
+  flags: []
+  function: 5DE6
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 5DE6h
+    table_refs: []
+    sub_values: []
+  - reg: BX
+    operator: '='
+    description: logical page number in 4K pages from beginning of memory for EMS
+    table_refs: []
+    sub_values: []
+  - reg: CX
+    operator: '='
+    description: segment in first megabyte to be remapped
+    table_refs: []
+    sub_values: []
+  - reg: DX
+    operator: '='
+    description: previously-allocated EMS handle
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AH
+      operator: '='
+      description: status
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes:
+  - 'RM386 traps this function on the initial transition to protected
+
+    mode caused by the INT instruction, which means it can not be
+
+    overridden simply by hooking the interrupt'
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 5DE5h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: m-675DE7
+  category: m
+  title: RM386 - SET PAGE TABLE BITS FOR RANGE OF PAGES
+  source: INTERRUP.P:7153
+  interrupt: '67'
+  flags: []
+  function: 5DE7
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 5DE7h
+    table_refs: []
+    sub_values: []
+  - reg: BL
+    operator: '='
+    description: page table bits to be set (bits 2-0 = U/S, R/W, P)
+    table_refs: []
+    sub_values: []
+  - reg: CX
+    operator: '='
+    description: number of pages to set
+    table_refs: []
+    sub_values: []
+  - reg: DX
+    operator: '='
+    description: first page number to set (in first megabyte)
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AH
+      operator: '='
+      description: status
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes:
+  - 'RM386 traps this function on the initial transition to protected
+
+    mode caused by the INT instruction, which means it can not be
+
+    overridden simply by hooking the interrupt'
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: m-675DE8
+  category: m
+  title: RM386 - GET PARTIAL PAGE TABLE
+  source: INTERRUP.P:7167
+  interrupt: '67'
+  flags: []
+  function: 5DE8
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 5DE8h
+    table_refs: []
+    sub_values: []
+  - reg: BX
+    operator: '='
+    description: starting page number in first megabyte+HMA (0000h-010Fh)
+    table_refs: []
+    sub_values: []
+  - reg: CX
+    operator: '='
+    description: number of page table entries to get
+    table_refs: []
+    sub_values: []
+  - reg: ES:DI
+    operator: ->
+    description: buffer for DWORD page table entries
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AH
+      operator: '='
+      description: status (00h successful, 8Bh invalid page)
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes:
+  - 'RM386 traps this function on the initial transition to protected
+
+    mode caused by the INT instruction, which means it can not be
+
+    overridden simply by hooking the interrupt'
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 5DE9h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: m-675DE9
+  category: m
+  title: RM386 - SET PARTIAL PAGE TABLE
+  source: INTERRUP.P:7178
+  interrupt: '67'
+  flags: []
+  function: 5DE9
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 5DE9h
+    table_refs: []
+    sub_values: []
+  - reg: BX
+    operator: '='
+    description: starting page number in first megabyte+HMA (0000h-010Fh)
+    table_refs: []
+    sub_values: []
+  - reg: CX
+    operator: '='
+    description: number of page table entries to get
+    table_refs: []
+    sub_values: []
+  - reg: DS:SI
+    operator: ->
+    description: buffer of DWORD page table entries
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AH
+      operator: '='
+      description: status (00h successful, 8Bh invalid destination page)
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes:
+  - 'RM386 traps this function on the initial transition to protected
+
+    mode caused by the INT instruction, which means it can not be
+
+    overridden simply by hooking the interrupt'
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 5DE8h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: m-675DEA
+  category: m
+  title: RM386 - V86-MODE I/O PORT TRAPPING CONTROL
+  source: INTERRUP.P:7189
+  interrupt: '67'
+  flags: []
+  function: 5DEA
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 5DEAh
+    table_refs: []
+    sub_values: []
+  - reg: BX
+    operator: '='
+    description: function
+    table_refs: []
+    sub_values:
+    - value: 00h
+      description: globally disable V86-mode trapping
+      sub_values: []
+    - value: 01h
+      description: globally enable V86-mode trapping
+      sub_values: []
+  - reg: CL
+    operator: '='
+    description: interrupt to use for trapping
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AH
+      operator: '='
+      description: status
+      table_refs: []
+      sub_values: []
+    - reg: BX
+      operator: '='
+      description: current trapping state (function 02h)
+      table_refs: []
+      sub_values: []
+    - reg: CX
+      operator: '='
+      description: interrupt used as trap interrupt (functions 00h and 02h)
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes:
+  - 'RM386 traps this function on the initial transition to protected
+
+    mode caused by the INT instruction, which means it can not be
+
+    overridden simply by hooking the interrupt
+
+    when I/O trapping is enabled and I/O port access occurs, RM386
+
+    simulates an INT instruction for the specified interrupt; the
+
+    interrupt handler is responsible for decoding the trapped instruction
+
+    and performing the appropriate action.  INT 2C/AX=002Dh provides a
+
+    similar but more-easily used interface.'
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 5DEBh
+  - type: interrupt
+    params:
+      AH: EFh
+    name: RM386
+  - type: interrupt
+    interrupt: 2C
+    params:
+      AX: 002Dh
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: m-675DEB
+  category: m
+  title: RM386 - V86-MODE I/O TRAPPING PORT CONTROL
+  source: INTERRUP.P:7211
+  interrupt: '67'
+  flags: []
+  function: 5DEB
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 5DEBh
+    table_refs: []
+    sub_values: []
+  - reg: BX
+    operator: '='
+    description: function
+    table_refs: []
+    sub_values:
+    - value: 00h
+      description: disable V86-mode trapping for specified port
+      sub_values: []
+    - value: 01h
+      description: enable V86-mode trapping for specified port
+      sub_values: []
+    - value: 02h
+      description: get V86-mode trapping state for specified port
+      sub_values: []
+  - reg: DX
+    operator: '='
+    description: port for which to enable/disable/query trapping
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AH
+      operator: '='
+      description: status
+      table_refs: []
+      sub_values: []
+    - reg: BX
+      operator: '='
+      description: current trapping state (00h off, 01h on) (function 02)
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes:
+  - 'RM386 traps this function on the initial transition to protected
+
+    mode caused by the INT instruction, which means it can not be
+
+    overridden simply by hooking the interrupt'
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 5DEAh
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: m-675DFD
+  category: m
+  title: RM386 v6.00 - ???
+  source: INTERRUP.P:7228
+  interrupt: '67'
+  flags:
+  - U
+  function: 5DFD
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 5DFDh
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+  notes:
+  - 'RM386 traps this function on the initial transition to protected
+
+    mode caused by the INT instruction, which means it can not be
+
+    overridden simply by hooking the interrupt'
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 5DFEh
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: m-675DFE
+  category: m
+  title: RM386 v6.00 - ???
+  source: INTERRUP.P:7237
+  interrupt: '67'
+  flags:
+  - U
+  function: 5DFE
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 5DFEh
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+  notes:
+  - 'RM386 traps this function on the initial transition to protected
+
+    mode caused by the INT instruction, which means it can not be
+
+    overridden simply by hooking the interrupt'
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 5DFDh
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: m-675DFF
+  category: m
+  title: RM386 v6.00 - ???
+  source: INTERRUP.P:7246
+  interrupt: '67'
+  flags:
+  - U
+  function: 5DFF
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 5DFFh
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+  notes:
+  - 'RM386 traps this function on the initial transition to protected
+
+    mode caused by the INT instruction, which means it can not be
+
+    overridden simply by hooking the interrupt'
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 5DFDh
+  - type: interrupt
+    params:
+      AX: 5DFEh
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: m-675E00
+  category: m
+  title: Nanosoft MD386 - SET HARDWARE BREAKPOINT
+  source: INTERRUP.P:7255
+  interrupt: '67'
+  flags: []
+  function: 5E00
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 5E00h
+    table_refs: []
+    sub_values: []
+  - reg: DH
+    operator: '='
+    description: breakpoint number (0-3)
+    table_refs: []
+    sub_values: []
+  - reg: DL
+    operator: '='
+    description: breakpoint attributes (used to set DR7)
+    table_refs: []
+    sub_values: []
+  - reg: CX:BX
+    operator: '='
+    description: linear address of breakpoint
+    table_refs: []
+    sub_values: []
+  returns: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 5D03h
+  - type: interrupt
+    params:
+      AX: 5E01h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: m-675E01
+  category: m
+  title: Nanosoft MD386 - GET HARDWARE DEBUG REGISTER
+  source: INTERRUP.P:7262
+  interrupt: '67'
+  flags: []
+  function: 5E01
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 5E01h
+    table_refs: []
+    sub_values: []
+  - reg: BL
+    operator: '='
+    description: register number (0-3,7)
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: CX:BX
+      operator: '='
+      description: value of specified DRx register
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 5E00h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: m-675E02
+  category: m
+  title: Nanosoft MD386 - SET DEBUG EXCEPTION HANDLER
+  source: INTERRUP.P:7268
+  interrupt: '67'
+  flags: []
+  function: 5E02
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 5E02h
+    table_refs: []
+    sub_values: []
+  - reg: CX:BX
+    operator: ->
+    description: exception handler
+    table_refs: []
+    sub_values: []
+  returns: []
+  notes:
+  - 'the specified exception handler is called with a simulated interrupt
+
+    whenever a debug exception occurs which was caused by a hardware
+
+    breakpoint set with the debug registers'
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 5E04h
+  - type: interrupt
+    params:
+      AX: 5E05h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: m-675E03
+  category: m
+  title: Nanosoft MD386 - ENABLE/DISABLE MEMORY WRITE PROTECTION
+  source: INTERRUP.P:7276
+  interrupt: '67'
+  flags: []
+  function: 5E03
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 5E03h
+    table_refs: []
+    sub_values: []
+  - reg: BL
+    operator: '='
+    description: register map set number
+    table_refs: []
+    sub_values: []
+  - reg: BH
+    operator: '='
+    description: new state (00h read-only, else read-write)
+    table_refs: []
+    sub_values: []
+  - reg: CX
+    operator: '='
+    description: linear page number (linear address SHR 12)
+    table_refs: []
+    sub_values: []
+  returns: []
+  notes:
+  - 'setting write protection in map set 0 will cause the setting to become
+
+    the default for newly-allocated map sets'
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: m-675E04
+  category: m
+  title: Nanosoft MD386 - GET DEBUG EXCEPTION
+  source: INTERRUP.P:7284
+  interrupt: '67'
+  flags: []
+  function: 5E04
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 5E04h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: BL
+      operator: '='
+      description: debug exception (low byte of DR6 register)
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 5E02h
+  - type: interrupt
+    params:
+      AX: 5E05h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: m-675E05
+  category: m
+  title: Nanosoft MD386 - IGNORE NEXT DEBUG EXCEPTION
+  source: INTERRUP.P:7289
+  interrupt: '67'
+  flags: []
+  function: 5E05
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 5E05h
+    table_refs: []
+    sub_values: []
+  returns: []
+  notes:
+  - 'may be required when using AX=5E02h for handling instruction
+
+    breakpoints'
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 5E02h
+  - type: interrupt
+    params:
+      AX: 5E04h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: m-6760
+  category: m
+  title: EEMS - GET PHYSICAL WINDOW ARRAY
+  source: INTERRUP.P:7295
+  interrupt: '67'
+  flags: []
+  function: '60'
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 60h
+    table_refs: []
+    sub_values: []
+  - reg: ES:DI
+    operator: ->
+    description: buffer
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AH
+      operator: '='
+      description: status (see also AH=40h)
+      table_refs: []
+      sub_values: []
+    - reg: AL
+      operator: '='
+      description: number of entries
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: m-6761
+  category: m
+  title: EEMS - GENERIC ACCELERATOR CARD SUPPORT
+  source: INTERRUP.P:7302
+  interrupt: '67'
+  flags: []
+  function: '61'
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 61h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+  notes:
+  - 'can be used by accelerator card manufacturer to flush RAM cache,
+
+    ensuring that the cache accurately reflects what the processor would
+
+    see without the cache.'
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: m-676100
+  category: m
+  title: EEMS - STB GENERIC ACCELERATOR CARD SUPPORT - INSTALLATION CHECK???
+  source: INTERRUP.P:7310
+  interrupt: '67'
+  flags: []
+  function: '6100'
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 6100h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AH
+      operator: '='
+      description: status (00h if installed???)
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes:
+  - 'STB''s RAPIDMAP.SYS EMS driver calls this function and AX=6101h if
+
+    the signature "GACXXX" is found at offset 0Ah in the INT 67 handler''s
+
+    segment (i.e. a device driver named GACXXX?? has hooked INT 67)'
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 6101h
+  - type: interrupt
+    interrupt: '02'
+    params:
+      SI: 0714h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: m-676101
+  category: m
+  title: EEMS - STB GENERIC ACCELERATOR CARD SUPPORT - GET ??? ENTRY POINT
+  source: INTERRUP.P:7318
+  interrupt: '67'
+  flags: []
+  function: '6101'
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 6101h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AH
+      operator: '='
+      description: status
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  - condition: AH=00h---
+    registers:
+    - reg: ES:BX
+      operator: ->
+      description: ??? entry point
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 6100h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: m-6768
+  category: m
+  title: EEMS - GET ADDRESSES OF ALL PAGE FRAMES IN SYSTEM
+  source: INTERRUP.P:7325
+  interrupt: '67'
+  flags: []
+  function: '68'
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 68h
+    table_refs: []
+    sub_values: []
+  - reg: ES:DI
+    operator: ->
+    description: buffer
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AH
+      operator: '='
+      description: status (see also AH=40h)
+      table_refs: []
+      sub_values: []
+    - reg: AL
+      operator: '='
+      description: number of entries
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes:
+  - equivalent to LIM 4.0 function 58h
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: m-6769
+  category: m
+  title: EEMS - MAP PAGE INTO FRAME
+  source: INTERRUP.P:7333
+  interrupt: '67'
+  flags: []
+  function: '69'
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 69h
+    table_refs: []
+    sub_values: []
+  - reg: AL
+    operator: '='
+    description: frame number
+    table_refs: []
+    sub_values: []
+  - reg: BX
+    operator: '='
+    description: page number
+    table_refs: []
+    sub_values: []
+  - reg: DX
+    operator: '='
+    description: handle
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AH
+      operator: '='
+      description: status (see also AH=40h)
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes:
+  - similar to EMS function 44h
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 44h
+  - type: interrupt
+    params:
+      AH: 50h
+  - type: interrupt
+    params:
+      AH: 6Ah
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: m-676A
+  category: m
+  title: EEMS - PAGE MAPPING
+  source: INTERRUP.P:7342
+  interrupt: '67'
+  flags: []
+  function: 6A
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 6Ah
+    table_refs: []
+    sub_values: []
+  - reg: AL
+    operator: '='
+    description: subfunction
+    table_refs: []
+    sub_values:
+    - value: 00h
+      description: save partial page map
+      sub_values: []
+  - reg: CH
+    operator: '='
+    description: first page frame
+    table_refs: []
+    sub_values: []
+  - reg: CL
+    operator: '='
+    description: number of frames
+    table_refs: []
+    sub_values: []
+  - reg: ES:DI
+    operator: ->
+    description: buffer which is to be filled
+    table_refs: []
+    sub_values: []
+  - reg: CH
+    operator: '='
+    description: first page frame
+    table_refs: []
+    sub_values: []
+  - reg: CL
+    operator: '='
+    description: number of frames
+    table_refs: []
+    sub_values: []
+  - reg: DI:SI
+    operator: ->
+    description: previously saved page map
+    table_refs: []
+    sub_values: []
+  - reg: CH
+    operator: '='
+    description: first page frame
+    table_refs: []
+    sub_values: []
+  - reg: CL
+    operator: '='
+    description: number of frames
+    table_refs: []
+    sub_values: []
+  - reg: ES:DI
+    operator: '='
+    description: buffer for current page map
+    table_refs: []
+    sub_values: []
+  - reg: DI:SI
+    operator: '='
+    description: new page map
+    table_refs: []
+    sub_values: []
+  - reg: CH
+    operator: '='
+    description: first page frame
+    table_refs: []
+    sub_values: []
+  - reg: CL
+    operator: '='
+    description: number of frames
+    table_refs: []
+    sub_values: []
+  - reg: CH
+    operator: '='
+    description: first page frame
+    table_refs: []
+    sub_values: []
+  - reg: CL
+    operator: '='
+    description: number of frames
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AH
+      operator: '='
+      description: 'status (see #03648)'
+      table_refs:
+      - 03648
+      sub_values: []
+    raw_lines: []
+  notes:
+  - 'similar to EMS function 4Eh, except that a subrange of pages can be
+
+    specified'
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 69h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: m-676B
+  category: m
+  title: DESQview 2.42-2.53 - BUG
+  source: INTERRUP.P:7372
+  interrupt: '67'
+  flags: []
+  function: 6B
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 6Bh
+    table_refs: []
+    sub_values: []
+  returns: []
+  notes:
+  - 'the EMM.DVR portion of DESQview branches to a random location on this
+
+    function due to a fencepost error'
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: m-67DD
+  category: m
+  title: Quadtel QMAPS - API
+  source: INTERRUP.P:7377
+  interrupt: '67'
+  flags: []
+  function: DD
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: DDh
+    table_refs: []
+    sub_values: []
+  - reg: AL
+    operator: '='
+    description: function
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+  notes:
+  - 'details are not yet available
+
+    Hewlett-Packard''s HPMM.SYS is a licensed version of QMAPS, and thus
+
+    supports this API'
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 3Fh
+  - type: interrupt
+    params:
+      AX: FFA5h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: E-67DE00
+  category: E
+  title: Virtual Control Program Interface - INSTALLATION CHECK
+  source: INTERRUP.P:7387
+  interrupt: '67'
+  flags: []
+  function: DE00
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: DE00h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AH
+      operator: '='
+      description: status
+      table_refs: []
+      sub_values: []
+    - reg: BH
+      operator: '='
+      description: major version number
+      table_refs: []
+      sub_values: []
+    - reg: BL
+      operator: '='
+      description: minor version number
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs:
+  - MS Windows 3.00 is reported to "object violently" to this call.
+  see_also:
+  - type: interrupt
+    interrupt: 2F
+    params:
+      AX: 1687h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: E-67DE01
+  category: E
+  title: Virtual Control Program Interface - GET PROTECTED MODE INTERFACE
+  source: INTERRUP.P:7397
+  interrupt: '67'
+  flags: []
+  function: DE01
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: DE01h
+    table_refs: []
+    sub_values: []
+  - reg: ES:DI
+    operator: ->
+    description: 4K page table buffer
+    table_refs: []
+    sub_values: []
+  - reg: DS:SI
+    operator: ->
+    description: three descriptor table entries in GDT
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AH
+      operator: '='
+      value: 00h
+      description: successful
+      table_refs: []
+      sub_values: []
+    - reg: DI
+      operator: ->
+      description: first unused page table entry in buffer
+      table_refs: []
+      sub_values: []
+    - reg: EBX
+      operator: ->
+      description: 'protected mode entry point in code segment (see #03664)'
+      table_refs:
+      - '03664'
+      sub_values: []
+    - reg: AH
+      operator: '='
+      description: nonzero  failed
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes:
+  - 'protected mode entry point may be called with AX=DE00h-DE05h and
+
+    AX=DE0Ch (in each case, all other registers as appropriate for
+
+    the function)'
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: 2F
+    params:
+      AX: 1687h
+  - type: interrupt
+    interrupt: '67'
+    params:
+      AH: 3Fh
+  index: []
+  tables:
+  - '03664'
+  table_refs: []
+- entry_type: INT
+  id: E-67DE02
+  category: E
+  title: Virtual Control Program Interface - GET MAX PHYSICAL MEMORY ADDRESS
+  source: INTERRUP.P:7421
+  interrupt: '67'
+  flags: []
+  function: DE02
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: DE02h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AH
+      operator: '='
+      value: 00h
+      description: successful
+      table_refs: []
+      sub_values: []
+    - reg: EDX
+      operator: '='
+      description: physical address of highest 4K memory page
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 3Fh
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: E-67DE03
+  category: E
+  title: Virtual Control Program Interface - GET NUMBER OF FREE 4K PAGES
+  source: INTERRUP.P:7428
+  interrupt: '67'
+  flags: []
+  function: DE03
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: DE03h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AH
+      operator: '='
+      value: 00h
+      description: successful
+      table_refs: []
+      sub_values: []
+    - reg: EDX
+      operator: '='
+      description: number of free 4K pages
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes:
+  - 'returns total number of pages available to ALL tasks in system
+
+    also available in protected mode by calling the protected-mode VCPI
+
+    entry point (see AX=DE01h,#03664)'
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: DE04h
+  index: []
+  tables: []
+  table_refs:
+  - '03664'
+- entry_type: INT
+  id: E-67DE04
+  category: E
+  title: Virtual Control Program Interface - ALLOCATE A 4K PAGE
+  source: INTERRUP.P:7438
+  interrupt: '67'
+  flags: []
+  function: DE04
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: DE04h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AH
+      operator: '='
+      value: 00h
+      description: successful
+      table_refs: []
+      sub_values: []
+    - reg: EDX
+      operator: '='
+      description: physical address of allocated page
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes:
+  - 'the client program is responsible for freeing all memory allocated
+
+    with this call before terminating
+
+    also available in protected mode by calling the protected-mode VCPI
+
+    entry point (see AX=DE01h,#03664)'
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 3Fh
+  - type: interrupt
+    params:
+      AX: DE03h
+  - type: interrupt
+    params:
+      AX: DE05h
+  index: []
+  tables: []
+  table_refs:
+  - '03664'
+- entry_type: INT
+  id: E-67DE05
+  category: E
+  title: Virtual Control Program Interface - FREE 4K PAGE
+  source: INTERRUP.P:7449
+  interrupt: '67'
+  flags: []
+  function: DE05
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: DE05h
+    table_refs: []
+    sub_values: []
+  - reg: EDX
+    operator: '='
+    description: physical address of 4K page
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AH
+      operator: '='
+      description: status
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes:
+  - 'also available in protected mode by calling the protected-mode VCPI
+
+    entry point (see AX=DE01h,#03664)'
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 3Fh
+  - type: interrupt
+    params:
+      AX: DE04h
+  index: []
+  tables: []
+  table_refs:
+  - '03664'
+- entry_type: INT
+  id: E-67DE06
+  category: E
+  title: Virtual Control Program Interface - GET PHYS ADDR OF PAGE IN FIRST MB
+  source: INTERRUP.P:7459
+  interrupt: '67'
+  flags: []
+  function: DE06
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: DE06h
+    table_refs: []
+    sub_values: []
+  - reg: CX
+    operator: '='
+    description: page number (linear address shifted right 12 bits)
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AH
+      operator: '='
+      description: status
+      table_refs: []
+      sub_values: []
+    - reg: EDX
+      operator: '='
+      description: physical address of page
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 5BE0h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: E-67DE07
+  category: E
+  title: Virtual Control Program Interface - READ CR0
+  source: INTERRUP.P:7468
+  interrupt: '67'
+  flags: []
+  function: DE07
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: DE07h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AH
+      operator: '='
+      value: 00h
+      table_refs: []
+      sub_values: []
+    - reg: EBX
+      operator: '='
+      description: value of Control Register 0
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 3Fh
+  - type: interrupt
+    params:
+      AX: DE07h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: E-67DE08
+  category: E
+  title: Virtual Control Program Interface - READ DEBUG REGISTERS
+  source: INTERRUP.P:7474
+  interrupt: '67'
+  flags: []
+  function: DE08
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: DE08h
+    table_refs: []
+    sub_values: []
+  - reg: ES:DI
+    operator: ->
+    description: array of 8 DWORDs
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AH
+      operator: '='
+      value: 00h
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 3Fh
+  - type: interrupt
+    params:
+      AX: DE09h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: E-67DE09
+  category: E
+  title: Virtual Control Program Interface - SET DEBUG REGISTERS
+  source: INTERRUP.P:7481
+  interrupt: '67'
+  flags: []
+  function: DE09
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: DE09h
+    table_refs: []
+    sub_values: []
+  - reg: ES:DI
+    operator: ->
+    description: array of 8 DWORDs holding new values of debug registers
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AH
+      operator: '='
+      value: 00h
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes:
+  - values for DR4 and DR5 ignored
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 3Fh
+  - type: interrupt
+    params:
+      AX: DE08h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: E-67DE0A
+  category: E
+  title: Virtual Control Program Interface - GET 8259 INTERRUPT VECTOR MAPPINGS
+  source: INTERRUP.P:7488
+  interrupt: '67'
+  flags: []
+  function: DE0A
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: DE0Ah
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AH
+      operator: '='
+      value: 00h
+      description: successful
+      table_refs: []
+      sub_values: []
+    - reg: BX
+      operator: '='
+      description: first vector used by master 8259 (IRQ0)
+      table_refs: []
+      sub_values: []
+    - reg: CX
+      operator: '='
+      description: first vector used by slave 8259 (IRQ8)
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes:
+  - CX is undefined in systems without a slave 8259
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: DE0Bh
+  - type: interrupt
+    interrupt: '21'
+    params:
+      AX: 250Ch
+  - type: interrupt
+    interrupt: '31'
+    params:
+      AX: 0400h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: E-67DE0B
+  category: E
+  title: Virtual Control Program Interface - SET 8259 INTERRUPT VECTOR MAPPINGS
+  source: INTERRUP.P:7497
+  interrupt: '67'
+  flags: []
+  function: DE0B
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: DE0Bh
+    table_refs: []
+    sub_values: []
+  - reg: BX
+    operator: '='
+    description: first vector used by master 8259
+    table_refs: []
+    sub_values: []
+  - reg: CX
+    operator: '='
+    description: first vector used by slave 8259
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AH
+      operator: '='
+      value: 00h
+      description: successful
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes:
+  - 'This call merely informs the server that the client has changed the
+
+    interrupt mappings.  The client may not change the mappings if they
+
+    have already been changed by the server or another client, and is
+
+    responsible for restoring the original mappings before terminating.'
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: DE0Ah
+  - type: interrupt
+    interrupt: 2C
+    params:
+      AX: 002Ah
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: E-67DE0C
+  category: E
+  title: Virtual Control Program Interface - SWITCH TO PROTECTED MODE
+  source: INTERRUP.P:7510
+  interrupt: '67'
+  flags: []
+  function: DE0C
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: DE0Ch
+    table_refs: []
+    sub_values: []
+  - reg: ESI
+    operator: '='
+    description: linear address in first megabyte of values for system
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - interrupts disabled
+    - GDTR, IDTR, LDTR, TR loaded
+    - SS:ESP must have at least 16 bytes space, and the entry point is
+    - required to set up a new stack before enabling interrupts
+    - EAX, ESI, DS, ES, FS, GS destroyed
+  notes:
+  - 'in protected mode, calling the protected-mode VCPI entry point with
+
+    AX = DE0Ch
+
+    DS = segment selector mapping entire linear address space obtained
+
+    via AX=DE01h
+
+    SS:ESP in first megabyte of linear memory
+
+    STACK:QWORD  return address from FAR call to 32-bit segment
+
+    DWORD  EIP
+
+    DWORD  CS
+
+    DWORD  reserved for EFLAGS
+
+    DWORD  ESP
+
+    DWORD  SS
+
+    DWORD  ES
+
+    DWORD  DS
+
+    DWORD  FS
+
+    DWORD  GS
+
+    and interrupts disabled, will switch to virtual86 mode with
+
+    interrupts disabled, all segment registers loaded, and EAX
+
+    destroyed.'
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 3Fh
+  - type: interrupt
+    interrupt: '15'
+    params:
+      AH: 89h
+  - type: interrupt
+    interrupt: D4
+    params:
+      AH: 10h
+  index: []
+  tables:
+  - '03665'
+  table_refs: []
+- entry_type: INT
+  id: m-67DE0F
+  category: m
+  title: Netroom3 - ???
+  source: INTERRUP.P:7549
+  interrupt: '67'
+  flags: []
+  function: DE0F
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: DE0Fh
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+  notes:
+  - called by Netroom's DPMI.EXE
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: s-67DEE1BX0C55
+  category: s
+  title: '"SB Live!" Sound Blaster 16 Emulation Driver - INSTALLATION CHECK'
+  source: INTERRUP.P:7555
+  interrupt: '67'
+  flags: []
+  function: DEE1BX0C55
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: DEE1h
+    table_refs: []
+    sub_values: []
+  - reg: BX
+    operator: '='
+    value: 0C55h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: BL
+      operator: '='
+      value: AAh
+      description: if installed
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: m-67EF
+  category: m
+  title: RM386 v6.00+ - EXECUTE XMS FUNCTION
+  source: INTERRUP.P:7560
+  interrupt: '67'
+  flags: []
+  function: EF
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: EFh
+    table_refs: []
+    sub_values: []
+  - reg: AL
+    operator: '='
+    description: function (00h-12h,80h-8Fh)
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - varies by function (see INT 2F/AX=4310h"XMS")
+  notes:
+  - 'these functions appear to be equivalent to the XMS functions with the
+
+    same numbers'
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 5DFFh
+    name: RM386
+  - type: interrupt
+    interrupt: 2F
+    params:
+      AX: 4310h
+    name: XMS
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: m-67FFA5
+  category: m
+  title: Microsoft EMM386.EXE v4.20+ - INSTALLATION CHECK
+  source: INTERRUP.P:7569
+  interrupt: '67'
+  flags: []
+  function: FFA5
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: FFA5h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AX
+      operator: '='
+      value: 845Ah
+      description: /84A5h if loaded
+      table_refs: []
+      sub_values: []
+    - reg: BX:CX
+      operator: ->
+      description: 'API entry point (see #03666)'
+      table_refs:
+      - '03666'
+      sub_values: []
+    raw_lines: []
+  notes:
+  - 'this call is available even if EMM386 is not providing EMS
+
+    the returned AX is 845Ah inside of MSWindows, 84A5h under bare DOS
+
+    if no other program has hooked INT 67, an alternate installation
+
+    check is to test for the string
+
+    "MICROSOFT EXPANDED MEMORY MANAGER 386" at offset 14h in the INT 67
+
+    handler''s segment; the word immediately preceding this string
+
+    contains the offset of the API entry point'
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 3Fh
+  - type: interrupt
+    params:
+      AX: FFA5h
+      BX: 4345h
+  - type: interrupt
+    interrupt: '21'
+    params:
+      AX: 4402h
+    name: EMM386.EXE
+  index: []
+  tables:
+  - '03666'
+  table_refs: []
+- entry_type: INT
+  id: m-67FFA5BX4345
+  category: m
+  title: Compaq CEMM v5.10+ - PRIVATE API
+  source: INTERRUP.P:7607
+  interrupt: '67'
+  flags:
+  - U
+  function: FFA5BX4345
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: FFA5h
+    table_refs: []
+    sub_values: []
+  - reg: BX
+    operator: '='
+    value: 4345h
+    description: ("CE")
+    table_refs: []
+    sub_values: []
+  - reg: DX
+    operator: '='
+    description: subfunction
+    table_refs: []
+    sub_values:
+    - value: 0000h
+      description: unshadow video ROM???
+      sub_values: []
+    - value: 0001h
+      description: shadow video ROM???
+      sub_values: []
+    - value: 0002h
+      description: map pages
+      sub_values: []
+  - reg: CX
+    operator: '='
+    description: number of pages (00h=one)
+    table_refs: []
+    sub_values: []
+  - reg: ESI
+    operator: '='
+    description: linear address of first page to map into address space
+    table_refs: []
+    sub_values: []
+  - reg: EDI
+    operator: '='
+    description: linear starting address at which pages are to be visible
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AH
+      operator: '='
+      value: 84h
+      table_refs: []
+      sub_values: []
+    - reg: AL
+      operator: '='
+      description: status (84h = error, FFh = success)
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes:
+  - 'if BX <> 4345h or DX > 0004h on entry, CEMM behaves identically to
+
+    Microsoft''s EMM386 (see AX=FFA5h"EMM386")'
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: FFA5h
+    name: EMM386
+  - type: interrupt
+    params:
+      AX: 4402h
+      SF: 02h
+  - type: table
+    id: '03666'
+  index: []
+  tables: []
+  table_refs:
+  - '01513'
+  - '03666'

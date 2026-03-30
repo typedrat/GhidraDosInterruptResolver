@@ -1,0 +1,2797 @@
+file_type: interrupt
+key: '20'
+entries:
+- entry_type: INT
+  id: O-20
+  category: O
+  title: Minix - SEND/RECEIVE MESSAGE
+  source: INTERRUP.F:3
+  interrupt: '20'
+  flags: []
+  input_registers:
+  - reg: AX
+    operator: '='
+    description: process ID of other process
+    table_refs: []
+    sub_values: []
+  - reg: BX
+    operator: ->
+    description: message
+    table_refs: []
+    sub_values: []
+  - reg: CX
+    operator: '='
+    description: operation (1 send, 2 receive, 3 send&receive)
+    table_refs: []
+    sub_values: []
+  returns: []
+  program: 'Minix is a Version 7 Unix-compatible operating system by Andrew
+
+    Tanenbaum'
+  notes:
+  - 'the message contains the system call number (numbered as in V7
+
+    Unix(tm)) and the call parameters'
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: D-20
+  category: D
+  title: DOS 1+ - TERMINATE PROGRAM
+  source: INTERRUP.F:12
+  interrupt: '20'
+  flags: []
+  input_registers:
+  - reg: CS
+    operator: '='
+    description: PSP segment
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - never
+  notes:
+  - '(see INT 21/AH=00h)
+
+    this function sets the program''s return code (ERRORLEVEL) to 00h'
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: '21'
+    params:
+      AH: 00h
+  - type: interrupt
+    interrupt: '21'
+    params:
+      AH: 4Ch
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: G-20
+  category: G
+  title: COMTROL HOSTESS i/ISA DEBUGGER - INVOKE FIRMWARE DEBUGGER
+  source: INTERRUP.F:19
+  interrupt: '20'
+  flags: []
+  input_registers: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: '21'
+    params: {}
+    name: COMTROL
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: W-20VX0001
+  category: W
+  title: Microsoft Windows - VMM - VxD SERVICES
+  source: INTERRUP.F:24
+  interrupt: '20'
+  flags:
+  - P
+  function: VX0001
+  input_registers: []
+  returns: []
+  notes:
+  - "the desired VxD and service number are identified by the data\nimmediately following the INT 20 instruction, as in:\n\
+    INT\t20h\nDW\tservice number\nDW\tVxD identifier"
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: 2F
+    params:
+      AX: 1684h
+    name: DEVICE API
+  - type: interrupt
+    interrupt: '30'
+    params: {}
+    name: Windows
+  - type: table
+    id: '01265'
+  - type: table
+    id: '01340'
+  index: []
+  tables:
+  - '01265'
+  table_refs:
+  - '01265'
+  - '01340'
+- entry_type: INT
+  id: W-20VX0002
+  category: W
+  title: Microsoft Windows - DEBUG - VxD SERVICES
+  source: INTERRUP.F:456
+  interrupt: '20'
+  flags:
+  - P
+  function: VX0002
+  input_registers: []
+  returns: []
+  notes:
+  - "the desired VxD and service number are identified by the data\nimmediately following the INT 20 instruction, as in:\n\
+    INT\t20h\nDW\tservice number\nDW\tVxD identifier"
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: 2F
+    params:
+      AX: 1684h
+    name: DEVICE API
+  - type: interrupt
+    interrupt: '30'
+    params: {}
+    name: Windows
+  - type: table
+    id: '01266'
+  - type: table
+    id: '01340'
+  index: []
+  tables:
+  - '01266'
+  table_refs:
+  - '01266'
+  - '01340'
+- entry_type: INT
+  id: W-20VX0003
+  category: W
+  title: Microsoft Windows - VPICD - VxD SERVICES
+  source: INTERRUP.F:473
+  interrupt: '20'
+  flags:
+  - P
+  function: VX0003
+  input_registers: []
+  returns: []
+  notes:
+  - "the desired VxD and service number are identified by the data\nimmediately following the INT 20 instruction, as in:\n\
+    INT\t20h\nDW\tservice number\nDW\tVxD identifier"
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: 2F
+    params:
+      AX: 1684h
+    name: DEVICE API
+  - type: interrupt
+    interrupt: '30'
+    params: {}
+    name: Windows
+  - type: table
+    id: '01267'
+  - type: table
+    id: '01340'
+  index: []
+  tables:
+  - '01267'
+  table_refs:
+  - '01267'
+  - '01340'
+- entry_type: INT
+  id: W-20VX0004
+  category: W
+  title: Microsoft Windows - VDMAD - VxD SERVICES
+  source: INTERRUP.F:511
+  interrupt: '20'
+  flags:
+  - P
+  function: VX0004
+  input_registers: []
+  returns: []
+  notes:
+  - "the desired VxD and service number are identified by the data\nimmediately following the INT 20 instruction, as in:\n\
+    INT\t20h\nDW\tservice number\nDW\tVxD identifier"
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: 2F
+    params:
+      AX: 1684h
+    name: DEVICE API
+  - type: interrupt
+    interrupt: '30'
+    params: {}
+    name: Windows
+  - type: table
+    id: '01265'
+  - type: table
+    id: '01340'
+  index: []
+  tables:
+  - 01268
+  table_refs:
+  - '01265'
+  - '01340'
+- entry_type: INT
+  id: W-20VX0005
+  category: W
+  title: Microsoft Windows - VTD - VxD SERVICES
+  source: INTERRUP.F:559
+  interrupt: '20'
+  flags:
+  - P
+  function: VX0005
+  input_registers: []
+  returns: []
+  notes:
+  - "the desired VxD and service number are identified by the data\nimmediately following the INT 20 instruction, as in:\n\
+    INT\t20h\nDW\tservice number\nDW\tVxD identifier"
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: 2F
+    params:
+      AX: 1684h
+    name: DEVICE API
+  - type: interrupt
+    interrupt: '30'
+    params: {}
+    name: Windows
+  - type: table
+    id: '01265'
+  - type: table
+    id: '01340'
+  index: []
+  tables:
+  - 01269
+  table_refs:
+  - '01265'
+  - '01340'
+- entry_type: INT
+  id: W-20VX0006
+  category: W
+  title: Microsoft Windows - V86MMGR - VxD SERVICES
+  source: INTERRUP.F:584
+  interrupt: '20'
+  flags:
+  - P
+  function: VX0006
+  input_registers: []
+  returns: []
+  notes:
+  - "the desired VxD and service number are identified by the data\nimmediately following the INT 20 instruction, as in:\n\
+    INT\t20h\nDW\tservice number\nDW\tVxD identifier"
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: 2F
+    params:
+      AX: 1684h
+    name: DEVICE API
+  - type: interrupt
+    interrupt: '30'
+    params: {}
+    name: Windows
+  - type: table
+    id: '01265'
+  - type: table
+    id: '01340'
+  index: []
+  tables:
+  - '01270'
+  table_refs:
+  - '01265'
+  - '01340'
+- entry_type: INT
+  id: W-20VX0007
+  category: W
+  title: Microsoft Windows - PageSwap - VxD SERVICES
+  source: INTERRUP.F:623
+  interrupt: '20'
+  flags:
+  - P
+  function: VX0007
+  input_registers: []
+  returns: []
+  notes:
+  - "the desired VxD and service number are identified by the data\nimmediately following the INT 20 instruction, as in:\n\
+    INT\t20h\nDW\tservice number\nDW\tVxD identifier"
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: 2F
+    params:
+      AX: 1684h
+    name: DEVICE API
+  - type: interrupt
+    interrupt: '30'
+    params: {}
+    name: Windows
+  - type: table
+    id: '01265'
+  - type: table
+    id: '01340'
+  index: []
+  tables:
+  - '01271'
+  table_refs:
+  - '01265'
+  - '01340'
+- entry_type: INT
+  id: W-20VX0009
+  category: W
+  title: Microsoft Windows - REBOOT - VxD SERVICES
+  source: INTERRUP.F:646
+  interrupt: '20'
+  flags:
+  - P
+  function: VX0009
+  input_registers: []
+  returns: []
+  notes:
+  - "the desired VxD and service number are identified by the data\nimmediately following the INT 20 instruction, as in:\n\
+    INT\t20h\nDW\tservice number\nDW\tVxD identifier"
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: 2F
+    params:
+      AX: 1684h
+    name: DEVICE API
+  - type: interrupt
+    interrupt: '30'
+    params: {}
+    name: Windows
+  - type: table
+    id: '01265'
+  - type: table
+    id: '01340'
+  index: []
+  tables:
+  - '01272'
+  table_refs:
+  - '01265'
+  - '01340'
+- entry_type: INT
+  id: W-20VX000A
+  category: W
+  title: Microsoft Windows - VDD - VxD SERVICES
+  source: INTERRUP.F:663
+  interrupt: '20'
+  flags:
+  - P
+  function: VX000A
+  input_registers: []
+  returns: []
+  notes:
+  - "the desired VxD and service number are identified by the data\nimmediately following the INT 20 instruction, as in:\n\
+    INT\t20h\nDW\tservice number\nDW\tVxD identifier"
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: 2F
+    params:
+      AX: 1684h
+    name: DEVICE API
+  - type: interrupt
+    interrupt: '30'
+    params: {}
+    name: Windows
+  - type: table
+    id: '01265'
+  - type: table
+    id: '01340'
+  index: []
+  tables:
+  - '01273'
+  table_refs:
+  - '01265'
+  - '01340'
+- entry_type: INT
+  id: W-20VX000B
+  category: W
+  title: Microsoft Windows - VSD - VxD SERVICES
+  source: INTERRUP.F:706
+  interrupt: '20'
+  flags:
+  - P
+  function: VX000B
+  input_registers: []
+  returns: []
+  notes:
+  - "the desired VxD and service number are identified by the data\nimmediately following the INT 20 instruction, as in:\n\
+    INT\t20h\nDW\tservice number\nDW\tVxD identifier"
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: 2F
+    params:
+      AX: 1684h
+    name: DEVICE API
+  - type: interrupt
+    interrupt: '30'
+    params: {}
+    name: Windows
+  - type: table
+    id: '01265'
+  - type: table
+    id: '01340'
+  index: []
+  tables:
+  - '01274'
+  table_refs:
+  - '01265'
+  - '01340'
+- entry_type: INT
+  id: W-20VX000C
+  category: W
+  title: Microsoft Windows - VMD / VMOUSE - VxD SERVICES
+  source: INTERRUP.F:723
+  interrupt: '20'
+  flags:
+  - P
+  function: VX000C
+  input_registers: []
+  returns: []
+  notes:
+  - "the desired VxD and service number are identified by the data\nimmediately following the INT 20 instruction, as in:\n\
+    INT\t20h\nDW\tservice number\nDW\tVxD identifier"
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: 2F
+    params:
+      AX: 1684h
+    name: DEVICE API
+  - type: interrupt
+    interrupt: '30'
+    params: {}
+    name: Windows
+  - type: table
+    id: '01265'
+  - type: table
+    id: '01340'
+  index: []
+  tables:
+  - '01275'
+  table_refs:
+  - '01265'
+  - '01340'
+- entry_type: INT
+  id: W-20VX000D
+  category: W
+  title: Microsoft Windows - VKD - VxD SERVICES
+  source: INTERRUP.F:749
+  interrupt: '20'
+  flags:
+  - P
+  function: VX000D
+  input_registers: []
+  returns: []
+  notes:
+  - "the desired VxD and service number are identified by the data\nimmediately following the INT 20 instruction, as in:\n\
+    INT\t20h\nDW\tservice number\nDW\tVxD identifier"
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: 2F
+    params:
+      AX: 1684h
+    name: DEVICE API
+  - type: interrupt
+    interrupt: '30'
+    params: {}
+    name: Windows
+  - type: table
+    id: '01265'
+  - type: table
+    id: '01340'
+  index: []
+  tables:
+  - '01276'
+  table_refs:
+  - '01265'
+  - '01340'
+- entry_type: INT
+  id: W-20VX000E
+  category: W
+  title: Microsoft Windows - VCD - VxD SERVICES
+  source: INTERRUP.F:784
+  interrupt: '20'
+  flags:
+  - P
+  function: VX000E
+  input_registers: []
+  returns: []
+  notes:
+  - "the desired VxD and service number are identified by the data\nimmediately following the INT 20 instruction, as in:\n\
+    INT\t20h\nDW\tservice number\nDW\tVxD identifier"
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: 2F
+    params:
+      AX: 1684h
+    name: DEVICE API
+  - type: interrupt
+    interrupt: '30'
+    params: {}
+    name: Windows
+  - type: table
+    id: '01265'
+  - type: table
+    id: '01340'
+  index: []
+  tables:
+  - '01277'
+  table_refs:
+  - '01265'
+  - '01340'
+- entry_type: INT
+  id: W-20VX0010
+  category: W
+  title: Microsoft Windows - BlockDev / IOS - VxD SERVICES
+  source: INTERRUP.F:811
+  interrupt: '20'
+  flags:
+  - P
+  function: VX0010
+  input_registers: []
+  returns: []
+  notes:
+  - "the desired VxD and service number are identified by the data\nimmediately following the INT 20 instruction, as in:\n\
+    INT\t20h\nDW\tservice number\nDW\tVxD identifier"
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: 2F
+    params:
+      AX: 1684h
+    name: DEVICE API
+  - type: interrupt
+    interrupt: '30'
+    params: {}
+    name: Windows
+  - type: table
+    id: '01265'
+  - type: table
+    id: '01340'
+  index: []
+  tables:
+  - 01278
+  table_refs:
+  - '01265'
+  - '01340'
+- entry_type: INT
+  id: W-20VX0011
+  category: W
+  title: Microsoft Windows - VMCPD - VxD SERVICES
+  source: INTERRUP.F:841
+  interrupt: '20'
+  flags:
+  - P
+  function: VX0011
+  input_registers: []
+  returns: []
+  notes:
+  - "the desired VxD and service number are identified by the data\nimmediately following the INT 20 instruction, as in:\n\
+    INT\t20h\nDW\tservice number\nDW\tVxD identifier"
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: 2F
+    params:
+      AX: 1684h
+    name: DEVICE API
+  - type: interrupt
+    interrupt: '30'
+    params: {}
+    name: Windows
+  - type: table
+    id: '01265'
+  - type: table
+    id: '01340'
+  index: []
+  tables:
+  - 01279
+  table_refs:
+  - '01265'
+  - '01340'
+- entry_type: INT
+  id: W-20VX0012
+  category: W
+  title: Microsoft Windows - EBIOS - VxD SERVICES
+  source: INTERRUP.F:863
+  interrupt: '20'
+  flags:
+  - P
+  function: VX0012
+  input_registers: []
+  returns: []
+  notes:
+  - "the desired VxD and service number are identified by the data\nimmediately following the INT 20 instruction, as in:\n\
+    INT\t20h\nDW\tservice number\nDW\tVxD identifier"
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: 2F
+    params:
+      AX: 1684h
+    name: DEVICE API
+  - type: interrupt
+    interrupt: '30'
+    params: {}
+    name: Windows
+  - type: table
+    id: '01265'
+  - type: table
+    id: '01340'
+  index: []
+  tables:
+  - 01280
+  table_refs:
+  - '01265'
+  - '01340'
+- entry_type: INT
+  id: W-20VX0014
+  category: W
+  title: Microsoft Windows - VNETBIOS - VxD SERVICES
+  source: INTERRUP.F:878
+  interrupt: '20'
+  flags:
+  - P
+  function: VX0014
+  input_registers: []
+  returns: []
+  notes:
+  - "the desired VxD and service number are identified by the data\nimmediately following the INT 20 instruction, as in:\n\
+    INT\t20h\nDW\tservice number\nDW\tVxD identifier"
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: 2F
+    params:
+      AX: 1684h
+    name: DEVICE API
+  - type: interrupt
+    interrupt: '30'
+    params: {}
+    name: Windows
+  - type: table
+    id: '01265'
+  - type: table
+    id: '01340'
+  index: []
+  tables:
+  - 01281
+  table_refs:
+  - '01265'
+  - '01340'
+- entry_type: INT
+  id: W-20VX0015
+  category: W
+  title: Microsoft Windows - DOSMGR - VxD SERVICES
+  source: INTERRUP.F:899
+  interrupt: '20'
+  flags:
+  - P
+  function: VX0015
+  input_registers: []
+  returns: []
+  notes:
+  - "the desired VxD and service number are identified by the data\nimmediately following the INT 20 instruction, as in:\n\
+    INT\t20h\nDW\tservice number\nDW\tVxD identifier"
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: 2F
+    params:
+      AX: 1684h
+    name: DEVICE API
+  - type: interrupt
+    interrupt: '30'
+    params: {}
+    name: Windows
+  - type: table
+    id: '01265'
+  - type: table
+    id: '01340'
+  index: []
+  tables:
+  - 01282
+  table_refs:
+  - '01265'
+  - '01340'
+- entry_type: INT
+  id: W-20VX0017
+  category: W
+  title: Microsoft Windows - SHELL - VxD SERVICES
+  source: INTERRUP.F:932
+  interrupt: '20'
+  flags:
+  - P
+  function: VX0017
+  input_registers: []
+  returns: []
+  notes:
+  - "the desired VxD and service number are identified by the data\nimmediately following the INT 20 instruction, as in:\n\
+    INT\t20h\nDW\tservice number\nDW\tVxD identifier"
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: 2F
+    params:
+      AX: 1684h
+    name: DEVICE API
+  - type: interrupt
+    interrupt: '30'
+    params: {}
+    name: Windows
+  - type: table
+    id: '01265'
+  - type: table
+    id: '01340'
+  index: []
+  tables:
+  - 01283
+  table_refs:
+  - '01265'
+  - '01340'
+- entry_type: INT
+  id: W-20VX0018
+  category: W
+  title: Microsoft Windows - VMPoll - VxD SERVICES
+  source: INTERRUP.F:973
+  interrupt: '20'
+  flags:
+  - P
+  function: VX0018
+  input_registers: []
+  returns: []
+  notes:
+  - "the desired VxD and service number are identified by the data\nimmediately following the INT 20 instruction, as in:\n\
+    INT\t20h\nDW\tservice number\nDW\tVxD identifier"
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: 2F
+    params:
+      AX: 1684h
+    name: DEVICE API
+  - type: interrupt
+    interrupt: '30'
+    params: {}
+    name: Windows
+  - type: table
+    id: '01265'
+  - type: table
+    id: '01340'
+  index: []
+  tables:
+  - 01284
+  table_refs:
+  - '01265'
+  - '01340'
+- entry_type: INT
+  id: W-20VX001A
+  category: W
+  title: Microsoft Windows - DOSNET - VxD SERVICES
+  source: INTERRUP.F:990
+  interrupt: '20'
+  flags:
+  - P
+  function: VX001A
+  input_registers: []
+  returns: []
+  notes:
+  - "the desired VxD and service number are identified by the data\nimmediately following the INT 20 instruction, as in:\n\
+    INT\t20h\nDW\tservice number\nDW\tVxD identifier"
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: 2F
+    params:
+      AX: 1684h
+    name: DEVICE API
+  - type: interrupt
+    interrupt: '30'
+    params: {}
+    name: Windows
+  - type: table
+    id: '01265'
+  - type: table
+    id: '01340'
+  index: []
+  tables:
+  - 01285
+  table_refs:
+  - '01265'
+  - '01340'
+- entry_type: INT
+  id: W-20VX001B
+  category: W
+  title: Microsoft Windows - VFD - VxD SERVICES
+  source: INTERRUP.F:1006
+  interrupt: '20'
+  flags:
+  - P
+  function: VX001B
+  input_registers: []
+  returns: []
+  notes:
+  - "the desired VxD and service number are identified by the data\nimmediately following the INT 20 instruction, as in:\n\
+    INT\t20h\nDW\tservice number\nDW\tVxD identifier"
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: 2F
+    params:
+      AX: 1684h
+    name: DEVICE API
+  - type: interrupt
+    interrupt: '30'
+    params: {}
+    name: Windows
+  - type: table
+    id: 01286
+  - type: table
+    id: '01340'
+  index: []
+  tables:
+  - 01286
+  table_refs:
+  - 01286
+  - '01340'
+- entry_type: INT
+  id: W-20VX001C
+  category: W
+  title: Microsoft Windows - LoadHi - VxD SERVICES
+  source: INTERRUP.F:1020
+  interrupt: '20'
+  flags:
+  - P
+  function: VX001C
+  input_registers: []
+  returns: []
+  notes:
+  - "the desired VxD and service number are identified by the data\nimmediately following the INT 20 instruction, as in:\n\
+    INT\t20h\nDW\tservice number\nDW\tVxD identifier"
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: 2F
+    params:
+      AX: 1684h
+    name: DEVICE API
+  - type: interrupt
+    interrupt: '30'
+    params: {}
+    name: Windows
+  - type: table
+    id: '01265'
+  - type: table
+    id: '01340'
+  index: []
+  tables:
+  - 01287
+  table_refs:
+  - '01265'
+  - '01340'
+- entry_type: INT
+  id: W-20VX0020
+  category: W
+  title: Microsoft Windows - Int13 - VxD SERVICES
+  source: INTERRUP.F:1037
+  interrupt: '20'
+  flags:
+  - P
+  function: VX0020
+  input_registers: []
+  returns: []
+  notes:
+  - "the desired VxD and service number are identified by the data\nimmediately following the INT 20 instruction, as in:\n\
+    INT\t20h\nDW\tservice number\nDW\tVxD identifier"
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: 2F
+    params:
+      AX: 1684h
+    name: DEVICE API
+  - type: interrupt
+    interrupt: '30'
+    params: {}
+    name: Windows
+  - type: table
+    id: '01265'
+  - type: table
+    id: '01340'
+  index: []
+  tables:
+  - 01288
+  table_refs:
+  - '01265'
+  - '01340'
+- entry_type: INT
+  id: W-20VX0021
+  category: W
+  title: Microsoft Windows - PAGEFILE - VxD SERVICES
+  source: INTERRUP.F:1055
+  interrupt: '20'
+  flags:
+  - P
+  function: VX0021
+  input_registers: []
+  returns: []
+  notes:
+  - "the desired VxD and service number are identified by the data\nimmediately following the INT 20 instruction, as in:\n\
+    INT\t20h\nDW\tservice number\nDW\tVxD identifier"
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: 2F
+    params:
+      AX: 1684h
+    name: DEVICE API
+  - type: interrupt
+    interrupt: '30'
+    params: {}
+    name: Windows
+  - type: table
+    id: '01265'
+  - type: table
+    id: '01340'
+  index: []
+  tables:
+  - 01289
+  table_refs:
+  - '01265'
+  - '01340'
+- entry_type: INT
+  id: W-20VX0026
+  category: W
+  title: Microsoft Windows - VPOWERD - VxD SERVICES
+  source: INTERRUP.F:1078
+  interrupt: '20'
+  flags:
+  - P
+  function: VX0026
+  input_registers: []
+  returns: []
+  notes:
+  - "the desired VxD and service number are identified by the data\nimmediately following the INT 20 instruction, as in:\n\
+    INT\t20h\nDW\tservice number\nDW\tVxD identifier"
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: 2F
+    params:
+      AX: 1684h
+    name: DEVICE API
+  - type: interrupt
+    interrupt: '30'
+    params: {}
+    name: Windows
+  - type: table
+    id: '01265'
+  - type: table
+    id: '01340'
+  index: []
+  tables:
+  - 01290
+  table_refs:
+  - '01265'
+  - '01340'
+- entry_type: INT
+  id: W-20VX0027
+  category: W
+  title: Microsoft Windows - VXDLDR - VxD SERVICES
+  source: INTERRUP.F:1125
+  interrupt: '20'
+  flags:
+  - P
+  function: VX0027
+  input_registers: []
+  returns: []
+  notes:
+  - "the desired VxD and service number are identified by the data\nimmediately following the INT 20 instruction, as in:\n\
+    INT\t20h\nDW\tservice number\nDW\tVxD identifier"
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: 2F
+    params:
+      AX: 1684h
+    name: DEVICE API
+  - type: interrupt
+    interrupt: '30'
+    params: {}
+    name: Windows
+  - type: table
+    id: '01265'
+  - type: table
+    id: '01340'
+  index: []
+  tables:
+  - 01291
+  table_refs:
+  - '01265'
+  - '01340'
+- entry_type: INT
+  id: W-20VX0028
+  category: W
+  title: Microsoft Windows - NDIS - VxD SERVICES
+  source: INTERRUP.F:1156
+  interrupt: '20'
+  flags:
+  - P
+  function: VX0028
+  input_registers: []
+  returns: []
+  notes:
+  - "the desired VxD and service number are identified by the data\nimmediately following the INT 20 instruction, as in:\n\
+    INT\t20h\nDW\tservice number\nDW\tVxD identifier"
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: 2F
+    params:
+      AX: 1684h
+    name: DEVICE API
+  - type: interrupt
+    interrupt: '30'
+    params: {}
+    name: Windows
+  - type: table
+    id: '01265'
+  - type: table
+    id: '01340'
+  index: []
+  tables:
+  - 01292
+  table_refs:
+  - '01265'
+  - '01340'
+- entry_type: INT
+  id: W-20VX002A
+  category: W
+  title: Microsoft Windows - VWIN32 - VxD SERVICES
+  source: INTERRUP.F:1245
+  interrupt: '20'
+  flags:
+  - P
+  function: VX002A
+  input_registers: []
+  returns: []
+  notes:
+  - "the desired VxD and service number are identified by the data\nimmediately following the INT 20 instruction, as in:\n\
+    INT\t20h\nDW\tservice number\nDW\tVxD identifier"
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: 2F
+    params:
+      AX: 1684h
+    name: DEVICE API
+  - type: interrupt
+    interrupt: '30'
+    params: {}
+    name: Windows
+  - type: table
+    id: '01265'
+  - type: table
+    id: '01340'
+  index: []
+  tables:
+  - 01293
+  table_refs:
+  - '01265'
+  - '01340'
+- entry_type: INT
+  id: W-20VX002B
+  category: W
+  title: Microsoft Windows - VCOMM - VxD SERVICES
+  source: INTERRUP.F:1287
+  interrupt: '20'
+  flags:
+  - P
+  function: VX002B
+  input_registers: []
+  returns: []
+  notes:
+  - "the desired VxD and service number are identified by the data\nimmediately following the INT 20 instruction, as in:\n\
+    INT\t20h\nDW\tservice number\nDW\tVxD identifier"
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: 2F
+    params:
+      AX: 1684h
+    name: DEVICE API
+  - type: interrupt
+    interrupt: '30'
+    params: {}
+    name: Windows
+  - type: table
+    id: '01265'
+  - type: table
+    id: '01340'
+  index: []
+  tables:
+  - 01294
+  table_refs:
+  - '01265'
+  - '01340'
+- entry_type: INT
+  id: W-20VX002C
+  category: W
+  title: Microsoft Windows - SPOOLER - VxD SERVICES
+  source: INTERRUP.F:1335
+  interrupt: '20'
+  flags:
+  - P
+  function: VX002C
+  input_registers: []
+  returns: []
+  notes:
+  - "the desired VxD and service number are identified by the data\nimmediately following the INT 20 instruction, as in:\n\
+    INT\t20h\nDW\tservice number\nDW\tVxD identifier"
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: 2F
+    params:
+      AX: 1684h
+    name: DEVICE API
+  - type: interrupt
+    interrupt: '30'
+    params: {}
+    name: Windows
+  - type: table
+    id: '01265'
+  - type: table
+    id: '01340'
+  index: []
+  tables:
+  - 01295
+  table_refs:
+  - '01265'
+  - '01340'
+- entry_type: INT
+  id: W-20VX0032
+  category: W
+  title: Microsoft Windows - VSERVER - VxD SERVICES
+  source: INTERRUP.F:1351
+  interrupt: '20'
+  flags:
+  - P
+  function: VX0032
+  input_registers: []
+  returns: []
+  notes:
+  - "the desired VxD and service number are identified by the data\nimmediately following the INT 20 instruction, as in:\n\
+    INT\t20h\nDW\tservice number\nDW\tVxD identifier"
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: 2F
+    params:
+      AX: 1684h
+    name: DEVICE API
+  - type: interrupt
+    interrupt: '30'
+    params: {}
+    name: Windows
+  - type: table
+    id: '01265'
+  - type: table
+    id: '01340'
+  index: []
+  tables:
+  - 01296
+  table_refs:
+  - '01265'
+  - '01340'
+- entry_type: INT
+  id: W-20VX0033
+  category: W
+  title: Microsoft Windows - CONFIGMG - VxD SERVICES
+  source: INTERRUP.F:1377
+  interrupt: '20'
+  flags:
+  - P
+  function: VX0033
+  input_registers: []
+  returns: []
+  notes:
+  - "the desired VxD and service number are identified by the data\nimmediately following the INT 20 instruction, as in:\n\
+    INT\t20h\nDW\tservice number\nDW\tVxD identifier"
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: 2F
+    params:
+      AX: 1684h
+    name: DEVICE API
+  - type: interrupt
+    interrupt: '30'
+    params: {}
+    name: Windows
+  - type: table
+    id: '01265'
+  - type: table
+    id: '01340'
+  index: []
+  tables:
+  - 01297
+  table_refs:
+  - '01265'
+  - '01340'
+- entry_type: INT
+  id: W-20VX0034
+  category: W
+  title: Microsoft Windows - DWCFGMG.SYS - VxD SERVICES
+  source: INTERRUP.F:1483
+  interrupt: '20'
+  flags:
+  - P
+  function: VX0034
+  input_registers: []
+  returns: []
+  notes:
+  - "the desired VxD and service number are identified by the data\nimmediately following the INT 20 instruction, as in:\n\
+    INT\t20h\nDW\tservice number\nDW\tVxD identifier"
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: 2F
+    params:
+      AX: 1684h
+    name: DEVICE API
+  - type: interrupt
+    interrupt: '30'
+    params: {}
+    name: Windows
+  - type: table
+    id: '01265'
+  - type: table
+    id: '01340'
+  index: []
+  tables:
+  - 01298
+  table_refs:
+  - '01265'
+  - '01340'
+- entry_type: INT
+  id: W-20VX0036
+  category: W
+  title: Microsoft Windows - VFBACKUP - VxD SERVICES
+  source: INTERRUP.F:1518
+  interrupt: '20'
+  flags:
+  - P
+  function: VX0036
+  input_registers: []
+  returns: []
+  notes:
+  - "the desired VxD and service number are identified by the data\nimmediately following the INT 20 instruction, as in:\n\
+    INT\t20h\nDW\tservice number\nDW\tVxD identifier"
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: 2F
+    params:
+      AX: 1684h
+    name: DEVICE API
+  - type: interrupt
+    interrupt: '30'
+    params: {}
+    name: Windows
+  - type: table
+    id: '01265'
+  - type: table
+    id: '01340'
+  index: []
+  tables:
+  - 01299
+  table_refs:
+  - '01265'
+  - '01340'
+- entry_type: INT
+  id: W-20VX0037
+  category: W
+  title: Microsoft Windows - VMINI / ENABLE - VxD SERVICES
+  source: INTERRUP.F:1539
+  interrupt: '20'
+  flags:
+  - P
+  function: VX0037
+  input_registers: []
+  returns: []
+  notes:
+  - "the desired VxD and service number are identified by the data\nimmediately following the INT 20 instruction, as in:\n\
+    INT\t20h\nDW\tservice number\nDW\tVxD identifier"
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: 2F
+    params:
+      AX: 1684h
+    name: DEVICE API
+  - type: interrupt
+    interrupt: '30'
+    params: {}
+    name: Windows
+  - type: table
+    id: '01265'
+  - type: table
+    id: '01340'
+  index: []
+  tables:
+  - '01300'
+  - '01301'
+  table_refs:
+  - '01265'
+  - '01340'
+- entry_type: INT
+  id: W-20VX0038
+  category: W
+  title: Microsoft Windows - VCOND - VxD SERVICES
+  source: INTERRUP.F:1590
+  interrupt: '20'
+  flags:
+  - P
+  function: VX0038
+  input_registers: []
+  returns: []
+  notes:
+  - "the desired VxD and service number are identified by the data\nimmediately following the INT 20 instruction, as in:\n\
+    INT\t20h\nDW\tservice number\nDW\tVxD identifier"
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: 2F
+    params:
+      AX: 1684h
+    name: DEVICE API
+  - type: interrupt
+    interrupt: '30'
+    params: {}
+    name: Windows
+  - type: table
+    id: '01265'
+  - type: table
+    id: '01340'
+  index: []
+  tables:
+  - '01302'
+  - '01303'
+  table_refs:
+  - '01265'
+  - '01340'
+- entry_type: INT
+  id: W-20VX003D
+  category: W
+  title: Microsoft Windows - BIOS - VxD SERVICES
+  source: INTERRUP.F:1615
+  interrupt: '20'
+  flags:
+  - P
+  function: VX003D
+  input_registers: []
+  returns: []
+  notes:
+  - "the desired VxD and service number are identified by the data\nimmediately following the INT 20 instruction, as in:\n\
+    INT\t20h\nDW\tservice number\nDW\tVxD identifier"
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: 2F
+    params:
+      AX: 1684h
+    name: DEVICE API
+  - type: interrupt
+    interrupt: '30'
+    params: {}
+    name: Windows
+  - type: table
+    id: '01265'
+  - type: table
+    id: '01340'
+  index: []
+  tables:
+  - '01304'
+  table_refs:
+  - '01265'
+  - '01340'
+- entry_type: INT
+  id: W-20VX003E
+  category: W
+  title: Microsoft Windows - WSOCK - VxD SERVICES
+  source: INTERRUP.F:1632
+  interrupt: '20'
+  flags:
+  - P
+  function: VX003E
+  input_registers: []
+  returns: []
+  notes:
+  - "the desired VxD and service number are identified by the data\nimmediately following the INT 20 instruction, as in:\n\
+    INT\t20h\nDW\tservice number\nDW\tVxD identifier"
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: 2F
+    params:
+      AX: 1684h
+    name: DEVICE API
+  - type: interrupt
+    interrupt: '30'
+    params: {}
+    name: Windows
+  - type: table
+    id: '01265'
+  - type: table
+    id: '01340'
+  index: []
+  tables:
+  - '01305'
+  table_refs:
+  - '01265'
+  - '01340'
+- entry_type: INT
+  id: W-20VX0040
+  category: W
+  title: Microsoft Windows - IFSMgr - VxD SERVICES
+  source: INTERRUP.F:1661
+  interrupt: '20'
+  flags:
+  - P
+  function: VX0040
+  input_registers: []
+  returns: []
+  notes:
+  - "the desired VxD and service number are identified by the data\nimmediately following the INT 20 instruction, as in:\n\
+    INT\t20h\nDW\tservice number\nDW\tVxD identifier"
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: 2F
+    params:
+      AX: 1684h
+    name: DEVICE API
+  - type: interrupt
+    interrupt: '30'
+    params: {}
+    name: Windows
+  - type: table
+    id: '01265'
+  - type: table
+    id: '01340'
+  index: []
+  tables:
+  - '01306'
+  table_refs:
+  - '01265'
+  - '01340'
+- entry_type: INT
+  id: W-20VX0041
+  category: W
+  title: Microsoft Windows - VCDFSD - VxD SERVICES
+  source: INTERRUP.F:1791
+  interrupt: '20'
+  flags:
+  - P
+  function: VX0041
+  input_registers: []
+  returns: []
+  notes:
+  - "the desired VxD and service number are identified by the data\nimmediately following the INT 20 instruction, as in:\n\
+    INT\t20h\nDW\tservice number\nDW\tVxD identifier"
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: 2F
+    params:
+      AX: 1684h
+    name: DEVICE API
+  - type: interrupt
+    interrupt: '30'
+    params: {}
+    name: Windows
+  - type: table
+    id: '01265'
+  - type: table
+    id: '01340'
+  index: []
+  tables:
+  - '01307'
+  table_refs:
+  - '01265'
+  - '01340'
+- entry_type: INT
+  id: W-20VX0048
+  category: W
+  title: Microsoft Windows - PERF - VxD SERVICES
+  source: INTERRUP.F:1808
+  interrupt: '20'
+  flags:
+  - P
+  function: VX0048
+  input_registers: []
+  returns: []
+  notes:
+  - "the desired VxD and service number are identified by the data\nimmediately following the INT 20 instruction, as in:\n\
+    INT\t20h\nDW\tservice number\nDW\tVxD identifier"
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: 2F
+    params:
+      AX: 1684h
+    name: DEVICE API
+  - type: interrupt
+    interrupt: '30'
+    params: {}
+    name: Windows
+  - type: table
+    id: '01265'
+  - type: table
+    id: '01340'
+  index: []
+  tables:
+  - 01308
+  table_refs:
+  - '01265'
+  - '01340'
+- entry_type: INT
+  id: W-20VX004A
+  category: W
+  title: Microsoft Windows - MTRR - VxD SERVICES
+  source: INTERRUP.F:1832
+  interrupt: '20'
+  flags:
+  - P
+  function: VX004A
+  input_registers: []
+  returns: []
+  notes:
+  - "the desired VxD and service number are identified by the data\nimmediately following the INT 20 instruction, as in:\n\
+    INT\t20h\nDW\tservice number\nDW\tVxD identifier"
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: 2F
+    params:
+      AX: 1684h
+    name: DEVICE API
+  - type: interrupt
+    interrupt: '30'
+    params: {}
+    name: Windows
+  - type: table
+    id: '01265'
+  - type: table
+    id: '01340'
+  index: []
+  tables:
+  - 01309
+  table_refs:
+  - '01265'
+  - '01340'
+- entry_type: INT
+  id: W-20VX004B
+  category: W
+  title: Microsoft Windows - NTKERN - VxD SERVICES
+  source: INTERRUP.F:1847
+  interrupt: '20'
+  flags:
+  - P
+  function: VX004B
+  input_registers: []
+  returns: []
+  notes:
+  - "the desired VxD and service number are identified by the data\nimmediately following the INT 20 instruction, as in:\n\
+    INT\t20h\nDW\tservice number\nDW\tVxD identifier"
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: 2F
+    params:
+      AX: 1684h
+    name: DEVICE API
+  - type: interrupt
+    interrupt: '30'
+    params: {}
+    name: Windows
+  - type: table
+    id: '01265'
+  - type: table
+    id: '01340'
+  index: []
+  tables:
+  - '01310'
+  table_refs:
+  - '01265'
+  - '01340'
+- entry_type: INT
+  id: W-20VX011F
+  category: W
+  title: Microsoft Windows - VFLATD - VxD SERVICES
+  source: INTERRUP.F:1863
+  interrupt: '20'
+  flags:
+  - P
+  function: VX011F
+  input_registers: []
+  returns: []
+  notes:
+  - "the desired VxD and service number are identified by the data\nimmediately following the INT 20 instruction, as in:\n\
+    INT\t20h\nDW\tservice number\nDW\tVxD identifier"
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: 2F
+    params:
+      AX: 1684h
+    name: DEVICE API
+  - type: interrupt
+    interrupt: '30'
+    params: {}
+    name: Windows
+  - type: table
+    id: '01265'
+  - type: table
+    id: '01340'
+  index: []
+  tables:
+  - '01311'
+  table_refs:
+  - '01265'
+  - '01340'
+- entry_type: INT
+  id: W-20VX0449
+  category: W
+  title: Microsoft Windows - vjoyd - VxD SERVICES
+  source: INTERRUP.F:1878
+  interrupt: '20'
+  flags:
+  - P
+  function: VX0449
+  input_registers: []
+  returns: []
+  notes:
+  - "the desired VxD and service number are identified by the data\nimmediately following the INT 20 instruction, as in:\n\
+    INT\t20h\nDW\tservice number\nDW\tVxD identifier"
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: 2F
+    params:
+      AX: 1684h
+    name: DEVICE API
+  - type: interrupt
+    interrupt: '30'
+    params: {}
+    name: Windows
+  - type: table
+    id: '01265'
+  - type: table
+    id: '01340'
+  index: []
+  tables:
+  - '01312'
+  table_refs:
+  - '01265'
+  - '01340'
+- entry_type: INT
+  id: W-20VX044A
+  category: W
+  title: Microsoft Windows - mmdevldr - VxD SERVICES
+  source: INTERRUP.F:1893
+  interrupt: '20'
+  flags:
+  - P
+  function: VX044A
+  input_registers: []
+  returns: []
+  notes:
+  - "the desired VxD and service number are identified by the data\nimmediately following the INT 20 instruction, as in:\n\
+    INT\t20h\nDW\tservice number\nDW\tVxD identifier"
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: 2F
+    params:
+      AX: 1684h
+    name: DEVICE API
+  - type: interrupt
+    interrupt: '30'
+    params: {}
+    name: Windows
+  - type: table
+    id: '01265'
+  - type: table
+    id: '01340'
+  index: []
+  tables:
+  - '01313'
+  table_refs:
+  - '01265'
+  - '01340'
+- entry_type: INT
+  id: W-20VX0480
+  category: W
+  title: Microsoft Windows - VNetSup - VxD SERVICES
+  source: INTERRUP.F:1912
+  interrupt: '20'
+  flags:
+  - P
+  function: VX0480
+  input_registers: []
+  returns: []
+  notes:
+  - "the desired VxD and service number are identified by the data\nimmediately following the INT 20 instruction, as in:\n\
+    INT\t20h\nDW\tservice number\nDW\tVxD identifier"
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: 2F
+    params:
+      AX: 1684h
+    name: DEVICE API
+  - type: interrupt
+    interrupt: '30'
+    params: {}
+    name: Windows
+  - type: table
+    id: '01265'
+  - type: table
+    id: '01340'
+  index: []
+  tables:
+  - '01314'
+  table_refs:
+  - '01265'
+  - '01340'
+- entry_type: INT
+  id: W-20VX0481
+  category: W
+  title: Microsoft Windows - VREDIR - VxD SERVICES
+  source: INTERRUP.F:1932
+  interrupt: '20'
+  flags:
+  - P
+  function: VX0481
+  input_registers: []
+  returns: []
+  notes:
+  - "the desired VxD and service number are identified by the data\nimmediately following the INT 20 instruction, as in:\n\
+    INT\t20h\nDW\tservice number\nDW\tVxD identifier"
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: 2F
+    params:
+      AX: 1684h
+    name: DEVICE API
+  - type: interrupt
+    interrupt: '30'
+    params: {}
+    name: Windows
+  - type: table
+    id: '01265'
+  - type: table
+    id: '01340'
+  index: []
+  tables:
+  - '01315'
+  table_refs:
+  - '01265'
+  - '01340'
+- entry_type: INT
+  id: W-20VX0483
+  category: W
+  title: Microsoft Windows - VSHARE - VxD SERVICES
+  source: INTERRUP.F:1951
+  interrupt: '20'
+  flags:
+  - P
+  function: VX0483
+  input_registers: []
+  returns: []
+  notes:
+  - "the desired VxD and service number are identified by the data\nimmediately following the INT 20 instruction, as in:\n\
+    INT\t20h\nDW\tservice number\nDW\tVxD identifier"
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: 2F
+    params:
+      AX: 1684h
+    name: DEVICE API
+  - type: interrupt
+    interrupt: '30'
+    params: {}
+    name: Windows
+  - type: table
+    id: '01265'
+  - type: table
+    id: '01340'
+  index: []
+  tables:
+  - '01316'
+  table_refs:
+  - '01265'
+  - '01340'
+- entry_type: INT
+  id: W-20VX0487
+  category: W
+  title: Microsoft Windows - NWLINK - VxD SERVICES
+  source: INTERRUP.F:1965
+  interrupt: '20'
+  flags:
+  - P
+  function: VX0487
+  input_registers: []
+  returns: []
+  notes:
+  - "the desired VxD and service number are identified by the data\nimmediately following the INT 20 instruction, as in:\n\
+    INT\t20h\nDW\tservice number\nDW\tVxD identifier"
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: 2F
+    params:
+      AX: 1684h
+    name: DEVICE API
+  - type: interrupt
+    interrupt: '30'
+    params: {}
+    name: Windows
+  - type: table
+    id: '01265'
+  - type: table
+    id: '01340'
+  index: []
+  tables:
+  - '01317'
+  table_refs:
+  - '01265'
+  - '01340'
+- entry_type: INT
+  id: W-20VX0488
+  category: W
+  title: Microsoft Windows - VTDI - VxD SERVICES
+  source: INTERRUP.F:1981
+  interrupt: '20'
+  flags:
+  - P
+  function: VX0488
+  input_registers: []
+  returns: []
+  notes:
+  - "the desired VxD and service number are identified by the data\nimmediately following the INT 20 instruction, as in:\n\
+    INT\t20h\nDW\tservice number\nDW\tVxD identifier"
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: 2F
+    params:
+      AX: 1684h
+    name: DEVICE API
+  - type: interrupt
+    interrupt: '30'
+    params: {}
+    name: Windows
+  - type: table
+    id: '01265'
+  - type: table
+    id: '01340'
+  index: []
+  tables:
+  - 01318
+  table_refs:
+  - '01265'
+  - '01340'
+- entry_type: INT
+  id: W-20VX0489
+  category: W
+  title: Microsoft Windows - VIP - VxD SERVICES
+  source: INTERRUP.F:1999
+  interrupt: '20'
+  flags:
+  - P
+  function: VX0489
+  input_registers: []
+  returns: []
+  notes:
+  - "the desired VxD and service number are identified by the data\nimmediately following the INT 20 instruction, as in:\n\
+    INT\t20h\nDW\tservice number\nDW\tVxD identifier"
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: 2F
+    params:
+      AX: 1684h
+    name: DEVICE API
+  - type: interrupt
+    interrupt: '30'
+    params: {}
+    name: Windows
+  - type: table
+    id: '01265'
+  - type: table
+    id: '01340'
+  index: []
+  tables:
+  - 01319
+  table_refs:
+  - '01265'
+  - '01340'
+- entry_type: INT
+  id: W-20VX048A
+  category: W
+  title: Microsoft Windows - MSTCP - VxD SERVICES
+  source: INTERRUP.F:2021
+  interrupt: '20'
+  flags:
+  - P
+  function: VX048A
+  input_registers: []
+  returns: []
+  notes:
+  - "the desired VxD and service number are identified by the data\nimmediately following the INT 20 instruction, as in:\n\
+    INT\t20h\nDW\tservice number\nDW\tVxD identifier"
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: 2F
+    params:
+      AX: 1684h
+    name: DEVICE API
+  - type: interrupt
+    interrupt: '30'
+    params: {}
+    name: Windows
+  - type: table
+    id: '01265'
+  - type: table
+    id: '01340'
+  index: []
+  tables:
+  - '01320'
+  table_refs:
+  - '01265'
+  - '01340'
+- entry_type: INT
+  id: W-20VX048B
+  category: W
+  title: Microsoft Windows - VCACHE - VxD SERVICES
+  source: INTERRUP.F:2035
+  interrupt: '20'
+  flags:
+  - P
+  function: VX048B
+  input_registers: []
+  returns: []
+  notes:
+  - "the desired VxD and service number are identified by the data\nimmediately following the INT 20 instruction, as in:\n\
+    INT\t20h\nDW\tservice number\nDW\tVxD identifier"
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: 2F
+    params:
+      AX: 1684h
+    name: DEVICE API
+  - type: interrupt
+    interrupt: '30'
+    params: {}
+    name: Windows
+  - type: table
+    id: '01265'
+  - type: table
+    id: '01340'
+  index: []
+  tables:
+  - '01321'
+  table_refs:
+  - '01265'
+  - '01340'
+- entry_type: INT
+  id: W-20VX048E
+  category: W
+  title: Microsoft Windows - NWREDIR - VxD SERVICES
+  source: INTERRUP.F:2073
+  interrupt: '20'
+  flags:
+  - P
+  function: VX048E
+  input_registers: []
+  returns: []
+  notes:
+  - "the desired VxD and service number are identified by the data\nimmediately following the INT 20 instruction, as in:\n\
+    INT\t20h\nDW\tservice number\nDW\tVxD identifier"
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: 2F
+    params:
+      AX: 1684h
+    name: DEVICE API
+  - type: interrupt
+    interrupt: '30'
+    params: {}
+    name: Windows
+  - type: table
+    id: '01265'
+  - type: table
+    id: '01340'
+  index: []
+  tables:
+  - '01322'
+  table_refs:
+  - '01265'
+  - '01340'
+- entry_type: INT
+  id: W-20VX0491
+  category: W
+  title: Microsoft Windows - FILESEC - VxD SERVICES
+  source: INTERRUP.F:2088
+  interrupt: '20'
+  flags:
+  - P
+  function: VX0491
+  input_registers: []
+  returns: []
+  notes:
+  - "the desired VxD and service number are identified by the data\nimmediately following the INT 20 instruction, as in:\n\
+    INT\t20h\nDW\tservice number\nDW\tVxD identifier"
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: 2F
+    params:
+      AX: 1684h
+    name: DEVICE API
+  - type: interrupt
+    interrupt: '30'
+    params: {}
+    name: Windows
+  - type: table
+    id: '01265'
+  - type: table
+    id: '01340'
+  index: []
+  tables:
+  - '01323'
+  table_refs:
+  - '01265'
+  - '01340'
+- entry_type: INT
+  id: W-20VX0492
+  category: W
+  title: Microsoft Windows - NWSERVER - VxD SERVICES
+  source: INTERRUP.F:2104
+  interrupt: '20'
+  flags:
+  - P
+  function: VX0492
+  input_registers: []
+  returns: []
+  notes:
+  - "the desired VxD and service number are identified by the data\nimmediately following the INT 20 instruction, as in:\n\
+    INT\t20h\nDW\tservice number\nDW\tVxD identifier"
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: 2F
+    params:
+      AX: 1684h
+    name: DEVICE API
+  - type: interrupt
+    interrupt: '30'
+    params: {}
+    name: Windows
+  - type: table
+    id: '01265'
+  - type: table
+    id: '01340'
+  index: []
+  tables:
+  - '01324'
+  table_refs:
+  - '01265'
+  - '01340'
+- entry_type: INT
+  id: W-20VX0493
+  category: W
+  title: Microsoft Windows - MSSP / NWSP - VxD SERVICES
+  source: INTERRUP.F:2121
+  interrupt: '20'
+  flags:
+  - P
+  function: VX0493
+  input_registers: []
+  returns: []
+  notes:
+  - "the desired VxD and service number are identified by the data\nimmediately following the INT 20 instruction, as in:\n\
+    INT\t20h\nDW\tservice number\nDW\tVxD identifier"
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: 2F
+    params:
+      AX: 1684h
+    name: DEVICE API
+  - type: interrupt
+    interrupt: '30'
+    params: {}
+    name: Windows
+  - type: table
+    id: '01265'
+  - type: table
+    id: '01340'
+  index: []
+  tables:
+  - '01325'
+  table_refs:
+  - '01265'
+  - '01340'
+- entry_type: INT
+  id: W-20VX0494
+  category: W
+  title: Microsoft Windows - NSCL - VxD SERVICES
+  source: INTERRUP.F:2137
+  interrupt: '20'
+  flags:
+  - P
+  function: VX0494
+  input_registers: []
+  returns: []
+  notes:
+  - "the desired VxD and service number are identified by the data\nimmediately following the INT 20 instruction, as in:\n\
+    INT\t20h\nDW\tservice number\nDW\tVxD identifier"
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: 2F
+    params:
+      AX: 1684h
+    name: DEVICE API
+  - type: interrupt
+    interrupt: '30'
+    params: {}
+    name: Windows
+  - type: table
+    id: '01265'
+  - type: table
+    id: '01340'
+  index: []
+  tables:
+  - '01326'
+  table_refs:
+  - '01265'
+  - '01340'
+- entry_type: INT
+  id: W-20VX0495
+  category: W
+  title: Microsoft Windows - AFVXD - VxD SERVICES
+  source: INTERRUP.F:2153
+  interrupt: '20'
+  flags:
+  - P
+  function: VX0495
+  input_registers: []
+  returns: []
+  notes:
+  - "the desired VxD and service number are identified by the data\nimmediately following the INT 20 instruction, as in:\n\
+    INT\t20h\nDW\tservice number\nDW\tVxD identifier"
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: 2F
+    params:
+      AX: 1684h
+    name: DEVICE API
+  - type: interrupt
+    interrupt: '30'
+    params: {}
+    name: Windows
+  - type: table
+    id: '01265'
+  - type: table
+    id: '01340'
+  index: []
+  tables:
+  - '01327'
+  table_refs:
+  - '01265'
+  - '01340'
+- entry_type: INT
+  id: W-20VX0496
+  category: W
+  title: Microsoft Windows - NDIS2SUP - VxD SERVICES
+  source: INTERRUP.F:2177
+  interrupt: '20'
+  flags:
+  - P
+  function: VX0496
+  input_registers: []
+  returns: []
+  notes:
+  - "the desired VxD and service number are identified by the data\nimmediately following the INT 20 instruction, as in:\n\
+    INT\t20h\nDW\tservice number\nDW\tVxD identifier (see #02642)"
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: 2F
+    params:
+      AX: 1684h
+    name: DEVICE API
+  - type: interrupt
+    interrupt: '30'
+    params: {}
+    name: Windows
+  - type: table
+    id: '01265'
+  - type: table
+    id: '01340'
+  index: []
+  tables:
+  - 01328
+  table_refs:
+  - '01265'
+  - '01340'
+  - '02642'
+- entry_type: INT
+  id: W-20VX0498
+  category: W
+  title: Microsoft Windows - Splitter - VxD SERVICES
+  source: INTERRUP.F:2192
+  interrupt: '20'
+  flags:
+  - P
+  function: VX0498
+  input_registers: []
+  returns: []
+  notes:
+  - "the desired VxD and service number are identified by the data\nimmediately following the INT 20 instruction, as in:\n\
+    INT\t20h\nDW\tservice number\nDW\tVxD identifier (see #02642)"
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: 2F
+    params:
+      AX: 1684h
+    name: DEVICE API
+  - type: interrupt
+    interrupt: '30'
+    params: {}
+    name: Windows
+  - type: table
+    id: '01265'
+  - type: table
+    id: '01340'
+  index: []
+  tables:
+  - 01329
+  table_refs:
+  - '01265'
+  - '01340'
+  - '02642'
+- entry_type: INT
+  id: W-20VX0499
+  category: W
+  title: Microsoft Windows - PPPMAC - VxD SERVICES
+  source: INTERRUP.F:2215
+  interrupt: '20'
+  flags:
+  - P
+  function: VX0499
+  input_registers: []
+  returns: []
+  notes:
+  - "the desired VxD and service number are identified by the data\nimmediately following the INT 20 instruction, as in:\n\
+    INT\t20h\nDW\tservice number\nDW\tVxD identifier (see #02642)"
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: 2F
+    params:
+      AX: 1684h
+    name: DEVICE API
+  - type: interrupt
+    interrupt: '30'
+    params: {}
+    name: Windows
+  - type: table
+    id: '01265'
+  - type: table
+    id: '01340'
+  index: []
+  tables:
+  - '01330'
+  table_refs:
+  - '01265'
+  - '01340'
+  - '02642'
+- entry_type: INT
+  id: W-20VX049A
+  category: W
+  title: Microsoft Windows - VDHCP - VxD SERVICES
+  source: INTERRUP.F:2230
+  interrupt: '20'
+  flags:
+  - P
+  function: VX049A
+  input_registers: []
+  returns: []
+  notes:
+  - "the desired VxD and service number are identified by the data\nimmediately following the INT 20 instruction, as in:\n\
+    INT\t20h\nDW\tservice number\nDW\tVxD identifier (see #02642)"
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: 2F
+    params:
+      AX: 1684h
+    name: DEVICE API
+  - type: interrupt
+    interrupt: '30'
+    params: {}
+    name: Windows
+  - type: table
+    id: '01265'
+  - type: table
+    id: '01340'
+  index: []
+  tables:
+  - '01331'
+  table_refs:
+  - '01265'
+  - '01340'
+  - '02642'
+- entry_type: INT
+  id: W-20VX049B
+  category: W
+  title: Microsoft Windows - VNBT - VxD SERVICES
+  source: INTERRUP.F:2247
+  interrupt: '20'
+  flags:
+  - P
+  function: VX049B
+  input_registers: []
+  returns: []
+  notes:
+  - "the desired VxD and service number are identified by the data\nimmediately following the INT 20 instruction, as in:\n\
+    INT\t20h\nDW\tservice number\nDW\tVxD identifier (see #02642)"
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: 2F
+    params:
+      AX: 1684h
+    name: DEVICE API
+  - type: interrupt
+    interrupt: '30'
+    params: {}
+    name: Windows
+  - type: table
+    id: '01265'
+  - type: table
+    id: '01340'
+  index: []
+  tables:
+  - '01332'
+  table_refs:
+  - '01265'
+  - '01340'
+  - '02642'
+- entry_type: INT
+  id: W-20VX049D
+  category: W
+  title: Microsoft Windows - LOGGER - VxD SERVICES
+  source: INTERRUP.F:2261
+  interrupt: '20'
+  flags:
+  - P
+  function: VX049D
+  input_registers: []
+  returns: []
+  notes:
+  - "the desired VxD and service number are identified by the data\nimmediately following the INT 20 instruction, as in:\n\
+    INT\t20h\nDW\tservice number\nDW\tVxD identifier (see #02642)"
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: 2F
+    params:
+      AX: 1684h
+    name: DEVICE API
+  - type: interrupt
+    interrupt: '30'
+    params: {}
+    name: Windows
+  - type: table
+    id: '01265'
+  - type: table
+    id: '01340'
+  index: []
+  tables:
+  - '01333'
+  table_refs:
+  - '01265'
+  - '01340'
+  - '02642'
+- entry_type: INT
+  id: W-20VX097C
+  category: W
+  title: Microsoft Windows - PCCARD - VxD SERVICES
+  source: INTERRUP.F:2279
+  interrupt: '20'
+  flags:
+  - P
+  function: VX097C
+  input_registers: []
+  returns: []
+  notes:
+  - "the desired VxD and service number are identified by the data\nimmediately following the INT 20 instruction, as in:\n\
+    INT\t20h\nDW\tservice number\nDW\tVxD identifier (see #02642)"
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: 2F
+    params:
+      AX: 1684h
+    name: DEVICE API
+  - type: interrupt
+    interrupt: '30'
+    params: {}
+    name: Windows
+  - type: table
+    id: '01334'
+  - type: table
+    id: '01340'
+  index: []
+  tables:
+  - '01334'
+  table_refs:
+  - '01334'
+  - '01340'
+  - '02642'
+- entry_type: INT
+  id: --20VX3048
+  title: Frontier Technologies ??? - VxD SERVICES
+  source: INTERRUP.F:2294
+  interrupt: '20'
+  flags:
+  - P
+  function: VX3048
+  input_registers: []
+  returns: []
+  notes:
+  - "the desired VxD and service number are identified by the data\nimmediately following the INT 20 instruction, as in:\n\
+    INT\t20h\nDW\tservice number\nDW\tVxD identifier"
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: 2F
+    params:
+      AX: 1684h
+    name: DEVICE API
+  - type: interrupt
+    interrupt: '30'
+    params: {}
+    name: Windows
+  - type: table
+    id: '01265'
+  - type: table
+    id: '01335'
+  index: []
+  tables:
+  - '01335'
+  table_refs:
+  - '01265'
+  - '01335'
+- entry_type: INT
+  id: --20VX3049
+  title: Frontier Technologies ??? - VxD SERVICES
+  source: INTERRUP.F:2324
+  interrupt: '20'
+  flags:
+  - P
+  function: VX3049
+  input_registers: []
+  returns: []
+  notes:
+  - "the desired VxD and service number are identified by the data\nimmediately following the INT 20 instruction, as in:\n\
+    INT\t20h\nDW\tservice number\nDW\tVxD identifier"
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: 2F
+    params:
+      AX: 1684h
+    name: DEVICE API
+  - type: interrupt
+    interrupt: '30'
+    params: {}
+    name: Windows
+  - type: table
+    id: '01265'
+  - type: table
+    id: '01336'
+  index: []
+  tables:
+  - '01336'
+  table_refs:
+  - '01265'
+  - '01336'
+- entry_type: INT
+  id: W-20VX3098
+  category: W
+  title: QEMM - VstlthD - VxD SERVICES
+  source: INTERRUP.F:2342
+  interrupt: '20'
+  flags:
+  - P
+  function: VX3098
+  input_registers: []
+  returns: []
+  notes:
+  - "the desired VxD and service number are identified by the data\nimmediately following the INT 20 instruction, as in:\n\
+    INT\t20h\nDW\tservice number\nDW\tVxD identifier"
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: 2F
+    params:
+      AX: 1684h
+    name: DEVICE API
+  - type: interrupt
+    interrupt: '30'
+    params: {}
+    name: Windows
+  - type: table
+    id: '01265'
+  - type: table
+    id: '01340'
+  index: []
+  tables:
+  - '01337'
+  table_refs:
+  - '01265'
+  - '01340'
+- entry_type: INT
+  id: W-20VX30F6
+  category: W
+  title: Microsoft Windows - WSVV - VxD SERVICES
+  source: INTERRUP.F:2363
+  interrupt: '20'
+  flags:
+  - P
+  function: VX30F6
+  input_registers: []
+  returns: []
+  notes:
+  - "the desired VxD and service number are identified by the data\nimmediately following the INT 20 instruction, as in:\n\
+    INT\t20h\nDW\tservice number\nDW\tVxD identifier"
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: 2F
+    params:
+      AX: 1684h
+    name: DEVICE API
+  - type: interrupt
+    interrupt: '30'
+    params: {}
+    name: Windows
+  - type: table
+    id: '01265'
+  - type: table
+    id: '01340'
+  index: []
+  tables:
+  - 01338
+  table_refs:
+  - '01265'
+  - '01340'
+- entry_type: INT
+  id: W-20VX33FC
+  category: W
+  title: Microsoft Windows - ASPIENUM - VxD SERVICES
+  source: INTERRUP.F:2377
+  interrupt: '20'
+  flags:
+  - P
+  function: VX33FC
+  input_registers: []
+  returns: []
+  notes:
+  - "the desired VxD and service number are identified by the data\nimmediately following the INT 20 instruction, as in:\n\
+    INT\t20h\nDW\tservice number\nDW\tVxD identifier"
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: 2F
+    params:
+      AX: 1684h
+    name: DEVICE API
+  - type: interrupt
+    interrupt: '30'
+    params: {}
+    name: Windows
+  - type: table
+    id: '01265'
+  - type: table
+    id: '01340'
+  index: []
+  tables:
+  - 01339
+  table_refs:
+  - '01265'
+  - '01340'
+- entry_type: INT
+  id: W-20VX357E
+  category: W
+  title: Microsoft Windows - DSOUND - VxD SERVICES
+  source: INTERRUP.F:2394
+  interrupt: '20'
+  flags:
+  - P
+  function: VX357E
+  input_registers: []
+  returns: []
+  notes:
+  - "the desired VxD and service number are identified by the data\nimmediately following the INT 20 instruction, as in:\n\
+    INT\t20h\nDW\tservice number\nDW\tVxD identifier"
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: 2F
+    params:
+      AX: 1684h
+    name: DEVICE API
+  - type: interrupt
+    interrupt: '30'
+    params: {}
+    name: Windows
+  - type: table
+    id: '01265'
+  - type: table
+    id: '01340'
+  index: []
+  tables:
+  - '01340'
+  table_refs:
+  - '01265'
+  - '01340'
+- entry_type: INT
+  id: W-20VX39E6
+  category: W
+  title: Microsoft Windows - A3D - VxD SERVICES
+  source: INTERRUP.F:2410
+  interrupt: '20'
+  flags:
+  - P
+  function: VX39E6
+  input_registers: []
+  returns: []
+  notes:
+  - "the desired VxD and service number are identified by the data\nimmediately following the INT 20 instruction, as in:\n\
+    INT\t20h\nDW\tservice number\nDW\tVxD identifier"
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: 2F
+    params:
+      AX: 1684h
+    name: DEVICE API
+  - type: interrupt
+    interrupt: '30'
+    params: {}
+    name: Windows
+  - type: table
+    id: '01265'
+  - type: table
+    id: '01340'
+  index: []
+  tables:
+  - '01341'
+  table_refs:
+  - '01265'
+  - '01340'
+- entry_type: INT
+  id: W-20VX3BFD
+  category: W
+  title: Microsoft Windows - CWCPROXY - VxD SERVICES
+  source: INTERRUP.F:2427
+  interrupt: '20'
+  flags:
+  - P
+  function: VX3BFD
+  input_registers: []
+  returns: []
+  notes:
+  - "the desired VxD and service number are identified by the data\nimmediately following the INT 20 instruction, as in:\n\
+    INT\t20h\nDW\tservice number\nDW\tVxD identifier"
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: 2F
+    params:
+      AX: 1684h
+    name: DEVICE API
+  - type: interrupt
+    interrupt: '30'
+    params: {}
+    name: Windows
+  - type: table
+    id: '01265'
+  - type: table
+    id: '01340'
+  index: []
+  tables:
+  - '01342'
+  table_refs:
+  - '01265'
+  - '01340'
+- entry_type: INT
+  id: W-20VX3C78
+  category: W
+  title: Microsoft Windows - VGARTD - VxD SERVICES
+  source: INTERRUP.F:2443
+  interrupt: '20'
+  flags:
+  - P
+  function: VX3C78
+  input_registers: []
+  returns: []
+  notes:
+  - "the desired VxD and service number are identified by the data\nimmediately following the INT 20 instruction, as in:\n\
+    INT\t20h\nDW\tservice number\nDW\tVxD identifier"
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: 2F
+    params:
+      AX: 1684h
+    name: DEVICE API
+  - type: interrupt
+    interrupt: '30'
+    params: {}
+    name: Windows
+  - type: table
+    id: '01265'
+  - type: table
+    id: '01340'
+  index: []
+  tables:
+  - '01343'
+  table_refs:
+  - '01265'
+  - '01340'

@@ -1,0 +1,57 @@
+file_type: interrupt
+key: 8A
+entries:
+- entry_type: INT
+  id: r-8A
+  category: r
+  title: IBM ROM BASIC - used while in interpreter
+  source: INTERRUP.Q:9802
+  interrupt: 8A
+  flags: []
+  input_registers: []
+  returns: []
+  notes:
+  - 'called by ROM BASIC
+
+    BASIC.COM/BASICA.COM do not restore vector on termination'
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: '89'
+    params: {}
+    name: BASIC
+  - type: interrupt
+    interrupt: 8B
+    params: {}
+    name: BASIC
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: r-8A
+  category: r
+  title: APL*PLUS/PC - PRINT SCREEN
+  source: INTERRUP.Q:9807
+  interrupt: 8A
+  flags: []
+  input_registers: []
+  returns: []
+  notes:
+  - same as INT 05
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: '05'
+    params: {}
+    name: PRINT SCREEN
+  - type: interrupt
+    interrupt: 8C
+    params: {}
+    name: APL
+  - type: interrupt
+    interrupt: CA
+    params: {}
+    name: APL
+  index: []
+  tables: []
+  table_refs: []

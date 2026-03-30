@@ -1,0 +1,732 @@
+file_type: interrupt
+key: 5B
+entries:
+- entry_type: INT
+  id: H-5B
+  category: H
+  title: IRQ11 relocated by DESQview 2.26+
+  source: INTERRUP.O:269
+  interrupt: 5B
+  flags: []
+  input_registers: []
+  returns: []
+  notes:
+  - this is the default, but other INTs may be used (see INT 50"DESQview")
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: '50'
+    params: {}
+    name: DESQview
+  - type: interrupt
+    interrupt: 5A
+    params: {}
+    name: DESQview
+  - type: interrupt
+    interrupt: 5C
+    params: {}
+    name: DESQview
+  - type: interrupt
+    interrupt: '73'
+    params: {}
+  range: INT 5B to INT FB, selected automatically
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: H-5B
+  category: H
+  title: IRQ3 relocated by DoubleDOS
+  source: INTERRUP.O:274
+  interrupt: 5B
+  flags: []
+  input_registers: []
+  returns: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: 0B
+    params: {}
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: N-5B
+  category: N
+  title: PC cluster adapter - RELOCATED INT 19
+  source: INTERRUP.O:277
+  interrupt: 5B
+  flags: []
+  input_registers: []
+  returns: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: '19'
+    params: {}
+  - type: interrupt
+    interrupt: 5A
+    params: {}
+    name: PC Cluster
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: N-5B
+  category: N
+  title: AT&T Starlan Extended NetBIOS (variable length names)
+  source: INTERRUP.O:280
+  interrupt: 5B
+  flags: []
+  input_registers:
+  - reg: ES:BX
+    operator: ->
+    description: 'Network Control Block (see #03245)'
+    table_refs:
+    - '03245'
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AL
+      operator: '='
+      description: 'status (see #03248)'
+      table_refs:
+      - 03248
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: 5C
+    params: {}
+    name: NetBIOS
+  index: []
+  tables:
+  - '03245'
+  table_refs: []
+- entry_type: INT
+  id: N-5B
+  category: N
+  title: Microsoft Network Transport Layer Interface
+  source: INTERRUP.O:306
+  interrupt: 5B
+  flags: []
+  input_registers: []
+  returns: []
+  notes:
+  - used by MS-NET for executing network commands
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: 5C
+    params: {}
+    name: NetBIOS
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: N-5B
+  category: N
+  title: used by Alloy NTNX
+  source: INTERRUP.O:310
+  interrupt: 5B
+  flags: []
+  input_registers: []
+  returns: []
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: N-5B
+  category: N
+  title: ISOLAN Multi Protocol Software
+  source: INTERRUP.O:312
+  interrupt: 5B
+  flags: []
+  input_registers:
+  - reg: ES:BX
+    operator: ->
+    description: 'Transfer Control Block (see #03246)'
+    table_refs:
+    - '03246'
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AL
+      operator: '='
+      description: status
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes:
+  - 'this software interface allows multiple protocols/software packages
+
+    to access a BICC 411x network card'
+  bugs: []
+  see_also: []
+  index: []
+  tables:
+  - '03246'
+  table_refs: []
+- entry_type: INT
+  id: b-5B
+  category: b
+  title: TI Professional PC - KEYBOARD MAPPING HOOK
+  source: INTERRUP.O:342
+  interrupt: 5B
+  flags:
+  - C
+  input_registers:
+  - reg: CF
+    operator: set
+    table_refs: []
+    sub_values: []
+  - reg: AH
+    operator: '='
+    description: 'shift state (see #03247)'
+    table_refs:
+    - '03247'
+    sub_values: []
+  - reg: AL
+    operator: '='
+    description: 'scan code (see #03214)'
+    table_refs:
+    - '03214'
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - BX, CX, DI, ES may be destroyed
+    - 'various return methods are supported:'
+    - 'IRET, AX unchanged: process keystroke normally'
+    - 'IRET, AL = FFh: discard keystroke'
+    - 'IRET, AX changed: process modified keystroke'
+    - 'chain to old INT 5B: allow other handlers to look at (possibly'
+    - modified) keystroke in AX
+    - 'RETF 2, CF clear: place returned AX into keyboard buffer without'
+    - any further processing
+  notes:
+  - 'invoked by the keyboard ISR, and used to remap the keyboard
+
+    if CF is clear on entry, some other handler has processed the
+
+    keystroke and the current handler should not modify it, instead
+
+    performing a RETF 2 or IRET (after clearing CF on the stack)
+
+    when requesting that a value be placed directly into the keyboard
+
+    buffer, AL and AH may not *both* be nonzero (the TI does not
+
+    return scan codes as part of the key code for non-extended keys)'
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: '15'
+    params:
+      AH: 4Fh
+  - type: interrupt
+    interrupt: 4A
+    params:
+      AH: 00h
+    name: TI
+  - type: interrupt
+    interrupt: '59'
+    params: {}
+    name: TI Professional
+  - type: interrupt
+    interrupt: 5C
+    params: {}
+    name: TI Professional
+  - type: interrupt
+    interrupt: 5D
+    params: {}
+    name: TI Professional
+  - type: interrupt
+    interrupt: 5E
+    params: {}
+    name: TI Professional
+  - type: interrupt
+    interrupt: 5F
+    params: {}
+    name: TI Professional
+  index: []
+  tables:
+  - '03247'
+  table_refs: []
+- entry_type: INT
+  id: U-5B5254DL04
+  category: U
+  title: SitBack v3.02R - GET ???
+  source: INTERRUP.O:375
+  interrupt: 5B
+  flags:
+  - U
+  function: 5254DL04
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 5254h
+    table_refs: []
+    sub_values: []
+  - reg: DL
+    operator: '='
+    value: 04h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: ES:BX
+      operator: ->
+      description: ??? in resident portion
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  program: 'SitBack is a background file backup utility by SitBack Technologies,
+
+    Inc. which initiates backups whenever the system is idle'
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 8485h
+      DL: 71h
+  - type: interrupt
+    params:
+      AX: 8485h
+      DL: 72h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: U-5B8485DL70
+  category: U
+  title: SitBack v3.02R - INSTALLATION CHECK
+  source: INTERRUP.O:383
+  interrupt: 5B
+  flags:
+  - U
+  function: 8485DL70
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 8485h
+    table_refs: []
+    sub_values: []
+  - reg: DL
+    operator: '='
+    value: 70h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: CX
+      operator: '='
+      value: 8485h
+      description: if installed
+      table_refs: []
+      sub_values: []
+    - reg: DX:AX
+      operator: ->
+      description: ??? (configuration data?)
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  program: 'SitBack is a background file backup utility by SitBack Technologies,
+
+    Inc. which initiates backups whenever the system is idle'
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 5254h
+      DL: 04h
+  - type: interrupt
+    params:
+      AX: 8485h
+      DL: 78h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: U-5B8485DL71
+  category: U
+  title: SitBack v3.02R - SET ??? FLAG AND GET ??? ADDRESS
+  source: INTERRUP.O:392
+  interrupt: 5B
+  flags:
+  - U
+  function: 8485DL71
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 8485h
+    table_refs: []
+    sub_values: []
+  - reg: DL
+    operator: '='
+    value: 71h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: ES:BX
+      operator: ->
+      description: FAR entry point to ???
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes:
+  - 'the flag which is modified is located at the address returned by
+
+    AX=5254h/DL=04h'
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 8485h
+      DL: 72h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: U-5B8485DL72
+  category: U
+  title: SitBack v3.02R - CLEAR ??? FLAG
+  source: INTERRUP.O:400
+  interrupt: 5B
+  flags:
+  - U
+  function: 8485DL72
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 8485h
+    table_refs: []
+    sub_values: []
+  - reg: DL
+    operator: '='
+    value: 72h
+    table_refs: []
+    sub_values: []
+  returns: []
+  notes:
+  - 'the flag which is modified is located at the address returned by
+
+    AX=5254h/DL=04h'
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 8485h
+      DL: 71h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: U-5B8485DL73
+  category: U
+  title: SitBack v3.02R - ???
+  source: INTERRUP.O:407
+  interrupt: 5B
+  flags:
+  - U
+  function: 8485DL73
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 8485h
+    table_refs: []
+    sub_values: []
+  - reg: DL
+    operator: '='
+    value: 73h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: U-5B8485DL74
+  category: U
+  title: SitBack v3.02R - ???
+  source: INTERRUP.O:413
+  interrupt: 5B
+  flags:
+  - U
+  function: 8485DL74
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 8485h
+    table_refs: []
+    sub_values: []
+  - reg: DL
+    operator: '='
+    value: 74h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: U-5B8485DL75
+  category: U
+  title: SitBack v3.02R - ???
+  source: INTERRUP.O:419
+  interrupt: 5B
+  flags:
+  - U
+  function: 8485DL75
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 8485h
+    table_refs: []
+    sub_values: []
+  - reg: DL
+    operator: '='
+    value: 75h
+    table_refs: []
+    sub_values: []
+  - reg: CX
+    operator: '='
+    description: ???
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 8485h
+      DL: 76h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: U-5B8485DL76
+  category: U
+  title: SitBack v3.02R - ???
+  source: INTERRUP.O:426
+  interrupt: 5B
+  flags:
+  - U
+  function: 8485DL76
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 8485h
+    table_refs: []
+    sub_values: []
+  - reg: DL
+    operator: '='
+    value: 76h
+    table_refs: []
+    sub_values: []
+  - reg: CX
+    operator: '='
+    description: ???
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+  notes:
+  - conditionally calls the code for AX=8485h/DL=75h
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 8485h
+      DL: 75h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: U-5B8485DL77
+  category: U
+  title: SitBack v3.02R - SET ??? FLAG
+  source: INTERRUP.O:434
+  interrupt: 5B
+  flags:
+  - U
+  function: 8485DL77
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 8485h
+    table_refs: []
+    sub_values: []
+  - reg: DL
+    operator: '='
+    value: 77h
+    table_refs: []
+    sub_values: []
+  returns: []
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: U-5B8485DL78
+  category: U
+  title: SitBack v3.02R - GET RESIDENT DATA SEGMENT
+  source: INTERRUP.O:438
+  interrupt: 5B
+  flags:
+  - U
+  function: 8485DL78
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 8485h
+    table_refs: []
+    sub_values: []
+  - reg: DL
+    operator: '='
+    value: 78h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: CX
+      operator: '='
+      value: 5342h
+      description: if supported
+      table_refs: []
+      sub_values: []
+    - reg: ES
+      operator: '='
+      description: AX = segment of TSR data
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 8485h
+      DL: 70h
+  - type: interrupt
+    params:
+      AX: 8485h
+      DL: 79h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: U-5B8485DL79
+  category: U
+  title: SitBack v3.02R - GET DTA
+  source: INTERRUP.O:445
+  interrupt: 5B
+  flags:
+  - U
+  function: 8485DL79
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 8485h
+    table_refs: []
+    sub_values: []
+  - reg: DL
+    operator: '='
+    value: 79h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: CX
+      operator: '='
+      value: 5342h
+      description: if supported
+      table_refs: []
+      sub_values: []
+    - reg: ES:BX
+      operator: ->
+      description: DTA set by last INT 21/AH=1Ah
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes:
+  - this function is provided by SBOS.EXE rather than SB.EXE
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: '21'
+    params:
+      AH: 1Ah
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: U-5B8485DL7A
+  category: U
+  title: SitBack v3.02R - TOGGLE ???
+  source: INTERRUP.O:453
+  interrupt: 5B
+  flags:
+  - U
+  function: 8485DL7A
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 8485h
+    table_refs: []
+    sub_values: []
+  - reg: DL
+    operator: '='
+    value: 7Ah
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: CX
+      operator: '='
+      value: 5342h
+      description: if supported
+      table_refs: []
+      sub_values: []
+    - reg: AL
+      operator: '='
+      description: new value of ??? (00h or 01h)
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []

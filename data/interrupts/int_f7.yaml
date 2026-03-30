@@ -1,0 +1,372 @@
+file_type: interrupt
+key: F7
+entries:
+- entry_type: INT
+  id: '*-F7'
+  category: '*'
+  title: reserved for user interrupt
+  source: INTERRUP.R:4868
+  interrupt: F7
+  flags: []
+  input_registers: []
+  returns: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: F6
+    params: {}
+    name: user
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: T-F7
+  category: T
+  title: DoubleDOS - ???
+  source: INTERRUP.R:4871
+  interrupt: F7
+  flags: []
+  input_registers: []
+  returns: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: F6
+    params: {}
+    name: DoubleDOS
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: --F700
+  title: FSBBS 2.0 - CONFIGURATION RECORD
+  source: INTERRUP.R:4874
+  interrupt: F7
+  flags: []
+  function: '00'
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 00h
+    table_refs: []
+    sub_values: []
+  - reg: AL
+    operator: '='
+    description: function
+    table_refs: []
+    sub_values:
+    - value: 00h
+      description: 'get configuration record Return: DS:DX -> configuration record'
+      sub_values: []
+    - value: 01h
+      description: 'set configuration record Return: nothing'
+      sub_values: []
+    - value: 02h
+      description: get path for option
+      sub_values: []
+  - reg: DS:DX
+    operator: ->
+    description: option name
+    table_refs: []
+    sub_values: []
+  returns: []
+  notes:
+  - 'this information is preliminary and still subject to change
+
+    all of the INT F7 calls for FSBBS are used for interprogram
+
+    communication between the BBS kernel and the programs it spawns'
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 01h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: --F701
+  title: FSBBS 2.0 - USER RECORD
+  source: INTERRUP.R:4897
+  interrupt: F7
+  flags: []
+  function: '01'
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 01h
+    table_refs: []
+    sub_values: []
+  - reg: AL
+    operator: '='
+    description: function
+    table_refs: []
+    sub_values:
+    - value: 00h
+      description: 'get user record for user currently online Return: DS:DX -> user record'
+      sub_values: []
+    - value: 01h
+      description: set user record
+      sub_values: []
+  - reg: DS:DX
+    operator: ->
+    description: user record
+    table_refs: []
+    sub_values: []
+  returns: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 00h
+  - type: interrupt
+    params:
+      AH: 02h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: --F702
+  title: FSBBS 2.0 - GET ACCOUNT NAME
+  source: INTERRUP.R:4907
+  interrupt: F7
+  flags: []
+  function: '02'
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 02h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: DS:DX
+      operator: ->
+      description: 8-character blank-padded account name
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 01h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: --F703
+  title: FSBBS 2.0 - TERMINAL NUMBER
+  source: INTERRUP.R:4912
+  interrupt: F7
+  flags: []
+  function: '03'
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 03h
+    table_refs: []
+    sub_values: []
+  - reg: AL
+    operator: '='
+    description: function
+    table_refs: []
+    sub_values:
+    - value: 00h
+      description: 'get terminal index number Return: DX = index number'
+      sub_values: []
+    - value: 01h
+      description: set terminal index number
+      sub_values: []
+  - reg: DX
+    operator: '='
+    description: terminal index
+    table_refs: []
+    sub_values: []
+  returns: []
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: --F704
+  title: FSBBS 2.0 - PASSDATA BUFFER
+  source: INTERRUP.R:4921
+  interrupt: F7
+  flags: []
+  function: '04'
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 04h
+    table_refs: []
+    sub_values: []
+  - reg: AL
+    operator: '='
+    description: function
+    table_refs: []
+    sub_values:
+    - value: 00h
+      description: get PassData buffer contents
+      sub_values: []
+  - reg: DS:DX
+    operator: ->
+    description: buffer for PassData contents
+    table_refs: []
+    sub_values: []
+  - reg: DS:DX
+    operator: ->
+    description: buffer containing new PassData
+    table_refs: []
+    sub_values: []
+  - reg: CH
+    operator: '='
+    description: length of data in buffer
+    table_refs: []
+    sub_values: []
+  returns: []
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: --F705
+  title: FSBBS 2.0 - TIMER FUNCTIONS
+  source: INTERRUP.R:4932
+  interrupt: F7
+  flags: []
+  function: '05'
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 05h
+    table_refs: []
+    sub_values: []
+  - reg: AL
+    operator: '='
+    description: function
+    table_refs: []
+    sub_values:
+    - value: 00h
+      description: 'get time remaining Return: DX = number of minutes remaining'
+      sub_values: []
+    - value: 01h
+      description: 'get current time Return: DS:DX -> 8-character time string'
+      sub_values: []
+    - value: 02h
+      description: increment time
+      sub_values: []
+  - reg: DX
+    operator: '='
+    description: number of additional minutes
+    table_refs: []
+    sub_values: []
+  - reg: DX
+    operator: '='
+    description: number of minutes
+    table_refs: []
+    sub_values: []
+  returns: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 06h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: --F706
+  title: FSBBS 2.0 - FUNCTION AVAILABILITY
+  source: INTERRUP.R:4945
+  interrupt: F7
+  flags: []
+  function: '06'
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 06h
+    table_refs: []
+    sub_values: []
+  - reg: AL
+    operator: '='
+    description: function
+    table_refs: []
+    sub_values:
+    - value: 00h
+      description: determine whether function is available
+      sub_values: []
+  - reg: DX
+    operator: '='
+    description: index of function
+    table_refs: []
+    sub_values: []
+  - reg: DX
+    operator: '='
+    description: index of function
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - nothing
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 05h
+  - type: interrupt
+    params:
+      AH: 07h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: --F707
+  title: FSBBS 2.0 - DUMP FUNCTIONS
+  source: INTERRUP.R:4956
+  interrupt: F7
+  flags: []
+  function: '07'
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 07h
+    table_refs: []
+    sub_values: []
+  - reg: AL
+    operator: '='
+    description: function
+    table_refs: []
+    sub_values:
+    - value: 00h
+      description: 'get current dump mode Return: DL = mode'
+      sub_values: []
+    - value: 01h
+      description: set dump mode
+      sub_values: []
+  - reg: DL
+    operator: '='
+    description: mode
+    table_refs: []
+    sub_values: []
+  returns: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 06h
+  index: []
+  tables: []
+  table_refs: []

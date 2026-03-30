@@ -1,0 +1,90 @@
+file_type: interrupt
+key: FA
+entries:
+- entry_type: INT
+  id: '*-FA'
+  category: '*'
+  title: reserved for user interrupt
+  source: INTERRUP.R:4981
+  interrupt: FA
+  flags: []
+  input_registers: []
+  returns: []
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: h-FA
+  category: h
+  title: Sanyo MBC-550/555 - IRQ2 - SERIAL PORT USART INTERRUPT
+  source: INTERRUP.R:4983
+  interrupt: FA
+  flags: []
+  input_registers: []
+  returns: []
+  notes:
+  - this vector is not used on the Tandy 1000TL
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: 0A
+    params: {}
+    name: IRQ2
+  - type: interrupt
+    interrupt: F9
+    params: {}
+    name: Sanyo
+  - type: interrupt
+    interrupt: FB
+    params: {}
+    name: Sanyo
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: T-FA
+  category: T
+  title: DoubleDOS - TURN OFF TIMESHARING
+  source: INTERRUP.R:4987
+  interrupt: FA
+  flags: []
+  input_registers: []
+  returns: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: '21'
+    params:
+      AH: EAh
+    name: DoubleDOS
+  - type: interrupt
+    interrupt: FB
+    params: {}
+    name: DoubleDOS
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: --FA
+  title: ASM Edit - INSTALLATION CHECK
+  source: INTERRUP.R:4990
+  interrupt: FA
+  flags:
+  - P
+  input_registers: []
+  returns: []
+  program: ASM Edit is a shareware programmer's editor
+  notes:
+  - 'ASM Edit hooks this vector in protected mode to allow DPMI programs
+
+    to detect whether they were run while shelled to DOS from ASM Edit'
+  bugs: []
+  see_also: []
+  index: []
+  tables:
+  - 04080
+  table_refs: []

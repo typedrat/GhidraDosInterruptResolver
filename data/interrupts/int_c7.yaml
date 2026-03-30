@@ -1,0 +1,97 @@
+file_type: interrupt
+key: C7
+entries:
+- entry_type: INT
+  id: r-C7
+  category: r
+  title: IBM ROM BASIC - used while in interpreter
+  source: INTERRUP.R:1138
+  interrupt: C7
+  flags: []
+  input_registers: []
+  returns: []
+  notes:
+  - 'called by ROM BASIC, but pointed at IRET by BASIC.COM/BASICA.COM
+
+    BASIC.COM/BASICA.COM do not restore vector on termination'
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: '80'
+    params: {}
+    name: BASIC
+  - type: interrupt
+    interrupt: C6
+    params: {}
+    name: BASIC
+  - type: interrupt
+    interrupt: C8
+    params: {}
+    name: BASIC
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: r-C7
+  category: r
+  title: APL*PLUS/PC - ???
+  source: INTERRUP.R:1143
+  interrupt: C7
+  flags: []
+  input_registers: []
+  returns: []
+  notes:
+  - 'STSC moved its interrupts from 86h-8Ch to C6h-CCh, but did not delete
+
+    the older interrupts'
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: '87'
+    params: {}
+    name: APL
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: d-C7
+  category: d
+  title: AMI BIOS - DRIVE 1 DATA
+  source: INTERRUP.R:1148
+  interrupt: C7
+  flags: []
+  input_registers: []
+  returns: []
+  notes:
+  - 'this vector is used by some AMI BIOSes to store the final four bytes
+
+    of the second hard disk''s parameter table'
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: '46'
+    params: {}
+    name: HARD DISK 1
+  - type: interrupt
+    interrupt: '64'
+    params: {}
+    name: Adaptec
+  - type: interrupt
+    interrupt: C0
+    params: {}
+    name: AMI
+  - type: interrupt
+    interrupt: C4
+    params: {}
+    name: AMI
+  - type: interrupt
+    interrupt: C5
+    params: {}
+    name: AMI
+  - type: interrupt
+    interrupt: C6
+    params: {}
+    name: AMI
+  index: []
+  tables: []
+  table_refs: []

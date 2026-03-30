@@ -1,0 +1,65 @@
+file_type: interrupt
+key: '82'
+entries:
+- entry_type: INT
+  id: r-82
+  category: r
+  title: reserved for BASIC
+  source: INTERRUP.Q:9357
+  interrupt: '82'
+  flags: []
+  input_registers: []
+  returns: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: '81'
+    params: {}
+    name: BASIC
+  - type: interrupt
+    interrupt: '83'
+    params: {}
+    name: BASIC
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: N-82
+  category: N
+  title: IBM TOKEN RING ADAPTER - ???
+  source: INTERRUP.Q:9360
+  interrupt: '82'
+  flags: []
+  input_registers:
+  - reg: AH
+    operator: '='
+    description: function
+    table_refs: []
+    sub_values:
+    - value: 00h
+      description: display message???
+      sub_values: []
+  - reg: DS:BX
+    operator: ->
+    description: string
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: '81'
+    params: {}
+    name: TOKEN RING
+  - type: interrupt
+    interrupt: '91'
+    params: {}
+    name: TOKEN RING
+  index: []
+  tables: []
+  table_refs: []

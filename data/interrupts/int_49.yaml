@@ -1,0 +1,1402 @@
+file_type: interrupt
+key: '49'
+entries:
+- entry_type: INT
+  id: B-49
+  category: B
+  title: SYSTEM DATA - NON-KEYBOARD SCAN-CODE TRANSLATION TABLE (PCjr)
+  source: INTERRUP.N:7701
+  interrupt: '49'
+  flags: []
+  input_registers: []
+  returns: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: table
+    id: 03208
+  - type: interrupt
+    interrupt: '48'
+    params: {}
+    name: PCjr
+  index: []
+  tables:
+  - 03208
+  table_refs:
+  - 03208
+- entry_type: INT
+  id: h-49
+  category: h
+  title: Z100 - Slave 8259 - S100 vectored line 1
+  source: INTERRUP.N:7711
+  interrupt: '49'
+  flags: []
+  input_registers: []
+  returns: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: '48'
+    params: {}
+    name: Z100
+  - type: interrupt
+    interrupt: 4A
+    params: {}
+    name: Z100
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: N-49
+  category: N
+  title: Watstar PC Network data pointer 2
+  source: INTERRUP.N:7714
+  interrupt: '49'
+  flags: []
+  input_registers: []
+  returns: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: '48'
+    params: {}
+    name: Watstar
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: O-49
+  category: O
+  title: Acorn BBC Master 512 - "OSASCI" - WRITE CHARACTER TO CUR OUTPUT STREAM
+  source: INTERRUP.N:7717
+  interrupt: '49'
+  flags: []
+  input_registers:
+  - reg: AL
+    operator: '='
+    description: character to be written
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - FLAGS destroyed
+  notes:
+  - converts carriage return (0Dh) into CRLF sequence (0Dh 0Ah)
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: '40'
+    params: {}
+    name: Acorn
+  - type: interrupt
+    interrupt: '46'
+    params: {}
+    name: Acorn
+  - type: interrupt
+    interrupt: '47'
+    params: {}
+    name: Acorn
+  - type: interrupt
+    interrupt: '48'
+    params: {}
+    name: Acorn
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: b-49
+  category: b
+  title: Tandy 2000 - BOOTSTRAP LOADER
+  source: INTERRUP.N:7723
+  interrupt: '49'
+  flags: []
+  input_registers: []
+  returns: []
+  notes:
+  - this interrupt is identical to INT 19
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: '19'
+    params: {}
+  - type: interrupt
+    interrupt: 4A
+    params: {}
+    name: Tandy 2000
+  - type: interrupt
+    interrupt: 4C
+    params: {}
+    name: Tandy 2000
+  - type: interrupt
+    interrupt: '51'
+    params: {}
+    name: Tandy 2000
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: a-490001
+  category: a
+  title: MAGic v1.16+ - TURN ON MAGNIFICATION
+  source: INTERRUP.N:7727
+  interrupt: '49'
+  flags: []
+  function: '0001'
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 0001h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AX
+      operator: '='
+      description: 'status (see #03209)'
+      table_refs:
+      - 03209
+      sub_values: []
+    raw_lines: []
+  program: 'MAGic (MAGnification In Color) is a TSR by Microsystems Software, Inc.
+
+    providing 2x2 text and graphics magnification on VGA, XGA, and SVGA'
+  notes:
+  - "INT 49 is the default, but may be overridden on the commandline.  The\nactual interrupt in use may be found by searching\
+    \ for the signature\n\"MAGic\" or \"xMAGic\" (for the deluxe version) immediately preceding\nthe interrupt handler (this\
+    \ is also the installation check).\tMAGic\nuses CodeRunneR, which places the signature \"RT\" at offset 0000h in\nthe\
+    \ interrupt handler's segment, followed by MAGic's TSR ID of\n\"VMAG\"."
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 0002h
+  - type: interrupt
+    params:
+      AX: 0003h
+  - type: interrupt
+    params:
+      AX: 0004h
+  - type: interrupt
+    params:
+      AX: 0008h
+  index:
+  - installation check;MAGic
+  tables:
+  - 03209
+  table_refs: []
+- entry_type: INT
+  id: a-490002
+  category: a
+  title: MAGic v1.16+ - TURN OFF MAGNIFICATION
+  source: INTERRUP.N:7751
+  interrupt: '49'
+  flags: []
+  function: '0002'
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 0002h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AX
+      operator: '='
+      description: 'status (see #03209)'
+      table_refs:
+      - 03209
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 0001h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: a-490003
+  category: a
+  title: MAGic v1.16+ - SHIFT MAGNIFIED WINDOW TO INCLUDE SPECIFIED LOCATION
+  source: INTERRUP.N:7757
+  interrupt: '49'
+  flags: []
+  function: '0003'
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 0003h
+    table_refs: []
+    sub_values: []
+  - reg: BX
+    operator: '='
+    description: vertical position (character row [text] or pixel row [graphics])
+    table_refs: []
+    sub_values: []
+  - reg: DX
+    operator: '='
+    description: horizontal position (char column [text] or 8-pixel units [gr])
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AX
+      operator: '='
+      description: status
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes:
+  - window is not moved if the position is inside the current window
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 0001h
+  - type: interrupt
+    params:
+      AX: 0004h
+  - type: interrupt
+    params:
+      AX: 0005h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: a-490004
+  category: a
+  title: MAGic v1.16+ - REPOSITION MAGNIFIED WINDOW
+  source: INTERRUP.N:7768
+  interrupt: '49'
+  flags: []
+  function: '0004'
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 0004h
+    table_refs: []
+    sub_values: []
+  - reg: BX
+    operator: '='
+    description: vertical position of upper left corner
+    table_refs: []
+    sub_values: []
+  - reg: DX
+    operator: '='
+    description: horizontal position
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AX
+      operator: '='
+      description: status (see AX=0003h)
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 0001h
+  - type: interrupt
+    params:
+      AX: 0003h
+  - type: interrupt
+    params:
+      AX: 0005h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: a-490005
+  category: a
+  title: MAGic v1.16+ - GET POSITION OF MAGNIFIED WINDOW
+  source: INTERRUP.N:7776
+  interrupt: '49'
+  flags: []
+  function: '0005'
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 0005h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AX
+      operator: '='
+      description: status
+      table_refs: []
+      sub_values: []
+    - reg: BX
+      operator: '='
+      description: vertical position (char row or pixel row)
+      table_refs: []
+      sub_values: []
+    - reg: DX
+      operator: '='
+      description: horizontal position (char column or 8-pixel units)
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 0001h
+  - type: interrupt
+    params:
+      AX: 0003h
+  - type: interrupt
+    params:
+      AX: 0004h
+  - type: interrupt
+    params:
+      AX: 0006h
+  - type: interrupt
+    params:
+      AX: 0007h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: a-490006
+  category: a
+  title: MAGic v1.16+ - GET SIZE OF FULL SCREEN
+  source: INTERRUP.N:7787
+  interrupt: '49'
+  flags: []
+  function: '0006'
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 0006h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AX
+      operator: '='
+      description: status
+      table_refs: []
+      sub_values: []
+    - reg: BX
+      operator: '='
+      description: vertical size (char rows or pixel rows)
+      table_refs: []
+      sub_values: []
+    - reg: DX
+      operator: '='
+      description: horizontal size (char cols or 8-pixel units)
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 0001h
+  - type: interrupt
+    params:
+      AX: 0005h
+  - type: interrupt
+    params:
+      AX: 0007h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: a-490007
+  category: a
+  title: MAGic v1.16+ - GET SIZE OF MAGNIFICATION WINDOW
+  source: INTERRUP.N:7798
+  interrupt: '49'
+  flags: []
+  function: '0007'
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 0007h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AX
+      operator: '='
+      description: status
+      table_refs: []
+      sub_values: []
+    - reg: BX
+      operator: '='
+      description: vertical size (char rows or pixel rows)
+      table_refs: []
+      sub_values: []
+    - reg: DX
+      operator: '='
+      description: horizontal size (char cols or 8-pixel units)
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs:
+  - 'in v1.16 and v1.17, this function is not recognized as valid, but
+
+    AX=0000h is accepted and will branch into hyperspace'
+  see_also:
+  - type: interrupt
+    params:
+      AX: 0001h
+  - type: interrupt
+    params:
+      AX: 0006h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: a-490008
+  category: a
+  title: MAGic v1.23+ - SET TEXT MODE MAGNIFICATION SIZE
+  source: INTERRUP.N:7812
+  interrupt: '49'
+  flags: []
+  function: 0008
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 0008h
+    table_refs: []
+    sub_values: []
+  - reg: BX
+    operator: '='
+    description: scaling factor (01h=1.4 times, 02h, 04h, 06h, 08h, 09h=12 times)
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AX
+      operator: '='
+      description: status
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes:
+  - 'this call specifies the amount a subsequent call to AX=0001h should
+
+    magnify the display
+
+    scaling factors greater than 2 are only available in MAGic Deluxe'
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 0001h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: V-4901
+  category: V
+  title: TI Professional PC - CRT - SET CURSOR SIZE AND TYPE
+  source: INTERRUP.N:7824
+  interrupt: '49'
+  flags: []
+  function: '01'
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 01h
+    table_refs: []
+    sub_values: []
+  - reg: CH
+    operator: '='
+    description: cursor start line (bits 3-0) and status (bits 6-5)
+    table_refs: []
+    sub_values:
+    - value: '00'
+      description: non-blinking cursor
+      sub_values: []
+    - value: '01'
+      description: no cursor
+      sub_values: []
+    - value: '10'
+      description: fast-blinking cursor
+      sub_values: []
+    - value: '11'
+      description: slow-blinking cursor
+      sub_values: []
+  - reg: CL
+    operator: '='
+    description: cursor end line
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - nothing
+  notes:
+  - AH=00h,04h,05h,0Bh,0Ch,0Dh,0Fh are documented as NOPs
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 02h
+  - type: interrupt
+    params:
+      AH: 03h
+  - type: interrupt
+    interrupt: '40'
+    params: {}
+    name: TI Professional
+  - type: interrupt
+    interrupt: '48'
+    params:
+      AH: 00h
+    name: TI Professional
+  - type: interrupt
+    interrupt: 4A
+    params:
+      AH: 00h
+    name: TI
+  - type: interrupt
+    interrupt: 4B
+    params: {}
+    name: TI Professional
+  - type: interrupt
+    interrupt: 4D
+    params:
+      AH: 00h
+  - type: interrupt
+    interrupt: '57'
+    params: {}
+    name: TI Professional
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: V-4902
+  category: V
+  title: TI Professional PC - CRT - SET CURSOR POSITION
+  source: INTERRUP.N:7839
+  interrupt: '49'
+  flags: []
+  function: '02'
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 02h
+    table_refs: []
+    sub_values: []
+  - reg: DH
+    operator: '='
+    description: column
+    table_refs: []
+    sub_values: []
+  - reg: DL
+    operator: '='
+    description: row
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - DX destroyed
+  notes:
+  - 'AH=00h,04h,05h,0Bh,0Ch,0Dh,0Fh are documented as NOPs
+
+    the TI swaps the row and column compared to the equivalent IBM call'
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 01h
+  - type: interrupt
+    params:
+      AH: 03h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: V-4903
+  category: V
+  title: TI Professional PC - CRT - GET CURSOR POSTION AND TYPE
+  source: INTERRUP.N:7848
+  interrupt: '49'
+  flags: []
+  function: '03'
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 03h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: CH
+      operator: '='
+      description: cursor start and status (see AH=01h)
+      table_refs: []
+      sub_values: []
+    - reg: CL
+      operator: '='
+      description: cursor end line
+      table_refs: []
+      sub_values: []
+    - reg: DH
+      operator: '='
+      description: cursor column
+      table_refs: []
+      sub_values: []
+    - reg: DL
+      operator: '='
+      description: cursor row
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes:
+  - AH=00h,04h,05h,0Bh,0Ch,0Dh,0Fh are documented as NOPs
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 01h
+  - type: interrupt
+    params:
+      AH: 02h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: V-4906
+  category: V
+  title: TI Professional PC - CRT - SCROLL UP/COPY WINDOW
+  source: INTERRUP.N:7857
+  interrupt: '49'
+  flags: []
+  function: '06'
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 06h
+    table_refs: []
+    sub_values: []
+  - reg: AL
+    operator: '='
+    description: source blanking
+    table_refs: []
+    sub_values:
+    - value: 00h
+      description: blank source region (move/scroll) nonzero do not blank source region (copy)
+      sub_values: []
+  - reg: CH
+    operator: '='
+    description: width of region to move/copy
+    table_refs: []
+    sub_values: []
+  - reg: CL
+    operator: '='
+    description: height of region to move/copy
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - nothing
+  notes:
+  - 'AH=00h,04h,05h,0Bh,0Ch,0Dh,0Fh are documented as NOPs
+
+    the specified region may be wider than the screen, but reliable
+
+    operation then requires that the height be exactly one row'
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 01h
+  - type: interrupt
+    params:
+      AH: 02h
+  - type: interrupt
+    params:
+      AH: 07h
+  - type: interrupt
+    params:
+      AH: 13h
+  - type: interrupt
+    params:
+      AH: 14h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: V-4907
+  category: V
+  title: TI Professional PC - CRT - SCROLL DOWN/COPY WINDOW
+  source: INTERRUP.N:7872
+  interrupt: '49'
+  flags: []
+  function: '07'
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 07h
+    table_refs: []
+    sub_values: []
+  - reg: AL
+    operator: '='
+    description: source blanking
+    table_refs: []
+    sub_values:
+    - value: 00h
+      description: blank source region (move/scroll) nonzero do not blank source region (copy)
+      sub_values: []
+  - reg: CH
+    operator: '='
+    description: width of region to move/copy
+    table_refs: []
+    sub_values: []
+  - reg: CL
+    operator: '='
+    description: height of region to move/copy
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - nothing
+  notes:
+  - AH=00h,04h,05h,0Bh,0Ch,0Dh,0Fh are documented as NOPs
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 01h
+  - type: interrupt
+    params:
+      AH: 02h
+  - type: interrupt
+    params:
+      AH: 06h
+  - type: interrupt
+    params:
+      AH: 13h
+  - type: interrupt
+    params:
+      AH: 14h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: V-4908
+  category: V
+  title: TI Professional PC - CRT - GET CHARACTER AND ATTRIBUTE AT POSITION
+  source: INTERRUP.N:7885
+  interrupt: '49'
+  flags: []
+  function: 08
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 08h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AL
+      operator: '='
+      description: character at current cursor position
+      table_refs: []
+      sub_values: []
+    - reg: AH
+      operator: '='
+      description: attribute
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes:
+  - AH=00h,04h,05h,0Bh,0Ch,0Dh,0Fh are documented as NOPs
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 01h
+  - type: interrupt
+    params:
+      AH: 09h
+  - type: interrupt
+    params:
+      AH: 0Ah
+  - type: interrupt
+    params:
+      AH: 0Eh
+  - type: interrupt
+    interrupt: '10'
+    params:
+      AH: 08h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: V-4909
+  category: V
+  title: TI Professional PC - CRT - WRITE CHARACTER(S) WITH ATTRIBUTE
+  source: INTERRUP.N:7892
+  interrupt: '49'
+  flags: []
+  function: 09
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 09h
+    table_refs: []
+    sub_values: []
+  - reg: AL
+    operator: '='
+    description: character to write
+    table_refs: []
+    sub_values: []
+  - reg: BL
+    operator: '='
+    description: attribute to use (becomes new current attribute)
+    table_refs: []
+    sub_values: []
+  - reg: CX
+    operator: '='
+    description: number of times to write character
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - nothing
+  description: 'write CX copies of the character in AL beginning at the current cursor
+
+    position'
+  notes:
+  - AH=00h,04h,05h,0Bh,0Ch,0Dh,0Fh are documented as NOPs
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 01h
+  - type: interrupt
+    params:
+      AH: 08h
+  - type: interrupt
+    params:
+      AH: 0Ah
+  - type: interrupt
+    params:
+      AH: 0Eh
+  - type: interrupt
+    interrupt: '10'
+    params:
+      AH: 09h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: V-490A
+  category: V
+  title: TI Professional PC - CRT - WRITE CHARACTER(S) WITH CURRENT ATTRIBUTE
+  source: INTERRUP.N:7903
+  interrupt: '49'
+  flags: []
+  function: 0A
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 0Ah
+    table_refs: []
+    sub_values: []
+  - reg: AL
+    operator: '='
+    description: character to write
+    table_refs: []
+    sub_values: []
+  - reg: CX
+    operator: '='
+    description: number of times to write character
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - nothing
+  description: 'write CX copies of the character in AL beginning at the current cursor
+
+    position'
+  notes:
+  - AH=00h,04h,05h,0Bh,0Ch,0Dh,0Fh are documented as NOPs
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 01h
+  - type: interrupt
+    params:
+      AH: 02h
+  - type: interrupt
+    params:
+      AH: 08h
+  - type: interrupt
+    params:
+      AH: 09h
+  - type: interrupt
+    params:
+      AH: 0Eh
+  - type: interrupt
+    interrupt: '10'
+    params:
+      AH: 0Ah
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: V-490E
+  category: V
+  title: TI Professional PC - CRT - TTY OUTPUT
+  source: INTERRUP.N:7913
+  interrupt: '49'
+  flags: []
+  function: 0E
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 0Eh
+    table_refs: []
+    sub_values: []
+  - reg: AL
+    operator: '='
+    description: character to write
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - nothing
+  description: 'write the character in AL at the current cursor position, advancing
+
+    the cursor, and interpreting CR, LF, TAB, and BEL characters'
+  notes:
+  - AH=00h,04h,05h,0Bh,0Ch,0Dh,0Fh are documented as NOPs
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 01h
+  - type: interrupt
+    params:
+      AH: 02h
+  - type: interrupt
+    params:
+      AH: 08h
+  - type: interrupt
+    params:
+      AH: 09h
+  - type: interrupt
+    params:
+      AH: 0Ah
+  - type: interrupt
+    interrupt: '10'
+    params:
+      AH: 0Eh
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: V-4910
+  category: V
+  title: TI Professional PC - CRT - WRITE BLOCK OF CHARACTERS WITH ATTRIBUTE
+  source: INTERRUP.N:7922
+  interrupt: '49'
+  flags: []
+  function: '10'
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 10h
+    table_refs: []
+    sub_values: []
+  - reg: AL
+    operator: '='
+    description: attribute (becomes new current attribute)
+    table_refs: []
+    sub_values: []
+  - reg: DX:BX
+    operator: ->
+    description: string of characters to write
+    table_refs: []
+    sub_values: []
+  - reg: CX
+    operator: '='
+    description: length of string
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - nothing
+  notes:
+  - AH=00h,04h,05h,0Bh,0Ch,0Dh,0Fh are documented as NOPs
+  bugs:
+  - CX must not be 0000h on entry, or the system will crash
+  see_also:
+  - type: interrupt
+    params:
+      AH: 01h
+  - type: interrupt
+    params:
+      AH: 02h
+  - type: interrupt
+    params:
+      AH: 09h
+  - type: interrupt
+    params:
+      AH: 0Eh
+  - type: interrupt
+    params:
+      AH: 11h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: V-4911
+  category: V
+  title: TI Professional PC - CRT - WRITE BLOCK OF CHARACTERS WITH CURR ATTRIB
+  source: INTERRUP.N:7932
+  interrupt: '49'
+  flags: []
+  function: '11'
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 11h
+    table_refs: []
+    sub_values: []
+  - reg: DX:BX
+    operator: ->
+    description: string of characters to write
+    table_refs: []
+    sub_values: []
+  - reg: CX
+    operator: '='
+    description: length of string
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - nothing
+  notes:
+  - AH=00h,04h,05h,0Bh,0Ch,0Dh,0Fh are documented as NOPs
+  bugs:
+  - CX must not be 0000h on entry, or the system will crash
+  see_also:
+  - type: interrupt
+    params:
+      AH: 01h
+  - type: interrupt
+    params:
+      AH: 02h
+  - type: interrupt
+    params:
+      AH: 09h
+  - type: interrupt
+    params:
+      AH: 0Eh
+  - type: interrupt
+    params:
+      AH: 10h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: V-4912
+  category: V
+  title: TI Professional PC - CRT - FILL ENTIRE SCREEN WITH ATTRIBUTE
+  source: INTERRUP.N:7941
+  interrupt: '49'
+  flags: []
+  function: '12'
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 12h
+    table_refs: []
+    sub_values: []
+  - reg: AL
+    operator: '='
+    description: 'attribute (see #03210)'
+    table_refs:
+    - '03210'
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - nothing
+  notes:
+  - AH=00h,04h,05h,0Bh,0Ch,0Dh,0Fh are documented as NOPs
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 01h
+  - type: interrupt
+    params:
+      AH: 02h
+  index: []
+  tables:
+  - '03210'
+  table_refs: []
+- entry_type: INT
+  id: V-4913
+  category: V
+  title: TI Professional PC - CRT - CLEAR ENTIRE TEXT SCREEN AND HOME CURSOR
+  source: INTERRUP.N:7959
+  interrupt: '49'
+  flags: []
+  function: '13'
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 13h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - nothing
+  notes:
+  - AH=00h,04h,05h,0Bh,0Ch,0Dh,0Fh are documented as NOPs
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 01h
+  - type: interrupt
+    params:
+      AH: 02h
+  - type: interrupt
+    params:
+      AH: 06h
+  - type: interrupt
+    params:
+      AH: 14h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: V-4914
+  category: V
+  title: TI Professional PC - CRT - CLEAR ENTIRE GRAPHICS SCREEN
+  source: INTERRUP.N:7965
+  interrupt: '49'
+  flags: []
+  function: '14'
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 14h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - nothing
+  notes:
+  - AH=00h,04h,05h,0Bh,0Ch,0Dh,0Fh are documented as NOPs
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 01h
+  - type: interrupt
+    params:
+      AH: 02h
+  - type: interrupt
+    params:
+      AH: 06h
+  - type: interrupt
+    params:
+      AH: 13h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: V-4915
+  category: V
+  title: TI Professional PC - CRT - SET PROTECTED STATUS AREA
+  source: INTERRUP.N:7971
+  interrupt: '49'
+  flags: []
+  function: '15'
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 15h
+    table_refs: []
+    sub_values: []
+  - reg: CL
+    operator: '='
+    description: row at which to start status area, or 00h to cancel
+    table_refs: []
+    sub_values: []
+  - reg: CH
+    operator: '='
+    value: 00h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - nothing
+  description: 'set a protected area of the screen which will not be affected by TTY
+
+    writes or the scrolls they may generate'
+  notes:
+  - 'AH=00h,04h,05h,0Bh,0Ch,0Dh,0Fh are documented as NOPs
+
+    the current cursor position must be above the status area in order to
+
+    set the protected area'
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 01h
+  - type: interrupt
+    params:
+      AH: 02h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: V-4916
+  category: V
+  title: TI Professional PC - CRT - SET ATTRIBUTE LATCH
+  source: INTERRUP.N:7983
+  interrupt: '49'
+  flags: []
+  function: '16'
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 16h
+    table_refs: []
+    sub_values: []
+  - reg: BL
+    operator: '='
+    description: 'new attribute (see #03210)'
+    table_refs:
+    - '03210'
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - nothing
+  notes:
+  - AH=00h,04h,05h,0Bh,0Ch,0Dh,0Fh are documented as NOPs
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 01h
+  - type: interrupt
+    params:
+      AH: 02h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: V-4917
+  category: V
+  title: TI Professional PC - CRT - GET START-OF-DISPLAY POINTER
+  source: INTERRUP.N:7990
+  interrupt: '49'
+  flags: []
+  function: '17'
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 17h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: DX
+      operator: '='
+      description: current offset at which display starts
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes:
+  - AH=00h,04h,05h,0Bh,0Ch,0Dh,0Fh are documented as NOPs
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 01h
+  - type: interrupt
+    params:
+      AH: 02h
+  - type: interrupt
+    interrupt: '10'
+    params:
+      AH: FEh
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: V-4918
+  category: V
+  title: TI Professional PC - CRT - PRINT TTY STRING
+  source: INTERRUP.N:7996
+  interrupt: '49'
+  flags: []
+  function: '18'
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 18h
+    table_refs: []
+    sub_values: []
+  - reg: CS:BX
+    operator: ->
+    description: counted string (count byte with length followed by string)
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - nothing
+  notes:
+  - 'AH=00h,04h,05h,0Bh,0Ch,0Dh,0Fh are documented as NOPs
+
+    the string must be located in the caller''s code segment; any TSRs
+
+    which want to hook INT 49 must check for this function and emulate
+
+    it, because the BIOS retrieves the caller''s CS from the stack'
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 01h
+  - type: interrupt
+    params:
+      AH: 02h
+  - type: interrupt
+    params:
+      AH: 0Eh
+  index: []
+  tables: []
+  table_refs: []

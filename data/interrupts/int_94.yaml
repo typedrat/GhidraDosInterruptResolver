@@ -1,0 +1,1162 @@
+file_type: interrupt
+key: '94'
+entries:
+- entry_type: INT
+  id: r-94
+  category: r
+  title: IBM ROM BASIC - used while in interpreter
+  source: INTERRUP.R:346
+  interrupt: '94'
+  flags: []
+  input_registers: []
+  returns: []
+  notes:
+  - 'called by ROM BASIC, but pointed at IRET by BASIC.COM/BASICA.COM
+
+    BASIC.COM/BASICA.COM do not restore vector on termination'
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: s-94SI0000
+  category: s
+  title: PCM driver - INITIALIZE SOUND
+  source: INTERRUP.R:350
+  interrupt: '94'
+  flags:
+  - u
+  function: SI0000
+  input_registers:
+  - reg: SI
+    operator: '='
+    value: 0000h
+    table_refs: []
+    sub_values: []
+  - reg: ES:BX
+    operator: ->
+    description: parameters
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+  program: 'PCM.COM is a sound driver for Media Vision''s Pro Audio Spectrum
+
+    sound boards'
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      SI: 0001h
+  - type: interrupt
+    params:
+      SI: 0002h
+  - type: interrupt
+    params:
+      SI: 0003h
+  - type: interrupt
+    params:
+      SI: 0004h
+  - type: interrupt
+    params:
+      SI: 0005h
+  - type: interrupt
+    params:
+      SI: 000Ah
+  install_check: 'test for the signature string "PCMDRIVER" immediately preceding
+
+    the interrupt handler; the word preceding the signature gives the PCM
+
+    driver''s version'
+  index:
+  - installation check;PCM driver|PCM.COM;installation check
+  - PCM driver;installation check
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: s-94SI0001
+  category: s
+  title: PCM driver - INITIALIZE PCM
+  source: INTERRUP.R:363
+  interrupt: '94'
+  flags:
+  - u
+  function: SI0001
+  input_registers:
+  - reg: SI
+    operator: '='
+    value: 0001h
+    table_refs: []
+    sub_values: []
+  - reg: ES:BX
+    operator: ->
+    description: parameters
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      SI: 0000h
+  - type: interrupt
+    params:
+      SI: 0002h
+  - type: interrupt
+    params:
+      SI: 0003h
+  - type: interrupt
+    params:
+      SI: 000Ah
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: s-94SI0002
+  category: s
+  title: PCM driver - INITIALIZE PCM INFO
+  source: INTERRUP.R:369
+  interrupt: '94'
+  flags:
+  - u
+  function: SI0002
+  input_registers:
+  - reg: SI
+    operator: '='
+    value: 0002h
+    table_refs: []
+    sub_values: []
+  - reg: ES:BX
+    operator: ->
+    description: 'parameters (see #03997)'
+    table_refs:
+    - 03997
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      SI: 0000h
+  - type: interrupt
+    params:
+      SI: 0001h
+  - type: interrupt
+    params:
+      SI: 0003h
+  - type: interrupt
+    params:
+      SI: 000Ah
+  index: []
+  tables:
+  - 03997
+  table_refs: []
+- entry_type: INT
+  id: s-94SI0003
+  category: s
+  title: PCM driver - INITIALIZE DMA BUFFER
+  source: INTERRUP.R:382
+  interrupt: '94'
+  flags:
+  - u
+  function: SI0003
+  input_registers:
+  - reg: SI
+    operator: '='
+    value: 0003h
+    table_refs: []
+    sub_values: []
+  - reg: ES:BX
+    operator: ->
+    description: 'parameters (see #03998)'
+    table_refs:
+    - 03998
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      SI: 0000h
+  - type: interrupt
+    params:
+      SI: 000Ah
+  - type: interrupt
+    params:
+      SI: 000Bh
+  index: []
+  tables:
+  - 03998
+  table_refs: []
+- entry_type: INT
+  id: s-94SI0004
+  category: s
+  title: PCM driver - INITIALIZE USER FUNCTION
+  source: INTERRUP.R:394
+  interrupt: '94'
+  flags:
+  - u
+  function: SI0004
+  input_registers:
+  - reg: SI
+    operator: '='
+    value: 0004h
+    table_refs: []
+    sub_values: []
+  - reg: ES:BX
+    operator: ->
+    description: 'parameters (see #03999)'
+    table_refs:
+    - 03999
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      SI: 0000h
+  - type: interrupt
+    params:
+      SI: 0001h
+  index: []
+  tables:
+  - 03999
+  table_refs: []
+- entry_type: INT
+  id: s-94SI0005
+  category: s
+  title: PCM driver - BEGIN AUDIO PLAY
+  source: INTERRUP.R:404
+  interrupt: '94'
+  flags:
+  - u
+  function: SI0005
+  input_registers:
+  - reg: SI
+    operator: '='
+    value: 0005h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      SI: 0000h
+  - type: interrupt
+    params:
+      SI: 0006h
+  - type: interrupt
+    params:
+      SI: 0007h
+  - type: interrupt
+    params:
+      SI: 0009h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: s-94SI0006
+  category: s
+  title: PCM driver - BEGIN AUDIO RECORD
+  source: INTERRUP.R:409
+  interrupt: '94'
+  flags:
+  - u
+  function: SI0006
+  input_registers:
+  - reg: SI
+    operator: '='
+    value: 0006h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      SI: 0005h
+  - type: interrupt
+    params:
+      SI: 0007h
+  - type: interrupt
+    params:
+      SI: 0009h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: s-94SI0007
+  category: s
+  title: PCM driver - PAUSE AUDIO PLAY/RECORD
+  source: INTERRUP.R:414
+  interrupt: '94'
+  flags:
+  - u
+  function: SI0007
+  input_registers:
+  - reg: SI
+    operator: '='
+    value: 0007h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      SI: 0005h
+  - type: interrupt
+    params:
+      SI: 0006h
+  - type: interrupt
+    params:
+      SI: 0008h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: s-94SI0008
+  category: s
+  title: PCM driver - RESUME AUDIO PLAY/RECORD
+  source: INTERRUP.R:419
+  interrupt: '94'
+  flags:
+  - u
+  function: SI0008
+  input_registers:
+  - reg: SI
+    operator: '='
+    value: 0008h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      SI: 0007h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: s-94SI0009
+  category: s
+  title: PCM driver - STOP AUDIO PLAY/RECORD
+  source: INTERRUP.R:424
+  interrupt: '94'
+  flags:
+  - u
+  function: SI0009
+  input_registers:
+  - reg: SI
+    operator: '='
+    value: 0009h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      SI: 0005h
+  - type: interrupt
+    params:
+      SI: 0006h
+  - type: interrupt
+    params:
+      SI: 0007h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: s-94SI000A
+  category: s
+  title: PCM driver - UNHOOK INTERRUPTS AND TURN OFF DMA
+  source: INTERRUP.R:429
+  interrupt: '94'
+  flags:
+  - u
+  function: SI000A
+  input_registers:
+  - reg: SI
+    operator: '='
+    value: 000Ah
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      SI: 0000h
+  - type: interrupt
+    params:
+      SI: 0001h
+  - type: interrupt
+    params:
+      SI: 0003h
+  index:
+  - uninstall;PCM driver
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: s-94SI000B
+  category: s
+  title: PCM driver - FIND VALID DMA BUFFER IN HUGE MEMORY BLOCK
+  source: INTERRUP.R:435
+  interrupt: '94'
+  flags:
+  - u
+  function: SI000B
+  input_registers:
+  - reg: SI
+    operator: '='
+    value: 000Bh
+    table_refs: []
+    sub_values: []
+  - reg: ES:BX
+    operator: ->
+    description: 'parameters (see #04000)'
+    table_refs:
+    - '04000'
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      SI: 0003h
+  index: []
+  tables:
+  - '04000'
+  table_refs: []
+- entry_type: INT
+  id: s-94SI000D
+  category: s
+  title: Media Vision PCM.COM - GET STATUS
+  source: INTERRUP.R:446
+  interrupt: '94'
+  flags:
+  - u
+  function: SI000D
+  input_registers:
+  - reg: SI
+    operator: '='
+    value: 000Dh
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AX
+      operator: '='
+      description: 'status (0000h = waiting) (see #04001)'
+      table_refs:
+      - '04001'
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables:
+  - '04001'
+  table_refs: []
+- entry_type: INT
+  id: s-94SI8000
+  category: s
+  title: Media Vision PCM.COM - GET INTERNAL DMA BUFFER ADDRESS
+  source: INTERRUP.R:459
+  interrupt: '94'
+  flags:
+  - u
+  function: SI8000
+  input_registers:
+  - reg: SI
+    operator: '='
+    value: 8000h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: DX:AX
+      operator: ->
+      description: DMA buffer
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  program: 'PCM.COM is a superset of the standard PCM driver which provides
+
+    additional functions for fine control of the driver'
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      SI: 8001h
+  - type: interrupt
+    params:
+      SI: 8004h
+  install_check: 'for the Media Vision PCM.COM "shark" functions, test for the
+
+    signature "PCM-SHARK" at offset 107h in the INT 94 handler''s segment'
+  index:
+  - installation check;Media Vision PCM.COM|PCM.COM;installation check
+  - Media Vision PCM.COM;"shark" functions
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: s-94SI8001
+  category: s
+  title: Media Vision PCM.COM - GET INTERNAL DMA BUFFER SIZE AND DIVISIONS
+  source: INTERRUP.R:470
+  interrupt: '94'
+  flags:
+  - u
+  function: SI8001
+  input_registers:
+  - reg: SI
+    operator: '='
+    value: 8001h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AX
+      operator: '='
+      description: DMA buffer size
+      table_refs: []
+      sub_values: []
+    - reg: DX
+      operator: '='
+      description: divisions
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      SI: 8000h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: s-94SI8002
+  category: s
+  title: Media Vision PCM.COM - CHECK BOARD ADDRESS
+  source: INTERRUP.R:476
+  interrupt: '94'
+  flags:
+  - u
+  function: SI8002
+  input_registers:
+  - reg: SI
+    operator: '='
+    value: 8002h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AX
+      operator: '='
+      description: status
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes:
+  - 'the I/O address is specified by ORing the base I/O port shifted left
+
+    four bits into SI before calling INT 94'
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      SI: 8000h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: s-94SI8004
+  category: s
+  title: Media Vision PCM.COM - GET INTERNAL NOTE BUFFER
+  source: INTERRUP.R:485
+  interrupt: '94'
+  flags:
+  - u
+  function: SI8004
+  input_registers:
+  - reg: SI
+    operator: '='
+    value: 8004h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AX
+      operator: '='
+      description: offset of note buffer (segment = segment of internal DMA buffer)
+      table_refs: []
+      sub_values: []
+    - reg: DX
+      operator: '='
+      description: size of buffer in note structures
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      SI: 8000h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: s-94SI8005
+  category: s
+  title: Media Vision PCM.COM - SINGLE-STEP QUEUE
+  source: INTERRUP.R:491
+  interrupt: '94'
+  flags:
+  - u
+  function: SI8005
+  input_registers:
+  - reg: SI
+    operator: '='
+    value: 8005h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: s-94SI8011
+  category: s
+  title: Media Vision PCM.COM - INITIALIZE
+  source: INTERRUP.R:495
+  interrupt: '94'
+  flags:
+  - u
+  function: SI8011
+  input_registers:
+  - reg: SI
+    operator: '='
+    value: 8011h
+    table_refs: []
+    sub_values: []
+  - reg: ES:BX
+    operator: ->
+    description: '"iobf91" structure'
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: s-94SI8012
+  category: s
+  title: Media Vision PCM.COM - LOAD SOUND FOR LATER PLAY THROUGH KEYBOARD
+  source: INTERRUP.R:500
+  interrupt: '94'
+  flags:
+  - u
+  function: SI8012
+  input_registers:
+  - reg: SI
+    operator: '='
+    value: 8012h
+    table_refs: []
+    sub_values: []
+  - reg: ES:BX
+    operator: ->
+    description: '"i94f92buf" structure'
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      SI: 8013h
+  - type: interrupt
+    params:
+      SI: 8014h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: s-94SI8013
+  category: s
+  title: Media Vision PCM.COM - GET INTERNAL SOUND USAGE
+  source: INTERRUP.R:506
+  interrupt: '94'
+  flags:
+  - u
+  function: SI8013
+  input_registers:
+  - reg: SI
+    operator: '='
+    value: 8013h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AX
+      operator: '='
+      description: number of sounds used
+      table_refs: []
+      sub_values: []
+    - reg: DX
+      operator: '='
+      description: maximum handles
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: s-94SI8014
+  category: s
+  title: Media Vision PCM.COM - GET DATA FOR SPECIFIED SOUND
+  source: INTERRUP.R:511
+  interrupt: '94'
+  flags:
+  - u
+  function: SI8014
+  input_registers:
+  - reg: SI
+    operator: '='
+    value: 8014h
+    table_refs: []
+    sub_values: []
+  - reg: ES:BX
+    operator: ->
+    description: '"i94f92buf" structure to be filled in'
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AX
+      operator: '='
+      description: status
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      SI: 8012h
+  - type: interrupt
+    params:
+      SI: 8013h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: s-94SI8015
+  category: s
+  title: Media Vision PCM.COM - GET/SET INTERNAL DMA BUFFER
+  source: INTERRUP.R:520
+  interrupt: '94'
+  flags:
+  - u
+  function: SI8015
+  input_registers:
+  - reg: SI
+    operator: '='
+    value: 8015h
+    table_refs: []
+    sub_values: []
+  - reg: ES:BX
+    operator: ->
+    description: 'DMA info structure (see #04002)'
+    table_refs:
+    - '04002'
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables:
+  - '04002'
+  table_refs: []
+- entry_type: INT
+  id: s-94SI8016
+  category: s
+  title: Media Vision PCM.COM - SIMULATE DOUBLE-SHIFT HOTKEY
+  source: INTERRUP.R:531
+  interrupt: '94'
+  flags:
+  - u
+  function: SI8016
+  input_registers:
+  - reg: SI
+    operator: '='
+    value: 8016h
+    table_refs: []
+    sub_values: []
+  - reg: AX
+    operator: '='
+    description: hotkey number (01h-08h)
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AL: 02h
+      SI: 8017h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: s-9401SI8017
+  category: s
+  title: Media Vision PCM.COM - CTRL-G INTERCEPT
+  source: INTERRUP.R:537
+  interrupt: '94'
+  flags:
+  - u
+  function: 01SI8017
+  input_registers:
+  - reg: AL
+    operator: '='
+    value: 01h
+    table_refs: []
+    sub_values: []
+  - reg: SI
+    operator: '='
+    value: 8017h
+    table_refs: []
+    sub_values: []
+  - reg: AH
+    operator: '='
+    description: new state (00h off, 01h on)
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AL: 02h
+      SI: 8017h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: s-9402SI8017
+  category: s
+  title: Media Vision PCM.COM - DOUBLE-SHIFT-HOTKEY SOUND FEATURE
+  source: INTERRUP.R:544
+  interrupt: '94'
+  flags:
+  - u
+  function: 02SI8017
+  input_registers:
+  - reg: AL
+    operator: '='
+    value: 02h
+    table_refs: []
+    sub_values: []
+  - reg: SI
+    operator: '='
+    value: 8017h
+    table_refs: []
+    sub_values: []
+  - reg: AH
+    operator: '='
+    description: new state (00h off, 01h on)
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: s-9404SI8017
+  category: s
+  title: Media Vision PCM.COM - RANDOM SOUND FEATURE
+  source: INTERRUP.R:550
+  interrupt: '94'
+  flags:
+  - u
+  function: 04SI8017
+  input_registers:
+  - reg: AL
+    operator: '='
+    value: 04h
+    table_refs: []
+    sub_values: []
+  - reg: SI
+    operator: '='
+    value: 8017h
+    table_refs: []
+    sub_values: []
+  - reg: AH
+    operator: '='
+    description: new state
+    table_refs: []
+    sub_values:
+    - value: 00h
+      description: 'off'
+      sub_values: []
+    - value: 01h
+      description: 'on'
+      sub_values: []
+  - reg: CX
+    operator: '='
+    description: minimum delay
+    table_refs: []
+    sub_values: []
+  - reg: DX
+    operator: '='
+    description: maximum delay
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: s-9408SI8017
+  category: s
+  title: Media Vision PCM.COM - NO ACTIVITY FEATURE
+  source: INTERRUP.R:560
+  interrupt: '94'
+  flags:
+  - u
+  function: 08SI8017
+  input_registers:
+  - reg: AL
+    operator: '='
+    value: 08h
+    table_refs: []
+    sub_values: []
+  - reg: SI
+    operator: '='
+    value: 8017h
+    table_refs: []
+    sub_values: []
+  - reg: AH
+    operator: '='
+    description: new state
+    table_refs: []
+    sub_values:
+    - value: 00h
+      description: 'off'
+      sub_values: []
+    - value: 01h
+      description: 'on'
+      sub_values: []
+  - reg: DX:CX
+    operator: '='
+    description: delay
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AL: 10h
+      SI: 8017h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: s-9410SI8017
+  category: s
+  title: Media Vision PCM.COM - TIMER CONTROL
+  source: INTERRUP.R:570
+  interrupt: '94'
+  flags:
+  - u
+  function: 10SI8017
+  input_registers:
+  - reg: AL
+    operator: '='
+    value: 10h
+    table_refs: []
+    sub_values: []
+  - reg: SI
+    operator: '='
+    value: 8017h
+    table_refs: []
+    sub_values: []
+  - reg: AH
+    operator: '='
+    description: 'timer options (see #04003)'
+    table_refs:
+    - '04003'
+    sub_values: []
+  - reg: DX:CX
+    operator: '='
+    description: delay if AH bit 7 set (one-shot if DX bit 15 set)
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AL: 08h
+      SI: 8017h
+  index: []
+  tables:
+  - '04003'
+  table_refs: []
+- entry_type: INT
+  id: s-94SI8018
+  category: s
+  title: Media Vision PCM.COM - GET INFO
+  source: INTERRUP.R:584
+  interrupt: '94'
+  flags:
+  - u
+  function: SI8018
+  input_registers:
+  - reg: SI
+    operator: '='
+    value: 8018h
+    table_refs: []
+    sub_values: []
+  - reg: AL
+    operator: '='
+    description: what to get
+    table_refs: []
+    sub_values:
+    - value: 00h
+      description: '"F92state"'
+      sub_values: []
+    - value: 01h
+      description: '"F92bkgd"'
+      sub_values: []
+    - value: 02h
+      description: '"I10timer"'
+      sub_values: []
+    - value: 03h
+      description: '"I08state"'
+      sub_values: []
+  returns:
+  - registers:
+    - reg: DX:AX
+      operator: ->
+      description: desired information
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []

@@ -1,0 +1,77 @@
+file_type: interrupt
+key: D9
+entries:
+- entry_type: INT
+  id: r-D9
+  category: r
+  title: IBM ROM BASIC - used while in interpreter
+  source: INTERRUP.R:1925
+  interrupt: D9
+  flags: []
+  input_registers: []
+  returns: []
+  notes:
+  - 'called by ROM BASIC, but pointed at IRET by BASIC.COM/BASICA.COM
+
+    BASIC.COM/BASICA.COM do not restore vector on termination'
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: '80'
+    params: {}
+    name: BASIC
+  - type: interrupt
+    interrupt: D8
+    params: {}
+    name: BASIC
+  - type: interrupt
+    interrupt: DA
+    params: {}
+    name: BASIC
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: r-D9
+  category: r
+  title: STSC APL*PLUS/PC - MAY BE USED IN FUTURE RELEASES
+  source: INTERRUP.R:1930
+  interrupt: D9
+  flags: []
+  input_registers: []
+  returns: []
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: H-D9
+  category: H
+  title: Screen Thief v1.00 - RELOCATED IRQ1
+  source: INTERRUP.R:1932
+  interrupt: D9
+  flags: []
+  input_registers: []
+  returns: []
+  notes:
+  - (see INT D8"Screen Thief")
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: 09
+    params: {}
+    name: IRQ1
+  - type: interrupt
+    interrupt: D8
+    params: {}
+    name: Screen Thief
+  - type: interrupt
+    interrupt: DA
+    params: {}
+    name: Screen Thief
+  range: INT 79h to INT E1h, selected by commandline switch
+  index: []
+  tables: []
+  table_refs: []

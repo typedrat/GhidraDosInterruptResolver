@@ -1,0 +1,842 @@
+file_type: interrupt
+key: '41'
+entries:
+- entry_type: INT
+  id: B-41
+  category: B
+  title: SYSTEM DATA - HARD DISK 0 PARAMETER TABLE ADDRESS [NOT A VECTOR!]
+  source: INTERRUP.N:6961
+  interrupt: '41'
+  flags: []
+  input_registers: []
+  returns: []
+  notes:
+  - 'the default parameter table array is located at F000h:E401h in 100%
+
+    compatible BIOSes; the pointer may be overridden by the hard disk
+
+    controller''s BIOS to support drive formats unknown to the ROM BIOS
+
+    not used by some PS/2 models
+
+    BIOSes which support four hard drives may store the parameter tables
+
+    for drives 81h-83h immediately following the parameter table pointed
+
+    at by INT 41, with a separate copy of the drive 81h table for INT 46.
+
+    The check for such an arrangement is to test whether INT 46 points
+
+    somewhere other than exactly 16 bytes past INT 41, and the sixteen
+
+    bytes starting at offset 10h from INT 41 are identical to the sixteen
+
+    bytes pointed at by INT 46
+
+    another arrangement for BIOSes which support four IDE drives is to have
+
+    four tables pointed at by INT 41 in the order primary master,
+
+    primary slave, secondary master, and secondary slave, in which case
+
+    (for example) a system with only primary master and secondary master
+
+    will have valid tables at offsets 00h and 20h, with garbage (but
+
+    sectors-per-track = 00h) at offsets 10h and 30h'
+  bugs: []
+  see_also:
+  - type: table
+    id: 03196
+  - type: interrupt
+    interrupt: '13'
+    params:
+      AH: 09h
+  - type: interrupt
+    interrupt: 1E
+    params: {}
+  - type: interrupt
+    interrupt: '46'
+    params: {}
+    name: HARD DISK 1
+  - type: interrupt
+    interrupt: '60'
+    params: {}
+    name: Adaptec
+  - type: interrupt
+    interrupt: C0
+    params: {}
+    name: AMI
+  index: []
+  tables:
+  - 03196
+  - 03197
+  - 03198
+  table_refs:
+  - 03196
+- entry_type: INT
+  id: h-41
+  category: h
+  title: Z100 - Master 8259 - Processor Swap
+  source: INTERRUP.N:7021
+  interrupt: '41'
+  flags: []
+  input_registers: []
+  returns: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: '40'
+    params: {}
+    name: Z100
+  - type: interrupt
+    interrupt: '42'
+    params: {}
+    name: Z100
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: h-41
+  category: h
+  title: TI Professional PC - IRQ1
+  source: INTERRUP.N:7024
+  interrupt: '41'
+  flags: []
+  input_registers: []
+  returns: []
+  notes:
+  - 'on the TI Pro, IRQ1 is connected to the same pin on the expansion bus
+
+    that IBM connects to IRQ3'
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: 0B
+    params: {}
+    name: IRQ3
+  - type: interrupt
+    interrupt: '40'
+    params: {}
+    name: TI Professional
+  - type: interrupt
+    interrupt: '42'
+    params: {}
+    name: TI Professional
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: O-41
+  category: O
+  title: Acorn BBC Master 512 - "OSGBPB" - MULTI-BYTE GET/PUT
+  source: INTERRUP.N:7029
+  interrupt: '41'
+  flags: []
+  input_registers:
+  - reg: AL
+    operator: '='
+    description: function
+    table_refs: []
+    sub_values:
+    - value: 01h
+      description: put bytes sequentially
+      sub_values: []
+    - value: 02h
+      description: put bytes, ignoring sequential pointer
+      sub_values: []
+    - value: 03h
+      description: get bytes sequentially
+      sub_values: []
+    - value: 04h
+      description: get bytes, ignoring sequential pointer
+      sub_values: []
+    - value: 05h
+      description: get media title and boot option
+      sub_values: []
+    - value: 06h
+      description: get current device and directory
+      sub_values: []
+    - value: 07h
+      description: get current library and device
+      sub_values: []
+    - value: 08h
+      description: search directory
+      sub_values: []
+  - reg: DS:BX
+    operator: ->
+    description: 'control block (see #03199)'
+    table_refs:
+    - 03199
+    sub_values: []
+  returns:
+  - condition: CF clear
+    condition_description: if successful
+    registers: []
+    raw_lines: []
+  - condition: CF set
+    condition_description: on error
+    registers:
+    - reg: AL
+      operator: '='
+      value: 00h
+      description: if operation attempted
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: '40'
+    params: {}
+    name: Acorn
+  - type: interrupt
+    interrupt: '42'
+    params: {}
+    name: Acorn
+  - type: interrupt
+    interrupt: '43'
+    params: {}
+    name: Acorn
+  index: []
+  tables:
+  - 03199
+  table_refs: []
+- entry_type: INT
+  id: G-410000
+  category: G
+  title: MS Windows debugging kernel - OUTPUT CHARACTER FOR USER
+  source: INTERRUP.N:7053
+  interrupt: '41'
+  flags:
+  - C
+  - P
+  - U
+  function: '0000'
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 0000h
+    table_refs: []
+    sub_values: []
+  - reg: DS:DX
+    operator: ->
+    description: character
+    table_refs: []
+    sub_values: []
+  returns: []
+  notes:
+  - 'the kernel calls this function when it wants the user program to
+
+    output a character'
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 0001h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: G-410001
+  category: G
+  title: MS Windows debugging kernel - INPUT CHARACTER
+  source: INTERRUP.N:7060
+  interrupt: '41'
+  flags:
+  - C
+  - P
+  - U
+  function: '0001'
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 0001h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AL
+      operator: '='
+      description: character
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes:
+  - the kernel calls this function when it needs to input a character
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 0000h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: G-41000D
+  category: G
+  title: MS Windows debugging kernel - TASK GOING OUT
+  source: INTERRUP.N:7066
+  interrupt: '41'
+  flags:
+  - C
+  - P
+  - U
+  function: 000D
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 000Dh
+    table_refs: []
+    sub_values: []
+  returns: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 000Eh
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: G-41000E
+  category: G
+  title: MS Windows debugging kernel - TASK COMING IN
+  source: INTERRUP.N:7070
+  interrupt: '41'
+  flags:
+  - C
+  - P
+  - U
+  function: 000E
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 000Eh
+    table_refs: []
+    sub_values: []
+  returns: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 000Dh
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: G-410012
+  category: G
+  title: MS Windows debugging kernel - "OutputDebugString"
+  source: INTERRUP.N:7074
+  interrupt: '41'
+  flags:
+  - C
+  - P
+  - U
+  function: '0012'
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 0012h
+    table_refs: []
+    sub_values: []
+  - reg: DS:SI
+    operator: ->
+    description: string (Windows 3.0)
+    table_refs: []
+    sub_values: []
+  - reg: ES:SI
+    operator: ->
+    description: string (Windows 3.1)
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - nothing???
+  notes:
+  - 'this function is called by the kernel when it wants to output a
+
+    string through the debugger'
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 0050h
+  - type: interrupt
+    interrupt: '68'
+    params:
+      AH: 47h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: G-41004F
+  category: G
+  title: MS Windows debugging kernel - DEBUGGER INSTALLATION CHECK
+  source: INTERRUP.N:7083
+  interrupt: '41'
+  flags:
+  - C
+  - P
+  - U
+  function: 004F
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 004Fh
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AX
+      operator: '='
+      value: F386h
+      description: if debugger is present
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: '68'
+    params:
+      AX: 4400h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: G-410050
+  category: G
+  title: MS Windows debugging kernel - "DefineDebugSegment"
+  source: INTERRUP.N:7088
+  interrupt: '41'
+  flags:
+  - P
+  function: '0050'
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 0050h
+    table_refs: []
+    sub_values: []
+  - reg: BX
+    operator: '='
+    description: segment number in executable (0-based)
+    table_refs: []
+    sub_values: []
+  - reg: CX
+    operator: '='
+    description: selector
+    table_refs: []
+    sub_values: []
+  - reg: DX
+    operator: '='
+    description: instance handle
+    table_refs: []
+    sub_values: []
+  - reg: SI
+    operator: '='
+    description: segment flags (0=code, 1=data)
+    table_refs: []
+    sub_values: []
+  - reg: ES:DI
+    operator: ->
+    description: module name of owner
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 0012h
+  - type: interrupt
+    params:
+      AX: 004Fh
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: G-410051
+  category: G
+  title: MS Windows debugging kernel - MOVE SEGMENT
+  source: INTERRUP.N:7098
+  interrupt: '41'
+  flags:
+  - C
+  - P
+  - U
+  function: '0051'
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 0051h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 0050h
+  - type: interrupt
+    params:
+      AX: 0052h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: G-410052
+  category: G
+  title: MS Windows debugging kernel - FREE SEGMENT
+  source: INTERRUP.N:7104
+  interrupt: '41'
+  flags:
+  - C
+  - P
+  - U
+  function: '0052'
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 0052h
+    table_refs: []
+    sub_values: []
+  - reg: BX
+    operator: '='
+    description: freed selector
+    table_refs: []
+    sub_values: []
+  returns: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 0050h
+  - type: interrupt
+    params:
+      AX: 0051h
+  - type: interrupt
+    params:
+      AX: 005Ch
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: G-410059
+  category: G
+  title: MS Windows debugging kernel - LOAD TASK
+  source: INTERRUP.N:7109
+  interrupt: '41'
+  flags:
+  - C
+  - P
+  - U
+  function: 0059
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 0059h
+    table_refs: []
+    sub_values: []
+  returns: []
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: G-41005C
+  category: G
+  title: MS Windows debugging kernel - FREE INITIAL SEGMENT
+  source: INTERRUP.N:7113
+  interrupt: '41'
+  flags:
+  - C
+  - P
+  - U
+  function: 005C
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 005Ch
+    table_refs: []
+    sub_values: []
+  - reg: BX
+    operator: '='
+    description: freed selector
+    table_refs: []
+    sub_values: []
+  returns: []
+  notes:
+  - 'called only when KERNEL starts, once for CS and once for the DS alias
+
+    to CS'
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 0052h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: G-410060
+  category: G
+  title: MS Windows debugging kernel -  END OF SEGMENT LOAD
+  source: INTERRUP.N:7120
+  interrupt: '41'
+  flags:
+  - C
+  - P
+  - U
+  function: '0060'
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 0060h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 0061h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: G-410061
+  category: G
+  title: MS Windows debugging kernel - END OF SEGMENT DISCARD
+  source: INTERRUP.N:7126
+  interrupt: '41'
+  flags:
+  - C
+  - P
+  - U
+  function: '0061'
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 0061h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 0060h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: G-410062
+  category: G
+  title: MS Windows debugging kernel - APPLICATION TERMINATING
+  source: INTERRUP.N:7132
+  interrupt: '41'
+  flags:
+  - C
+  - P
+  - U
+  function: '0062'
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 0062h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+    - STACK unchanged???
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 0064h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: G-410063
+  category: G
+  title: MS Windows debugging kernel - ASYNCHRONOUS STOP (Ctrl-Alt-SysReq)
+  source: INTERRUP.N:7139
+  interrupt: '41'
+  flags:
+  - C
+  - P
+  - U
+  function: '0063'
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 0063h
+    table_refs: []
+    sub_values: []
+  returns: []
+  notes: []
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: G-410064
+  category: G
+  title: MS Windows debugging kernel - DLL LOADED
+  source: INTERRUP.N:7142
+  interrupt: '41'
+  flags:
+  - C
+  - P
+  - U
+  function: '0064'
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 0064h
+    table_refs: []
+    sub_values: []
+  - reg: CX:BX
+    operator: '='
+    description: DLL entry point CS:IP
+    table_refs: []
+    sub_values: []
+  - reg: SI
+    operator: '='
+    description: module handle
+    table_refs: []
+    sub_values: []
+  returns: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 0062h
+  - type: interrupt
+    params:
+      AX: 0065h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: G-410065
+  category: G
+  title: MS Windows debugging kernel - MODULE REMOVED
+  source: INTERRUP.N:7148
+  interrupt: '41'
+  flags:
+  - C
+  - P
+  - U
+  function: '0065'
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 0065h
+    table_refs: []
+    sub_values: []
+  - reg: ES
+    operator: '='
+    description: module handle
+    table_refs: []
+    sub_values: []
+  returns: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 0064h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: G-410066
+  category: G
+  title: MS Windows debugging kernel - ERROR
+  source: INTERRUP.N:7153
+  interrupt: '41'
+  flags:
+  - C
+  - P
+  - U
+  function: '0066'
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 0066h
+    table_refs: []
+    sub_values: []
+  returns: []
+  notes:
+  - called by LogError()
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 0067h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: G-410067
+  category: G
+  title: MS Windows debugging kernel - PARAMETER ERROR
+  source: INTERRUP.N:7158
+  interrupt: '41'
+  flags:
+  - C
+  - P
+  - U
+  function: '0067'
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 0067h
+    table_refs: []
+    sub_values: []
+  returns: []
+  notes:
+  - called by LogParamError()
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 0066h
+  index: []
+  tables: []
+  table_refs: []

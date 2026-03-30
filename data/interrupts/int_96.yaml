@@ -1,0 +1,69 @@
+file_type: interrupt
+key: '96'
+entries:
+- entry_type: INT
+  id: r-96
+  category: r
+  title: IBM ROM BASIC - used while in interpreter
+  source: INTERRUP.R:600
+  interrupt: '96'
+  flags: []
+  input_registers: []
+  returns: []
+  notes:
+  - 'called by ROM BASIC
+
+    BASIC.COM/BASICA.COM do not restore vector on termination'
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: U-96
+  category: U
+  title: KILL.COM, QKILL.COM - POP UP
+  source: INTERRUP.R:604
+  interrupt: '96'
+  flags:
+  - U
+  input_registers: []
+  returns: []
+  program: 'KILL.COM is a TSR utility that allows you to terminate programs
+
+    by calling INT 21/AH=4Ch or reboot the computer (author unknown);
+
+    QKILL.COM is a modification of KILL.COM by Solar Designer that
+
+    supports QEMM''s Quick Boot feature'
+  notes:
+  - 'This interrupt is intercepted but not chained by KILL.COM; it is never
+
+    called by KILL.COM itself. It points into the middle of KILL.COM''s
+
+    INT 09 handler and assumes specific values have been placed on the
+
+    stack (thus it can''t be called as an interrupt).
+
+    To invoke KILL, use the following code:
+
+    pushf
+
+    push cs
+
+    push offset $+0Dh
+
+    push ax
+
+    push es
+
+    push 0
+
+    pop  es
+
+    jmp  dword ptr es:[96h*4]'
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []

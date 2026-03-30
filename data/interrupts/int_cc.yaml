@@ -1,0 +1,66 @@
+file_type: interrupt
+key: CC
+entries:
+- entry_type: INT
+  id: r-CC
+  category: r
+  title: IBM ROM BASIC - used while in interpreter
+  source: INTERRUP.R:1195
+  interrupt: CC
+  flags: []
+  input_registers: []
+  returns: []
+  notes:
+  - 'called by ROM BASIC, but pointed at IRET by BASIC.COM/BASICA.COM
+
+    BASIC.COM/BASICA.COM do not restore vector on termination'
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: '80'
+    params: {}
+    name: BASIC
+  - type: interrupt
+    interrupt: CB
+    params: {}
+    name: BASIC
+  - type: interrupt
+    interrupt: CD
+    params: {}
+    name: BASIC
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: r-CC
+  category: r
+  title: APL*PLUS/PC - CLEAR SCREEN MEMORY
+  source: INTERRUP.R:1200
+  interrupt: CC
+  flags: []
+  input_registers:
+  - reg: AX
+    operator: '='
+    description: flag
+    table_refs: []
+    sub_values:
+    - value: 0000h
+      description: do not save display attributes
+      sub_values: []
+    - value: 0001h
+      description: save attributes
+      sub_values: []
+  returns: []
+  notes:
+  - 'STSC moved its interrupts from 86h-8Ch to C6h-CCh, but did not delete
+
+    the older interrupts'
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: 8C
+    params: {}
+    name: APL
+  index: []
+  tables: []
+  table_refs: []

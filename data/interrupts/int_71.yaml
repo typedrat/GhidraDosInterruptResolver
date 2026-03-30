@@ -1,0 +1,42 @@
+file_type: interrupt
+key: '71'
+entries:
+- entry_type: INT
+  id: H-71
+  category: H
+  title: IRQ9 - REDIRECTED TO INT 0A BY BIOS
+  source: INTERRUP.Q:3000
+  interrupt: '71'
+  flags:
+  - C
+  input_registers: []
+  returns: []
+  notes:
+  - 'may be masked by setting bit 1 on I/O port A1h
+
+    the default BIOS handler invokes INT 0A for compatibility, since the
+
+    pin for IRQ2 on the PC expansion bus became the pin for IRQ9 on the
+
+    AT expansion bus.
+
+    under DESQview, only the INT 15h vector and BASIC segment address (the
+
+    word at 0000h:0510h) may be assumed to be valid for the handler''s
+
+    process'
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: 0A
+    params: {}
+    name: IRQ2
+  - type: interrupt
+    interrupt: '59'
+    params: {}
+    name: IRQ9
+  - type: memory
+    address: 0040h:006Bh
+  index: []
+  tables: []
+  table_refs: []

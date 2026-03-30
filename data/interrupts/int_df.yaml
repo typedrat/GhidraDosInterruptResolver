@@ -1,0 +1,101 @@
+file_type: interrupt
+key: DF
+entries:
+- entry_type: INT
+  id: b-DF
+  category: b
+  title: Victor 9000/Sirius 1 - SuperBIOS
+  source: INTERRUP.R:2011
+  interrupt: DF
+  flags: []
+  input_registers: []
+  returns: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: '21'
+    params:
+      AH: EAh
+    name: NetWare
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: r-DF
+  category: r
+  title: IBM ROM BASIC - used while in interpreter
+  source: INTERRUP.R:2014
+  interrupt: DF
+  flags: []
+  input_registers: []
+  returns: []
+  notes:
+  - 'called by ROM BASIC
+
+    BASIC.COM/BASICA.COM do not restore vector on termination'
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: '80'
+    params: {}
+    name: BASIC
+  - type: interrupt
+    interrupt: DE
+    params: {}
+    name: BASIC
+  - type: interrupt
+    interrupt: E0
+    params: {}
+    name: BASIC
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: r-DF
+  category: r
+  title: APL*PLUS/PC - SAME AS INT 10
+  source: INTERRUP.R:2019
+  interrupt: DF
+  flags: []
+  input_registers: []
+  returns: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: '10'
+    params:
+      AH: 00h
+  - type: interrupt
+    interrupt: '10'
+    params:
+      AH: 0Eh
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: H-DF
+  category: H
+  title: Screen Thief v1.00 - RELOCATED IRQ7
+  source: INTERRUP.R:2022
+  interrupt: DF
+  flags: []
+  input_registers: []
+  returns: []
+  notes:
+  - (see INT D8"Screen Thief")
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: 0F
+    params: {}
+    name: IRQ7
+  - type: interrupt
+    interrupt: DE
+    params: {}
+    name: Screen Thief
+  range: INT 7Fh to INT E7h, selected by commandline switch
+  index: []
+  tables: []
+  table_refs: []

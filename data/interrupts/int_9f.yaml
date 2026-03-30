@@ -1,0 +1,65 @@
+file_type: interrupt
+key: 9F
+entries:
+- entry_type: INT
+  id: r-9F
+  category: r
+  title: IBM ROM BASIC - used while in interpreter
+  source: INTERRUP.R:671
+  interrupt: 9F
+  flags: []
+  input_registers: []
+  returns: []
+  notes:
+  - 'called by ROM BASIC
+
+    BASIC.COM/BASICA.COM do not restore vector on termination'
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: '80'
+    params: {}
+    name: BASIC
+  - type: interrupt
+    interrupt: 9D
+    params: {}
+    name: BASIC
+  - type: interrupt
+    interrupt: A0
+    params: {}
+    name: BASIC
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: v-9F
+  category: v
+  title: VIRUS - "INT13" - STORAGE FOR USER INT 13h VECTOR
+  source: INTERRUP.R:676
+  interrupt: 9F
+  flags: []
+  input_registers: []
+  returns: []
+  notes:
+  - 'while it is infecting a file, the INT13 virus grabs INT 13 and uses
+
+    this interrupt to store the existing INT 13 vector for later
+
+    restoration'
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: 9C
+    params: {}
+    name: VIRUS
+  - type: interrupt
+    interrupt: 9D
+    params: {}
+    name: VIRUS
+  - type: interrupt
+    interrupt: D3
+    params: {}
+    name: VIRUS
+  index: []
+  tables: []
+  table_refs: []

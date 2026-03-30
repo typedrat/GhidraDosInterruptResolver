@@ -1,0 +1,1261 @@
+file_type: interrupt
+key: 6B
+entries:
+- entry_type: INT
+  id: N-6B
+  category: N
+  title: DECnet DOS - PORT DRIVER
+  source: INTERRUP.Q:3
+  interrupt: 6B
+  flags: []
+  input_registers: []
+  returns: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: 6A
+    params: {}
+    name: DECnet
+  - type: interrupt
+    interrupt: 6C
+    params: {}
+    name: DECnet
+  install_check: 'test for a signature area (see #03729) immediately preceding
+
+    the interrupt handler'
+  index:
+  - installation check;DECnet DOS Port Driver
+  tables:
+  - 03729
+  table_refs:
+  - 03729
+- entry_type: INT
+  id: v-6B
+  category: v
+  title: VIRUS - "Saddam" - ORIGINAL INT 21h VECTOR
+  source: INTERRUP.Q:15
+  interrupt: 6B
+  flags: []
+  input_registers: []
+  returns: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: '21'
+    params:
+      AX: FFFFh
+  - type: interrupt
+    interrupt: '61'
+    params: {}
+    name: VIRUS
+  - type: interrupt
+    interrupt: '70'
+    params: {}
+    name: VIRUS
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: h-6B
+  category: h
+  title: HP Vectra AT - IRQ19 - RESERVED HARDWARE INTERRUPT
+  source: INTERRUP.Q:18
+  interrupt: 6B
+  flags:
+  - C
+  input_registers: []
+  returns: []
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: 0B
+    params: {}
+    name: IRQ3
+  - type: interrupt
+    interrupt: 6A
+    params: {}
+    name: HP Vectra
+  - type: interrupt
+    interrupt: 6C
+    params: {}
+    name: HP Vectra
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: S-6B0000
+  category: S
+  title: Novell NASI/NACS, Ungermann-Bass Net One SERIAL I/O - BUFFERED WRITE
+  source: INTERRUP.Q:21
+  interrupt: 6B
+  flags: []
+  function: '0000'
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 0000h
+    table_refs: []
+    sub_values: []
+  - reg: CX
+    operator: '='
+    description: length
+    table_refs: []
+    sub_values: []
+  - reg: ES:BX
+    operator: ->
+    description: buffer
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: CX
+      operator: '='
+      description: number of bytes written
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  program: 'NASI is Novell''s NetWare Asynchronous Services Interface (purchased
+
+    from Network Products Corp, who call it NCSI) which runs on
+
+    workstations; NACS is the NetWare Asynchronous Communications
+
+    Services module which runs on servers'
+  notes:
+  - 'this function is also supported by TelAPI, NPC NCSI, and Connection
+
+    Manager CLIENT.EXE; for TelAPI, nonzero values in AL specify a
+
+    connection ID
+
+    Connection Manager returns CF set/AL=FFh if called while an INT 6B
+
+    call is already in progress'
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 0100h
+  - type: interrupt
+    params:
+      AH: 18h
+  - type: interrupt
+    interrupt: '14'
+    params:
+      AH: 19h
+  - type: interrupt
+    interrupt: '14'
+    params:
+      AH: E3h
+  install_check: 'test for the signature string "NCSI" three bytes past the
+
+    interrupt handler; see also AH=02h.
+
+    As of version 3.0, Novell''s NASI can be distinguished from NPC''s
+
+    NCSI by the presence of an ''A'' immediately following the signature'
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: S-6B0100
+  category: S
+  title: Novell NASI/NACS, Ungermann-Bass Net One SERIAL I/O - BUFFERED READ
+  source: INTERRUP.Q:41
+  interrupt: 6B
+  flags: []
+  function: '0100'
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 0100h
+    table_refs: []
+    sub_values: []
+  - reg: CX
+    operator: '='
+    description: length of buffer
+    table_refs: []
+    sub_values: []
+  - reg: ES:BX
+    operator: ->
+    description: buffer
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: CX
+      operator: '='
+      description: number of bytes read
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes:
+  - 'also supported by TelAPI and NPC NCSI; for TelAPI, nonzero values in
+
+    AL specify a connection ID'
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 0000h
+  - type: interrupt
+    params:
+      AH: 19h
+  - type: interrupt
+    interrupt: '14'
+    params:
+      AH: 18h
+  - type: interrupt
+    interrupt: '14'
+    params:
+      AH: E2h
+  - type: interrupt
+    interrupt: '14'
+    params:
+      AX: FF02h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: S-6B02
+  category: S
+  title: Novell NASI/NACS, Ungermann-Bass Net One SERIAL I/O - INSTALL CHECK
+  source: INTERRUP.Q:50
+  interrupt: 6B
+  flags: []
+  function: '02'
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 02h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: AL
+      operator: '='
+      value: 00h
+      description: if present and OK
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes:
+  - this function is also supported by TelAPI and NPC NCSI
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 0700h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: S-6B0600
+  category: S
+  title: Novell NASI/NACS, Ungermann-Bass Net One SERIAL I/O - CONTROL
+  source: INTERRUP.Q:57
+  interrupt: 6B
+  flags: []
+  function: '0600'
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 0600h
+    table_refs: []
+    sub_values: []
+  - reg: CX
+    operator: '='
+    description: command
+    table_refs: []
+    sub_values:
+    - value: 02h
+      description: send break
+      sub_values: []
+    - value: 04h
+      description: disconnect
+      sub_values: []
+    - value: 06h
+      description: hold
+      sub_values: []
+  returns:
+  - condition: CF clear
+    condition_description: if successful
+    registers:
+    - reg: AL
+      operator: '='
+      value: 00h
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  - condition: CF set
+    condition_description: on error
+    registers: []
+    raw_lines:
+    - AX < 0
+  notes:
+  - this function is also supported by TelAPI and NPC NCSI
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: S-6B0700
+  category: S
+  title: Novell NASI/NACS, Ungermann-Bass Net One SERIAL I/O - GET STATUS
+  source: INTERRUP.Q:69
+  interrupt: 6B
+  flags: []
+  function: '0700'
+  input_registers:
+  - reg: AX
+    operator: '='
+    value: 0700h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - CH <> 00h if connection active
+  notes:
+  - 'this function is also supported by TelAPI and NPC NCSI
+
+    Novell TelAPI returns CX=FF01h and CF clear'
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 02h
+  - type: interrupt
+    params:
+      AH: 10h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: N-6B08
+  category: N
+  title: TelAPI - CHECK FOR BREAK SIGNAL
+  source: INTERRUP.Q:76
+  interrupt: 6B
+  flags: []
+  function: 08
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 08h
+    table_refs: []
+    sub_values: []
+  - reg: AL
+    operator: '='
+    description: circuit number
+    table_refs: []
+    sub_values: []
+  returns:
+  - condition: CF clear
+    condition_description: if no breaks
+    registers:
+    - reg: AL
+      operator: '='
+      value: 00h
+      table_refs: []
+      sub_values: []
+    - reg: CX
+      operator: '='
+      value: 0000h
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  - condition: CF set
+    condition_description: if one or more breaks received
+    registers: []
+    raw_lines: []
+  notes:
+  - this function also clears ??? flag
+  bugs: []
+  see_also:
+  - type: interrupt
+    interrupt: '14'
+    params:
+      AX: FF00h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: S-6B10
+  category: S
+  title: NPC NCSI EXTENDED SERIAL I/O - GET STATUS
+  source: INTERRUP.Q:86
+  interrupt: 6B
+  flags: []
+  function: '10'
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 10h
+    table_refs: []
+    sub_values: []
+  - reg: AL
+    operator: '='
+    description: connection ID (Novell TELAPI.EXE)
+    table_refs: []
+    sub_values: []
+  - reg: CX
+    operator: '='
+    description: ???
+    table_refs: []
+    sub_values: []
+  - reg: ES:BX
+    operator: ->
+    description: 'buffer for status (see #03730)'
+    table_refs:
+    - '03730'
+    sub_values: []
+  returns:
+  - condition: CF clear
+    condition_description: if successful
+    registers:
+    - reg: CL
+      operator: '='
+      description: ???
+      table_refs: []
+      sub_values: []
+    - reg: CH
+      operator: '='
+      description: ???
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  - condition: CF set
+    condition_description: on error
+    registers: []
+    raw_lines:
+    - ???
+  notes:
+  - 'this function is also supported by TelAPI
+
+    when shelled out to an external protocol from Novell NASI, the circuit
+
+    whose status indicates that it is connected is the currently active
+
+    circuit'
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 0700h
+  - type: interrupt
+    params:
+      AH: 12h
+  - type: interrupt
+    params:
+      AH: 1Fh
+  index: []
+  tables:
+  - '03730'
+  table_refs: []
+- entry_type: INT
+  id: S-6B11DX0001
+  category: S
+  title: NPC NCSI EXTENDED SERIAL I/O - ALLOCATE A VIRTUAL CIRCUIT
+  source: INTERRUP.Q:113
+  interrupt: 6B
+  flags: []
+  function: 11DX0001
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 11h
+    table_refs: []
+    sub_values: []
+  - reg: DX
+    operator: '='
+    value: 0001h
+    table_refs: []
+    sub_values: []
+  - reg: AL
+    operator: '='
+    value: 00h
+    table_refs: []
+    sub_values: []
+  - reg: ES:BX
+    operator: ->
+    description: service name string (8 characters, blank-padded)
+    table_refs: []
+    sub_values: []
+  returns:
+  - condition: CF clear
+    condition_description: if successful
+    registers:
+    - reg: AL
+      operator: '='
+      description: virtual circuit number allocated (01h for Novell TELAPI.EXE)
+      table_refs: []
+      sub_values: []
+    - reg: CL
+      operator: '='
+      description: ??? (01h for Novell TELAPI.EXE)
+      table_refs: []
+      sub_values: []
+    - reg: CH
+      operator: '='
+      description: ??? (01h for Novell TELAPI.EXE)
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  - condition: CF set
+    condition_description: on error
+    registers: []
+    raw_lines:
+    - ???
+  notes:
+  - this function is also supported by TelAPI
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 12h
+  - type: interrupt
+    params:
+      AH: 15h
+  - type: interrupt
+    params:
+      AH: 16h
+  - type: interrupt
+    params:
+      AH: 17h
+  - type: interrupt
+    params:
+      AH: 18h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: S-6B12
+  category: S
+  title: NPC NCSI EXTENDED SERIAL I/O - VIRTUAL CIRCUIT STATUS
+  source: INTERRUP.Q:127
+  interrupt: 6B
+  flags: []
+  function: '12'
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 12h
+    table_refs: []
+    sub_values: []
+  - reg: AL
+    operator: '='
+    description: virtual circuit number (0-8)
+    table_refs: []
+    sub_values: []
+  returns:
+  - condition: CF clear
+    condition_description: if successful
+    registers:
+    - reg: AL
+      operator: '='
+      description: virtual circuit number
+      table_refs: []
+      sub_values: []
+    - reg: CL
+      operator: '='
+      description: virtual circuit's state
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  - condition: CF set
+    condition_description: on error
+    registers:
+    - reg: AL
+      operator: '='
+      description: error code
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes:
+  - this function is also supported by TelAPI
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 10h
+  - type: interrupt
+    params:
+      AH: 15h
+  - type: interrupt
+    params:
+      AH: 1Ah
+  - type: interrupt
+    params:
+      AH: 1Bh
+  - type: interrupt
+    params:
+      AH: 1Fh
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: S-6B13
+  category: S
+  title: NPC NCSI EXTENDED SERIAL I/O - SET/RETRIEVE REQUEST/REPLY SERVICE NAME
+  source: INTERRUP.Q:144
+  interrupt: 6B
+  flags: []
+  function: '13'
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 13h
+    table_refs: []
+    sub_values: []
+  - reg: AL
+    operator: '='
+    description: virtual circuit number
+    table_refs: []
+    sub_values: []
+  - reg: CL
+    operator: '='
+    description: direction (00h get, nonzero set)
+    table_refs: []
+    sub_values: []
+  - reg: ES:BX
+    operator: ->
+    description: buffer for/containing service name
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+  notes:
+  - this function is also supported by TelAPI
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 14h
+  - type: interrupt
+    params:
+      AH: 15h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: S-6B14
+  category: S
+  title: NPC NCSI EXTENDED SERIAL I/O - SET/RETRIEVE SERVICE ADDRESS
+  source: INTERRUP.Q:153
+  interrupt: 6B
+  flags: []
+  function: '14'
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 14h
+    table_refs: []
+    sub_values: []
+  - reg: AL
+    operator: '='
+    description: virtual circuit number
+    table_refs: []
+    sub_values: []
+  - reg: ES:BX
+    operator: ->
+    description: buffer for/containing service address
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+  notes:
+  - 'this function is also supported by TelAPI, which only supports
+
+    retrieving the address'
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 13h
+  - type: interrupt
+    params:
+      AH: 15h
+  - type: interrupt
+    params:
+      AH: 21h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: S-6B15
+  category: S
+  title: NPC NCSI EXTENDED SERIAL I/O - SET/RETRIEVE VIRTUAL CIRCUIT CONFIG
+  source: INTERRUP.Q:162
+  interrupt: 6B
+  flags: []
+  function: '15'
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 15h
+    table_refs: []
+    sub_values: []
+  - reg: AL
+    operator: '='
+    description: virtual circuit number
+    table_refs: []
+    sub_values: []
+  - reg: CL
+    operator: '='
+    description: direction (00h get, nonzero set)
+    table_refs: []
+    sub_values: []
+  - reg: ES:BX
+    operator: ->
+    description: 'buffer for/containing virtual circuit config (see #03731)'
+    table_refs:
+    - '03731'
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ES:BX buffer filled
+  notes:
+  - this function is also supported by TelAPI
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 13h
+    name: NCSI
+  - type: interrupt
+    params:
+      AH: 14h
+    name: NCSI
+  index: []
+  tables:
+  - '03731'
+  table_refs: []
+- entry_type: INT
+  id: S-6B16
+  category: S
+  title: NPC NCSI EXTENDED SERIAL I/O - LOG AND/OR INITIALIZE VIRTUAL CIRCUIT
+  source: INTERRUP.Q:186
+  interrupt: 6B
+  flags: []
+  function: '16'
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 16h
+    table_refs: []
+    sub_values: []
+  - reg: AL
+    operator: '='
+    description: virtual circuit number
+    table_refs: []
+    sub_values: []
+  - reg: CL
+    operator: '='
+    description: ??? switch (00h, ???)
+    table_refs: []
+    sub_values: []
+  returns:
+  - condition: CF clear
+    condition_description: if successful
+    registers:
+    - reg: AL
+      operator: '='
+      description: virtual circuit number
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  - condition: CF set
+    condition_description: on error
+    registers: []
+    raw_lines:
+    - ???
+  notes:
+  - 'this function is also supported by TelAPI, which always returns CF
+
+    clear and AL=00h'
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 11h
+  - type: interrupt
+    params:
+      AH: 12h
+  - type: interrupt
+    params:
+      AH: 17h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: S-6B17
+  category: S
+  title: NPC NCSI EXTENDED SERIAL I/O - DISCONNECT A VIRTUAL CIRCUIT
+  source: INTERRUP.Q:198
+  interrupt: 6B
+  flags: []
+  function: '17'
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 17h
+    table_refs: []
+    sub_values: []
+  - reg: AL
+    operator: '='
+    description: virtual circuit number
+    table_refs: []
+    sub_values: []
+  returns:
+  - condition: CF clear
+    condition_description: if successful
+    registers: []
+    raw_lines: []
+  - condition: CF set
+    condition_description: on error
+    registers: []
+    raw_lines:
+    - ???
+  notes:
+  - 'this function is also supported by TelAPI, which always returns CF
+
+    clear and AL=00h'
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 11h
+  - type: interrupt
+    params:
+      AH: 16h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: S-6B18
+  category: S
+  title: NPC NCSI EXTENDED SERIAL I/O - WRITE DATA ON A VIRTUAL CIRCUIT
+  source: INTERRUP.Q:208
+  interrupt: 6B
+  flags: []
+  function: '18'
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 18h
+    table_refs: []
+    sub_values: []
+  - reg: AL
+    operator: '='
+    description: virtual circuit number
+    table_refs: []
+    sub_values: []
+  - reg: CX
+    operator: '='
+    description: number of characters to send
+    table_refs: []
+    sub_values: []
+  - reg: ES:BX
+    operator: ->
+    description: buffer containing characters to be sent
+    table_refs: []
+    sub_values: []
+  returns:
+  - condition: CF clear
+    condition_description: if successful
+    registers: []
+    raw_lines: []
+  - condition: CF set
+    condition_description: on error
+    registers: []
+    raw_lines:
+    - ???
+  notes:
+  - 'this function is also supported by TelAPI, which always returns CF
+
+    clear and AL=30h'
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 0000h
+  - type: interrupt
+    params:
+      AH: 12h
+  - type: interrupt
+    params:
+      AH: 19h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: S-6B19
+  category: S
+  title: NPC NCSI EXTENDED SERIAL I/O - READ DATA ON A VIRTUAL CIRCUIT
+  source: INTERRUP.Q:220
+  interrupt: 6B
+  flags: []
+  function: '19'
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 19h
+    table_refs: []
+    sub_values: []
+  - reg: AL
+    operator: '='
+    description: virtual circuit number
+    table_refs: []
+    sub_values: []
+  - reg: CX
+    operator: '='
+    description: number of characters to read
+    table_refs: []
+    sub_values: []
+  - reg: ES:BX
+    operator: ->
+    description: buffer for received characters
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers:
+    - reg: CX
+      operator: '='
+      value: 0000h
+      description: if failed
+      table_refs: []
+      sub_values: []
+    - reg: CX
+      operator: '='
+      description: nonzero (possibly number of characters received) if successful
+      table_refs: []
+      sub_values: []
+    raw_lines: []
+  notes:
+  - this function is also supported by TelAPI
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AX: 0100h
+  - type: interrupt
+    params:
+      AH: 12h
+  - type: interrupt
+    params:
+      AH: 18h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: S-6B1A
+  category: S
+  title: NPC NCSI EXTENDED SERIAL I/O - RECEIVE STATUS
+  source: INTERRUP.Q:230
+  interrupt: 6B
+  flags: []
+  function: 1A
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 1Ah
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 12h
+  - type: interrupt
+    params:
+      AH: 1Bh
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: S-6B1B
+  category: S
+  title: NPC NCSI EXTENDED SERIAL I/O - TRANSMIT STATUS
+  source: INTERRUP.Q:236
+  interrupt: 6B
+  flags: []
+  function: 1B
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 1Bh
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 12h
+  - type: interrupt
+    params:
+      AH: 1Ah
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: S-6B1C
+  category: S
+  title: NPC NCSI EXTENDED SERIAL I/O - CLEAR RECEIVE BUFFER
+  source: INTERRUP.Q:242
+  interrupt: 6B
+  flags: []
+  function: 1C
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 1Ch
+    table_refs: []
+    sub_values: []
+  - reg: AL
+    operator: '='
+    description: circuit number
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - nothing
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 1Dh
+    name: NCSI
+  - type: interrupt
+    params:
+      AH: 1Eh
+    name: NCSI
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: S-6B1D
+  category: S
+  title: NPC NCSI EXTENDED SERIAL I/O - TRANSMIT BUFFER CONTROL
+  source: INTERRUP.Q:248
+  interrupt: 6B
+  flags: []
+  function: 1D
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 1Dh
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 1Ch
+  - type: interrupt
+    params:
+      AH: 1Eh
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: S-6B1E
+  category: S
+  title: NPC NCSI EXTENDED SERIAL I/O - ISSUE CONTROL REQUEST
+  source: INTERRUP.Q:254
+  interrupt: 6B
+  flags: []
+  function: 1E
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 1Eh
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 1Ch
+  - type: interrupt
+    params:
+      AH: 1Dh
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: S-6B1F
+  category: S
+  title: NPC NCSI EXTENDED SERIAL I/O - EXTERNAL STATUS
+  source: INTERRUP.Q:260
+  interrupt: 6B
+  flags: []
+  function: 1F
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 1Fh
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+  notes: []
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 10h
+  - type: interrupt
+    params:
+      AH: 12h
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: S-6B20
+  category: S
+  title: Connection Manager CLIENT.EXE - ???
+  source: INTERRUP.Q:266
+  interrupt: 6B
+  flags: []
+  function: '20'
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 20h
+    table_refs: []
+    sub_values: []
+  returns:
+  - registers: []
+    raw_lines:
+    - ???
+  program: 'Connection Manager by Softwarehouse Corp. permits the sharing of
+
+    serial ports over an IPX or NetBIOS-based network'
+  notes:
+  - CLIENT.EXE returns CF set/AL=F9h if AH is not 00h to 21h on entry
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
+- entry_type: INT
+  id: S-6B21
+  category: S
+  title: NPC NCSI EXTENDED SERIAL I/O - QUERY NAME SERVICE
+  source: INTERRUP.Q:274
+  interrupt: 6B
+  flags: []
+  function: '21'
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 21h
+    table_refs: []
+    sub_values: []
+  - reg: AL
+    operator: '='
+    description: virtual circuit number
+    table_refs: []
+    sub_values: []
+  - reg: CL
+    operator: '='
+    description: ??? (00h or 01h)
+    table_refs: []
+    sub_values: []
+  - reg: ES:BX
+    operator: ->
+    description: 'buffer for service name structure (see #03732)'
+    table_refs:
+    - '03732'
+    sub_values: []
+  returns:
+  - condition: CF clear
+    condition_description: if successful
+    registers: []
+    raw_lines:
+    - ES:BX buffer filled
+  - condition: CF set
+    condition_description: on error
+    registers: []
+    raw_lines: []
+  notes:
+  - 'a program should call this function after allocating a virtual circuit
+
+    and check that the general name matches the requested service
+
+    prior to version 3.0, Novell''s NASI returned the first available port;
+
+    v3.0+ returns the first port found--check the returned status to
+
+    determine whether the port is available'
+  bugs: []
+  see_also:
+  - type: interrupt
+    params:
+      AH: 14h
+    name: NCSI
+  index: []
+  tables:
+  - '03732'
+  table_refs: []
+- entry_type: INT
+  id: --6B6B
+  title: Tandy SCHOOLMATE PLUS - API
+  source: INTERRUP.Q:304
+  interrupt: 6B
+  flags: []
+  function: 6B
+  input_registers:
+  - reg: AH
+    operator: '='
+    value: 6Bh
+    table_refs: []
+    sub_values: []
+  - reg: AL
+    operator: '='
+    value: E0h
+    description: to FFh
+    table_refs: []
+    sub_values: []
+  returns: []
+  notes:
+  - details not yet available
+  bugs: []
+  see_also: []
+  index: []
+  tables: []
+  table_refs: []
