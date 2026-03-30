@@ -1,0 +1,80 @@
+name: Build Plugin
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+    inputs:
+      ghidra_version:
+        description: 'Ghidra version (e.g. 12.0.4). Leave empty for latest.'
+        required: false
+        default: ''
+
+jobs:
+  build-plugin:
+    runs-on: ubuntu-24.04
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+        with:
+          submodules: true
+
+      - name: Determine Ghidra version
+        id: ghidra
+        shell: bash
+        run: |
+          requested="${{ inputs.ghidra_version }}"
+          if [ -n "$requested" ]; then
+            echo "version=${requested}" >> "$GITHUB_OUTPUT"
+          else
+            tag=$(curl -sL \
+              -H "Accept: application/vnd.github+json" \
+              -H "Authorization: Bearer ${{ github.token }}" \
+              "https://api.github.com/repos/NationalSecurityAgency/ghidra/releases/latest" \
+              | jq -r '.tag_name')
+            # Tag format: Ghidra_12.0.4_build
+            version=$(echo "$tag" | sed 's/Ghidra_//; s/_build//')
+            echo "version=${version}" >> "$GITHUB_OUTPUT"
+          fi
+          echo "Ghidra version: $(grep version "$GITHUB_OUTPUT" | cut -d= -f2)"
+
+      - name: Download Ghidra
+        shell: bash
+        run: |
+          version="${{ steps.ghidra.outputs.version }}"
+          mkdir -p /tmp/ghidra-dl
+
+          asset_url=$(curl -sL \
+            -H "Accept: application/vnd.github+json" \
+            -H "Authorization: Bearer ${{ github.token }}" \
+            "https://api.github.com/repos/NationalSecurityAgency/ghidra/releases/tags/Ghidra_${version}_build" \
+            | jq -r '.assets[] | select(.name | test("^ghidra_.*PUBLIC.*\\.zip$")) | .browser_download_url')
+
+          echo "Downloading ${asset_url}"
+          curl -sL -o /tmp/ghidra-dl/ghidra.zip "$asset_url"
+
+          unzip -q /tmp/ghidra-dl/ghidra.zip -d /tmp/ghidra
+
+          ghidra_dir=$(find /tmp/ghidra -maxdepth 1 -type d -name "ghidra_*" | head -1)
+          echo "GHIDRA_INSTALL_DIR=${ghidra_dir}" >> "$GITHUB_ENV"
+          echo "Ghidra installed at ${ghidra_dir}"
+
+      - name: Set up JDK 21
+        uses: actions/setup-java@v5
+        with:
+          distribution: temurin
+          java-version: '21'
+          cache: gradle
+
+      - name: Build plugin
+        run: ./gradlew createDistribution
+
+      - name: Upload distribution
+        uses: actions/upload-artifact@v7
+        with:
+          name: plugin-distribution
+          path: dist/*Ghidra_${{ steps.ghidra.outputs.version }}.zip
+          if-no-files-found: error
