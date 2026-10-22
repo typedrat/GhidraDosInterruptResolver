@@ -4,11 +4,31 @@ A Ghidra extension that identifies and annotates x86 DOS/BIOS interrupt calls (`
 
 ## Features
 
-- Resolves register values (AH/AL) to determine the specific interrupt function
+- Resolves register values (AH/AL) to determine the specific interrupt function,
+  and checks any other registers an entry pins (e.g. `BX = 4D41h` for a TSR
+  installation check) to choose between entries that share a function code
+- Gives up rather than guessing: on AH/AX alone it only assumes a selector's
+  standard service (the first RBIL entry from a trusted category, by default
+  DOS, BIOS, video, mouse, memory managers, serial, Windows and CPU). Vendor
+  entries and TSR install checks need a confirmed qualifier register;
+  otherwise the call becomes `INTxxh_yy_UNKNOWN` with the candidates in a
+  plate comment
 - Adds plate and PRE comments (visible in the decompiler)
 - Creates bookmarks for quick navigation
-- Generates overlay functions with register-based prototypes
-- Adds navigable DATA references from INT instructions to overlay stubs
+- Generates overlay functions with register-based prototypes, including far
+  pointers in register pairs (`DS:DX`, `ES:BX`) and the carry flag where RBIL
+  reports success/failure through CF
+- Overrides each INT as a direct call to its overlay function so the decompiler
+  shows a typed call; program exits (INT 20h, 21h/00h, 21h/31h, 21h/4Ch, 27h)
+  are marked non-returning
+- Installs a program spec extension (`callotherfixup` for `swi`) that removes
+  the leftover `swi(n)` statement in front of each overridden call
+
+The call override and the `swi` fixup can be turned off in the analyzer
+options; with overrides off, INT instructions get plain DATA references to
+their overlay functions instead. The trusted category letters are the
+"Trusted RBIL categories" option; add `c` for DOS PRINT on INT 2Fh, or `N`
+for network clients.
 
 ## Build
 

@@ -5,19 +5,24 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+import java.util.Set;
 
 import ghidra.app.cmd.disassemble.DisassembleCommand;
 import ghidra.app.cmd.memory.AddInitializedMemoryBlockCmd;
 import ghidra.program.model.address.Address;
 import ghidra.program.model.address.AddressSet;
 import ghidra.program.model.address.AddressSpace;
+import ghidra.program.model.data.BooleanDataType;
 import ghidra.program.model.data.ByteDataType;
+import ghidra.program.model.data.CharDataType;
 import ghidra.program.model.data.CategoryPath;
 import ghidra.program.model.data.DataType;
 import ghidra.program.model.data.DataTypeConflictHandler;
 import ghidra.program.model.data.DataTypeManager;
+import ghidra.program.model.data.DWordDataType;
 import ghidra.program.model.data.PointerDataType;
 import ghidra.program.model.data.StructureDataType;
+import ghidra.program.model.data.Undefined;
 import ghidra.program.model.data.VoidDataType;
 import ghidra.program.model.data.WordDataType;
 import ghidra.program.model.lang.Register;
@@ -32,6 +37,7 @@ import ghidra.program.model.listing.VariableStorage;
 import ghidra.program.model.pcode.Varnode;
 import ghidra.program.model.symbol.RefType;
 import ghidra.program.model.symbol.Reference;
+import ghidra.program.model.symbol.ReferenceManager;
 import ghidra.program.model.symbol.SourceType;
 import ghidra.util.Msg;
 import ghidra.util.exception.DuplicateNameException;
@@ -54,12 +60,19 @@ public class SyscallAnnotator {
     private static final String OVERLAY_SOURCE = "DosSyscallAnalyzer";
     private static final int OVERLAY_SIZE = 0x10000;
 
+    /** Program exits: INT 20h, INT 21h AH=00h/31h/4Ch, INT 27h. */
+    private static final Set<String> TERMINATING_CALLS =
+            Set.of("20", "21/00", "21/31", "21/4C", "27");
+
+    private static final int MAX_LISTED_CANDIDATES = 5;
+
     // Configuration flags
     private final boolean addPlateComments;
     private final boolean addPrePostComments;
     private final boolean createOverlayFunctions;
     private final boolean addBookmarks;
     private final boolean addReferences;
+    private final boolean overrideCalls;
 
     // Overlay space state
     private AddressSpace overlaySpace;
@@ -68,12 +81,13 @@ public class SyscallAnnotator {
 
     public SyscallAnnotator(boolean addPlateComments, boolean addPrePostComments,
                             boolean createOverlayFunctions, boolean addBookmarks,
-                            boolean addReferences) {
+                            boolean addReferences, boolean overrideCalls) {
         this.addPlateComments = addPlateComments;
         this.addPrePostComments = addPrePostComments;
         this.createOverlayFunctions = createOverlayFunctions;
         this.addBookmarks = addBookmarks;
         this.addReferences = addReferences;
+        this.overrideCalls = overrideCalls;
     }
 
     // -----------------------------------------------------------------------
@@ -301,11 +315,24 @@ public class SyscallAnnotator {
 
     private Address getOrCreateOverlayFunction(Program program, String intHex,
                                                 InterruptEntry entry) {
+        String funcName = buildFunctionName(intHex, entry.getTitle(), entry.getFunction());
+        return getOrCreateStub(program, funcName, func -> {
+            if (isNoReturn(intHex, entry)) {
+                func.setNoReturn(true);
+            }
+            applyFunctionPrototype(program, func, entry);
+        });
+    }
+
+    /**
+     * Creates (once per name) a RET stub in the overlay and runs
+     * {@code init} on the new function.
+     */
+    private Address getOrCreateStub(Program program, String funcName,
+                                    StubInitializer init) {
         if (overlaySpace == null) {
             return null;
         }
-
-        String funcName = buildFunctionName(intHex, entry.getTitle(), entry.getFunction());
 
         Address existing = functionMap.get(funcName);
         if (existing != null) {
@@ -334,11 +361,7 @@ public class SyscallAnnotator {
                         SourceType.ANALYSIS);
 
                 if (func != null) {
-                    if (entry.getTitle() != null
-                            && entry.getTitle().toUpperCase(Locale.ROOT).contains("TERMINATE")) {
-                        func.setNoReturn(true);
-                    }
-                    applyFunctionPrototype(program, func, entry);
+                    init.apply(func);
                 }
             }
             functionMap.put(funcName, overlayAddr);
@@ -350,12 +373,105 @@ public class SyscallAnnotator {
         }
     }
 
+    @FunctionalInterface
+    private interface StubInitializer {
+        void apply(Function func) throws Exception;
+    }
+
+    /**
+     * Gives an INT with no matching entry a call override to a per-vector
+     * stub that takes and returns nothing. When the swi() fixup is
+     * installed, an INT left without an override would decompile as a call
+     * through the raw vector-table address.
+     *
+     * @param ahValue the resolved AH value, or {@code null} if unknown
+     */
+    public void annotateUnresolved(Program program, Address intAddr, int interruptNumber,
+                                   Long ahValue, Long alValue,
+                                   List<InterruptEntry> candidates) {
+        String intHex = String.format("%02X", interruptNumber);
+        if (addPlateComments && !candidates.isEmpty()) {
+            applyCandidatesComment(program, intAddr, intHex, ahValue, alValue, candidates);
+        }
+        if (!createOverlayFunctions || !addReferences || !overrideCalls) {
+            return;
+        }
+        String funcName = ahValue != null
+                ? String.format("INT%sh_%02X_UNKNOWN", intHex, ahValue & 0xFF)
+                : "INT" + intHex + "h_UNKNOWN";
+        Address stub = getOrCreateStub(program, funcName, func -> {
+            func.setCustomVariableStorage(true);
+            func.setReturn(VoidDataType.dataType, VariableStorage.VOID_STORAGE,
+                    SourceType.ANALYSIS);
+            func.replaceParameters(List.of(), Function.FunctionUpdateType.CUSTOM_STORAGE,
+                    true, SourceType.ANALYSIS);
+        });
+        if (stub != null) {
+            applyReference(program, intAddr, stub);
+        }
+    }
+
+    private void applyCandidatesComment(Program program, Address intAddr, String intHex,
+                                        Long ahValue, Long alValue,
+                                        List<InterruptEntry> candidates) {
+        String existing = program.getListing().getComment(CommentType.PLATE, intAddr);
+        if (existing != null && !existing.isEmpty()) {
+            return;
+        }
+
+        StringBuilder sb = new StringBuilder("INT ").append(intHex).append('h');
+        if (ahValue != null && alValue != null) {
+            sb.append(String.format(" AX=%02X%02Xh", ahValue & 0xFF, alValue & 0xFF));
+        } else if (ahValue != null) {
+            sb.append(String.format(" AH=%02Xh", ahValue & 0xFF));
+        }
+        sb.append(" - unresolved, possibly:");
+        int shown = Math.min(candidates.size(), MAX_LISTED_CANDIDATES);
+        for (InterruptEntry candidate : candidates.subList(0, shown)) {
+            sb.append("\n  ").append(candidate.getTitle() != null ? candidate.getTitle() : "?");
+        }
+        if (candidates.size() > shown) {
+            sb.append("\n  (").append(candidates.size() - shown).append(" more)");
+        }
+        program.getListing().setComment(intAddr, CommentType.PLATE, sb.toString());
+    }
+
+    /**
+     * Whether a call never returns to its caller. RBIL only sometimes says
+     * "never returns" (DOS's own exit calls lack it), and matching on titles
+     * would also catch calls like "TERMINATE DIRECTORY SEARCH", so the DOS
+     * exits are listed explicitly as {@code INT} or {@code INT/function}.
+     */
+    static boolean isNoReturn(String intHex, InterruptEntry entry) {
+        String function = entry.getFunction();
+        String key = function == null || function.isEmpty()
+                ? intHex
+                : intHex + "/" + function.toUpperCase(Locale.ROOT);
+        if (TERMINATING_CALLS.contains(key)) {
+            return true;
+        }
+        for (ReturnBranch branch : entry.getReturns()) {
+            for (String line : branch.getRawLines()) {
+                if (line != null && line.toLowerCase(Locale.ROOT).contains("never return")) {
+                    return true;
+                }
+            }
+            for (RegisterValue rv : branch.getRegisters()) {
+                String desc = rv.getDescription();
+                if (desc != null && desc.toLowerCase(Locale.ROOT).contains("never return")) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
     /**
      * Apply a register-based function prototype so the decompiler
      * understands which registers are inputs and outputs.
      *
-     * <p>The function selector register (matching the entry's {@code function}
-     * field) is skipped. All other inputs become parameters.
+     * <p>Inputs pinned to constants are skipped. All other inputs become
+     * parameters.
      *
      * <p>Multiple return registers are captured as a struct with named fields
      * and register-name comments.
@@ -363,13 +479,12 @@ public class SyscallAnnotator {
     private void applyFunctionPrototype(Program program, Function func, InterruptEntry entry) {
         List<RegisterValue> inputs = entry.getInputRegisters();
         List<ReturnBranch> returns = entry.getReturns();
-        String functionCode = entry.getFunction();
 
         // --- Input parameters ---
         List<Parameter> params = new ArrayList<>();
         if (inputs != null) {
             for (RegisterValue rv : inputs) {
-                if (isFunctionSelector(rv, functionCode)) {
+                if (isFunctionSelector(rv)) {
                     continue;
                 }
                 String regName = rv.getReg();
@@ -382,7 +497,7 @@ public class SyscallAnnotator {
                     continue;
                 }
 
-                DataType dt = getDataTypeForStorage(storage, rv.getOperator());
+                DataType dt = getDataTypeForStorage(program, storage, rv);
                 String paramName = buildIdentifierName(rv, "param");
 
                 try {
@@ -398,43 +513,50 @@ public class SyscallAnnotator {
         VariableStorage returnStorage = VariableStorage.VOID_STORAGE;
 
         if (returns != null) {
+            List<VariableStorage> retStorages = new ArrayList<>();
+            List<String> retNames = new ArrayList<>();
+            List<DataType> retTypes = new ArrayList<>();
+            List<String> retRegNames = new ArrayList<>();
+
             ReturnBranch bestBranch = pickReturnBranch(returns);
             if (bestBranch != null) {
-                List<RegisterValue> retRegs = bestBranch.getRegisters();
-                if (retRegs != null && !retRegs.isEmpty()) {
-                    List<VariableStorage> retStorages = new ArrayList<>();
-                    List<String> retNames = new ArrayList<>();
-                    List<DataType> retTypes = new ArrayList<>();
-                    List<String> retRegNames = new ArrayList<>();
-
-                    for (RegisterValue rv : retRegs) {
-                        String regName = rv.getReg();
-                        if (regName == null) {
-                            continue;
-                        }
-                        VariableStorage s = resolveRegisterStorage(program, regName);
-                        if (s == null) {
-                            continue;
-                        }
-                        retStorages.add(s);
-                        retNames.add(buildIdentifierName(rv, "field"));
-                        retTypes.add(getDataTypeForStorage(s, rv.getOperator()));
-                        retRegNames.add(regName);
+                for (RegisterValue rv : bestBranch.getRegisters()) {
+                    String regName = rv.getReg();
+                    if (regName == null) {
+                        continue;
                     }
-
-                    if (retStorages.size() == 1) {
-                        returnType = retTypes.get(0);
-                        returnStorage = retStorages.get(0);
-                    } else if (retStorages.size() > 1) {
-                        try {
-                            returnStorage = buildCompositeStorage(program, retStorages);
-                            returnType = buildReturnStruct(program, func.getName(),
-                                    retNames, retTypes, retRegNames);
-                        } catch (Exception e) {
-                            Msg.warn(this, "Failed to build composite return for "
-                                    + func.getName() + ": " + e.getMessage());
-                        }
+                    VariableStorage s = resolveRegisterStorage(program, regName);
+                    if (s == null) {
+                        continue;
                     }
+                    retStorages.add(s);
+                    retNames.add(buildIdentifierName(rv, "field"));
+                    retTypes.add(getDataTypeForStorage(program, s, rv));
+                    retRegNames.add(regName);
+                }
+            }
+
+            // Without CF in the return storage the decompiler assumes the flag
+            // survives the call, so a following JC tests the caller's stale CF.
+            VariableStorage cfStorage = getCarryFlagResultStorage(program, returns);
+            if (cfStorage != null) {
+                retStorages.add(cfStorage);
+                retNames.add("CF");
+                retTypes.add(BooleanDataType.dataType);
+                retRegNames.add("CF");
+            }
+
+            if (retStorages.size() == 1) {
+                returnType = retTypes.get(0);
+                returnStorage = retStorages.get(0);
+            } else if (retStorages.size() > 1) {
+                try {
+                    returnStorage = buildCompositeStorage(program, retStorages);
+                    returnType = buildReturnStruct(program, func.getName(),
+                            retNames, retTypes, retRegNames);
+                } catch (Exception e) {
+                    Msg.warn(this, "Failed to build composite return for "
+                            + func.getName() + ": " + e.getMessage());
                 }
             }
         }
@@ -452,30 +574,12 @@ public class SyscallAnnotator {
     }
 
     /**
-     * Determine whether an input register is the function selector.
+     * Determine whether an input register is pinned to a constant (the
+     * function selector, or a qualifier such as {@code BX = 4D41h}). Those
+     * identify the entry rather than carry an argument.
      */
-    private boolean isFunctionSelector(RegisterValue rv, String functionCode) {
-        if (rv.getValue() == null || functionCode == null) {
-            return false;
-        }
-        String reg = rv.getReg();
-        if (reg == null) {
-            return false;
-        }
-        String val = rv.getValue().replaceAll("[hH]$", "").toUpperCase(Locale.ROOT);
-        String funcUpper = functionCode.toUpperCase(Locale.ROOT);
-        String regUpper = reg.toUpperCase(Locale.ROOT);
-
-        if (regUpper.equals("AH") && funcUpper.length() == 2 && val.equals(funcUpper)) {
-            return true;
-        }
-        if (regUpper.equals("AX") && funcUpper.length() == 4 && val.equals(funcUpper)) {
-            return true;
-        }
-        if (regUpper.equals("AL") && val.equals(funcUpper)) {
-            return true;
-        }
-        return false;
+    private boolean isFunctionSelector(RegisterValue rv) {
+        return "=".equals(rv.getOperator()) && EntrySelector.parseHexValue(rv.getValue()) != null;
     }
 
     /**
@@ -514,11 +618,45 @@ public class SyscallAnnotator {
         return null;
     }
 
+    /**
+     * Returns CF storage when the entry's outcome is reported through the
+     * carry flag, or {@code null} when CF is not part of the result.
+     */
+    private VariableStorage getCarryFlagResultStorage(Program program,
+                                                      List<ReturnBranch> returns) {
+        for (ReturnBranch branch : returns) {
+            String cond = branch.getCondition();
+            if (cond != null && cond.trim().toUpperCase(Locale.ROOT).startsWith("CF ")) {
+                return resolveFlagStorage(program, "CF");
+            }
+        }
+        return null;
+    }
+
+    private VariableStorage resolveFlagStorage(Program program, String flagName) {
+        Register flag = program.getRegister(flagName);
+        if (flag == null) {
+            return null;
+        }
+        try {
+            return new VariableStorage(program, flag);
+        } catch (InvalidInputException e) {
+            return null;
+        }
+    }
+
+    /**
+     * Joins the storages into one multi-varnode storage. Varnodes run most
+     * significant first, while the result struct's fields run from offset 0
+     * on a little-endian target, so the fields are joined last to first to
+     * keep each on its own registers. A field's own varnodes (e.g. DS then DX)
+     * are already most significant first and keep their order.
+     */
     private VariableStorage buildCompositeStorage(Program program,
                                                    List<VariableStorage> storages)
             throws Exception {
         List<Varnode> allVarnodes = new ArrayList<>();
-        for (VariableStorage s : storages) {
+        for (VariableStorage s : storages.reversed()) {
             for (Varnode vn : s.getVarnodes()) {
                 allVarnodes.add(vn);
             }
@@ -562,14 +700,16 @@ public class SyscallAnnotator {
             return null;
         }
 
+        // RBIL writes register pairs high part first (DS:DX, CX:DX), which
+        // is also the order VariableStorage expects for joined varnodes.
         if (regName.contains(":")) {
             String[] parts = regName.split(":");
             if (parts.length == 2) {
-                Register segReg = program.getRegister(parts[0].trim());
-                Register offReg = program.getRegister(parts[1].trim());
-                if (segReg != null && offReg != null) {
+                Register highReg = program.getRegister(parts[0].trim());
+                Register lowReg = program.getRegister(parts[1].trim());
+                if (highReg != null && lowReg != null) {
                     try {
-                        return new VariableStorage(program, offReg, segReg);
+                        return new VariableStorage(program, highReg, lowReg);
                     } catch (Exception e) {
                         return null;
                     }
@@ -589,18 +729,35 @@ public class SyscallAnnotator {
         }
     }
 
-    private DataType getDataTypeForStorage(VariableStorage storage, String operator) {
-        if ("->".equals(operator)) {
-            return new PointerDataType();
-        }
+    /**
+     * Picks a type whose size matches the storage exactly; a mismatch makes
+     * Ghidra reject the parameter. Pointers are sized explicitly because an
+     * unsized pointer resolves to the program's 2-byte near pointer, which
+     * cannot occupy a SEG:OFF register pair.
+     */
+    private DataType getDataTypeForStorage(Program program, VariableStorage storage,
+                                           RegisterValue rv) {
         int size = storage.size();
-        if (size <= 1) {
-            return ByteDataType.dataType;
+        if ("->".equals(rv.getOperator()) && (size == 2 || size == 4)) {
+            return new PointerDataType(getPointeeType(rv), size, program.getDataTypeManager());
         }
-        if (size <= 2) {
-            return WordDataType.dataType;
+        switch (size) {
+            case 1: return ByteDataType.dataType;
+            case 2: return WordDataType.dataType;
+            case 4: return DWordDataType.dataType;
+            default: return Undefined.getUndefinedDataType(size);
         }
-        return new PointerDataType();
+    }
+
+    private static DataType getPointeeType(RegisterValue rv) {
+        String desc = rv.getDescription();
+        if (desc != null) {
+            String lower = desc.toLowerCase(Locale.ROOT);
+            if (lower.contains("asciz") || lower.contains("string")) {
+                return CharDataType.dataType;
+            }
+        }
+        return VoidDataType.dataType;
     }
 
     private String buildIdentifierName(RegisterValue rv, String fallback) {
@@ -667,11 +824,26 @@ public class SyscallAnnotator {
     // -----------------------------------------------------------------------
 
     private void applyReference(Program program, Address intAddr, Address overlayAddr) {
-        // DATA reference provides clickable navigation in the Listing without
-        // injecting a function call into the decompiler output (which would
-        // appear alongside the un-removable swi() line).
-        program.getReferenceManager().addMemoryReference(
-                intAddr, overlayAddr,
-                RefType.DATA, SourceType.ANALYSIS, Reference.MNEMONIC);
+        // x86 lifts INT n to "intloc = swi(n); call [intloc]". A primary
+        // CALL_OVERRIDE_UNCONDITIONAL turns that CALLIND into a direct call to
+        // the stub, so the decompiler applies the stub's register prototype.
+        // CALLOTHER_OVERRIDE_CALL would instead rewrite swi() into a CALL that
+        // keeps swi's output, leaving the CALLIND behind it intact.
+        // A plain DATA reference only gives Listing navigation.
+        RefType type = overrideCalls ? RefType.CALL_OVERRIDE_UNCONDITIONAL : RefType.DATA;
+        ReferenceManager refManager = program.getReferenceManager();
+
+        // Only one primary reference per operand is honored, so drop stale
+        // references to the overlay left by a run with the other setting.
+        for (Reference ref : refManager.getReferencesFrom(intAddr, Reference.MNEMONIC)) {
+            if (ref.getToAddress().getAddressSpace().equals(overlaySpace)
+                    && !ref.getReferenceType().equals(type)) {
+                refManager.delete(ref);
+            }
+        }
+
+        Reference ref = refManager.addMemoryReference(
+                intAddr, overlayAddr, type, SourceType.ANALYSIS, Reference.MNEMONIC);
+        refManager.setPrimary(ref, true);
     }
 }

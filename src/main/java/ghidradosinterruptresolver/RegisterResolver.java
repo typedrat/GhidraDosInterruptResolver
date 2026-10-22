@@ -5,6 +5,7 @@ import java.util.Map;
 
 import ghidra.app.plugin.core.analysis.ConstantPropagationContextEvaluator;
 import ghidra.program.model.address.Address;
+import ghidra.program.model.lang.OperandType;
 import ghidra.program.model.lang.Register;
 import ghidra.program.model.listing.Function;
 import ghidra.program.model.listing.Instruction;
@@ -128,15 +129,15 @@ public class RegisterResolver {
             // Try the exact register first.
             SymbolicPropogator.Value val = symEval.getRegisterValue(intAddr, register);
             if (val != null) {
-                return maskForRegister(val.getValue(), register, program);
+                return maskForRegister(val.getValue(), register);
             }
 
-            // If we asked for a sub-register (AH or AL), also try AX and extract.
-            Register axReg = program.getLanguage().getRegister("AX");
-            if (axReg != null && !register.equals(axReg)) {
-                SymbolicPropogator.Value axVal = symEval.getRegisterValue(intAddr, axReg);
-                if (axVal != null) {
-                    return extractSubRegister(axVal.getValue(), register, program);
+            // A sub-register (e.g. AH, BL) may only be known through its parent.
+            for (Register parent = register.getParentRegister(); parent != null;
+                    parent = parent.getParentRegister()) {
+                SymbolicPropogator.Value parentVal = symEval.getRegisterValue(intAddr, parent);
+                if (parentVal != null) {
+                    return extractSubRegister(parentVal.getValue(), parent, register);
                 }
             }
         } catch (CancelledException e) {
@@ -155,10 +156,6 @@ public class RegisterResolver {
      * that sets the target register to an immediate value.
      */
     private Long resolveBackward(Program program, Address intAddr, Register register) {
-        Register ahReg = program.getLanguage().getRegister("AH");
-        Register alReg = program.getLanguage().getRegister("AL");
-        Register axReg = program.getLanguage().getRegister("AX");
-
         Address currentAddr = intAddr;
         for (int i = 0; i < MAX_BACKWARD_SCAN; i++) {
             Instruction insn = program.getListing().getInstructionBefore(currentAddr);
@@ -175,7 +172,7 @@ public class RegisterResolver {
 
             // MOV reg, imm
             if (mnemonic.equals("MOV")) {
-                Long result = checkMovInstruction(insn, register, ahReg, alReg, axReg);
+                Long result = checkMovInstruction(insn, register);
                 if (result != null) {
                     return result;
                 }
@@ -183,7 +180,7 @@ public class RegisterResolver {
 
             // XOR reg, reg  ->  value is 0
             if (mnemonic.equals("XOR") || mnemonic.equals("SUB")) {
-                Long result = checkZeroIdiom(insn, register, ahReg, alReg, axReg);
+                Long result = checkZeroIdiom(insn, register);
                 if (result != null) {
                     return result;
                 }
@@ -191,7 +188,7 @@ public class RegisterResolver {
 
             // If this instruction writes to the target register but wasn't
             // recognized above, the value is unknown — stop scanning.
-            if (writesToRegister(insn, register, axReg)) {
+            if (writesToRegister(insn, register)) {
                 break;
             }
 
@@ -202,12 +199,10 @@ public class RegisterResolver {
     }
 
     /**
-     * Check if a MOV instruction sets the target register to an immediate
-     * value. Handles MOV AH/AL/AX, imm and the AX-to-sub-register extraction.
+     * Check if a MOV instruction sets the target register, or a register
+     * containing it (e.g. {@code MOV BX, imm} for BL), to an immediate value.
      */
-    private Long checkMovInstruction(Instruction insn, Register target,
-                                     Register ahReg, Register alReg,
-                                     Register axReg) {
+    private Long checkMovInstruction(Instruction insn, Register target) {
         Register destReg = getRegisterOperand(insn, 0);
         if (destReg == null) {
             return null;
@@ -220,49 +215,28 @@ public class RegisterResolver {
 
         long immValue = imm.getUnsignedValue();
 
-        // Direct match: MOV target, imm
         if (destReg.equals(target)) {
-            return immValue & 0xFF;
+            return maskForRegister(immValue, target);
         }
-
-        // MOV AX, imm16 when we want AH or AL
-        if (destReg.equals(axReg)) {
-            if (target.equals(ahReg)) {
-                return (immValue >> 8) & 0xFF;
-            }
-            if (target.equals(alReg)) {
-                return immValue & 0xFF;
-            }
+        if (destReg.contains(target)) {
+            return extractSubRegister(immValue, destReg, target);
         }
 
         return null;
     }
 
     /**
-     * Check if an XOR or SUB instruction zeros the target register
-     * (e.g. {@code XOR AH, AH} or {@code SUB AL, AL}).
+     * Check if an XOR or SUB instruction zeros the target register or a
+     * register containing it (e.g. {@code XOR AX, AX} for AH).
      */
-    private Long checkZeroIdiom(Instruction insn, Register target,
-                                Register ahReg, Register alReg,
-                                Register axReg) {
+    private Long checkZeroIdiom(Instruction insn, Register target) {
         Register op0 = getRegisterOperand(insn, 0);
         Register op1 = getRegisterOperand(insn, 1);
         if (op0 == null || op1 == null) {
             return null;
         }
 
-        // XOR reg, reg  or  SUB reg, reg
-        if (!op0.equals(op1)) {
-            return null;
-        }
-
-        // Direct match
-        if (op0.equals(target)) {
-            return 0L;
-        }
-
-        // XOR AX, AX when we want AH or AL
-        if (op0.equals(axReg) && (target.equals(ahReg) || target.equals(alReg))) {
+        if (op0.equals(op1) && (op0.equals(target) || op0.contains(target))) {
             return 0L;
         }
 
@@ -274,24 +248,18 @@ public class RegisterResolver {
     // -----------------------------------------------------------------------
 
     /**
-     * Check whether an instruction writes to the target register or its
-     * parent (AX), indicating the register value is clobbered.
+     * Check whether an instruction writes to any register overlapping the
+     * target, indicating the register value is clobbered.
      */
-    private boolean writesToRegister(Instruction insn, Register target, Register axReg) {
+    private boolean writesToRegister(Instruction insn, Register target) {
         Object[] results = insn.getResultObjects();
         if (results == null) {
             return false;
         }
         for (Object obj : results) {
-            if (obj instanceof Register) {
-                Register written = (Register) obj;
-                if (written.equals(target) || written.equals(axReg)) {
-                    return true;
-                }
-                if (target.getParentRegister() != null
-                        && written.equals(target.getParentRegister())) {
-                    return true;
-                }
+            if (obj instanceof Register written
+                    && (written.contains(target) || target.contains(written))) {
+                return true;
             }
         }
         return false;
@@ -348,6 +316,11 @@ public class RegisterResolver {
      * {@code null} if the operand is not a simple register.
      */
     private Register getRegisterOperand(Instruction insn, int operandIndex) {
+        // A memory operand such as [BX + 2] also lists BX among its objects.
+        int type = insn.getOperandType(operandIndex);
+        if (!OperandType.isRegister(type) || OperandType.isDynamic(type)) {
+            return null;
+        }
         Object[] opObjects = insn.getOpObjects(operandIndex);
         if (opObjects == null) {
             return null;
@@ -362,9 +335,16 @@ public class RegisterResolver {
 
     /**
      * Extract a scalar (immediate) operand from the given operand index, or
-     * {@code null} if the operand does not contain a scalar.
+     * {@code null} if the operand is not an immediate.
      */
     private Scalar getScalarOperand(Instruction insn, int operandIndex) {
+        // A memory operand such as [BP + 4] also lists its displacement as a
+        // Scalar, which is not the value being loaded.
+        int type = insn.getOperandType(operandIndex);
+        if (!OperandType.isScalar(type) || OperandType.isDynamic(type)
+                || OperandType.isAddress(type)) {
+            return null;
+        }
         Object[] opObjects = insn.getOpObjects(operandIndex);
         if (opObjects == null) {
             return null;
@@ -386,7 +366,7 @@ public class RegisterResolver {
      * for that sub-register, so a simple width mask is all that is needed here
      * -- no additional shifting is required.
      */
-    private Long maskForRegister(long value, Register register, Program program) {
+    private Long maskForRegister(long value, Register register) {
         int bitLength = register.getBitLength();
         if (bitLength <= 8) {
             return value & 0xFF;
@@ -398,22 +378,12 @@ public class RegisterResolver {
     }
 
     /**
-     * Given a 16-bit AX value, extract the portion corresponding to the
-     * requested sub-register (AH = high byte, AL = low byte).
-     *
-     * @return the extracted value, or {@code null} if the register is not
-     *         a recognized sub-register of AX
+     * Given the value of {@code parent}, extract the bits belonging to
+     * {@code target}, which it contains (e.g. AH from AX, BL from BX).
      */
-    private Long extractSubRegister(long axValue, Register target, Program program) {
-        Register ahReg = program.getLanguage().getRegister("AH");
-        Register alReg = program.getLanguage().getRegister("AL");
-
-        if (target.equals(ahReg)) {
-            return (axValue >> 8) & 0xFF;
-        }
-        if (target.equals(alReg)) {
-            return axValue & 0xFF;
-        }
-        return null;
+    private Long extractSubRegister(long parentValue, Register parent, Register target) {
+        int shift = target.getLeastSignificantBitInBaseRegister()
+                - parent.getLeastSignificantBitInBaseRegister();
+        return maskForRegister(parentValue >>> shift, target);
     }
 }
