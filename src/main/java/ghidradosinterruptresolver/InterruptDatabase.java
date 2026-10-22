@@ -32,6 +32,7 @@ import ghidradosinterruptresolver.model.InterruptFile;
 public final class InterruptDatabase {
 
     private static final String INTERRUPTS_DIR = "rbil-yaml/interrupts";
+    private static final String METADATA_FILE = "rbil-yaml/metadata.yaml";
     private static final String NO_FUNCTION_KEY = "";
 
     /**
@@ -76,8 +77,46 @@ public final class InterruptDatabase {
     private final ConcurrentHashMap<Integer, Map<String, List<InterruptEntry>>> cache =
             new ConcurrentHashMap<>();
 
+    /** RBIL category letter to description, loaded on first use. */
+    private volatile Map<String, String> categoryNames;
+
     private InterruptDatabase() {
         // singleton
+    }
+
+    /**
+     * Returns RBIL's description of a category letter. Letters are
+     * case-sensitive: {@code V} is video, {@code v} is virus/antivirus.
+     *
+     * @return the description, or {@code null} if the letter is unknown
+     */
+    public String getCategoryName(String category) {
+        if (category == null) {
+            return null;
+        }
+        Map<String, String> names = categoryNames;
+        if (names == null) {
+            names = loadCategoryNames();
+            categoryNames = names;
+        }
+        return names.get(category);
+    }
+
+    private Map<String, String> loadCategoryNames() {
+        try (InputStream is = Application.getModuleDataFile(METADATA_FILE).getInputStream()) {
+            Map<String, Object> data =
+                    new Yaml(new SafeConstructor(new LoaderOptions())).load(is);
+            Map<String, String> names = new HashMap<>();
+            if (data != null && data.get("categories") instanceof Map<?, ?> categories) {
+                for (Map.Entry<?, ?> e : categories.entrySet()) {
+                    names.put(String.valueOf(e.getKey()), String.valueOf(e.getValue()));
+                }
+            }
+            return Collections.unmodifiableMap(names);
+        } catch (Exception e) {
+            Msg.warn(this, "Failed to load RBIL categories: " + e.getMessage());
+            return Collections.emptyMap();
+        }
     }
 
     /**

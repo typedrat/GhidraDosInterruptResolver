@@ -210,19 +210,8 @@ public class SyscallAnnotator {
         if (category == null || category.isEmpty()) {
             return "Unknown";
         }
-        switch (category.toUpperCase(Locale.ROOT)) {
-            case "D": return "DOS";
-            case "B": return "BIOS";
-            case "V": return "Video";
-            case "K": return "Keyboard";
-            case "S": return "Serial";
-            case "P": return "Printer";
-            case "T": return "Timer";
-            case "M": return "Mouse";
-            case "N": return "Network";
-            case "X": return "Extended";
-            default:  return category;
-        }
+        String name = InterruptDatabase.getInstance().getCategoryName(category);
+        return name != null ? name : category;
     }
 
     // -----------------------------------------------------------------------
@@ -605,9 +594,11 @@ public class SyscallAnnotator {
      * call destroys: it carries no result, but listing it stops the
      * decompiler from assuming the caller's value survives the call.
      */
-    private record ReturnField(String name, DataType type, VariableStorage storage,
-                               String comment, boolean clobbered) {
+    private record ReturnField(String name, String reg, DataType type,
+                               VariableStorage storage, String comment, boolean clobbered) {
     }
+
+    private static final CategoryPath RESULT_CATEGORY = new CategoryPath("/DOS_INTERRUPTS");
 
     private static final Set<String> FLAG_NAMES = Set.of("CF", "ZF", "SF", "OF", "DF", "IF");
 
@@ -649,7 +640,7 @@ public class SyscallAnnotator {
             ordered.add(0, preferred);
         }
 
-        List<ReturnField> values = new ArrayList<>();
+        List<ValueGroup> groups = new ArrayList<>();
         LinkedHashSet<String> flags = new LinkedHashSet<>();
         LinkedHashSet<String> clobbers = new LinkedHashSet<>();
 
@@ -678,9 +669,7 @@ public class SyscallAnnotator {
                 }
                 VariableStorage storage = resolveRegisterStorage(program, regName);
                 if (storage != null) {
-                    addValueField(values, new ReturnField(buildIdentifierName(rv, "field"),
-                            getDataTypeForStorage(program, storage, rv), storage,
-                            regName, false));
+                    addListing(groups, new Listing(cond, upper, storage, rv));
                 }
             }
             for (String line : branch.getRawLines()) {
@@ -688,7 +677,10 @@ public class SyscallAnnotator {
             }
         }
 
-        List<ReturnField> fields = new ArrayList<>(values);
+        List<ReturnField> fields = new ArrayList<>();
+        for (ValueGroup group : groups) {
+            fields.add(buildValueField(program, group));
+        }
         for (String flag : flags) {
             // Only CF and ZF carry results; the others are noise in RBIL's text.
             if (!flag.equals("CF") && !flag.equals("ZF")) {
@@ -696,7 +688,8 @@ public class SyscallAnnotator {
             }
             VariableStorage storage = resolveFlagStorage(program, flag);
             if (storage != null) {
-                fields.add(new ReturnField(flag, BooleanDataType.dataType, storage, flag, false));
+                fields.add(new ReturnField(flag, flag, BooleanDataType.dataType, storage, flag,
+                        false));
             }
         }
         for (String reg : clobbers) {
@@ -704,31 +697,100 @@ public class SyscallAnnotator {
             if (storage == null || fields.stream().anyMatch(f -> overlaps(f.storage(), storage))) {
                 continue;
             }
-            fields.add(new ReturnField("clobbered_" + reg,
+            fields.add(new ReturnField("clobbered_" + reg, reg,
                     getClobberedDataType(program, storage.size()), storage,
                     reg + " destroyed; not a result", true));
         }
         return dedupeNames(fields);
     }
 
+    /** One register RBIL lists for an outcome, with that outcome's condition. */
+    private record Listing(String condition, String reg, VariableStorage storage,
+                           RegisterValue value) {
+
+        /** e.g. {@code CF set: AX = error code} or {@code AX = 0207h (if ...)}. */
+        String describe() {
+            String val = value.getValue();
+            String desc = value.getDescription();
+            String text;
+            if (val != null && !val.isBlank()) {
+                text = desc != null && !desc.isBlank()
+                        ? val.trim() + " (" + desc.trim() + ")"
+                        : val.trim();
+            } else {
+                text = desc != null && !desc.isBlank() ? desc.trim() : "?";
+            }
+            String op = value.getOperator() != null ? value.getOperator() : "=";
+            String line = reg + " " + op + " " + text;
+            return condition != null ? condition + ": " + line : line;
+        }
+    }
+
     /**
-     * Adds a value field unless an existing field already covers its
-     * registers; a field that covers existing ones replaces them. A partial
-     * overlap that neither covers keeps the earlier field.
+     * Every listing that lands on one field: those for the field's own
+     * registers, and those for registers it contains (AL within AX).
      */
-    private static void addValueField(List<ReturnField> values, ReturnField field) {
-        for (ReturnField existing : values) {
-            if (covers(existing.storage(), field.storage())) {
+    private static final class ValueGroup {
+        final VariableStorage storage;
+        final List<Listing> listings = new ArrayList<>();
+
+        ValueGroup(Listing first) {
+            storage = first.storage();
+            listings.add(first);
+        }
+    }
+
+    /**
+     * Files a listing under the group whose registers contain it. A listing
+     * that contains existing groups absorbs them; one that only partly
+     * overlaps a group is dropped, since no single field can hold both.
+     */
+    private static void addListing(List<ValueGroup> groups, Listing listing) {
+        for (ValueGroup group : groups) {
+            if (covers(group.storage, listing.storage())) {
+                group.listings.add(listing);
                 return;
             }
         }
-        values.removeIf(existing -> covers(field.storage(), existing.storage()));
-        for (ReturnField existing : values) {
-            if (overlaps(existing.storage(), field.storage())) {
+        for (ValueGroup group : groups) {
+            if (overlaps(group.storage, listing.storage())
+                    && !covers(listing.storage(), group.storage)) {
                 return;
             }
         }
-        values.add(field);
+        ValueGroup merged = new ValueGroup(listing);
+        groups.removeIf(group -> {
+            if (covers(listing.storage(), group.storage)) {
+                merged.listings.addAll(group.listings);
+                return true;
+            }
+            return false;
+        });
+        groups.add(merged);
+    }
+
+    /**
+     * Turns a group into a field, named and typed after the first listing
+     * that spans it. When RBIL gives more than one meaning, including
+     * meanings for contained registers, the comment lists each on its own
+     * line with the outcome it belongs to.
+     */
+    private ReturnField buildValueField(Program program, ValueGroup group) {
+        Listing primary = group.listings.stream()
+                .filter(l -> covers(l.storage(), group.storage))
+                .findFirst()
+                .orElseThrow();
+        String comment = primary.reg();
+        Set<String> meanings = new LinkedHashSet<>();
+        for (Listing l : group.listings) {
+            meanings.add(l.describe());
+        }
+        if (meanings.size() > 1) {
+            comment += "\n  " + String.join("\n  ", meanings);
+        }
+        return new ReturnField(buildIdentifierName(primary.value(), "field"), primary.reg(),
+                getDataTypeForStorage(program, group.storage, primary.value()),
+                group.storage, comment, false);
     }
 
     private static boolean covers(VariableStorage outer, VariableStorage inner) {
@@ -788,10 +850,11 @@ public class SyscallAnnotator {
         for (ReturnField f : fields) {
             String name = f.name();
             if (!seen.add(name)) {
-                name = name + "_" + f.comment().replace(":", "_");
+                name = name + "_" + f.reg().replace(":", "_");
                 seen.add(name);
             }
-            result.add(new ReturnField(name, f.type(), f.storage(), f.comment(), f.clobbered()));
+            result.add(new ReturnField(name, f.reg(), f.type(), f.storage(), f.comment(),
+                    f.clobbered()));
         }
         return result;
     }
@@ -802,7 +865,7 @@ public class SyscallAnnotator {
      */
     private static DataType getClobberedDataType(Program program, int size) {
         DataTypeManager dtm = program.getDataTypeManager();
-        CategoryPath category = new CategoryPath("/DOS_INTERRUPTS");
+        CategoryPath category = RESULT_CATEGORY;
         String name = "clobbered" + size;
         DataType existing = dtm.getDataType(category, name);
         if (existing != null) {
@@ -846,7 +909,7 @@ public class SyscallAnnotator {
     private DataType buildReturnStruct(Program program, String funcName,
                                         List<ReturnField> fields) {
         String structName = funcName + "_RESULT";
-        CategoryPath category = new CategoryPath("/DOS_INTERRUPTS");
+        CategoryPath category = RESULT_CATEGORY;
         DataTypeManager dtm = program.getDataTypeManager();
 
         DataType existing = dtm.getDataType(category, structName);

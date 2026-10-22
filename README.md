@@ -17,7 +17,9 @@ A Ghidra extension that identifies and annotates x86 DOS/BIOS interrupt calls (`
 - Creates bookmarks for quick navigation
 - Generates overlay functions with register-based prototypes, including far
   pointers in register pairs (`DS:DX`, `ES:BX`). The result struct merges every
-  outcome RBIL lists (a register set only on error is still an output), adds
+  outcome RBIL lists (a register set only on error is still an output, and
+  each field's comment lists every meaning RBIL gives it, including those of
+  its subregisters, with the outcome each belongs to), adds
   CF or ZF where RBIL reports the outcome through them, and marks registers
   the call destroys as `clobberedN clobbered_REG` fields, so the decompiler
   doesn't assume the caller's value survives
