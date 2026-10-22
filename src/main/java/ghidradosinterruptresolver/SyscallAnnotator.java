@@ -771,7 +771,10 @@ public class SyscallAnnotator {
 
     /**
      * Turns a group into a field, named and typed after the first listing
-     * that spans it. When RBIL gives more than one meaning, including
+     * that spans it. A listing that pins a constant (e.g. {@code AX = 0207h}
+     * "if more than 64K sectors") names the case, not the register's
+     * content, so such a field is named {@code AX_result} instead. When RBIL
+     * gives more than one meaning, including
      * meanings for contained registers, the comment lists each on its own
      * line with the outcome it belongs to.
      */
@@ -788,7 +791,10 @@ public class SyscallAnnotator {
         if (meanings.size() > 1) {
             comment += "\n  " + String.join("\n  ", meanings);
         }
-        return new ReturnField(buildIdentifierName(primary.value(), "field"), primary.reg(),
+        String name = EntrySelector.parseHexValue(primary.value().getValue()) != null
+                ? primary.reg().replace(":", "_") + "_result"
+                : buildIdentifierName(primary.value(), "field");
+        return new ReturnField(name, primary.reg(),
                 getDataTypeForStorage(program, group.storage, primary.value()),
                 group.storage, comment, false);
     }
