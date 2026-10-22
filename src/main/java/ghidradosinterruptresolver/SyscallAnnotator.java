@@ -2,10 +2,14 @@ package ghidradosinterruptresolver;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 import java.util.Set;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import ghidra.app.cmd.disassemble.DisassembleCommand;
 import ghidra.app.cmd.memory.AddInitializedMemoryBlockCmd;
@@ -22,6 +26,7 @@ import ghidra.program.model.data.DataTypeManager;
 import ghidra.program.model.data.DWordDataType;
 import ghidra.program.model.data.PointerDataType;
 import ghidra.program.model.data.StructureDataType;
+import ghidra.program.model.data.TypedefDataType;
 import ghidra.program.model.data.Undefined;
 import ghidra.program.model.data.VoidDataType;
 import ghidra.program.model.data.WordDataType;
@@ -492,13 +497,20 @@ public class SyscallAnnotator {
                     continue;
                 }
 
+                // RBIL sometimes lists a register twice (alternative
+                // meanings) or both a pair and one of its halves; the first
+                // listing wins.
                 VariableStorage storage = resolveRegisterStorage(program, regName);
-                if (storage == null) {
+                if (storage == null
+                        || params.stream().anyMatch(p -> overlaps(p.getVariableStorage(), storage))) {
                     continue;
                 }
 
                 DataType dt = getDataTypeForStorage(program, storage, rv);
-                String paramName = buildIdentifierName(rv, "param");
+                String baseName = buildIdentifierName(rv, "param");
+                String paramName = params.stream().anyMatch(p -> p.getName().equals(baseName))
+                        ? baseName + "_" + regName.replace(":", "_")
+                        : baseName;
 
                 try {
                     params.add(new ParameterImpl(paramName, dt, storage, program));
@@ -512,52 +524,22 @@ public class SyscallAnnotator {
         DataType returnType = VoidDataType.dataType;
         VariableStorage returnStorage = VariableStorage.VOID_STORAGE;
 
-        if (returns != null) {
-            List<VariableStorage> retStorages = new ArrayList<>();
-            List<String> retNames = new ArrayList<>();
-            List<DataType> retTypes = new ArrayList<>();
-            List<String> retRegNames = new ArrayList<>();
-
-            ReturnBranch bestBranch = pickReturnBranch(returns);
-            if (bestBranch != null) {
-                for (RegisterValue rv : bestBranch.getRegisters()) {
-                    String regName = rv.getReg();
-                    if (regName == null) {
-                        continue;
-                    }
-                    VariableStorage s = resolveRegisterStorage(program, regName);
-                    if (s == null) {
-                        continue;
-                    }
-                    retStorages.add(s);
-                    retNames.add(buildIdentifierName(rv, "field"));
-                    retTypes.add(getDataTypeForStorage(program, s, rv));
-                    retRegNames.add(regName);
-                }
-            }
-
-            // Without CF in the return storage the decompiler assumes the flag
-            // survives the call, so a following JC tests the caller's stale CF.
-            VariableStorage cfStorage = getCarryFlagResultStorage(program, returns);
-            if (cfStorage != null) {
-                retStorages.add(cfStorage);
-                retNames.add("CF");
-                retTypes.add(BooleanDataType.dataType);
-                retRegNames.add("CF");
-            }
-
-            if (retStorages.size() == 1) {
-                returnType = retTypes.get(0);
-                returnStorage = retStorages.get(0);
-            } else if (retStorages.size() > 1) {
-                try {
-                    returnStorage = buildCompositeStorage(program, retStorages);
-                    returnType = buildReturnStruct(program, func.getName(),
-                            retNames, retTypes, retRegNames);
-                } catch (Exception e) {
-                    Msg.warn(this, "Failed to build composite return for "
-                            + func.getName() + ": " + e.getMessage());
-                }
+        List<ReturnField> fields = returns != null
+                ? collectReturnFields(program, returns)
+                : List.of();
+        if (fields.size() == 1 && !fields.get(0).clobbered()) {
+            returnType = fields.get(0).type();
+            returnStorage = fields.get(0).storage();
+        } else if (!fields.isEmpty()) {
+            // A lone clobbered register still gets a struct so its field
+            // name says the value is garbage.
+            try {
+                returnStorage = buildCompositeStorage(program,
+                        fields.stream().map(ReturnField::storage).toList());
+                returnType = buildReturnStruct(program, func.getName(), fields);
+            } catch (Exception e) {
+                Msg.warn(this, "Failed to build composite return for "
+                        + func.getName() + ": " + e.getMessage());
             }
         }
 
@@ -619,18 +601,215 @@ public class SyscallAnnotator {
     }
 
     /**
-     * Returns CF storage when the entry's outcome is reported through the
-     * carry flag, or {@code null} when CF is not part of the result.
+     * One field of a return struct. A clobbered field marks a register the
+     * call destroys: it carries no result, but listing it stops the
+     * decompiler from assuming the caller's value survives the call.
      */
-    private VariableStorage getCarryFlagResultStorage(Program program,
-                                                      List<ReturnBranch> returns) {
-        for (ReturnBranch branch : returns) {
+    private record ReturnField(String name, DataType type, VariableStorage storage,
+                               String comment, boolean clobbered) {
+    }
+
+    private static final Set<String> FLAG_NAMES = Set.of("CF", "ZF", "SF", "OF", "DF", "IF");
+
+    private static final String REG_PATTERN =
+            "(?:E?[A-D]X|[A-D][HL]|E?[SD]I|E?BP|[CDEFGS]S)";
+
+    /**
+     * RBIL notes clobbered registers as free text, e.g. "AX,DX destroyed",
+     * "BX, CX, DI, ES may be destroyed" or "may destroy SI,DI???".
+     */
+    private static final String REG_LIST_PATTERN =
+            REG_PATTERN + "(?:\\s*(?:,|and)\\s*" + REG_PATTERN + ")*";
+
+    private static final Pattern CLOBBER_LINE = Pattern.compile(
+            "^\\s*(?:may destroy\\s+(?<pre>" + REG_LIST_PATTERN + ")"
+                    + "|(?<post>" + REG_LIST_PATTERN + ")\\s+(?:may be\\s+)?"
+                    + "(?:destroyed|corrupted))\\b.*",
+            Pattern.CASE_INSENSITIVE);
+
+    private static final Pattern CLOBBER_DESCRIPTION =
+            Pattern.compile("\\bdestroyed\\b",
+                    Pattern.CASE_INSENSITIVE);
+
+    /**
+     * Builds the return fields from every outcome RBIL lists, preferred
+     * outcome first. Each register appears once: RBIL lists one register
+     * per possible value ("AL = status", "AL = anything else"), and an
+     * outcome-specific register (an error code only set on failure) still
+     * has to be an output or the decompiler treats it as preserved. A field
+     * contained in a wider one (AL in AX) is dropped in favour of the wider.
+     * Flags RBIL reports results through follow as booleans, then registers
+     * the call destroys.
+     */
+    private List<ReturnField> collectReturnFields(Program program, List<ReturnBranch> returns) {
+        List<ReturnBranch> ordered = new ArrayList<>(returns);
+        ReturnBranch preferred = pickReturnBranch(returns);
+        if (preferred != null) {
+            ordered.remove(preferred);
+            ordered.add(0, preferred);
+        }
+
+        List<ReturnField> values = new ArrayList<>();
+        LinkedHashSet<String> flags = new LinkedHashSet<>();
+        LinkedHashSet<String> clobbers = new LinkedHashSet<>();
+
+        for (ReturnBranch branch : ordered) {
             String cond = branch.getCondition();
-            if (cond != null && cond.trim().toUpperCase(Locale.ROOT).startsWith("CF ")) {
-                return resolveFlagStorage(program, "CF");
+            if (cond != null) {
+                String flag = cond.trim().toUpperCase(Locale.ROOT).split("\\s+")[0];
+                if (FLAG_NAMES.contains(flag)) {
+                    flags.add(flag);
+                }
+            }
+            for (RegisterValue rv : branch.getRegisters()) {
+                String regName = rv.getReg();
+                if (regName == null) {
+                    continue;
+                }
+                String upper = regName.trim().toUpperCase(Locale.ROOT);
+                if (FLAG_NAMES.contains(upper)) {
+                    flags.add(upper);
+                    continue;
+                }
+                String desc = rv.getDescription();
+                if (desc != null && CLOBBER_DESCRIPTION.matcher(desc).find()) {
+                    clobbers.add(upper);
+                    continue;
+                }
+                VariableStorage storage = resolveRegisterStorage(program, regName);
+                if (storage != null) {
+                    addValueField(values, new ReturnField(buildIdentifierName(rv, "field"),
+                            getDataTypeForStorage(program, storage, rv), storage,
+                            regName, false));
+                }
+            }
+            for (String line : branch.getRawLines()) {
+                clobbers.addAll(parseClobberedRegisters(line));
             }
         }
-        return null;
+
+        List<ReturnField> fields = new ArrayList<>(values);
+        for (String flag : flags) {
+            // Only CF and ZF carry results; the others are noise in RBIL's text.
+            if (!flag.equals("CF") && !flag.equals("ZF")) {
+                continue;
+            }
+            VariableStorage storage = resolveFlagStorage(program, flag);
+            if (storage != null) {
+                fields.add(new ReturnField(flag, BooleanDataType.dataType, storage, flag, false));
+            }
+        }
+        for (String reg : clobbers) {
+            VariableStorage storage = resolveRegisterStorage(program, reg);
+            if (storage == null || fields.stream().anyMatch(f -> overlaps(f.storage(), storage))) {
+                continue;
+            }
+            fields.add(new ReturnField("clobbered_" + reg,
+                    getClobberedDataType(program, storage.size()), storage,
+                    reg + " destroyed; not a result", true));
+        }
+        return dedupeNames(fields);
+    }
+
+    /**
+     * Adds a value field unless an existing field already covers its
+     * registers; a field that covers existing ones replaces them. A partial
+     * overlap that neither covers keeps the earlier field.
+     */
+    private static void addValueField(List<ReturnField> values, ReturnField field) {
+        for (ReturnField existing : values) {
+            if (covers(existing.storage(), field.storage())) {
+                return;
+            }
+        }
+        values.removeIf(existing -> covers(field.storage(), existing.storage()));
+        for (ReturnField existing : values) {
+            if (overlaps(existing.storage(), field.storage())) {
+                return;
+            }
+        }
+        values.add(field);
+    }
+
+    private static boolean covers(VariableStorage outer, VariableStorage inner) {
+        for (Varnode in : inner.getVarnodes()) {
+            boolean contained = false;
+            for (Varnode out : outer.getVarnodes()) {
+                if (in.getAddress().getAddressSpace().equals(out.getAddress().getAddressSpace())
+                        && in.getOffset() >= out.getOffset()
+                        && in.getOffset() + in.getSize() <= out.getOffset() + out.getSize()) {
+                    contained = true;
+                    break;
+                }
+            }
+            if (!contained) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    private static boolean overlaps(VariableStorage a, VariableStorage b) {
+        for (Varnode va : a.getVarnodes()) {
+            for (Varnode vb : b.getVarnodes()) {
+                if (va.intersects(vb)) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    static List<String> parseClobberedRegisters(String line) {
+        if (line == null) {
+            return List.of();
+        }
+        Matcher m = CLOBBER_LINE.matcher(line);
+        if (!m.matches()) {
+            return List.of();
+        }
+        String list = m.group("pre") != null ? m.group("pre") : m.group("post");
+        List<String> regs = new ArrayList<>();
+        for (String part : list.split("\\s*(?:,|\\band\\b)\\s*")) {
+            if (!part.isBlank()) {
+                regs.add(part.trim().toUpperCase(Locale.ROOT));
+            }
+        }
+        return regs;
+    }
+
+    /**
+     * Gives repeated names (two outcomes describing different registers the
+     * same way) a register suffix, since struct fields must be unique.
+     */
+    private static List<ReturnField> dedupeNames(List<ReturnField> fields) {
+        Set<String> seen = new HashSet<>();
+        List<ReturnField> result = new ArrayList<>(fields.size());
+        for (ReturnField f : fields) {
+            String name = f.name();
+            if (!seen.add(name)) {
+                name = name + "_" + f.comment().replace(":", "_");
+                seen.add(name);
+            }
+            result.add(new ReturnField(name, f.type(), f.storage(), f.comment(), f.clobbered()));
+        }
+        return result;
+    }
+
+    /**
+     * A typedef such as {@code clobbered2} over {@code undefined2}, so a
+     * destroyed register reads as garbage wherever it shows up.
+     */
+    private static DataType getClobberedDataType(Program program, int size) {
+        DataTypeManager dtm = program.getDataTypeManager();
+        CategoryPath category = new CategoryPath("/DOS_INTERRUPTS");
+        String name = "clobbered" + size;
+        DataType existing = dtm.getDataType(category, name);
+        if (existing != null) {
+            return existing;
+        }
+        return dtm.addDataType(new TypedefDataType(category, name,
+                Undefined.getUndefinedDataType(size), dtm), DataTypeConflictHandler.KEEP_HANDLER);
     }
 
     private VariableStorage resolveFlagStorage(Program program, String flagName) {
@@ -665,9 +844,7 @@ public class SyscallAnnotator {
     }
 
     private DataType buildReturnStruct(Program program, String funcName,
-                                        List<String> fieldNames,
-                                        List<DataType> fieldTypes,
-                                        List<String> regNames) {
+                                        List<ReturnField> fields) {
         String structName = funcName + "_RESULT";
         CategoryPath category = new CategoryPath("/DOS_INTERRUPTS");
         DataTypeManager dtm = program.getDataTypeManager();
@@ -678,8 +855,8 @@ public class SyscallAnnotator {
         }
 
         StructureDataType struct = new StructureDataType(category, structName, 0, dtm);
-        for (int i = 0; i < fieldNames.size(); i++) {
-            struct.add(fieldTypes.get(i), fieldNames.get(i), regNames.get(i));
+        for (ReturnField field : fields) {
+            struct.add(field.type(), field.name(), field.comment());
         }
 
         return dtm.addDataType(struct, DataTypeConflictHandler.REPLACE_HANDLER);
